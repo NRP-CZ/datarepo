@@ -1,0 +1,1282 @@
+{
+    "model": {
+        "type": "model",
+        "mapping": {
+            "template": {
+                "mappings": {
+                    "dynamic_templates": [
+                        {
+                            "pids": {
+                                "path_match": "pids.*",
+                                "match_mapping_type": "object",
+                                "mapping": {
+                                    "type": "object",
+                                    "properties": {
+                                        "identifier": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword",
+                                                    "ignore_above": 256
+                                                }
+                                            }
+                                        },
+                                        "provider": {
+                                            "type": "keyword"
+                                        },
+                                        "client": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "parent_pids": {
+                                "path_match": "parent.pids.*",
+                                "match_mapping_type": "object",
+                                "mapping": {
+                                    "type": "object",
+                                    "properties": {
+                                        "identifier": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword",
+                                                    "ignore_above": 256
+                                                }
+                                            }
+                                        },
+                                        "provider": {
+                                            "type": "keyword"
+                                        },
+                                        "client": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "generate": true,
+            "alias": "datasets",
+            "module": "datasets.records.mappings",
+            "index": "datasets-datasets-1.0.0",
+            "file": "datasets/records/mappings/os-v2/datasets/datasets-1.0.0.json",
+            "index-field-args": []
+        },
+        "searchable": true,
+        "permissions": {
+            "presets": [
+                "community-workflow"
+            ],
+            "generate": true,
+            "extra-code": "",
+            "module": "datasets.services.records.permissions",
+            "class": "datasets.services.records.permissions.DatasetsPermissionPolicy",
+            "base-classes": [
+                "invenio_records_permissions.RecordPermissionPolicy"
+            ],
+            "imports": []
+        },
+        "marshmallow": {
+            "imports": [],
+            "base-classes": [
+                "oarepo_runtime.services.schema.marshmallow.RDMBaseRecordSchema"
+            ],
+            "generate": true,
+            "module": "datasets.services.records.schema",
+            "class": "datasets.services.records.schema.DatasetsSchema",
+            "extra-code": ""
+        },
+        "ui": {
+            "marshmallow": {
+                "imports": [],
+                "base-classes": [
+                    "oarepo_requests.services.ui_schema.UIRequestsSerializationMixin",
+                    "oarepo_runtime.services.schema.ui.InvenioRDMUISchema"
+                ],
+                "generate": true,
+                "module": "datasets.services.records.ui_schema",
+                "class": "datasets.services.records.ui_schema.DatasetsUISchema",
+                "extra-code": ""
+            },
+            "module": "datasets.models",
+            "file": "datasets/models/ui.json",
+            "alias": "datasets"
+        },
+        "resource-config": {
+            "base-url": "/datasets/",
+            "base-html-url": "/datasets/",
+            "base-classes": [
+                "invenio_drafts_resources.resources.RecordResourceConfig"
+            ],
+            "generate": true,
+            "config-key": "DATASETS_RECORD_RESOURCE_CONFIG",
+            "module": "datasets.resources.records.config",
+            "class": "datasets.resources.records.config.DatasetsResourceConfig",
+            "extra-code": "",
+            "imports": [],
+            "additional-args": []
+        },
+        "module": {
+            "qualified": "datasets",
+            "alias": "datasets",
+            "path": "datasets",
+            "base": "datasets",
+            "base-upper": "DATASETS",
+            "base-title": "Datasets",
+            "kebab-module": "datasets",
+            "prefix": "Datasets",
+            "prefix-upper": "DATASETS",
+            "prefix-snake": "datasets",
+            "suffix": "datasets",
+            "suffix-upper": "DATASETS",
+            "suffix-snake": "datasets"
+        },
+        "files": {
+            "type": "file",
+            "properties": {
+                "caption": {
+                    "type": "keyword"
+                },
+                "id": {
+                    "type": "keyword",
+                    "marshmallow": {
+                        "read": false,
+                        "write": false
+                    },
+                    "ui": {
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        }
+                    },
+                    "sample": {
+                        "skip": true
+                    }
+                },
+                "created": {
+                    "type": "date",
+                    "ui": {
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        }
+                    },
+                    "marshmallow": {
+                        "read": true,
+                        "write": false
+                    },
+                    "sample": {
+                        "skip": true
+                    }
+                },
+                "updated": {
+                    "type": "date",
+                    "ui": {
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        }
+                    },
+                    "marshmallow": {
+                        "read": true,
+                        "write": false
+                    },
+                    "sample": {
+                        "skip": true
+                    }
+                },
+                "$schema": {
+                    "type": "keyword",
+                    "marshmallow": {
+                        "read": false,
+                        "write": false
+                    },
+                    "ui": {
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        }
+                    },
+                    "sample": {
+                        "skip": true
+                    }
+                }
+            },
+            "searchable": true,
+            "marshmallow": {
+                "imports": [
+                    {
+                        "import": "invenio_records_resources.services.files.schema.FileSchema",
+                        "alias": "InvenioFileSchema"
+                    }
+                ],
+                "base-classes": [
+                    "InvenioFileSchema"
+                ]
+            },
+            "resource-config": {
+                "base-html-url": "/datasets/"
+            },
+            "tests": {
+                "extra-fixtures": [],
+                "extra-code": "",
+                "module": "tests"
+            }
+        },
+        "draft-files": {
+            "type": "draft-file",
+            "properties": {},
+            "searchable": true,
+            "tests": {
+                "extra-fixtures": [],
+                "extra-code": "",
+                "module": "tests"
+            }
+        },
+        "tests": {
+            "extra-fixtures": [],
+            "extra-code": "",
+            "module": "tests"
+        },
+        "draft": {
+            "type": "draft_record",
+            "properties": {},
+            "searchable": true,
+            "tests": {
+                "extra-fixtures": [],
+                "extra-code": "",
+                "module": "tests"
+            }
+        },
+        "sample": {
+            "file": "data/sample_data.yaml"
+        },
+        "ext-resource": {
+            "service-kwargs": {
+                "pids_service": "{{invenio_rdm_records.services.pids.PIDsService}}(config_class, {{invenio_rdm_records.services.pids.PIDManager}})"
+            },
+            "generate": true,
+            "skip": false
+        },
+        "model-name": "Datasets",
+        "record": {
+            "fields": {
+                "state": "{{oarepo_workflows.records.systemfields.state.RecordStateField}}(initial='published')",
+                "state_timestamp": "{{oarepo_workflows.records.systemfields.state.RecordStateTimestampField}}()",
+                "media_files": "FilesField(key=MediaFilesAttrConfig[\"_files_attr_key\"],bucket_id_attr=MediaFilesAttrConfig[\"_files_bucket_id_attr_key\"],bucket_attr=MediaFilesAttrConfig[\"_files_bucket_attr_key\"],store=False,dump=False,file_cls={{invenio_rdm_records.records.api.RDMMediaFileRecord}},create=False,delete=False,)"
+            },
+            "base-classes": [
+                "invenio_rdm_records.records.api.RDMRecord"
+            ],
+            "generate": true,
+            "module": "datasets.records.api",
+            "class": "datasets.records.api.DatasetsRecord",
+            "imports": [],
+            "extra-code": ""
+        },
+        "draft-parent-record-metadata": {
+            "base-classes": [
+                "oarepo_workflows.records.models.RecordWorkflowParentModelMixin",
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase"
+            ],
+            "class": "datasets.records.models.DatasetsParentMetadata",
+            "imports": [],
+            "table": "datasets_parent_record_metadata",
+            "module": "datasets.records.models",
+            "generate": true
+        },
+        "parent-record-marshmallow": {
+            "base-classes": [
+                "oarepo_workflows.services.records.schema.RDMWorkflowParentSchema"
+            ],
+            "module": "datasets.services.records.schema",
+            "class": "datasets.services.records.schema.GeneratedParentSchema",
+            "generate": true
+        },
+        "config": {
+            "generate": true,
+            "module": "datasets.config",
+            "extra_code": "",
+            "imports": []
+        },
+        "ext": {
+            "generate": true,
+            "module": "datasets.ext",
+            "class": "datasets.ext.DatasetsExt",
+            "base-classes": [],
+            "extra_code": "",
+            "alias": "datasets",
+            "imports": []
+        },
+        "api-blueprint": {
+            "generate": true,
+            "alias": "datasets",
+            "extra_code": "",
+            "module": "datasets.views.records.api",
+            "function": "datasets.views.records.api.create_api_blueprint",
+            "imports": []
+        },
+        "app-blueprint": {
+            "generate": true,
+            "alias": "datasets",
+            "extra_code": "",
+            "module": "datasets.views.records.app",
+            "function": "datasets.views.records.app.create_app_blueprint",
+            "imports": []
+        },
+        "facets": {
+            "generate": true,
+            "module": "datasets.services.records.facets",
+            "extra-code": "",
+            "groups": true
+        },
+        "saved-model": {
+            "file": "datasets/models/records.json",
+            "module": "datasets.models",
+            "alias": "datasets"
+        },
+        "proxy": {
+            "module": "datasets.proxies",
+            "generate": true
+        },
+        "resource": {
+            "base-classes": [
+                "invenio_drafts_resources.resources.RecordResource"
+            ],
+            "generate": true,
+            "config-key": "DATASETS_RECORD_RESOURCE_CLASS",
+            "module": "datasets.resources.records.resource",
+            "class": "datasets.resources.records.resource.DatasetsResource",
+            "proxy": "current_resource",
+            "extra-code": "",
+            "imports": [],
+            "additional-args": []
+        },
+        "search-options": {
+            "module": "datasets.services.records.search",
+            "class": "datasets.services.records.search.DatasetsSearchOptions",
+            "generate": true,
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.search.I18nRDMSearchOptions"
+            ],
+            "imports": [],
+            "fields": {},
+            "sort-options-field": "sort_options",
+            "versions": {
+                "class": "datasets.DatasetsVersionsSearchOptions",
+                "base-classes": [
+                    "invenio_rdm_records.services.config.RDMSearchVersionsOptions"
+                ]
+            }
+        },
+        "record-resolver": {
+            "generate": true,
+            "module": "datasets.records.requests.resolvers",
+            "class": "datasets.records.requests.resolvers.DatasetsResolver",
+            "base-classes": [
+                "oarepo_runtime.records.entity_resolvers.RecordResolver"
+            ],
+            "imports": [],
+            "custom-proxy-class": "oarepo_runtime.records.entity_resolvers.RecordProxy"
+        },
+        "ui-record-resolver": {
+            "generate": true,
+            "class": "oarepo_requests.resolvers.ui.RecordEntityReferenceUIResolver"
+        },
+        "service-config": {
+            "components": [
+                "{{oarepo_communities.services.components.default_workflow.CommunityDefaultWorkflowComponent}}",
+                "{{oarepo_communities.services.components.include.CommunityInclusionComponent}}",
+                "{{oarepo_runtime.services.components.CustomFieldsComponent}}",
+                "{{oarepo_requests.services.components.autorequest.AutorequestComponent}}",
+                "{{oarepo_workflows.services.components.workflow.WorkflowComponent}}"
+            ],
+            "base-classes": [
+                "oarepo_runtime.services.config.service.PermissionsPresetsConfigMixin",
+                "invenio_rdm_records.services.config.RDMRecordServiceConfig"
+            ],
+            "generate": true,
+            "config-key": "DATASETS_RECORD_SERVICE_CONFIG",
+            "module": "datasets.services.records.config",
+            "class": "datasets.services.records.config.DatasetsServiceConfig",
+            "extra-code": "",
+            "service-id": "datasets",
+            "additional-args": [],
+            "search-item-links-template-cls": "invenio_records_resources.services.LinksTemplate"
+        },
+        "json-serializer": {
+            "module": "datasets.resources.records.ui",
+            "class": "datasets.resources.records.ui.DatasetsUIJSONSerializer",
+            "base-classes": [
+                "oarepo_runtime.resources.LocalizedUIJSONSerializer"
+            ],
+            "imports": [],
+            "extra-code": "",
+            "generate": true,
+            "list_schema_cls": "flask_resources.BaseListSchema",
+            "format_serializer_cls": "flask_resources.serializers.JSONSerializer",
+            "schema-context-args": {
+                "\"object_key\"": "\"ui\"",
+                "\"identity\"": "{{ flask.g{g.identity} }}"
+            }
+        },
+        "translations": {
+            "module": "datasets.translations",
+            "alias": "datasets"
+        },
+        "json-schema-settings": {
+            "generate": true,
+            "alias": "datasets",
+            "version": "1.0.0",
+            "module": "datasets.records.jsonschemas",
+            "name": "datasets-1.0.0.json",
+            "file": "datasets/records/jsonschemas/datasets-1.0.0.json"
+        },
+        "record-metadata": {
+            "generate": true,
+            "module": "datasets.records.models",
+            "class": "datasets.records.models.DatasetsMetadata",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_records.models.RecordMetadataBase",
+                "invenio_drafts_resources.records.ParentRecordMixin"
+            ],
+            "extra-code": "",
+            "imports": [],
+            "table": "datasets_metadata",
+            "alias": "datasets",
+            "use-versioning": true,
+            "alembic": "datasets.alembic"
+        },
+        "pid": {
+            "provider-base-classes": [
+                "oarepo_runtime.records.pid_providers.UniversalPIDMixin",
+                "invenio_drafts_resources.records.api.DraftRecordIdProviderV2"
+            ],
+            "imports": [
+                {
+                    "import": "invenio_records_resources.records.systemfields.pid.PIDField"
+                },
+                {
+                    "import": "invenio_records_resources.records.systemfields.pid.PIDFieldContext"
+                }
+            ],
+            "generate": true,
+            "type": "dtsts",
+            "module": "datasets.records.api",
+            "provider-class": "datasets.records.api.DatasetsIdProvider",
+            "field-class": "invenio_records_resources.records.systemfields.pid.PIDField",
+            "context-class": "invenio_records_resources.records.systemfields.pid.PIDFieldContext",
+            "field-args": [
+                "create=True"
+            ],
+            "extra-code": ""
+        },
+        "service": {
+            "imports": [],
+            "base-classes": [
+                "invenio_rdm_records.services.services.RDMRecordService"
+            ],
+            "generate": true,
+            "config-key": "DATASETS_RECORD_SERVICE_CLASS",
+            "proxy": "current_service",
+            "module": "datasets.services.records.service",
+            "class": "datasets.services.records.service.DatasetsService",
+            "extra-code": "",
+            "additional-args": [
+                "files_service=self.service_files",
+                "draft_files_service=self.service_draft_files"
+            ]
+        },
+        "record-dumper": {
+            "generate": true,
+            "module": "datasets.records.dumpers.dumper",
+            "class": "datasets.records.dumpers.dumper.DatasetsDumper",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.SearchDumper"
+            ],
+            "extra-code": "",
+            "extensions": [
+                "{{oarepo_runtime.records.systemfields.mapping.SystemFieldDumperExt}}()",
+                "{{datasets.records.dumpers.multilingual.MultilingualSearchDumperExt}}()",
+                "{{datasets.records.dumpers.edtf.DatasetsEDTFIntervalDumperExt}}()"
+            ],
+            "imports": []
+        },
+        "files-field": {
+            "generate": true,
+            "field-class": "invenio_records_resources.records.systemfields.FilesField",
+            "file-class": "datasets.records.api.DatasetsRecord",
+            "field-args": [
+                "store=False"
+            ],
+            "imports": []
+        },
+        "multilingual-dumper": {
+            "generate": true,
+            "module": "datasets.records.dumpers.multilingual",
+            "class": "datasets.records.dumpers.multilingual.MultilingualSearchDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.multilingual_dumper.MultilingualDumper"
+            ],
+            "extra-code": "",
+            "extensions": [],
+            "imports": []
+        },
+        "edtf-interval-dumper": {
+            "generate": true,
+            "module": "datasets.records.dumpers.edtf",
+            "class": "datasets.records.dumpers.edtf.DatasetsEDTFIntervalDumperExt",
+            "base-classes": [
+                "oarepo_runtime.records.dumpers.edtf_interval.EDTFIntervalDumperExt"
+            ],
+            "extra-code": "",
+            "extensions": [],
+            "imports": []
+        },
+        "record-list": {
+            "generate": true,
+            "module": "datasets.services.records.results",
+            "class": "datasets.services.records.results.DatasetsRecordList",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordList"
+            ],
+            "components": [],
+            "imports": []
+        },
+        "record-item": {
+            "generate": true,
+            "module": "datasets.services.records.results",
+            "class": "datasets.services.records.results.DatasetsRecordItem",
+            "extra-code": "",
+            "base-classes": [
+                "oarepo_runtime.services.results.RecordItem"
+            ],
+            "components": [
+                "{{oarepo_communities.services.results.RecordCommunitiesComponent}}()",
+                "{{oarepo_requests.services.results.RequestsComponent}}()",
+                "{{oarepo_requests.services.results.RequestTypesComponent}}()"
+            ],
+            "imports": []
+        },
+        "draft-parent-record": {
+            "class": "datasets.records.api.DatasetsParentRecord",
+            "base-classes": [
+                "invenio_rdm_records.records.api.RDMParent"
+            ],
+            "imports": [],
+            "fields": {
+                "workflow": "{{oarepo_workflows.records.systemfields.workflow.WorkflowField}}()"
+            },
+            "module": "datasets.records.api",
+            "generate": true
+        },
+        "draft-parent-record-state": {
+            "class": "datasets.records.models.DatasetsParentState",
+            "base-classes": [
+                "invenio_db.db{db.Model}",
+                "invenio_drafts_resources.records.ParentRecordStateMixin"
+            ],
+            "imports": [],
+            "module": "datasets.records.models",
+            "generate": true,
+            "table": "datasets_parent_state_metadata"
+        },
+        "draft-parent-record-schema": {
+            "name": "parent-v1.0.0.json",
+            "file": "datasets/records/jsonschemas/parent-v1.0.0.json",
+            "generate": true
+        },
+        "requests": {
+            "types": {},
+            "additional-resolvers": [],
+            "additional-ui-resolvers": {},
+            "ui-serialization-referenced-fields": [],
+            "notification-resolver": [
+                "{{invenio_records_resources.references.entity_resolvers.results.ServiceResultResolver}}(service_id=\"datasets\", type_key=\"datasets\")"
+            ]
+        },
+        "record-requests": {
+            "api-blueprint": {
+                "generate": true,
+                "alias": "datasets_requests",
+                "module": "datasets.views.requests.api",
+                "function": "datasets.views.requests.api.create_api_blueprint",
+                "imports": []
+            },
+            "app-blueprint": {
+                "generate": true,
+                "alias": "datasets_requests",
+                "extra_code": "",
+                "module": "datasets.views.requests.app",
+                "function": "datasets.views.requests.app.create_app_blueprint",
+                "imports": []
+            },
+            "resource": {
+                "generate": true,
+                "config-key": "DATASETS_REQUESTS_RESOURCE_CLASS",
+                "class": "oarepo_requests.resources.draft.resource.DraftRecordRequestsResource",
+                "additional-args": [
+                    "record_requests_config={{oarepo_requests.resources.draft.config.DraftRecordRequestsResourceConfig}}()"
+                ],
+                "skip": false
+            },
+            "service": {
+                "generate": true,
+                "config-key": "DATASETS_REQUESTS_SERVICE_CLASS",
+                "class": "oarepo_requests.services.draft.service.DraftRecordRequestsService",
+                "additional-args": [
+                    "record_service=self.service_records",
+                    "oarepo_requests_service={{oarepo_requests.proxies.current_oarepo_requests_service}}"
+                ],
+                "skip": false
+            }
+        },
+        "record-request-types": {
+            "api-blueprint": {
+                "generate": true,
+                "alias": "datasets_request_types",
+                "module": "datasets.views.request_types.api",
+                "function": "datasets.views.request_types.api.create_api_blueprint",
+                "imports": []
+            },
+            "app-blueprint": {
+                "generate": true,
+                "alias": "datasets_request_types",
+                "extra_code": "",
+                "module": "datasets.views.request_types.app",
+                "function": "datasets.views.request_types.app.create_app_blueprint",
+                "imports": []
+            },
+            "resource": {
+                "generate": true,
+                "config-key": "DATASETS_REQUEST_TYPES_RESOURCE_CLASS",
+                "class": "oarepo_requests.resources.draft.types.resource.DraftRequestTypesResource",
+                "additional-args": [
+                    "record_requests_config={{oarepo_requests.resources.draft.types.config.DraftRequestTypesResourceConfig}}()"
+                ],
+                "skip": false
+            },
+            "service": {
+                "generate": true,
+                "config-key": "DATASETS_REQUEST_TYPES_SERVICE_CLASS",
+                "class": "oarepo_requests.services.draft.types.service.DraftRecordRequestTypesService",
+                "additional-args": [
+                    "record_service=self.service_records",
+                    "oarepo_requests_service={{oarepo_requests.proxies.current_oarepo_requests_service}}"
+                ],
+                "skip": false
+            }
+        },
+        "sortable": [],
+        "properties": {
+            "$schema": {
+                "type": "keyword",
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "read": false,
+                        "write": false
+                    }
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "access": {
+                "type": "object",
+                "ui": {
+                    "marshmallow": {
+                        "generate": true,
+                        "read": false,
+                        "write": false,
+                        "class": "datasets.services.records.ui_schema.AccessUISchema"
+                    }
+                },
+                "marshmallow": {
+                    "generate": false,
+                    "class": "invenio_rdm_records.services.schemas.access.AccessSchema",
+                    "field-class": "marshmallow_utils.fields.nestedattr.NestedAttribute"
+                },
+                "sample": {
+                    "skip": true
+                },
+                "properties": {
+                    "embargo": {
+                        "type": "object",
+                        "marshmallow": {
+                            "generate": true,
+                            "class": "datasets.services.records.schema.EmbargoSchema"
+                        },
+                        "ui": {
+                            "marshmallow": {
+                                "generate": true,
+                                "class": "datasets.services.records.ui_schema.EmbargoUISchema"
+                            }
+                        },
+                        "properties": {
+                            "active": {
+                                "type": "boolean",
+                                "json-schema": {
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ]
+                                },
+                                "sample": {
+                                    "skip": true
+                                }
+                            },
+                            "reason": {
+                                "type": "fulltext",
+                                "json-schema": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "sample": {
+                                    "skip": true
+                                }
+                            },
+                            "until": {
+                                "type": "date",
+                                "json-schema": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "sample": {
+                                    "skip": true
+                                }
+                            }
+                        }
+                    },
+                    "files": {
+                        "type": "keyword",
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "record": {
+                        "type": "keyword",
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "status": {
+                        "type": "keyword",
+                        "sample": {
+                            "skip": true
+                        }
+                    }
+                }
+            },
+            "created": {
+                "type": "datetime",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "read": false,
+                        "write": false
+                    }
+                },
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "deletion_status": {
+                "type": "keyword",
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "id": {
+                "type": "keyword",
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "read": false,
+                        "write": false
+                    }
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "is_deleted": {
+                "type": "boolean",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "is_published": {
+                "type": "boolean",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "metadata": {
+                "type": "object",
+                "marshmallow": {
+                    "module": "datasets.services.records.schema",
+                    "generate": true,
+                    "class": "datasets.services.records.schema.DatasetsMetadataSchema",
+                    "extra-code": "",
+                    "base-classes": [
+                        "marshmallow.Schema"
+                    ]
+                },
+                "ui": {
+                    "marshmallow": {
+                        "generate": true,
+                        "module": "datasets.services.records.ui_schema",
+                        "class": "datasets.services.records.ui_schema.DatasetsMetadataUISchema",
+                        "extra-code": "",
+                        "base-classes": [
+                            "marshmallow.Schema"
+                        ]
+                    }
+                },
+                "properties": {
+                    "languages": {
+                        "type": "array",
+                        "items": {
+                            "type": "vocabulary",
+                            "vocabulary-type": "languages",
+                            "imports": [
+                                {
+                                    "import": "oarepo_vocabularies.records.api.Vocabulary"
+                                }
+                            ],
+                            "model": "vocabularies",
+                            "keys": [
+                                "id",
+                                "title"
+                            ],
+                            "marshmallow": {
+                                "unknown": "INCLUDE",
+                                "generate": true,
+                                "class": "datasets.services.records.schema.LanguagesItemSchema"
+                            },
+                            "ui": {
+                                "marshmallow": {
+                                    "unknown": "INCLUDE",
+                                    "generate": true,
+                                    "class": "datasets.services.records.ui_schema.LanguagesItemUISchema"
+                                },
+                                "detail": "vocabulary_item",
+                                "edit": "vocabulary_item"
+                            },
+                            "pid-field": "Vocabulary.pid.with_type_ctx(\"languages\")",
+                            "facets": {
+                                "args": [
+                                    "vocabulary='languages'"
+                                ]
+                            },
+                            "properties": {
+                                "id": {
+                                    "marshmallow": {
+                                        "field-class": "marshmallow.fields.String",
+                                        "validators": [],
+                                        "imports": []
+                                    },
+                                    "ui": {
+                                        "marshmallow": {
+                                            "field-class": "marshmallow.fields.String",
+                                            "validators": [],
+                                            "imports": []
+                                        }
+                                    },
+                                    "type": "keyword",
+                                    "mapping": {
+                                        "fields": {
+                                            "text": {
+                                                "type": "search_as_you_type"
+                                            }
+                                        }
+                                    },
+                                    "sample": {
+                                        "skip": true
+                                    }
+                                },
+                                "title": {
+                                    "marshmallow": {
+                                        "generate": false,
+                                        "field": "{{invenio_vocabularies.services.schema.i18n_strings}}",
+                                        "field-class": "marshmallow.fields.Nested",
+                                        "validators": [],
+                                        "class": "invenio_vocabularies.services.records.schema.TitleSchema"
+                                    },
+                                    "ui": {
+                                        "marshmallow": {
+                                            "field": "{{oarepo_vocabularies.services.ui_schema.VocabularyI18nStrUIField}}()",
+                                            "generate": false
+                                        }
+                                    },
+                                    "mapping": {
+                                        "dynamic": true,
+                                        "properties": {
+                                            "en": {
+                                                "type": "search_as_you_type",
+                                                "copy_to": "title_sort"
+                                            }
+                                        }
+                                    },
+                                    "type": "object",
+                                    "propertyNames": {
+                                        "pattern": "^[a-z]{2}$"
+                                    },
+                                    "additionalProperties": {
+                                        "type": "string"
+                                    }
+                                },
+                                "@v": {
+                                    "type": "keyword",
+                                    "marshmallow": {
+                                        "field-name": "_version",
+                                        "field-class": "marshmallow.fields.String"
+                                    },
+                                    "ui": {
+                                        "marshmallow": {
+                                            "field-name": "_version",
+                                            "field-class": "marshmallow.fields.String"
+                                        }
+                                    },
+                                    "facets": {
+                                        "facet": false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "title": {
+                        "type": "fulltext+keyword"
+                    },
+                    "version": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "pid": {
+                "type": "object",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "generate": false,
+                        "class": "datasets.services.records.ui_schema.FakeUIPIDSchema",
+                        "skip": true,
+                        "read": false,
+                        "write": false
+                    }
+                },
+                "marshmallow": {
+                    "generate": false,
+                    "class": "datasets.services.records.schema.FakePIDSchema",
+                    "skip": true,
+                    "read": false,
+                    "write": false
+                },
+                "sample": {
+                    "skip": true
+                },
+                "properties": {
+                    "obj_type": {
+                        "type": "keyword",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        }
+                    },
+                    "pid_type": {
+                        "type": "keyword",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        }
+                    },
+                    "pk": {
+                        "type": "integer",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        }
+                    },
+                    "status": {
+                        "type": "keyword",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        }
+                    }
+                }
+            },
+            "pids": {
+                "type": "object",
+                "json-schema": {
+                    "propertyNames": {
+                        "pattern": "^[a-z_-][a-z0-9_-]*$"
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "identifier": {
+                                "type": "string"
+                            },
+                            "provider": {
+                                "type": "string"
+                            },
+                            "client": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "type": "object",
+                    "uniqueItems": true
+                },
+                "ui": {
+                    "marshmallow": {
+                        "generate": true,
+                        "read": false,
+                        "write": false,
+                        "class": "datasets.services.records.ui_schema.PidsUISchema"
+                    }
+                },
+                "marshmallow": {
+                    "generate": false,
+                    "field": "{{marshmallow.fields.Dict}}( keys={{marshmallow_utils.fields.SanitizedUnicode}}(validate={{invenio_rdm_records.services.schemas.record.validate_scheme}}),values={{marshmallow.fields.Nested}}({{invenio_rdm_records.services.schemas.pids.PIDSchema}}),)"
+                }
+            },
+            "state": {
+                "type": "keyword",
+                "marshmallow": {
+                    "read": true,
+                    "write": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "read": true,
+                        "write": false
+                    }
+                }
+            },
+            "state_timestamp": {
+                "type": "datetime",
+                "marshmallow": {
+                    "read": true,
+                    "write": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "read": true,
+                        "write": false
+                    }
+                }
+            },
+            "updated": {
+                "type": "datetime",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "read": false,
+                        "write": false
+                    }
+                },
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "version_id": {
+                "type": "integer",
+                "marshmallow": {
+                    "read": false,
+                    "write": false
+                },
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "sample": {
+                    "skip": true
+                }
+            },
+            "versions": {
+                "type": "object",
+                "facets": {
+                    "searchable": true,
+                    "facet": false
+                },
+                "ui": {
+                    "marshmallow": {
+                        "generate": false,
+                        "class": "datasets.services.records.ui_schema.FakeVersionsUISchema",
+                        "skip": true,
+                        "read": false,
+                        "write": false
+                    }
+                },
+                "marshmallow": {
+                    "generate": false,
+                    "class": "datasets.services.records.schema.FakeVersionsSchema",
+                    "skip": true,
+                    "read": false,
+                    "write": false
+                },
+                "sample": {
+                    "skip": true
+                },
+                "properties": {
+                    "index": {
+                        "type": "integer",
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "is_latest": {
+                        "type": "boolean",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "is_latest_draft": {
+                        "type": "boolean",
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "latest_id": {
+                        "type": "keyword",
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "latest_index": {
+                        "type": "integer",
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    },
+                    "next_draft_id": {
+                        "type": "keyword",
+                        "marshmallow": {
+                            "read": false,
+                            "write": false
+                        },
+                        "facets": {
+                            "searchable": true,
+                            "facet": false
+                        },
+                        "sample": {
+                            "skip": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

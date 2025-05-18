@@ -1,0 +1,166 @@
+{
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "access": {
+            "type": "object",
+            "properties": {
+                "embargo": {
+                    "type": "object",
+                    "properties": {
+                        "active": {
+                            "type": [
+                                "boolean",
+                                "null"
+                            ]
+                        },
+                        "reason": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "until": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "format": "date"
+                        }
+                    }
+                },
+                "files": {
+                    "type": "string"
+                },
+                "record": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "created": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "deletion_status": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "is_deleted": {
+            "type": "boolean"
+        },
+        "is_published": {
+            "type": "boolean"
+        },
+        "metadata": {
+            "type": "object",
+            "properties": {
+                "languages": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "object"
+                            },
+                            "@v": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
+        "pid": {
+            "type": "object",
+            "properties": {
+                "obj_type": {
+                    "type": "string"
+                },
+                "pid_type": {
+                    "type": "string"
+                },
+                "pk": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "pids": {
+            "propertyNames": {
+                "pattern": "^[a-z_-][a-z0-9_-]*$"
+            },
+            "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "identifier": {
+                        "type": "string"
+                    },
+                    "provider": {
+                        "type": "string"
+                    },
+                    "client": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "uniqueItems": true
+        },
+        "state": {
+            "type": "string"
+        },
+        "state_timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "version_id": {
+            "type": "integer"
+        },
+        "versions": {
+            "type": "object",
+            "properties": {
+                "index": {
+                    "type": "integer"
+                },
+                "is_latest": {
+                    "type": "boolean"
+                },
+                "is_latest_draft": {
+                    "type": "boolean"
+                },
+                "latest_id": {
+                    "type": "string"
+                },
+                "latest_index": {
+                    "type": "integer"
+                },
+                "next_draft_id": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

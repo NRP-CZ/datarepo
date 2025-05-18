@@ -1,0 +1,223 @@
+{
+    "mappings": {
+        "properties": {
+            "$schema": {
+                "type": "keyword",
+                "ignore_above": 1024
+            },
+            "access": {
+                "type": "object",
+                "properties": {
+                    "embargo": {
+                        "type": "object",
+                        "properties": {
+                            "active": {
+                                "type": "boolean"
+                            },
+                            "reason": {
+                                "type": "text"
+                            },
+                            "until": {
+                                "type": "date",
+                                "format": "basic_date||strict_date"
+                            }
+                        }
+                    },
+                    "files": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    },
+                    "record": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    },
+                    "status": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    }
+                }
+            },
+            "created": {
+                "type": "date",
+                "format": "strict_date_time||strict_date_time_no_millis||basic_date_time||basic_date_time_no_millis||basic_date||strict_date||strict_date_hour_minute_second||strict_date_hour_minute_second_fraction"
+            },
+            "deletion_status": {
+                "type": "keyword",
+                "ignore_above": 1024
+            },
+            "id": {
+                "type": "keyword",
+                "ignore_above": 1024
+            },
+            "is_deleted": {
+                "type": "boolean"
+            },
+            "is_published": {
+                "type": "boolean"
+            },
+            "metadata": {
+                "type": "object",
+                "properties": {
+                    "languages": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "fields": {
+                                    "text": {
+                                        "type": "search_as_you_type"
+                                    }
+                                },
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            },
+                            "title": {
+                                "dynamic": true,
+                                "properties": {
+                                    "en": {
+                                        "type": "search_as_you_type",
+                                        "copy_to": "title_sort"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "@v": {
+                                "type": "keyword",
+                                "ignore_above": 1024
+                            }
+                        }
+                    },
+                    "title": {
+                        "type": "text",
+                        "fields": {
+                            "keyword": {
+                                "type": "keyword",
+                                "ignore_above": 256
+                            }
+                        }
+                    },
+                    "version": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    }
+                }
+            },
+            "pid": {
+                "type": "object",
+                "properties": {
+                    "obj_type": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    },
+                    "pid_type": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    },
+                    "pk": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    }
+                }
+            },
+            "pids": {
+                "type": "object"
+            },
+            "state": {
+                "type": "keyword",
+                "ignore_above": 1024
+            },
+            "state_timestamp": {
+                "type": "date",
+                "format": "strict_date_time||strict_date_time_no_millis||basic_date_time||basic_date_time_no_millis||basic_date||strict_date||strict_date_hour_minute_second||strict_date_hour_minute_second_fraction"
+            },
+            "updated": {
+                "type": "date",
+                "format": "strict_date_time||strict_date_time_no_millis||basic_date_time||basic_date_time_no_millis||basic_date||strict_date||strict_date_hour_minute_second||strict_date_hour_minute_second_fraction"
+            },
+            "version_id": {
+                "type": "integer"
+            },
+            "versions": {
+                "type": "object",
+                "properties": {
+                    "index": {
+                        "type": "integer"
+                    },
+                    "is_latest": {
+                        "type": "boolean"
+                    },
+                    "is_latest_draft": {
+                        "type": "boolean"
+                    },
+                    "latest_id": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    },
+                    "latest_index": {
+                        "type": "integer"
+                    },
+                    "next_draft_id": {
+                        "type": "keyword",
+                        "ignore_above": 1024
+                    }
+                }
+            }
+        },
+        "dynamic_templates": [
+            {
+                "pids": {
+                    "path_match": "pids.*",
+                    "match_mapping_type": "object",
+                    "mapping": {
+                        "type": "object",
+                        "properties": {
+                            "identifier": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 256
+                                    }
+                                }
+                            },
+                            "provider": {
+                                "type": "keyword"
+                            },
+                            "client": {
+                                "type": "keyword"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "parent_pids": {
+                    "path_match": "parent.pids.*",
+                    "match_mapping_type": "object",
+                    "mapping": {
+                        "type": "object",
+                        "properties": {
+                            "identifier": {
+                                "type": "text",
+                                "fields": {
+                                    "keyword": {
+                                        "type": "keyword",
+                                        "ignore_above": 256
+                                    }
+                                }
+                            },
+                            "provider": {
+                                "type": "keyword"
+                            },
+                            "client": {
+                                "type": "keyword"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

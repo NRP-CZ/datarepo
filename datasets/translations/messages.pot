@@ -1,0 +1,351 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: 2025-05-18T20:30:19.525577\n"
+"PO-Revision-Date: 2025-05-18T20:30:19.525578\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "$schema.help"
+msgstr ""
+
+msgid "$schema.label"
+msgstr ""
+
+msgid "$schema.hint"
+msgstr ""
+
+msgid "access.help"
+msgstr ""
+
+msgid "access.label"
+msgstr ""
+
+msgid "access.hint"
+msgstr ""
+
+msgid "access/embargo.help"
+msgstr ""
+
+msgid "access/embargo.label"
+msgstr ""
+
+msgid "access/embargo.hint"
+msgstr ""
+
+msgid "access/embargo/active.help"
+msgstr ""
+
+msgid "access/embargo/active.label"
+msgstr ""
+
+msgid "access/embargo/active.hint"
+msgstr ""
+
+msgid "access/embargo/reason.help"
+msgstr ""
+
+msgid "access/embargo/reason.label"
+msgstr ""
+
+msgid "access/embargo/reason.hint"
+msgstr ""
+
+msgid "access/embargo/until.help"
+msgstr ""
+
+msgid "access/embargo/until.label"
+msgstr ""
+
+msgid "access/embargo/until.hint"
+msgstr ""
+
+msgid "access/files.help"
+msgstr ""
+
+msgid "access/files.label"
+msgstr ""
+
+msgid "access/files.hint"
+msgstr ""
+
+msgid "access/record.help"
+msgstr ""
+
+msgid "access/record.label"
+msgstr ""
+
+msgid "access/record.hint"
+msgstr ""
+
+msgid "access/status.help"
+msgstr ""
+
+msgid "access/status.label"
+msgstr ""
+
+msgid "access/status.hint"
+msgstr ""
+
+msgid "created.help"
+msgstr ""
+
+msgid "created.label"
+msgstr ""
+
+msgid "created.hint"
+msgstr ""
+
+msgid "deletion_status.help"
+msgstr ""
+
+msgid "deletion_status.label"
+msgstr ""
+
+msgid "deletion_status.hint"
+msgstr ""
+
+msgid "id.help"
+msgstr ""
+
+msgid "id.label"
+msgstr ""
+
+msgid "id.hint"
+msgstr ""
+
+msgid "is_deleted.help"
+msgstr ""
+
+msgid "is_deleted.label"
+msgstr ""
+
+msgid "is_deleted.hint"
+msgstr ""
+
+msgid "is_published.help"
+msgstr ""
+
+msgid "is_published.label"
+msgstr ""
+
+msgid "is_published.hint"
+msgstr ""
+
+msgid "metadata.help"
+msgstr ""
+
+msgid "metadata.label"
+msgstr ""
+
+msgid "metadata.hint"
+msgstr ""
+
+msgid "metadata/languages.help"
+msgstr ""
+
+msgid "metadata/languages.label"
+msgstr ""
+
+msgid "metadata/languages.hint"
+msgstr ""
+
+msgid "metadata/languages/id.help"
+msgstr ""
+
+msgid "metadata/languages/id.label"
+msgstr ""
+
+msgid "metadata/languages/id.hint"
+msgstr ""
+
+msgid "metadata/languages/title.help"
+msgstr ""
+
+msgid "metadata/languages/title.label"
+msgstr ""
+
+msgid "metadata/languages/title.hint"
+msgstr ""
+
+msgid "metadata/languages/@v.help"
+msgstr ""
+
+msgid "metadata/languages/@v.label"
+msgstr ""
+
+msgid "metadata/languages/@v.hint"
+msgstr ""
+
+msgid "metadata/title.help"
+msgstr ""
+
+msgid "metadata/title.label"
+msgstr ""
+
+msgid "metadata/title.hint"
+msgstr ""
+
+msgid "metadata/version.help"
+msgstr ""
+
+msgid "metadata/version.label"
+msgstr ""
+
+msgid "metadata/version.hint"
+msgstr ""
+
+msgid "pid.help"
+msgstr ""
+
+msgid "pid.label"
+msgstr ""
+
+msgid "pid.hint"
+msgstr ""
+
+msgid "pid/obj_type.help"
+msgstr ""
+
+msgid "pid/obj_type.label"
+msgstr ""
+
+msgid "pid/obj_type.hint"
+msgstr ""
+
+msgid "pid/pid_type.help"
+msgstr ""
+
+msgid "pid/pid_type.label"
+msgstr ""
+
+msgid "pid/pid_type.hint"
+msgstr ""
+
+msgid "pid/pk.help"
+msgstr ""
+
+msgid "pid/pk.label"
+msgstr ""
+
+msgid "pid/pk.hint"
+msgstr ""
+
+msgid "pid/status.help"
+msgstr ""
+
+msgid "pid/status.label"
+msgstr ""
+
+msgid "pid/status.hint"
+msgstr ""
+
+msgid "pids.help"
+msgstr ""
+
+msgid "pids.label"
+msgstr ""
+
+msgid "pids.hint"
+msgstr ""
+
+msgid "state.help"
+msgstr ""
+
+msgid "state.label"
+msgstr ""
+
+msgid "state.hint"
+msgstr ""
+
+msgid "state_timestamp.help"
+msgstr ""
+
+msgid "state_timestamp.label"
+msgstr ""
+
+msgid "state_timestamp.hint"
+msgstr ""
+
+msgid "updated.help"
+msgstr ""
+
+msgid "updated.label"
+msgstr ""
+
+msgid "updated.hint"
+msgstr ""
+
+msgid "version_id.help"
+msgstr ""
+
+msgid "version_id.label"
+msgstr ""
+
+msgid "version_id.hint"
+msgstr ""
+
+msgid "versions.help"
+msgstr ""
+
+msgid "versions.label"
+msgstr ""
+
+msgid "versions.hint"
+msgstr ""
+
+msgid "versions/index.help"
+msgstr ""
+
+msgid "versions/index.label"
+msgstr ""
+
+msgid "versions/index.hint"
+msgstr ""
+
+msgid "versions/is_latest.help"
+msgstr ""
+
+msgid "versions/is_latest.label"
+msgstr ""
+
+msgid "versions/is_latest.hint"
+msgstr ""
+
+msgid "versions/is_latest_draft.help"
+msgstr ""
+
+msgid "versions/is_latest_draft.label"
+msgstr ""
+
+msgid "versions/is_latest_draft.hint"
+msgstr ""
+
+msgid "versions/latest_id.help"
+msgstr ""
+
+msgid "versions/latest_id.label"
+msgstr ""
+
+msgid "versions/latest_id.hint"
+msgstr ""
+
+msgid "versions/latest_index.help"
+msgstr ""
+
+msgid "versions/latest_index.label"
+msgstr ""
+
+msgid "versions/latest_index.hint"
+msgstr ""
+
+msgid "versions/next_draft_id.help"
+msgstr ""
+
+msgid "versions/next_draft_id.label"
+msgstr ""
+
+msgid "versions/next_draft_id.hint"
+msgstr ""

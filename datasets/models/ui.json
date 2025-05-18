@@ -1,0 +1,307 @@
+{
+    "module": "datasets.models",
+    "file": "datasets/models/ui.json",
+    "alias": "datasets",
+    "detail": "model",
+    "input": "model",
+    "help": ".help",
+    "label": ".label",
+    "hint": ".hint",
+    "children": {
+        "$schema": {
+            "detail": "keyword",
+            "input": "keyword",
+            "help": "$schema.help",
+            "label": "$schema.label",
+            "hint": "$schema.hint"
+        },
+        "access": {
+            "detail": "acces",
+            "input": "acces",
+            "help": "access.help",
+            "label": "access.label",
+            "hint": "access.hint",
+            "children": {
+                "embargo": {
+                    "detail": false,
+                    "input": false,
+                    "help": "access/embargo.help",
+                    "label": "access/embargo.label",
+                    "hint": "access/embargo.hint",
+                    "children": {
+                        "active": {
+                            "detail": "boolean",
+                            "input": "boolean",
+                            "help": "access/embargo/active.help",
+                            "label": "access/embargo/active.label",
+                            "hint": "access/embargo/active.hint",
+                            "facet": "access_embargo_active"
+                        },
+                        "reason": {
+                            "detail": "fulltext",
+                            "input": "fulltext",
+                            "help": "access/embargo/reason.help",
+                            "label": "access/embargo/reason.label",
+                            "hint": "access/embargo/reason.hint"
+                        },
+                        "until": {
+                            "detail": "date",
+                            "input": "date",
+                            "help": "access/embargo/until.help",
+                            "label": "access/embargo/until.label",
+                            "hint": "access/embargo/until.hint",
+                            "facet": "access_embargo_until"
+                        }
+                    }
+                },
+                "files": {
+                    "detail": "keyword",
+                    "input": "keyword",
+                    "help": "access/files.help",
+                    "label": "access/files.label",
+                    "hint": "access/files.hint",
+                    "facet": "access_files"
+                },
+                "record": {
+                    "detail": "keyword",
+                    "input": "keyword",
+                    "help": "access/record.help",
+                    "label": "access/record.label",
+                    "hint": "access/record.hint",
+                    "facet": "access_record"
+                },
+                "status": {
+                    "detail": "keyword",
+                    "input": "keyword",
+                    "help": "access/status.help",
+                    "label": "access/status.label",
+                    "hint": "access/status.hint",
+                    "facet": "access_status"
+                }
+            }
+        },
+        "created": {
+            "detail": "datetime",
+            "input": "datetime",
+            "help": "created.help",
+            "label": "created.label",
+            "hint": "created.hint"
+        },
+        "deletion_status": {
+            "detail": "keyword",
+            "input": "keyword",
+            "help": "deletion_status.help",
+            "label": "deletion_status.label",
+            "hint": "deletion_status.hint"
+        },
+        "id": {
+            "detail": "keyword",
+            "input": "keyword",
+            "help": "id.help",
+            "label": "id.label",
+            "hint": "id.hint"
+        },
+        "is_deleted": {
+            "detail": "boolean",
+            "input": "boolean",
+            "help": "is_deleted.help",
+            "label": "is_deleted.label",
+            "hint": "is_deleted.hint"
+        },
+        "is_published": {
+            "detail": "boolean",
+            "input": "boolean",
+            "help": "is_published.help",
+            "label": "is_published.label",
+            "hint": "is_published.hint"
+        },
+        "metadata": {
+            "detail": "metadatum",
+            "input": "metadatum",
+            "help": "metadata.help",
+            "label": "metadata.label",
+            "hint": "metadata.hint",
+            "children": {
+                "languages": {
+                    "detail": "array",
+                    "input": "array",
+                    "help": "metadata/languages.help",
+                    "label": "metadata/languages.label",
+                    "hint": "metadata/languages.hint",
+                    "child": {
+                        "detail": "vocabulary_item",
+                        "edit": "vocabulary_item",
+                        "input": "vocabulary",
+                        "help": "metadata/languages.help",
+                        "label": "metadata/languages.label",
+                        "hint": "metadata/languages.hint",
+                        "facet": "metadata_languages",
+                        "children": {
+                            "id": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/languages/id.help",
+                                "label": "metadata/languages/id.label",
+                                "hint": "metadata/languages/id.hint"
+                            },
+                            "title": {
+                                "detail": false,
+                                "input": false,
+                                "help": "metadata/languages/title.help",
+                                "label": "metadata/languages/title.label",
+                                "hint": "metadata/languages/title.hint"
+                            },
+                            "@v": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/languages/@v.help",
+                                "label": "metadata/languages/@v.label",
+                                "hint": "metadata/languages/@v.hint"
+                            }
+                        }
+                    }
+                },
+                "title": {
+                    "detail": "fulltext+keyword",
+                    "input": "fulltext+keyword",
+                    "help": "metadata/title.help",
+                    "label": "metadata/title.label",
+                    "hint": "metadata/title.hint"
+                },
+                "version": {
+                    "detail": "keyword",
+                    "input": "keyword",
+                    "help": "metadata/version.help",
+                    "label": "metadata/version.label",
+                    "hint": "metadata/version.hint",
+                    "facet": "metadata_version"
+                }
+            }
+        },
+        "pid": {
+            "detail": false,
+            "input": false,
+            "help": "pid.help",
+            "label": "pid.label",
+            "hint": "pid.hint",
+            "children": {
+                "obj_type": {
+                    "detail": "keyword",
+                    "input": "keyword",
+                    "help": "pid/obj_type.help",
+                    "label": "pid/obj_type.label",
+                    "hint": "pid/obj_type.hint"
+                },
+                "pid_type": {
+                    "detail": "keyword",
+                    "input": "keyword",
+                    "help": "pid/pid_type.help",
+                    "label": "pid/pid_type.label",
+                    "hint": "pid/pid_type.hint"
+                },
+                "pk": {
+                    "detail": "integer",
+                    "input": "integer",
+                    "help": "pid/pk.help",
+                    "label": "pid/pk.label",
+                    "hint": "pid/pk.hint"
+                },
+                "status": {
+                    "detail": "keyword",
+                    "input": "keyword",
+                    "help": "pid/status.help",
+                    "label": "pid/status.label",
+                    "hint": "pid/status.hint"
+                }
+            }
+        },
+        "pids": {
+            "detail": "pid",
+            "input": "pid",
+            "help": "pids.help",
+            "label": "pids.label",
+            "hint": "pids.hint"
+        },
+        "state": {
+            "detail": "keyword",
+            "input": "keyword",
+            "help": "state.help",
+            "label": "state.label",
+            "hint": "state.hint",
+            "facet": "state"
+        },
+        "state_timestamp": {
+            "detail": "datetime",
+            "input": "datetime",
+            "help": "state_timestamp.help",
+            "label": "state_timestamp.label",
+            "hint": "state_timestamp.hint",
+            "facet": "state_timestamp"
+        },
+        "updated": {
+            "detail": "datetime",
+            "input": "datetime",
+            "help": "updated.help",
+            "label": "updated.label",
+            "hint": "updated.hint"
+        },
+        "version_id": {
+            "detail": "integer",
+            "input": "integer",
+            "help": "version_id.help",
+            "label": "version_id.label",
+            "hint": "version_id.hint"
+        },
+        "versions": {
+            "detail": "version",
+            "input": "version",
+            "help": "versions.help",
+            "label": "versions.label",
+            "hint": "versions.hint",
+            "children": {
+                "index": {
+                    "detail": "integer",
+                    "input": "integer",
+                    "help": "versions/index.help",
+                    "label": "versions/index.label",
+                    "hint": "versions/index.hint"
+                },
+                "is_latest": {
+                    "detail": "boolean",
+                    "input": "boolean",
+                    "help": "versions/is_latest.help",
+                    "label": "versions/is_latest.label",
+                    "hint": "versions/is_latest.hint"
+                },
+                "is_latest_draft": {
+                    "detail": "boolean",
+                    "input": "boolean",
+                    "help": "versions/is_latest_draft.help",
+                    "label": "versions/is_latest_draft.label",
+                    "hint": "versions/is_latest_draft.hint"
+                },
+                "latest_id": {
+                    "detail": "keyword",
+                    "input": "keyword",
+                    "help": "versions/latest_id.help",
+                    "label": "versions/latest_id.label",
+                    "hint": "versions/latest_id.hint"
+                },
+                "latest_index": {
+                    "detail": "integer",
+                    "input": "integer",
+                    "help": "versions/latest_index.help",
+                    "label": "versions/latest_index.label",
+                    "hint": "versions/latest_index.hint"
+                },
+                "next_draft_id": {
+                    "detail": "keyword",
+                    "input": "keyword",
+                    "help": "versions/next_draft_id.help",
+                    "label": "versions/next_draft_id.label",
+                    "hint": "versions/next_draft_id.hint"
+                }
+            }
+        }
+    }
+}
