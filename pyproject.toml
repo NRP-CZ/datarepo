@@ -5,9 +5,8 @@ description = ""
 packages = []
 authors = []
 dependencies = [
+    "deepmerge>=1.1.0",
     "json5",
-    "oarepo[s3,rdm]==12.*",
-    "python-dotenv",
     "marshmallow-i18n-messages",
     "oarepo-communities==5.*",
     "oarepo-dashboard==1.*",
@@ -19,25 +18,69 @@ dependencies = [
     "oarepo-ui==5.*",
     "oarepo-vocabularies==2.*",
     "oarepo-workflows==1.*",
+    "oarepo[s3,rdm]==12.*",
+    "python-dotenv",
 ]
 requires-python = ">=3.12,<3.13"
-
 
 [project.entry-points."invenio_assets.webpack"]
 branding = "ui.branding.webpack:theme"
 i18n = "i18n.webpack:theme"
 components = "ui.components.webpack:theme"
+ui_datasets = "ui.datasets.webpack:theme"
 
 [project.entry-points."invenio_base.blueprints"]
 branding = "ui.branding:create_blueprint"
 titlepage = "ui.titlepage:create_blueprint"
 components = "ui.components:create_blueprint"
+datasets = "datasets.views.records.app:create_app_blueprint"
+datasets_requests = "datasets.views.requests.app:create_app_blueprint"
+datasets_request_types = "datasets.views.request_types.app:create_app_blueprint"
+datasets_file = "datasets.views.files.app:create_app_blueprint"
+datasets_file_draft = "datasets.views.draft_files.app:create_app_blueprint"
+ui_datasets = "ui.datasets:create_blueprint"
 
 [project.entry-points."invenio_i18n.translations"]
 translations = "i18n"
+datasets = "datasets"
 
 [project.entry-points."invenio_db.alembic"]
 repo = "common:alembic"
+
+[project.entry-points."invenio_base.api_apps"]
+datasets = "datasets.ext:DatasetsExt"
+
+[project.entry-points."invenio_base.apps"]
+datasets = "datasets.ext:DatasetsExt"
+
+[project.entry-points."invenio_db.models"]
+datasets = "datasets.records.models"
+datasets_file = "datasets.files.models"
+datasets_file_draft = "datasets.files.models"
+
+[project.entry-points."invenio_base.api_blueprints"]
+datasets = "datasets.views.records.api:create_api_blueprint"
+datasets_requests = "datasets.views.requests.api:create_api_blueprint"
+datasets_request_types = "datasets.views.request_types.api:create_api_blueprint"
+datasets_file = "datasets.views.files.api:create_api_blueprint"
+datasets_file_draft = "datasets.views.draft_files.api:create_api_blueprint"
+
+[project.entry-points."invenio_search.mappings"]
+datasets = "datasets.records.mappings"
+
+[project.entry-points."invenio_jsonschemas.schemas"]
+datasets = "datasets.records.jsonschemas"
+
+[project.entry-points."oarepo.models"]
+datasets = "datasets.models:records.json"
+
+[project.entry-points."oarepo.ui"]
+datasets = "datasets.models:ui.json"
+
+[project.optional-dependencies]
+tests = [
+    "pytest-invenio>=1.4.11",
+]
 
 [build-system]
 requires = [

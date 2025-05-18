@@ -1,5 +1,4 @@
 plugins:
-
   builder:
     disable:
       - script_sample_data
@@ -17,6 +16,7 @@ plugins:
     - oarepo-model-builder-polymorphic
     - oarepo-model-builder-communities>=5.0.0
     - oarepo-model-builder-rdm
+    - oarepo-model-builder-ccmm
 
 profiles:
   - record
@@ -28,6 +28,7 @@ record:
   use:
     - invenio
     - rdm
+    - ccmm#dataset
   properties:
     metadata:
       use: "./datasets-metadata.yaml"
@@ -59,3 +60,6 @@ settings:
   i18n-languages:
     - en
     - cs
+  supported-langs:
+    cs: {}
+    en: {}
