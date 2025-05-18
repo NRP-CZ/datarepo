@@ -1,0 +1,46 @@
+[project]
+name = "repo"
+version = "1.0.0"
+description = ""
+packages = []
+authors = []
+dependencies = [
+    "json5",
+    "oarepo[s3,rdm]==12.*",
+    "python-dotenv",
+    "marshmallow-i18n-messages",
+    "oarepo-communities==5.*",
+    "oarepo-dashboard==1.*",
+    "oarepo-doi==1.*",
+    "oarepo-glitchtip==1.*",
+    "oarepo-global-search==1.*",
+    "oarepo-requests==2.*",
+    "oarepo-runtime==1.*",
+    "oarepo-ui==5.*",
+    "oarepo-vocabularies==2.*",
+    "oarepo-workflows==1.*",
+]
+requires-python = ">=3.12,<3.13"
+
+
+[project.entry-points."invenio_assets.webpack"]
+branding = "ui.branding.webpack:theme"
+i18n = "i18n.webpack:theme"
+components = "ui.components.webpack:theme"
+
+[project.entry-points."invenio_base.blueprints"]
+branding = "ui.branding:create_blueprint"
+titlepage = "ui.titlepage:create_blueprint"
+components = "ui.components:create_blueprint"
+
+[project.entry-points."invenio_i18n.translations"]
+translations = "i18n"
+
+[project.entry-points."invenio_db.alembic"]
+repo = "common:alembic"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"

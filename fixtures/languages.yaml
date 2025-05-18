@@ -1,0 +1,1317 @@
+id: aa
+props:
+  alpha3CodeENG: aar
+title:
+  cs: afarština
+  en: Afar
+---
+id: ab
+props:
+  alpha3CodeENG: abk
+title:
+  cs: abcházština
+  en: Abkhazian
+---
+id: af
+props:
+  alpha3CodeENG: afr
+title:
+  cs: afrikánština
+  en: Afrikaans
+---
+id: ak
+props:
+  alpha3CodeENG: aka
+title:
+  cs: akanština
+  en: Akan
+---
+id: am
+props:
+  alpha3CodeENG: amh
+title:
+  cs: amharština
+  en: Amharic
+---
+id: ar
+props:
+  alpha3CodeENG: ara
+title:
+  cs: arabština
+  en: Arabic
+---
+id: an
+props:
+  alpha3CodeENG: arg
+title:
+  cs: aragonština
+  en: Aragonese
+---
+id: as
+props:
+  alpha3CodeENG: asm
+title:
+  cs: ásámština
+  en: Assamese
+---
+id: av
+props:
+  alpha3CodeENG: ava
+title:
+  cs: avarština
+  en: Avaric
+---
+id: ae
+props:
+  alpha3CodeENG: ave
+title:
+  cs: avestánština
+  en: Avestan
+---
+id: ay
+props:
+  alpha3CodeENG: aym
+title:
+  cs: ajmarština
+  en: Aymara
+---
+id: az
+props:
+  alpha3CodeENG: aze
+title:
+  cs: ázerbájdžánština
+  en: Azerbaijani
+---
+id: ba
+props:
+  alpha3CodeENG: bak
+title:
+  cs: baškirština
+  en: Bashkir
+---
+id: bm
+props:
+  alpha3CodeENG: bam
+title:
+  cs: bambarština
+  en: Bambara
+---
+id: be
+props:
+  alpha3CodeENG: bel
+title:
+  cs: běloruština
+  en: Belarusian
+---
+id: bn
+props:
+  alpha3CodeENG: ben
+title:
+  cs: bengálština
+  en: Bangla
+---
+id: bi
+props:
+  alpha3CodeENG: bis
+title:
+  cs: bislamština
+  en: Bislama
+---
+id: bo
+props:
+  alpha3CodeENG: tib
+  alpha3CodeNative: bod
+title:
+  cs: tibetština
+  en: Tibetan
+---
+id: bs
+props:
+  alpha3CodeENG: bos
+title:
+  cs: bosenština
+  en: Bosnian
+---
+id: br
+props:
+  alpha3CodeENG: bre
+title:
+  cs: bretonština
+  en: Breton
+---
+id: bg
+props:
+  alpha3CodeENG: bul
+title:
+  cs: bulharština
+  en: Bulgarian
+---
+id: ca
+props:
+  alpha3CodeENG: cat
+title:
+  cs: katalánština
+  en: Catalan
+---
+id: cs
+props:
+  alpha3CodeENG: cze
+  alpha3CodeNative: ces
+tags:
+- featured
+title:
+  cs: čeština
+  en: Czech
+---
+id: ch
+props:
+  alpha3CodeENG: cha
+title:
+  cs: čamoro
+  en: Chamorro
+---
+id: ce
+props:
+  alpha3CodeENG: che
+title:
+  cs: čečenština
+  en: Chechen
+---
+id: cu
+props:
+  alpha3CodeENG: chu
+title:
+  cs: staroslověnština
+  en: Church Slavic
+---
+id: cv
+props:
+  alpha3CodeENG: chv
+title:
+  cs: čuvaština
+  en: Chuvash
+---
+id: kw
+props:
+  alpha3CodeENG: cor
+title:
+  cs: kornština
+  en: Cornish
+---
+id: co
+props:
+  alpha3CodeENG: cos
+title:
+  cs: korsičtina
+  en: Corsican
+---
+id: cr
+props:
+  alpha3CodeENG: cre
+title:
+  cs: kríjština
+  en: Cree
+---
+id: cy
+props:
+  alpha3CodeENG: wel
+  alpha3CodeNative: cym
+title:
+  cs: velština
+  en: Welsh
+---
+id: da
+props:
+  alpha3CodeENG: dan
+title:
+  cs: dánština
+  en: Danish
+---
+id: de
+props:
+  alpha3CodeENG: ger
+  alpha3CodeNative: deu
+tags:
+- featured
+title:
+  cs: němčina
+  en: German
+---
+id: dv
+props:
+  alpha3CodeENG: div
+title:
+  cs: maledivština
+  en: Divehi
+---
+id: dz
+props:
+  alpha3CodeENG: dzo
+title:
+  cs: dzongkä
+  en: Dzongkha
+---
+id: el
+props:
+  alpha3CodeENG: gre
+  alpha3CodeNative: ell
+title:
+  cs: řečtina
+  en: Greek
+---
+id: en
+props:
+  alpha3CodeENG: eng
+tags:
+- featured
+title:
+  cs: angličtina
+  en: English
+---
+id: eo
+props:
+  alpha3CodeENG: epo
+title:
+  cs: esperanto
+  en: Esperanto
+---
+id: et
+props:
+  alpha3CodeENG: est
+title:
+  cs: estonština
+  en: Estonian
+---
+id: eu
+props:
+  alpha3CodeENG: baq
+  alpha3CodeNative: eus
+title:
+  cs: baskičtina
+  en: Basque
+---
+id: ee
+props:
+  alpha3CodeENG: ewe
+title:
+  cs: eweština
+  en: Ewe
+---
+id: fo
+props:
+  alpha3CodeENG: fao
+title:
+  cs: faerština
+  en: Faroese
+---
+id: fa
+props:
+  alpha3CodeENG: per
+  alpha3CodeNative: fas
+title:
+  cs: perština
+  en: Persian
+---
+id: fj
+props:
+  alpha3CodeENG: fij
+title:
+  cs: fidžijština
+  en: Fijian
+---
+id: fi
+props:
+  alpha3CodeENG: fin
+title:
+  cs: finština
+  en: Finnish
+---
+id: fr
+props:
+  alpha3CodeENG: fre
+  alpha3CodeNative: fra
+tags:
+- featured
+title:
+  cs: francouzština
+  en: French
+---
+id: fy
+props:
+  alpha3CodeENG: fry
+title:
+  cs: fríština (západní)
+  en: Western Frisian
+---
+id: ff
+props:
+  alpha3CodeENG: ful
+title:
+  cs: fulbština
+  en: Fulah
+---
+id: gd
+props:
+  alpha3CodeENG: gla
+title:
+  cs: skotská gaelština
+  en: Scottish Gaelic
+---
+id: ga
+props:
+  alpha3CodeENG: gle
+title:
+  cs: irština
+  en: Irish
+---
+id: gl
+props:
+  alpha3CodeENG: glg
+title:
+  cs: galicijština
+  en: Galician
+---
+id: gv
+props:
+  alpha3CodeENG: glv
+title:
+  cs: manština
+  en: Manx
+---
+id: gn
+props:
+  alpha3CodeENG: grn
+title:
+  cs: guaranština
+  en: Guarani
+---
+id: gu
+props:
+  alpha3CodeENG: guj
+title:
+  cs: gudžarátština
+  en: Gujarati
+---
+id: ht
+props:
+  alpha3CodeENG: hat
+title:
+  cs: haitština
+  en: Haitian Creole
+---
+id: ha
+props:
+  alpha3CodeENG: hau
+title:
+  cs: hauština
+  en: Hausa
+---
+id: sh
+props:
+  alpha3CodeENG: hbs
+title:
+  cs: srbochorvatština
+  en: Serbo-Croatian
+---
+id: he
+props:
+  alpha3CodeENG: heb
+title:
+  cs: hebrejština
+  en: Hebrew
+---
+id: hz
+props:
+  alpha3CodeENG: her
+title:
+  cs: hererština
+  en: Herero
+---
+id: hi
+props:
+  alpha3CodeENG: hin
+title:
+  cs: hindština
+  en: Hindi
+---
+id: ho
+props:
+  alpha3CodeENG: hmo
+title:
+  cs: hiri motu
+  en: Hiri Motu
+---
+id: hr
+props:
+  alpha3CodeENG: hrv
+title:
+  cs: chorvatština
+  en: Croatian
+---
+id: hu
+props:
+  alpha3CodeENG: hun
+title:
+  cs: maďarština
+  en: Hungarian
+---
+id: hy
+props:
+  alpha3CodeENG: arm
+  alpha3CodeNative: hye
+title:
+  cs: arménština
+  en: Armenian
+---
+id: ig
+props:
+  alpha3CodeENG: ibo
+title:
+  cs: igboština
+  en: Igbo
+---
+id: io
+props:
+  alpha3CodeENG: ido
+title:
+  cs: ido
+  en: Ido
+---
+id: ii
+props:
+  alpha3CodeENG: iii
+title:
+  cs: iština (sečuánská)
+  en: Sichuan Yi
+---
+id: iu
+props:
+  alpha3CodeENG: iku
+title:
+  cs: inuktitutština
+  en: Inuktitut
+---
+id: ie
+props:
+  alpha3CodeENG: ile
+title:
+  cs: interlingue
+  en: Interlingue
+---
+id: ia
+props:
+  alpha3CodeENG: ina
+title:
+  cs: interlingua
+  en: Interlingua
+---
+id: id
+props:
+  alpha3CodeENG: ind
+title:
+  cs: indonéština
+  en: Indonesian
+---
+id: ik
+props:
+  alpha3CodeENG: ipk
+title:
+  cs: inupiakština
+  en: Inupiaq
+---
+id: is
+props:
+  alpha3CodeENG: ice
+  alpha3CodeNative: isl
+title:
+  cs: islandština
+  en: Icelandic
+---
+id: it
+props:
+  alpha3CodeENG: ita
+title:
+  cs: italština
+  en: Italian
+---
+id: jv
+props:
+  alpha3CodeENG: jav
+title:
+  cs: javánština
+  en: Javanese
+---
+id: ja
+props:
+  alpha3CodeENG: jpn
+title:
+  cs: japonština
+  en: Japanese
+---
+id: kl
+props:
+  alpha3CodeENG: kal
+title:
+  cs: grónština
+  en: Kalaallisut
+---
+id: kn
+props:
+  alpha3CodeENG: kan
+title:
+  cs: kannadština
+  en: Kannada
+---
+id: ks
+props:
+  alpha3CodeENG: kas
+title:
+  cs: kašmírština
+  en: Kashmiri
+---
+id: ka
+props:
+  alpha3CodeENG: geo
+  alpha3CodeNative: kat
+title:
+  cs: gruzínština
+  en: Georgian
+---
+id: kr
+props:
+  alpha3CodeENG: kau
+title:
+  cs: kanuri
+  en: Kanuri
+---
+id: kk
+props:
+  alpha3CodeENG: kaz
+title:
+  cs: kazaština
+  en: Kazakh
+---
+id: km
+props:
+  alpha3CodeENG: khm
+title:
+  cs: khmérština
+  en: Khmer
+---
+id: ki
+props:
+  alpha3CodeENG: kik
+title:
+  cs: kikujština
+  en: Kikuyu
+---
+id: rw
+props:
+  alpha3CodeENG: kin
+title:
+  cs: kiňarwandština
+  en: Kinyarwanda
+---
+id: ky
+props:
+  alpha3CodeENG: kir
+title:
+  cs: kyrgyzština
+  en: Kyrgyz
+---
+id: kv
+props:
+  alpha3CodeENG: kom
+title:
+  cs: komijština
+  en: Komi
+---
+id: kg
+props:
+  alpha3CodeENG: kon
+title:
+  cs: konžština
+  en: Kongo
+---
+id: ko
+props:
+  alpha3CodeENG: kor
+title:
+  cs: korejština
+  en: Korean
+---
+id: kj
+props:
+  alpha3CodeENG: kua
+title:
+  cs: kuaňamština
+  en: Kuanyama
+---
+id: ku
+props:
+  alpha3CodeENG: kur
+title:
+  cs: kurdština
+  en: Kurdish
+---
+id: lo
+props:
+  alpha3CodeENG: lao
+title:
+  cs: laoština
+  en: Lao
+---
+id: la
+props:
+  alpha3CodeENG: lat
+title:
+  cs: latina
+  en: Latin
+---
+id: lv
+props:
+  alpha3CodeENG: lav
+title:
+  cs: lotyština
+  en: Latvian
+---
+id: li
+props:
+  alpha3CodeENG: lim
+title:
+  cs: limburština
+  en: Limburgish
+---
+id: ln
+props:
+  alpha3CodeENG: lin
+title:
+  cs: lingalština
+  en: Lingala
+---
+id: lt
+props:
+  alpha3CodeENG: lit
+title:
+  cs: litevština
+  en: Lithuanian
+---
+id: lb
+props:
+  alpha3CodeENG: ltz
+title:
+  cs: lucemburština
+  en: Luxembourgish
+---
+id: lu
+props:
+  alpha3CodeENG: lub
+title:
+  cs: lubu-katanžština
+  en: Luba-Katanga
+---
+id: lg
+props:
+  alpha3CodeENG: lug
+title:
+  cs: gandština
+  en: Ganda
+---
+id: mh
+props:
+  alpha3CodeENG: mah
+title:
+  cs: maršálština
+  en: Marshallese
+---
+id: ml
+props:
+  alpha3CodeENG: mal
+title:
+  cs: malajálamština
+  en: Malayalam
+---
+id: mr
+props:
+  alpha3CodeENG: mar
+title:
+  cs: maráthština
+  en: Marathi
+---
+id: mk
+props:
+  alpha3CodeENG: mac
+  alpha3CodeNative: mkd
+title:
+  cs: makedonština
+  en: Macedonian
+---
+id: mg
+props:
+  alpha3CodeENG: mlg
+title:
+  cs: malgaština
+  en: Malagasy
+---
+id: mt
+props:
+  alpha3CodeENG: mlt
+title:
+  cs: maltština
+  en: Maltese
+---
+id: mn
+props:
+  alpha3CodeENG: mon
+title:
+  cs: mongolština
+  en: Mongolian
+---
+id: mi
+props:
+  alpha3CodeENG: mao
+  alpha3CodeNative: mri
+title:
+  cs: maorština
+  en: Maori
+---
+id: ms
+props:
+  alpha3CodeENG: may
+  alpha3CodeNative: msa
+title:
+  cs: malajština
+  en: Malay
+---
+id: my
+props:
+  alpha3CodeENG: bur
+  alpha3CodeNative: mya
+title:
+  cs: barmština
+  en: Burmese
+---
+id: na
+props:
+  alpha3CodeENG: nau
+title:
+  cs: naurština
+  en: Nauru
+---
+id: nv
+props:
+  alpha3CodeENG: nav
+title:
+  cs: navažština
+  en: Navajo
+---
+id: nr
+props:
+  alpha3CodeENG: nbl
+title:
+  cs: ndebele (Jižní Afrika)
+  en: South Ndebele
+---
+id: nd
+props:
+  alpha3CodeENG: nde
+title:
+  cs: ndebele (Zimbabwe)
+  en: North Ndebele
+---
+id: ng
+props:
+  alpha3CodeENG: ndo
+title:
+  cs: ndondština
+  en: Ndonga
+---
+id: ne
+props:
+  alpha3CodeENG: nep
+title:
+  cs: nepálština
+  en: Nepali
+---
+id: nl
+props:
+  alpha3CodeENG: dut
+  alpha3CodeNative: nld
+title:
+  cs: nizozemština
+  en: Dutch
+---
+id: nn
+props:
+  alpha3CodeENG: nno
+title:
+  cs: norština (nynorsk)
+  en: Norwegian Nynorsk
+---
+id: nb
+props:
+  alpha3CodeENG: nob
+title:
+  cs: norština (bokmål)
+  en: Norwegian Bokmål
+---
+id: 'no'
+props:
+  alpha3CodeENG: nor
+title:
+  cs: norština
+  en: Norwegian
+---
+id: ny
+props:
+  alpha3CodeENG: nya
+title:
+  cs: ňandžština
+  en: Nyanja
+---
+id: oc
+props:
+  alpha3CodeENG: oci
+title:
+  cs: okcitánština
+  en: Occitan
+---
+id: oj
+props:
+  alpha3CodeENG: oji
+title:
+  cs: odžibvejština
+  en: Ojibwa
+---
+id: or
+props:
+  alpha3CodeENG: ori
+title:
+  cs: urijština
+  en: Odia
+---
+id: om
+props:
+  alpha3CodeENG: orm
+title:
+  cs: oromština
+  en: Oromo
+---
+id: os
+props:
+  alpha3CodeENG: oss
+title:
+  cs: osetština
+  en: Ossetic
+---
+id: pa
+props:
+  alpha3CodeENG: pan
+title:
+  cs: paňdžábština
+  en: Punjabi
+---
+id: pi
+props:
+  alpha3CodeENG: pli
+title:
+  cs: pálí
+  en: Pali
+---
+id: pl
+props:
+  alpha3CodeENG: pol
+title:
+  cs: polština
+  en: Polish
+---
+id: pt
+props:
+  alpha3CodeENG: por
+title:
+  cs: portugalština
+  en: Portuguese
+---
+id: ps
+props:
+  alpha3CodeENG: pus
+title:
+  cs: paštština
+  en: Pashto
+---
+id: qu
+props:
+  alpha3CodeENG: que
+title:
+  cs: kečuánština
+  en: Quechua
+---
+id: rm
+props:
+  alpha3CodeENG: roh
+title:
+  cs: rétorománština
+  en: Romansh
+---
+id: ro
+props:
+  alpha3CodeENG: rum
+  alpha3CodeNative: ron
+title:
+  cs: rumunština
+  en: Romanian
+---
+id: rn
+props:
+  alpha3CodeENG: run
+title:
+  cs: kirundština
+  en: Rundi
+---
+id: ru
+props:
+  alpha3CodeENG: rus
+title:
+  cs: ruština
+  en: Russian
+---
+id: sg
+props:
+  alpha3CodeENG: sag
+title:
+  cs: sangština
+  en: Sango
+---
+id: sa
+props:
+  alpha3CodeENG: san
+title:
+  cs: sanskrt
+  en: Sanskrit
+---
+id: si
+props:
+  alpha3CodeENG: sin
+title:
+  cs: sinhálština
+  en: Sinhala
+---
+id: sk
+props:
+  alpha3CodeENG: slo
+  alpha3CodeNative: slk
+tags:
+- featured
+title:
+  cs: slovenština
+  en: Slovak
+---
+id: sl
+props:
+  alpha3CodeENG: slv
+title:
+  cs: slovinština
+  en: Slovenian
+---
+id: se
+props:
+  alpha3CodeENG: sme
+title:
+  cs: sámština (severní)
+  en: Northern Sami
+---
+id: sm
+props:
+  alpha3CodeENG: smo
+title:
+  cs: samojština
+  en: Samoan
+---
+id: sn
+props:
+  alpha3CodeENG: sna
+title:
+  cs: šonština
+  en: Shona
+---
+id: sd
+props:
+  alpha3CodeENG: snd
+title:
+  cs: sindhština
+  en: Sindhi
+---
+id: so
+props:
+  alpha3CodeENG: som
+title:
+  cs: somálština
+  en: Somali
+---
+id: st
+props:
+  alpha3CodeENG: sot
+title:
+  cs: sotština (jižní)
+  en: Southern Sotho
+---
+id: es
+props:
+  alpha3CodeENG: spa
+title:
+  cs: španělština
+  en: Spanish
+---
+id: sq
+props:
+  alpha3CodeENG: alb
+  alpha3CodeNative: sqi
+title:
+  cs: albánština
+  en: Albanian
+---
+id: sc
+props:
+  alpha3CodeENG: srd
+title:
+  cs: sardština
+  en: Sardinian
+---
+id: sr
+props:
+  alpha3CodeENG: srp
+title:
+  cs: srbština
+  en: Serbian
+---
+id: ss
+props:
+  alpha3CodeENG: ssw
+title:
+  cs: siswatština
+  en: Swati
+---
+id: su
+props:
+  alpha3CodeENG: sun
+title:
+  cs: sundština
+  en: Sundanese
+---
+id: sw
+props:
+  alpha3CodeENG: swa
+title:
+  cs: svahilština
+  en: Swahili
+---
+id: sv
+props:
+  alpha3CodeENG: swe
+title:
+  cs: švédština
+  en: Swedish
+---
+id: ty
+props:
+  alpha3CodeENG: tah
+title:
+  cs: tahitština
+  en: Tahitian
+---
+id: ta
+props:
+  alpha3CodeENG: tam
+title:
+  cs: tamilština
+  en: Tamil
+---
+id: tt
+props:
+  alpha3CodeENG: tat
+title:
+  cs: tatarština
+  en: Tatar
+---
+id: te
+props:
+  alpha3CodeENG: tel
+title:
+  cs: telugština
+  en: Telugu
+---
+id: tg
+props:
+  alpha3CodeENG: tgk
+title:
+  cs: tádžičtina
+  en: Tajik
+---
+id: tl
+props:
+  alpha3CodeENG: tgl
+title:
+  cs: tagalog
+  en: Tagalog
+---
+id: th
+props:
+  alpha3CodeENG: tha
+title:
+  cs: thajština
+  en: Thai
+---
+id: ti
+props:
+  alpha3CodeENG: tir
+title:
+  cs: tigrinijština
+  en: Tigrinya
+---
+id: to
+props:
+  alpha3CodeENG: ton
+title:
+  cs: tongánština
+  en: Tongan
+---
+id: tn
+props:
+  alpha3CodeENG: tsn
+title:
+  cs: setswanština
+  en: Tswana
+---
+id: ts
+props:
+  alpha3CodeENG: tso
+title:
+  cs: tsonga
+  en: Tsonga
+---
+id: tk
+props:
+  alpha3CodeENG: tuk
+title:
+  cs: turkmenština
+  en: Turkmen
+---
+id: tr
+props:
+  alpha3CodeENG: tur
+title:
+  cs: turečtina
+  en: Turkish
+---
+id: tw
+props:
+  alpha3CodeENG: twi
+title:
+  cs: twi
+  en: Twi
+---
+id: ug
+props:
+  alpha3CodeENG: uig
+title:
+  cs: ujgurština
+  en: Uyghur
+---
+id: uk
+props:
+  alpha3CodeENG: ukr
+title:
+  cs: ukrajinština
+  en: Ukrainian
+---
+id: ur
+props:
+  alpha3CodeENG: urd
+title:
+  cs: urdština
+  en: Urdu
+---
+id: uz
+props:
+  alpha3CodeENG: uzb
+title:
+  cs: uzbečtina
+  en: Uzbek
+---
+id: ve
+props:
+  alpha3CodeENG: ven
+title:
+  cs: venda
+  en: Venda
+---
+id: vi
+props:
+  alpha3CodeENG: vie
+title:
+  cs: vietnamština
+  en: Vietnamese
+---
+id: vo
+props:
+  alpha3CodeENG: vol
+title:
+  cs: volapük
+  en: Volapük
+---
+id: wa
+props:
+  alpha3CodeENG: wln
+title:
+  cs: valonština
+  en: Walloon
+---
+id: wo
+props:
+  alpha3CodeENG: wol
+title:
+  cs: wolofština
+  en: Wolof
+---
+id: xh
+props:
+  alpha3CodeENG: xho
+title:
+  cs: xhoština
+  en: Xhosa
+---
+id: yi
+props:
+  alpha3CodeENG: yid
+title:
+  cs: jidiš
+  en: Yiddish
+---
+id: yo
+props:
+  alpha3CodeENG: yor
+title:
+  cs: jorubština
+  en: Yoruba
+---
+id: za
+props:
+  alpha3CodeENG: zha
+title:
+  cs: čuangština
+  en: Zhuang
+---
+id: zh
+props:
+  alpha3CodeENG: chi
+  alpha3CodeNative: zho
+title:
+  cs: čínština
+  en: Chinese
+---
+id: zu
+props:
+  alpha3CodeENG: zul
+title:
+  cs: zuluština
+  en: Zulu

@@ -1,0 +1,738 @@
+id: CC
+title:
+  cs: Licence Creative Commons
+  en: License Creative Commons
+---
+description:
+  cs:
+    Toto je starší verze licencí (1.0). Pokud licencujete své vlastní dílo, které
+    ještě nebylo pod žádnou licencí zveřejněno, doporučujeme místo toho použít některou
+    z variant licence 4.0.
+  en:
+    This is an older version of the license (1.0). If you are licensing your own
+    work that has not yet been published under any license, we recommend using one
+    of the 4.0 license variants instead.
+hierarchy:
+  parent: CC
+id: CC-1.0
+props:
+  acronym: CC-1.0
+title:
+  cs: verze 1.0 Obecná licence
+  en: version 1.0 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo a z něj
+    odvozená díla pouze při uvedení autora. V češtině: Uveďte autora; v angličtině
+    Attribution; zkratka CC BY."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format, so long as attribution is given to the creator.
+    The license allows for commercial use. Abbreviation CC BY.
+hierarchy:
+  parent: CC-1.0
+icon: https://licensebuttons.net/l/by/1.0/88x31.png
+id: 1-BY
+props:
+  acronym: 1-BY
+title:
+  cs: Creative Commons Uveďte původ 1.0 Obecná licence
+  en: Creative Commons Attribution 1.0 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozšiřovat odvozená díla pouze za podmínek identické či slučitelné
+    licence, je nutné uvést autora. V češtině: Uveďte autora-Zachovejte licenci; v
+    angličtině: Attribution-ShareAlike; zkratka CC BY-SA."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format, so long as attribution is given to the creator.
+    The license allows for commercial use. If you remix, adapt, or build upon the
+    material, you must license the modified material under identical terms. Abbreviation
+    CC BY-SA.
+hierarchy:
+  parent: CC-1.0
+icon: https://licensebuttons.net/l/by-sa/1.0/88x31.png
+id: 1-BY-SA
+props:
+  acronym: 1-BY-SA
+title:
+  cs: Creative Commons Uveďte původ-Zachovejte licenci 1.0 Obecná licence
+  en: Creative Commons Attribution-ShareAlike 1.0 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo a z něj
+    odvozená díla pouze při uvedení autora a pouze pro nevýdělečné účely. V češtině:
+    Uveďte autora-Neužívejte komerčně; v angličtině: Attribution-NonCommercial; zkratka
+    CC BY-NC."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format for noncommercial purposes only, and only so
+    long as attribution is given to the creator. Abbreviation CC BY-NC.
+hierarchy:
+  parent: CC-1.0
+icon: https://licensebuttons.net/l/by-nc/1.0/88x31.png
+id: 1-BY-NC
+props:
+  acronym: 1-BY-NC
+title:
+  cs: Creative Commons Uveďte původ-Neužívejte komerčně 1.0 Obecná licence
+  en: Creative Commons Attribution-NonCommercial 1.0 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo (případně
+    z něj odvozená díla) pouze pro nevýdělečné účely a pouze za podmínek identické
+    či slučitelné licence. Je nutné uvést autora. V češtině: Uveďte autora-Neužívejte
+    dílo komerčně-Zachovejte licenci; v angličtině: Attribution-NonCommercial-ShareAlike;
+    zkratka CC BY-NC-SA."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format for noncommercial purposes only, and only so
+    long as attribution is given to the creator. If you remix, adapt, or build upon
+    the material, you must license the modified material under identical terms. Abbreviation
+    CC BY-NC-SA.
+hierarchy:
+  parent: CC-1.0
+icon: https://licensebuttons.net/l/by-nc-sa/1.0/88x31.png
+id: 1-BY-NC-SA
+props:
+  acronym: 1-BY-NC-SA
+title:
+  cs:
+    Creative Commons Uveďte původ-Neužívejte dílo komerčně-Zachovejte licenci 1.0
+    Obecná licence
+  en: Creative Commons Attribution-NonCommercial-ShareAlike 1.0 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat pouze dílo
+    v původní podobě, nikoli díla z něj odvozená, je nutné uvést autora. V češtině:
+    Uveďte autora-Nezasahujte do díla; v angličtině: Attribution-NoDerivs; zkratka
+    CC BY-ND."
+  en:
+    This license enables reusers to copy and distribute the material in any medium
+    or format in unadapted form only, and only so long as attribution is given to
+    the creator. The license allows for commercial use. Abbreviation CC BY-ND.
+hierarchy:
+  parent: CC-1.0
+icon: https://licensebuttons.net/l/by-nd/1.0/88x31.png
+id: 1-BY-ND
+props:
+  acronym: 1-BY-ND
+title:
+  cs: Creative Commons Uveďte původ-Nezpracovávejte 1.0 Obecná licence
+  en: Creative Commons Attribution-NoDerivs 1.0 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat pouze dílo
+    v původní podobě, nikoli díla z něj odvozená, pouze pro nevýdělečné účely, je
+    nutné uvést autora. V češtině: Uveďte autora-Neužívejte komerčně-Nezasahujte do
+    díla; v angličtině: Attribution-Noncommercial-NoDerivs; zkratka CC BY-NC-ND."
+  en:
+    This license enables reusers to copy and distribute the material in any medium
+    or format in unadapted form only, for noncommercial purposes only, and only so
+    long as attribution is given to the creator. Abbreviation CC BY-NC-ND.
+hierarchy:
+  parent: CC-1.0
+icon: https://licensebuttons.net/l/by-nd-nc/1.0/88x31.png
+id: 1-BY-ND-NC
+props:
+  acronym: 1-BY-ND-NC
+title:
+  cs:
+    Creative Commons Uveďte původ-Nezpracovávejte-Neužívejte komerčně 1.0 Obecná
+    licence
+  en: Creative Commons Attribution-NoDerivs-NonCommercial 1.0 Generic License
+---
+description:
+  cs:
+    Toto je starší verze licencí 2.0. Pokud licencujete své vlastní dílo, které
+    ještě nebylo pod žádnou licencí zveřejněno, doporučujeme místo toho použít některou
+    z variant licence 4.0.
+  en:
+    This is an older version of the license (2.0). If you are licensing your own
+    work that has not yet been published under any license, we recommend using one
+    of the 4.0 license variants instead.
+hierarchy:
+  parent: CC
+id: CC-2.0
+props:
+  acronym: CC-2.0
+title:
+  cs: verze 2.0 Obecná licence
+  en: version 2.0 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo a z něj
+    odvozená díla pouze při uvedení autora. V češtině: Uveďte autora; v angličtině
+    Attribution; zkratka CC BY."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format, so long as attribution is given to the creator.
+    The license allows for commercial use. Abbreviation CC BY.
+hierarchy:
+  parent: CC-2.0
+icon: https://licensebuttons.net/l/by/2.0/88x31.png
+id: 2-BY
+props:
+  acronym: 2-BY
+title:
+  cs: Creative Commons Uveďte původ 2.0 Obecná licence
+  en: Creative Commons Attribution 2.0 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozšiřovat odvozená díla pouze za podmínek identické či slučitelné
+    licence, je nutné uvést autora. V češtině: Uveďte autora-Zachovejte licenci; v
+    angličtině: Attribution-ShareAlike; zkratka CC BY-SA."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format, so long as attribution is given to the creator.
+    The license allows for commercial use. If you remix, adapt, or build upon the
+    material, you must license the modified material under identical terms. Abbreviation
+    CC BY-SA.
+hierarchy:
+  parent: CC-2.0
+icon: https://licensebuttons.net/l/by-sa/2.0/88x31.png
+id: 2-BY-SA
+props:
+  acronym: 2-BY-SA
+title:
+  cs: Creative Commons Uveďte původ-Zachovejte licenci 2.0 Obecná licence
+  en: Creative Commons Attribution-ShareAlike 2.0 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo a z něj
+    odvozená díla pouze při uvedení autora a pouze pro nevýdělečné účely. V češtině:
+    Uveďte autora-Neužívejte komerčně; v angličtině: Attribution-NonCommercial; zkratka
+    CC BY-NC."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format for noncommercial purposes only, and only so
+    long as attribution is given to the creator. Abbreviation CC BY-NC.
+hierarchy:
+  parent: CC-2.0
+icon: https://licensebuttons.net/l/by-nc/2.0/88x31.png
+id: 2-BY-NC
+props:
+  acronym: 2-BY-NC
+title:
+  cs: Creative Commons Uveďte původ-Neužívejte komerčně 2.0 Obecná licence
+  en: Creative Commons Attribution-NonCommercial 2.0 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo (případně
+    z něj odvozená díla) pouze pro nevýdělečné účely a pouze za podmínek identické
+    či slučitelné licence. Je nutné uvést autora. V češtině: Uveďte autora-Neužívejte
+    dílo komerčně-Zachovejte licenci; v angličtině: Attribution-NonCommercial-ShareAlike;
+    zkratka CC BY-NC-SA."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format for noncommercial purposes only, and only so
+    long as attribution is given to the creator. If you remix, adapt, or build upon
+    the material, you must license the modified material under identical terms. Abbreviation
+    CC BY-NC-SA.
+hierarchy:
+  parent: CC-2.0
+icon: https://licensebuttons.net/l/by-nc-sa/2.0/88x31.png
+id: 2-BY-NC-SA
+props:
+  acronym: 2-BY-NC-SA
+title:
+  cs:
+    Creative Commons Uveďte původ-Neužívejte dílo komerčně-Zachovejte licenci 2.0
+    Obecná licence
+  en: Creative Commons Attribution-NonCommercial-ShareAlike 2.0 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat pouze dílo
+    v původní podobě, nikoli díla z něj odvozená, je nutné uvést autora. V češtině:
+    Uveďte autora-Nezasahujte do díla; v angličtině: Attribution-NoDerivs; zkratka
+    CC BY-ND."
+  en:
+    This license enables reusers to copy and distribute the material in any medium
+    or format in unadapted form only, and only so long as attribution is given to
+    the creator. The license allows for commercial use. Abbreviation CC BY-ND.
+hierarchy:
+  parent: CC-2.0
+icon: https://licensebuttons.net/l/by-nd/2.0/88x31.png
+id: 2-BY-ND
+props:
+  acronym: 2-BY-ND
+title:
+  cs: Creative Commons Uveďte původ-Nezpracovávejte 2.0 Obecná licence
+  en: Creative Commons Attribution-NoDerivs 2.0 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat pouze dílo
+    v původní podobě, nikoli díla z něj odvozená, pouze pro nevýdělečné účely, je
+    nutné uvést autora. V češtině: Uveďte autora-Neužívejte komerčně-Nezasahujte do
+    díla; v angličtině: Attribution-Noncommercial-NoDerivs; zkratka CC BY-NC-ND."
+  en:
+    This license enables reusers to copy and distribute the material in any medium
+    or format in unadapted form only, for noncommercial purposes only, and only so
+    long as attribution is given to the creator. Abbreviation CC BY-NC-ND.
+hierarchy:
+  parent: CC-2.0
+icon: https://licensebuttons.net/l/by-nc-nd/2.0/88x31.png
+id: 2-BY-NC-ND
+props:
+  acronym: 2-BY-NC-ND
+title:
+  cs:
+    Creative Commons Uveďte původ-Neužívejte komerčně-Nezpracovávejte 2.0 Obecná
+    licence
+  en: Creative Commons Attribution-NonCommercial-NoDerivs 2.0 Generic License
+---
+description:
+  cs:
+    Toto je starší verze licencí 2.5. Pokud licencujete své vlastní dílo, které
+    ještě nebylo pod žádnou licencí zveřejněno, doporučujeme místo toho použít některou
+    z variant licence 4.0.
+  en:
+    This is an older version of the license (2.5). If you are licensing your own
+    work that has not yet been published under any license, we recommend using one
+    of the 4.0 license variants instead.
+hierarchy:
+  parent: CC
+id: CC-2.5
+props:
+  acronym: CC-2.5
+title:
+  cs: verze 2.5 Obecná licence
+  en: version 2.5 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo a z něj
+    odvozená díla pouze při uvedení autora. V češtině: Uveďte autora; v angličtině
+    Attribution; zkratka CC BY."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format, so long as attribution is given to the creator.
+    The license allows for commercial use. Abbreviation CC BY.
+hierarchy:
+  parent: CC-2.5
+icon: https://licensebuttons.net/l/by/2.5/88x31.png
+id: 2-5-BY
+props:
+  acronym: 2-5-BY
+title:
+  cs: Creative Commons Uveďte původ 2.5 Obecná licence
+  en: Creative Commons Attribution 2.5 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozšiřovat odvozená díla pouze za podmínek identické či slučitelné
+    licence, je nutné uvést autora. V češtině: Uveďte autora-Zachovejte licenci; v
+    angličtině: Attribution-ShareAlike; zkratka CC BY-SA."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format, so long as attribution is given to the creator.
+    The license allows for commercial use. If you remix, adapt, or build upon the
+    material, you must license the modified material under identical terms. Abbreviation
+    CC BY-SA.
+hierarchy:
+  parent: CC-2.5
+icon: https://licensebuttons.net/l/by-sa/2.5/88x31.png
+id: 2-5-BY-SA
+props:
+  acronym: 2-5-BY-SA
+title:
+  cs: Creative Commons Uveďte původ-Zachovejte licenci 2.5 Obecná licence
+  en: Creative Commons Attribution-ShareAlike 2.5 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo a z něj
+    odvozená díla pouze při uvedení autora a pouze pro nevýdělečné účely. V češtině:
+    Uveďte autora-Neužívejte komerčně; v angličtině: Attribution-NonCommercial; zkratka
+    CC BY-NC."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format for noncommercial purposes only, and only so
+    long as attribution is given to the creator. Abbreviation CC BY-NC.
+hierarchy:
+  parent: CC-2.5
+icon: https://licensebuttons.net/l/by-nc/2.5/88x31.png
+id: 2-5-BY-NC
+props:
+  acronym: 2-5-BY-NC
+title:
+  cs: Creative Commons Uveďte původ-Neužívejte komerčně 2.5 Obecná licence
+  en: Creative Commons Attribution-NonCommercial 2.5 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo (případně
+    z něj odvozená díla) pouze pro nevýdělečné účely a pouze za podmínek identické
+    či slučitelné licence. Je nutné uvést autora. V češtině: Uveďte autora-Neužívejte
+    dílo komerčně-Zachovejte licenci; v angličtině: Attribution-NonCommercial-ShareAlike;
+    zkratka CC BY-NC-SA."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format for noncommercial purposes only, and only so
+    long as attribution is given to the creator. If you remix, adapt, or build upon
+    the material, you must license the modified material under identical terms. Abbreviation
+    CC BY-NC-SA.
+hierarchy:
+  parent: CC-2.5
+icon: https://licensebuttons.net/l/by-nc-sa/2.5/88x31.png
+id: 2-5-BY-NC-SA
+props:
+  acronym: 2-5-BY-NC-SA
+title:
+  cs:
+    Creative Commons Uveďte původ-Neužívejte dílo komerčně-Zachovejte licenci 2.5
+    Obecná licence
+  en: Creative Commons Attribution-NonCommercial-ShareAlike 2.5 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat pouze dílo
+    v původní podobě, nikoli díla z něj odvozená, je nutné uvést autora. V češtině:
+    Uveďte autora-Nezasahujte do díla; v angličtině: Attribution-NoDerivs; zkratka
+    CC BY-ND."
+  en:
+    This license enables reusers to copy and distribute the material in any medium
+    or format in unadapted form only, and only so long as attribution is given to
+    the creator. The license allows for commercial use. Abbreviation CC BY-ND.
+hierarchy:
+  parent: CC-2.5
+icon: https://licensebuttons.net/l/by-nd/2.5/88x31.png
+id: 2-5-BY-ND
+props:
+  acronym: 2-5-BY-ND
+title:
+  cs: Creative Commons Uveďte původ-Nezpracovávejte 2.5 Obecná licence
+  en: Creative Commons Attribution-NoDerivs 2.5 Generic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat pouze dílo
+    v původní podobě, nikoli díla z něj odvozená, pouze pro nevýdělečné účely, je
+    nutné uvést autora. V češtině: Uveďte autora-Neužívejte komerčně-Nezasahujte do
+    díla; v angličtině: Attribution-Noncommercial-NoDerivs; zkratka CC BY-NC-ND."
+  en:
+    This license enables reusers to copy and distribute the material in any medium
+    or format in unadapted form only, for noncommercial purposes only, and only so
+    long as attribution is given to the creator. Abbreviation CC BY-NC-ND.
+hierarchy:
+  parent: CC-2.5
+icon: https://licensebuttons.net/l/by-nc-nd/2.5/88x31.png
+id: 2-5-BY-NC-ND
+props:
+  acronym: 2-5-BY-NC-ND
+title:
+  cs:
+    Creative Commons Uveďte původ-Neužívejte komerčně-Nezpracovávejte 2.5 Obecná
+    licence
+  en: Creative Commons Attribution-NonCommercial-NoDerivs 2.5 Generic License
+---
+description:
+  cs:
+    Toto je starší verze licencí 3.0, která byla adaptována pro český právní řád.
+    Pokud licencujete své vlastní dílo, které ještě nebylo pod žádnou licencí zveřejněno,
+    doporučujeme místo toho použít některou z variant licence 4.0.
+  en:
+    This is an older version of the license (3.0). If you are licensing your own
+    work that has not yet been published under any license, we recommend using one
+    of the 4.0 license variants instead.
+hierarchy:
+  parent: CC
+id: CC-3.0
+props:
+  acronym: CC-3.0
+title:
+  cs: verze 3.0 Česko
+  en: version 3.0 Czech Republic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo a z něj
+    odvozená díla pouze při uvedení autora. V češtině: Uveďte autora; v angličtině:
+    Attribution; zkratka CC BY."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format, so long as attribution is given to the creator.
+    The license allows for commercial use. Abbreviation CC BY.
+hierarchy:
+  parent: CC-3.0
+icon: https://licensebuttons.net/l/by/3.0/88x31.png
+id: 3-BY-CZ
+props:
+  acronym: 3-BY-CZ
+title:
+  cs: Creative Commons Uveďte autora 3.0 Česko
+  en: Creative Commons Attribution 3.0 Czech Republic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozšiřovat odvozená díla pouze za podmínek identické či slučitelné
+    licence, je nutné uvést autora. V češtině: Uveďte autora-Zachovejte licenci; v
+    angličtině: Attribution-ShareAlike; zkratka CC BY-SA."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format, so long as attribution is given to the creator.
+    The license allows for commercial use. If you remix, adapt, or build upon the
+    material, you must license the modified material under identical terms. Abbreviation
+    CC BY-SA.
+hierarchy:
+  parent: CC-3.0
+icon: https://licensebuttons.net/l/by-sa/3.0/88x31.png
+id: 3-BY-SA-CZ
+props:
+  acronym: 3-BY-SA-CZ
+title:
+  cs: Creative Commons Uveďte autora-Zachovejte licenci 3.0 Česko
+  en: Creative Commons Attribution-ShareAlike 3.0 Czech Republic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo a z něj
+    odvozená díla pouze při uvedení autora a pouze pro nevýdělečné účely. V češtině:
+    Uveďte autora-Neužívejte komerčně); v angličtině: Attribution-NonCommercial; zkratka
+    CC BY-NC."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format for noncommercial purposes only, and only so
+    long as attribution is given to the creator. Abbreviation CC BY-NC.
+hierarchy:
+  parent: CC-3.0
+icon: https://licensebuttons.net/l/by-nc/3.0/88x31.png
+id: 3-BY-NC-CZ
+props:
+  acronym: 3-BY-NC-CZ
+title:
+  cs: Creative Commons Uveďte autora-Neužívejte komerčně 3.0 Česko
+  en: Creative Commons Attribution-NonCommercial 3.0 Czech Republic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo (případně
+    z něj odvozená díla) pouze pro nevýdělečné účely a pouze za podmínek identické
+    či slučitelné licence. Je nutné uvést autora. V češtině: Uveďte autora-Neužívejte
+    dílo komerčně-Zachovejte licenci; v angličtině: Attribution-NonCommercial-ShareAlike;
+    zkratka CC BY-NC-SA."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format for noncommercial purposes only, and only so
+    long as attribution is given to the creator. If you remix, adapt, or build upon
+    the material, you must license the modified material under identical terms. Abbreviation
+    CC BY-NC-SA.
+hierarchy:
+  parent: CC-3.0
+icon: https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png
+id: 3-BY-NC-SA-CZ
+props:
+  acronym: 3-BY-NC-SA-CZ
+title:
+  cs: Creative Commons Uveďte autora-Neužívejte komerčně-Zachovejte licenci 3.0 Česko
+  en: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Czech Republic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat pouze dílo
+    v původní podobě, nikoli díla z něj odvozená, je nutné uvést autora. V češtině:
+    Uveďte autora-Nezasahujte do díla; v angličtině: Attribution-NoDerivs; zkratka
+    CC BY-ND."
+  en:
+    This license enables reusers to copy and distribute the material in any medium
+    or format in unadapted form only, and only so long as attribution is given to
+    the creator. The license allows for commercial use. Abbreviation CC BY-ND.
+hierarchy:
+  parent: CC-3.0
+icon: https://licensebuttons.net/l/by-nd/3.0/88x31.png
+id: 3-BY-ND-CZ
+props:
+  acronym: 3-BY-ND-CZ
+title:
+  cs: Creative Commons Uveďte autora-Nezasahujte do díla 3.0 Česko
+  en: Creative Commons Attribution-NoDerivs 3.0 Czech Republic License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat pouze dílo
+    v původní podobě, nikoli díla z něj odvozená, pouze pro nevýdělečné účely, je
+    nutné uvést autora. V češtině: Uveďte autora-Neužívejte komerčně-Nezasahujte do
+    díla; v angličtině: Attribution-NonCommercial-NoDerivs; zkratka CC BY-NC-ND."
+  en:
+    This license enables reusers to copy and distribute the material in any medium
+    or format in unadapted form only, for noncommercial purposes only, and only so
+    long as attribution is given to the creator. Abbreviation CC BY-NC-ND.
+hierarchy:
+  parent: CC-3.0
+icon: https://licensebuttons.net/l/by-nc-nd/3.0/88x31.png
+id: 3-BY-NC-ND-CZ
+props:
+  acronym: 3-BY-NC-ND-CZ
+title:
+  cs: Creative Commons Uveďte autora-Neužívejte komerčně-Nezasahujte do díla 3.0 Česko
+  en: Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Czech Republic License
+---
+description:
+  cs:
+    Aktuální verze 4.0 existuje pouze jako mezinárodní, nebyla nutná adaptace do
+    národních právních řádů.
+  en:
+    The current version 4.0 exists only as an international version, no adaptation
+    to national legal systems was necessary.
+hierarchy:
+  parent: CC
+id: CC-4.0
+props:
+  acronym: CC-4.0
+title:
+  cs: verze 4.0 mezinárodní licence
+  en: version 4.0 International License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo a z něj
+    odvozená díla pouze při uvedení autora. V češtině: Uveďte původ (v češtině dříve
+    označováno jako Uveďte autora); v angličtině: Attribution; zkratka CC BY."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format, so long as attribution is given to the creator.
+    The license allows for commercial use. Abbreviation CC BY
+hierarchy:
+  parent: CC-4.0
+icon: https://licensebuttons.net/l/by/4.0/88x31.png
+id: 4-BY
+props:
+  acronym: 4-BY
+tags:
+  - featured
+title:
+  cs: Creative Commons Uveďte původ 4.0 Mezinárodní licence
+  en: Creative Commons Attribution 4.0 International License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozšiřovat odvozená díla pouze za podmínek identické či slučitelné
+    licence, je nutné uvést autora. V češtině: Uveďte původ-Zachovejte licenci (v
+    češtině dříve označováno jako Uveďte autora-Zachovejte licenci); v angličtině:
+    Attribution-ShareAlike; zkratka CC BY-SA."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format, so long as attribution is given to the creator.
+    The license allows for commercial use. If you remix, adapt, or build upon the
+    material, you must license the modified material under identical terms. Abbreviation
+    CC BY-SA.
+hierarchy:
+  parent: CC-4.0
+icon: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+id: 4-BY-SA
+props:
+  acronym: 4-BY-SA
+tags:
+  - featured
+title:
+  cs: Creative Commons Uveďte původ-Zachovejte licenci 4.0 Mezinárodní licence
+  en: Creative Commons Attribution-ShareAlike 4.0 International License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo a z něj
+    odvozená díla pouze při uvedení autora a pouze pro nevýdělečné účely. V češtině:
+    Uveďte původ-Neužívejte komerčně (v češtině dříve označováno jako Uveďte autora-Neužívejte
+    komerčně); v angličtině: Attribution-NonCommercial; zkratka CC BY-NC."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format for noncommercial purposes only, and only so
+    long as attribution is given to the creator. Abbreviation CC BY-NC.
+hierarchy:
+  parent: CC-4.0
+icon: https://licensebuttons.net/l/by-nc/4.0/88x31.png
+id: 4-BY-NC
+props:
+  acronym: 4-BY-NC
+tags:
+  - featured
+title:
+  cs: Creative Commons Uveďte původ-Neužívejte komerčně 4.0 Mezinárodní licence
+  en: Creative Commons Attribution-NonCommercial 4.0 International License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat dílo (případně
+    z něj odvozená díla) pouze pro nevýdělečné účely a pouze za podmínek identické
+    či slučitelné licence. Je nutné uvést autora. V češtině: Uveďte původ-Neužívejte
+    dílo komerčně-Zachovejte licenci (v češtině dříve označováno jako Uveďte autora-Neužívejte
+    dílo komerčně-Zachovejte licenci); v angličtině: Attribution-NonCommercial-ShareAlike;
+    zkratka CC BY-NC-SA."
+  en:
+    This license enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format for noncommercial purposes only, and only so
+    long as attribution is given to the creator. If you remix, adapt, or build upon
+    the material, you must license the modified material under identical terms. Abbreviation
+    CC BY-NC-SA.
+hierarchy:
+  parent: CC-4.0
+icon: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+id: 4-BY-NC-SA
+props:
+  acronym: 4-BY-NC-SA
+tags:
+  - featured
+title:
+  cs:
+    Creative Commons Uveďte původ-Neužívejte dílo komerčně-Zachovejte licenci 4.0
+    Mezinárodní licence
+  en: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat pouze dílo
+    v původní podobě, nikoli díla z něj odvozená, je nutné uvést autora. V češtině:
+    Uveďte původ-Nezpracovávejte (v češtině dříve označováno jako Uveďte autora-Nezasahujte
+    do díla); v angličtině: Attribution-NoDerivs; zkratka BY-ND."
+  en:
+    This license enables reusers to copy and distribute the material in any medium
+    or format in unadapted form only, and only so long as attribution is given to
+    the creator. The license allows for commercial use. Abbreviation CC BY-ND.
+hierarchy:
+  parent: CC-4.0
+icon: https://licensebuttons.net/l/by-nd/4.0/88x31.png
+id: 4-BY-ND
+props:
+  acronym: 4-BY-ND
+tags:
+  - featured
+title:
+  cs: Creative Commons Uveďte původ-Nezpracovávejte 4.0 Mezinárodní licence
+  en: Creative Commons Attribution-NoDerivs 4.0 International License
+---
+description:
+  cs:
+    "Umožňuje ostatním rozmnožovat, rozšiřovat, vystavovat a sdělovat pouze dílo
+    v původní podobě, nikoli díla z něj odvozená, pouze pro nevýdělečné účely, je
+    nutné uvést autora. V češtině: Uveďte původ-Neužívejte komerčně-Nezpracovávejte
+    (v češtině dříve označováno jako Uveďte autora-Neužívejte komerčně-Nezasahujte
+    do díla); v angličtině: Attribution-NonCommercial-NoDerivs; zkratka CC BY-NC-ND."
+  en:
+    This license enables reusers to copy and distribute the material in any medium
+    or format in unadapted form only, for noncommercial purposes only, and only so
+    long as attribution is given to the creator. Abbreviation CC BY-NC-ND.
+hierarchy:
+  parent: CC-4.0
+icon: https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png
+id: 4-BY-NC-ND
+props:
+  acronym: 4-BY-NC-ND
+tags:
+  - featured
+title:
+  cs:
+    Creative Commons Uveďte původ-Neužívejte komerčně-Nezpracovávejte 4.0 Mezinárodní
+    licence
+  en: Creative Commons Attribution-NonCommercial-NoDerivs 4.0 International License

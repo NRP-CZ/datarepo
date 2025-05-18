@@ -1,0 +1,18 @@
+
+.header_menu_item {
+  .main-nav-links.item > a {
+    display: block;
+    padding: 1rem 2rem;
+  }
+
+  #quick-create-dropdown {
+    margin: 0;
+  }
+
+  #quick-create-dropdown-btn {
+     padding: @inputVerticalPadding @inputVerticalPadding @inputVerticalPadding;
+     border-radius: @defaultBorderRadius;
+     background: @lightGrey !important;
+
+  }
+}

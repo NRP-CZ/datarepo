@@ -1,0 +1,59 @@
+{%- extends "invenio_theme/frontpage.html" %}
+
+{%- block page_header %}
+    {%- include "header_frontpage.html" %}
+{%- endblock page_header %}
+
+{%- block page_body %}
+    {%- block intro_section %}
+    <section class="invenio-rdm-project-section section-content white-bg rel-mt-5">
+        <h2 class="section-title">{{ _('Welcome to your instance of ' + config.REPOSITORY_NAME) }}</h2>
+        <div class="ui container two column grid center aligned vertically padded relaxed stackable">
+          <div class="row one column">
+            <div class="column">
+              <p>Here you can test all the features it has to offer!</p>
+            </div>
+          </div>
+          <div class="rdm-goal six wide column">
+            <i class="key huge icon"></i>
+            <h3>Repository Platform</h3>
+            <p>This application is based on
+                <a href="https://inveniosoftware.org/products/rdm/" target="_blank" rel="noopener noreferrer">InvenioRDM</a>, a research data management (RDM) repository
+              platform.</p>
+          </div>
+
+          <div class="rdm-goal six wide column">
+            <i class="users huge icon"></i>
+            <h3>Documentation</h3>
+            <p>Here you can find a link to official
+              <a href="https://nrp-cz.github.io/docs/" rel="noopener noreferrer" target="_blank">documentation</a> on how to customize and develop your
+                freshly created repository instance.</p>
+          </div>
+        </div>
+
+      </section>
+    {%- endblock intro_section %}
+    {%- block grid_section %}
+        <div class="ui stackable grid container rel-mt-5">
+            {% block main_column %}
+            <div class="eleven wide computer sixteen wide tablet column">
+
+              {% block main_column_content %}
+
+              {% endblock main_column_content %}
+
+            </div>
+            {% endblock main_column %}
+            {% block side_column %}
+                <aside class="five wide computer sixteen wide tablet column">
+
+                  {% block side_column_content %}{% endblock side_column_content %}
+
+                </aside>
+            {% endblock side_column %}
+        </div>
+    {%- endblock grid_section %}
+{%- block bottom_section %}
+{%- endblock bottom_section %}
+
+{%- endblock page_body %}

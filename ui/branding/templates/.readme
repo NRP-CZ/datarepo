@@ -1,0 +1,9 @@
+Add your own jinja base templates here (for example, base page template goes here).
+Then you can reference them in your templates like this:
+
+```
+{% extends "base.html" %}
+```
+
+Note: to override the base template within the whole repository (both user and admin apps),
+set the `BASE_TEMPLATE="base.html"` variable inside the invenio.cfg file.

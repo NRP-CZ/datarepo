@@ -1,0 +1,17 @@
+.ui.account_dropdown {
+  & .ui.labeled.button {
+    background: @black !important;
+    color: @white !important;
+    padding-right: 2rem !important;
+    & > i.dropdown.icon {
+      background: @background !important;
+      color: @white !important;
+    }
+  }
+}
+
+#user-profile-dropdown-btn {
+    padding-left: 1.5rem !important;
+    padding-right: 2rem !important;
+  }
+}

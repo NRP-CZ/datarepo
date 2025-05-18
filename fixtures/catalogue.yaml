@@ -1,0 +1,40 @@
+vocabulary-languages:
+  - writer: vocabulary
+    vocabulary: languages
+    pid_type: v-lang
+    title:
+      cs: Jazyky
+      en: Languages
+  - source: languages.yaml
+
+vocabulary-rights:
+  - writer: vocabulary
+    vocabulary: rights
+    pid_type: v-lic
+    title:
+      cs: Licence
+      en: Licenses
+  - source: rights.yaml
+
+vocabulary-resource-types:
+  - writer: vocabulary
+    vocabulary: resource-types
+    pid_type: v-rest
+    title:
+      cs: Typ zdroje
+      en: Resource type
+  - source: resource-types.yaml
+
+vocabulary-community-types:
+  - writer: vocabulary
+    vocabulary: communitytypes
+    pid_type: v-comm
+    title:
+      cs: Typy komunit
+      en: Community types
+  - source: community-types.yaml
+
+communities:
+  - writer: service
+    service: communities
+  - source: communities.yaml

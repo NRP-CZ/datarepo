@@ -1,0 +1,19 @@
+id: organization
+title:
+  cs: Organizace
+  en: Organization
+---
+id: event
+title:
+  cs: Událost
+  en: Event
+---
+id: topic
+title:
+  cs: Téma
+  en: Topic
+---
+id: project
+title:
+  cs: Projekt
+  en: Project

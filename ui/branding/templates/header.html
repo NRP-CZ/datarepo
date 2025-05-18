@@ -1,0 +1,28 @@
+{% extends "oarepo_ui/header.html" %}
+
+{%- block brand %}
+{%- if config.THEME_LOGO %}
+<a class="logo-link" href="/">
+  <img class="ui image"
+    src="{{ url_for('static', filename=config.THEME_LOGO.replace('<language>', current_i18n.language)) }}"
+    alt="{{ _(config.THEME_SITENAME) }}" />
+</a>
+{%- else %}
+<a class="logo" href="/">{{ _(config.THEME_SITENAME) }}</a>
+{%- endif %}
+{%- endblock brand %}
+
+{% block navbar_search %}
+<div class="item p-0 search-bar">
+  <div id="header-search-bar">
+    <form action="/search" class="ui form" role="search">
+      <div class="ui fluid action input">
+        <input type="text" name="q" class="form-control" placeholder="{{ _('Search') }}">
+        <button type="submit" class="ui icon search button" aria-label="{{ _('Search') }}"><i
+            class="search icon"></i></button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="flex-spacer computer only"></div>
+{% endblock navbar_search %}

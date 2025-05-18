@@ -1,0 +1,10 @@
+Add your own images to this directory and reference those from
+branding/semantic-ui/less/globals/site.overrides
+using url(~@less/images/<imgfile>):
+
+
+Example:
+
+body {
+    background-image: url(~@less/images/background.png);
+}
