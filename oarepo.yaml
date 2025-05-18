@@ -1,0 +1,22 @@
+i18n:
+  babel_input_translations: []
+  babel_output_translations: i18n/translations
+  babel_source_paths:
+  - common
+  - ui
+  i18next_input_translations: []
+  i18next_output_translations: i18n/semantic-ui/translations
+  i18next_source_paths:
+  - ui
+  languages:
+  - en
+  - cs
+models:
+- model_description: CCMM dataset model
+  model_human_name: Datasets
+  model_name: datasets
+repository:
+  repository_description: Catch-all repository for scientific datasets
+  repository_human_name: Data Harbour
+  repository_name: datarepo
+uis: []

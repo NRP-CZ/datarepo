@@ -1,0 +1,15 @@
+{#def search_app_config #}
+{%- extends config.BASE_TEMPLATE %}
+{%- set title = _("Search results") ~ " | " ~ _("datasets") %}
+
+{%- block javascript %}
+    {{ super() }}
+    {{ webpack['datasets_search.js'] }}
+{%- endblock %}
+
+{%- block page_body %}
+<div class="ui main container">
+  <div data-invenio-search-config='{{ search_app_config | tojson }}'></div>
+</div>
+{%- endblock page_body %}
+

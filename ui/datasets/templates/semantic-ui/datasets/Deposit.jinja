@@ -1,0 +1,12 @@
+{#def record, form_config, data, extra_context, ui_links #}
+{% extends "oarepo_ui/form.html" %}
+
+{%- block javascript %}
+    {{ super() }}
+    {{ webpack['datasets_deposit_form.js'] }}
+{%- endblock %}
+
+
+{%- block page_body %}
+    <EditForm record={record} form_config={form_config} data={data} extra_context={extra_context} ui_links={ui_links}></EditForm>
+{% endblock page_body %}

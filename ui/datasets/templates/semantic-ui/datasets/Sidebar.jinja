@@ -1,0 +1,24 @@
+
+{#def  record, extra_context, is_preview  #}
+{%set recordRequests = record.expanded.requests and record.expanded.requests|selectattr('status', 'in', ['submitted', 'created'])|list%}
+{% if record.expanded.request_types or recordRequests or record.links.edit_html %}
+<section class="ui segment" aria-label='{{ _("Actions") }}'>
+<h2 class="ui small header detail-sidebar-header">{{ _("Actions") }}</h2>
+{% if record.links.edit_html%}
+  <div class="mb-10">
+    <SidebarLink icon="pencil" href={record.links.edit_html}>
+      {{_('Edit')}}
+    </SidebarLink>
+  </div>
+{% endif %}
+{% if record.expanded.request_types or recordRequests %}
+  <RecordRequests record={record} />
+{% endif %}
+</section>
+{% endif %}
+{% if record.expanded.communities %}
+  <RecordCommunities communities={record.expanded.communities} />
+{% endif %}
+<IdentifiersAndLinks originalRecordUrl={record.metadata.originalRecord} objectIdentifiers={record.metadata.objectIdentifiers}/>
+<RecordVersions record={record} is_preview={is_preview} />
+<RecordExport record={record} metadata={record.metadata} extra_context={extra_context}/>
