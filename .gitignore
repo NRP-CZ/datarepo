@@ -10,3 +10,5 @@ node_modules
 .env
 .editable-requirements.txt
 .mypy_cache
+celerybeat-schedule.db
+ror.yaml
