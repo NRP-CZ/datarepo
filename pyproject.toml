@@ -5,6 +5,7 @@ description = ""
 packages = []
 authors = []
 dependencies = [
+    "ccmm-invenio>=0.1.0",
     "deepmerge>=1.1.0",
     "json5",
     "marshmallow-i18n-messages",
@@ -76,6 +77,9 @@ datasets = "datasets.models:records.json"
 
 [project.entry-points."oarepo.ui"]
 datasets = "datasets.models:ui.json"
+
+[project.entry-points."invenio.datasets_record.error_handlers"]
+invalid_file_extension = "common.resources.error_handlers:ERROR_HANDLERS"
 
 [project.optional-dependencies]
 tests = [

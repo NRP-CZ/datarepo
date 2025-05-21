@@ -1,5 +1,6 @@
 oarepo[s3,rdm]==12.2.16
 cachetools==6.0.0b4
+ccmm-invenio==0.1.0
 deepmerge==2.0
 et-xmlfile==2.0.0
 flask-babelex==0.9.4
@@ -12,14 +13,14 @@ language-data==1.3.0
 marisa-trie==1.2.1
 marshmallow-i18n-messages==0.1.0
 oarepo-communities==5.1.14
-oarepo-dashboard==1.0.21
+oarepo-dashboard==1.0.22
 oarepo-doi==1.0.19
 oarepo-glitchtip==1.0.1
 oarepo-global-search==1.0.44
-oarepo-requests==2.4.14
+oarepo-requests==2.4.15
 oarepo-runtime==1.5.134
-oarepo-ui==5.2.78
-oarepo-vocabularies==2.1.25
+oarepo-ui==5.2.79
+oarepo-vocabularies==2.2.0
 oarepo-workflows==1.1.16
 openpyxl==3.1.5
 opentelemetry-api==1.33.1
