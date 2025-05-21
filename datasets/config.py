@@ -1,3 +1,17 @@
+from invenio_rdm_records.requests.entity_resolvers import RDMRecordServiceResultProxy
+from invenio_records_resources.references.entity_resolvers.results import (
+    ServiceResultResolver,
+)
+from oarepo_requests.resolvers.service_result import DraftServiceResultResolver
+from oarepo_requests.resolvers.ui import (
+    RecordEntityDraftReferenceUIResolver,
+    RecordEntityReferenceUIResolver,
+)
+from oarepo_requests.resources.draft.resource import DraftRecordRequestsResource
+from oarepo_requests.resources.draft.types.resource import DraftRequestTypesResource
+from oarepo_requests.services.draft.service import DraftRecordRequestsService
+from oarepo_requests.services.draft.types.service import DraftRecordRequestTypesService
+
 from datasets.files.api import DatasetsFile, DatasetsFileDraft
 from datasets.files.requests.resolvers import DatasetsFileDraftResolver
 from datasets.records.api import DatasetsDraft, DatasetsRecord
@@ -22,19 +36,6 @@ from datasets.services.files.service import (
 )
 from datasets.services.records.config import DatasetsServiceConfig
 from datasets.services.records.service import DatasetsService
-from invenio_rdm_records.requests.entity_resolvers import RDMRecordServiceResultProxy
-from invenio_records_resources.references.entity_resolvers.results import (
-    ServiceResultResolver,
-)
-from oarepo_requests.resolvers.service_result import DraftServiceResultResolver
-from oarepo_requests.resolvers.ui import (
-    RecordEntityDraftReferenceUIResolver,
-    RecordEntityReferenceUIResolver,
-)
-from oarepo_requests.resources.draft.resource import DraftRecordRequestsResource
-from oarepo_requests.resources.draft.types.resource import DraftRequestTypesResource
-from oarepo_requests.services.draft.service import DraftRecordRequestsService
-from oarepo_requests.services.draft.types.service import DraftRecordRequestTypesService
 
 DATASETS_RECORD_RESOURCE_CONFIG = DatasetsResourceConfig
 

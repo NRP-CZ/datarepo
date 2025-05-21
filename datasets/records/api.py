@@ -1,12 +1,3 @@
-from datasets.files.api import DatasetsFile, DatasetsFileDraft
-from datasets.records.dumpers.dumper import DatasetsDraftDumper, DatasetsDumper
-from datasets.records.models import (
-    DatasetsCommunitiesMetadata,
-    DatasetsDraftMetadata,
-    DatasetsMetadata,
-    DatasetsParentMetadata,
-    DatasetsParentState,
-)
 from invenio_communities.records.records.systemfields import CommunitiesField
 from invenio_drafts_resources.records.api import DraftRecordIdProviderV2
 from invenio_drafts_resources.services.records.components.media_files import (
@@ -22,11 +13,18 @@ from invenio_rdm_records.records.api import (
 from invenio_records.systemfields import ConstantField, ModelField
 from invenio_records_resources.records.systemfields import FilesField, IndexField
 from invenio_records_resources.records.systemfields.pid import PIDField, PIDFieldContext
+from invenio_vocabularies.contrib.affiliations.api import Affiliation
+from invenio_vocabularies.contrib.awards.api import Award
+from invenio_vocabularies.contrib.funders.api import Funder
 from oarepo_communities.records.systemfields.communities import (
     OARepoCommunitiesFieldContext,
 )
 from oarepo_runtime.records.pid_providers import UniversalPIDMixin
-from oarepo_runtime.records.relations import PIDRelation, RelationsField
+from oarepo_runtime.records.relations import (
+    PIDRelation,
+    RelationsField,
+    UnstrictPIDRelation,
+)
 from oarepo_runtime.records.systemfields.has_draftcheck import HasDraftCheckField
 from oarepo_runtime.records.systemfields.record_status import RecordStatusSystemField
 from oarepo_vocabularies.records.api import Vocabulary
@@ -35,6 +33,16 @@ from oarepo_workflows.records.systemfields.state import (
     RecordStateTimestampField,
 )
 from oarepo_workflows.records.systemfields.workflow import WorkflowField
+
+from datasets.files.api import DatasetsFile, DatasetsFileDraft
+from datasets.records.dumpers.dumper import DatasetsDraftDumper, DatasetsDumper
+from datasets.records.models import (
+    DatasetsCommunitiesMetadata,
+    DatasetsDraftMetadata,
+    DatasetsMetadata,
+    DatasetsParentMetadata,
+    DatasetsParentState,
+)
 
 
 class DatasetsParentRecord(RDMParent):
@@ -83,10 +91,140 @@ class DatasetsRecord(RDMRecord):
     )
 
     relations = RelationsField(
-        languages=PIDRelation(
-            "metadata.languages",
+        titleType=PIDRelation(
+            "metadata.alternate_titles.titleType",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("title-types"),
+        ),
+        affiliations=UnstrictPIDRelation(
+            "metadata.contributors.affiliations",
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        role=PIDRelation(
+            "metadata.contributors.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
+        ),
+        creators_affiliations=UnstrictPIDRelation(
+            "metadata.creators.affiliations",
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        creators_role=PIDRelation(
+            "metadata.creators.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
+        ),
+        award=UnstrictPIDRelation(
+            "metadata.funding_references.award",
+            keys=[
+                "title",
+                "id",
+                "number",
+                "program",
+                "acronym",
+                "identifiers",
+                "subjects",
+                "organizations",
+                "@v",
+            ],
+            pid_field=Award.pid,
+        ),
+        funder=UnstrictPIDRelation(
+            "metadata.funding_references.funder",
+            keys=["id", "@v", "name", "title"],
+            pid_field=Funder.pid,
+        ),
+        other_languages=PIDRelation(
+            "metadata.other_languages",
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("languages"),
+        ),
+        primary_language=PIDRelation(
+            "metadata.primary_language",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("languages"),
+        ),
+        publisher_affiliations=UnstrictPIDRelation(
+            "metadata.publisher.affiliations",
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        publisher_role=PIDRelation(
+            "metadata.publisher.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
+        ),
+        contributors_affiliations=UnstrictPIDRelation(
+            "metadata.related_resources.contributors.affiliations",
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        contributors_role=PIDRelation(
+            "metadata.related_resources.contributors.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
+        ),
+        related_resources_creators_affiliations=UnstrictPIDRelation(
+            "metadata.related_resources.creators.affiliations",
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        related_resources_creators_role=PIDRelation(
+            "metadata.related_resources.creators.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
+        ),
+        related_resources_publisher_affiliations=UnstrictPIDRelation(
+            "metadata.related_resources.publisher.affiliations",
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        related_resources_publisher_role=PIDRelation(
+            "metadata.related_resources.publisher.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
+        ),
+        relation_type=PIDRelation(
+            "metadata.related_resources.relation_type",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("relation-types"),
+        ),
+        date_type=PIDRelation(
+            "metadata.related_resources.time_references.date_type",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("time-reference-types"),
+        ),
+        type=PIDRelation(
+            "metadata.related_resources.type",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("resource-types"),
+        ),
+        resource_type=PIDRelation(
+            "metadata.resource_type",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("resource-types"),
+        ),
+        subjectScheme=PIDRelation(
+            "metadata.subjects.subjectScheme",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("subject-schemes"),
+        ),
+        access_rights=PIDRelation(
+            "metadata.terms_of_use.access_rights",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("access-rights"),
+        ),
+        licenses=PIDRelation(
+            "metadata.terms_of_use.licenses",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("licenses"),
+        ),
+        time_references_date_type=PIDRelation(
+            "metadata.time_references.date_type",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("time-reference-types"),
         ),
     )
 
@@ -154,10 +292,140 @@ class DatasetsDraft(RDMDraft):
     )
 
     relations = RelationsField(
-        languages=PIDRelation(
-            "metadata.languages",
+        titleType=PIDRelation(
+            "metadata.alternate_titles.titleType",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("title-types"),
+        ),
+        affiliations=UnstrictPIDRelation(
+            "metadata.contributors.affiliations",
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        role=PIDRelation(
+            "metadata.contributors.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
+        ),
+        creators_affiliations=UnstrictPIDRelation(
+            "metadata.creators.affiliations",
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        creators_role=PIDRelation(
+            "metadata.creators.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
+        ),
+        award=UnstrictPIDRelation(
+            "metadata.funding_references.award",
+            keys=[
+                "title",
+                "id",
+                "number",
+                "program",
+                "acronym",
+                "identifiers",
+                "subjects",
+                "organizations",
+                "@v",
+            ],
+            pid_field=Award.pid,
+        ),
+        funder=UnstrictPIDRelation(
+            "metadata.funding_references.funder",
+            keys=["id", "@v", "name", "title"],
+            pid_field=Funder.pid,
+        ),
+        other_languages=PIDRelation(
+            "metadata.other_languages",
             keys=["id", "title"],
             pid_field=Vocabulary.pid.with_type_ctx("languages"),
+        ),
+        primary_language=PIDRelation(
+            "metadata.primary_language",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("languages"),
+        ),
+        publisher_affiliations=UnstrictPIDRelation(
+            "metadata.publisher.affiliations",
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        publisher_role=PIDRelation(
+            "metadata.publisher.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
+        ),
+        contributors_affiliations=UnstrictPIDRelation(
+            "metadata.related_resources.contributors.affiliations",
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        contributors_role=PIDRelation(
+            "metadata.related_resources.contributors.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
+        ),
+        related_resources_creators_affiliations=UnstrictPIDRelation(
+            "metadata.related_resources.creators.affiliations",
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        related_resources_creators_role=PIDRelation(
+            "metadata.related_resources.creators.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
+        ),
+        related_resources_publisher_affiliations=UnstrictPIDRelation(
+            "metadata.related_resources.publisher.affiliations",
+            keys=["name", "id"],
+            pid_field=Affiliation.pid,
+        ),
+        related_resources_publisher_role=PIDRelation(
+            "metadata.related_resources.publisher.role",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("contributor-types"),
+        ),
+        relation_type=PIDRelation(
+            "metadata.related_resources.relation_type",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("relation-types"),
+        ),
+        date_type=PIDRelation(
+            "metadata.related_resources.time_references.date_type",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("time-reference-types"),
+        ),
+        type=PIDRelation(
+            "metadata.related_resources.type",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("resource-types"),
+        ),
+        resource_type=PIDRelation(
+            "metadata.resource_type",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("resource-types"),
+        ),
+        subjectScheme=PIDRelation(
+            "metadata.subjects.subjectScheme",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("subject-schemes"),
+        ),
+        access_rights=PIDRelation(
+            "metadata.terms_of_use.access_rights",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("access-rights"),
+        ),
+        licenses=PIDRelation(
+            "metadata.terms_of_use.licenses",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("licenses"),
+        ),
+        time_references_date_type=PIDRelation(
+            "metadata.time_references.date_type",
+            keys=["id", "title"],
+            pid_field=Vocabulary.pid.with_type_ctx("time-reference-types"),
         ),
     )
 

@@ -1,11 +1,3 @@
-from datasets.records.api import DatasetsDraft, DatasetsRecord
-from datasets.services.records.permissions import DatasetsPermissionPolicy
-from datasets.services.records.results import DatasetsRecordItem, DatasetsRecordList
-from datasets.services.records.schema import DatasetsSchema
-from datasets.services.records.search import (
-    DatasetsDraftSearchOptions,
-    DatasetsSearchOptions,
-)
 from invenio_rdm_records.services.config import RDMRecordServiceConfig, _groups_enabled
 from invenio_records_resources.services import (
     ConditionalLink,
@@ -33,6 +25,15 @@ from oarepo_runtime.services.config import (
 from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
 from oarepo_runtime.services.records import pagination_links_html
 from oarepo_workflows.services.components.workflow import WorkflowComponent
+
+from datasets.records.api import DatasetsDraft, DatasetsRecord
+from datasets.services.records.permissions import DatasetsPermissionPolicy
+from datasets.services.records.results import DatasetsRecordItem, DatasetsRecordList
+from datasets.services.records.schema import DatasetsSchema
+from datasets.services.records.search import (
+    DatasetsDraftSearchOptions,
+    DatasetsSearchOptions,
+)
 
 
 class DatasetsServiceConfig(PermissionsPresetsConfigMixin, RDMRecordServiceConfig):

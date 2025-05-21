@@ -29,9 +29,6 @@ record:
     - invenio
     - rdm
     - ccmm#dataset
-  properties:
-    metadata:
-      use: "./datasets-metadata.yaml"
 
   draft: {}
   draft-files: {}

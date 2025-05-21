@@ -1,8 +1,9 @@
-from datasets.services.records.ui_schema import DatasetsUISchema
 from flask import g
 from flask_resources import BaseListSchema
 from flask_resources.serializers import JSONSerializer
 from oarepo_runtime.resources import LocalizedUIJSONSerializer
+
+from datasets.services.records.ui_schema import DatasetsUISchema
 
 
 class DatasetsUIJSONSerializer(LocalizedUIJSONSerializer):

@@ -1,11 +1,12 @@
 import re
 from functools import cached_property
 
-from datasets import config
 from invenio_rdm_records.services.pids import PIDManager, PIDsService
 from oarepo_requests.proxies import current_oarepo_requests_service
 from oarepo_requests.resources.draft.config import DraftRecordRequestsResourceConfig
 from oarepo_requests.resources.draft.types.config import DraftRequestTypesResourceConfig
+
+from datasets import config
 
 
 class DatasetsExt:

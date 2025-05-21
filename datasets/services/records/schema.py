@@ -1,5 +1,6 @@
 import marshmallow as ma
 from invenio_rdm_records.services.schemas.access import AccessSchema
+from invenio_rdm_records.services.schemas.metadata import CreatorSchema
 from invenio_rdm_records.services.schemas.pids import PIDSchema
 from invenio_rdm_records.services.schemas.record import validate_scheme
 from invenio_vocabularies.services.schema import i18n_strings
@@ -10,11 +11,17 @@ from marshmallow.utils import get_value
 from marshmallow_utils.fields import SanitizedUnicode
 from marshmallow_utils.fields.nestedattr import NestedAttribute
 from oarepo_communities.schemas.parent import CommunitiesParentSchema
+from oarepo_runtime.services.schema.i18n import I18nStrField, MultilingualField
 from oarepo_runtime.services.schema.marshmallow import (
     DictOnlySchema,
     RDMBaseRecordSchema,
 )
-from oarepo_runtime.services.schema.validation import validate_datetime
+from oarepo_runtime.services.schema.rdm import (
+    FundingSchema,
+    RecordIdentifierField,
+    RelatedRecordIdentifierField,
+)
+from oarepo_runtime.services.schema.validation import validate_date, validate_datetime
 from oarepo_workflows.services.records.schema import RDMWorkflowParentSchema
 
 
@@ -67,14 +74,117 @@ class DatasetsMetadataSchema(Schema):
     class Meta:
         unknown = ma.RAISE
 
-    languages = ma_fields.List(ma_fields.Nested(lambda: LanguagesItemSchema()))
+    alternate_identifiers = RecordIdentifierField()
 
-    title = ma_fields.String()
+    alternate_titles = ma_fields.List(
+        ma_fields.Nested(lambda: AlternateTitlesItemSchema())
+    )
+
+    contributors = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()))
+
+    creators = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()))
+
+    date_issued = ma_fields.String(required=True, validate=[validate_date("%Y-%m-%d")])
+
+    descriptions = ma_fields.List(I18nStrField())
+
+    funding_references = ma_fields.List(ma_fields.Nested(lambda: FundingSchema()))
+
+    other_languages = ma_fields.List(ma_fields.Nested(lambda: TitleTypeSchema()))
+
+    primary_language = ma_fields.Nested(lambda: TitleTypeSchema())
+
+    publisher = ma_fields.Nested(lambda: CreatorSchema())
+
+    related_resources = ma_fields.List(
+        ma_fields.Nested(lambda: RelatedResourcesItemSchema())
+    )
+
+    resource_type = ma_fields.Nested(lambda: TitleTypeSchema(), required=True)
+
+    subjects = ma_fields.List(ma_fields.Nested(lambda: MetadataSubjectsItemSchema()))
+
+    terms_of_use = ma_fields.Nested(lambda: TermsOfUseSchema())
+
+    time_references = ma_fields.List(
+        ma_fields.Nested(lambda: TimeReferencesItemSchema())
+    )
+
+    title = ma_fields.String(required=True)
 
     version = ma_fields.String()
 
 
-class LanguagesItemSchema(DictOnlySchema):
+class RelatedResourcesItemSchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    contributors = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()))
+
+    creators = ma_fields.List(ma_fields.Nested(lambda: CreatorSchema()))
+
+    identifiers = RelatedRecordIdentifierField()
+
+    publisher = ma_fields.Nested(lambda: CreatorSchema())
+
+    relation_type = ma_fields.Nested(lambda: TitleTypeSchema())
+
+    resource_url = ma_fields.String()
+
+    time_references = ma_fields.List(
+        ma_fields.Nested(lambda: TimeReferencesItemSchema())
+    )
+
+    title = ma_fields.String()
+
+    type = ma_fields.Nested(lambda: TitleTypeSchema())
+
+
+class AlternateTitlesItemSchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    title = I18nStrField(required=True)
+
+    titleType = ma_fields.Nested(lambda: TitleTypeSchema(), required=True)
+
+
+class MetadataSubjectsItemSchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    classificationCode = ma_fields.String()
+
+    iri = ma_fields.String()
+
+    subject = MultilingualField(I18nStrField(), required=True)
+
+    subjectScheme = ma_fields.Nested(lambda: TitleTypeSchema())
+
+
+class TermsOfUseSchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    access_rights = ma_fields.Nested(lambda: TitleTypeSchema())
+
+    descriptions = ma_fields.List(I18nStrField())
+
+    licenses = ma_fields.List(ma_fields.Nested(lambda: TitleTypeSchema()))
+
+
+class TimeReferencesItemSchema(DictOnlySchema):
+    class Meta:
+        unknown = ma.RAISE
+
+    date = ma_fields.String(validate=[validate_date("%Y-%m-%d")])
+
+    date_information = ma_fields.String()
+
+    date_type = ma_fields.Nested(lambda: TitleTypeSchema())
+
+
+class TitleTypeSchema(DictOnlySchema):
     class Meta:
         unknown = ma.INCLUDE
 

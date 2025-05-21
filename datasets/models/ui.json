@@ -122,41 +122,1892 @@
             "label": "metadata.label",
             "hint": "metadata.hint",
             "children": {
-                "languages": {
+                "alternate_identifiers": {
                     "detail": "array",
                     "input": "array",
-                    "help": "metadata/languages.help",
-                    "label": "metadata/languages.label",
-                    "hint": "metadata/languages.hint",
+                    "help": "metadata/alternate_identifiers.help",
+                    "label": "metadata/alternate_identifiers.label",
+                    "hint": "metadata/alternate_identifiers.hint",
+                    "child": {
+                        "detail": "identifier",
+                        "input": "alternate_identifier",
+                        "help": "metadata/alternate_identifiers.help",
+                        "label": "metadata/alternate_identifiers.label",
+                        "hint": "metadata/alternate_identifiers.hint",
+                        "children": {
+                            "identifier": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "required": true,
+                                "help": "metadata/alternate_identifiers/identifier.help",
+                                "label": "metadata/alternate_identifiers/identifier.label",
+                                "hint": "metadata/alternate_identifiers/identifier.hint",
+                                "facet": "metadata_alternate_identifiers_identifier"
+                            },
+                            "scheme": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "required": true,
+                                "help": "metadata/alternate_identifiers/scheme.help",
+                                "label": "metadata/alternate_identifiers/scheme.label",
+                                "hint": "metadata/alternate_identifiers/scheme.hint",
+                                "facet": "metadata_alternate_identifiers_scheme"
+                            }
+                        }
+                    }
+                },
+                "alternate_titles": {
+                    "detail": "array",
+                    "input": "array",
+                    "help": "metadata/alternate_titles.help",
+                    "label": "metadata/alternate_titles.label",
+                    "hint": "metadata/alternate_titles.hint",
+                    "child": {
+                        "detail": "alternate_title",
+                        "input": "alternate_title",
+                        "help": "metadata/alternate_titles.help",
+                        "label": "metadata/alternate_titles.label",
+                        "hint": "metadata/alternate_titles.hint",
+                        "children": {
+                            "title": {
+                                "detail": "multilingual",
+                                "input": "i18nStr",
+                                "required": true,
+                                "help": "metadata/alternate_titles/title.help",
+                                "label": "metadata/alternate_titles/title.label",
+                                "hint": "metadata/alternate_titles/title.hint",
+                                "facet": "metadata_alternate_titles_title_cs",
+                                "children": {
+                                    "lang": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "required": true,
+                                        "help": "metadata/alternate_titles/title/lang.help",
+                                        "label": "metadata/alternate_titles/title/lang.label",
+                                        "hint": "metadata/alternate_titles/title/lang.hint",
+                                        "facet": "metadata_alternate_titles_title_lang"
+                                    },
+                                    "value": {
+                                        "detail": "fulltext+keyword",
+                                        "input": "fulltext+keyword",
+                                        "required": true,
+                                        "help": "metadata/alternate_titles/title/value.help",
+                                        "label": "metadata/alternate_titles/title/value.label",
+                                        "hint": "metadata/alternate_titles/title/value.hint"
+                                    }
+                                }
+                            },
+                            "titleType": {
+                                "detail": "vocabulary_item",
+                                "edit": "vocabulary_item",
+                                "input": "vocabulary",
+                                "required": true,
+                                "help": "metadata/alternate_titles/titleType.help",
+                                "label": "metadata/alternate_titles/titleType.label",
+                                "hint": "metadata/alternate_titles/titleType.hint",
+                                "facet": "metadata_alternate_titles_titleType",
+                                "children": {
+                                    "id": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/alternate_titles/titleType/id.help",
+                                        "label": "metadata/alternate_titles/titleType/id.label",
+                                        "hint": "metadata/alternate_titles/titleType/id.hint"
+                                    },
+                                    "title": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/alternate_titles/titleType/title.help",
+                                        "label": "metadata/alternate_titles/titleType/title.label",
+                                        "hint": "metadata/alternate_titles/titleType/title.hint"
+                                    },
+                                    "@v": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/alternate_titles/titleType/@v.help",
+                                        "label": "metadata/alternate_titles/titleType/@v.label",
+                                        "hint": "metadata/alternate_titles/titleType/@v.hint"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "contributors": {
+                    "detail": "array",
+                    "input": "array",
+                    "help": "metadata/contributors.help",
+                    "label": "metadata/contributors.label",
+                    "hint": "metadata/contributors.hint",
+                    "child": {
+                        "detail": "creator",
+                        "input": "contributor",
+                        "help": "metadata/contributors.help",
+                        "label": "metadata/contributors.label",
+                        "hint": "metadata/contributors.hint",
+                        "children": {
+                            "affiliations": {
+                                "detail": "array",
+                                "input": "array",
+                                "help": "metadata/contributors/affiliations.help",
+                                "label": "metadata/contributors/affiliations.label",
+                                "hint": "metadata/contributors/affiliations.hint",
+                                "child": {
+                                    "detail": "vocabulary_item",
+                                    "edit": "vocabulary_item",
+                                    "input": "vocabulary",
+                                    "help": "metadata/contributors/affiliations.help",
+                                    "label": "metadata/contributors/affiliations.label",
+                                    "hint": "metadata/contributors/affiliations.hint",
+                                    "facet": "metadata_contributors_affiliations",
+                                    "children": {
+                                        "name": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/contributors/affiliations/name.help",
+                                            "label": "metadata/contributors/affiliations/name.label",
+                                            "hint": "metadata/contributors/affiliations/name.hint"
+                                        },
+                                        "id": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/contributors/affiliations/id.help",
+                                            "label": "metadata/contributors/affiliations/id.label",
+                                            "hint": "metadata/contributors/affiliations/id.hint"
+                                        },
+                                        "@v": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/contributors/affiliations/@v.help",
+                                            "label": "metadata/contributors/affiliations/@v.label",
+                                            "hint": "metadata/contributors/affiliations/@v.hint"
+                                        }
+                                    }
+                                }
+                            },
+                            "person_or_org": {
+                                "detail": false,
+                                "input": false,
+                                "help": "metadata/contributors/person_or_org.help",
+                                "label": "metadata/contributors/person_or_org.label",
+                                "hint": "metadata/contributors/person_or_org.hint",
+                                "children": {
+                                    "family_name": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/contributors/person_or_org/family_name.help",
+                                        "label": "metadata/contributors/person_or_org/family_name.label",
+                                        "hint": "metadata/contributors/person_or_org/family_name.hint",
+                                        "facet": "metadata_contributors_person_or_org_family_name"
+                                    },
+                                    "given_name": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/contributors/person_or_org/given_name.help",
+                                        "label": "metadata/contributors/person_or_org/given_name.label",
+                                        "hint": "metadata/contributors/person_or_org/given_name.hint",
+                                        "facet": "metadata_contributors_person_or_org_given_name"
+                                    },
+                                    "identifiers": {
+                                        "detail": "array",
+                                        "input": "array",
+                                        "help": "metadata/contributors/person_or_org/identifiers.help",
+                                        "label": "metadata/contributors/person_or_org/identifiers.label",
+                                        "hint": "metadata/contributors/person_or_org/identifiers.hint",
+                                        "child": {
+                                            "detail": "identifier",
+                                            "input": "identifier",
+                                            "help": "metadata/contributors/person_or_org/identifiers.help",
+                                            "label": "metadata/contributors/person_or_org/identifiers.label",
+                                            "hint": "metadata/contributors/person_or_org/identifiers.hint",
+                                            "children": {
+                                                "identifier": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "required": true,
+                                                    "help": "metadata/contributors/person_or_org/identifiers/identifier.help",
+                                                    "label": "metadata/contributors/person_or_org/identifiers/identifier.label",
+                                                    "hint": "metadata/contributors/person_or_org/identifiers/identifier.hint",
+                                                    "facet": "metadata_contributors_person_or_org_identifiers_identifier"
+                                                },
+                                                "scheme": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "required": true,
+                                                    "help": "metadata/contributors/person_or_org/identifiers/scheme.help",
+                                                    "label": "metadata/contributors/person_or_org/identifiers/scheme.label",
+                                                    "hint": "metadata/contributors/person_or_org/identifiers/scheme.hint",
+                                                    "facet": "metadata_contributors_person_or_org_identifiers_scheme"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "name": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/contributors/person_or_org/name.help",
+                                        "label": "metadata/contributors/person_or_org/name.label",
+                                        "hint": "metadata/contributors/person_or_org/name.hint",
+                                        "facet": "metadata_contributors_person_or_org_name"
+                                    },
+                                    "type": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/contributors/person_or_org/type.help",
+                                        "label": "metadata/contributors/person_or_org/type.label",
+                                        "hint": "metadata/contributors/person_or_org/type.hint",
+                                        "enum": "metadata/contributors/person_or_org/type.enum",
+                                        "facet": "metadata_contributors_person_or_org_type"
+                                    }
+                                }
+                            },
+                            "role": {
+                                "detail": "vocabulary_item",
+                                "edit": "vocabulary_item",
+                                "input": "vocabulary",
+                                "help": "metadata/contributors/role.help",
+                                "label": "metadata/contributors/role.label",
+                                "hint": "metadata/contributors/role.hint",
+                                "facet": "metadata_contributors_role",
+                                "children": {
+                                    "id": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/contributors/role/id.help",
+                                        "label": "metadata/contributors/role/id.label",
+                                        "hint": "metadata/contributors/role/id.hint"
+                                    },
+                                    "title": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/contributors/role/title.help",
+                                        "label": "metadata/contributors/role/title.label",
+                                        "hint": "metadata/contributors/role/title.hint"
+                                    },
+                                    "@v": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/contributors/role/@v.help",
+                                        "label": "metadata/contributors/role/@v.label",
+                                        "hint": "metadata/contributors/role/@v.hint"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "creators": {
+                    "detail": "array",
+                    "input": "array",
+                    "help": "metadata/creators.help",
+                    "label": "metadata/creators.label",
+                    "hint": "metadata/creators.hint",
+                    "child": {
+                        "detail": "creator",
+                        "input": "creator",
+                        "help": "metadata/creators.help",
+                        "label": "metadata/creators.label",
+                        "hint": "metadata/creators.hint",
+                        "children": {
+                            "affiliations": {
+                                "detail": "array",
+                                "input": "array",
+                                "help": "metadata/creators/affiliations.help",
+                                "label": "metadata/creators/affiliations.label",
+                                "hint": "metadata/creators/affiliations.hint",
+                                "child": {
+                                    "detail": "vocabulary_item",
+                                    "edit": "vocabulary_item",
+                                    "input": "vocabulary",
+                                    "help": "metadata/creators/affiliations.help",
+                                    "label": "metadata/creators/affiliations.label",
+                                    "hint": "metadata/creators/affiliations.hint",
+                                    "facet": "metadata_creators_affiliations",
+                                    "children": {
+                                        "name": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/creators/affiliations/name.help",
+                                            "label": "metadata/creators/affiliations/name.label",
+                                            "hint": "metadata/creators/affiliations/name.hint"
+                                        },
+                                        "id": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/creators/affiliations/id.help",
+                                            "label": "metadata/creators/affiliations/id.label",
+                                            "hint": "metadata/creators/affiliations/id.hint"
+                                        },
+                                        "@v": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/creators/affiliations/@v.help",
+                                            "label": "metadata/creators/affiliations/@v.label",
+                                            "hint": "metadata/creators/affiliations/@v.hint"
+                                        }
+                                    }
+                                }
+                            },
+                            "person_or_org": {
+                                "detail": false,
+                                "input": false,
+                                "help": "metadata/creators/person_or_org.help",
+                                "label": "metadata/creators/person_or_org.label",
+                                "hint": "metadata/creators/person_or_org.hint",
+                                "children": {
+                                    "family_name": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/creators/person_or_org/family_name.help",
+                                        "label": "metadata/creators/person_or_org/family_name.label",
+                                        "hint": "metadata/creators/person_or_org/family_name.hint",
+                                        "facet": "metadata_creators_person_or_org_family_name"
+                                    },
+                                    "given_name": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/creators/person_or_org/given_name.help",
+                                        "label": "metadata/creators/person_or_org/given_name.label",
+                                        "hint": "metadata/creators/person_or_org/given_name.hint",
+                                        "facet": "metadata_creators_person_or_org_given_name"
+                                    },
+                                    "identifiers": {
+                                        "detail": "array",
+                                        "input": "array",
+                                        "help": "metadata/creators/person_or_org/identifiers.help",
+                                        "label": "metadata/creators/person_or_org/identifiers.label",
+                                        "hint": "metadata/creators/person_or_org/identifiers.hint",
+                                        "child": {
+                                            "detail": "identifier",
+                                            "input": "identifier",
+                                            "help": "metadata/creators/person_or_org/identifiers.help",
+                                            "label": "metadata/creators/person_or_org/identifiers.label",
+                                            "hint": "metadata/creators/person_or_org/identifiers.hint",
+                                            "children": {
+                                                "identifier": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "required": true,
+                                                    "help": "metadata/creators/person_or_org/identifiers/identifier.help",
+                                                    "label": "metadata/creators/person_or_org/identifiers/identifier.label",
+                                                    "hint": "metadata/creators/person_or_org/identifiers/identifier.hint",
+                                                    "facet": "metadata_creators_person_or_org_identifiers_identifier"
+                                                },
+                                                "scheme": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "required": true,
+                                                    "help": "metadata/creators/person_or_org/identifiers/scheme.help",
+                                                    "label": "metadata/creators/person_or_org/identifiers/scheme.label",
+                                                    "hint": "metadata/creators/person_or_org/identifiers/scheme.hint",
+                                                    "facet": "metadata_creators_person_or_org_identifiers_scheme"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "name": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/creators/person_or_org/name.help",
+                                        "label": "metadata/creators/person_or_org/name.label",
+                                        "hint": "metadata/creators/person_or_org/name.hint",
+                                        "facet": "metadata_creators_person_or_org_name"
+                                    },
+                                    "type": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/creators/person_or_org/type.help",
+                                        "label": "metadata/creators/person_or_org/type.label",
+                                        "hint": "metadata/creators/person_or_org/type.hint",
+                                        "enum": "metadata/creators/person_or_org/type.enum",
+                                        "facet": "metadata_creators_person_or_org_type"
+                                    }
+                                }
+                            },
+                            "role": {
+                                "detail": "vocabulary_item",
+                                "edit": "vocabulary_item",
+                                "input": "vocabulary",
+                                "help": "metadata/creators/role.help",
+                                "label": "metadata/creators/role.label",
+                                "hint": "metadata/creators/role.hint",
+                                "facet": "metadata_creators_role",
+                                "children": {
+                                    "id": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/creators/role/id.help",
+                                        "label": "metadata/creators/role/id.label",
+                                        "hint": "metadata/creators/role/id.hint"
+                                    },
+                                    "title": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/creators/role/title.help",
+                                        "label": "metadata/creators/role/title.label",
+                                        "hint": "metadata/creators/role/title.hint"
+                                    },
+                                    "@v": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/creators/role/@v.help",
+                                        "label": "metadata/creators/role/@v.label",
+                                        "hint": "metadata/creators/role/@v.hint"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "date_issued": {
+                    "detail": "date",
+                    "input": "date",
+                    "required": true,
+                    "help": "metadata/date_issued.help",
+                    "label": "metadata/date_issued.label",
+                    "hint": "metadata/date_issued.hint",
+                    "facet": "metadata_date_issued"
+                },
+                "descriptions": {
+                    "detail": "array",
+                    "input": "array",
+                    "help": "metadata/descriptions.help",
+                    "label": "metadata/descriptions.label",
+                    "hint": "metadata/descriptions.hint",
+                    "child": {
+                        "detail": "multilingual",
+                        "input": "i18nStr",
+                        "help": "metadata/descriptions.help",
+                        "label": "metadata/descriptions.label",
+                        "hint": "metadata/descriptions.hint",
+                        "facet": "metadata_descriptions_cs",
+                        "children": {
+                            "lang": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "required": true,
+                                "help": "metadata/descriptions/lang.help",
+                                "label": "metadata/descriptions/lang.label",
+                                "hint": "metadata/descriptions/lang.hint",
+                                "facet": "metadata_descriptions_lang"
+                            },
+                            "value": {
+                                "detail": "fulltext+keyword",
+                                "input": "fulltext+keyword",
+                                "required": true,
+                                "help": "metadata/descriptions/value.help",
+                                "label": "metadata/descriptions/value.label",
+                                "hint": "metadata/descriptions/value.hint"
+                            }
+                        }
+                    }
+                },
+                "funding_references": {
+                    "detail": "array",
+                    "input": "array",
+                    "help": "metadata/funding_references.help",
+                    "label": "metadata/funding_references.label",
+                    "hint": "metadata/funding_references.hint",
+                    "child": {
+                        "detail": "funding_reference",
+                        "input": "funding_reference",
+                        "help": "metadata/funding_references.help",
+                        "label": "metadata/funding_references.label",
+                        "hint": "metadata/funding_references.hint",
+                        "children": {
+                            "award": {
+                                "detail": "vocabulary_item",
+                                "edit": "vocabulary_item",
+                                "input": "vocabulary",
+                                "help": "metadata/funding_references/award.help",
+                                "label": "metadata/funding_references/award.label",
+                                "hint": "metadata/funding_references/award.hint",
+                                "facet": "metadata_funding_references_award",
+                                "children": {
+                                    "title": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/funding_references/award/title.help",
+                                        "label": "metadata/funding_references/award/title.label",
+                                        "hint": "metadata/funding_references/award/title.hint"
+                                    },
+                                    "id": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/funding_references/award/id.help",
+                                        "label": "metadata/funding_references/award/id.label",
+                                        "hint": "metadata/funding_references/award/id.hint"
+                                    },
+                                    "number": {
+                                        "detail": "fulltext",
+                                        "input": "fulltext",
+                                        "help": "metadata/funding_references/award/number.help",
+                                        "label": "metadata/funding_references/award/number.label",
+                                        "hint": "metadata/funding_references/award/number.hint"
+                                    },
+                                    "program": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/funding_references/award/program.help",
+                                        "label": "metadata/funding_references/award/program.label",
+                                        "hint": "metadata/funding_references/award/program.hint"
+                                    },
+                                    "acronym": {
+                                        "detail": "fulltext+keyword",
+                                        "input": "fulltext+keyword",
+                                        "help": "metadata/funding_references/award/acronym.help",
+                                        "label": "metadata/funding_references/award/acronym.label",
+                                        "hint": "metadata/funding_references/award/acronym.hint"
+                                    },
+                                    "identifiers": {
+                                        "detail": "array",
+                                        "input": "array",
+                                        "help": "metadata/funding_references/award/identifiers.help",
+                                        "label": "metadata/funding_references/award/identifiers.label",
+                                        "hint": "metadata/funding_references/award/identifiers.hint",
+                                        "child": {
+                                            "detail": "identifier",
+                                            "input": "identifier",
+                                            "help": "metadata/funding_references/award/identifiers.help",
+                                            "label": "metadata/funding_references/award/identifiers.label",
+                                            "hint": "metadata/funding_references/award/identifiers.hint",
+                                            "children": {
+                                                "identifier": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/funding_references/award/identifiers/identifier.help",
+                                                    "label": "metadata/funding_references/award/identifiers/identifier.label",
+                                                    "hint": "metadata/funding_references/award/identifiers/identifier.hint"
+                                                },
+                                                "scheme": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/funding_references/award/identifiers/scheme.help",
+                                                    "label": "metadata/funding_references/award/identifiers/scheme.label",
+                                                    "hint": "metadata/funding_references/award/identifiers/scheme.hint"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "subjects": {
+                                        "detail": "array",
+                                        "input": "array",
+                                        "help": "metadata/funding_references/award/subjects.help",
+                                        "label": "metadata/funding_references/award/subjects.label",
+                                        "hint": "metadata/funding_references/award/subjects.hint",
+                                        "child": {
+                                            "detail": "subject",
+                                            "input": "subject",
+                                            "help": "metadata/funding_references/award/subjects.help",
+                                            "label": "metadata/funding_references/award/subjects.label",
+                                            "hint": "metadata/funding_references/award/subjects.hint",
+                                            "children": {
+                                                "id": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/funding_references/award/subjects/id.help",
+                                                    "label": "metadata/funding_references/award/subjects/id.label",
+                                                    "hint": "metadata/funding_references/award/subjects/id.hint"
+                                                },
+                                                "subject": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/funding_references/award/subjects/subject.help",
+                                                    "label": "metadata/funding_references/award/subjects/subject.label",
+                                                    "hint": "metadata/funding_references/award/subjects/subject.hint"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "organizations": {
+                                        "detail": "organization",
+                                        "input": "organization",
+                                        "help": "metadata/funding_references/award/organizations.help",
+                                        "label": "metadata/funding_references/award/organizations.label",
+                                        "hint": "metadata/funding_references/award/organizations.hint",
+                                        "children": {
+                                            "id": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/funding_references/award/organizations/id.help",
+                                                "label": "metadata/funding_references/award/organizations/id.label",
+                                                "hint": "metadata/funding_references/award/organizations/id.hint"
+                                            },
+                                            "organization": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/funding_references/award/organizations/organization.help",
+                                                "label": "metadata/funding_references/award/organizations/organization.label",
+                                                "hint": "metadata/funding_references/award/organizations/organization.hint"
+                                            },
+                                            "scheme": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/funding_references/award/organizations/scheme.help",
+                                                "label": "metadata/funding_references/award/organizations/scheme.label",
+                                                "hint": "metadata/funding_references/award/organizations/scheme.hint"
+                                            }
+                                        }
+                                    },
+                                    "@v": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/funding_references/award/@v.help",
+                                        "label": "metadata/funding_references/award/@v.label",
+                                        "hint": "metadata/funding_references/award/@v.hint"
+                                    }
+                                }
+                            },
+                            "funder": {
+                                "detail": "vocabulary_item",
+                                "edit": "vocabulary_item",
+                                "input": "vocabulary",
+                                "help": "metadata/funding_references/funder.help",
+                                "label": "metadata/funding_references/funder.label",
+                                "hint": "metadata/funding_references/funder.hint",
+                                "facet": "metadata_funding_references_funder",
+                                "children": {
+                                    "id": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/funding_references/funder/id.help",
+                                        "label": "metadata/funding_references/funder/id.label",
+                                        "hint": "metadata/funding_references/funder/id.hint"
+                                    },
+                                    "@v": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/funding_references/funder/@v.help",
+                                        "label": "metadata/funding_references/funder/@v.label",
+                                        "hint": "metadata/funding_references/funder/@v.hint"
+                                    },
+                                    "name": {
+                                        "detail": "fulltext",
+                                        "input": "fulltext",
+                                        "help": "metadata/funding_references/funder/name.help",
+                                        "label": "metadata/funding_references/funder/name.label",
+                                        "hint": "metadata/funding_references/funder/name.hint"
+                                    },
+                                    "title": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/funding_references/funder/title.help",
+                                        "label": "metadata/funding_references/funder/title.label",
+                                        "hint": "metadata/funding_references/funder/title.hint"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "other_languages": {
+                    "detail": "array",
+                    "input": "array",
+                    "help": "metadata/other_languages.help",
+                    "label": "metadata/other_languages.label",
+                    "hint": "metadata/other_languages.hint",
                     "child": {
                         "detail": "vocabulary_item",
                         "edit": "vocabulary_item",
                         "input": "vocabulary",
-                        "help": "metadata/languages.help",
-                        "label": "metadata/languages.label",
-                        "hint": "metadata/languages.hint",
-                        "facet": "metadata_languages",
+                        "help": "metadata/other_languages.help",
+                        "label": "metadata/other_languages.label",
+                        "hint": "metadata/other_languages.hint",
+                        "facet": "metadata_other_languages",
                         "children": {
                             "id": {
                                 "detail": "keyword",
                                 "input": "keyword",
-                                "help": "metadata/languages/id.help",
-                                "label": "metadata/languages/id.label",
-                                "hint": "metadata/languages/id.hint"
+                                "help": "metadata/other_languages/id.help",
+                                "label": "metadata/other_languages/id.label",
+                                "hint": "metadata/other_languages/id.hint"
                             },
                             "title": {
                                 "detail": false,
                                 "input": false,
-                                "help": "metadata/languages/title.help",
-                                "label": "metadata/languages/title.label",
-                                "hint": "metadata/languages/title.hint"
+                                "help": "metadata/other_languages/title.help",
+                                "label": "metadata/other_languages/title.label",
+                                "hint": "metadata/other_languages/title.hint"
                             },
                             "@v": {
                                 "detail": "keyword",
                                 "input": "keyword",
-                                "help": "metadata/languages/@v.help",
-                                "label": "metadata/languages/@v.label",
-                                "hint": "metadata/languages/@v.hint"
+                                "help": "metadata/other_languages/@v.help",
+                                "label": "metadata/other_languages/@v.label",
+                                "hint": "metadata/other_languages/@v.hint"
+                            }
+                        }
+                    }
+                },
+                "primary_language": {
+                    "detail": "vocabulary_item",
+                    "edit": "vocabulary_item",
+                    "input": "vocabulary",
+                    "help": "metadata/primary_language.help",
+                    "label": "metadata/primary_language.label",
+                    "hint": "metadata/primary_language.hint",
+                    "facet": "metadata_primary_language",
+                    "children": {
+                        "id": {
+                            "detail": "keyword",
+                            "input": "keyword",
+                            "help": "metadata/primary_language/id.help",
+                            "label": "metadata/primary_language/id.label",
+                            "hint": "metadata/primary_language/id.hint"
+                        },
+                        "title": {
+                            "detail": false,
+                            "input": false,
+                            "help": "metadata/primary_language/title.help",
+                            "label": "metadata/primary_language/title.label",
+                            "hint": "metadata/primary_language/title.hint"
+                        },
+                        "@v": {
+                            "detail": "keyword",
+                            "input": "keyword",
+                            "help": "metadata/primary_language/@v.help",
+                            "label": "metadata/primary_language/@v.label",
+                            "hint": "metadata/primary_language/@v.hint"
+                        }
+                    }
+                },
+                "publisher": {
+                    "detail": "creator",
+                    "input": false,
+                    "help": "metadata/publisher.help",
+                    "label": "metadata/publisher.label",
+                    "hint": "metadata/publisher.hint",
+                    "children": {
+                        "affiliations": {
+                            "detail": "array",
+                            "input": "array",
+                            "help": "metadata/publisher/affiliations.help",
+                            "label": "metadata/publisher/affiliations.label",
+                            "hint": "metadata/publisher/affiliations.hint",
+                            "child": {
+                                "detail": "vocabulary_item",
+                                "edit": "vocabulary_item",
+                                "input": "vocabulary",
+                                "help": "metadata/publisher/affiliations.help",
+                                "label": "metadata/publisher/affiliations.label",
+                                "hint": "metadata/publisher/affiliations.hint",
+                                "facet": "metadata_publisher_affiliations",
+                                "children": {
+                                    "name": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/publisher/affiliations/name.help",
+                                        "label": "metadata/publisher/affiliations/name.label",
+                                        "hint": "metadata/publisher/affiliations/name.hint"
+                                    },
+                                    "id": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/publisher/affiliations/id.help",
+                                        "label": "metadata/publisher/affiliations/id.label",
+                                        "hint": "metadata/publisher/affiliations/id.hint"
+                                    },
+                                    "@v": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/publisher/affiliations/@v.help",
+                                        "label": "metadata/publisher/affiliations/@v.label",
+                                        "hint": "metadata/publisher/affiliations/@v.hint"
+                                    }
+                                }
+                            }
+                        },
+                        "person_or_org": {
+                            "detail": false,
+                            "input": false,
+                            "help": "metadata/publisher/person_or_org.help",
+                            "label": "metadata/publisher/person_or_org.label",
+                            "hint": "metadata/publisher/person_or_org.hint",
+                            "children": {
+                                "family_name": {
+                                    "detail": "keyword",
+                                    "input": "keyword",
+                                    "help": "metadata/publisher/person_or_org/family_name.help",
+                                    "label": "metadata/publisher/person_or_org/family_name.label",
+                                    "hint": "metadata/publisher/person_or_org/family_name.hint",
+                                    "facet": "metadata_publisher_person_or_org_family_name"
+                                },
+                                "given_name": {
+                                    "detail": "keyword",
+                                    "input": "keyword",
+                                    "help": "metadata/publisher/person_or_org/given_name.help",
+                                    "label": "metadata/publisher/person_or_org/given_name.label",
+                                    "hint": "metadata/publisher/person_or_org/given_name.hint",
+                                    "facet": "metadata_publisher_person_or_org_given_name"
+                                },
+                                "identifiers": {
+                                    "detail": "array",
+                                    "input": "array",
+                                    "help": "metadata/publisher/person_or_org/identifiers.help",
+                                    "label": "metadata/publisher/person_or_org/identifiers.label",
+                                    "hint": "metadata/publisher/person_or_org/identifiers.hint",
+                                    "child": {
+                                        "detail": "identifier",
+                                        "input": "identifier",
+                                        "help": "metadata/publisher/person_or_org/identifiers.help",
+                                        "label": "metadata/publisher/person_or_org/identifiers.label",
+                                        "hint": "metadata/publisher/person_or_org/identifiers.hint",
+                                        "children": {
+                                            "identifier": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "required": true,
+                                                "help": "metadata/publisher/person_or_org/identifiers/identifier.help",
+                                                "label": "metadata/publisher/person_or_org/identifiers/identifier.label",
+                                                "hint": "metadata/publisher/person_or_org/identifiers/identifier.hint",
+                                                "facet": "metadata_publisher_person_or_org_identifiers_identifier"
+                                            },
+                                            "scheme": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "required": true,
+                                                "help": "metadata/publisher/person_or_org/identifiers/scheme.help",
+                                                "label": "metadata/publisher/person_or_org/identifiers/scheme.label",
+                                                "hint": "metadata/publisher/person_or_org/identifiers/scheme.hint",
+                                                "facet": "metadata_publisher_person_or_org_identifiers_scheme"
+                                            }
+                                        }
+                                    }
+                                },
+                                "name": {
+                                    "detail": "keyword",
+                                    "input": "keyword",
+                                    "help": "metadata/publisher/person_or_org/name.help",
+                                    "label": "metadata/publisher/person_or_org/name.label",
+                                    "hint": "metadata/publisher/person_or_org/name.hint",
+                                    "facet": "metadata_publisher_person_or_org_name"
+                                },
+                                "type": {
+                                    "detail": "keyword",
+                                    "input": "keyword",
+                                    "help": "metadata/publisher/person_or_org/type.help",
+                                    "label": "metadata/publisher/person_or_org/type.label",
+                                    "hint": "metadata/publisher/person_or_org/type.hint",
+                                    "enum": "metadata/publisher/person_or_org/type.enum",
+                                    "facet": "metadata_publisher_person_or_org_type"
+                                }
+                            }
+                        },
+                        "role": {
+                            "detail": "vocabulary_item",
+                            "edit": "vocabulary_item",
+                            "input": "vocabulary",
+                            "help": "metadata/publisher/role.help",
+                            "label": "metadata/publisher/role.label",
+                            "hint": "metadata/publisher/role.hint",
+                            "facet": "metadata_publisher_role",
+                            "children": {
+                                "id": {
+                                    "detail": "keyword",
+                                    "input": "keyword",
+                                    "help": "metadata/publisher/role/id.help",
+                                    "label": "metadata/publisher/role/id.label",
+                                    "hint": "metadata/publisher/role/id.hint"
+                                },
+                                "title": {
+                                    "detail": false,
+                                    "input": false,
+                                    "help": "metadata/publisher/role/title.help",
+                                    "label": "metadata/publisher/role/title.label",
+                                    "hint": "metadata/publisher/role/title.hint"
+                                },
+                                "@v": {
+                                    "detail": "keyword",
+                                    "input": "keyword",
+                                    "help": "metadata/publisher/role/@v.help",
+                                    "label": "metadata/publisher/role/@v.label",
+                                    "hint": "metadata/publisher/role/@v.hint"
+                                }
+                            }
+                        }
+                    }
+                },
+                "related_resources": {
+                    "detail": "array",
+                    "input": "array",
+                    "help": "metadata/related_resources.help",
+                    "label": "metadata/related_resources.label",
+                    "hint": "metadata/related_resources.hint",
+                    "child": {
+                        "detail": "related_resource",
+                        "input": "related_resource",
+                        "help": "metadata/related_resources.help",
+                        "label": "metadata/related_resources.label",
+                        "hint": "metadata/related_resources.hint",
+                        "children": {
+                            "contributors": {
+                                "detail": "array",
+                                "input": "array",
+                                "help": "metadata/related_resources/contributors.help",
+                                "label": "metadata/related_resources/contributors.label",
+                                "hint": "metadata/related_resources/contributors.hint",
+                                "child": {
+                                    "detail": "creator",
+                                    "input": "contributor",
+                                    "help": "metadata/related_resources/contributors.help",
+                                    "label": "metadata/related_resources/contributors.label",
+                                    "hint": "metadata/related_resources/contributors.hint",
+                                    "children": {
+                                        "affiliations": {
+                                            "detail": "array",
+                                            "input": "array",
+                                            "help": "metadata/related_resources/contributors/affiliations.help",
+                                            "label": "metadata/related_resources/contributors/affiliations.label",
+                                            "hint": "metadata/related_resources/contributors/affiliations.hint",
+                                            "child": {
+                                                "detail": "vocabulary_item",
+                                                "edit": "vocabulary_item",
+                                                "input": "vocabulary",
+                                                "help": "metadata/related_resources/contributors/affiliations.help",
+                                                "label": "metadata/related_resources/contributors/affiliations.label",
+                                                "hint": "metadata/related_resources/contributors/affiliations.hint",
+                                                "facet": "metadata_related_resources_contributors_affiliations",
+                                                "children": {
+                                                    "name": {
+                                                        "detail": "keyword",
+                                                        "input": "keyword",
+                                                        "help": "metadata/related_resources/contributors/affiliations/name.help",
+                                                        "label": "metadata/related_resources/contributors/affiliations/name.label",
+                                                        "hint": "metadata/related_resources/contributors/affiliations/name.hint"
+                                                    },
+                                                    "id": {
+                                                        "detail": "keyword",
+                                                        "input": "keyword",
+                                                        "help": "metadata/related_resources/contributors/affiliations/id.help",
+                                                        "label": "metadata/related_resources/contributors/affiliations/id.label",
+                                                        "hint": "metadata/related_resources/contributors/affiliations/id.hint"
+                                                    },
+                                                    "@v": {
+                                                        "detail": "keyword",
+                                                        "input": "keyword",
+                                                        "help": "metadata/related_resources/contributors/affiliations/@v.help",
+                                                        "label": "metadata/related_resources/contributors/affiliations/@v.label",
+                                                        "hint": "metadata/related_resources/contributors/affiliations/@v.hint"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "person_or_org": {
+                                            "detail": false,
+                                            "input": false,
+                                            "help": "metadata/related_resources/contributors/person_or_org.help",
+                                            "label": "metadata/related_resources/contributors/person_or_org.label",
+                                            "hint": "metadata/related_resources/contributors/person_or_org.hint",
+                                            "children": {
+                                                "family_name": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/contributors/person_or_org/family_name.help",
+                                                    "label": "metadata/related_resources/contributors/person_or_org/family_name.label",
+                                                    "hint": "metadata/related_resources/contributors/person_or_org/family_name.hint",
+                                                    "facet": "metadata_related_resources_contributors_person_or_org_family_name"
+                                                },
+                                                "given_name": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/contributors/person_or_org/given_name.help",
+                                                    "label": "metadata/related_resources/contributors/person_or_org/given_name.label",
+                                                    "hint": "metadata/related_resources/contributors/person_or_org/given_name.hint",
+                                                    "facet": "metadata_related_resources_contributors_person_or_org_given_name"
+                                                },
+                                                "identifiers": {
+                                                    "detail": "array",
+                                                    "input": "array",
+                                                    "help": "metadata/related_resources/contributors/person_or_org/identifiers.help",
+                                                    "label": "metadata/related_resources/contributors/person_or_org/identifiers.label",
+                                                    "hint": "metadata/related_resources/contributors/person_or_org/identifiers.hint",
+                                                    "child": {
+                                                        "detail": "identifier",
+                                                        "input": "identifier",
+                                                        "help": "metadata/related_resources/contributors/person_or_org/identifiers.help",
+                                                        "label": "metadata/related_resources/contributors/person_or_org/identifiers.label",
+                                                        "hint": "metadata/related_resources/contributors/person_or_org/identifiers.hint",
+                                                        "children": {
+                                                            "identifier": {
+                                                                "detail": "keyword",
+                                                                "input": "keyword",
+                                                                "required": true,
+                                                                "help": "metadata/related_resources/contributors/person_or_org/identifiers/identifier.help",
+                                                                "label": "metadata/related_resources/contributors/person_or_org/identifiers/identifier.label",
+                                                                "hint": "metadata/related_resources/contributors/person_or_org/identifiers/identifier.hint",
+                                                                "facet": "metadata_related_resources_contributors_person_or_org_identifiers_identifier"
+                                                            },
+                                                            "scheme": {
+                                                                "detail": "keyword",
+                                                                "input": "keyword",
+                                                                "required": true,
+                                                                "help": "metadata/related_resources/contributors/person_or_org/identifiers/scheme.help",
+                                                                "label": "metadata/related_resources/contributors/person_or_org/identifiers/scheme.label",
+                                                                "hint": "metadata/related_resources/contributors/person_or_org/identifiers/scheme.hint",
+                                                                "facet": "metadata_related_resources_contributors_person_or_org_identifiers_scheme"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "name": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/contributors/person_or_org/name.help",
+                                                    "label": "metadata/related_resources/contributors/person_or_org/name.label",
+                                                    "hint": "metadata/related_resources/contributors/person_or_org/name.hint",
+                                                    "facet": "metadata_related_resources_contributors_person_or_org_name"
+                                                },
+                                                "type": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/contributors/person_or_org/type.help",
+                                                    "label": "metadata/related_resources/contributors/person_or_org/type.label",
+                                                    "hint": "metadata/related_resources/contributors/person_or_org/type.hint",
+                                                    "enum": "metadata/related_resources/contributors/person_or_org/type.enum",
+                                                    "facet": "metadata_related_resources_contributors_person_or_org_type"
+                                                }
+                                            }
+                                        },
+                                        "role": {
+                                            "detail": "vocabulary_item",
+                                            "edit": "vocabulary_item",
+                                            "input": "vocabulary",
+                                            "help": "metadata/related_resources/contributors/role.help",
+                                            "label": "metadata/related_resources/contributors/role.label",
+                                            "hint": "metadata/related_resources/contributors/role.hint",
+                                            "facet": "metadata_related_resources_contributors_role",
+                                            "children": {
+                                                "id": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/contributors/role/id.help",
+                                                    "label": "metadata/related_resources/contributors/role/id.label",
+                                                    "hint": "metadata/related_resources/contributors/role/id.hint"
+                                                },
+                                                "title": {
+                                                    "detail": false,
+                                                    "input": false,
+                                                    "help": "metadata/related_resources/contributors/role/title.help",
+                                                    "label": "metadata/related_resources/contributors/role/title.label",
+                                                    "hint": "metadata/related_resources/contributors/role/title.hint"
+                                                },
+                                                "@v": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/contributors/role/@v.help",
+                                                    "label": "metadata/related_resources/contributors/role/@v.label",
+                                                    "hint": "metadata/related_resources/contributors/role/@v.hint"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "creators": {
+                                "detail": "array",
+                                "input": "array",
+                                "help": "metadata/related_resources/creators.help",
+                                "label": "metadata/related_resources/creators.label",
+                                "hint": "metadata/related_resources/creators.hint",
+                                "child": {
+                                    "detail": "creator",
+                                    "input": "creator",
+                                    "help": "metadata/related_resources/creators.help",
+                                    "label": "metadata/related_resources/creators.label",
+                                    "hint": "metadata/related_resources/creators.hint",
+                                    "children": {
+                                        "affiliations": {
+                                            "detail": "array",
+                                            "input": "array",
+                                            "help": "metadata/related_resources/creators/affiliations.help",
+                                            "label": "metadata/related_resources/creators/affiliations.label",
+                                            "hint": "metadata/related_resources/creators/affiliations.hint",
+                                            "child": {
+                                                "detail": "vocabulary_item",
+                                                "edit": "vocabulary_item",
+                                                "input": "vocabulary",
+                                                "help": "metadata/related_resources/creators/affiliations.help",
+                                                "label": "metadata/related_resources/creators/affiliations.label",
+                                                "hint": "metadata/related_resources/creators/affiliations.hint",
+                                                "facet": "metadata_related_resources_creators_affiliations",
+                                                "children": {
+                                                    "name": {
+                                                        "detail": "keyword",
+                                                        "input": "keyword",
+                                                        "help": "metadata/related_resources/creators/affiliations/name.help",
+                                                        "label": "metadata/related_resources/creators/affiliations/name.label",
+                                                        "hint": "metadata/related_resources/creators/affiliations/name.hint"
+                                                    },
+                                                    "id": {
+                                                        "detail": "keyword",
+                                                        "input": "keyword",
+                                                        "help": "metadata/related_resources/creators/affiliations/id.help",
+                                                        "label": "metadata/related_resources/creators/affiliations/id.label",
+                                                        "hint": "metadata/related_resources/creators/affiliations/id.hint"
+                                                    },
+                                                    "@v": {
+                                                        "detail": "keyword",
+                                                        "input": "keyword",
+                                                        "help": "metadata/related_resources/creators/affiliations/@v.help",
+                                                        "label": "metadata/related_resources/creators/affiliations/@v.label",
+                                                        "hint": "metadata/related_resources/creators/affiliations/@v.hint"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "person_or_org": {
+                                            "detail": false,
+                                            "input": false,
+                                            "help": "metadata/related_resources/creators/person_or_org.help",
+                                            "label": "metadata/related_resources/creators/person_or_org.label",
+                                            "hint": "metadata/related_resources/creators/person_or_org.hint",
+                                            "children": {
+                                                "family_name": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/creators/person_or_org/family_name.help",
+                                                    "label": "metadata/related_resources/creators/person_or_org/family_name.label",
+                                                    "hint": "metadata/related_resources/creators/person_or_org/family_name.hint",
+                                                    "facet": "metadata_related_resources_creators_person_or_org_family_name"
+                                                },
+                                                "given_name": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/creators/person_or_org/given_name.help",
+                                                    "label": "metadata/related_resources/creators/person_or_org/given_name.label",
+                                                    "hint": "metadata/related_resources/creators/person_or_org/given_name.hint",
+                                                    "facet": "metadata_related_resources_creators_person_or_org_given_name"
+                                                },
+                                                "identifiers": {
+                                                    "detail": "array",
+                                                    "input": "array",
+                                                    "help": "metadata/related_resources/creators/person_or_org/identifiers.help",
+                                                    "label": "metadata/related_resources/creators/person_or_org/identifiers.label",
+                                                    "hint": "metadata/related_resources/creators/person_or_org/identifiers.hint",
+                                                    "child": {
+                                                        "detail": "identifier",
+                                                        "input": "identifier",
+                                                        "help": "metadata/related_resources/creators/person_or_org/identifiers.help",
+                                                        "label": "metadata/related_resources/creators/person_or_org/identifiers.label",
+                                                        "hint": "metadata/related_resources/creators/person_or_org/identifiers.hint",
+                                                        "children": {
+                                                            "identifier": {
+                                                                "detail": "keyword",
+                                                                "input": "keyword",
+                                                                "required": true,
+                                                                "help": "metadata/related_resources/creators/person_or_org/identifiers/identifier.help",
+                                                                "label": "metadata/related_resources/creators/person_or_org/identifiers/identifier.label",
+                                                                "hint": "metadata/related_resources/creators/person_or_org/identifiers/identifier.hint",
+                                                                "facet": "metadata_related_resources_creators_person_or_org_identifiers_identifier"
+                                                            },
+                                                            "scheme": {
+                                                                "detail": "keyword",
+                                                                "input": "keyword",
+                                                                "required": true,
+                                                                "help": "metadata/related_resources/creators/person_or_org/identifiers/scheme.help",
+                                                                "label": "metadata/related_resources/creators/person_or_org/identifiers/scheme.label",
+                                                                "hint": "metadata/related_resources/creators/person_or_org/identifiers/scheme.hint",
+                                                                "facet": "metadata_related_resources_creators_person_or_org_identifiers_scheme"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "name": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/creators/person_or_org/name.help",
+                                                    "label": "metadata/related_resources/creators/person_or_org/name.label",
+                                                    "hint": "metadata/related_resources/creators/person_or_org/name.hint",
+                                                    "facet": "metadata_related_resources_creators_person_or_org_name"
+                                                },
+                                                "type": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/creators/person_or_org/type.help",
+                                                    "label": "metadata/related_resources/creators/person_or_org/type.label",
+                                                    "hint": "metadata/related_resources/creators/person_or_org/type.hint",
+                                                    "enum": "metadata/related_resources/creators/person_or_org/type.enum",
+                                                    "facet": "metadata_related_resources_creators_person_or_org_type"
+                                                }
+                                            }
+                                        },
+                                        "role": {
+                                            "detail": "vocabulary_item",
+                                            "edit": "vocabulary_item",
+                                            "input": "vocabulary",
+                                            "help": "metadata/related_resources/creators/role.help",
+                                            "label": "metadata/related_resources/creators/role.label",
+                                            "hint": "metadata/related_resources/creators/role.hint",
+                                            "facet": "metadata_related_resources_creators_role",
+                                            "children": {
+                                                "id": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/creators/role/id.help",
+                                                    "label": "metadata/related_resources/creators/role/id.label",
+                                                    "hint": "metadata/related_resources/creators/role/id.hint"
+                                                },
+                                                "title": {
+                                                    "detail": false,
+                                                    "input": false,
+                                                    "help": "metadata/related_resources/creators/role/title.help",
+                                                    "label": "metadata/related_resources/creators/role/title.label",
+                                                    "hint": "metadata/related_resources/creators/role/title.hint"
+                                                },
+                                                "@v": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/creators/role/@v.help",
+                                                    "label": "metadata/related_resources/creators/role/@v.label",
+                                                    "hint": "metadata/related_resources/creators/role/@v.hint"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "identifiers": {
+                                "detail": "array",
+                                "input": "array",
+                                "help": "metadata/related_resources/identifiers.help",
+                                "label": "metadata/related_resources/identifiers.label",
+                                "hint": "metadata/related_resources/identifiers.hint",
+                                "child": {
+                                    "detail": "identifier",
+                                    "input": "identifier",
+                                    "help": "metadata/related_resources/identifiers.help",
+                                    "label": "metadata/related_resources/identifiers.label",
+                                    "hint": "metadata/related_resources/identifiers.hint",
+                                    "children": {
+                                        "identifier": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "required": true,
+                                            "help": "metadata/related_resources/identifiers/identifier.help",
+                                            "label": "metadata/related_resources/identifiers/identifier.label",
+                                            "hint": "metadata/related_resources/identifiers/identifier.hint",
+                                            "facet": "metadata_related_resources_identifiers_identifier"
+                                        },
+                                        "scheme": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "required": true,
+                                            "help": "metadata/related_resources/identifiers/scheme.help",
+                                            "label": "metadata/related_resources/identifiers/scheme.label",
+                                            "hint": "metadata/related_resources/identifiers/scheme.hint",
+                                            "facet": "metadata_related_resources_identifiers_scheme"
+                                        }
+                                    }
+                                }
+                            },
+                            "publisher": {
+                                "detail": "creator",
+                                "input": false,
+                                "help": "metadata/related_resources/publisher.help",
+                                "label": "metadata/related_resources/publisher.label",
+                                "hint": "metadata/related_resources/publisher.hint",
+                                "children": {
+                                    "affiliations": {
+                                        "detail": "array",
+                                        "input": "array",
+                                        "help": "metadata/related_resources/publisher/affiliations.help",
+                                        "label": "metadata/related_resources/publisher/affiliations.label",
+                                        "hint": "metadata/related_resources/publisher/affiliations.hint",
+                                        "child": {
+                                            "detail": "vocabulary_item",
+                                            "edit": "vocabulary_item",
+                                            "input": "vocabulary",
+                                            "help": "metadata/related_resources/publisher/affiliations.help",
+                                            "label": "metadata/related_resources/publisher/affiliations.label",
+                                            "hint": "metadata/related_resources/publisher/affiliations.hint",
+                                            "facet": "metadata_related_resources_publisher_affiliations",
+                                            "children": {
+                                                "name": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/publisher/affiliations/name.help",
+                                                    "label": "metadata/related_resources/publisher/affiliations/name.label",
+                                                    "hint": "metadata/related_resources/publisher/affiliations/name.hint"
+                                                },
+                                                "id": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/publisher/affiliations/id.help",
+                                                    "label": "metadata/related_resources/publisher/affiliations/id.label",
+                                                    "hint": "metadata/related_resources/publisher/affiliations/id.hint"
+                                                },
+                                                "@v": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/publisher/affiliations/@v.help",
+                                                    "label": "metadata/related_resources/publisher/affiliations/@v.label",
+                                                    "hint": "metadata/related_resources/publisher/affiliations/@v.hint"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "person_or_org": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/related_resources/publisher/person_or_org.help",
+                                        "label": "metadata/related_resources/publisher/person_or_org.label",
+                                        "hint": "metadata/related_resources/publisher/person_or_org.hint",
+                                        "children": {
+                                            "family_name": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/related_resources/publisher/person_or_org/family_name.help",
+                                                "label": "metadata/related_resources/publisher/person_or_org/family_name.label",
+                                                "hint": "metadata/related_resources/publisher/person_or_org/family_name.hint",
+                                                "facet": "metadata_related_resources_publisher_person_or_org_family_name"
+                                            },
+                                            "given_name": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/related_resources/publisher/person_or_org/given_name.help",
+                                                "label": "metadata/related_resources/publisher/person_or_org/given_name.label",
+                                                "hint": "metadata/related_resources/publisher/person_or_org/given_name.hint",
+                                                "facet": "metadata_related_resources_publisher_person_or_org_given_name"
+                                            },
+                                            "identifiers": {
+                                                "detail": "array",
+                                                "input": "array",
+                                                "help": "metadata/related_resources/publisher/person_or_org/identifiers.help",
+                                                "label": "metadata/related_resources/publisher/person_or_org/identifiers.label",
+                                                "hint": "metadata/related_resources/publisher/person_or_org/identifiers.hint",
+                                                "child": {
+                                                    "detail": "identifier",
+                                                    "input": "identifier",
+                                                    "help": "metadata/related_resources/publisher/person_or_org/identifiers.help",
+                                                    "label": "metadata/related_resources/publisher/person_or_org/identifiers.label",
+                                                    "hint": "metadata/related_resources/publisher/person_or_org/identifiers.hint",
+                                                    "children": {
+                                                        "identifier": {
+                                                            "detail": "keyword",
+                                                            "input": "keyword",
+                                                            "required": true,
+                                                            "help": "metadata/related_resources/publisher/person_or_org/identifiers/identifier.help",
+                                                            "label": "metadata/related_resources/publisher/person_or_org/identifiers/identifier.label",
+                                                            "hint": "metadata/related_resources/publisher/person_or_org/identifiers/identifier.hint",
+                                                            "facet": "metadata_related_resources_publisher_person_or_org_identifiers_identifier"
+                                                        },
+                                                        "scheme": {
+                                                            "detail": "keyword",
+                                                            "input": "keyword",
+                                                            "required": true,
+                                                            "help": "metadata/related_resources/publisher/person_or_org/identifiers/scheme.help",
+                                                            "label": "metadata/related_resources/publisher/person_or_org/identifiers/scheme.label",
+                                                            "hint": "metadata/related_resources/publisher/person_or_org/identifiers/scheme.hint",
+                                                            "facet": "metadata_related_resources_publisher_person_or_org_identifiers_scheme"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "name": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/related_resources/publisher/person_or_org/name.help",
+                                                "label": "metadata/related_resources/publisher/person_or_org/name.label",
+                                                "hint": "metadata/related_resources/publisher/person_or_org/name.hint",
+                                                "facet": "metadata_related_resources_publisher_person_or_org_name"
+                                            },
+                                            "type": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/related_resources/publisher/person_or_org/type.help",
+                                                "label": "metadata/related_resources/publisher/person_or_org/type.label",
+                                                "hint": "metadata/related_resources/publisher/person_or_org/type.hint",
+                                                "enum": "metadata/related_resources/publisher/person_or_org/type.enum",
+                                                "facet": "metadata_related_resources_publisher_person_or_org_type"
+                                            }
+                                        }
+                                    },
+                                    "role": {
+                                        "detail": "vocabulary_item",
+                                        "edit": "vocabulary_item",
+                                        "input": "vocabulary",
+                                        "help": "metadata/related_resources/publisher/role.help",
+                                        "label": "metadata/related_resources/publisher/role.label",
+                                        "hint": "metadata/related_resources/publisher/role.hint",
+                                        "facet": "metadata_related_resources_publisher_role",
+                                        "children": {
+                                            "id": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/related_resources/publisher/role/id.help",
+                                                "label": "metadata/related_resources/publisher/role/id.label",
+                                                "hint": "metadata/related_resources/publisher/role/id.hint"
+                                            },
+                                            "title": {
+                                                "detail": false,
+                                                "input": false,
+                                                "help": "metadata/related_resources/publisher/role/title.help",
+                                                "label": "metadata/related_resources/publisher/role/title.label",
+                                                "hint": "metadata/related_resources/publisher/role/title.hint"
+                                            },
+                                            "@v": {
+                                                "detail": "keyword",
+                                                "input": "keyword",
+                                                "help": "metadata/related_resources/publisher/role/@v.help",
+                                                "label": "metadata/related_resources/publisher/role/@v.label",
+                                                "hint": "metadata/related_resources/publisher/role/@v.hint"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "relation_type": {
+                                "detail": "vocabulary_item",
+                                "edit": "vocabulary_item",
+                                "input": "vocabulary",
+                                "help": "metadata/related_resources/relation_type.help",
+                                "label": "metadata/related_resources/relation_type.label",
+                                "hint": "metadata/related_resources/relation_type.hint",
+                                "facet": "metadata_related_resources_relation_type",
+                                "children": {
+                                    "id": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/related_resources/relation_type/id.help",
+                                        "label": "metadata/related_resources/relation_type/id.label",
+                                        "hint": "metadata/related_resources/relation_type/id.hint"
+                                    },
+                                    "title": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/related_resources/relation_type/title.help",
+                                        "label": "metadata/related_resources/relation_type/title.label",
+                                        "hint": "metadata/related_resources/relation_type/title.hint"
+                                    },
+                                    "@v": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/related_resources/relation_type/@v.help",
+                                        "label": "metadata/related_resources/relation_type/@v.label",
+                                        "hint": "metadata/related_resources/relation_type/@v.hint"
+                                    }
+                                }
+                            },
+                            "resource_url": {
+                                "detail": "url",
+                                "input": "url",
+                                "help": "metadata/related_resources/resource_url.help",
+                                "label": "metadata/related_resources/resource_url.label",
+                                "hint": "metadata/related_resources/resource_url.hint",
+                                "facet": "metadata_related_resources_resource_url"
+                            },
+                            "time_references": {
+                                "detail": "array",
+                                "input": "array",
+                                "help": "metadata/related_resources/time_references.help",
+                                "label": "metadata/related_resources/time_references.label",
+                                "hint": "metadata/related_resources/time_references.hint",
+                                "child": {
+                                    "detail": "time_reference",
+                                    "input": "time_reference",
+                                    "help": "metadata/related_resources/time_references.help",
+                                    "label": "metadata/related_resources/time_references.label",
+                                    "hint": "metadata/related_resources/time_references.hint",
+                                    "children": {
+                                        "date": {
+                                            "detail": "date",
+                                            "input": "date",
+                                            "help": "metadata/related_resources/time_references/date.help",
+                                            "label": "metadata/related_resources/time_references/date.label",
+                                            "hint": "metadata/related_resources/time_references/date.hint",
+                                            "facet": "metadata_related_resources_time_references_date"
+                                        },
+                                        "date_information": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "help": "metadata/related_resources/time_references/date_information.help",
+                                            "label": "metadata/related_resources/time_references/date_information.label",
+                                            "hint": "metadata/related_resources/time_references/date_information.hint",
+                                            "facet": "metadata_related_resources_time_references_date_information"
+                                        },
+                                        "date_type": {
+                                            "detail": "vocabulary_item",
+                                            "edit": "vocabulary_item",
+                                            "input": "vocabulary",
+                                            "help": "metadata/related_resources/time_references/date_type.help",
+                                            "label": "metadata/related_resources/time_references/date_type.label",
+                                            "hint": "metadata/related_resources/time_references/date_type.hint",
+                                            "facet": "metadata_related_resources_time_references_date_type",
+                                            "children": {
+                                                "id": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/time_references/date_type/id.help",
+                                                    "label": "metadata/related_resources/time_references/date_type/id.label",
+                                                    "hint": "metadata/related_resources/time_references/date_type/id.hint"
+                                                },
+                                                "title": {
+                                                    "detail": false,
+                                                    "input": false,
+                                                    "help": "metadata/related_resources/time_references/date_type/title.help",
+                                                    "label": "metadata/related_resources/time_references/date_type/title.label",
+                                                    "hint": "metadata/related_resources/time_references/date_type/title.hint"
+                                                },
+                                                "@v": {
+                                                    "detail": "keyword",
+                                                    "input": "keyword",
+                                                    "help": "metadata/related_resources/time_references/date_type/@v.help",
+                                                    "label": "metadata/related_resources/time_references/date_type/@v.label",
+                                                    "hint": "metadata/related_resources/time_references/date_type/@v.hint"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "title": {
+                                "detail": "fulltext+keyword",
+                                "input": "fulltext+keyword",
+                                "help": "metadata/related_resources/title.help",
+                                "label": "metadata/related_resources/title.label",
+                                "hint": "metadata/related_resources/title.hint"
+                            },
+                            "type": {
+                                "detail": "vocabulary_item",
+                                "edit": "vocabulary_item",
+                                "input": "vocabulary",
+                                "help": "metadata/related_resources/type.help",
+                                "label": "metadata/related_resources/type.label",
+                                "hint": "metadata/related_resources/type.hint",
+                                "facet": "metadata_related_resources_type",
+                                "children": {
+                                    "id": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/related_resources/type/id.help",
+                                        "label": "metadata/related_resources/type/id.label",
+                                        "hint": "metadata/related_resources/type/id.hint"
+                                    },
+                                    "title": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/related_resources/type/title.help",
+                                        "label": "metadata/related_resources/type/title.label",
+                                        "hint": "metadata/related_resources/type/title.hint"
+                                    },
+                                    "@v": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/related_resources/type/@v.help",
+                                        "label": "metadata/related_resources/type/@v.label",
+                                        "hint": "metadata/related_resources/type/@v.hint"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "resource_type": {
+                    "detail": "vocabulary_item",
+                    "edit": "vocabulary_item",
+                    "input": "vocabulary",
+                    "required": true,
+                    "help": "metadata/resource_type.help",
+                    "label": "metadata/resource_type.label",
+                    "hint": "metadata/resource_type.hint",
+                    "facet": "metadata_resource_type",
+                    "children": {
+                        "id": {
+                            "detail": "keyword",
+                            "input": "keyword",
+                            "help": "metadata/resource_type/id.help",
+                            "label": "metadata/resource_type/id.label",
+                            "hint": "metadata/resource_type/id.hint"
+                        },
+                        "title": {
+                            "detail": false,
+                            "input": false,
+                            "help": "metadata/resource_type/title.help",
+                            "label": "metadata/resource_type/title.label",
+                            "hint": "metadata/resource_type/title.hint"
+                        },
+                        "@v": {
+                            "detail": "keyword",
+                            "input": "keyword",
+                            "help": "metadata/resource_type/@v.help",
+                            "label": "metadata/resource_type/@v.label",
+                            "hint": "metadata/resource_type/@v.hint"
+                        }
+                    }
+                },
+                "subjects": {
+                    "detail": "array",
+                    "input": "array",
+                    "help": "metadata/subjects.help",
+                    "label": "metadata/subjects.label",
+                    "hint": "metadata/subjects.hint",
+                    "child": {
+                        "detail": "subject",
+                        "input": "subject",
+                        "help": "metadata/subjects.help",
+                        "label": "metadata/subjects.label",
+                        "hint": "metadata/subjects.hint",
+                        "children": {
+                            "classificationCode": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/subjects/classificationCode.help",
+                                "label": "metadata/subjects/classificationCode.label",
+                                "hint": "metadata/subjects/classificationCode.hint",
+                                "facet": "metadata_subjects_classificationCode"
+                            },
+                            "iri": {
+                                "detail": "url",
+                                "input": "url",
+                                "help": "metadata/subjects/iri.help",
+                                "label": "metadata/subjects/iri.label",
+                                "hint": "metadata/subjects/iri.hint",
+                                "facet": "metadata_subjects_iri"
+                            },
+                            "subject": {
+                                "detail": "string",
+                                "input": "array",
+                                "required": true,
+                                "help": "metadata/subjects/subject.help",
+                                "label": "metadata/subjects/subject.label",
+                                "hint": "metadata/subjects/subject.hint",
+                                "child": {
+                                    "detail": "multilingual",
+                                    "input": "i18nStr",
+                                    "help": "metadata/subjects/subject.help",
+                                    "label": "metadata/subjects/subject.label",
+                                    "hint": "metadata/subjects/subject.hint",
+                                    "facet": "metadata_subjects_subject_cs",
+                                    "children": {
+                                        "lang": {
+                                            "detail": "keyword",
+                                            "input": "keyword",
+                                            "required": true,
+                                            "help": "metadata/subjects/subject/lang.help",
+                                            "label": "metadata/subjects/subject/lang.label",
+                                            "hint": "metadata/subjects/subject/lang.hint",
+                                            "facet": "metadata_subjects_subject_lang"
+                                        },
+                                        "value": {
+                                            "detail": "fulltext+keyword",
+                                            "input": "fulltext+keyword",
+                                            "required": true,
+                                            "help": "metadata/subjects/subject/value.help",
+                                            "label": "metadata/subjects/subject/value.label",
+                                            "hint": "metadata/subjects/subject/value.hint"
+                                        }
+                                    }
+                                }
+                            },
+                            "subjectScheme": {
+                                "detail": "vocabulary_item",
+                                "edit": "vocabulary_item",
+                                "input": "vocabulary",
+                                "help": "metadata/subjects/subjectScheme.help",
+                                "label": "metadata/subjects/subjectScheme.label",
+                                "hint": "metadata/subjects/subjectScheme.hint",
+                                "facet": "metadata_subjects_subjectScheme",
+                                "children": {
+                                    "id": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/subjects/subjectScheme/id.help",
+                                        "label": "metadata/subjects/subjectScheme/id.label",
+                                        "hint": "metadata/subjects/subjectScheme/id.hint"
+                                    },
+                                    "title": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/subjects/subjectScheme/title.help",
+                                        "label": "metadata/subjects/subjectScheme/title.label",
+                                        "hint": "metadata/subjects/subjectScheme/title.hint"
+                                    },
+                                    "@v": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/subjects/subjectScheme/@v.help",
+                                        "label": "metadata/subjects/subjectScheme/@v.label",
+                                        "hint": "metadata/subjects/subjectScheme/@v.hint"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "terms_of_use": {
+                    "detail": false,
+                    "input": false,
+                    "help": "metadata/terms_of_use.help",
+                    "label": "metadata/terms_of_use.label",
+                    "hint": "metadata/terms_of_use.hint",
+                    "children": {
+                        "access_rights": {
+                            "detail": "vocabulary_item",
+                            "edit": "vocabulary_item",
+                            "input": "vocabulary",
+                            "help": "metadata/terms_of_use/access_rights.help",
+                            "label": "metadata/terms_of_use/access_rights.label",
+                            "hint": "metadata/terms_of_use/access_rights.hint",
+                            "facet": "metadata_terms_of_use_access_rights",
+                            "children": {
+                                "id": {
+                                    "detail": "keyword",
+                                    "input": "keyword",
+                                    "help": "metadata/terms_of_use/access_rights/id.help",
+                                    "label": "metadata/terms_of_use/access_rights/id.label",
+                                    "hint": "metadata/terms_of_use/access_rights/id.hint"
+                                },
+                                "title": {
+                                    "detail": false,
+                                    "input": false,
+                                    "help": "metadata/terms_of_use/access_rights/title.help",
+                                    "label": "metadata/terms_of_use/access_rights/title.label",
+                                    "hint": "metadata/terms_of_use/access_rights/title.hint"
+                                },
+                                "@v": {
+                                    "detail": "keyword",
+                                    "input": "keyword",
+                                    "help": "metadata/terms_of_use/access_rights/@v.help",
+                                    "label": "metadata/terms_of_use/access_rights/@v.label",
+                                    "hint": "metadata/terms_of_use/access_rights/@v.hint"
+                                }
+                            }
+                        },
+                        "descriptions": {
+                            "detail": "array",
+                            "input": "array",
+                            "help": "metadata/terms_of_use/descriptions.help",
+                            "label": "metadata/terms_of_use/descriptions.label",
+                            "hint": "metadata/terms_of_use/descriptions.hint",
+                            "child": {
+                                "detail": "multilingual",
+                                "input": "i18nStr",
+                                "help": "metadata/terms_of_use/descriptions.help",
+                                "label": "metadata/terms_of_use/descriptions.label",
+                                "hint": "metadata/terms_of_use/descriptions.hint",
+                                "facet": "metadata_terms_of_use_descriptions_cs",
+                                "children": {
+                                    "lang": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "required": true,
+                                        "help": "metadata/terms_of_use/descriptions/lang.help",
+                                        "label": "metadata/terms_of_use/descriptions/lang.label",
+                                        "hint": "metadata/terms_of_use/descriptions/lang.hint",
+                                        "facet": "metadata_terms_of_use_descriptions_lang"
+                                    },
+                                    "value": {
+                                        "detail": "fulltext+keyword",
+                                        "input": "fulltext+keyword",
+                                        "required": true,
+                                        "help": "metadata/terms_of_use/descriptions/value.help",
+                                        "label": "metadata/terms_of_use/descriptions/value.label",
+                                        "hint": "metadata/terms_of_use/descriptions/value.hint"
+                                    }
+                                }
+                            }
+                        },
+                        "licenses": {
+                            "detail": "array",
+                            "input": "array",
+                            "help": "metadata/terms_of_use/licenses.help",
+                            "label": "metadata/terms_of_use/licenses.label",
+                            "hint": "metadata/terms_of_use/licenses.hint",
+                            "child": {
+                                "detail": "vocabulary_item",
+                                "edit": "vocabulary_item",
+                                "input": "vocabulary",
+                                "help": "metadata/terms_of_use/licenses.help",
+                                "label": "metadata/terms_of_use/licenses.label",
+                                "hint": "metadata/terms_of_use/licenses.hint",
+                                "facet": "metadata_terms_of_use_licenses",
+                                "children": {
+                                    "id": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/terms_of_use/licenses/id.help",
+                                        "label": "metadata/terms_of_use/licenses/id.label",
+                                        "hint": "metadata/terms_of_use/licenses/id.hint"
+                                    },
+                                    "title": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/terms_of_use/licenses/title.help",
+                                        "label": "metadata/terms_of_use/licenses/title.label",
+                                        "hint": "metadata/terms_of_use/licenses/title.hint"
+                                    },
+                                    "@v": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/terms_of_use/licenses/@v.help",
+                                        "label": "metadata/terms_of_use/licenses/@v.label",
+                                        "hint": "metadata/terms_of_use/licenses/@v.hint"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "time_references": {
+                    "detail": "array",
+                    "input": "array",
+                    "help": "metadata/time_references.help",
+                    "label": "metadata/time_references.label",
+                    "hint": "metadata/time_references.hint",
+                    "child": {
+                        "detail": "time_reference",
+                        "input": "time_reference",
+                        "help": "metadata/time_references.help",
+                        "label": "metadata/time_references.label",
+                        "hint": "metadata/time_references.hint",
+                        "children": {
+                            "date": {
+                                "detail": "date",
+                                "input": "date",
+                                "help": "metadata/time_references/date.help",
+                                "label": "metadata/time_references/date.label",
+                                "hint": "metadata/time_references/date.hint",
+                                "facet": "metadata_time_references_date"
+                            },
+                            "date_information": {
+                                "detail": "keyword",
+                                "input": "keyword",
+                                "help": "metadata/time_references/date_information.help",
+                                "label": "metadata/time_references/date_information.label",
+                                "hint": "metadata/time_references/date_information.hint",
+                                "facet": "metadata_time_references_date_information"
+                            },
+                            "date_type": {
+                                "detail": "vocabulary_item",
+                                "edit": "vocabulary_item",
+                                "input": "vocabulary",
+                                "help": "metadata/time_references/date_type.help",
+                                "label": "metadata/time_references/date_type.label",
+                                "hint": "metadata/time_references/date_type.hint",
+                                "facet": "metadata_time_references_date_type",
+                                "children": {
+                                    "id": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/time_references/date_type/id.help",
+                                        "label": "metadata/time_references/date_type/id.label",
+                                        "hint": "metadata/time_references/date_type/id.hint"
+                                    },
+                                    "title": {
+                                        "detail": false,
+                                        "input": false,
+                                        "help": "metadata/time_references/date_type/title.help",
+                                        "label": "metadata/time_references/date_type/title.label",
+                                        "hint": "metadata/time_references/date_type/title.hint"
+                                    },
+                                    "@v": {
+                                        "detail": "keyword",
+                                        "input": "keyword",
+                                        "help": "metadata/time_references/date_type/@v.help",
+                                        "label": "metadata/time_references/date_type/@v.label",
+                                        "hint": "metadata/time_references/date_type/@v.hint"
+                                    }
+                                }
                             }
                         }
                     }
@@ -164,6 +2015,7 @@
                 "title": {
                     "detail": "fulltext+keyword",
                     "input": "fulltext+keyword",
+                    "required": true,
                     "help": "metadata/title.help",
                     "label": "metadata/title.label",
                     "hint": "metadata/title.hint"

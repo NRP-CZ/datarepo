@@ -1,6 +1,7 @@
-from datasets.files.models import DatasetsFileDraftMetadata, DatasetsFileMetadata
 from invenio_records_resources.records.api import FileRecord
 from invenio_records_resources.records.systemfields import IndexField
+
+from datasets.files.models import DatasetsFileDraftMetadata, DatasetsFileMetadata
 
 
 class DatasetsFile(FileRecord):

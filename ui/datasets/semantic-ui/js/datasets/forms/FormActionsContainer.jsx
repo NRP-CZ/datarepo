@@ -5,15 +5,19 @@ import {
     SaveButton,
     DeleteButton,
     useDepositApiClient,
-    serializeErrors,
     AccessRightField,
     useFormConfig,
-} from "@js/oarepo_ui/forms";
+    useSanitizeInput,
+} from "@js/oarepo_ui";
+import { ClipboardCopyButton } from "@js/oarepo_ui/components/ClipboardCopyButton";
 import { i18next } from "@translations/i18next";
 import { SelectedCommunity } from "@js/communities_components/CommunitySelector/SelectedCommunity";
 import { RecordRequests } from "@js/oarepo_requests/components";
-import { useFormikContext, setIn } from "formik";
-import { REQUEST_TYPE } from "@js/oarepo_requests_common";
+import { useFormikContext } from "formik";
+import {
+    REQUEST_TYPE,
+    beforeActionFormErrorPlugin,
+} from "@js/oarepo_requests_common";
 
 const FormActionsContainer = () => {
     const { values, setErrors } = useFormikContext();
@@ -25,6 +29,16 @@ const FormActionsContainer = () => {
             recordRestrictionGracePeriod,
         },
     } = useFormConfig();
+
+    const { sanitizeInput } = useSanitizeInput();
+
+    let repositoryAssignedDoi = values?.pids?.doi?.identifier;
+    // UI serialization is not passed to the form, so I think this is OK, as it is the only
+    // thing we need here currently - maybe in the future we could send the UI seiralization
+    // of record to form config
+    if (repositoryAssignedDoi && !repositoryAssignedDoi.startsWith("https")) {
+        repositoryAssignedDoi = `https://doi.org/${repositoryAssignedDoi}`;
+    }
 
     const onBeforeAction = ({ requestActionName, requestOrRequestType }) => {
         const requestType =
@@ -40,8 +54,11 @@ const FormActionsContainer = () => {
         } else {
             return save({
                 errorMessage: i18next.t(
-                    "The request ({{requestType}}) could not be made due to validation errors. Please fix them and try again:",
-                    { requestType: requestOrRequestType.name }
+                    "The request ({{requestType}}) could not be made due to form validation errors. Please fix them and try again:",
+                    {
+                        requestType:
+                            requestOrRequestType?.stateful_name || requestOrRequestType.name,
+                    }
                 ),
             });
         }
@@ -49,9 +66,6 @@ const FormActionsContainer = () => {
     return (
         <React.Fragment>
             <Card fluid>
-                {/* <Card.Content>
-          <DepositStatusBox />
-        </Card.Content> */}
                 <Card.Content>
                     <Grid>
                         <Grid.Column width={16}>
@@ -59,53 +73,39 @@ const FormActionsContainer = () => {
                                 <SaveButton fluid className="mb-10" />
                                 <PreviewButton fluid className="mb-10" />
                             </div>
-                            {values.id && (
-                                <RecordRequests
-                                    record={values}
-                                    onBeforeAction={onBeforeAction}
-                                    onActionError={({ e, modalControl, formik }) => {
-                                        if (
-                                            e?.response?.data?.error_type === "cf_validation_error" &&
-                                            e?.response?.data?.errors
-                                        ) {
-                                            let errorsObj = {};
-                                            for (const error of e.response.data.errors) {
-                                                errorsObj = setIn(
-                                                    errorsObj,
-                                                    error.field,
-                                                    error.messages.join(" ")
-                                                );
-                                            }
-                                            formik?.setErrors(errorsObj);
-                                        } else if (e?.response?.data?.errors?.length > 0) {
-                                            const errors = serializeErrors(
-                                                e?.response?.data?.errors,
-                                                i18next.t(
-                                                    "Action failed due to validation errors. Please correct the errors and try again:"
-                                                )
-                                            );
-                                            setErrors(errors);
-                                            modalControl?.closeModal();
-                                        }
-                                    }}
-                                />
-                            )}
-                            {values.id && <DeleteButton redirectUrl="/me/records" />}
+                            <RecordRequests
+                                record={values}
+                                onBeforeAction={onBeforeAction}
+                                onErrorPlugins={[beforeActionFormErrorPlugin]}
+                                actionExtraContext={{ setErrors }}
+                            />
+                            <DeleteButton redirectUrl="/me/records" />
                         </Grid.Column>
                         <Grid.Column width={16} className="pt-10">
                             <SelectedCommunity />
                         </Grid.Column>
+                        {repositoryAssignedDoi && (
+                            <Grid.Column width={16} className="pt-10">
+                                <p>{i18next.t("Assigned DOI:")}</p>
+                                <a
+                                    href={sanitizeInput(repositoryAssignedDoi)}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    {repositoryAssignedDoi}
+                                </a>{" "}
+                                <ClipboardCopyButton copyText={repositoryAssignedDoi} />
+                            </Grid.Column>
+                        )}
                     </Grid>
                 </Card.Content>
             </Card>
             <AccessRightField
-                label={i18next.t("Access rights")}
+                label={i18next.t("metadata/accessRights.label")}
                 record={values}
                 labelIcon="shield"
                 fieldPath="access"
                 showMetadataAccess={permissions?.can_manage_record_access}
-                // permissions seem to not work properly when on /_new, in this case I think it is OK that you can restrict
-                // since you have access to the form
                 recordRestrictionGracePeriod={recordRestrictionGracePeriod}
                 allowRecordRestriction={allowRecordRestriction}
             />

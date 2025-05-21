@@ -1,13 +1,14 @@
 import importlib_metadata
-from datasets.resources.files.ui import (
-    DatasetsFileDraftUIJSONSerializer,
-    DatasetsFileUIJSONSerializer,
-)
 from flask_resources.serializers.json import JSONSerializer
 from invenio_records_resources.resources import FileResourceConfig
 from invenio_records_resources.resources.records.headers import etag_headers
 from oarepo_runtime.i18n import lazy_gettext as _
 from oarepo_runtime.resources.responses import ExportableResponseHandler
+
+from datasets.resources.files.ui import (
+    DatasetsFileDraftUIJSONSerializer,
+    DatasetsFileUIJSONSerializer,
+)
 
 
 class DatasetsFileResourceConfig(FileResourceConfig):

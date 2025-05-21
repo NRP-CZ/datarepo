@@ -2,23 +2,16 @@ import * as React from "react";
 import {
     useFormConfig,
     FormikStateLogger,
-    useFieldData,
-    useSanitizeInput,
     FilesField,
+    TextField,
 } from "@js/oarepo_ui/forms";
 import { CommunitySelector } from "@js/communities_components/CommunitySelector/CommunitySelector";
 import { LocalVocabularySelectField } from "@js/oarepo_vocabularies";
-import { AccordionField, TextField } from "react-invenio-forms";
+import { AccordionField } from "react-invenio-forms";
 import { i18next } from "@translations/i18next";
-import { useFormikContext, getIn } from "formik";
 
 const FormFieldsContainer = () => {
     const { formConfig, files: recordFiles } = useFormConfig();
-
-    const { getFieldData } = useFieldData();
-
-    const { values, setFieldValue, setFieldTouched } = useFormikContext();
-    const { sanitizeInput } = useSanitizeInput();
 
     return (
         <React.Fragment>
@@ -28,28 +21,10 @@ const FormFieldsContainer = () => {
                 active
                 label={i18next.t("Basic information")}
             >
-                <TextField
-                    optimized
-                    fieldPath="metadata.title"
-                    {...getFieldData({ fieldPath: "metadata.title" })}
-                    onBlur={() => {
-                        const cleanedContent = sanitizeInput(
-                            getIn(values, "metadata.title")
-                        );
-                        setFieldValue("metadata.title", cleanedContent);
-                        setFieldTouched("metadata.title", true);
-                    }}
-                />
+                <TextField fieldPath="metadata.title" />
                 <LocalVocabularySelectField
-                    optimized
                     fieldPath="metadata.languages"
-                    multiple={true}
-                    clearable
                     optionsListName="languages"
-                    {...getFieldData({
-                        fieldPath: "metadata.languages",
-                        icon: "language",
-                    })}
                 />
             </AccordionField>
             <AccordionField

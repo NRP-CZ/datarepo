@@ -1,4 +1,8 @@
 {# def d, level=0 #}
 <ITable>
-  <ITableField d={d.title} level={level}/>
+  <pre>
+    <code>
+      {{ d._ui_value | tojson(indent=2) }}
+    </code>
+  </pre>
 </ITable>

@@ -4,7 +4,12 @@ from oarepo_runtime.records.dumpers.multilingual_dumper import MultilingualDumpe
 class MultilingualSearchDumperExt(MultilingualDumper):
     """Multilingual search dumper."""
 
-    paths = []
+    paths = [
+        "/metadata/alternate_titles/title",
+        "/metadata/descriptions",
+        "/metadata/subjects/subject",
+        "/metadata/terms_of_use/descriptions",
+    ]
     SUPPORTED_LANGS = ["cs", "en"]
 
     def dump(self, record, data):

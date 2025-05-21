@@ -1,6 +1,3 @@
-from datasets.records.api import DatasetsDraft, DatasetsRecord
-from datasets.services.files.schema import DatasetsFileSchema
-from datasets.services.records.permissions import DatasetsPermissionPolicy
 from invenio_records_resources.services import (
     FileLink,
     FileServiceConfig,
@@ -16,6 +13,10 @@ from oarepo_runtime.services.config import (
     has_permission_file_service,
 )
 from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
+
+from datasets.records.api import DatasetsDraft, DatasetsRecord
+from datasets.services.files.schema import DatasetsFileSchema
+from datasets.services.records.permissions import DatasetsPermissionPolicy
 
 
 class DatasetsFileServiceConfig(PermissionsPresetsConfigMixin, FileServiceConfig):
