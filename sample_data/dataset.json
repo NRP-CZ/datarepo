@@ -1,0 +1,216 @@
+{
+    "metadata": {
+        "title": "Climate Change Impacts on Alpine Plant Communities in the Czech Republic (2015-2020)",
+        "alternate_titles": [
+            {
+                "title": {
+                    "lang": "en",
+                    "value": "Alpine Plant Responses to Climate Change"
+                },
+                "titleType": {
+                    "id": "AlternativeTitle"
+                }
+            },
+            {
+                "title": {
+                    "lang": "cs",
+                    "value": "Reakce alpínských rostlin na změnu klimatu"
+                },
+                "titleType": {
+                    "id": "AlternativeTitle"
+                }
+            }
+        ],
+        "resource_type": {
+            "id": "c_ddb1"
+        },
+        "alternate_identifiers": [
+            {
+                "identifier": "10.1234/alternate.doi",
+                "scheme": "doi"
+            },
+            {
+                "identifier": "978-1-56619-909-4",
+                "scheme": "isbn"
+            }
+        ],
+        "primary_language": {
+            "id": "ENG"
+        },
+        "other_languages": [
+            {
+                "id": "CES"
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "en",
+                "value": "<p>This dataset, titled <span>Climate Change Impacts on Alpine Plant Communities in the Czech Republic (2015-2020)</span>, provides a comprehensive record of ecological changes in alpine and subalpine plant communities across the Czech Republic over a critical five-year period. It includes detailed observations on shifts in species composition, population dynamics, flowering times, and other phenological responses linked to rising temperatures and altered precipitation patterns. The dataset also contains corresponding environmental measurements, such as seasonal temperature fluctuations, snow cover duration, soil moisture levels, and microclimate variability, allowing for robust analysis of climate-vegetation interactions.</p><p>Collected through standardized field surveys and remote sensing techniques, this dataset serves as a valuable resource for understanding how fragile alpine ecosystems are adapting—or struggling—under climate stress. Researchers can use it to model future biodiversity trends, assess habitat vulnerability, and inform conservation strategies for threatened high-altitude flora. Additionally, it offers a baseline for cross-regional comparisons with other alpine ecosystems in Europe, contributing to broader climate impact studies.</p>"
+            },
+            {
+                "lang": "cs",
+                "value": "<p>Tato datová sada s názvem <span>Dopady klimatických změn na alpínské rostlinné společenstva v České republice (2015–2020)</span> podrobně dokumentuje ekologické změny ve vysokohorských a subalpínských rostlinných společenstvech na území ČR během klíčového pětiletého období. Zahrnuje detailní záznamy o posunech v druhovém složení, populační dynamice, době kvetení a dalších fenologických reakcích rostlin souvisejících s rostoucími teplotami a změnami srážkových vzorců. Součástí jsou také doprovodná environmentální data, jako sezónní teplotní výkyvy, délka sněhové pokrývky, vlhkost půdy a proměnlivost mikroklimatu, což umožňuje komplexní analýzu vztahů mezi klimatem a vegetací.</p><p>Data byla získána standardizovaným terénním monitorováním a dálkovým průzkumem Země, což z tohoto souboru činí cenný zdroj pro studium adaptace křehkých horských ekosystémů na klimatický stres. Výzkumníci jej mohou využít k modelování budoucích trendů biodiverzity, hodnocení zranitelnosti stanovišť a tvorbě ochranářských strategií pro ohroženou vysokohorskou flóru. Zároveň poskytuje referenční data pro meziregionální srovnání s dalšími alpínskými oblastmi Evropy, čímž přispívá k širším studiím dopadů klimatických změn.</p>"
+            }
+        ],
+        "related_resources": [
+            {
+                "relation_type": {
+                    "id": "IsCitedBy"
+                },
+                "type": {
+                    "id": "c_6501"
+                },
+                "title": "Climate-induced shifts in alpine plant communities: A five-year study",
+                "resource_url": "https://doi.org/10.1234/journal-article",
+                "identifiers": [
+                    {
+                        "identifier": "10.1234/journal-article",
+                        "scheme": "doi"
+                    }
+                ]
+            }
+        ],
+        "terms_of_use": {
+            "descriptions": [
+                {
+                    "lang": "en",
+                    "value": "This dataset is available under Creative Commons Attribution 4.0 International license."
+                },
+                {
+                    "lang": "cs",
+                    "value": "Tato datová sada je dostupná pod licencí Creative Commons Attribution 4.0 International."
+                }
+            ],
+            "licenses": [
+                {
+                    "id": "CC-4.0"
+                }
+            ],
+            "access_rights": {
+                "id": "c_abf2"
+            }
+        },
+        "funding_references": [
+            {
+                "funder": {
+                    "id": "ror:123456"
+                },
+                "award": {
+                    "title": {
+                        "en": "Climate Change Impacts on Mountain Ecosystems"
+                    },
+                    "number": "GA19-12345S",
+                    "identifiers": [
+                        {
+                            "identifier": "10.13039/501100001824",
+                            "scheme": "doi"
+                        }
+                    ]
+                }
+            }
+        ],
+        "subjects": [
+            {
+                "subject": [
+                    {
+                        "lang": "en",
+                        "value": "alpine plants"
+                    },
+                    {
+                        "lang": "cs",
+                        "value": "alpínské rostliny"
+                    }
+                ]
+            },
+            {
+                "subjectScheme": {
+                    "id": "frascati"
+                },
+                "subject": [
+                    {
+                        "lang": "en",
+                        "value": "natural sciences"
+                    },
+                    {
+                        "lang": "cs",
+                        "value": "přírodní vědy"
+                    }
+                ],
+                "iri": "https://vocabs.ccmm.cz/registry/codelist/SubjectCategory/10000",
+                "classificationCode": "10000"
+            }
+        ],
+        "date_issued": "2021-06-15",
+        "time_references": [
+            {
+                "date_information": "Data collection start",
+                "date_type": {
+                    "id": "CollectedStart"
+                },
+                "date": "2015-05-01"
+            },
+            {
+                "date_information": "Data collection end",
+                "date_type": {
+                    "id": "CollectedEnd"
+                },
+                "date": "2020-09-30"
+            }
+        ],
+        "creators": [
+            {
+                "person_or_org": {
+                    "type": "personal",
+                    "name": "Miroslav Simek",
+                    "given_name": "Miroslav",
+                    "family_name": "Simek",
+                    "identifiers": [
+                        {
+                            "identifier": "0000-0003-0852-6632",
+                            "scheme": "orcid"
+                        }
+                    ]
+                },
+                "role": {
+                    "id": "Researcher"
+                },
+                "affiliations": [
+                    {
+                        "id": "ror:123456",
+                        "name": "Charles University"
+                    }
+                ]
+            }
+        ],
+        "contributors": [
+            {
+                "person_or_org": {
+                    "type": "personal",
+                    "given_name": "Petra",
+                    "family_name": "Svobodová"
+                },
+                "role": {
+                    "id": "DataCollector"
+                },
+                "affiliations": [
+                    {
+                        "id": "ror:024d6js02",
+                        "name": "Charles University"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "person_or_org": {
+                "type": "organizational",
+                "name": "Charles University",
+                "identifiers": [
+                    {
+                        "identifier": "024d6js02",
+                        "scheme": "ror"
+                    }
+                ]
+            }
+        }
+    }
+}
