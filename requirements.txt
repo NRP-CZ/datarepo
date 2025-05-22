@@ -1,4 +1,4 @@
-oarepo[s3,rdm]==12.2.16
+oarepo[s3,rdm]==12.2.17
 cachetools==6.0.0b4
 ccmm-invenio==0.1.0
 deepmerge==2.0
