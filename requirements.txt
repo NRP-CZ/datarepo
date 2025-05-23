@@ -14,11 +14,11 @@ marisa-trie==1.2.1
 marshmallow-i18n-messages==0.1.0
 oarepo-communities==5.1.14
 oarepo-dashboard==1.0.22
-oarepo-doi==1.0.19
+oarepo-doi==2.0.5
 oarepo-glitchtip==1.0.1
 oarepo-global-search==1.0.44
 oarepo-requests==2.4.15
-oarepo-runtime==1.5.134
+oarepo-runtime==1.5.135
 oarepo-ui==5.2.79
 oarepo-vocabularies==2.2.0
 oarepo-workflows==1.1.16

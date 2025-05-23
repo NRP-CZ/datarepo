@@ -41,7 +41,7 @@ from oarepo_communities.services.permissions.policy import (
     CommunityDefaultWorkflowPermissions,
 )
 from oarepo_requests.services.permissions.generators import IfRequestedBy
-from oarepo_runtime.services.permissions.generators import IfDraftType, RecordOwners
+from oarepo_runtime.services.permissions.generators import RecordOwners
 from oarepo_workflows import (
     AutoApprove,
     IfInState,
@@ -150,19 +150,21 @@ class DefaultWorkflowPermissions(CommunityDefaultWorkflowPermissions):
 
 
 # if the record is in draft state, the owner or curator can request publishing
-publish_requesters = IfInState(
-    "draft", then_=[RecordOwners(), PrimaryCommunityRole("curator")]
-)
+publish_requesters = [
+    IfInState("draft", then_=[RecordOwners(), PrimaryCommunityRole("curator")])
+]
 
 # if the requester is the curator of the community, auto approve the request
-publish_recipients = IfRequestedBy(
-    requesters=[
-        PrimaryCommunityRole("curator"),
-        PrimaryCommunityRole("owner"),
-    ],
-    then_=[AutoApprove()],
-    else_=[PrimaryCommunityRole("curator"), PrimaryCommunityRole("owner")],
-)
+publish_recipients = [
+    IfRequestedBy(
+        requesters=[
+            PrimaryCommunityRole("curator"),
+            PrimaryCommunityRole("owner"),
+        ],
+        then_=[AutoApprove()],
+        else_=[PrimaryCommunityRole("curator"), PrimaryCommunityRole("owner")],
+    )
+]
 
 publish_transitions = WorkflowTransitions(
     submitted="submitted",
@@ -184,25 +186,22 @@ publish_escalations = [
 
 class DefaultWorkflowRequests(WorkflowRequestPolicy):
     publish_draft = WorkflowRequest(
-        requesters=[
-            IfDraftType(
-                "metadata",
-                then_=publish_requesters,
-            )
-        ],
-        recipients=[publish_recipients],
+        requesters=publish_requesters,
+        recipients=publish_recipients,
         transitions=publish_transitions,
         escalations=publish_escalations,
     )
 
     publish_new_version = WorkflowRequest(
-        requesters=[
-            IfDraftType(
-                ["new_version", "initial"],
-                then_=publish_requesters,
-            )
-        ],
-        recipients=[publish_recipients],
+        requesters=publish_requesters,
+        recipients=publish_recipients,
+        transitions=publish_transitions,
+        escalations=publish_escalations,
+    )
+
+    publish_changed_metadata = WorkflowRequest(
+        requesters=publish_requesters,
+        recipients=publish_recipients,
         transitions=publish_transitions,
         escalations=publish_escalations,
     )

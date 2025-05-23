@@ -5,10 +5,10 @@ class MultilingualSearchDumperExt(MultilingualDumper):
     """Multilingual search dumper."""
 
     paths = [
-        "/metadata/alternate_titles/title",
-        "/metadata/descriptions",
-        "/metadata/subjects/subject",
-        "/metadata/terms_of_use/descriptions",
+        "metadata/alternate_titles/title",
+        "metadata/descriptions",
+        "metadata/subjects/subject",
+        "metadata/terms_of_use/descriptions",
     ]
     SUPPORTED_LANGS = ["cs", "en"]
 

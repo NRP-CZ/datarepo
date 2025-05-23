@@ -11,7 +11,7 @@ dependencies = [
     "marshmallow-i18n-messages",
     "oarepo-communities==5.*",
     "oarepo-dashboard==1.*",
-    "oarepo-doi==1.*",
+    "oarepo-doi==2.*",
     "oarepo-glitchtip==1.*",
     "oarepo-global-search==1.*",
     "oarepo-requests==2.*",

@@ -12,6 +12,7 @@ class DatasetsSearchOptions(I18nRDMSearchOptions):
     facet_groups = {}
 
     facets = {
+        **getattr(I18nRDMSearchOptions, "facets", {}),
         "access_embargo_active": facets.access_embargo_active,
         "access_embargo_until": facets.access_embargo_until,
         "access_files": facets.access_files,
@@ -25,6 +26,7 @@ class DatasetsSearchOptions(I18nRDMSearchOptions):
         ),
         "metadata_alternate_titles_title_cs": facets.metadata_alternate_titles_title_cs,
         "metadata_alternate_titles_title_en": facets.metadata_alternate_titles_title_en,
+        "metadata_alternate_titles_title": facets.metadata_alternate_titles_title,
         "metadata_alternate_titles_title_lang": (
             facets.metadata_alternate_titles_title_lang
         ),
@@ -74,6 +76,7 @@ class DatasetsSearchOptions(I18nRDMSearchOptions):
         "metadata_date_issued": facets.metadata_date_issued,
         "metadata_descriptions_cs": facets.metadata_descriptions_cs,
         "metadata_descriptions_en": facets.metadata_descriptions_en,
+        "metadata_descriptions": facets.metadata_descriptions,
         "metadata_descriptions_lang": facets.metadata_descriptions_lang,
         "metadata_funding_references_award": facets.metadata_funding_references_award,
         "metadata_funding_references_funder": facets.metadata_funding_references_funder,
@@ -200,6 +203,7 @@ class DatasetsSearchOptions(I18nRDMSearchOptions):
         "metadata_subjects_iri": facets.metadata_subjects_iri,
         "metadata_subjects_subject_cs": facets.metadata_subjects_subject_cs,
         "metadata_subjects_subject_en": facets.metadata_subjects_subject_en,
+        "metadata_subjects_subject": facets.metadata_subjects_subject,
         "metadata_subjects_subject_lang": facets.metadata_subjects_subject_lang,
         "metadata_subjects_subjectScheme": facets.metadata_subjects_subjectScheme,
         "metadata_terms_of_use_access_rights": (
@@ -211,6 +215,7 @@ class DatasetsSearchOptions(I18nRDMSearchOptions):
         "metadata_terms_of_use_descriptions_en": (
             facets.metadata_terms_of_use_descriptions_en
         ),
+        "metadata_terms_of_use_descriptions": facets.metadata_terms_of_use_descriptions,
         "metadata_terms_of_use_descriptions_lang": (
             facets.metadata_terms_of_use_descriptions_lang
         ),
@@ -223,7 +228,6 @@ class DatasetsSearchOptions(I18nRDMSearchOptions):
         "metadata_version": facets.metadata_version,
         "state": facets.state,
         "state_timestamp": facets.state_timestamp,
-        **getattr(I18nRDMSearchOptions, "facets", {}),
         "record_status": facets.record_status,
         "has_draft": facets.has_draft,
     }
@@ -248,6 +252,7 @@ class DatasetsDraftSearchOptions(I18nRDMDraftsSearchOptions):
         ),
         "metadata_alternate_titles_title_cs": facets.metadata_alternate_titles_title_cs,
         "metadata_alternate_titles_title_en": facets.metadata_alternate_titles_title_en,
+        "metadata_alternate_titles_title": facets.metadata_alternate_titles_title,
         "metadata_alternate_titles_title_lang": (
             facets.metadata_alternate_titles_title_lang
         ),
@@ -297,6 +302,7 @@ class DatasetsDraftSearchOptions(I18nRDMDraftsSearchOptions):
         "metadata_date_issued": facets.metadata_date_issued,
         "metadata_descriptions_cs": facets.metadata_descriptions_cs,
         "metadata_descriptions_en": facets.metadata_descriptions_en,
+        "metadata_descriptions": facets.metadata_descriptions,
         "metadata_descriptions_lang": facets.metadata_descriptions_lang,
         "metadata_funding_references_award": facets.metadata_funding_references_award,
         "metadata_funding_references_funder": facets.metadata_funding_references_funder,
@@ -423,6 +429,7 @@ class DatasetsDraftSearchOptions(I18nRDMDraftsSearchOptions):
         "metadata_subjects_iri": facets.metadata_subjects_iri,
         "metadata_subjects_subject_cs": facets.metadata_subjects_subject_cs,
         "metadata_subjects_subject_en": facets.metadata_subjects_subject_en,
+        "metadata_subjects_subject": facets.metadata_subjects_subject,
         "metadata_subjects_subject_lang": facets.metadata_subjects_subject_lang,
         "metadata_subjects_subjectScheme": facets.metadata_subjects_subjectScheme,
         "metadata_terms_of_use_access_rights": (
@@ -434,6 +441,7 @@ class DatasetsDraftSearchOptions(I18nRDMDraftsSearchOptions):
         "metadata_terms_of_use_descriptions_en": (
             facets.metadata_terms_of_use_descriptions_en
         ),
+        "metadata_terms_of_use_descriptions": facets.metadata_terms_of_use_descriptions,
         "metadata_terms_of_use_descriptions_lang": (
             facets.metadata_terms_of_use_descriptions_lang
         ),

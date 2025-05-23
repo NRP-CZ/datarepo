@@ -2,6 +2,7 @@
 
 from invenio_records_resources.services.records.facets import TermsFacet
 from oarepo_runtime.i18n import lazy_gettext as _
+from oarepo_runtime.services.facets import MultilingualFacet
 from oarepo_runtime.services.facets.date import DateTimeFacet
 from oarepo_runtime.services.facets.nested_facet import NestedLabeledFacet
 from oarepo_vocabularies.services.facets import VocabularyFacet
@@ -31,12 +32,20 @@ metadata_alternate_identifiers_scheme = TermsFacet(
 )
 
 metadata_alternate_titles_title_cs = TermsFacet(
-    field="metadata.alternate_titles.title.cs.keyword",
+    field="metadata.alternate_titles.title_cs.keyword",
     label=_("metadata/alternate_titles/title.label"),
 )
 
 metadata_alternate_titles_title_en = TermsFacet(
-    field="metadata.alternate_titles.title.en.keyword",
+    field="metadata.alternate_titles.title_en.keyword",
+    label=_("metadata/alternate_titles/title.label"),
+)
+
+metadata_alternate_titles_title = MultilingualFacet(
+    lang_facets={
+        "cs": metadata_alternate_titles_title_cs,
+        "en": metadata_alternate_titles_title_en,
+    },
     label=_("metadata/alternate_titles/title.label"),
 )
 
@@ -143,11 +152,19 @@ metadata_date_issued = DateTimeFacet(
 )
 
 metadata_descriptions_cs = TermsFacet(
-    field="metadata.descriptions.cs.keyword", label=_("metadata/descriptions.label")
+    field="metadata.descriptions_cs.keyword", label=_("metadata/descriptions.label")
 )
 
 metadata_descriptions_en = TermsFacet(
-    field="metadata.descriptions.en.keyword", label=_("metadata/descriptions.label")
+    field="metadata.descriptions_en.keyword", label=_("metadata/descriptions.label")
+)
+
+metadata_descriptions = MultilingualFacet(
+    lang_facets={
+        "cs": metadata_descriptions_cs,
+        "en": metadata_descriptions_en,
+    },
+    label=_("metadata/descriptions.label"),
 )
 
 metadata_descriptions_lang = NestedLabeledFacet(
@@ -420,12 +437,20 @@ metadata_subjects_iri = TermsFacet(
 )
 
 metadata_subjects_subject_cs = TermsFacet(
-    field="metadata.subjects.subject.cs.keyword",
+    field="metadata.subjects.subject_cs.keyword",
     label=_("metadata/subjects/subject.label"),
 )
 
 metadata_subjects_subject_en = TermsFacet(
-    field="metadata.subjects.subject.en.keyword",
+    field="metadata.subjects.subject_en.keyword",
+    label=_("metadata/subjects/subject.label"),
+)
+
+metadata_subjects_subject = MultilingualFacet(
+    lang_facets={
+        "cs": metadata_subjects_subject_cs,
+        "en": metadata_subjects_subject_en,
+    },
     label=_("metadata/subjects/subject.label"),
 )
 
@@ -450,12 +475,20 @@ metadata_terms_of_use_access_rights = VocabularyFacet(
 )
 
 metadata_terms_of_use_descriptions_cs = TermsFacet(
-    field="metadata.terms_of_use.descriptions.cs.keyword",
+    field="metadata.terms_of_use.descriptions_cs.keyword",
     label=_("metadata/terms_of_use/descriptions.label"),
 )
 
 metadata_terms_of_use_descriptions_en = TermsFacet(
-    field="metadata.terms_of_use.descriptions.en.keyword",
+    field="metadata.terms_of_use.descriptions_en.keyword",
+    label=_("metadata/terms_of_use/descriptions.label"),
+)
+
+metadata_terms_of_use_descriptions = MultilingualFacet(
+    lang_facets={
+        "cs": metadata_terms_of_use_descriptions_cs,
+        "en": metadata_terms_of_use_descriptions_en,
+    },
     label=_("metadata/terms_of_use/descriptions.label"),
 )
 
