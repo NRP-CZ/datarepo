@@ -1,4 +1,4 @@
-oarepo[s3,rdm]==12.2.21
+oarepo[s3,rdm]==12.2.22
 cachetools==6.0.0
 ccmm-invenio==0.2.3
 deepmerge==2.0
@@ -18,8 +18,8 @@ oarepo-doi==2.0.6
 oarepo-glitchtip==1.0.1
 oarepo-global-search==1.0.44
 oarepo-oidc-einfra==1.0.11
-oarepo-requests==2.4.18
-oarepo-runtime==1.7.0
+oarepo-requests==2.4.19
+oarepo-runtime==1.7.2
 oarepo-ui==5.2.80
 oarepo-vocabularies==2.2.1
 oarepo-workflows==1.1.16
