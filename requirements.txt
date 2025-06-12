@@ -17,7 +17,7 @@ oarepo-dashboard==1.0.23
 oarepo-doi==2.0.6
 oarepo-glitchtip==1.0.1
 oarepo-global-search==1.0.44
-oarepo-oidc-einfra==1.0.11
+oarepo-oidc-einfra==1.1.0
 oarepo-requests==2.4.19
 oarepo-runtime==1.7.2
 oarepo-ui==5.2.80
