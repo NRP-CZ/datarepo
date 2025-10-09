@@ -380,3 +380,5 @@ vite.config.ts.timestamp-*
 #
 package-lock.json
 pnpm-lock.yaml
+
+.invenio.private
