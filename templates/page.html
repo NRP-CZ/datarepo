@@ -1,0 +1,45 @@
+{% extends "oarepo_ui/base_page.html" %}
+
+{# Available template blocks (showing closest override point):
+
+Head Section (from oarepo_ui/base_page.html):
+{%- block head %}  # Adds Matomo analytics if configured
+{%- endblock head %}
+
+{%- block css %}  # Adds theme CSS template
+{%- endblock css %}
+
+Header/Footer (from oarepo_ui/base_page.html):
+{%- block header %}  # Adds base target="_blank" if embedded
+{%- endblock header %}
+
+{%- block page_header %}  # Hidden if embedded
+{%- endblock page_header %}
+
+{%- block page_footer %}  # Hidden if embedded
+   {%- block footer_bottom %}  # Additional footer content (from invenio_app_rdm)
+   {%- endblock footer_bottom %}
+{%- endblock page_footer %}
+
+Content (from invenio_theme/page.html):
+{%- block head_meta %}  # Meta tags
+{%- endblock head_meta %}
+
+{%- block head_title %}  # Page title
+{%- endblock head_title %}
+
+{%- block head_links %}  # Favicon and URLs
+{%- endblock head_links %}
+
+{%- block page_body %}  # Main content area
+{%- endblock page_body %}
+
+{%- block javascript %}  # JavaScript includes
+{%- endblock javascript %}
+
+{%- block trackingcode %}  # Analytics
+{%- endblock trackingcode %}
+
+Note: All blocks support {{ super() }} to preserve parent content.
+The "embedded" context variable controls header/footer visibility.
+#}

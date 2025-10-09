@@ -1,26 +1,30 @@
-import { createFormAppInit, parseFormAppConfig } from "@js/oarepo_ui/forms";
-import FormActionsContainer from "./FormActionsContainer";
+import { DepositFormApp, parseFormAppConfig } from "@js/oarepo_ui/forms";
+import React from "react";
+import ReactDOM from "react-dom";
+import { OARepoDepositSerializer } from "@js/oarepo_ui/api";
 import FormFieldsContainer from "./FormFieldsContainer";
+import FormActionsContainer from "./FormActionsContainer";
 
-/** NOTE: This reads configuration for a form app present on a page
- *   In HTML/Jinja, represented by an element with a specific id
- *   (defaults to "form-app").
- *
- *   <div id="form-app" />
- */
-const { formConfig } = parseFormAppConfig();
+const recordSerializer = new OARepoDepositSerializer(
+  ["errors", "expanded"],
+  ["__key"]
+);
 
-/** NOTE: To customize components in a specific form app instance,
- *   you need to obtain its `overridableIdPrefix` from the corresponding config first
- */
-const { overridableIdPrefix } = formConfig;
+const config = parseFormAppConfig();
+
+const overridableIdPrefix = config.formConfig.overridableIdPrefix;
 
 export const componentOverrides = {
-  /** NOTE: Then you can then replace any existing ui
-   * component with your own implementation, e.g.:
-   */
-  [`${overridableIdPrefix}.FormActions.container`]: FormActionsContainer,
   [`${overridableIdPrefix}.FormFields.container`]: FormFieldsContainer,
+  [`${overridableIdPrefix}.FormActions.container`]: FormActionsContainer,
 };
-
-createFormAppInit({ componentOverrides });
+ReactDOM.render(
+  <DepositFormApp
+    config={config.formConfig}
+    record={config.record}
+    files={config.files}
+    recordSerializer={recordSerializer}
+    componentOverrides={componentOverrides}
+  />,
+  config.rootEl
+);

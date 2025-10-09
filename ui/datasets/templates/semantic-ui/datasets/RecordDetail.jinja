@@ -1,0 +1,42 @@
+{#def
+  record,
+  record_ui,
+  files,
+  media_files,
+  permissions,
+  is_preview,
+  include_deleted,
+  is_draft,
+  community,
+  community_ui,
+  user_avatar,
+  record_owner_id,
+  d
+#}
+{% extends "oarepo_ui/record_detail.html" %}
+
+{# Available template blocks (showing closest override point):
+
+Page Structure (from oarepo_ui/record_detail.html):
+{%- block page_body %}  # Main content container
+  {%- block page_banners %}  # Banner area (communities, preview, versions) (see record_detail/banners.html):
+  {%- endblock page_banners %}
+
+  {%- block page_main %}  # Main content area (see record_detail/main.html):
+  {%- endblock page_main %}
+{%- endblock page_body %}
+
+JavaScript (from oarepo_ui/record_detail.html):
+{%- block javascript %}  # Adds record-specific JS (export, versions, sharing)
+{%- endblock javascript %}
+
+Note: All blocks support {{ super() }} to preserve parent content.
+The "embedded" context variable controls certain features.
+#}
+
+{%- block page_banners -%}
+  {% include "datasets/record_detail/banners.html" %}
+{%- endblock page_banners -%}
+{%- block page_main -%}
+  {% include "datasets/record_detail/main.html" %}
+{%- endblock page_main -%}

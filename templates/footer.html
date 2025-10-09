@@ -1,0 +1,28 @@
+{% extends "invenio_app_rdm/footer.html" %}
+
+{# Available template blocks:
+
+Template inheritance chain:
+1. invenio_theme/footer.html (base template):
+   - No blocks defined, provides basic footer structure with Invenio branding and language selector
+
+2. invenio_app_rdm/footer.html (extends invenio_theme/footer.html):
+   {%- block footer_top %}  # Main footer content container
+     {%- block footer_top_left %}  # Left side of footer - About, Get involved, Community sections
+     {%- endblock footer_top_left %}
+     
+     {%- block footer_top_right %}  # Right side of footer
+     {%- endblock footer_top_right %}
+   {%- endblock footer_top %}
+
+You can override any of these blocks to customize the footer.
+#}
+
+
+{%- block footer_top_left %}
+<p class="margin-small">
+  <span class="ui small inverted header">{{_("Contact")}}:&nbsp;</span>
+  <i class="envelope icon"></i>
+  <a href="mailto:support@repo.com">support@repo.com</a>
+</p>
+{%- endblock footer_top_left -%}

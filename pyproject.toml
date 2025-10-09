@@ -1,94 +1,53 @@
 [project]
-name = "repo"
+name = "datarepo"
 version = "1.0.0"
-description = ""
+description = "Catch-All repostitory for Czech scientific data"
 packages = []
 authors = []
 dependencies = [
-    "ccmm-invenio>=0.1.0",
-    "deepmerge>=1.1.0",
     "json5",
-    "marshmallow-i18n-messages",
-    "oarepo-communities==5.*",
-    "oarepo-dashboard==1.*",
-    "oarepo-doi==2.*",
-    "oarepo-glitchtip==1.*",
-    "oarepo-global-search==1.*",
-    "oarepo-requests==2.*",
-    "oarepo-runtime==1.*",
-    "oarepo-ui==5.*",
-    "oarepo-vocabularies==2.*",
-    "oarepo-workflows==1.*",
-    "oarepo[s3,rdm]==12.*",
+    "oarepo[s3,rdm]>=14.0.0,<15.0.0",
+    "oarepo-runtime>=2.0.0dev0,<3.0.0",
+    "oarepo-ui>=6.0.0dev0,<7.0.0",
+    "oarepo-model>=0.1.0dev0,<1.0.0",
+    "oarepo-rdm>=1.0.0dev0,<2.0.0",
+    "oarepo-theme>=1.0.0dev3,<2.0.0",
+    "oarepo-dashboard>=2.0.0dev1,<3.0.0",
     "python-dotenv",
-    "oarepo-oidc-einfra>=1.0.0",
+    "marshmallow-i18n-messages",
+    "oarepo-glitchtip==1.*",
+    "ccmm-invenio>=1.1.0a3",
 ]
-requires-python = ">=3.12,<3.13"
+requires-python = ">=3.13,<3.14"
 
 [project.entry-points."invenio_assets.webpack"]
-branding = "ui.branding.webpack:theme"
 i18n = "i18n.webpack:theme"
 components = "ui.components.webpack:theme"
 ui_datasets = "ui.datasets.webpack:theme"
 
-[project.entry-points."invenio_base.blueprints"]
-branding = "ui.branding:create_blueprint"
-titlepage = "ui.titlepage:create_blueprint"
-components = "ui.components:create_blueprint"
-datasets = "datasets.views.records.app:create_app_blueprint"
-datasets_requests = "datasets.views.requests.app:create_app_blueprint"
-datasets_request_types = "datasets.views.request_types.app:create_app_blueprint"
-datasets_file = "datasets.views.files.app:create_app_blueprint"
-datasets_file_draft = "datasets.views.draft_files.app:create_app_blueprint"
-ui_datasets = "ui.datasets:create_blueprint"
-
 [project.entry-points."invenio_i18n.translations"]
 translations = "i18n"
-datasets = "datasets"
 
 [project.entry-points."invenio_db.alembic"]
-repo = "common:alembic"
+repository = "common:alembic"
 
-[project.entry-points."invenio_base.api_apps"]
-datasets = "datasets.ext:DatasetsExt"
+[project.entry-points."invenio_base.blueprints"]
+ui_datasets = "ui.datasets:create_blueprint"
 
-[project.entry-points."invenio_base.apps"]
-datasets = "datasets.ext:DatasetsExt"
+[project.entry-points."invenio_base.finalize_app"]
+ui_datasets = "ui.datasets:finalize_app"
 
-[project.entry-points."invenio_db.models"]
-datasets = "datasets.records.models"
-datasets_file = "datasets.files.models"
-datasets_file_draft = "datasets.files.models"
-
-[project.entry-points."invenio_base.api_blueprints"]
-datasets = "datasets.views.records.api:create_api_blueprint"
-datasets_requests = "datasets.views.requests.api:create_api_blueprint"
-datasets_request_types = "datasets.views.request_types.api:create_api_blueprint"
-datasets_file = "datasets.views.files.api:create_api_blueprint"
-datasets_file_draft = "datasets.views.draft_files.api:create_api_blueprint"
-
-[project.entry-points."invenio_search.mappings"]
-datasets = "datasets.records.mappings"
-
-[project.entry-points."invenio_jsonschemas.schemas"]
-datasets = "datasets.records.jsonschemas"
-
-[project.entry-points."oarepo.models"]
-datasets = "datasets.models:records.json"
-
-[project.entry-points."oarepo.ui"]
-datasets = "datasets.models:ui.json"
-
-[project.entry-points."invenio.datasets_record.error_handlers"]
-invalid_file_extension = "common.resources.error_handlers:ERROR_HANDLERS"
-
-[project.optional-dependencies]
-tests = [
-    "pytest-invenio>=1.4.11",
+[tool.uv.build-backend]
+module-root = ""
+module-name = [
+    "common",
+    "i18n",
+    "ui",
+    "datasets",
 ]
 
 [build-system]
 requires = [
-    "pdm-backend",
+    "uv_build>=0.8.7,<0.9.0",
 ]
-build-backend = "pdm.backend"
+build-backend = "uv_build"

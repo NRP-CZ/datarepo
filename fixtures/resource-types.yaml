@@ -1,0 +1,8 @@
+id: datasets
+props:
+  coarType: dataset
+  dataCiteType: Dataset
+  submission: "false"
+title:
+  cs: Datová sada
+  en: Dataset

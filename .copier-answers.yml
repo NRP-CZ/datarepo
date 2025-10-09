@@ -1,6 +1,6 @@
 # Changes here will be overwritten by Copier
-_commit: 8b0d6b1
-_src_path: gh:oarepo/nrp-app-copier
+_commit: '5273708'
+_src_path: https://github.com/oarepo/nrp-app-copier
 languages: cs
-repository_description: Catch-all repository for scientific datasets
-repository_human_name: Data Harbour
+repository_description: Catch-All repostitory for Czech scientific data
+repository_human_name: CESNET Data Repository

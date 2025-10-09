@@ -1,0 +1,23 @@
+[cli]
+flavour = RDM
+javascript_package_manager = pnpm
+python_package_manager = uv
+
+[cookiecutter]
+project_name = CESNET Data Repository
+project_shortname = datarepo
+package_name = datarepo
+project_site = datarepo.com
+author_name = 
+author_email = 
+year = 
+database = postgresql
+search = opensearch2
+file_storage = S3
+development_tools = yes
+site_code = no
+use_reduced_vocabs = no
+_template = https://github.com/oarepo/nrp-app-copier.git
+_output_dir = .
+_repo_dir = .
+_checkout = rdm-13

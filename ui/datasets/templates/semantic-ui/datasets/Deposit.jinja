@@ -1,12 +1,25 @@
-{#def record, form_config, data, extra_context, ui_links #}
-{% extends "oarepo_ui/form.html" %}
+
+{#def
+    theme,
+    forms_config,
+    searchbar_config,
+    record,
+    community,
+    community_ui,
+    community_use_jinja_header,
+    files,
+    preselectedCommunity=None,
+    files_locked,
+    extra_context,
+    ui_links,
+    permissions
+#}
+
+{% extends "oarepo_ui/deposit.html" %}
 
 {%- block javascript %}
-    {{ super() }}
+    {% include "oarepo_ui/javascript.html" %}
     {{ webpack['datasets_deposit_form.js'] }}
 {%- endblock %}
 
 
-{%- block page_body %}
-    <EditForm record={record} form_config={form_config} data={data} extra_context={extra_context} ui_links={ui_links}></EditForm>
-{% endblock page_body %}
