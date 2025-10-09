@@ -1,0 +1,35 @@
+{% extends "invenio_app_rdm/frontpage.html" %}
+
+{# Available template blocks (showing closest override point):
+
+Header (from invenio_app_rdm/frontpage.html):
+{%- block page_header %}  # Includes invenio_app_rdm/header_frontpage.html
+{%- endblock page_header %}
+
+Main Content (from invenio_app_rdm/frontpage.html):
+{%- block page_body %}  # Main content container
+  {%- block intro_section %}  # Welcome section (shown if show_intro_section is true)
+  {%- endblock intro_section %}
+
+  {%- block top_banner %}  # Communities carousel
+  {%- endblock top_banner %}
+
+  {%- block grid_section %}  # Main grid layout
+    {%- block main_column %}  # Left/main column
+      {%- block main_column_content %}  # Records list
+      {%- endblock main_column_content %}
+    {%- endblock main_column %}
+
+    {%- block side_column %}  # Right/sidebar column
+      {%- block side_column_content %}  # Sidebar content
+      {%- endblock side_column_content %}
+    {%- endblock side_column %}
+  {%- endblock grid_section %}
+
+  {%- block bottom_section %}  # Bottom content area
+  {%- endblock bottom_section %}
+{%- endblock page_body %}
+
+Note: All blocks support {{ super() }} to preserve parent content.
+Control intro section visibility with THEME_SHOW_FRONTPAGE_INTRO_SECTION config.
+#}

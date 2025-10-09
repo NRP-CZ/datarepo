@@ -1,4 +1,4 @@
-# Data Harbour
+# CESNET Data Repository
 
 ## Repository layout
 
@@ -8,7 +8,6 @@ The repository contains the following files and directories:
 - `pyproject.toml` - python dependencies and plugins
 - `ui` - directory containing the UI sources, such as title page, search page, record detail page, etc.
   - `ui/branding` - branding information, including colors, logo, favicon etc.
-- `models` - directory containing the metadata schemas
 - `tests` - directory containing tests for the repository
 - `shared` - directory with shared code, local implementation etc.
 - `nrp` - the nrp command line tool
@@ -16,7 +15,6 @@ The repository contains the following files and directories:
 The following files/directories are generated automatically
 and should not be modified:
 
-- `<modelname>` - one or more directories containing generated code for the models
 - `.venv` - virtual environment for the repository
 - `.venv-*` - additional virtual environments for tools
 

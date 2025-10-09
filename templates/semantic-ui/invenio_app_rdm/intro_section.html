@@ -1,0 +1,90 @@
+
+<section class="light-bg rel-pt-3 rel-pb-3">
+  {{ records }}
+  <h2 class="section-title">
+    {{ _("You've successfully installed Invenio RDM!") }}
+    <br/>
+    {{ _("What is ahead?") }}
+  </h2>
+
+  <div class="ui cards centered container">
+    <div class="ui card">
+      <div class="image">
+        <div class="intro-step-list-image">1</div>
+      </div>
+      <div class="content">
+        <div class="header">
+          {{ _("Configure") }}
+        </div>
+        <div class="description">
+          {{ _("Configure the datamodel, resource types, permissions and much more to make it suit your needs! For more information on how to do it visit the") }}
+          <a href="https://inveniordm.docs.cern.ch/operate/customize/configuration/" target="_blank">
+            {{ _("configuration section in the docs") }}
+          </a>.
+        </div>
+      </div>
+    </div>
+
+    <div class="ui card">
+      <div class="image">
+        <div class="intro-step-list-image">2</div>
+      </div>
+      <div class="content">
+        <div class="header">
+          {{ _("Customize") }}
+        </div>
+        <div class="description">
+          {{ _("Customize the layout and adapt the styling to match your institution's. See how to do so") }}
+          <a href="https://inveniordm.docs.cern.ch/operate/customize/look-and-feel/" target="_blank">
+            {{ _("here") }}
+          </a>.
+        </div>
+      </div>
+    </div>
+
+    <div class="ui card">
+      <div class="image">
+        <div class="intro-step-list-image">3</div>
+      </div>
+      <div class="content">
+        <div class="header">{{ _("Use it!") }}</div>
+        <div class="description">
+          {{ _("Use and explore your InvenioRDM instance.") }}
+          <a href="https://inveniordm.docs.cern.ch/use/" target="_blank">
+            {{ _("Use") }}
+          </a>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui centered container rel-mt-2">
+    <a
+      class="ui primary big labeled icon button"
+      href="https://inveniordm.docs.cern.ch"
+      target="_blank"
+    >
+      <i class="file alternate outline icon" aria-hidden="true"></i>
+      {{ _("Docs") }}
+    </a>
+
+    <a
+      class="ui primary big labeled icon button"
+      href="https://github.com/oarepo"
+      target="_blank"
+    >
+      <i class="github icon" aria-hidden="true"></i>
+      {{ _("Code") }}
+    </a>
+  </div>
+
+  <div class="ui centered container rel-mt-3">
+    <div class="ui compact tiny message">
+      <p>
+        {{ _("To disable this section, add") }}
+        <code>THEME_SHOW_FRONTPAGE_INTRO_SECTION = False</code>
+        {{ _("to your invenio.cfg file.") }}
+      </p>
+    </div>
+  </div>
+</section>

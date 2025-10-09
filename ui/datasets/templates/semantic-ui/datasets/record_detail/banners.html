@@ -1,0 +1,43 @@
+{% extends "oarepo_ui/record_detail/banners.html" %}
+
+{# Available template blocks (from oarepo_ui/record_detail/banners.html):
+
+{%- block banner_community_header %}  # Community header banner
+  Default: Shows community logo, title, parent community link (if any),
+  and restricted status indicator (if applicable).
+  Only shown when not displaying submission request.
+  Supports custom community themes.
+{%- endblock banner_community_header %}
+
+{%- block banner_preview_header %}  # Preview mode banner
+  Default: Shows "Preview" banner with context-specific message:
+  - For published records
+  - For unpublished changes
+  - For new records (first version)
+  - For new versions of existing records
+{%- endblock banner_preview_header %}
+
+{%- block banner_version_header %}  # Version status banner
+  Default: Shows warning when viewing an older version,
+  with link to the latest version.
+  Only shown for published records that aren't the latest version.
+{%- endblock banner_version_header %}
+
+Note: All blocks are wrapped in a <section id="banners"> container.
+Context variables used:
+- is_preview_submission_request
+- is_preview
+- community (with theme, access, metadata)
+- record_ui (versions, links, publication status)
+#}
+
+{# Uncomment blocks to override:
+{%- block banner_community_header -%}
+{%- endblock banner_community_header -%}
+
+{%- block banner_preview_header -%}
+{%- endblock banner_preview_header -%}
+
+{%- block banner_version_header -%}
+{%- endblock banner_version_header -%}
+#}

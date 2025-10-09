@@ -12,13 +12,13 @@
   </div>
 {% endif %}
 {% if record.expanded.request_types or recordRequests %}
-  <RecordRequests record={record} />
+  <RecordRequests record={{record}} />
 {% endif %}
 </section>
 {% endif %}
 {% if record.expanded.communities %}
-  <RecordCommunities communities={record.expanded.communities} />
+  <RecordCommunities communities={{record.expanded.communities}} />
 {% endif %}
-<IdentifiersAndLinks originalRecordUrl={record.metadata.originalRecord} objectIdentifiers={record.metadata.objectIdentifiers}/>
-<RecordVersions record={record} is_preview={is_preview} />
-<RecordExport record={record} metadata={record.metadata} extra_context={extra_context}/>
+<IdentifiersAndLinks originalRecordUrl={{record.metadata.originalRecord}} objectIdentifiers={{record.metadata.objectIdentifiers}}/>
+<RecordVersions record={{record}} is_preview={{is_preview}} />
+<RecordExport record={{record}} metadata={{record.metadata}} extra_context={{extra_context}}/>

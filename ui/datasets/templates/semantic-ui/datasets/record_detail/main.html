@@ -1,0 +1,67 @@
+{% extends "oarepo_ui/record_detail/main.html" %}
+
+{%- set m = d.metadata -%}
+
+{# Available template blocks (from oarepo_ui/record_detail/main.html):
+
+Main Record Content (wrapped in a container grid layout):
+{%- block record_body %}  # Main content wrapper
+  {%- block record_header %}  # Record header section
+    {%- block record_header_button %}  # Navigation header buttons (e.g., back to edit)
+    {%- endblock record_header_button %}
+    
+    {%- block record_header_info %}  # Publication date, version, type, access status
+    {%- endblock record_header_info %}
+  {%- endblock record_header %}
+  
+  {%- block record_title %}  # Record title and creators
+    Default: Title heading and creators/contributors section
+  {%- endblock record_title %}
+  
+  {%- block record_content %}  # Main description content
+    Default: Includes description template
+  {%- endblock record_content %}
+  
+  {%- block record_files %}  # Files section
+    Default: File preview and list
+    {%- block record_files_access_request %}  # Access request form for restricted files
+    {%- endblock record_files_access_request %}
+  {%- endblock record_files %}
+  
+  {%- block record_media_files %}  # System/media files section
+    Default: Media files list if enabled and accessible
+  {%- endblock record_media_files %}
+  
+  {%- block additional_record_details %}  # Additional metadata
+    Default: Includes details template
+  {%- endblock additional_record_details %}
+  
+  {%- block record_footer %}  # Footer section
+  {%- endblock record_footer %}
+{%- endblock record_body %}
+
+Sidebar Content:
+{% block record_sidebar %}  # Right sidebar
+  Default: Includes side_bar.html template
+{% endblock record_sidebar %}
+
+Navigation:
+{%- block jump %}  # "Jump to top" button
+  Default: Button at the bottom of the page
+{%- endblock jump %}
+
+Note: Context variables available:
+- record_ui: Access status, UI elements, files config
+- permissions: User permissions
+- metadata: Record metadata
+- files/media_files: File entries
+- is_preview/is_draft: Record state
+#}
+
+{%- block record_title -%}
+<section id="record-title-section" aria-label="{{ _('Record title') }}">
+  <h1 id="record-title" class="wrap-overflowing-text">
+    {{ui_value(m.title)}}
+  </h1>
+</section>
+{%- endblock record_title -%}

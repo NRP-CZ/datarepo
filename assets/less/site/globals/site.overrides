@@ -1,0 +1,383 @@
+//
+// overrides for css styles. To reference a font/image from the assets directory, use:
+// url("~@less/fonts/your-font-name") or url("~@less/images/your-image-name")
+//
+// Custom CSS reset by:
+// https://www.joshwcomeau.com/css/custom-css-reset/
+// https://github.com/inveniosoftware/invenio-app-rdm/blob/d21af4eac1f6aca4ddd524cccfb621ae259f8411/invenio_app_rdm/theme/assets/semantic-ui/less/invenio_app_rdm/theme/globals/site.overrides#L4
+
+
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+html, body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: @fontSize;
+}
+
+main {
+  flex-grow: 1;
+}
+
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+/* 6. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+/*
+  9. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+
+/* Override defaults from invenio-theme that cannot be overriden other way */
+html.cover-page {
+  background-color: @coverPageBackgroundColor !important;
+}
+.ui.page-header {
+    #invenio-burger-menu-icon {
+        .navicon, .navicon::before, .navicon::after {
+            background: @white !important;
+        }
+    }
+}
+
+:not(.ui.grid).only {
+
+  &.mobile:not(.tablet) {
+    @media all and (min-width: @tabletBreakpoint) {
+      display: none !important;
+    }
+  }
+
+  &.tablet {
+    &.mobile {
+      @media all and (min-width: @computerBreakpoint) {
+        display: none !important;
+      }
+    }
+
+    &.computer {
+      @media all and (max-width: @largestMobileScreen) {
+        display: none !important;
+      }
+    }
+
+    &:not(.computer):not(.mobile) {
+      @media not all and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+        display: none !important;
+      }
+    }
+  }
+
+  &.computer:not(.tablet) {
+    @media all and (max-width: @largestTabletScreen) {
+      display: none !important;
+    }
+  }
+}
+
+button:focus-visible, a:focus-visible {
+  outline: 3px solid @focusedFormBorderColor !important;
+}
+
+.standard-line-height {
+  line-height: normal;
+}
+
+.section-title {
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  text-align: center;
+  display: block;
+  color: @primaryColor;
+  font-weight: 500;
+
+  h2& {
+    font-size: 2em;
+    margin-bottom: 3rem;
+
+    @media screen and (max-width: @largestMobileScreen) {
+      font-size: 1.7em;
+    }
+  }
+
+  h3& {
+    font-size: 1.5em;
+
+    @media screen and (max-width: @largestMobileScreen) {
+      font-size: 1.3em;
+    }
+  }
+}
+
+/* record details */
+
+.font-small {
+  font-size: @font-size-small
+}
+
+.font-tiny {
+  font-size: @font-size-tiny
+}
+
+a.no-text-decoration:hover {
+  text-decoration: none;
+}
+
+a.remove-default-style:hover {
+  color: @mutedTextColor;
+}
+
+.preview-container {
+  border: 1px solid transparent; // Prevents iframe from overflowing accordion border
+}
+
+.preview-iframe {
+  display: block;
+  border-style: none;
+  width:100%;
+  height:400px;
+}
+
+
+dd {
+  // Start left aligned
+  margin-inline-start: 0;
+}
+
+ul.no-bullet {
+  list-style-type: none;
+  margin-left: 0 !important;
+  padding-left: 0;
+
+  li {
+    padding-left: 0 !important;
+
+    &::before {
+      content: none !important;
+    }
+  }
+}
+
+ul.details-list {
+  li {
+    padding-left: 0 !important;
+
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+dl.details-list {
+  margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  dt {
+    &.ui.tiny.header {
+      margin-bottom: 0.2rem;
+
+      &:not(:first-child) {
+        margin-top: 1rem;
+      }
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  dd {
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+
+    div:not(:last-child) {
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  &.subjects dd {
+    display: inline-block;
+    margin-bottom: .4rem;
+    margin-right: .1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+.language {
+  font-size: @fontSizeBase;
+  font-weight: normal;
+}
+
+.truncated {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.display-inline-flex {
+  display: inline-flex;
+}
+
+.text-align-center {
+  text-align: center !important;
+}
+
+.text-align-left {
+  text-align: left !important;
+}
+
+.text-align-right {
+  text-align: right !important;
+
+  &-mobile {
+    @media all and (max-width: @largestMobileScreen) {
+      text-align: right !important;
+    }
+  }
+
+  &-tablet {
+    @media all and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+      text-align: right !important;
+    }
+  }
+
+  &-computer {
+    @media all and (min-width: @computerBreakpoint) {
+      text-align: right !important;
+    }
+  }
+}
+
+.inline-computer {
+  display: inline-block;
+
+  @media all and (max-width: @largestMobileScreen) {
+    display: block;
+  }
+}
+
+.separated:not(:last-child)::after {
+  content: @listSeparator;
+  display: inline-block;
+  font-size: 1em;
+  margin-left: .1rem;
+}
+
+.comma-separated:not(:last-child)::after {
+  content: @listCommaSeparator;
+  display: inline-block;
+  font-size: 1em;
+}
+
+.highlight-background {
+  background-color: @highlightHeaderColor;
+}
+
+.selected-background {
+  background-color: @selectedColor !important;
+}
+
+.text-muted {
+  color: @mutedTextColor !important;
+}
+
+.clickable {
+  cursor: pointer !important;
+}
+
+.capitalize-first-char {
+  display: inline-block;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.sr-only { // Hide element in the UI, but keep it available for screen readers
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  word-wrap: normal;
+  border: 0;
+}
+
+.themed-community-label {
+  font-weight: @normal !important;
+  color: @white !important;
+  width: 100%;
+  height: @26px;
+}
+
+.themed-community-logo {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.text-break {
+  word-break: break-word
+}
+
+
+// fix for hidden tooltips
+[data-tooltip]:after {
+   z-index: 20
+}
+
+@media all and (max-width: @largestTabletScreen){
+  .right.floated.column {
+    [data-tooltip]:hover:after {
+      // fix for tooltip overflowing on the right side of mobile devices
+      // resulting in cut tooltips
+      transform: translateX(-75%) scale(1) !important;
+    }
+  }
+}
+// prevent right hand pop up menu to stretch too much
+@media all and (max-width: @largestTabletScreen) {
+  #invenio-menu {
+    width: auto !important;
+  }
+}

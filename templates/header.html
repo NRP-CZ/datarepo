@@ -1,0 +1,38 @@
+{% extends "invenio_app_rdm/header.html" %}
+
+{# Available template blocks (showing closest override point):
+
+User Status (from invenio_app_rdm/header.html):
+{%- block user_impersonation %}  # User impersonation warning banner
+{%- endblock user_impersonation %}
+
+Navigation (from invenio_app_rdm/header.html):
+{%- block navbar %}  # Main navigation container
+  {%- block navbar_header %}  # Logo/branding area
+    {%- block brand %}  # Site logo or text
+    {%- endblock brand %}
+  {%- endblock navbar_header %}
+  
+  {%- block navbar_search %}  # Search bar (if enabled in config)
+  {%- endblock navbar_search %}
+  
+  {%- block navbar_nav %}  # Main menu items
+  {%- endblock navbar_nav %}
+  
+  {%- block navbar_right %}  # Right side with notifications and login
+  {%- endblock navbar_right %}
+{%- endblock navbar %}
+
+Additional Elements (from invenio_app_rdm/header.html):
+{%- block site_banner %}  # Site-wide banner/announcement area
+{%- endblock site_banner %}
+
+{%- block flashmessages %}  # Flash messages/notifications
+{%- endblock flashmessages %}
+
+{%- block breadcrumbs %}  # Navigation breadcrumbs
+{%- endblock breadcrumbs %}
+
+Note: All blocks support {{ super() }} to preserve parent content.
+The navbar_inner block from invenio_theme is replaced by individual blocks in invenio_app_rdm.
+#}

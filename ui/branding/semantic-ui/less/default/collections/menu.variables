@@ -1,2 +1,0 @@
-@dropdownItemBackground: @white;
-@dropdownHoveredItemBackground: @lightGray;
