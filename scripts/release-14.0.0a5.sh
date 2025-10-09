@@ -21,7 +21,11 @@ if [ -z "$USER_PASSWORD" ]; then
   exit 1
 fi
 
-./run.sh cli services setup
+if [ -z "$KUBERNETES_PORT" ] ; then
+    ./run.sh cli services setup
+else
+    ./run.sh cli services setup --no-services
+fi
 
 invenio files location create --default S3 s3://${BUCKET_NAME};
 
