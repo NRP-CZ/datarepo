@@ -37,7 +37,7 @@ const FormActionsContainerComponent = ({ saveAction, setErrorsAction }) => {
               <SaveButton fluid className="mb-10" />
               <PreviewButton fluid className="mb-10" />
             </div>
-            <DeleteButton redirectUrl="/me/records" />
+            <DeleteButton />
           </Grid.Column>
           {repositoryAssignedDoi && (
             <Grid.Column width={16} className="pt-10">
