@@ -58,10 +58,22 @@ Note: Context variables available:
 - is_preview/is_draft: Record state
 #}
 
+{%- block record_header %}
+    {{ super() }}
+    {{ record_ui }}
+{%- endblock record_header %}
+
 {%- block record_title -%}
 <section id="record-title-section" aria-label="{{ _('Record title') }}">
   <h1 id="record-title" class="wrap-overflowing-text">
     {{ui_value(m.title)}}
   </h1>
+  {{ record_ui["ui"]["creators"]}}
+  {% if record_ui["ui"]["creators"] or record_ui["ui"]["contributors"] %}
+    <section id="creatibutors"
+              aria-label="{{ _('Creators and contributors') }}">
+      {%- include "invenio_app_rdm/records/details/creatibutors.html" %}
+    </section>
+  {% endif %}
 </section>
 {%- endblock record_title -%}

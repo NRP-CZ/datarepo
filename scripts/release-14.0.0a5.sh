@@ -27,7 +27,7 @@ else
     ./run.sh cli services setup --no-services
 fi
 
-invenio files location create --default S3 s3://${BUCKET_NAME};
+invenio files location create --default s3 s3://${BUCKET_NAME};
 
 
 invenio users create -a -c --password "$USER_PASSWORD" admin@test.com
