@@ -64,7 +64,6 @@ class ResultsListItem extends Component {
 
     // Derivatives
     const viewLink = result.links.self_html;
-    console.log("viewLink", viewLink);
     return (
       <Overridable
         id={buildUID("RecordsResultsListItem.layout", "", appName)}
