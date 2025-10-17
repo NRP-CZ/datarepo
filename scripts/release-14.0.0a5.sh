@@ -21,7 +21,7 @@ if [ -z "$USER_PASSWORD" ]; then
   exit 1
 fi
 
-if [ -z "$KUBERNETES_PORT" ] ; then
+if [ -z "$KUBERNETES_SERVICE_HOST" ] ; then
     ./run.sh cli services setup
 else
     ./run.sh cli services setup --no-services
