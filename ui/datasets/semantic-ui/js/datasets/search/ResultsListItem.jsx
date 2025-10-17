@@ -1,82 +1,192 @@
-import React from "react";
-import PropTypes from "prop-types";
-import _get from "lodash/get";
-import _join from "lodash/join";
-import { Grid, Item, Label } from "semantic-ui-react";
-import { i18next } from "@translations/i18next";
+// This file is part of InvenioRDM
+// Copyright (C) 2022-2024 CERN.
+// Copyright (C) 2024 KTH Royal Institute of Technology.
+//
+// Invenio RDM is free software; you can redistribute it and/or modify it
+// under the terms of the MIT License; see LICENSE file for more details.
 
-export const ResultsListItem = ({ result, ...rest }) => {
-  const accessRights = _get(result, "ui.access_status", null);
-  const createdDate = _get(
-    result,
-    "ui.created_date_l10n_short",
-    "No creation date found."
-  );
-  const languages = _get(result, "metadata.languages", []);
-  const version = _get(result, "metadata.version", null);
-  const title = _get(result, "metadata.title", i18next.t("No title"));
-  return (
-    <Item key={result.id} data-testid="result-item">
-      <Item.Content>
-        <Grid>
-          <Grid.Row>
-            <Grid.Column className="results-list item-main">
-              <div className="justify-space-between flex">
-                <Item.Header as="h2">
-                  <a href={result.links.self_html}>{title}</a>
-                </Item.Header>
-                <div className="item-access-rights">
-                  {result.state && (
-                    <Label title={result.state_timestamp}>{result.state}</Label>
-                  )}
-                  {accessRights && accessRights.id !== "open" && (
-                    <Label title={`${accessRights.description_l10n}`}>
-                      {accessRights.title_l10n}
-                    </Label>
-                  )}
-                </div>
-              </div>
-              <Item.Meta>
-                <Grid columns={1}>
-                  <Grid.Column>
-                    <Grid.Row className="ui separated">
-                      <span
-                        aria-label={i18next.t("Languages")}
-                        title={i18next.t("Languages")}
-                      >
-                        {_join(
-                          languages.map((l) => l.title),
-                          ", "
-                        )}
-                      </span>
-                    </Grid.Row>
-                  </Grid.Column>
-                </Grid>
-              </Item.Meta>
-              <Item.Extra>
-                <div>
-                  <small>
+// Taken from InvenioAppRDM with fixes for viewLink
+
+import { i18next } from "@translations/invenio_app_rdm/i18next";
+import _get from "lodash/get";
+import React, { Component } from "react";
+import Overridable from "react-overridable";
+import { SearchItemCreators } from "@js/invenio_app_rdm/utils";
+import PropTypes from "prop-types";
+import { Item, Label, Icon } from "semantic-ui-react";
+import { buildUID } from "react-searchkit";
+import { CompactStats } from "@js/invenio_app_rdm/components/CompactStats";
+import { DisplayPartOfCommunities } from "@js/invenio_app_rdm/components/DisplayPartOfCommunities";
+
+class ResultsListItem extends Component {
+  render() {
+    const { currentQueryState, result, key, appName } = this.props;
+
+    const accessStatusId = _get(result, "ui.access_status.id", "open");
+    const accessStatus = _get(result, "ui.access_status.title_l10n", "Open");
+    const accessStatusIcon = _get(result, "ui.access_status.icon", "unlock");
+    const createdDate = _get(
+      result,
+      "ui.created_date_l10n_long",
+      i18next.t("No creation date found.")
+    );
+
+    const creators = _get(result, "ui.creators.creators", []);
+
+    const descriptionStripped = _get(
+      result,
+      "ui.description_stripped",
+      i18next.t("No description")
+    );
+
+    const publicationDate = _get(
+      result,
+      "ui.publication_date_l10n_long",
+      i18next.t("No publication date found.")
+    );
+    const resourceType = _get(
+      result,
+      "ui.resource_type.title_l10n",
+      i18next.t("No resource type")
+    );
+    const subjects = _get(result, "ui.subjects", []);
+    const title = _get(result, "metadata.title", i18next.t("No title"));
+    const version = _get(result, "ui.version", null);
+    const versions = _get(result, "versions");
+    const uniqueViews = _get(result, "stats.all_versions.unique_views", 0);
+    const uniqueDownloads = _get(result, "stats.all_versions.unique_downloads", 0);
+
+    const publishingInformation = _get(result, "ui.publishing_information.journal", "");
+
+    const filters = currentQueryState && Object.fromEntries(currentQueryState.filters);
+    const allVersionsVisible = filters?.allversions;
+    const numOtherVersions = versions.index - 1;
+
+    // Derivatives
+    const viewLink = result.links.self_html;
+    console.log("viewLink", viewLink);
+    return (
+      <Overridable
+        id={buildUID("RecordsResultsListItem.layout", "", appName)}
+        result={result}
+        key={key}
+        accessStatusId={accessStatusId}
+        accessStatus={accessStatus}
+        accessStatusIcon={accessStatusIcon}
+        createdDate={createdDate}
+        creators={creators}
+        descriptionStripped={descriptionStripped}
+        publicationDate={publicationDate}
+        resourceType={resourceType}
+        subjects={subjects}
+        title={title}
+        version={version}
+        versions={versions}
+        allVersionsVisible={allVersionsVisible}
+        numOtherVersions={numOtherVersions}
+      >
+        <Item key={key ?? result.id}>
+          <Item.Content>
+            {/* FIXME: Uncomment to enable themed banner */}
+            {/* <DisplayVerifiedCommunity communities={result.parent?.communities} /> */}
+            <Item.Extra className="labels-actions">
+              <Label horizontal size="small" className="primary theme-primary">
+                {publicationDate} ({version})
+              </Label>
+              <Label horizontal size="small" className="neutral">
+                {resourceType}
+              </Label>
+              <Label
+                horizontal
+                size="small"
+                className={`access-status ${accessStatusId}`}
+              >
+                {accessStatusIcon && <Icon name={accessStatusIcon} />}
+                {accessStatus}
+              </Label>
+            </Item.Extra>
+            <Item.Header as="h2" className="theme-primary-text">
+              <a href={viewLink}>{title}</a>
+            </Item.Header>
+            <Item className="creatibutors">
+              <SearchItemCreators creators={creators} othersLink={viewLink} />
+            </Item>
+            <Overridable
+              id={buildUID("RecordsResultsListItem.description", "", appName)}
+              descriptionStripped={descriptionStripped}
+              result={result}
+            >
+              <Item.Description className="truncate-lines-2">
+                {descriptionStripped}
+              </Item.Description>
+            </Overridable>
+
+            <Item.Extra>
+              {subjects.map((subject) => (
+                <Label key={subject.title_l10n} size="tiny">
+                  {subject.title_l10n}
+                </Label>
+              ))}
+
+              <div className="flex justify-space-between align-items-end">
+                <small>
+                  <DisplayPartOfCommunities communities={result.parent?.communities} />
+                  <p>
+                    {createdDate && (
+                      <>
+                        {i18next.t("Uploaded on {{uploadDate}}", {
+                          uploadDate: createdDate,
+                        })}
+                      </>
+                    )}
+                    {createdDate && publishingInformation && " | "}
+
+                    {publishingInformation && (
+                      <>
+                        {i18next.t("Published in: {{- publishInfo }}", {
+                          publishInfo: publishingInformation,
+                        })}
+                      </>
+                    )}
+                  </p>
+
+                  {!allVersionsVisible && versions.index > 1 && (
                     <p>
-                      {createdDate && (
-                        <>
-                          {i18next.t("Uploaded on")} <span>{createdDate}</span>{" "}
-                          {version && `(${i18next.t("version")}: ${version})`}
-                        </>
-                      )}
+                      <b>
+                        {i18next.t("{{count}} more versions exist for this record", {
+                          count: numOtherVersions,
+                        })}
+                      </b>
                     </p>
-                  </small>
-                </div>
-              </Item.Extra>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Item.Content>
-    </Item>
-  );
-};
+                  )}
+                </small>
+
+                <small>
+                  <CompactStats
+                    uniqueViews={uniqueViews}
+                    uniqueDownloads={uniqueDownloads}
+                  />
+                </small>
+              </div>
+            </Item.Extra>
+          </Item.Content>
+        </Item>
+      </Overridable>
+    );
+  }
+}
 
 ResultsListItem.propTypes = {
+  currentQueryState: PropTypes.object,
   result: PropTypes.object.isRequired,
+  key: PropTypes.string,
+  appName: PropTypes.string,
 };
 
-export default ResultsListItem;
+ResultsListItem.defaultProps = {
+  key: null,
+  currentQueryState: null,
+  appName: "",
+};
+
+export default Overridable.component("ResultsListItem", ResultsListItem);

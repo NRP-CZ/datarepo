@@ -64,15 +64,36 @@ Note: Context variables available:
 {%- endblock record_header %}
 
 {%- block record_title -%}
+{%- from "invenio_app_rdm/records/macros/creatibutors.html" import affiliations_accordion, show_creatibutors %}
+
 <section id="record-title-section" aria-label="{{ _('Record title') }}">
   <h1 id="record-title" class="wrap-overflowing-text">
     {{ui_value(m.title)}}
   </h1>
-  {{ record_ui["ui"]["creators"]}}
   {% if record_ui["ui"]["creators"] or record_ui["ui"]["contributors"] %}
     <section id="creatibutors"
               aria-label="{{ _('Creators and contributors') }}">
-      {%- include "invenio_app_rdm/records/details/creatibutors.html" %}
+      <div class="ui grid">
+        <!-- TODO: Hack until creatibutors ui serialization fixed -->
+        {% if record_ui["ui"]["creators"] and record_ui["ui"]["creators"][0]["creators"] %}
+          <div class="row ui accordion affiliations">
+            <div class="sixteen wide mobile twelve wide tablet thirteen wide computer column">
+                <h3 class="sr-only">{{ _('Creators') }}</h3>
+                <ul class="creatibutors">
+                  {{ show_creatibutors(record_ui["ui"]["creators"][0]["creators"], show_affiliations=True, show_role=False) }}
+                </ul>
+            </div>
+
+              {# Todo: get full list of all affiliations (both creators & contributors) e.g.
+              record_ui["ui"]["affiliation"] and merge to one accordion #}
+              {% if record_ui["ui"]["creators"] and record_ui["ui"]["creators"][0]["affiliations"] %}
+                {{ affiliations_accordion('creators', record_ui["ui"]["creators"][0]["affiliations"])}}
+              {% endif %}
+
+          </div>
+        {% endif %}
+</div>
+
     </section>
   {% endif %}
 </section>
