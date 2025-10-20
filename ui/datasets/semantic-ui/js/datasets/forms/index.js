@@ -4,12 +4,12 @@ import ReactDOM from "react-dom";
 import { OARepoDepositSerializer } from "@js/oarepo_ui/api";
 import FormFieldsContainer from "./FormFieldsContainer";
 
-const recordSerializer = new OARepoDepositSerializer(
-  ["errors", "expanded"],
-  ["__key"]
-);
-
 const { rootEl, config, ...rest } = parseFormAppConfig();
+
+const recordSerializer = new OARepoDepositSerializer(
+  config.default_locale,
+  config.custom_fields.vocabularies
+);
 
 const overridableIdPrefix = config.overridableIdPrefix;
 
