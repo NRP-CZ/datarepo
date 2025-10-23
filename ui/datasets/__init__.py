@@ -8,6 +8,7 @@ from oarepo_ui.resources.components import (
     FilesQuotaAndTransferComponent,
     RecordRestrictionComponent,
     PermissionsComponent,
+    MultilingualFieldLanguagesComponent,
 )
 from oarepo_ui.resources.components.custom_fields import CustomFieldsComponent
 from oarepo_ui.resources.records.config import RecordsUIResourceConfig
@@ -43,6 +44,7 @@ class DatasetsUIResourceConfig(RecordsUIResourceConfig):
         EmptyRecordAccessComponent,
         FilesLockedComponent,
         FilesQuotaAndTransferComponent,
+        MultilingualFieldLanguagesComponent,
     ]
 
     try:

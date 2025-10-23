@@ -10,7 +10,7 @@ const recordSerializer = new OARepoDepositSerializer(
   config.default_locale,
   config.custom_fields.vocabularies
 );
-
+console.log(config, "dwadwa");
 const overridableIdPrefix = config.overridableIdPrefix;
 
 export const componentOverrides = {

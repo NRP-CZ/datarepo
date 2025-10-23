@@ -1,0 +1,17 @@
+// @miniSize: (10 / 16);
+// @tinySize: (12 / 16);
+// @smallSize: (14 / 16);
+// @mediumSize: (16 / 16);
+// @largeSize: (18 / 16);
+// @bigSize: (20 / 16);
+
+// @mini: unit(@miniSize, rem);
+// @tiny: unit(@tinySize, rem);
+// @small: unit(@smallSize, rem);
+// @medium: unit(@mediumSize, rem);
+// @large: unit(@largeSize, rem);
+// @big: unit(@bigSize, rem);
+
+@verticalPadding: 0.5em;
+@horizontalPadding: 1em;
+@lineHeight: 1.5em;
