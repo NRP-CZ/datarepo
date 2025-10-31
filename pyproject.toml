@@ -6,7 +6,7 @@ packages = []
 authors = []
 dependencies = [
     "json5",
-    "oarepo[s3,rdm]>=14.0.0,<15.0.0",
+    "oarepo[s3,rdm]>=14.0.9,<15.0.0",
     "oarepo-runtime>=2.0.0dev0,<3.0.0",
     "oarepo-ui>=6.0.0dev0,<7.0.0",
     "oarepo-model>=0.1.0dev0,<1.0.0",

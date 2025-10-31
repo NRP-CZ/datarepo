@@ -30,6 +30,7 @@ import _get from "lodash/get";
 import { useFormikContext } from "formik";
 import { Dropdown, Button } from "semantic-ui-react";
 import { TimeReferences } from "./TimeReferences";
+import { VocabularyField } from "@js/oarepo_vocabularies/form";
 
 const friendOptions = [
   {
@@ -167,7 +168,7 @@ const FormFieldsContainerComponent = ({ record }) => {
   const formConfig = useFormConfig();
   const { filesLocked } = formConfig;
   const { values } = useFormikContext();
-
+  const multilingualLanguages = formConfig.config.multilingualFieldLanguages;
   return (
     <React.Fragment>
       <AccordionField
@@ -214,9 +215,10 @@ const FormFieldsContainerComponent = ({ record }) => {
 
         <LanguagesField
           fieldPath="metadata.languages"
-          initialOptions={_get(record, "ui.languages", []).filter(
-            (lang) => lang !== null
-          )} // needed because dumped empty record from backend gives [null]
+          initialOptions={[
+            ...multilingualLanguages,
+            ..._get(record, "ui.languages", []).filter((lang) => lang !== null),
+          ]} // needed because dumped empty record from backend gives [null]
           serializeSuggestions={(suggestions) =>
             suggestions.map((item) => ({
               text: item.title_l10n,
@@ -224,6 +226,12 @@ const FormFieldsContainerComponent = ({ record }) => {
               key: item.id,
             }))
           }
+        />
+        <LanguageSelector />
+        <VocabularyField
+          fieldPath="metadata.languages"
+          vocabularyName="languages"
+          multiple
         />
         <Dropdown
           options={resourceTypes.map((rt) => ({
@@ -323,3 +331,33 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(FormFieldsContainerComponent);
+
+const serializer = (suggestions) =>
+  suggestions.map((item) => ({
+    text: item.title_l10n,
+    value: item.id,
+    key: item.id,
+  }));
+const LanguageSelector = () => {
+  const remoteRef = React.useRef();
+  const { config } = useFormConfig();
+  const label = i18next.t("Languages");
+
+  const multilingualLanguages = config.multilingualFieldLanguages;
+
+  return (
+    <RemoteSelectField
+      ref={remoteRef}
+      fieldPath="metadata.languages"
+      suggestionAPIUrl="/api/vocabularies/languages"
+      suggestionAPIHeaders={{
+        Accept: "application/vnd.inveniordm.v1+json",
+      }}
+      clearable
+      multiple
+      initialSuggestions={multilingualLanguages}
+      label="My languages"
+      serializeSuggestions={serializer}
+    />
+  );
+};

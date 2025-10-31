@@ -14,6 +14,7 @@ import queryString from "query-string";
 import React, { Component } from "react";
 import { Message } from "semantic-ui-react";
 import { withCancel, SelectField } from "react-invenio-forms";
+import uniqBy from "lodash/uniqBy";
 
 const DEFAULT_SUGGESTION_SIZE = 20;
 
@@ -197,8 +198,17 @@ export class RemoteSelectField extends Component {
       error: false,
       searchQuery: searchOnFocus ? prevState.searchQuery : null,
       suggestions: searchOnFocus
-        ? prevState.suggestions
-        : prevState.selectedSuggestions,
+        ? [
+            ...this.props.serializeSuggestions(this.props.initialSuggestions),
+            ...prevState.suggestions,
+          ]
+        : uniqBy(
+            [
+              ...this.props.serializeSuggestions(this.props.initialSuggestions),
+              ...prevState.selectedSuggestions,
+            ],
+            "value"
+          ),
     }));
   };
 
@@ -259,7 +269,6 @@ export class RemoteSelectField extends Component {
     const { error, suggestions, open, isFetching } = this.state;
     return (
       <SelectField
-        {...uiProps}
         allowAdditions={error ? false : uiProps.allowAdditions}
         fieldPath={compProps.fieldPath}
         options={suggestions}
@@ -299,6 +308,7 @@ export class RemoteSelectField extends Component {
         }}
         loading={isFetching}
         className="invenio-remote-select-field"
+        {...uiProps}
       />
     );
   }
