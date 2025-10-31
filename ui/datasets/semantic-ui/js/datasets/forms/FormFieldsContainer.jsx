@@ -30,7 +30,6 @@ import _get from "lodash/get";
 import { useFormikContext } from "formik";
 import { Dropdown, Button } from "semantic-ui-react";
 import { TimeReferences } from "./TimeReferences";
-import { VocabularyField } from "@js/oarepo_vocabularies/form";
 
 const friendOptions = [
   {
@@ -228,11 +227,7 @@ const FormFieldsContainerComponent = ({ record }) => {
           }
         />
         <LanguageSelector />
-        <VocabularyField
-          fieldPath="metadata.languages"
-          vocabularyName="languages"
-          multiple
-        />
+
         <Dropdown
           options={resourceTypes.map((rt) => ({
             text: `${rt.type_name} - ${rt.subtype_name}`,
