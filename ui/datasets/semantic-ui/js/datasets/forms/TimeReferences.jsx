@@ -14,9 +14,9 @@ import { useFormikContext, getIn } from "formik";
 import { Label } from "semantic-ui-react";
 
 export const TimeReferences = ({ fieldPath }) => {
-  const { values, setFieldValue, setFieldTouched, errors } = useFormikContext();
+  // const { values, setFieldValue, setFieldTouched, errors } = useFormikContext();
 
-  const { sanitizeInput } = useSanitizeInput();
+  // const { sanitizeInput } = useSanitizeInput();
   const { getFieldData } = useFieldData();
   return (
     <ArrayField

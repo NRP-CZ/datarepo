@@ -14,7 +14,6 @@ import queryString from "query-string";
 import React, { Component } from "react";
 import { Message } from "semantic-ui-react";
 import { withCancel, SelectField } from "react-invenio-forms";
-import uniqBy from "lodash/uniqBy";
 
 const DEFAULT_SUGGESTION_SIZE = 20;
 
@@ -198,17 +197,8 @@ export class RemoteSelectField extends Component {
       error: false,
       searchQuery: searchOnFocus ? prevState.searchQuery : null,
       suggestions: searchOnFocus
-        ? [
-            ...this.props.serializeSuggestions(this.props.initialSuggestions),
-            ...prevState.suggestions,
-          ]
-        : uniqBy(
-            [
-              ...this.props.serializeSuggestions(this.props.initialSuggestions),
-              ...prevState.selectedSuggestions,
-            ],
-            "value"
-          ),
+        ? prevState.suggestions
+        : prevState.selectedSuggestions,
     }));
   };
 

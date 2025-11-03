@@ -30,6 +30,7 @@ import _get from "lodash/get";
 import { useFormikContext } from "formik";
 import { Dropdown, Button } from "semantic-ui-react";
 import { TimeReferences } from "./TimeReferences";
+import { VocabularySelectField } from "@js/oarepo_vocabularies/form";
 
 const friendOptions = [
   {
@@ -166,10 +167,11 @@ const descriptionTypeOptions = {
 const FormFieldsContainerComponent = ({ record }) => {
   const formConfig = useFormConfig();
   const { filesLocked } = formConfig;
-  const { values } = useFormikContext();
+  // const { values } = useFormikContext();
   const multilingualLanguages = formConfig.config.multilingualFieldLanguages;
+  console.log("formfieldscontainer render");
   return (
-    <React.Fragment>
+    <React.Fragment key="form-fields-container">
       <AccordionField
         includesPaths={[
           "metadata.title",
@@ -189,20 +191,14 @@ const FormFieldsContainerComponent = ({ record }) => {
           recordUI={record.ui}
           required
         />
-        <Dropdown
-          placeholder="Select Friend"
-          fluid
-          selection
-          options={friendOptions}
-        />
-
         <EDTFSingleDatePicker fieldPath="metadata.publication_date" />
         <AdditionalDescriptionsField
           recordUI={_get(record, "ui", null)}
           options={descriptionTypeOptions}
           optimized
           fieldPath="metadata.additional_descriptions"
-          values={values}
+          // values={values}
+          values={record}
         />
         <SubjectsField
           fieldPath="metadata.subjects"
@@ -214,10 +210,9 @@ const FormFieldsContainerComponent = ({ record }) => {
 
         <LanguagesField
           fieldPath="metadata.languages"
-          initialOptions={[
-            ...multilingualLanguages,
-            ..._get(record, "ui.languages", []).filter((lang) => lang !== null),
-          ]} // needed because dumped empty record from backend gives [null]
+          initialOptions={_get(record, "ui.languages", []).filter(
+            (lang) => lang !== null
+          )}
           serializeSuggestions={(suggestions) =>
             suggestions.map((item) => ({
               text: item.title_l10n,
@@ -227,7 +222,20 @@ const FormFieldsContainerComponent = ({ record }) => {
           }
         />
         <LanguageSelector />
-
+        <VocabularySelectField
+          fieldPath="metadata.languages"
+          vocabularyName="languages"
+          multiple
+          label="Oarepo vocabularies"
+          serializeSuggestions={(suggestions) =>
+            suggestions.map((item) => ({
+              text: item.title_l10n,
+              value: item.id,
+              key: item.id,
+            }))
+          }
+          optimized
+        />
         <Dropdown
           options={resourceTypes.map((rt) => ({
             text: `${rt.type_name} - ${rt.subtype_name}`,
