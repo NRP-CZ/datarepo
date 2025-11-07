@@ -9,6 +9,9 @@ from oarepo_ui.resources.components import (
     RecordRestrictionComponent,
     PermissionsComponent,
 )
+from oarepo_vocabularies.ui.resources.components.rdm_vocabulary_options import (
+    RDMVocabularyOptionsComponent,
+)
 from oarepo_ui.resources.components.custom_fields import CustomFieldsComponent
 from oarepo_ui.resources.records.config import RecordsUIResourceConfig
 from oarepo_ui.resources.records.resource import RecordsUIResource
@@ -19,6 +22,7 @@ from oarepo_ui.overrides import UIComponent
 from oarepo_ui.overrides.components import UIComponentImportMode
 from oarepo_ui.proxies import current_oarepo_ui
 
+
 class DatasetsUIResourceConfig(RecordsUIResourceConfig):
     template_folder = "templates"
     url_prefix = "/datasets"
@@ -28,7 +32,7 @@ class DatasetsUIResourceConfig(RecordsUIResourceConfig):
     search_component = UIComponent(
         "DatasetsResultsListItem",
         "@js/datasets/search/ResultsListItem",
-        UIComponentImportMode.DEFAULT
+        UIComponentImportMode.DEFAULT,
     )
 
     components = [
@@ -42,18 +46,20 @@ class DatasetsUIResourceConfig(RecordsUIResourceConfig):
         EmptyRecordAccessComponent,
         FilesLockedComponent,
         FilesQuotaAndTransferComponent,
+        RDMVocabularyOptionsComponent,
     ]
-    
-    try:
-        from oarepo_vocabularies.ui.resources.components import (
-            DepositVocabularyOptionsComponent,
-        )
-        components.append(DepositVocabularyOptionsComponent)
-    except ImportError:
-        pass
+
+    # try:
+    #     from oarepo_vocabularies.ui.resources.components import (
+    #         DepositVocabularyOptionsComponent,
+    #     )
+
+    #     components.append(DepositVocabularyOptionsComponent)
+    # except ImportError:
+    #     pass
 
     application_id = "datasets"
- 
+
     templates = {
         "record_detail": "datasets.RecordDetail",
         "search": "datasets.Search",
@@ -64,6 +70,7 @@ class DatasetsUIResourceConfig(RecordsUIResourceConfig):
 
 class DatasetsUIResource(RecordsUIResource):
     pass
+
 
 def ui_overrides(app):
     """Register UI overrides."""
@@ -76,7 +83,8 @@ def ui_overrides(app):
         and ui_resource_config.search_component
     ):
         current_oarepo_ui.register_result_list_item(
-            ui_resource_config.model.record_json_schema, ui_resource_config.search_component
+            ui_resource_config.model.record_json_schema,
+            ui_resource_config.search_component,
         )
 
 
@@ -92,14 +100,17 @@ def init_menu(app):
             visible_when=can_view_deposit_page,
         )
 
+
 def finalize_app(app):
     """Finalize app"""
     init_menu(app)
     ui_overrides(app)
 
+
 def create_blueprint(app):
     """Register blueprint for this resource."""
     blueprint = DatasetsUIResource(DatasetsUIResourceConfig()).as_blueprint()
     return blueprint
+
 
 # TODO: register init_menu to finalize_app similarly blueprints & webpack is registered
