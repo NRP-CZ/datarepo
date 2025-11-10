@@ -17,6 +17,8 @@ import {
   SubjectsField,
   LanguagesField,
   ResourceTypeField,
+  PublisherField,
+  VersionField,
 } from "@js/invenio_rdm_records";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -80,8 +82,8 @@ const FormFieldsContainerComponent = ({ record }) => {
             }))
           }
         />
-
-        <TextField fieldPath="metadata.version" />
+        <PublisherField fieldPath="metadata.publisher" />
+        <VersionField fieldPath="metadata.version" />
       </AccordionField>
 
       <AccordionField
