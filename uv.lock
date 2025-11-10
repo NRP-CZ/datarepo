@@ -359,16 +359,16 @@ wheels = [
 
 [[package]]
 name = "ccmm-invenio"
-version = "1.1.0a4"
+version = "1.1.0a5"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "oarepo", extra = ["rdm", "tests"] },
     { name = "oarepo-model" },
     { name = "oarepo-rdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/be/6e/493214f97386b0b6f961fcdd1c12c267a2f488def7e758f7b7294fd4d95e/ccmm_invenio-1.1.0a4.tar.gz", hash = "sha256:a9c0b37b992b0c817a59a5172ffaba831842c135bfc9e7155338d609f6903300", size = 353761, upload-time = "2025-10-07T14:22:51.206Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/3b/e9/131b0ca0b1bc32ae3752a161438e24b5f46ac46b2872cd446beaff828396/ccmm_invenio-1.1.0a5.tar.gz", hash = "sha256:d6ff198328e8bb45b877252186849a1fc238c5045737cf419687a7720e04258a", size = 388576, upload-time = "2025-11-07T17:47:15.647Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7b/58/112e4049d332db6c1c3bf6dffd45342eed42f6cb2186beef91d6d689c38b/ccmm_invenio-1.1.0a4-py3-none-any.whl", hash = "sha256:acbf11ed4365939698ea6024c6c425ed185ff67589a7b5279398f4b0c171a5c6", size = 376694, upload-time = "2025-10-07T14:22:49.831Z" },
+    { url = "https://files.pythonhosted.org/packages/e0/a8/03e95196777adf5197045934131c1ae6c352d506fa5eb3fcff52986d5a15/ccmm_invenio-1.1.0a5-py3-none-any.whl", hash = "sha256:ba6d0a72dd37703b68020caa099153d572e030074d43d7de064047b9d5094bb1", size = 3252, upload-time = "2025-11-07T17:47:14.363Z" },
 ]
 
 [[package]]
