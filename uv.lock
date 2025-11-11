@@ -359,16 +359,16 @@ wheels = [
 
 [[package]]
 name = "ccmm-invenio"
-version = "1.1.0a4"
+version = "1.1.0a5"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "oarepo", extra = ["rdm", "tests"] },
     { name = "oarepo-model" },
     { name = "oarepo-rdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/be/6e/493214f97386b0b6f961fcdd1c12c267a2f488def7e758f7b7294fd4d95e/ccmm_invenio-1.1.0a4.tar.gz", hash = "sha256:a9c0b37b992b0c817a59a5172ffaba831842c135bfc9e7155338d609f6903300", size = 353761, upload-time = "2025-10-07T14:22:51.206Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/3b/e9/131b0ca0b1bc32ae3752a161438e24b5f46ac46b2872cd446beaff828396/ccmm_invenio-1.1.0a5.tar.gz", hash = "sha256:d6ff198328e8bb45b877252186849a1fc238c5045737cf419687a7720e04258a", size = 388576, upload-time = "2025-11-07T17:47:15.647Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7b/58/112e4049d332db6c1c3bf6dffd45342eed42f6cb2186beef91d6d689c38b/ccmm_invenio-1.1.0a4-py3-none-any.whl", hash = "sha256:acbf11ed4365939698ea6024c6c425ed185ff67589a7b5279398f4b0c171a5c6", size = 376694, upload-time = "2025-10-07T14:22:49.831Z" },
+    { url = "https://files.pythonhosted.org/packages/e0/a8/03e95196777adf5197045934131c1ae6c352d506fa5eb3fcff52986d5a15/ccmm_invenio-1.1.0a5-py3-none-any.whl", hash = "sha256:ba6d0a72dd37703b68020caa099153d572e030074d43d7de064047b9d5094bb1", size = 3252, upload-time = "2025-11-07T17:47:14.363Z" },
 ]
 
 [[package]]
@@ -737,6 +737,7 @@ dependencies = [
     { name = "oarepo-runtime" },
     { name = "oarepo-theme" },
     { name = "oarepo-ui" },
+    { name = "oarepo-vocabularies" },
     { name = "python-dotenv" },
 ]
 
@@ -753,6 +754,7 @@ requires-dist = [
     { name = "oarepo-runtime", specifier = ">=2.0.0.dev0,<3.0.0" },
     { name = "oarepo-theme", specifier = ">=1.0.0.dev3,<2.0.0" },
     { name = "oarepo-ui", specifier = ">=6.0.0.dev0,<7.0.0" },
+    { name = "oarepo-vocabularies", specifier = ">=3.0.0.dev3,<4.0.0" },
     { name = "python-dotenv" },
 ]
 
@@ -1453,6 +1455,8 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/ee/43/3cecdc0349359e1a527cbf2e3e28e5f8f06d3343aaf82ca13437a9aa290f/greenlet-3.2.4-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:23768528f2911bcd7e475210822ffb5254ed10d71f4028387e5a99b4c6699671", size = 610497, upload-time = "2025-08-07T13:18:31.636Z" },
     { url = "https://files.pythonhosted.org/packages/b8/19/06b6cf5d604e2c382a6f31cafafd6f33d5dea706f4db7bdab184bad2b21d/greenlet-3.2.4-cp313-cp313-musllinux_1_1_aarch64.whl", hash = "sha256:00fadb3fedccc447f517ee0d3fd8fe49eae949e1cd0f6a611818f4f6fb7dc83b", size = 1121662, upload-time = "2025-08-07T13:42:41.117Z" },
     { url = "https://files.pythonhosted.org/packages/a2/15/0d5e4e1a66fab130d98168fe984c509249c833c1a3c16806b90f253ce7b9/greenlet-3.2.4-cp313-cp313-musllinux_1_1_x86_64.whl", hash = "sha256:d25c5091190f2dc0eaa3f950252122edbbadbb682aa7b1ef2f8af0f8c0afefae", size = 1149210, upload-time = "2025-08-07T13:18:24.072Z" },
+    { url = "https://files.pythonhosted.org/packages/1c/53/f9c440463b3057485b8594d7a638bed53ba531165ef0ca0e6c364b5cc807/greenlet-3.2.4-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:6e343822feb58ac4d0a1211bd9399de2b3a04963ddeec21530fc426cc121f19b", size = 1564759, upload-time = "2025-11-04T12:42:19.395Z" },
+    { url = "https://files.pythonhosted.org/packages/47/e4/3bb4240abdd0a8d23f4f88adec746a3099f0d86bfedb623f063b2e3b4df0/greenlet-3.2.4-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:ca7f6f1f2649b89ce02f6f229d7c19f680a6238af656f61e0115b24857917929", size = 1634288, upload-time = "2025-11-04T12:42:21.174Z" },
     { url = "https://files.pythonhosted.org/packages/0b/55/2321e43595e6801e105fcfdee02b34c0f996eb71e6ddffca6b10b7e1d771/greenlet-3.2.4-cp313-cp313-win_amd64.whl", hash = "sha256:554b03b6e73aaabec3745364d6239e9e012d64c68ccd0b8430c64ccc14939a8b", size = 299685, upload-time = "2025-08-07T13:24:38.824Z" },
 ]
 
@@ -1463,6 +1467,27 @@ source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/py
 sdist = { url = "https://files.pythonhosted.org/packages/01/ee/02a2c011bdab74c6fb3c75474d40b3052059d95df7e73351460c8588d963/h11-0.16.0.tar.gz", hash = "sha256:4e35b956cf45792e4caa5885e69fba00bdbc6ffafbfa020300e549b208ee5ff1", size = 101250, upload-time = "2025-04-24T03:35:25.427Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/04/4b/29cac41a4d98d144bf5f6d33995617b185d14b22401f75ca86f384e87ff1/h11-0.16.0-py3-none-any.whl", hash = "sha256:63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86", size = 37515, upload-time = "2025-04-24T03:35:24.344Z" },
+]
+
+[[package]]
+name = "html5lib"
+version = "1.1"
+source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
+dependencies = [
+    { name = "six" },
+    { name = "webencodings" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ac/b6/b55c3f49042f1df3dcd422b7f224f939892ee94f22abcf503a9b7339eaf2/html5lib-1.1.tar.gz", hash = "sha256:b2e5b40261e20f354d198eae92afc10d750afb487ed5e50f9c4eaf07c184146f", size = 272215, upload-time = "2020-06-22T23:32:38.834Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/6c/dd/a834df6482147d48e225a49515aabc28974ad5a4ca3215c18a882565b028/html5lib-1.1-py2.py3-none-any.whl", hash = "sha256:0d78f8fde1c230e99fe37986a60526d7049ed4bf8a9fadbad5f00e22e58e041d", size = 112173, upload-time = "2020-06-22T23:32:36.781Z" },
+]
+
+[[package]]
+name = "httplink"
+version = "0.2.0"
+source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/34/3f/d43dbecbec06fe5654b85b2f5f562c877586dfcde587dd4954d9eeb07f76/httplink-0.2.0-py3-none-any.whl", hash = "sha256:f4688080f92306dbb3faa71ea8232e1e8cb4a4a7f543bc9663b05dca8a2820c1", size = 5290, upload-time = "2020-12-13T08:08:06.732Z" },
 ]
 
 [[package]]
@@ -3598,16 +3623,16 @@ wheels = [
 
 [[package]]
 name = "oarepo-invenio-typing-stubs"
-version = "0.1.18"
+version = "0.1.19"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/f2/89/b3bb0fa5d56eb45874933d4cabbe63917cf4a1b8c3d5d440f8cf30777b34/oarepo_invenio_typing_stubs-0.1.18.tar.gz", hash = "sha256:9400c6e25170f75b1c2e0f8b6a1e308d4f7198f59cd3347b537539b8e5c221be", size = 313933, upload-time = "2025-10-05T18:24:22.329Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/fe/be/2e9ef720d878c6499c4cd5d1a3cbf62725a3e51ad854c156df1ee68b13a2/oarepo_invenio_typing_stubs-0.1.19.tar.gz", hash = "sha256:822838c08c3a0bd7a99378d3c7029ed3fe9022e5fc954473ed366736f0378944", size = 313946, upload-time = "2025-10-31T08:09:03.178Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c5/4e/c0974d3f6b2f09f8342e4fa122525515e8befebf4f81ac61aed936379fc4/oarepo_invenio_typing_stubs-0.1.18-py3-none-any.whl", hash = "sha256:4879b82447f125f75a88eb2d6c93890528a12c057cb5809f270b01a16798644a", size = 429573, upload-time = "2025-10-05T18:24:16.423Z" },
+    { url = "https://files.pythonhosted.org/packages/38/5b/197e40a1b27d5ddff30a7f24f9bc5304afffe46f11b00ce92ee1f0a01d16/oarepo_invenio_typing_stubs-0.1.19-py3-none-any.whl", hash = "sha256:ddb28109954e77321e86aee285fe0107aca9f92864abd0e5d9948f8b19d07b04", size = 429577, upload-time = "2025-10-31T08:09:01.768Z" },
 ]
 
 [[package]]
 name = "oarepo-model"
-version = "0.1.0.dev21"
+version = "0.1.0.dev27"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "deepmerge" },
@@ -3617,14 +3642,14 @@ dependencies = [
     { name = "oarepo", extra = ["rdm", "tests"] },
     { name = "oarepo-runtime" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/11/a7/9c70e700893fc98e3da125b09846472fa3b24f667bd2dafdc102c3fe5e20/oarepo_model-0.1.0.dev21.tar.gz", hash = "sha256:7896c69562444137e29a24a7ccc0f41b272666407c831a9f8a798dff74b8b7fe", size = 341625, upload-time = "2025-10-07T13:32:41.362Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ea/c6/c7b4d66991e981e768c33d9be6d6912cc2339d0271c18674de7894ecd2e8/oarepo_model-0.1.0.dev27.tar.gz", hash = "sha256:ad17b146d6194ae8dafd08b79dcbf600e0220da4a19334bfb3c6c06b6fee249e", size = 355913, upload-time = "2025-11-05T15:34:37.842Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b2/88/253726795b240606a8ab02ec0756f87c04ef64d5c1b3e2a5d24c558c3ac5/oarepo_model-0.1.0.dev21-py3-none-any.whl", hash = "sha256:d94e0dc9ac374c573b8a1ab5e1cccca689d664e3b33526478426a5c3b27ce9f9", size = 226479, upload-time = "2025-10-07T13:32:39.696Z" },
+    { url = "https://files.pythonhosted.org/packages/af/44/2f48ccda1fc8d510f82b1c5d1309144c9fb31eb38ccc798c9b896b294885/oarepo_model-0.1.0.dev27-py3-none-any.whl", hash = "sha256:367e4a4fba27be5f9d1855fec00fec7815733662815968e5546f8bd60aafd2e1", size = 236432, upload-time = "2025-11-05T15:34:36.163Z" },
 ]
 
 [[package]]
 name = "oarepo-rdm"
-version = "1.0.0.dev17"
+version = "1.0.0.dev19"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "graphlib" },
@@ -3633,23 +3658,24 @@ dependencies = [
     { name = "oarepo-runtime" },
     { name = "oarepo-ui" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/65/aa/162269c5877fe765f3e94a8daa065b908055d011f39a501b82dbc0e6a381/oarepo_rdm-1.0.0.dev17.tar.gz", hash = "sha256:e714fe94abf5d8da897f13e3c89e74fd64d72376c7ff59a4a5e91780f797a808", size = 32857, upload-time = "2025-10-15T07:47:18.271Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d9/2f/8bed176211da676b88b25f68e297a6f8c861d28fd51a33ed1b792abac2e0/oarepo_rdm-1.0.0.dev19.tar.gz", hash = "sha256:c03153444083e30ef5faf3467134c37ffabbdd8be6da2fdbd2c94852f93e0008", size = 33955, upload-time = "2025-11-07T13:34:12.541Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/16/29/f3c1f24a0fb7d0e6990bb93f66567f29387f9b9f1a0d53b5c3939f21ebf6/oarepo_rdm-1.0.0.dev17-py3-none-any.whl", hash = "sha256:ba62754292a226a1a5764d3bed08aa4e987f0081f0b3a1b463a043fd4fedb5e6", size = 66439, upload-time = "2025-10-15T07:47:16.836Z" },
+    { url = "https://files.pythonhosted.org/packages/a0/2b/be099af3e156037a609a70abc9256be802fbb329ac994fb5ee48ae671005/oarepo_rdm-1.0.0.dev19-py3-none-any.whl", hash = "sha256:3bd49765a684fac592e7bd2baf1b50ca13546954a3fa1c5c7595c25da7c61ae9", size = 68213, upload-time = "2025-11-07T13:34:11.478Z" },
 ]
 
 [[package]]
 name = "oarepo-runtime"
-version = "2.0.0.dev37"
+version = "2.0.0.dev41"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "langcodes" },
     { name = "oarepo", extra = ["rdm", "tests"] },
     { name = "oarepo-invenio-typing-stubs" },
+    { name = "signposting" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/71/f6/59e85e1b3beba2cc9d0da6c346254523ef6021a8bed10689cc2e5386bd1c/oarepo_runtime-2.0.0.dev37.tar.gz", hash = "sha256:90831df2e81cb628d64e06a9c89169ae385659691274d910205056d4f7dc1a17", size = 35990, upload-time = "2025-10-07T08:47:35.222Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/76/73/3e92bd4318f125a6ae7bc44fd7c88892710beef48260c1daac7d8fdf3d8e/oarepo_runtime-2.0.0.dev41.tar.gz", hash = "sha256:8b71f8ff4364ed77c7df007eac7c24622e895befc7778f55beeb94a94bbc0098", size = 42040, upload-time = "2025-11-05T13:57:30.071Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9d/9b/a7d47f84a6c735781ba5eab7f098a1cf1294af13fdd575e6dd8e6aa02aa5/oarepo_runtime-2.0.0.dev37-py3-none-any.whl", hash = "sha256:734b42beaf2e133fbc5d0360630ab04634150162dd47d5b147b5d62f6edd03b3", size = 57494, upload-time = "2025-10-07T08:47:33.987Z" },
+    { url = "https://files.pythonhosted.org/packages/b9/b4/1c641a45a8286bd948bc68dc3f50ef5234f7507fc6756fac0cd9b0f7596f/oarepo_runtime-2.0.0.dev41-py3-none-any.whl", hash = "sha256:8da43c282121506c4e082ade262c0b7f4fb26370e47a73706d334f511a32c194", size = 64792, upload-time = "2025-11-05T13:57:28.028Z" },
 ]
 
 [[package]]
@@ -3666,7 +3692,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-ui"
-version = "6.0.0.dev15"
+version = "6.0.0.dev17"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "deepmerge" },
@@ -3677,9 +3703,27 @@ dependencies = [
     { name = "oarepo-runtime" },
     { name = "python-dotenv" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c2/81/f9d3c1109210feff28bcaebda53ad4b0e4f70a5d80f75fb004c872318b91/oarepo_ui-6.0.0.dev15.tar.gz", hash = "sha256:fcedbf3977f8bb88c9f737132a6934460d2927cd46e2bf77e31c366ee708b2d1", size = 183746, upload-time = "2025-10-17T09:08:48.836Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d8/be/864d085e22c136880878c64a226ffbd833495164a865def94bd16fd873b6/oarepo_ui-6.0.0.dev17.tar.gz", hash = "sha256:c10450877dd3edbfda3cd42843302867feba968b7f2f44ad4830b1b7c4f04996", size = 185727, upload-time = "2025-11-07T09:38:37.238Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/bf/a0/84939db732bb25a9d518ce4b3aed969977d30480e2a76af4cae5a83a449d/oarepo_ui-6.0.0.dev15-py3-none-any.whl", hash = "sha256:4b9e85cf94d6bb5b415ac95e67d98274fe89bea80ebee0db895c2fd013112055", size = 306930, upload-time = "2025-10-17T09:08:47.405Z" },
+    { url = "https://files.pythonhosted.org/packages/8f/56/28b564b6d157b5f2dfb6682ab7612486f7df4f25c5acb16b9b4cf19cc183/oarepo_ui-6.0.0.dev17-py3-none-any.whl", hash = "sha256:e3a1e413f1892a68b12fccf0dca426403cd3f24164d00591ca8718615643e288", size = 310117, upload-time = "2025-11-07T09:38:35.367Z" },
+]
+
+[[package]]
+name = "oarepo-vocabularies"
+version = "3.0.0.dev3"
+source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
+dependencies = [
+    { name = "cachetools" },
+    { name = "oarepo", extra = ["rdm", "tests"] },
+    { name = "oarepo-runtime" },
+    { name = "oarepo-ui" },
+    { name = "openpyxl" },
+    { name = "orcid" },
+    { name = "tqdm" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/2b/b6/828eae2f7ab531c48ad7ea838ac9a0d32357328c8815999c8a6e05f4efb0/oarepo_vocabularies-3.0.0.dev3.tar.gz", hash = "sha256:c9627dbba22b98508b8c157c6e8b0c7821a27816ca83356b1e9d3982ecf98948", size = 82410, upload-time = "2025-11-07T09:38:25.911Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4e/99/888c30f90df6617ce23e70441ac5993a6ad8f8ce1082d7112e256d563d2c/oarepo_vocabularies-3.0.0.dev3-py3-none-any.whl", hash = "sha256:e776952dbdf8a213bc1908186f5cc822ff9c64e492051eeee2eeb9f18510173c", size = 179243, upload-time = "2025-11-07T09:38:24.215Z" },
 ]
 
 [[package]]
@@ -3772,6 +3816,19 @@ sdist = { url = "https://files.pythonhosted.org/packages/40/bc/8b9ad3802cd8ac658
 wheels = [
     { url = "https://files.pythonhosted.org/packages/24/7d/c88d7b15ba8fe5c6b8f93be50fc11795e9fc05386c44afaf6b76fe191f9b/opentelemetry_semantic_conventions-0.59b0-py3-none-any.whl", hash = "sha256:35d3b8833ef97d614136e253c1da9342b4c3c083bbaf29ce31d572a1c3825eed", size = 207954, upload-time = "2025-10-16T08:35:48.054Z" },
 ]
+
+[[package]]
+name = "orcid"
+version = "1.0.3"
+source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
+dependencies = [
+    { name = "beautifulsoup4" },
+    { name = "html5lib" },
+    { name = "lxml" },
+    { name = "requests" },
+    { name = "simplejson" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/fe/d7/a065d914f1312abc02c3dcaecd75bcbb8d03062db33991cfcc9f37b93da6/orcid-1.0.3.tar.gz", hash = "sha256:5fe28b6d92aed5abe7145c959e4fa2afb90260be215ff3f36ad31c94ee41d0db", size = 10768, upload-time = "2018-07-17T08:02:25.143Z" }
 
 [[package]]
 name = "ordered-set"
@@ -4073,8 +4130,10 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/11/32/b2ffe8f3853c181e88f0a157c5fb4e383102238d73c52ac6d93a5c8bffe6/psycopg2_binary-2.9.11-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:8c55b385daa2f92cb64b12ec4536c66954ac53654c7f15a203578da4e78105c0", size = 4411242, upload-time = "2025-10-10T11:12:42.388Z" },
     { url = "https://files.pythonhosted.org/packages/10/04/6ca7477e6160ae258dc96f67c371157776564679aefd247b66f4661501a2/psycopg2_binary-2.9.11-cp313-cp313-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl", hash = "sha256:c0377174bf1dd416993d16edc15357f6eb17ac998244cca19bc67cdc0e2e5766", size = 4468258, upload-time = "2025-10-10T11:12:48.654Z" },
     { url = "https://files.pythonhosted.org/packages/3c/7e/6a1a38f86412df101435809f225d57c1a021307dd0689f7a5e7fe83588b1/psycopg2_binary-2.9.11-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:5c6ff3335ce08c75afaed19e08699e8aacf95d4a260b495a4a8545244fe2ceb3", size = 4166295, upload-time = "2025-10-10T11:12:52.525Z" },
+    { url = "https://files.pythonhosted.org/packages/f2/7d/c07374c501b45f3579a9eb761cbf2604ddef3d96ad48679112c2c5aa9c25/psycopg2_binary-2.9.11-cp313-cp313-manylinux_2_38_riscv64.manylinux_2_39_riscv64.whl", hash = "sha256:84011ba3109e06ac412f95399b704d3d6950e386b7994475b231cf61eec2fc1f", size = 3983133, upload-time = "2025-10-30T02:55:24.329Z" },
     { url = "https://files.pythonhosted.org/packages/82/56/993b7104cb8345ad7d4516538ccf8f0d0ac640b1ebd8c754a7b024e76878/psycopg2_binary-2.9.11-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:ba34475ceb08cccbdd98f6b46916917ae6eeb92b5ae111df10b544c3a4621dc4", size = 3652383, upload-time = "2025-10-10T11:12:56.387Z" },
     { url = "https://files.pythonhosted.org/packages/2d/ac/eaeb6029362fd8d454a27374d84c6866c82c33bfc24587b4face5a8e43ef/psycopg2_binary-2.9.11-cp313-cp313-musllinux_1_2_ppc64le.whl", hash = "sha256:b31e90fdd0f968c2de3b26ab014314fe814225b6c324f770952f7d38abf17e3c", size = 3298168, upload-time = "2025-10-10T11:13:00.403Z" },
+    { url = "https://files.pythonhosted.org/packages/2b/39/50c3facc66bded9ada5cbc0de867499a703dc6bca6be03070b4e3b65da6c/psycopg2_binary-2.9.11-cp313-cp313-musllinux_1_2_riscv64.whl", hash = "sha256:d526864e0f67f74937a8fce859bd56c979f5e2ec57ca7c627f5f1071ef7fee60", size = 3044712, upload-time = "2025-10-30T02:55:27.975Z" },
     { url = "https://files.pythonhosted.org/packages/9c/8e/b7de019a1f562f72ada81081a12823d3c1590bedc48d7d2559410a2763fe/psycopg2_binary-2.9.11-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:04195548662fa544626c8ea0f06561eb6203f1984ba5b4562764fbeb4c3d14b1", size = 3347549, upload-time = "2025-10-10T11:13:03.971Z" },
     { url = "https://files.pythonhosted.org/packages/80/2d/1bb683f64737bbb1f86c82b7359db1eb2be4e2c0c13b947f80efefa7d3e5/psycopg2_binary-2.9.11-cp313-cp313-win_amd64.whl", hash = "sha256:efff12b432179443f54e230fdf60de1f6cc726b6c832db8701227d089310e8aa", size = 2714215, upload-time = "2025-10-10T11:13:07.14Z" },
 ]
@@ -4353,11 +4412,11 @@ wheels = [
 
 [[package]]
 name = "python-dotenv"
-version = "1.1.1"
+version = "1.2.1"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/f6/b0/4bc07ccd3572a2f9df7e6782f52b0c6c90dcbb803ac4a167702d7d0dfe1e/python_dotenv-1.1.1.tar.gz", hash = "sha256:a8a6399716257f45be6a007360200409fce5cda2661e3dec71d23dc15f6189ab", size = 41978, upload-time = "2025-06-24T04:21:07.341Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f0/26/19cadc79a718c5edbec86fd4919a6b6d3f681039a2f6d66d14be94e75fb9/python_dotenv-1.2.1.tar.gz", hash = "sha256:42667e897e16ab0d66954af0e60a9caa94f0fd4ecf3aaf6d2d260eec1aa36ad6", size = 44221, upload-time = "2025-10-26T15:12:10.434Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5f/ed/539768cf28c661b5b068d66d96a2f155c4971a5d55684a514c1a0e0dec2f/python_dotenv-1.1.1-py3-none-any.whl", hash = "sha256:31f23644fe2602f88ff55e1f5c79ba497e01224ee7737937930c448e4d0e24dc", size = 20556, upload-time = "2025-06-24T04:21:06.073Z" },
+    { url = "https://files.pythonhosted.org/packages/14/1b/a298b06749107c305e1fe0f814c6c74aea7b2f1e10989cb30f544a1b3253/python_dotenv-1.2.1-py3-none-any.whl", hash = "sha256:b81ee9561e9ca4004139c6cbba3a238c32b03e4894671e181b671e8cb8425d61", size = 21230, upload-time = "2025-10-26T15:12:09.109Z" },
 ]
 
 [[package]]
@@ -4580,6 +4639,15 @@ wheels = [
 ]
 
 [[package]]
+name = "rfc3987"
+version = "1.3.8"
+source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/14/bb/f1395c4b62f251a1cb503ff884500ebd248eed593f41b469f89caa3547bd/rfc3987-1.3.8.tar.gz", hash = "sha256:d3c4d257a560d544e9826b38bc81db676890c79ab9d7ac92b39c7a253d5ca733", size = 20700, upload-time = "2018-07-29T17:23:47.954Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/65/d4/f7407c3d15d5ac779c3dd34fbbc6ea2090f77bd7dd12f207ccf881551208/rfc3987-1.3.8-py2.py3-none-any.whl", hash = "sha256:10702b1e51e5658843460b189b185c0366d2cf4cff716f13111b0ea9fd2dce53", size = 13377, upload-time = "2018-07-29T17:23:45.313Z" },
+]
+
+[[package]]
 name = "rich"
 version = "12.6.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
@@ -4671,16 +4739,16 @@ wheels = [
 
 [[package]]
 name = "sentry-sdk"
-version = "3.0.0a6"
+version = "3.0.0a7"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "certifi" },
     { name = "opentelemetry-sdk" },
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/24/68/d2bebd64ef6f74f6925f8466fae251425836ea35317ecaf0eb17295c9e9c/sentry_sdk-3.0.0a6.tar.gz", hash = "sha256:cc1eb071dd581a490a335f9bfc2065880f4dc264b511987709d2c5ced5d377f5", size = 331068, upload-time = "2025-09-01T12:49:32.075Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/66/a5/747ab268f2cf3f4cb50af521e1a85a959411f74cf4a2ecf47782e1981cee/sentry_sdk-3.0.0a7.tar.gz", hash = "sha256:439a858d409b84407560df6b7ebb760acd9ad3d14e05cd919ae36b204e411cb2", size = 329999, upload-time = "2025-10-20T13:50:38.131Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/74/79/f155b70fd404f1dc8d36a4057a061b750964d6e9cc18f88eebc3c24d838b/sentry_sdk-3.0.0a6-py2.py3-none-any.whl", hash = "sha256:e0019dd77212c3a7714c5629e8095dd32cccb0f4e3305e2487bb1a3f84c46301", size = 354988, upload-time = "2025-09-01T12:49:29.697Z" },
+    { url = "https://files.pythonhosted.org/packages/ce/5e/23837eadf18ad4f9d5894c1210e6c2591136fd36cff338bedc90a1222bf2/sentry_sdk-3.0.0a7-py2.py3-none-any.whl", hash = "sha256:ada791a77c2d489e07b04c068e0fcacd6bbcfe1cb40b5f303207738baf38e868", size = 353618, upload-time = "2025-10-20T13:50:36.158Z" },
 ]
 
 [package.optional-dependencies]
@@ -4697,6 +4765,21 @@ source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/py
 sdist = { url = "https://files.pythonhosted.org/packages/18/5d/3bf57dcd21979b887f014ea83c24ae194cfcd12b9e0fda66b957c69d1fca/setuptools-80.9.0.tar.gz", hash = "sha256:f36b47402ecde768dbfafc46e8e4207b4360c654f1f3bb84475f0a28628fb19c", size = 1319958, upload-time = "2025-05-27T00:56:51.443Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a3/dc/17031897dae0efacfea57dfd3a82fdd2a2aeb58e0ff71b77b87e44edc772/setuptools-80.9.0-py3-none-any.whl", hash = "sha256:062d34222ad13e0cc312a4c02d73f059e86a4acbfbdea8f8f76b28c99f306922", size = 1201486, upload-time = "2025-05-27T00:56:49.664Z" },
+]
+
+[[package]]
+name = "signposting"
+version = "0.9.9"
+source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
+dependencies = [
+    { name = "beautifulsoup4" },
+    { name = "httplink" },
+    { name = "requests" },
+    { name = "rfc3987" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/75/68/3697204ad23a2654793a75a8d1fb386be9f2a8c1219771716742b46801c1/signposting-0.9.9.tar.gz", hash = "sha256:193b5f912290e7763782e7e8d1e423edb9cf6cca80f2864f45a4a3c67f8c5b87", size = 39913, upload-time = "2024-03-23T09:03:06.589Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/88/bc/abc7f282b7cf809bb3f9cc43e599c02c2a645682cdd9fcabc72cab82ace1/signposting-0.9.9-py3-none-any.whl", hash = "sha256:8e9575ddbac52a0acbec9aeaf83edeadb3a4ff512f4563ec8903f7616a38eaaa", size = 34992, upload-time = "2024-03-23T09:03:04.197Z" },
 ]
 
 [[package]]
@@ -5019,6 +5102,18 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/e8/59/593bd0f40f7355806bf6573b47b8c22f8e1374c9b6fd03114bd6b7a3dcfd/tornado-6.5.2-cp39-abi3-win32.whl", hash = "sha256:c6f29e94d9b37a95013bb669616352ddb82e3bfe8326fccee50583caebc8a5f0", size = 445023, upload-time = "2025-08-08T18:26:56.677Z" },
     { url = "https://files.pythonhosted.org/packages/c7/2a/f609b420c2f564a748a2d80ebfb2ee02a73ca80223af712fca591386cafb/tornado-6.5.2-cp39-abi3-win_amd64.whl", hash = "sha256:e56a5af51cc30dd2cae649429af65ca2f6571da29504a07995175df14c18f35f", size = 445427, upload-time = "2025-08-08T18:26:57.91Z" },
     { url = "https://files.pythonhosted.org/packages/5e/4f/e1f65e8f8c76d73658b33d33b81eed4322fb5085350e4328d5c956f0c8f9/tornado-6.5.2-cp39-abi3-win_arm64.whl", hash = "sha256:d6c33dc3672e3a1f3618eb63b7ef4683a7688e7b9e6e8f0d9aa5726360a004af", size = 444456, upload-time = "2025-08-08T18:26:59.207Z" },
+]
+
+[[package]]
+name = "tqdm"
+version = "4.67.1"
+source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
+dependencies = [
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a8/4b/29b4ef32e036bb34e4ab51796dd745cdba7ed47ad142a9f4a1eb8e0c744d/tqdm-4.67.1.tar.gz", hash = "sha256:f8aef9c52c08c13a65f30ea34f4e5aac3fd1a34959879d7e59e63027286627f2", size = 169737, upload-time = "2024-11-24T20:12:22.481Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d0/30/dc54f88dd4a2b5dc8a0279bdd7270e735851848b762aeb1c1184ed1f6b14/tqdm-4.67.1-py3-none-any.whl", hash = "sha256:26445eca388f82e72884e0d580d5464cd801a3ea01e63e5601bdff9ba6a48de2", size = 78540, upload-time = "2024-11-24T20:12:19.698Z" },
 ]
 
 [[package]]

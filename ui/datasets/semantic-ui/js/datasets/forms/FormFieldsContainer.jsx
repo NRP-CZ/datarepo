@@ -2,10 +2,8 @@ import * as React from "react";
 import {
   useFormConfig,
   FormikStateLogger,
-  TextField,
   EDTFSingleDatePicker,
   CreatibutorsField,
-  objectIdentifiersSchema,
   FundingField,
 } from "@js/oarepo_ui/forms";
 import { AccordionField } from "react-invenio-forms";
@@ -14,7 +12,6 @@ import {
   UppyUploader,
   TitlesField,
   IdentifiersField,
-  SubjectsField,
   LanguagesField,
   ResourceTypeField,
   PublisherField,
@@ -25,19 +22,13 @@ import PropTypes from "prop-types";
 import { AdditionalDescriptionsField } from "@js/invenio_rdm_records/src/deposit/fields/DescriptionsField/components";
 import _get from "lodash/get";
 
-const limitToOptions = [
-  { text: "All", value: "all" },
-  { text: "FOS", value: "FOS" },
-  { text: "Other", value: "other" },
-];
-
 const FormFieldsContainerComponent = ({ record }) => {
   const formConfig = useFormConfig();
   const {
     config: { filesLocked, vocabularies },
   } = formConfig;
   return (
-    <React.Fragment key="form-fields-container">
+    <React.Fragment>
       <AccordionField
         includesPaths={[
           "metadata.title",
@@ -97,12 +88,6 @@ const FormFieldsContainerComponent = ({ record }) => {
           labelIcon="barcode"
           schemeOptions={vocabularies?.identifiers?.scheme}
           showEmptyValue
-        />
-        <SubjectsField
-          fieldPath="metadata.subjects"
-          initialOptions={_get(record, "ui.subjects", null)}
-          limitToOptions={vocabularies?.subjects?.limit_to}
-          searchOnFocus
         />
         <FundingField fieldPath="metadata.funding" />
       </AccordionField>
