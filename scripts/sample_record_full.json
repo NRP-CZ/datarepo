@@ -191,6 +191,11 @@
         ]
       }
     ],
+    "subjects": [
+      {
+        "subject": "kvalita ovzduší"
+      }
+    ],
     "funding": [
       {
         "funder": {

@@ -373,17 +373,29 @@ wheels = [
 
 [[package]]
 name = "ccmm-invenio"
-version = "1.1.0a6"
-source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
+source = { editable = "../../../cesnet/ccmm-invenio" }
 dependencies = [
+    { name = "langdetect" },
     { name = "oarepo", extra = ["rdm", "tests"] },
     { name = "oarepo-model" },
     { name = "oarepo-rdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/6a/b1/ae6a43c80ec53b6bd9331d0dc897c130693193eaa2ff4cb518b99cb448c2/ccmm_invenio-1.1.0a6.tar.gz", hash = "sha256:d090a2e49d5b3dd70d68d611bc48614c33ab07419f2c54304384322bdecb0dcd", size = 388571, upload-time = "2025-11-19T12:24:46.623Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/bb/a1/6351d9416022e5809e27f2c4cea2fdb42c8baf2cef71191d4587c6ef23fc/ccmm_invenio-1.1.0a6-py3-none-any.whl", hash = "sha256:8dfc11755463f0f6d733a344f21f3bce285d48621b2d2acc00167dda98e71146", size = 416866, upload-time = "2025-11-19T12:24:45.074Z" },
+
+[package.metadata]
+requires-dist = [
+    { name = "click", marker = "extra == 'compile-vocabularies'" },
+    { name = "langdetect", specifier = ">=1.0.9" },
+    { name = "oarepo", marker = "extra == 'oarepo14'", specifier = ">=14.0.0,<15.0.0" },
+    { name = "oarepo", extras = ["rdm", "tests"], specifier = ">=14.0.0,<15.0.0" },
+    { name = "oarepo-model", specifier = ">=0.1.0.dev18" },
+    { name = "oarepo-rdm", specifier = ">=1.0.0.dev0" },
+    { name = "pytest-invenio", marker = "extra == 'tests'" },
+    { name = "pyyaml", marker = "extra == 'compile-vocabularies'" },
+    { name = "rdflib", marker = "extra == 'compile-vocabularies'" },
+    { name = "tenacity", marker = "extra == 'compile-vocabularies'" },
+    { name = "tqdm", marker = "extra == 'compile-vocabularies'" },
 ]
+provides-extras = ["compile-vocabularies", "oarepo14", "tests"]
 
 [[package]]
 name = "celery"
@@ -760,7 +772,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "ccmm-invenio", specifier = ">=1.1.0a3" },
+    { name = "ccmm-invenio", editable = "../../../cesnet/ccmm-invenio" },
     { name = "json5" },
     { name = "marshmallow-i18n-messages" },
     { name = "oarepo", extras = ["s3", "rdm"], specifier = ">=14.0.0,<15.0.0" },
@@ -2832,6 +2844,15 @@ sdist = { url = "https://files.pythonhosted.org/packages/3a/7a/5a97e327063409a5c
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c3/6b/068c2ea7a712bf805c62445bd9e9c06d7340358ef2824150eceac027444b/langcodes-3.5.0-py3-none-any.whl", hash = "sha256:853c69d1a35e0e13da2f427bb68fb2fa4a8f4fb899e0c62ad8df8d073dcfed33", size = 182974, upload-time = "2024-11-19T10:23:42.824Z" },
 ]
+
+[[package]]
+name = "langdetect"
+version = "1.0.9"
+source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
+dependencies = [
+    { name = "six" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/0e/72/a3add0e4eec4eb9e2569554f7c70f4a3c27712f40e3284d483e88094cc0e/langdetect-1.0.9.tar.gz", hash = "sha256:cbc1fef89f8d062739774bd51eda3da3274006b3661d199c2655f6b3f6d605a0", size = 981474, upload-time = "2021-05-07T07:54:13.562Z" }
 
 [[package]]
 name = "language-data"
