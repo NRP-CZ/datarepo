@@ -6,16 +6,18 @@
 // https://www.joshwcomeau.com/css/custom-css-reset/
 // https://github.com/inveniosoftware/invenio-app-rdm/blob/d21af4eac1f6aca4ddd524cccfb621ae259f8411/invenio_app_rdm/theme/assets/semantic-ui/less/invenio_app_rdm/theme/globals/site.overrides#L4
 
-
 /* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 /* 2. Remove default margin */
 * {
   margin: 0;
 }
-html, body {
+html,
+body {
   /* 3. Add accessible line-height */
   line-height: 1.5;
   /* 4. Improve text rendering */
@@ -29,50 +31,73 @@ html, body {
 
 main {
   flex-grow: 1;
+  background-image: url("../../../../static/images/background-image.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: @mainBackgroundColor;
 }
 
 /* 5. Improve media defaults */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 /* 6. Inherit fonts for form controls */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 /* 7. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 /* 8. Improve line wrapping */
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 /*
   9. Create a root stacking context
 */
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
-
 
 /* Override defaults from invenio-theme that cannot be overriden other way */
 html.cover-page {
   background-color: @coverPageBackgroundColor !important;
 }
 .ui.page-header {
-    #invenio-burger-menu-icon {
-        .navicon, .navicon::before, .navicon::after {
-            background: @white !important;
-        }
+  #invenio-burger-menu-icon {
+    .navicon,
+    .navicon::before,
+    .navicon::after {
+      background: @white !important;
     }
+  }
 }
 
 :not(.ui.grid).only {
-
   &.mobile:not(.tablet) {
     @media all and (min-width: @tabletBreakpoint) {
       display: none !important;
@@ -106,7 +131,8 @@ html.cover-page {
   }
 }
 
-button:focus-visible, a:focus-visible {
+button:focus-visible,
+a:focus-visible {
   outline: 3px solid @focusedFormBorderColor !important;
 }
 
@@ -143,11 +169,11 @@ button:focus-visible, a:focus-visible {
 /* record details */
 
 .font-small {
-  font-size: @font-size-small
+  font-size: @font-size-small;
 }
 
 .font-tiny {
-  font-size: @font-size-tiny
+  font-size: @font-size-tiny;
 }
 
 a.no-text-decoration:hover {
@@ -165,10 +191,9 @@ a.remove-default-style:hover {
 .preview-iframe {
   display: block;
   border-style: none;
-  width:100%;
-  height:400px;
+  width: 100%;
+  height: 400px;
 }
-
 
 dd {
   // Start left aligned
@@ -232,8 +257,8 @@ dl.details-list {
 
   &.subjects dd {
     display: inline-block;
-    margin-bottom: .4rem;
-    margin-right: .1rem;
+    margin-bottom: 0.4rem;
+    margin-right: 0.1rem;
 
     &:last-child {
       margin-bottom: 0;
@@ -243,7 +268,7 @@ dl.details-list {
 }
 
 .language {
-  font-size: @fontSizeBase;
+  font-size: @fontSize;
   font-weight: normal;
 }
 
@@ -300,7 +325,7 @@ dl.details-list {
   content: @listSeparator;
   display: inline-block;
   font-size: 1em;
-  margin-left: .1rem;
+  margin-left: 0.1rem;
 }
 
 .comma-separated:not(:last-child)::after {
@@ -333,7 +358,8 @@ dl.details-list {
   }
 }
 
-.sr-only { // Hide element in the UI, but keep it available for screen readers
+.sr-only {
+  // Hide element in the UI, but keep it available for screen readers
   position: absolute;
   width: 1px;
   height: 1px;
@@ -357,16 +383,15 @@ dl.details-list {
 }
 
 .text-break {
-  word-break: break-word
+  word-break: break-word;
 }
-
 
 // fix for hidden tooltips
 [data-tooltip]:after {
-   z-index: 20
+  z-index: 20;
 }
 
-@media all and (max-width: @largestTabletScreen){
+@media all and (max-width: @largestTabletScreen) {
   .right.floated.column {
     [data-tooltip]:hover:after {
       // fix for tooltip overflowing on the right side of mobile devices
@@ -379,5 +404,206 @@ dl.details-list {
 @media all and (max-width: @largestTabletScreen) {
   #invenio-menu {
     width: auto !important;
+    min-width: 30%;
+  }
+}
+// there are some ugly things here, but unfortunately, invenio has colored header and so they are usually forcing white text on
+// elements
+.theme.header {
+  height: 5rem;
+  color: black;
+  border-bottom: 1px solid @greys2;
+  box-shadow: none;
+  .outer-navbar,
+  .invenio-header-container,
+  #invenio-nav.ui.menu {
+    height: 100%;
+    background-color: @white;
+    background-image: none;
+    a,
+    a:hover {
+      color: black !important;
+    }
+    #quick-create-dropdown-btn {
+      i {
+        color: black !important;
+      }
+    }
+    .ui.button.auth-button {
+      background-color: @mainColors7;
+      color: @white !important;
+      &:hover {
+        background-color: @mainColors9;
+      }
+    }
+    #user-profile-dropdown-btn {
+      background-color: @mainColors7;
+      color: @white !important;
+      &:hover {
+        background-color: @mainColors9;
+      }
+    }
+  }
+
+  .item.logo {
+    max-height: 4rem;
+    align-self: center;
+    img {
+      max-height: 4rem;
+    }
+  }
+}
+
+#page-footer-element {
+  margin-top: 0;
+  border-top: 1px solid @greys2;
+  display: flex;
+  .footer-nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    height: 4rem;
+  }
+  .footer-link {
+    color: @black;
+    text-decoration: none;
+    font-size: @fontSize;
+    display: block;
+    text-align: right;
+
+    &:hover {
+      text-decoration: underline;
+      color: @black;
+    }
+  }
+}
+.frontpage-content {
+  padding: 3rem 0 0 0;
+  @media screen and (max-width: @largestTabletScreen) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  max-width: 62.5rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  .ui.button.tiny.show-all-link {
+    color: @mainColors5;
+    text-decoration: none;
+    margin-top: 0.75rem;
+    display: inline-block;
+    @media screen and (max-width: @largestMobileScreen) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.hero-section {
+  text-align: center;
+
+  .hero-center {
+    width: 100%;
+  }
+
+  .hero-logo {
+    width: 95px;
+    height: 115px;
+    margin: 0 auto 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: @black;
+  }
+
+  .hero-subtitle {
+    font-size: 2rem;
+    color: @darkGrey;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-search {
+    input {
+      border-radius: 4px 0 0 4px !important;
+    }
+  }
+}
+
+.cards-section {
+  .ui.cards {
+    margin-top: 0;
+    align-items: stretch;
+
+    .card {
+      border: 1px solid @greys3;
+      border-radius: 8px;
+      box-shadow: none;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .header {
+          font-weight: 500;
+          color: @black;
+          margin-bottom: 0;
+        }
+
+        .description {
+          color: @darkGrey;
+          min-height: 3rem;
+        }
+
+        .card-icon {
+          margin-bottom: 1rem;
+
+          i.icon {
+            color: @greys3;
+          }
+        }
+        .ui.button {
+          margin-top: auto;
+          margin-left: 1.5rem;
+          margin-right: 1.5rem;
+          &:hover {
+            background-color: @greys1;
+          }
+        }
+      }
+    }
+  }
+}
+
+.funding-section {
+  text-align: center;
+  margin-top: 2rem;
+  .funding-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+
+    img {
+      max-height: 60px;
+      width: auto;
+    }
+  }
+
+  .funding-text {
+    font-size: 0.85rem;
+    color: @darkGrey;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.6;
   }
 }

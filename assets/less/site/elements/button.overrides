@@ -1,0 +1,24 @@
+.ui.button.search {
+  background-color: @mainColors7;
+}
+
+.ui.button {
+  background-color: @mainBackgroundColor;
+}
+
+.ui.button.bordered {
+  border: 1px solid @greys6;
+}
+
+.ui.button.search:hover {
+  background-color: @mainColors9;
+}
+
+.ui.labeled.icon.button > .icon {
+  width: 2.5em;
+}
+
+.ui.icon.button > .icon {
+  width: 2.5em;
+  line-height: 1em;
+}
