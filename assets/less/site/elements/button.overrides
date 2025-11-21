@@ -1,0 +1,6 @@
+.ui.button.search {
+  background-color: @mainColors7;
+}
+.ui.button.search:hover {
+  background-color: @mainColors8;
+}

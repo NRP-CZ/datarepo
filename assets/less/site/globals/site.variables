@@ -25,7 +25,7 @@
 
 // for backwards compatibility
 @brandColor: @primaryColor;
-@brand-primary:@primaryColor;
+@brand-primary: @primaryColor;
 
 /*-------------------
       Site Colors
@@ -51,7 +51,18 @@
 @footerTextLightColor: #ffffff;
 @footerTextDarkColor: #ffffff;
 
-@navbar_background_image: linear-gradient(165deg, #008691, #008691, #00848e, #007e88, #00737d, #006971, #00636b, #006169, #006169);
+@navbar_background_image: linear-gradient(
+  165deg,
+  #008691,
+  #008691,
+  #00848e,
+  #007e88,
+  #00737d,
+  #006971,
+  #00636b,
+  #006169,
+  #006169
+);
 @navbar_background_color: @brandColor;
 
 @coverPageBackgroundColor: @livelyGreen;
@@ -62,7 +73,11 @@
 
 @highlightHeaderColor: @lightGrey;
 @highlightBackgroundColor: @highlightHeaderColor;
-@highlightBackgroundColorHover:  darken(saturate(@highlightHeaderColor, 20), 15, relative);
+@highlightBackgroundColorHover: darken(
+  saturate(@highlightHeaderColor, 20),
+  15,
+  relative
+);
 @highlightLandingPageBackgroundColor: @lightGrey;
 @selectedColor: #ededed;
 
@@ -71,9 +86,79 @@
 @versionActiveColor: #d9edf7;
 
 @mutedAccordionHeaderColor: #f5f5f5;
-@defaultBrandColor: #434C5E;
+@defaultBrandColor: #434c5e;
 
 @featuredListBackgroundColor: @primaryColor;
+
+/*-------------------
+  Color Scales
+--------------------*/
+
+// Greys (light to dark)
+@greys1: #EDF2F3;
+@greys2: #DBE6E9;
+@greys3: #C3D3D7;
+@greys4: #A1B0B3;
+@greys5: #7C8B8E;
+@greys6: #5B686B;
+@greys7: #3A4446;
+@greys8: #252E30;
+@greys9: #030505;
+
+// Main colors (light to dark)
+@mainColors1: #D3F6F9;
+@mainColors2: #93EEF5;
+@mainColors3: #63D9E3;
+@mainColors4: #28B8C4;
+@mainColors5: #008691;
+@mainColors6: #036F78;
+@mainColors7: #025960;
+@mainColors8: #01393D;
+@mainColors9: #012527;
+
+// Secondary colors (light to dark)
+@secondaryColors1: #FBE0E6;
+@secondaryColors2: #FEC7D5;
+@secondaryColors3: #FD98B1;
+@secondaryColors4: #FF7B9C;
+@secondaryColors5: #EB5D81;
+@secondaryColors6: #EF4771;
+@secondaryColors7: #DF1C4D;
+@secondaryColors8: #C20A38;
+@secondaryColors9: #960529;
+
+// Confirmation colors (light to dark)
+@confirmation1: #CAFDCC;
+@confirmation2: #9AF59E;
+@confirmation3: #73EB78;
+@confirmation4: #56D35B;
+@confirmation5: #3FAF43;
+@confirmation6: #139018;
+@confirmation7: #025005;
+@confirmation8: #013703;
+@confirmation9: #012A02;
+
+// Alerts colors (light to dark)
+@alerts1: #FBE8BE;
+@alerts2: #FFE2A3;
+@alerts3: #FDCC64;
+@alerts4: #FCBA29;
+@alerts5: #DFA423;
+@alerts6: #A7750B;
+@alerts7: #785406;
+@alerts8: #5C4104;
+@alerts9: #2B1E02;
+
+// Errors colors (light to dark)
+@errors1: #FFC0B8;
+@errors2: #FD8E7F;
+@errors3: #F56451;
+@errors4: #E34631;
+@errors5: #CD2C17;
+@errors6: #A81F0D;
+@errors7: #771508;
+@errors8: #4A0C04;
+@errors9: #260602;
 
 /*-------------------
       Links
@@ -87,11 +172,11 @@
 /*-------------------
     Breakpoints
 --------------------*/
-@mobileBreakpoint            : 320px;
-@tabletBreakpoint            : 768px;
-@computerBreakpoint          : 1300px;
-@largeMonitorBreakpoint      : 1680px;
-@widescreenMonitorBreakpoint : 1920px;
+@mobileBreakpoint: 320px;
+@tabletBreakpoint: 768px;
+@computerBreakpoint: 1300px;
+@largeMonitorBreakpoint: 1680px;
+@widescreenMonitorBreakpoint: 1920px;
 
 /*-------------------
       Fonts
@@ -99,26 +184,23 @@
 
 @importGoogleFonts: false;
 @emSize: 14px;
-@fontSize: 14px;
-@fontSizeBase: 14px;
+@fontSize: 16px;
 @font-size-small: 0.9rem;
 @font-size-tiny: 0.8rem;
 @font-size-massive: 2.5rem;
-@fontName: 'Roboto';
+@fontName: "Roboto";
 
 /*-------------------
      Em Sizes
 --------------------*/
 
-@75px : unit( (75 / @emSize), rem);
-@relative75px : unit( (75 / @emSize), em);
-
+@75px: unit((75 / @emSize), rem);
+@relative75px: unit((75 / @emSize), em);
 
 /*-------------------
   negative spacing
 --------------------*/
 @coverPageDefaultMargin: 0;
-
 
 /* borders */
 
@@ -138,14 +220,12 @@
 @cellVerticalPadding: @relativeMini;
 @cellHorizontalPadding: @relativeMini;
 
-
 /*------------------
   Images
 ------------------*/
 
 @userDashboardAvatarSize: 40px;
 @communityItemLogoWidth: 115px;
-
 
 /*------------------
   Separators
