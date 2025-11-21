@@ -13,10 +13,14 @@ dependencies = [
     "oarepo-rdm>=1.0.0dev0,<2.0.0",
     "oarepo-theme>=1.0.0dev3,<2.0.0",
     "oarepo-dashboard>=2.0.0dev1,<3.0.0",
+    "oarepo-vocabularies>=3.0.0dev2,<4.0.0",
     "python-dotenv",
     "marshmallow-i18n-messages",
     "oarepo-glitchtip==1.*",
     "ccmm-invenio>=1.1.0a3",
+    "oarepo-oidc-einfra>=2.0.0dev0,<3.0.0",
+    "oarepo-communities>=6.0.0dev0,<7.0.0",
+    "oarepo-requests>=3.0.0dev0,<4.0.0",
 ]
 requires-python = ">=3.13,<3.14"
 
@@ -51,3 +55,6 @@ requires = [
     "uv_build>=0.8.7,<0.9.0",
 ]
 build-backend = "uv_build"
+
+[tool.uv.sources]
+# Example: oarepo-requests = { path = "/Users/m/w/rdm-13/oarepo-requests", editable=true }

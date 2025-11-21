@@ -1,0 +1,219 @@
+{
+  "$schema": "local://datasets-v1.1.0.json",
+  "metadata": {
+    "locations": [
+      {
+        "bounding_boxes": [
+          {
+            "lowerCorner": [
+              13.394972457505816,
+              49.50127042751268
+            ],
+            "upperCorner": [
+              15.585575400519133,
+              50.61421606255462
+            ]
+          }
+        ],
+        "names": [
+          "Středočeský kraj"
+        ],
+        "related_objects": [
+          {
+            "iri": "https://vdp.cuzk.gov.cz/vdp/ruian/vusc/27",
+            "title": "Středočeský kraj"
+          }
+        ],
+        "relation_type": {
+          "id": "Collected"
+        }
+      }
+    ],
+    "provenances": [
+      {}
+    ],
+    "related_resources": [
+      {
+        "iri": "http://data.europa.eu/eli/dir/2008/50/oj",
+        "resource_relation_type": {
+          "id": "IsReferencedBy"
+        },
+        "resource_type": {
+          "id": "Software"
+        },
+        "resource_url": "https://eur-lex.europa.eu/legal-content/CS/TXT/HTML/?uri=CELEX:32008L0050&qid=1754039487879",
+        "title": "Směrnice Evropského parlamentu a Rady 2008/50/ES ze dne 21. května 2008 o kvalitě vnějšího ovzduší a čistším ovzduší pro Evropu"
+      },
+      {
+        "resource_type": {
+          "id": "PhysicalObject"
+        },
+        "resource_url": "https://www.envitech-bohemia.cz/p/264/envi-lvs1-sampler-pro-odber-prasneho-aerosolu",
+        "title": "ENVI LVS1 Sampler pro odběr prašného aerosolu"
+      },
+      {
+        "iri": "https://opendata.chmi.cz/air_quality/now/data/",
+        "resource_relation_type": {
+          "id": "IsDerivedFrom"
+        },
+        "resource_type": {
+          "id": "ObservationData"
+        },
+        "resource_url": "https://opendata.chmi.cz/air_quality/",
+        "title": "Kvalita ovzduší – aktuální hodinové údaje"
+      },
+      {
+        "iri": "https://data.gov.cz/zdroj/datové-sady/00020699/c724d055011d82189bbfc3766ffd1eb7",
+        "resource_relation_type": {
+          "id": "HasMetadata"
+        },
+        "resource_url": "https://data.gov.cz/zdroj/datové-sady/00020699/c724d055011d82189bbfc3766ffd1eb7",
+        "title": "Metadata datoivé sady INSPIRE – Kvalita ovzduší – přehledy (data) na měřicích stanicích"
+      }
+    ],
+    "terms_of_use": {
+      "access_rights": {
+        "id": "c_abf2"
+      },
+      "contact_points": [
+        {
+          "person": {
+            "contact_points": [
+              {
+                "emails": [
+                  "pavlina.dolezalova@organizace.cz"
+                ],
+                "phones": [
+                  "+420784512963"
+                ]
+              }
+            ],
+            "name": "Pavlína Doležalová"
+          }
+        }
+      ],
+      "description": [
+        {
+          "lang": {
+            "id": "CES"
+          },
+          "value": "Textový popis toho, jak je možné s datovou sadou nakládat."
+        }
+      ],
+      "license": {
+        "iri": "https://creativecommons.org/licenses/by/4.0/",
+        "label": [
+          {
+            "lang": {
+              "id": "ENG"
+            },
+            "value": "Attribution 4.0 International"
+          }
+        ]
+      }
+    },
+    "time_references": [
+      {
+        "temporal_representation": {
+          "time_instant": {
+            "date_time": "2025-04-27T12:00:01+02:00"
+          }
+        },
+        "date_type": {
+          "id": "Created"
+        }
+      },
+      {
+        "temporal_representation": {
+          "time_interval": {
+            "beginning": {
+              "date": "2024-01-01"
+            },
+            "end": {
+              "date": "2024-12-31"
+            }
+          }
+        },
+        "date_type": {
+          "id": "Collected"
+        }
+      }
+    ],
+    "title": "Kvalita ovzduší ve středních čechách 2024",
+    "validation_results": [
+      {}
+    ],
+    "version": "1.0.23",
+    "publication_date": "2025-04-27",
+    "additional_titles": [
+      {
+        "title": "Air quality measurements in Central Bohemian Region in 2024.",
+        "type": {
+          "id": "TranslatedTitle"
+        },
+        "lang": {
+          "id": "ENG"
+        }
+      }
+    ],
+    "additional_descriptions": [
+      {
+        "description": "Tato datová sada obsahuje měření kvality ovzduší ve středních Čechách v roce 2024.",
+        "type": {
+          "id": "abstract"
+        },
+        "lang": {
+          "id": "CES"
+        }
+      }
+    ],
+    "creators": [
+      {
+        "role": {
+          "id": "Researcher"
+        },
+        "person_or_org": {
+          "name": "Šimek, Miroslav",
+          "type": "personal",
+          "given_name": "Miroslav",
+          "family_name": "Šimek",
+          "identifiers": [
+            {
+              "identifier": "0000-0003-0852-6632",
+              "scheme": "orcid"
+            }
+          ]
+        },
+        "affiliations": [
+          {
+            "name": "CESNET z.s.p.o."
+          }
+        ]
+      }
+    ],
+    "funding": [
+      {
+        "funder": {
+          "name": "Grantová agentura České republiky"
+        },
+        "award": {
+          "title": {
+            "cs": "Program for air pollution research"
+          },
+          "number": "https://doi.org/award-identifier"
+        }
+      }
+    ],
+    "resource_type": {
+      "id": "c_ddb1"
+    },
+    "languages": [
+      {
+        "id": "CES"
+      },
+      {
+        "id": "ENG"
+      }
+    ]
+  }
+}
