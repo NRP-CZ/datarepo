@@ -1,11 +1,148 @@
 {% extends "oarepo_ui/frontpage.html" %}
 
-{# Available template blocks (showing closest override point):
+{# Available template blocks (showing closest override point): #}
 
-Header (from invenio_app_rdm/frontpage.html):
-{%- block page_header %}  # Includes invenio_app_rdm/header_frontpage.html
+{# Header Section #}
+{%- block page_header %}  
+  {% include "header.html" %}
 {%- endblock page_header %}
 
+{# Page Body Section #}
+{% block page_body %}
+<div class="frontpage-content">
+
+  {# Hero Section #}
+  <div class="hero-section">
+    <div class="hero-center">
+      <img 
+        src="{{ url_for('static', filename='images/logo_without_text.svg') }}" 
+        alt="Catch-all Logo" 
+        class="hero-logo"
+      >
+      <h1 class="hero-title">Catch-all</h1>
+      <p class="hero-subtitle">{{ _('Multi-discipline data repository') }}</p>
+
+      <form 
+        action="{{ url_for('datasets_ui.search') }}" 
+        class="ui form" 
+        role="search"
+      >
+        <div id="frontpage-search-input" class="ui fluid action input search-input">
+          <input 
+            type="text" 
+            name="q" 
+            class="form-control" 
+            placeholder="{{ _('Search...') }}"
+          >
+          <button 
+            type="submit" 
+            class="ui search icon left labeled large button" 
+            aria-label="{{ _('Search') }}"
+          >
+            <i class="search icon"></i>
+            {{ _('Search') }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="text-align-right">
+    <a 
+      class="ui button tiny compact icon right labeled bordered show-all-link" 
+      href="{{ url_for('datasets_ui.search') }}"
+    >
+      {{ _('Zobrazit všechny datasety') }}
+      <i class="right arrow icon"></i>
+    </a>  
+  </div>
+
+  {# Three Cards Section #}
+  <div class="cards-section">
+    <div class="ui three stackable cards">
+
+      {# Card 1: Upload Dataset #}
+      <div class="ui card">
+        <div class="content">
+          <h3 class="header">{{ _('Upload dataset') }}</h3>
+          <p class="description">{{ _('Upload your data to our catch-all repository') }}</p>
+          <div class="card-icon">
+            <i class="huge upload icon"></i>
+          </div>
+          <a 
+            class="ui button right labeled icon bordered" 
+            href="{{ url_for('datasets_ui.deposit_create') }}"
+          >
+            {{ _('Upload dataset') }}
+            <i class="right arrow icon"></i>
+          </a>
+        </div>
+      </div>
+
+      {# Card 2: How it works #}
+      <div class="ui card">
+        <div class="content">
+          <h3 class="header">{{ _('How does a repository work?') }}</h3>
+          <p class="description">{{ _('Would you like to know more about where your data is being stored?') }}</p>
+          <div class="card-icon">
+            <i class="huge question circle icon"></i>
+          </div>
+          <a 
+            class="ui button right labeled icon bordered" 
+            href="/dummy-url"
+          >
+            {{ _('About repository') }}
+            <i class="right arrow icon"></i>
+          </a>
+        </div>
+      </div>
+
+      {# Card 3: Find Repository #}
+      <div class="ui card">
+        <div class="content">
+          <h3 class="header">{{ _('Find a specific repository') }}</h3>
+          <p class="description">{{ _('Are you sure that this repository is right for you?') }}</p>
+          <div class="card-icon">
+            <i class="huge search icon"></i>
+          </div>
+          <a 
+            class="ui button right labeled icon bordered" 
+            href="/dummy-url"
+          >
+            {{ _('Find repository') }}
+            <i class="right arrow icon"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {# Footer Logos Section #}
+  <div class="ui container funding-section">
+    <div class="funding-logos">
+      <img 
+        class="ui image" 
+        src="{{ url_for('static', filename='images/EU+MŠMT Barevné.svg') }}" 
+        alt="EU MŠMT"
+      >
+      <img 
+        class="ui image" 
+        src="{{ url_for('static', filename='images/eosc_cz_pos_up.svg') }}" 
+        alt="EOSC"
+      >
+    </div>
+    <p class="funding-text">
+      {{ _('This project output was developed with financial contributions from the EOSC CZ initiative through the project National Repository Platform for Research Data(CZ.02.01.01/00/23_014/0008787) funded by Programme Johannes Amos Comenius (P JAC) of the Ministry of Education, Youth and Sports of the Czech Republic (MEYS).') }}
+    </p>
+  </div>
+
+</div>
+{% endblock page_body %}
+
+
+
+{#
 Main Content (from invenio_app_rdm/frontpage.html):
 {%- block page_body %}  # Main content container
   {%- block intro_section %}  # Welcome section (shown if show_intro_section is true)

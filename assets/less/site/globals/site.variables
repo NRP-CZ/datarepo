@@ -25,7 +25,8 @@
 
 // for backwards compatibility
 @brandColor: @primaryColor;
-@brand-primary:@primaryColor;
+@brand-primary: @primaryColor;
+@mainBackgroundColor: #f5f7f7;
 
 /*-------------------
       Site Colors
@@ -51,7 +52,18 @@
 @footerTextLightColor: #ffffff;
 @footerTextDarkColor: #ffffff;
 
-@navbar_background_image: linear-gradient(165deg, #008691, #008691, #00848e, #007e88, #00737d, #006971, #00636b, #006169, #006169);
+@navbar_background_image: linear-gradient(
+  165deg,
+  #008691,
+  #008691,
+  #00848e,
+  #007e88,
+  #00737d,
+  #006971,
+  #00636b,
+  #006169,
+  #006169
+);
 @navbar_background_color: @brandColor;
 
 @coverPageBackgroundColor: @livelyGreen;
@@ -62,7 +74,11 @@
 
 @highlightHeaderColor: @lightGrey;
 @highlightBackgroundColor: @highlightHeaderColor;
-@highlightBackgroundColorHover:  darken(saturate(@highlightHeaderColor, 20), 15, relative);
+@highlightBackgroundColorHover: darken(
+  saturate(@highlightHeaderColor, 20),
+  15,
+  relative
+);
 @highlightLandingPageBackgroundColor: @lightGrey;
 @selectedColor: #ededed;
 
@@ -71,9 +87,100 @@
 @versionActiveColor: #d9edf7;
 
 @mutedAccordionHeaderColor: #f5f5f5;
-@defaultBrandColor: #434C5E;
+@defaultBrandColor: #434c5e;
 
 @featuredListBackgroundColor: @primaryColor;
+
+@miniSize: (10 / 16);
+@tinySize: (12 / 16);
+@smallSize: (14 / 16);
+@mediumSize: (16 / 16);
+@largeSize: (18 / 16);
+@bigSize: (20 / 16);
+
+@mini: unit(@miniSize, rem);
+@tiny: unit(@tinySize, rem);
+@small: unit(@smallSize, rem);
+@medium: unit(@mediumSize, rem);
+@large: unit(@largeSize, rem);
+@big: unit(@bigSize, rem);
+
+@relativeMini: unit(@miniSize, em);
+@relativeTiny: unit(@tinySize, em);
+@relativeSmall: unit(@smallSize, em);
+@relativeMedium: unit(@mediumSize, em);
+@relativeLarge: unit(@largeSize, em);
+@relativeBig: unit(@bigSize, em);
+
+/*-------------------
+  Color Scales
+--------------------*/
+
+// Greys (light to dark)
+@greys1: #edf2f3;
+@greys2: #dbe6e9;
+@greys3: #c3d3d7;
+@greys4: #a1b0b3;
+@greys5: #7c8b8e;
+@greys6: #5b686b;
+@greys7: #3a4446;
+@greys8: #252e30;
+@greys9: #030505;
+
+// Main colors (light to dark)
+@mainColors1: #d3f6f9;
+@mainColors2: #93eef5;
+@mainColors3: #63d9e3;
+@mainColors4: #28b8c4;
+@mainColors5: #008691;
+@mainColors6: #036f78;
+@mainColors7: #025960;
+@mainColors8: #01393d;
+@mainColors9: #012527;
+
+// Secondary colors (light to dark)
+@secondaryColors1: #fbe0e6;
+@secondaryColors2: #fec7d5;
+@secondaryColors3: #fd98b1;
+@secondaryColors4: #ff7b9c;
+@secondaryColors5: #eb5d81;
+@secondaryColors6: #ef4771;
+@secondaryColors7: #df1c4d;
+@secondaryColors8: #c20a38;
+@secondaryColors9: #960529;
+
+// Confirmation colors (light to dark)
+@confirmation1: #cafdcc;
+@confirmation2: #9af59e;
+@confirmation3: #73eb78;
+@confirmation4: #56d35b;
+@confirmation5: #3faf43;
+@confirmation6: #139018;
+@confirmation7: #025005;
+@confirmation8: #013703;
+@confirmation9: #012a02;
+
+// Alerts colors (light to dark)
+@alerts1: #fbe8be;
+@alerts2: #ffe2a3;
+@alerts3: #fdcc64;
+@alerts4: #fcba29;
+@alerts5: #dfa423;
+@alerts6: #a7750b;
+@alerts7: #785406;
+@alerts8: #5c4104;
+@alerts9: #2b1e02;
+
+// Errors colors (light to dark)
+@errors1: #ffc0b8;
+@errors2: #fd8e7f;
+@errors3: #f56451;
+@errors4: #e34631;
+@errors5: #cd2c17;
+@errors6: #a81f0d;
+@errors7: #771508;
+@errors8: #4a0c04;
+@errors9: #260602;
 
 /*-------------------
       Links
@@ -87,11 +194,11 @@
 /*-------------------
     Breakpoints
 --------------------*/
-@mobileBreakpoint            : 320px;
-@tabletBreakpoint            : 768px;
-@computerBreakpoint          : 1300px;
-@largeMonitorBreakpoint      : 1680px;
-@widescreenMonitorBreakpoint : 1920px;
+@mobileBreakpoint: 320px;
+@tabletBreakpoint: 768px;
+@computerBreakpoint: 1300px;
+@largeMonitorBreakpoint: 1680px;
+@widescreenMonitorBreakpoint: 1920px;
 
 /*-------------------
       Fonts
@@ -99,26 +206,23 @@
 
 @importGoogleFonts: false;
 @emSize: 14px;
-@fontSize: 14px;
-@fontSizeBase: 14px;
+@fontSize: 16px;
 @font-size-small: 0.9rem;
 @font-size-tiny: 0.8rem;
 @font-size-massive: 2.5rem;
-@fontName: 'Roboto';
+@fontName: "Roboto";
 
 /*-------------------
      Em Sizes
 --------------------*/
 
-@75px : unit( (75 / @emSize), rem);
-@relative75px : unit( (75 / @emSize), em);
-
+@75px: unit((75 / @emSize), rem);
+@relative75px: unit((75 / @emSize), em);
 
 /*-------------------
   negative spacing
 --------------------*/
 @coverPageDefaultMargin: 0;
-
 
 /* borders */
 
@@ -138,14 +242,12 @@
 @cellVerticalPadding: @relativeMini;
 @cellHorizontalPadding: @relativeMini;
 
-
 /*------------------
   Images
 ------------------*/
 
 @userDashboardAvatarSize: 40px;
 @communityItemLogoWidth: 115px;
-
 
 /*------------------
   Separators

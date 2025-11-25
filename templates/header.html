@@ -1,5 +1,39 @@
 {% extends "invenio_app_rdm/header.html" %}
 
+{%- block navbar_search %}  
+{%- endblock navbar_search %}
+
+{%- block navbar_right %}
+<div class="right menu item">
+   {%- if config.I18N_LANGUAGES %}
+      <div class="mr-20">
+        <form id="language-code-form" class="lang-select"
+              action="{{ url_for('invenio_i18n.set_lang')}}"
+              method="POST">
+          <div>
+            <select id="lang-code" name="lang_code" class="ui selection dropdown">
+              {% for l in current_i18n.get_locales() %}
+                <option {% if current_i18n.language == l.language %}selected {% endif %}value="{{ l.language }}">{{ l.get_display_name() }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </form>
+      </div>
+    {%- endif %}
+  {%- if config.ACCOUNTS and current_user.is_authenticated %}
+    {% for item in current_menu.submenu('notifications').children|sort(attribute='order') if item.visible recursive %}
+      <div class="{{'item active' if item.active else 'item' }} inbox">
+        <a href="{{ item.url }}" aria-label="{{ _('Requests') }}">
+          <i class="fitted inbox icon inverted"></i>
+          <span class="mobile tablet only inline">{{ _("Inbox") }}</span>
+        </a>
+      </div>
+    {% endfor %}
+  {% endif %}
+  {%- include config.THEME_HEADER_LOGIN_TEMPLATE %}
+</div>
+{%- endblock navbar_right %}
+
 {# Available template blocks (showing closest override point):
 
 User Status (from invenio_app_rdm/header.html):
