@@ -1,0 +1,11 @@
+.ui.container {
+  &.frontpage-content {
+    @media only screen and (min-width: @largestTabletScreen) {
+      width: 62.5rem;
+    }
+    .show-all-link {
+      margin-right: 0;
+      margin-top: 0.75rem;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{# Macro for rendering a card with icon, header, description, and button #}
+{% macro render_card(header, description, icon, url, button_text) %}
+<div class="ui card shadowless">
+  <div class="content">
+    <h3 class="header">{{ header }}</h3>
+    <p class="description">
+      {{ description }}
+    </p>
+    <div class="card-icon">
+      <i class="huge {{ icon }} icon"></i>
+    </div>
+    <a
+      class="ui button right labeled icon bordered"
+      href="{{ url }}"
+    >
+      {{ button_text }}
+      <i class="angle right icon"></i>
+    </a>
+  </div>
+</div>
+{% endmacro %}
