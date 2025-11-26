@@ -31,7 +31,7 @@ body {
 
 main {
   flex-grow: 1;
-  background-image: url("../../../../static/images/background-image.svg");
+  background-image: url("~@less/site/images/background-image.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: @mainBackgroundColor;
