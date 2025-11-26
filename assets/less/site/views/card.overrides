@@ -1,0 +1,41 @@
+.ui.cards {
+  &.frontpage-cards {
+    margin-top: 0;
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      // tried debugging but the gap property just wont work when ui cards is the container
+      margin-left: 3.75rem;
+      margin-right: 3.75rem;
+      .content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .header {
+          font-weight: 500;
+          color: @black;
+          margin-bottom: 0;
+        }
+
+        .description {
+          color: @darkGrey;
+          margin-top: auto;
+        }
+
+        .card-icon {
+          margin-bottom: 1rem;
+
+          i.icon {
+            color: @greys3;
+          }
+        }
+
+        .ui.button {
+          align-self: center;
+        }
+      }
+    }
+  }
+}

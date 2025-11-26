@@ -1,0 +1,2 @@
+@inputBorder: 1px solid @primaryColor;
+@inputBorderRadius: 0.5rem;
