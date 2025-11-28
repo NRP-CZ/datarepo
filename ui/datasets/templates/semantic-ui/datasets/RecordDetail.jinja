@@ -41,3 +41,7 @@ The "embedded" context variable controls certain features.
 {%- block page_main -%}
   {% include "datasets/record_detail/main.html" %}
 {%- endblock page_main -%}
+
+{%- block javascript %}
+{{ webpack['oarepo_requests_landing_page.js'] }}
+{%- endblock javascript %}
