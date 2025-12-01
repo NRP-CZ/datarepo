@@ -4,3 +4,6 @@
 @borderRadius: 0.5rem;
 @compactVerticalPadding: 0.25em;
 @compactHorizontalPadding: 0.75em;
+@backgroundColor: @mainBackgroundColor;
+@borderWidth: 1px;
+@borderColor: @greys6;

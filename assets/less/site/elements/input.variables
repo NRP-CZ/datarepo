@@ -5,3 +5,4 @@
 @borderRadius: 0.5rem;
 @compactVerticalPadding: 0.25em;
 @compactHorizontalPadding: 0.75em;
+@border: 1px solid @greys7;

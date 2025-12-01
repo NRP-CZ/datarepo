@@ -1,0 +1,6 @@
+// weird issue with button inside action input where icon is misaligned
+.ui.action.input {
+  .button {
+    display: block;
+  }
+}

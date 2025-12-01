@@ -19,7 +19,14 @@
           </div>
         </form>
       </div>
+   
     {%- endif %}
+       {% if current_user.is_authenticated %}
+          <a href="/me/uploads" class="ui button icon block large primary">
+            <i class="microsoft icon"></i>
+          {{ _('My dashboard') }}
+        </a>
+        {% endif %}
   {%- if config.ACCOUNTS and current_user.is_authenticated %}
     {% for item in current_menu.submenu('notifications').children|sort(attribute='order') if item.visible recursive %}
       <div class="{{'item active' if item.active else 'item' }} inbox">

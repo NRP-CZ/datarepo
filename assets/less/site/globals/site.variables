@@ -9,7 +9,8 @@
 @livelyGreen: #008691;
 @pink: #ff5b7f;
 
-@primaryColor: @livelyGreen;
+@primaryColor: @primaryColor;
+@primaryTextColor: @white;
 @secondaryColor: @pink;
 @darkGrey: #707075;
 @lightGrey: #e4e4e3;
@@ -134,7 +135,7 @@
 @mainColors4: #28b8c4;
 @mainColors5: #008691;
 @mainColors6: #036f78;
-@mainColors7: #025960;
+@primaryColor: #025960;
 @mainColors8: #01393d;
 @mainColors9: #012527;
 
@@ -186,7 +187,7 @@
       Links
 --------------------*/
 
-@linkColor: #005b9e;
+@linkColor: @black;
 @linkUnderline: none;
 @linkHoverColor: darken(saturate(@linkColor, 20), 15, relative);
 @linkHoverUnderline: underline;
@@ -205,12 +206,12 @@
 --------------------*/
 
 @importGoogleFonts: false;
-@emSize: 14px;
+@emSize: 16px;
 @fontSize: 16px;
 @font-size-small: 0.9rem;
 @font-size-tiny: 0.8rem;
 @font-size-massive: 2.5rem;
-@fontName: "Roboto";
+@fontName: "Lato";
 
 /*-------------------
      Em Sizes
@@ -228,6 +229,7 @@
 
 @dashedBorder: 2px dashed @borderColor;
 @defaultBorder: 1px solid @solidBorderColor;
+@headerFooterBorder: 1px solid @greys3;
 
 /*------------------
   checkboxes

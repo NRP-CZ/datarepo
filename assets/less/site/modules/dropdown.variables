@@ -1,0 +1,3 @@
+@selectionBorder: 1px solid @greys7;
+@borderRadius: 0.5rem;
+ 
