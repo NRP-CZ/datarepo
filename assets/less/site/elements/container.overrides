@@ -8,4 +8,7 @@
       margin-top: 0.75rem;
     }
   }
+  &.page-subheader-outer {
+    background-color: transparent;
+  }
 }

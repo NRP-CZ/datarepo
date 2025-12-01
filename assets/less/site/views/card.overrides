@@ -39,3 +39,6 @@
     }
   }
 }
+.ui.card.borderless.facet {
+  background-color: transparent;
+}

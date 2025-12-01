@@ -555,3 +555,7 @@ dl.details-list {
 #invenio-nav.ui.menu #user-profile-dropdown {
   width: auto !important;
 }
+
+#header-search-bar .ui.fluid.search {
+  width: auto !important;
+}
