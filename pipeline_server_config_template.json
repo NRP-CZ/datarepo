@@ -1,0 +1,10 @@
+{
+  "hsm_servers": {
+    "default": "http://localhost:8080/mykey/x25519/"
+  },
+  "rsa_keys": {
+    "server_private_key": "",
+    "server_public_key": "",
+    "repo_public_key": ""
+}
+}
