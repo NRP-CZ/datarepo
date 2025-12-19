@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from ccmm_invenio.models import ccmm_production_preset_1_1_0
 from invenio_records_permissions.generators import AuthenticatedUser
+from oarepo_checks.model.presets import check_preset
 from oarepo_model.api import model
 from oarepo_model.customizations import PrependMixin
 from oarepo_model.model import ModelMixin
@@ -16,7 +17,7 @@ class DatasetsPermissionPolicyMixin(ModelMixin):
 datasets_model = model(
     "datasets",
     version="1.1.0",
-    presets=[ccmm_production_preset_1_1_0],
+    presets=[check_preset, ccmm_production_preset_1_1_0],
     types=[],
     metadata_type="CCMMProductionDataset",
     customizations=[
