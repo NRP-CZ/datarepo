@@ -79,6 +79,8 @@ OAREPO_CHECKS_LLM_CLIENTS = {
 OAREPO_CHECKS_DEFAULT_LLM_CLIENT = "chat_einfra"
 ```
 
+**Note:** The `deepseek-r1` model includes a "thinking" process that can result in longer response times. Users may experience noticeable delays when saving drafts while validation is running. This makes the need for Celery task integration even more important for production use.
+
 ### Creating a Custom Dummy Client for Testing
 
 For development and testing without external API calls:
