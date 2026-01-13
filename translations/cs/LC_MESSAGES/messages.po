@@ -20,143 +20,143 @@ msgstr ""
 
 #: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:18
 msgid "Czech"
-msgstr ""
+msgstr "Čeština"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:23
 msgid "CESNET Data Repository"
-msgstr ""
+msgstr "Datový repozitář CESNET"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:24
 msgid "Catch-All repostitory for Czech scientific data"
-msgstr ""
+msgstr "Univerzální repozitář pro česká vědecká data"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:165
 msgid "APA"
-msgstr ""
+msgstr "APA"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:166
 msgid "Harvard"
-msgstr ""
+msgstr "Harvard"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:167
 msgid "MLA"
-msgstr ""
+msgstr "MLA"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:168
 msgid "Vancouver"
-msgstr ""
+msgstr "Vancouver"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:169
 msgid "Chicago"
-msgstr ""
+msgstr "Chicago"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:170
 msgid "IEEE"
-msgstr ""
+msgstr "IEEE"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/common/workflows/default.py:360
 msgid "state:draft"
-msgstr ""
+msgstr "stav:návrh"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/common/workflows/default.py:361
 msgid "state:published"
-msgstr ""
+msgstr "stav:publikováno"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/common/workflows/default.py:362
 msgid "state:submitted"
-msgstr ""
+msgstr "stav:odesláno"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/common/workflows/default.py:363
 msgid "state:retracting"
-msgstr ""
+msgstr "stav:stahováno"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/common/workflows/default.py:364
 msgid "state:deleted"
-msgstr ""
+msgstr "stav:smazáno"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/footer.html:3
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentace"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/footer.html:4
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:26
 msgid "Multi-discipline data repository"
-msgstr ""
+msgstr "Repozitář multidisciplinárních dat"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:39
 msgid "Search..."
-msgstr ""
+msgstr "Hledat..."
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:44
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:47
 msgid "Search"
-msgstr ""
+msgstr "Hledat"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:59
 msgid "Zobrazit všechny datasety"
-msgstr ""
+msgstr "Zobrazit všechny datasety"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:70
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:74
 msgid "Upload dataset"
-msgstr ""
+msgstr "Nahrát dataset"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:71
 msgid "Upload your data to our catch-all repository"
-msgstr ""
+msgstr "Nahrajte svá data do našeho univerzálního repozitáře"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:79
 msgid "How does a repository work?"
-msgstr ""
+msgstr "Jak repozitář funguje?"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:80
 msgid "Would you like to know more about where your data is being stored?"
-msgstr ""
+msgstr "Chcete vědět více o tom, kde jsou vaše data uložena?"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:83
 #: /Users/m/w/rdm-14/nrp/datarepo/ui/datasets/__init__.py:100
 msgid "About repository"
-msgstr ""
+msgstr "O repozitáři"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/header.html:27
 msgid "My dashboard"
-msgstr ""
+msgstr "Můj panel"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/header.html:33
 msgid "Requests"
-msgstr ""
+msgstr "Žádosti"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/header.html:35
 msgid "Inbox"
-msgstr ""
+msgstr "Doručená pošta"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:16
 msgid "Login"
-msgstr ""
+msgstr "Přihlášení"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:19
 msgid "Log in"
-msgstr ""
+msgstr "Přihlásit se"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:24
 msgid "Sign up"
-msgstr ""
+msgstr "Zaregistrovat se"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:42
 msgid "Quick create"
-msgstr ""
+msgstr "Rychlé vytvoření"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:58
 msgid "Actions"
-msgstr ""
+msgstr "Akce"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:79
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:120
 msgid "My account"
-msgstr ""
+msgstr "Můj účet"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:110
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:113
@@ -165,77 +165,81 @@ msgstr ""
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:154
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:157
 msgid "Log out"
-msgstr ""
+msgstr "Odhlásit se"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:5
 msgid "You've successfully installed Invenio RDM!"
-msgstr ""
+msgstr "Úspěšně jste nainstalovali Invenio RDM!"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:7
 msgid "What is ahead?"
-msgstr ""
+msgstr "Co vás čeká?"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:17
 msgid "Configure"
-msgstr ""
+msgstr "Nakonfigurujte"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:20
 msgid ""
 "Configure the datamodel, resource types, permissions and much more to "
 "make it suit your needs! For more information on how to do it visit the"
 msgstr ""
+"Nakonfigurujte datový model, typy zdrojů, oprávnění a mnohem více, aby "
+"odpovídaly vašim potřebám! Více informací o postupu najdete v"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:22
 msgid "configuration section in the docs"
-msgstr ""
+msgstr "sekci s konfigurací v dokumentaci"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:34
 msgid "Customize"
-msgstr ""
+msgstr "Přizpůsobte"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:37
 msgid ""
 "Customize the layout and adapt the styling to match your institution's. "
 "See how to do so"
 msgstr ""
+"Přizpůsobte rozložení a upravte styl tak, aby odpovídal vaší instituci. "
+"Podívejte se, jak na to"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:39
 msgid "here"
-msgstr ""
+msgstr "zde"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:50
 msgid "Use it!"
-msgstr ""
+msgstr "Používejte ho!"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:52
 msgid "Use and explore your InvenioRDM instance."
-msgstr ""
+msgstr "Používejte a prozkoumávejte svou instanci InvenioRDM."
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:54
 msgid "Use"
-msgstr ""
+msgstr "Použít"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:68
 msgid "Docs"
-msgstr ""
+msgstr "Dokumentace"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:77
 msgid "Code"
-msgstr ""
+msgstr "Kód"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:84
 msgid "To disable this section, add"
-msgstr ""
+msgstr "Chcete-li tuto sekci vypnout, přidejte"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:86
 msgid "to your invenio.cfg file."
-msgstr ""
+msgstr "do souboru invenio.cfg."
 
 #: /Users/m/w/rdm-14/nrp/datarepo/ui/datasets/__init__.py:94
 msgid "New Datasets"
-msgstr ""
+msgstr "Nové datasety"
 
 #: /Users/m/w/rdm-14/nrp/datarepo/ui/datasets/__init__.py:106
 msgid "Statistics"
-msgstr ""
+msgstr "Statistiky"
 
