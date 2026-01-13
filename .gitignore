@@ -382,3 +382,6 @@ package-lock.json
 pnpm-lock.yaml
 
 .invenio.private
+
+# translations
+*.mo
