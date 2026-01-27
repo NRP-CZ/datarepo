@@ -37,7 +37,7 @@ const FormFieldsContainerComponent = ({ record }) => {
           decimalSizeDisplay={formConfig.decimal_size_display}
           allowEmptyFiles={formConfig.allow_empty_files}
           fileUploadConcurrency={formConfig.file_upload_concurrency}
-          showMetadataOnlyToggle={false}
+          showMetadataOnlyToggle={true}
           filesLocked={filesLocked}
         />
       </AccordionField>

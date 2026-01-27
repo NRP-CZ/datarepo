@@ -5,6 +5,8 @@ from invenio_records_permissions.generators import AuthenticatedUser
 from oarepo_model.api import model
 from oarepo_model.customizations import PrependMixin
 from oarepo_model.model import ModelMixin
+from oarepo_requests.model.presets.requests import requests_preset
+from oarepo_workflows.model.presets import workflows_preset
 
 
 class DatasetsPermissionPolicyMixin(ModelMixin):
@@ -16,7 +18,7 @@ class DatasetsPermissionPolicyMixin(ModelMixin):
 datasets_model = model(
     "datasets",
     version="1.1.0",
-    presets=[ccmm_production_preset_1_1_0],
+    presets=[ccmm_production_preset_1_1_0, workflows_preset, requests_preset],
     types=[],
     metadata_type="CCMMProductionDataset",
     customizations=[
