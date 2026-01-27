@@ -56,12 +56,6 @@ class DatasetsUIResourceConfig(RecordsUIResourceConfig):
 
     application_id = "datasets"
 
-    templates = {
-        "record_detail": "datasets.RecordDetail",
-        "search": "datasets.Search",
-        "deposit_edit": "datasets.Deposit",
-        "deposit_create": "datasets.Deposit",
-    }
 
 
 class DatasetsUIResource(RecordsUIResource):
