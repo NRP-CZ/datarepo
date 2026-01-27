@@ -1,0 +1,240 @@
+# Translations template for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-01-13 10:42+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:18
+msgid "Czech"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:23
+msgid "CESNET Data Repository"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:24
+msgid "Catch-All repostitory for Czech scientific data"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:165
+msgid "APA"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:166
+msgid "Harvard"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:167
+msgid "MLA"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:168
+msgid "Vancouver"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:169
+msgid "Chicago"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/invenio.cfg:170
+msgid "IEEE"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/common/workflows/default.py:360
+msgid "state:draft"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/common/workflows/default.py:361
+msgid "state:published"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/common/workflows/default.py:362
+msgid "state:submitted"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/common/workflows/default.py:363
+msgid "state:retracting"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/common/workflows/default.py:364
+msgid "state:deleted"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/footer.html:3
+msgid "Documentation"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/footer.html:4
+msgid "Contact"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:26
+msgid "Multi-discipline data repository"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:39
+msgid "Search..."
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:44
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:47
+msgid "Search"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:59
+msgid "Zobrazit všechny datasety"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:70
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:74
+msgid "Upload dataset"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:71
+msgid "Upload your data to our catch-all repository"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:79
+msgid "How does a repository work?"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:80
+msgid "Would you like to know more about where your data is being stored?"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/frontpage.html:83
+#: /Users/m/w/rdm-14/nrp/datarepo/ui/datasets/__init__.py:100
+msgid "About repository"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/header.html:27
+msgid "My dashboard"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/header.html:33
+msgid "Requests"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/header.html:35
+msgid "Inbox"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:16
+msgid "Login"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:19
+msgid "Log in"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:24
+msgid "Sign up"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:42
+msgid "Quick create"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:58
+msgid "Actions"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:79
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:120
+msgid "My account"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:110
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:113
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:144
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:147
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:154
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:157
+msgid "Log out"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:5
+msgid "You've successfully installed Invenio RDM!"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:7
+msgid "What is ahead?"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:17
+msgid "Configure"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:20
+msgid ""
+"Configure the datamodel, resource types, permissions and much more to "
+"make it suit your needs! For more information on how to do it visit the"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:22
+msgid "configuration section in the docs"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:34
+msgid "Customize"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:37
+msgid ""
+"Customize the layout and adapt the styling to match your institution's. "
+"See how to do so"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:39
+msgid "here"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:50
+msgid "Use it!"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:52
+msgid "Use and explore your InvenioRDM instance."
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:54
+msgid "Use"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:68
+msgid "Docs"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:77
+msgid "Code"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:84
+msgid "To disable this section, add"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:86
+msgid "to your invenio.cfg file."
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/ui/datasets/__init__.py:94
+msgid "New Datasets"
+msgstr ""
+
+#: /Users/m/w/rdm-14/nrp/datarepo/ui/datasets/__init__.py:106
+msgid "Statistics"
+msgstr ""
+

@@ -24,7 +24,11 @@
 from datetime import timedelta
 
 from invenio_i18n import lazy_gettext as _
-from invenio_rdm_records.services.generators import IfRecordDeleted, IfRestricted
+from invenio_rdm_records.services.generators import (
+    IfRecordDeleted,
+    IfRestricted,
+    RecordOwners,
+)
 from invenio_records_permissions.generators import (
     AnyUser,
     Disable,
@@ -40,8 +44,7 @@ from oarepo_communities.services.permissions.generators import (
 from oarepo_communities.services.permissions.policy import (
     CommunityDefaultWorkflowPermissions,
 )
-from oarepo_requests.services.permissions.generators import IfRequestedBy
-from oarepo_runtime.services.permissions.generators import IfDraftType, RecordOwners
+from oarepo_runtime.services.generators import IfDraftType
 from oarepo_workflows import (
     AutoApprove,
     IfInState,
