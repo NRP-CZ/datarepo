@@ -24,7 +24,7 @@ const FormFieldsContainerComponent = ({ record }) => {
       </AccordionField>
       <AccordionField
         includesPaths={["files.enabled"]}
-        active
+        active={true}
         label={
           <label htmlFor="files.enabled">{i18next.t("Files upload")}</label>
         }

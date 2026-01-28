@@ -1,13 +1,16 @@
-# Definition of metadata for datasets. Please do not add ccmm model here,
+# Definition of record for datasets. Please do not add ccmm model here,
 # add the ccmm_preset instead.
-
-# add the ccmm_preset instead.
-Metadata:
+Record:
   type: object
   properties:
     files:
+      type: object
+      label:
+        cs: Soubory
+        en: Files
       properties:
         enabled:
+          type: boolean
           label:
             cs: Povolit soubory
             en: Enable files
