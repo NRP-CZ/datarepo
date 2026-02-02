@@ -22,7 +22,7 @@
 #
 
 from datetime import timedelta
-
+from oarepo_requests.services.permissions.generators import IfRequestedBy
 from invenio_i18n import lazy_gettext as _
 from invenio_rdm_records.services.generators import (
     IfRecordDeleted,
@@ -56,13 +56,13 @@ from oarepo_workflows import (
 
 
 class DefaultWorkflowPermissions(CommunityDefaultWorkflowPermissions):
-    can_create = [
+    can_create = (
         PrimaryCommunityRole("submitter"),
         PrimaryCommunityRole("owner"),
         PrimaryCommunityRole("curator"),
-    ]
+    )
 
-    can_read_generic = [
+    can_read_generic = (
         RecordOwners(),
         # curator can see the record in any state
         CommunityRole("curator"),
@@ -75,9 +75,9 @@ class DefaultWorkflowPermissions(CommunityDefaultWorkflowPermissions):
             "draft",
             then_=[PrimaryCommunityMembers()],
         ),
-    ]
+    )
 
-    can_read = can_read_generic + [
+    can_read = can_read_generic + (
         IfInState(
             "published",
             then_=[
@@ -88,8 +88,8 @@ class DefaultWorkflowPermissions(CommunityDefaultWorkflowPermissions):
                 )
             ],
         ),
-    ]
-    can_read_deleted = [
+    )
+    can_read_deleted = (
         IfRecordDeleted(
             then_=[
                 UserManager,  # this is strange, but taken from RDM
@@ -97,9 +97,9 @@ class DefaultWorkflowPermissions(CommunityDefaultWorkflowPermissions):
             ],
             else_=can_read,
         )
-    ]
+    ,)
 
-    can_read_files = can_read_generic + [
+    can_read_files = can_read_generic + (
         IfInState(
             "published",
             then_=[
@@ -110,13 +110,13 @@ class DefaultWorkflowPermissions(CommunityDefaultWorkflowPermissions):
                 )
             ],
         ),
-    ]
+    )
 
     can_list_files = can_read_files
 
     can_get_content_files = can_read_files
 
-    can_update = [
+    can_update = (
         IfInState(
             "draft",
             then_=[
@@ -133,9 +133,9 @@ class DefaultWorkflowPermissions(CommunityDefaultWorkflowPermissions):
                 PrimaryCommunityRole("owner"),
             ],
         ),
-    ]
+    )
 
-    can_delete = [
+    can_delete = (
         # draft can be deleted, published record must be deleted via request
         IfInState(
             "draft",
@@ -145,11 +145,11 @@ class DefaultWorkflowPermissions(CommunityDefaultWorkflowPermissions):
                 PrimaryCommunityRole("owner"),
             ],
         ),
-    ] + CommunityDefaultWorkflowPermissions.can_delete
+    ) + CommunityDefaultWorkflowPermissions.can_delete
 
-    can_manage_files = [
+    can_manage_files = (
         Disable(),
-    ]
+    )
 
 
 # if the record is in draft state, the owner or curator can request publishing
@@ -282,29 +282,6 @@ class DefaultWorkflowRequests(WorkflowRequestPolicy):
                 recipients=[
                     PrimaryCommunityRole("owner"),
                 ],
-            )
-        ],
-    )
-
-    assign_doi = WorkflowRequest(
-        requesters=[
-            RecordOwners(),
-            PrimaryCommunityRole("curator"),
-            PrimaryCommunityRole("owner"),
-        ],
-        recipients=[
-            IfRequestedBy(
-                requesters=[
-                    PrimaryCommunityRole("curator"),
-                    PrimaryCommunityRole("owner"),
-                ],
-                then_=[AutoApprove()],
-                else_=[PrimaryCommunityRole("curator")],
-            )
-        ],
-        escalations=[
-            WorkflowRequestEscalation(
-                after=timedelta(days=21), recipients=[PrimaryCommunityRole("owner")]
             )
         ],
     )

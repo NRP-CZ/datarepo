@@ -37,6 +37,10 @@ repository = "common:alembic"
 
 [project.entry-points."invenio_base.blueprints"]
 ui_datasets = "ui.datasets:create_blueprint"
+communities_home = "ui.datasets:communities_home_blueprint"
+
+[project.entry-points."invenio_base.api_blueprints"]
+communities_home = "ui.datasets:communities_home_blueprint"
 
 [project.entry-points."invenio_base.finalize_app"]
 ui_datasets = "ui.datasets:finalize_app"
