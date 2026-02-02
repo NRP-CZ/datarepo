@@ -5,9 +5,5 @@
 Metadata:
   type: object
   properties:
-    files:
-      properties:
-        enabled:
-          label:
-            cs: Povolit soubory
-            en: Enable files
+    title:
+      required: true

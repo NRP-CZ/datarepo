@@ -20,8 +20,8 @@ datasets_model = model(
     "datasets",
     version="1.1.0",
     presets=[ccmm_production_preset_1_1_0, workflows_preset, requests_preset],
-    types=[from_yaml("record.yaml", __file__)],
-    metadata_type="CCMMProductionDataset",
+    types=[from_yaml("record.yaml", __file__), from_yaml("metadata.yaml", __file__)],
+    metadata_type="Metadata",
     record_type="Record",
     customizations=[
         # TODO: remove this customization if you use oarepo-communities for RDM 14

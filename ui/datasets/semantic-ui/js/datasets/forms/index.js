@@ -2,29 +2,51 @@ import { DepositFormApp, parseFormAppConfig } from "@js/oarepo_ui/forms";
 import React from "react";
 import ReactDOM from "react-dom";
 import { OARepoDepositSerializer } from "@js/oarepo_ui/api";
-import FormFieldsContainer from "./FormFieldsContainer";
-import FormActionsContainer from "./FormActionsContainer";
+import { CommunityHeader } from "@js/invenio_rdm_records";
+import { UppyUploader } from "@js/invenio_rdm_records";
+import { TextField } from "@js/oarepo_ui/forms";
+import { i18next } from "@translations/i18next";
 
-const recordSerializer = new OARepoDepositSerializer(
-  ["errors", "expanded"],
-  ["__key"]
-);
+const sections = [
+  {
+    key: "community",
+    label: i18next.t("Community"),
+    render: (record) => (
+      <CommunityHeader
+        imagePlaceholderLink="/static/images/square-placeholder.png"
+        record={record}
+      />
+    ),
+    includedPaths: ["parent.communities.default"],
+  },
+  {
+    key: "basic",
+    label: i18next.t("Basic information"),
+    render: () => <TextField fieldPath="metadata.title" />,
+    includedPaths: ["metadata.title"],
+  },
+  {
+    key: "files",
+    label: i18next.t("Files upload"),
+    render: (record, formConfig) => (
+      <UppyUploader
+        isDraftRecord={!record.is_published}
+        config={formConfig}
+        quota={formConfig.quota}
+        decimalSizeDisplay={formConfig.decimal_size_display}
+        allowEmptyFiles={formConfig.allow_empty_files}
+        fileUploadConcurrency={formConfig.file_upload_concurrency}
+        showMetadataOnlyToggle
+        filesLocked={false}
+      />
+    ),
+    includedPaths: ["files.enabled"],
+  },
+];
 
 const { rootEl, config, ...rest } = parseFormAppConfig();
 
-const overridableIdPrefix = config.overridableIdPrefix;
-
-export const componentOverrides = {
-  [`${overridableIdPrefix}.FormFields.container`]: FormFieldsContainer,
-  [`${overridableIdPrefix}.FormActions.container`]: FormActionsContainer,
-};
-
 ReactDOM.render(
-  <DepositFormApp
-    config={config}
-    {...rest}
-    // recordSerializer={recordSerializer}
-    componentOverrides={componentOverrides}
-  />,
-  rootEl
+  <DepositFormApp sections={sections} config={config} {...rest} />,
+  rootEl,
 );
