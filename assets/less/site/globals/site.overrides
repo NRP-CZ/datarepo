@@ -35,6 +35,8 @@ main {
   background-repeat: no-repeat;
   background-size: cover;
   background-color: @mainBackgroundColor;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 /* 5. Improve media defaults */
