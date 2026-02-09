@@ -18,7 +18,7 @@ datasets_model = model(
     version="1.1.0",
     presets=[ccmm_production_preset_1_1_0],
     types=[],
-    metadata_type="CCMMProductionDataset",
+    metadata_type="CCMMDataset",
     customizations=[
         # TODO: remove this customization if you use oarepo-communities for RDM 14
         PrependMixin("PermissionPolicy", DatasetsPermissionPolicyMixin),
