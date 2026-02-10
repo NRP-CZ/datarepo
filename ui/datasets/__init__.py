@@ -18,6 +18,7 @@ from invenio_i18n import lazy_gettext as _
 from oarepo_ui.overrides import UIComponent
 from oarepo_ui.overrides.components import UIComponentImportMode
 from oarepo_ui.proxies import current_oarepo_ui
+from .rdm_vocabularies_dump import RDMVocabularyOptionsComponent
 
 
 class DatasetsUIResourceConfig(RecordsUIResourceConfig):
@@ -43,19 +44,10 @@ class DatasetsUIResourceConfig(RecordsUIResourceConfig):
         EmptyRecordAccessComponent,
         FilesLockedComponent,
         FilesQuotaAndTransferComponent,
+        RDMVocabularyOptionsComponent,
     ]
 
-    try:
-        from oarepo_vocabularies.ui.resources.components import (
-            DepositVocabularyOptionsComponent,
-        )
-
-        components.append(DepositVocabularyOptionsComponent)
-    except ImportError:
-        pass
-
     application_id = "datasets"
-
 
 
 class DatasetsUIResource(RecordsUIResource):
