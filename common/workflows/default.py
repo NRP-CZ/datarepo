@@ -53,6 +53,7 @@ from oarepo_workflows import (
     WorkflowRequestPolicy,
     WorkflowTransitions,
 )
+from invenio_records_permissions.generators import AuthenticatedUser
 
 
 class DefaultWorkflowPermissions(CommunityDefaultWorkflowPermissions):
@@ -331,6 +332,16 @@ class DefaultWorkflowRequests(WorkflowRequestPolicy):
                 else_=[TargetCommunityRole("curator"), TargetCommunityRole("owner")],
             )
         ],
+    )
+    # recipient is decided in the review service
+    # permission check for request creation in workflows based on actual record community is
+    # doable by modifying FromRecordWorkflow to use receiver (community) instead of record
+    # (it's poped out from data and resolved in invenio code)
+    community_submission = WorkflowRequest(
+        requesters=[
+            AuthenticatedUser()
+        ],
+        recipients=[],
     )
 
 
