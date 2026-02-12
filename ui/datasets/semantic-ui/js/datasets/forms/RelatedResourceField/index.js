@@ -1,0 +1,1 @@
+export { RelatedResourceField } from "./RelatedResourceField";

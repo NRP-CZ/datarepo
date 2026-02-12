@@ -6,6 +6,7 @@ import {
   EDTFSingleDatePicker,
   CreatibutorsField,
   FundingField,
+  AccessRightField,
 } from "@js/oarepo_ui/forms";
 import { AccordionField } from "react-invenio-forms";
 import { i18next } from "@translations/i18next";
@@ -13,6 +14,7 @@ import { connect } from "react-redux";
 import { AdditionalDescriptionsField } from "@js/invenio_rdm_records/src/deposit/fields/DescriptionsField/components";
 import PropTypes from "prop-types";
 import {
+  AccessRight,
   UppyUploader,
   TitlesField,
   IdentifiersField,
@@ -23,17 +25,32 @@ import {
   LicenseField,
   SubjectsField,
   DatesField,
+  CommunityHeader,
 } from "@js/invenio_rdm_records";
 import _get from "lodash/get";
+import { RelatedResourceField } from "./RelatedResourceField";
 
 const FormFieldsContainerComponent = ({ record }) => {
   const formConfig = useFormConfig();
   const {
-    config: { filesLocked, vocabularies },
+    config: {
+      filesLocked,
+      vocabularies,
+      permissions,
+      allowRecordRestriction,
+      recordRestrictionGracePeriod,
+      hide_community_selection: hideCommunitySelection,
+    },
   } = formConfig;
 
   return (
     <React.Fragment>
+      {!hideCommunitySelection && (
+        <CommunityHeader
+          imagePlaceholderLink="/static/images/square-placeholder.png"
+          record={record}
+        />
+      )}
       <AccordionField
         includesPaths={[
           "metadata.title",
@@ -156,6 +173,32 @@ const FormFieldsContainerComponent = ({ record }) => {
           schema="contributors"
           autocompleteNames="search"
           showRoleField
+        />
+      </AccordionField>
+      <AccordionField
+        includesPaths={["metadata.related_resources"]}
+        active
+        label={i18next.t("Related resources")}
+      >
+        <RelatedResourceField
+          fieldPath="metadata.related_resources"
+          relatedResourceUI={record.ui?.related_resources}
+        />
+      </AccordionField>
+      <AccordionField
+        includesPaths={["access"]}
+        active
+        label={i18next.t("Access rights information")}
+      >
+        <AccessRightField
+          label={i18next.t("Visibility")}
+          record={record}
+          labelIcon="shield"
+          fieldPath="access"
+          showMetadataAccess={permissions?.can_manage_record_access}
+          recordRestrictionGracePeriod={recordRestrictionGracePeriod}
+          allowRecordRestriction={allowRecordRestriction}
+          id="visibility-section"
         />
       </AccordionField>
       <AccordionField

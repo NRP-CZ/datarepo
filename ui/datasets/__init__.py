@@ -19,6 +19,7 @@ from oarepo_ui.overrides import UIComponent
 from oarepo_ui.overrides.components import UIComponentImportMode
 from oarepo_ui.proxies import current_oarepo_ui
 from .rdm_vocabularies_dump import RDMVocabularyOptionsComponent
+from .communities_memberships_dump import CommunitiesMembershipsComponent
 
 
 class DatasetsUIResourceConfig(RecordsUIResourceConfig):
@@ -45,6 +46,7 @@ class DatasetsUIResourceConfig(RecordsUIResourceConfig):
         FilesLockedComponent,
         FilesQuotaAndTransferComponent,
         RDMVocabularyOptionsComponent,
+        CommunitiesMembershipsComponent,
     ]
 
     application_id = "datasets"
