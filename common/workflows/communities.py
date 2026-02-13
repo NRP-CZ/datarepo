@@ -13,17 +13,6 @@ if TYPE_CHECKING:
     from oarepo_workflows import Workflow
 
 
-class DepositionWorkflowPermission(FromRecordWorkflow):
-
-
-    @override
-    def _get_workflow(self, record: Record | None = None, **context: Any) -> Workflow:
-        # TODO: implement use for all workflows, skipping for now
-        workflow = current_oarepo_communities.get_community_default_workflow(**context | {"record": record})
-        if not workflow:
-            raise MissingWorkflowError("Workflow not defined in input.")
-        return workflow
-
 
 class DataSetsCommunitiesPermission(DefaultCommunitiesPermissionPolicy):
     # called during community-submission submit request
