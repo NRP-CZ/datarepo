@@ -2,7 +2,6 @@ import * as React from "react";
 import {
   useFormConfig,
   FormikStateLogger,
-  TextField,
   EDTFSingleDatePicker,
   CreatibutorsField,
   FundingField,
@@ -14,7 +13,6 @@ import { connect } from "react-redux";
 import { AdditionalDescriptionsField } from "@js/invenio_rdm_records/src/deposit/fields/DescriptionsField/components";
 import PropTypes from "prop-types";
 import {
-  AccessRight,
   UppyUploader,
   TitlesField,
   IdentifiersField,

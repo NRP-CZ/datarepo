@@ -161,11 +161,6 @@ RelatedResourceFieldInnerComponent.propTypes = {
   required: PropTypes.bool,
   label: PropTypes.string,
   icon: PropTypes.string,
-  form: PropTypes.object.isRequired,
-  remove: PropTypes.func.isRequired,
-  replace: PropTypes.func.isRequired,
-  move: PropTypes.func.isRequired,
-  push: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   vocabularies: PropTypes.object,
   relatedResourceUI: PropTypes.object,
@@ -182,10 +177,9 @@ const RelatedResourceFieldComponent = ({
 }) => {
   const formConfig = useFormConfig();
   const vocabularies = formConfig?.config?.vocabularies || {};
-  const { handleAction: handleSave, isSubmitting } = useDepositFormAction({
+  const { handleAction: handleSave } = useDepositFormAction({
     action: saveAction,
   });
-  const { values } = useFormikContext();
   return (
     <RelatedResourceFieldInnerComponent
       fieldPath={fieldPath}
@@ -193,7 +187,7 @@ const RelatedResourceFieldComponent = ({
       icon={icon}
       label={label || i18next.t("Related resources")}
       vocabularies={vocabularies}
-      relatedResourceUI={values?.ui?.related_resources}
+      relatedResourceUI={relatedResourceUI}
       {...props}
     />
   );

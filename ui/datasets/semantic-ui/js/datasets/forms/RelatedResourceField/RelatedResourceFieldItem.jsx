@@ -49,7 +49,7 @@ export const RelatedResourceFieldItem = ({
 
   const getRelationTypeLabel = (relationType) => {
     if (!relationType) return "";
-    const relationOptions = vocabularies?.relationtypes || [];
+    const relationOptions = vocabularies?.identifiers?.relations || [];
     const found = relationOptions.find(
       (opt) => opt.value === relationType.id || opt.value === relationType,
     );
