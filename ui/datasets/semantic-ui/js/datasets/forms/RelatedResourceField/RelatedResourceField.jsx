@@ -12,7 +12,6 @@ import { useFormConfig } from "@js/oarepo_ui/forms";
 import { save } from "@js/oarepo_ui/forms/state/deposit/actions";
 import { connect } from "react-redux";
 import { useDepositFormAction } from "@js/oarepo_ui/forms/hooks";
-import { useFormikContext } from "formik";
 
 class RelatedResourceFieldForm extends Component {
   handleOnResourceChange = (selectedResource) => {

@@ -136,7 +136,7 @@ const FormFieldsContainerComponent = ({ record }) => {
         />
         <DatesField
           fieldPath="metadata.dates"
-          options={vocabularies.dates}
+          options={vocabularies?.dates}
           showEmptyValue
         />
       </AccordionField>

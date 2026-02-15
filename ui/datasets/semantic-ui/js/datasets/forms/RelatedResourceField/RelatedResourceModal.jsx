@@ -33,8 +33,8 @@ const ModalActions = {
 
 // Form uses metadata.* paths internally
 const emptyRelatedResource = {
-  relation_type: null,
   metadata: {
+    relation_type: null,
     title: "",
     resource_type: null,
     publication_date: "",
@@ -197,7 +197,7 @@ export class RelatedResourceModal extends Component {
                 <Form>
                   <AccordionField
                     includesPaths={[
-                      "relation_type",
+                      "metadata.relation_type",
                       "metadata.title",
                       "metadata.resource_type",
                       "metadata.publication_date",
@@ -346,7 +346,6 @@ export class RelatedResourceModal extends Component {
                       })}
                     />
                   </AccordionField>
-                  <FormikStateLogger render />
                 </Form>
               </Modal.Content>
               <Modal.Actions>
