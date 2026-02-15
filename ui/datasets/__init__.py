@@ -22,6 +22,7 @@ from oarepo_rdm.ui.components import (
     RDMVocabularyOptionsComponent,
     CommunitiesMembershipsComponent,
 )
+from .pids_config_dump import RDMPidConfigComponent
 
 
 class DatasetsUIResourceConfig(RecordsUIResourceConfig):
@@ -49,6 +50,7 @@ class DatasetsUIResourceConfig(RecordsUIResourceConfig):
         FilesQuotaAndTransferComponent,
         RDMVocabularyOptionsComponent,
         CommunitiesMembershipsComponent,
+        RDMPidConfigComponent,
     ]
 
     application_id = "datasets"
