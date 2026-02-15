@@ -18,8 +18,10 @@ from invenio_i18n import lazy_gettext as _
 from oarepo_ui.overrides import UIComponent
 from oarepo_ui.overrides.components import UIComponentImportMode
 from oarepo_ui.proxies import current_oarepo_ui
-from .rdm_vocabularies_dump import RDMVocabularyOptionsComponent
-from .communities_memberships_dump import CommunitiesMembershipsComponent
+from oarepo_rdm.ui.components import (
+    RDMVocabularyOptionsComponent,
+    CommunitiesMembershipsComponent,
+)
 
 
 class DatasetsUIResourceConfig(RecordsUIResourceConfig):
