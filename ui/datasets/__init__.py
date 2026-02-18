@@ -18,7 +18,10 @@ from invenio_i18n import lazy_gettext as _
 from oarepo_ui.overrides import UIComponent
 from oarepo_ui.overrides.components import UIComponentImportMode
 from oarepo_ui.proxies import current_oarepo_ui
-
+from flask import (
+    Blueprint,
+    url_for,
+)
 
 class DatasetsUIResourceConfig(RecordsUIResourceConfig):
     template_folder = "templates"
@@ -107,11 +110,8 @@ def finalize_app(app):
     init_menu(app)
     ui_overrides(app)
 
-
 def create_blueprint(app):
     """Register blueprint for this resource."""
     blueprint = DatasetsUIResource(DatasetsUIResourceConfig()).as_blueprint()
     return blueprint
-
-
 # TODO: register init_menu to finalize_app similarly blueprints & webpack is registered
