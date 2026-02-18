@@ -11,7 +11,6 @@ import {
   EDTFSingleDatePicker,
   CreatibutorsField,
   FundingField,
-  FormikStateLogger,
 } from "@js/oarepo_ui/forms";
 import {
   TitlesField,
@@ -76,12 +75,6 @@ const RelatedResourceValidationSchema = Yup.object().shape({
     resource_type: Yup.string().required(
       i18next.t("Resource type is required"),
     ),
-    publication_date: Yup.string().required(
-      i18next.t("Publication date is required"),
-    ),
-    creators: Yup.array()
-      .min(1, i18next.t("At least one creator is required"))
-      .required(i18next.t("At least one creator is required")),
   }),
 });
 
@@ -224,10 +217,7 @@ export class RelatedResourceModal extends Component {
                       options={vocabularies?.resource_type}
                       fieldPath="metadata.resource_type"
                     />
-                    <EDTFSingleDatePicker
-                      fieldPath="metadata.publication_date"
-                      required
-                    />
+                    <EDTFSingleDatePicker fieldPath="metadata.publication_date" />
                     <PublisherField fieldPath="metadata.publisher" />
                   </AccordionField>
 
@@ -285,7 +275,6 @@ export class RelatedResourceModal extends Component {
                       fieldPath="metadata.creators"
                       schema="creators"
                       autocompleteNames="search"
-                      required
                     />
                     <CreatibutorsField
                       fieldPath="metadata.contributors"
