@@ -1,0 +1,141 @@
+{
+  "$schema": "local://datasets-v1.1.0.json",
+  "metadata": {
+    "title": "Kvalita ovzduší ve středních čechách 2024",
+    "version": "1.0.23",
+    "publication_date": "2025",
+    "resource_type": {
+      "id": "c_ddb1"
+    },
+    "languages": [
+      {"id": "CES"},
+      {"id": "ENG"}
+    ],
+    "additional_titles": [
+      {
+        "title": "Air quality measurements in Central Bohemian Region in 2024.",
+        "type": {"id": "TranslatedTitle"},
+        "lang": {"id": "ENG"}
+      }
+    ],
+    "additional_descriptions": [
+      {
+        "description": "Tato datová sada obsahuje měření kvality ovzduší ve středních Čechách v roce 2024.",
+        "type": {"id": "abstract"},
+        "lang": {"id": "CES"}
+      }
+    ],
+    "creators": [
+      {
+        "role": {"id": "Other"},
+        "person_or_org": {
+          "name": "Novák, Jan",
+          "type": "personal",
+          "given_name": "Jan",
+          "family_name": "Novák"
+        },
+        "affiliations": [
+          {"name": "Univerzita Karlova"}
+        ]
+      }
+    ],
+    "subjects": [
+      {"subject": "Meteorologie, vědy o atmosféře"},
+      {"subject": "kvalita ovzduší"},
+      {"subject": "Environmental monitoring facilities"}
+    ],
+    "identifiers": [
+      {"identifier": "10.45321/as36sl", "scheme": "doi"}
+    ],
+    "dates": [
+      {
+        "date": "2025-04-27",
+        "type": {"id": "Collected"},
+        "description": "Date collected"
+      },
+      {
+        "date": "2024",
+        "type": {"id": "Collected"},
+        "description": "Collection period"
+      }
+    ],
+    "rights": [
+      {
+        "id": "4-BY"
+      }
+    ],
+    "locations": {
+      "features": [
+        {
+          "place": "Středočeský kraj",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [13.394972, 49.501270],
+              [15.585575, 49.501270],
+              [15.585575, 50.614216],
+              [13.394972, 50.614216],
+              [13.394972, 49.501270]
+            ]]
+          }
+        }
+      ]
+    },
+    "related_identifiers": [
+      {
+        "identifier": "http://data.europa.eu/eli/dir/2008/50/oj",
+        "scheme": "url",
+        "relation_type": {"id": "IsReferencedBy"},
+        "resource_type": {"id": "c_18cf"}
+      },
+      {
+        "identifier": "https://www.envitech-bohemia.cz/p/264/envi-lvs1-sampler-pro-odber-prasneho-aerosolu",
+        "scheme": "url",
+        "relation_type": {"id": "References"}
+      },
+      {
+        "identifier": "https://opendata.chmi.cz/air_quality/now/data/",
+        "scheme": "url",
+        "relation_type": {"id": "IsDerivedFrom"},
+        "resource_type": {"id": "c_ddb1"}
+      },
+      {
+        "identifier": "https://data.gov.cz/zdroj/datové-sady/00020699/c724d055011d82189bbfc3766ffd1eb7",
+        "scheme": "url",
+        "relation_type": {"id": "HasMetadata"}
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Směrnice Evropského parlamentu a Rady 2008/50/ES ze dne 21. května 2008 o kvalitě vnějšího ovzduší a čistším ovzduší pro Evropu",
+        "relation_type": {"id": "IsReferencedBy"},
+        "resource_type": {"id": "c_18cf"}
+      },
+      {
+        "title": "ENVI LVS1 Sampler pro odběr prašného aerosolu",
+        "relation_type": {"id": "IsCollectedBy"},
+        "resource_type": {"id": "8KJG-QS0Y"}
+      },
+      {
+        "title": "Kvalita ovzduší – aktuální hodinové údaje",
+        "relation_type": {"id": "IsDerivedFrom"},
+        "resource_type": {"id": "FF4C-28RK"}
+      },
+      {
+        "title": "Metadata datoivé sady INSPIRE – Kvalita ovzduší – přehledy (data) na měřicích stanicích",
+        "relation_type": {"id": "HasMetadata"}
+      }
+    ],
+    "funding": [
+      {
+        "funder": {
+          "name": "Grantová agentura České republiky"
+        },
+        "award": {
+          "title": {"cs": "Program for air pollution research"},
+          "number": "https://doi.org/award-identifier"
+        }
+      }
+    ]
+  }
+}
