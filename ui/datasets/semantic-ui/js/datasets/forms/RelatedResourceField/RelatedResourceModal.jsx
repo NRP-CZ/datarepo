@@ -118,7 +118,6 @@ export class RelatedResourceModal extends Component {
     const { onResourceChange, handleSave } = this.props;
     const { action } = this.state;
     onResourceChange(fromFormValues(values));
-    await new Promise((resolve) => setTimeout(resolve, 100));
 
     formikBag.setSubmitting(false);
     formikBag.resetForm();
@@ -275,6 +274,7 @@ export class RelatedResourceModal extends Component {
                       fieldPath="metadata.creators"
                       schema="creators"
                       autocompleteNames="search"
+                      required={false}
                     />
                     <CreatibutorsField
                       fieldPath="metadata.contributors"
@@ -394,7 +394,7 @@ RelatedResourceModal.propTypes = {
   addLabel: PropTypes.string.isRequired,
   editLabel: PropTypes.string.isRequired,
   initialResource: PropTypes.object,
-  trigger: PropTypes.object.isRequired,
+  trigger: PropTypes.node.isRequired,
   onResourceChange: PropTypes.func.isRequired,
   vocabularies: PropTypes.object,
   relatedResourceUI: PropTypes.object,
