@@ -2,6 +2,12 @@
 
 {%- set m = d.metadata -%}
 
+{% block record_body %}
+{{super()}}
+dwadwadwa
+{{config["OAISERVER_ID_PREFIX"]}}
+{{config}}
+{% endblock record_body %}
 {# Available template blocks (from oarepo_ui/record_detail/main.html):
 
 Main Record Content (wrapped in a container grid layout):

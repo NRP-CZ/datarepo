@@ -36,6 +36,7 @@ datasets_model = model(
     customizations=[
         # TODO: remove this customization if you use oarepo-communities for RDM 14
         PrependMixin("PermissionPolicy", DatasetsPermissionPolicyMixin),
+        # TODO: remove when this is added to ccmmproduction preset  https://linear.app/ducesnet/issue/STA-73/prependmixinrecorduischema-uirecordschema-je-hack
         PrependMixin("RecordUISchema", UIRecordSchema),
     ],
     configuration={"ui_blueprint_name": "datasets_ui"},

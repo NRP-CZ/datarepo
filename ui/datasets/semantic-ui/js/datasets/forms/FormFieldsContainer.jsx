@@ -5,7 +5,6 @@ import {
   EDTFSingleDatePicker,
   CreatibutorsField,
   FundingField,
-  AccessRightField,
 } from "@js/oarepo_ui/forms";
 import { AccordionField } from "react-invenio-forms";
 import { i18next } from "@translations/i18next";
@@ -13,6 +12,7 @@ import { connect } from "react-redux";
 import { AdditionalDescriptionsField } from "@js/invenio_rdm_records/src/deposit/fields/DescriptionsField/components";
 import PropTypes from "prop-types";
 import {
+  AccessRightField,
   UppyUploader,
   TitlesField,
   IdentifiersField,
@@ -23,6 +23,7 @@ import {
   LicenseField,
   SubjectsField,
   DatesField,
+  PIDField,
   CommunityHeader,
 } from "@js/invenio_rdm_records";
 import _get from "lodash/get";
@@ -49,6 +50,32 @@ const FormFieldsContainerComponent = ({ record }) => {
           record={record}
         />
       )}
+      <React.Fragment>
+        {formConfig.config.pids.map((pid) => (
+          <React.Fragment key={pid.scheme}>
+            <PIDField
+              btnLabelDiscardPID={pid.btn_label_discard_pid}
+              btnLabelGetPID={pid.btn_label_get_pid}
+              canBeManaged={pid.can_be_managed}
+              canBeUnmanaged={pid.can_be_unmanaged}
+              optionalDOItransitions={pid.optional_doi_transitions}
+              fieldPath={`pids.${pid.scheme}`}
+              fieldLabel={pid.field_label}
+              isEditingPublishedRecord={
+                record.is_published === true // is_published is `null` at first upload
+              }
+              managedHelpText={pid.managed_help_text}
+              pidLabel={pid.pid_label}
+              pidPlaceholder={pid.pid_placeholder}
+              pidType={pid.scheme}
+              unmanagedHelpText={pid.unmanaged_help_text}
+              doiDefaultSelection={pid.default_selected}
+              required={formConfig.config.is_doi_required}
+              record={record}
+            />
+          </React.Fragment>
+        ))}
+      </React.Fragment>
       <AccordionField
         includesPaths={[
           "metadata.title",
@@ -131,18 +158,18 @@ const FormFieldsContainerComponent = ({ record }) => {
         <SubjectsField
           fieldPath="metadata.subjects"
           initialOptions={_get(record, "ui.subjects", null)}
-          limitToOptions={vocabularies.subjects.limit_to}
+          limitToOptions={vocabularies?.subjects?.limit_to || []}
           searchOnFocus
         />
         <DatesField
           fieldPath="metadata.dates"
-          options={vocabularies?.dates}
+          options={vocabularies?.dates || []}
           showEmptyValue
         />
       </AccordionField>
 
       <AccordionField
-        includesPaths={["metadata.identifiers"]}
+        includesPaths={["metadata.identifiers", "metadata.funding"]}
         active
         label={i18next.t("Identifiers information")}
       >

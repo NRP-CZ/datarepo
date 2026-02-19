@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { getIn, FieldArray } from "formik";
+import { isEqual } from "lodash";
 import { Form, Label, List, Icon } from "semantic-ui-react";
 import { FieldLabel } from "react-invenio-forms";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -40,7 +41,7 @@ class RelatedResourceFieldForm extends Component {
     const error = getIn(errors, fieldPath, null);
     const initialError = getIn(initialErrors, fieldPath, null);
     const resourcesError =
-      error || (resourcesList === formikInitialValues && initialError);
+      error || (isEqual(resourcesList, formikInitialValues) && initialError);
 
     const modalHeader = {
       addLabel: i18next.t("Add related resource"),
@@ -65,18 +66,16 @@ class RelatedResourceFieldForm extends Component {
                   key={key}
                   relatedResourceUI={relatedResourceUI}
                   handleSave={handleSave}
-                  {...{
-                    displayName,
-                    index,
-                    compKey: key,
-                    initialResource: value,
-                    removeResource: formikArrayRemove,
-                    replaceResource: formikArrayReplace,
-                    moveResource: formikArrayMove,
-                    addLabel: modalHeader.addLabel,
-                    editLabel: modalHeader.editLabel,
-                    vocabularies,
-                  }}
+                  displayName={displayName}
+                  index={index}
+                  compKey={key}
+                  initialResource={value}
+                  removeResource={formikArrayRemove}
+                  replaceResource={formikArrayReplace}
+                  moveResource={formikArrayMove}
+                  addLabel={modalHeader.addLabel}
+                  editLabel={modalHeader.editLabel}
+                  vocabularies={vocabularies}
                 />
               );
             })}
@@ -114,6 +113,7 @@ class RelatedResourceFieldForm extends Component {
 
 RelatedResourceFieldForm.propTypes = {
   form: PropTypes.object.isRequired,
+  fieldPath: PropTypes.string.isRequired,
   remove: PropTypes.func.isRequired,
   replace: PropTypes.func.isRequired,
   move: PropTypes.func.isRequired,

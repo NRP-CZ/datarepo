@@ -50,6 +50,7 @@ class DatasetsUIResourceConfig(RecordsUIResourceConfig):
         FilesQuotaAndTransferComponent,
         RDMVocabularyOptionsComponent,
         CommunitiesMembershipsComponent,
+        RDMPidConfigComponent,
     ]
 
     application_id = "datasets"
