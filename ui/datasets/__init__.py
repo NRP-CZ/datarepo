@@ -18,6 +18,7 @@ from invenio_i18n import lazy_gettext as _
 from oarepo_ui.overrides import UIComponent
 from oarepo_ui.overrides.components import UIComponentImportMode
 from oarepo_ui.proxies import current_oarepo_ui
+
 from oarepo_rdm.ui.components import (
     RDMVocabularyOptionsComponent,
     CommunitiesMembershipsComponent,

@@ -65,7 +65,6 @@ export const RelatedResourceFieldItem = ({
     <Ref innerRef={dropRef} key={compKey}>
       <React.Fragment>
         <List.Item
-          key={compKey}
           className={
             hidden ? "deposit-drag-listitem hidden" : "deposit-drag-listitem"
           }
