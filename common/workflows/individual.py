@@ -5,3 +5,4 @@ from oarepo_workflows.requests.requests import WorkflowRequest
 
 class IndividualDepositionWorkflowPermissions(DefaultWorkflowPermissions):
     can_create = [AuthenticatedUser()]
+    can_review = [AuthenticatedUser()] # for link creation
