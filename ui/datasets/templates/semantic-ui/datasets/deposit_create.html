@@ -1,0 +1,17 @@
+{% extends "oarepo_ui/deposit_create.html" %}
+
+{# Base template for datasets deposit create page.
+   Extended by oarepo_ui.pages.DepositCreate JinjaX component.
+
+   Template inheritance chain:
+   - oarepo_ui.pages.DepositCreate (JinjaX) → this template → oarepo_ui/deposit_create.html
+     → invenio_app_rdm/records/deposit.html
+
+   This template exists at the path expected by _TEMPLATE_MAP["deposit_create"].
+   The oarepo_ui/deposit_create.html parent already includes model-specific partials
+   with fallback to oarepo_ui defaults.
+
+   To customize, create/edit these partials (they extend oarepo_ui defaults):
+   - deposit_create/form.html - Custom form container layout
+   - deposit_create/javascript.html - Custom JavaScript includes (optional)
+#}

@@ -1,0 +1,16 @@
+{% extends "oarepo_ui/record_search.html" %}
+
+{# Base template for datasets search page.
+   Extended by oarepo_ui.pages.RecordSearch JinjaX component.
+
+   Template inheritance chain:
+   - oarepo_ui.pages.RecordSearch (JinjaX) → this template → oarepo_ui/record_search.html
+     → config.BASE_TEMPLATE
+
+   This template exists at the path expected by _TEMPLATE_MAP["search"].
+   The oarepo_ui/record_search.html parent already includes model-specific partials
+   with fallback to oarepo_ui defaults.
+
+   To customize, create/edit these partials (they extend oarepo_ui defaults):
+   - record_search/javascript.html - Custom JavaScript includes (optional)
+#}

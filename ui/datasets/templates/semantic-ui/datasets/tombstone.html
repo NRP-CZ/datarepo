@@ -1,0 +1,17 @@
+{% extends "oarepo_ui/tombstone.html" %}
+
+{# Base template for datasets tombstone page (deleted records).
+   Extended by oarepo_ui.pages.Tombstone JinjaX component.
+
+   Template inheritance chain:
+   - oarepo_ui.pages.Tombstone (JinjaX) → this template → oarepo_ui/tombstone.html
+
+   Context variables available:
+   - pid: The PID of the deleted record
+   - tombstone: Dictionary with tombstone information (removal reason, note, etc.)
+   - model_name: Name of the record model
+
+   Available blocks to override:
+   - page_body: Main page content
+   - tombstone_content: The tombstone information table
+#}
