@@ -9,7 +9,7 @@ TEMPLATE_JSON="$SCRIPT_DIR/sample_record_full.json"
 ./run.sh invenio access allow superuser-access role admin
 ./run.sh invenio roles add test@test.com admin
 token=$(./run.sh invenio tokens create -n demo-data -u test@test.com)
-echo "Using token: $token"
+echo "API token created for demo-data user (test@test.com)."
 
 echo "Creating new datasets from template..."
 
