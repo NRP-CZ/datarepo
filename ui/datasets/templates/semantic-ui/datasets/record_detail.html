@@ -1,0 +1,20 @@
+{% extends "oarepo_ui/record_detail.html" %}
+
+{# Base template for datasets record detail page.
+   Extended by oarepo_ui.pages.RecordDetail JinjaX component.
+
+   Template inheritance chain:
+   - oarepo_ui.pages.RecordDetail (JinjaX) → this template → oarepo_ui/record_detail.html → invenio_app_rdm/records/detail.html
+
+   This template exists at the path expected by _TEMPLATE_MAP["record_detail"].
+   The oarepo_ui/record_detail.html parent already includes model-specific partials
+   with fallback to oarepo_ui defaults.
+
+   To customize, create/edit these partials (they extend oarepo_ui defaults):
+   - record_detail/banners.html - Banner blocks (community, preview, version)
+   - record_detail/main.html - Record body blocks (header, title, content, files, details)
+   - record_detail/css.html - Page-specific CSS (optional)
+   - record_detail/head_meta.html - HTML meta tags (optional)
+   - record_detail/javascript.html - JavaScript includes (optional)
+   - record_detail/record_sidebar.html - Sidebar content (optional)
+#}

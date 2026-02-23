@@ -1,0 +1,16 @@
+{% extends "oarepo_ui/not_found.html" %}
+
+{# Base template for datasets not found error page.
+   Extended by oarepo_ui.pages.NotFound JinjaX component.
+
+   Template inheritance chain:
+   - oarepo_ui.pages.NotFound (JinjaX) → this template → oarepo_ui/not_found.html
+
+   Context variables available:
+   - pid: The PID value that was not found
+   - model_name: Name of the model
+
+   Available blocks to override:
+   - page_body: Main page content
+   - pid_info: PID information display section
+#}
