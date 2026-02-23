@@ -5,19 +5,11 @@
       {
         "bounding_boxes": [
           {
-            "lowerCorner": [
-              13.394972457505816,
-              49.50127042751268
-            ],
-            "upperCorner": [
-              15.585575400519133,
-              50.61421606255462
-            ]
+            "lowerCorner": [13.394972457505816, 49.50127042751268],
+            "upperCorner": [15.585575400519133, 50.61421606255462]
           }
         ],
-        "names": [
-          "Středočeský kraj"
-        ],
+        "names": ["Středočeský kraj"],
         "related_objects": [
           {
             "iri": "https://vdp.cuzk.gov.cz/vdp/ruian/vusc/27",
@@ -29,9 +21,7 @@
         }
       }
     ],
-    "provenances": [
-      {}
-    ],
+    "provenances": [{}],
     "related_resources": [
       {
         "iri": "http://data.europa.eu/eli/dir/2008/50/oj",
@@ -39,14 +29,14 @@
           "id": "IsReferencedBy"
         },
         "resource_type": {
-          "id": "Software"
+          "id": "c_2659"
         },
         "resource_url": "https://eur-lex.europa.eu/legal-content/CS/TXT/HTML/?uri=CELEX:32008L0050&qid=1754039487879",
         "title": "Směrnice Evropského parlamentu a Rady 2008/50/ES ze dne 21. května 2008 o kvalitě vnějšího ovzduší a čistším ovzduší pro Evropu"
       },
       {
         "resource_type": {
-          "id": "PhysicalObject"
+          "id": "c_2659"
         },
         "resource_url": "https://www.envitech-bohemia.cz/p/264/envi-lvs1-sampler-pro-odber-prasneho-aerosolu",
         "title": "ENVI LVS1 Sampler pro odběr prašného aerosolu"
@@ -57,7 +47,7 @@
           "id": "IsDerivedFrom"
         },
         "resource_type": {
-          "id": "ObservationData"
+          "id": "c_2659"
         },
         "resource_url": "https://opendata.chmi.cz/air_quality/",
         "title": "Kvalita ovzduší – aktuální hodinové údaje"
@@ -80,12 +70,8 @@
           "person": {
             "contact_points": [
               {
-                "emails": [
-                  "pavlina.dolezalova@organizace.cz"
-                ],
-                "phones": [
-                  "+420784512963"
-                ]
+                "emails": ["pavlina.dolezalova@organizace.cz"],
+                "phones": ["+420784512963"]
               }
             ],
             "name": "Pavlína Doležalová"
@@ -140,16 +126,14 @@
       }
     ],
     "title": "Kvalita ovzduší ve středních čechách 2024",
-    "validation_results": [
-      {}
-    ],
+    "validation_results": [{}],
     "version": "1.0.23",
     "publication_date": "2025-04-27",
     "additional_titles": [
       {
         "title": "Air quality measurements in Central Bohemian Region in 2024.",
         "type": {
-          "id": "TranslatedTitle"
+          "id": "translated-title"
         },
         "lang": {
           "id": "ENG"

@@ -50,32 +50,7 @@ const FormFieldsContainerComponent = ({ record }) => {
           record={record}
         />
       )}
-      <React.Fragment>
-        {formConfig.config.pids.map((pid) => (
-          <React.Fragment key={pid.scheme}>
-            <PIDField
-              btnLabelDiscardPID={pid.btn_label_discard_pid}
-              btnLabelGetPID={pid.btn_label_get_pid}
-              canBeManaged={pid.can_be_managed}
-              canBeUnmanaged={pid.can_be_unmanaged}
-              optionalDOItransitions={pid.optional_doi_transitions}
-              fieldPath={`pids.${pid.scheme}`}
-              fieldLabel={pid.field_label}
-              isEditingPublishedRecord={
-                record.is_published === true // is_published is `null` at first upload
-              }
-              managedHelpText={pid.managed_help_text}
-              pidLabel={pid.pid_label}
-              pidPlaceholder={pid.pid_placeholder}
-              pidType={pid.scheme}
-              unmanagedHelpText={pid.unmanaged_help_text}
-              doiDefaultSelection={pid.default_selected}
-              required={formConfig.config.is_doi_required}
-              record={record}
-            />
-          </React.Fragment>
-        ))}
-      </React.Fragment>
+
       <AccordionField
         includesPaths={[
           "metadata.title",
