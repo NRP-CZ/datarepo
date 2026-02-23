@@ -12,6 +12,9 @@ from invenio_records_permissions.generators import AuthenticatedUser
 from oarepo_model.api import model
 from oarepo_model.customizations import PrependMixin
 from oarepo_model.model import ModelMixin
+from invenio_rdm_records.resources.serializers.ui.schema import UIRecordSchema
+
+
 from oarepo_communities.proxies import current_oarepo_communities
 from oarepo_workflows.model.presets import workflows_preset
 from oarepo_requests.model.presets.requests import requests_preset
@@ -33,6 +36,7 @@ datasets_model = model(
     customizations=[
         # TODO: remove this customization if you use oarepo-communities for RDM 14
         PrependMixin("PermissionPolicy", DatasetsPermissionPolicyMixin),
+        PrependMixin("RecordUISchema", UIRecordSchema),
     ],
     configuration={"ui_blueprint_name": "datasets_ui"},
 )
