@@ -22,7 +22,7 @@
 #
 
 from datetime import timedelta
-from oarepo_requests.services.permissions.generators import IfRequestedBy
+
 from invenio_i18n import lazy_gettext as _
 from invenio_rdm_records.services.generators import (
     IfRecordDeleted,
@@ -31,7 +31,7 @@ from invenio_rdm_records.services.generators import (
 )
 from invenio_records_permissions.generators import (
     AnyUser,
-    Disable,
+    AuthenticatedUser,
     SystemProcess,
 )
 from invenio_users_resources.services.permissions import UserManager
@@ -44,6 +44,7 @@ from oarepo_communities.services.permissions.generators import (
 from oarepo_communities.services.permissions.policy import (
     CommunityDefaultWorkflowPermissions,
 )
+from oarepo_requests.services.permissions.generators import IfRequestedBy
 from oarepo_runtime.services.generators import IfDraftType
 from oarepo_workflows import (
     AutoApprove,
@@ -53,7 +54,6 @@ from oarepo_workflows import (
     WorkflowRequestPolicy,
     WorkflowTransitions,
 )
-from invenio_records_permissions.generators import AuthenticatedUser
 
 
 class DefaultWorkflowPermissions(CommunityDefaultWorkflowPermissions):
@@ -97,8 +97,8 @@ class DefaultWorkflowPermissions(CommunityDefaultWorkflowPermissions):
                 SystemProcess(),
             ],
             else_=can_read,
-        )
-    ,)
+        ),
+    )
 
     can_read_files = can_read_generic + (
         IfInState(
@@ -148,9 +148,7 @@ class DefaultWorkflowPermissions(CommunityDefaultWorkflowPermissions):
         ),
     ) + CommunityDefaultWorkflowPermissions.can_delete
 
-    can_manage_files = (
-        Disable(),
-    )
+    can_manage_files = AnyUser()
 
 
 # if the record is in draft state, the owner or curator can request publishing
@@ -338,9 +336,7 @@ class DefaultWorkflowRequests(WorkflowRequestPolicy):
     # doable by modifying FromRecordWorkflow to use receiver (community) instead of record
     # (it's poped out from data and resolved in invenio code)
     community_submission = WorkflowRequest(
-        requesters=[
-            AuthenticatedUser()
-        ],
+        requesters=[AuthenticatedUser()],
         recipients=[],
     )
 

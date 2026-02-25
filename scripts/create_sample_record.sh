@@ -15,7 +15,7 @@ echo "API token created for demo-data user (test@test.com)."
 echo "Creating new datasets from template..."
 
 # Read the template JSON and add files: {enabled: false}
-metadata_json=$(jq '. + {"files": {"enabled": false}} + {"parent": {"workflow": "individual"}}' "$TEMPLATE_JSON")
+metadata_json=$(jq '. + {"files": {"enabled": false}} + {"parent": {"workflow": "individual", "communities":{"default":"e79bd1b6-2441-42c5-818f-72c899b4a351"}}}' "$TEMPLATE_JSON")
 
 
 echo "Payload being sent:"

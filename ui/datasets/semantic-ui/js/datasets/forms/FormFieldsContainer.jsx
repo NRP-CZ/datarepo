@@ -5,7 +5,6 @@ import {
   EDTFSingleDatePicker,
   CreatibutorsField,
   FundingField,
-  AccessRightField,
 } from "@js/oarepo_ui/forms";
 import { AccordionField } from "react-invenio-forms";
 import { i18next } from "@translations/i18next";
@@ -24,6 +23,7 @@ import {
   SubjectsField,
   DatesField,
   CommunityHeader,
+  AccessRightField,
 } from "@js/invenio_rdm_records";
 import _get from "lodash/get";
 import { RelatedResourceField } from "./RelatedResourceField";
