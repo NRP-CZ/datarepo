@@ -26,7 +26,7 @@ import {
   AccessRightField,
 } from "@js/invenio_rdm_records";
 import _get from "lodash/get";
-import { RelatedResourceField } from "./RelatedResourceField";
+import { RelatedResourceField } from "@js/ccmm_invenio/forms/RelatedResourceField";
 
 const FormFieldsContainerComponent = ({ record }) => {
   const formConfig = useFormConfig();
