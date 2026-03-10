@@ -1,3 +1,12 @@
+from flask_menu import current_menu
+from invenio_i18n import lazy_gettext as _
+from oarepo_rdm.ui.components import (
+    CommunitiesMembershipsComponent,
+    RDMVocabularyOptionsComponent,
+)
+from oarepo_ui.overrides import UIComponent
+from oarepo_ui.overrides.components import UIComponentImportMode
+from oarepo_ui.proxies import current_oarepo_ui
 from oarepo_ui.resources import BabelComponent
 from oarepo_ui.resources.components import (
     # AllowedCommunitiesComponent,
@@ -6,23 +15,13 @@ from oarepo_ui.resources.components import (
     FilesComponent,
     FilesLockedComponent,
     FilesQuotaAndTransferComponent,
-    RecordRestrictionComponent,
     PermissionsComponent,
+    RecordRestrictionComponent,
 )
 from oarepo_ui.resources.components.custom_fields import CustomFieldsComponent
 from oarepo_ui.resources.records.config import RecordsUIResourceConfig
 from oarepo_ui.resources.records.resource import RecordsUIResource
 from oarepo_ui.utils import can_view_deposit_page
-from flask_menu import current_menu
-from invenio_i18n import lazy_gettext as _
-from oarepo_ui.overrides import UIComponent
-from oarepo_ui.overrides.components import UIComponentImportMode
-from oarepo_ui.proxies import current_oarepo_ui
-
-from oarepo_rdm.ui.components import (
-    RDMVocabularyOptionsComponent,
-    CommunitiesMembershipsComponent,
-)
 
 
 class DatasetsUIResourceConfig(RecordsUIResourceConfig):
@@ -82,7 +81,7 @@ def init_menu(app):
     with app.app_context():
         current_menu.submenu("plus.create_datasets").register(
             f"{ui_resource_config.blueprint_name}.deposit_create",
-            _("New Datasets"),
+            _("New Dataset"),
             order=1,
             visible_when=can_view_deposit_page,
         )
