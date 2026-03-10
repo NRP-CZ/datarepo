@@ -1,31 +1,14 @@
-from oarepo_ui.resources import BabelComponent
-from oarepo_ui.resources.components import (
-    # AllowedCommunitiesComponent,
-    AllowedHtmlTagsComponent,
-    EmptyRecordAccessComponent,
-    FilesComponent,
-    FilesLockedComponent,
-    FilesQuotaAndTransferComponent,
-    RecordRestrictionComponent,
-    PermissionsComponent,
-)
-from oarepo_ui.resources.components.custom_fields import CustomFieldsComponent
-from oarepo_ui.resources.records.config import RecordsUIResourceConfig
-from oarepo_ui.resources.records.resource import RecordsUIResource
-from oarepo_ui.utils import can_view_deposit_page
 from flask_menu import current_menu
 from invenio_i18n import lazy_gettext as _
+from oarepo_rdm.ui import RDMRecordsUIResourceConfig
 from oarepo_ui.overrides import UIComponent
 from oarepo_ui.overrides.components import UIComponentImportMode
 from oarepo_ui.proxies import current_oarepo_ui
-
-from oarepo_rdm.ui.components import (
-    RDMVocabularyOptionsComponent,
-    CommunitiesMembershipsComponent,
-)
+from oarepo_ui.resources.records.resource import RecordsUIResource
+from oarepo_ui.utils import can_view_deposit_page
 
 
-class DatasetsUIResourceConfig(RecordsUIResourceConfig):
+class DatasetsUIResourceConfig(RDMRecordsUIResourceConfig):
     template_folder = "templates"
     url_prefix = "/datasets"
     blueprint_name = "datasets_ui"
@@ -37,20 +20,9 @@ class DatasetsUIResourceConfig(RecordsUIResourceConfig):
         UIComponentImportMode.DEFAULT,
     )
 
-    components = [
-        AllowedHtmlTagsComponent,
-        BabelComponent,
-        PermissionsComponent,
-        FilesComponent,
-        # AllowedCommunitiesComponent,
-        CustomFieldsComponent,
-        RecordRestrictionComponent,
-        EmptyRecordAccessComponent,
-        FilesLockedComponent,
-        FilesQuotaAndTransferComponent,
-        RDMVocabularyOptionsComponent,
-        CommunitiesMembershipsComponent,
-    ]
+    components = (
+        *RDMRecordsUIResourceConfig.components,
+    )
 
     application_id = "datasets"
 
