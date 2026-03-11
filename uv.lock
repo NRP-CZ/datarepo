@@ -385,11 +385,11 @@ wheels = [
 
 [[package]]
 name = "cachetools"
-version = "7.0.1"
+version = "7.0.5"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/d4/07/56595285564e90777d758ebd383d6b0b971b87729bbe2184a849932a3736/cachetools-7.0.1.tar.gz", hash = "sha256:e31e579d2c5b6e2944177a0397150d312888ddf4e16e12f1016068f0c03b8341", size = 36126, upload-time = "2026-02-10T22:24:05.03Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/af/dd/57fe3fdb6e65b25a5987fd2cdc7e22db0aef508b91634d2e57d22928d41b/cachetools-7.0.5.tar.gz", hash = "sha256:0cd042c24377200c1dcd225f8b7b12b0ca53cc2c961b43757e774ebe190fd990", size = 37367, upload-time = "2026-03-09T20:51:29.451Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ed/9e/5faefbf9db1db466d633735faceda1f94aa99ce506ac450d232536266b32/cachetools-7.0.1-py3-none-any.whl", hash = "sha256:8f086515c254d5664ae2146d14fc7f65c9a4bce75152eb247e5a9c5e6d7b2ecf", size = 13484, upload-time = "2026-02-10T22:24:03.741Z" },
+    { url = "https://files.pythonhosted.org/packages/06/f3/39cf3367b8107baa44f861dc802cbf16263c945b62d8265d36034fc07bea/cachetools-7.0.5-py3-none-any.whl", hash = "sha256:46bc8ebefbe485407621d0a4264b23c080cedd913921bad7ac3ed2f26c183114", size = 13918, upload-time = "2026-03-09T20:51:27.33Z" },
 ]
 
 [[package]]
@@ -422,7 +422,7 @@ wheels = [
 
 [[package]]
 name = "ccmm-invenio"
-version = "1.1.0a12"
+version = "1.1.0a13"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "langdetect" },
@@ -430,9 +430,9 @@ dependencies = [
     { name = "oarepo-model" },
     { name = "oarepo-rdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/3d/a4/a7ee13d060bfc29d7598c6e6be95bc752b5fc450565dfd6e6cdacbe795ce/ccmm_invenio-1.1.0a12.tar.gz", hash = "sha256:6c3a74c25a7b29a8024de5cc71cc94bf8a58a22843dc7fb9e2ab05baa715277f", size = 440718, upload-time = "2026-02-18T12:31:27.676Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f9/a3/c15d90f630ff15642c6a8e49ef5719ec7713cd1fbd650869180e22b67d9a/ccmm_invenio-1.1.0a13.tar.gz", hash = "sha256:b065fce26752fdff0d4c8fc6529aa5a23af534c50ae0c18d95fbeeb1a91c1270", size = 450814, upload-time = "2026-03-04T09:06:45.541Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0f/e9/cf48cae0f7678c6813f0b285c95a8aaa782117e7c2d03fbbfb643f494709/ccmm_invenio-1.1.0a12-py3-none-any.whl", hash = "sha256:f6ee1f5b0c6e08aef1c8f28d4fcb7487fcb653aae4087e7eca6710f6173c295d", size = 476097, upload-time = "2026-02-18T12:31:25.904Z" },
+    { url = "https://files.pythonhosted.org/packages/cc/e7/58dab1cd1dd937884a9580ee456916a50cde071ea90bfd0c579dd6cbe442/ccmm_invenio-1.1.0a13-py3-none-any.whl", hash = "sha256:7993fd25e463a30e8e8b4c63a7736f82205956b070bccd09b20379715dccd9b8", size = 494079, upload-time = "2026-03-04T09:06:44.186Z" },
 ]
 
 [[package]]
@@ -4018,7 +4018,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-rdm"
-version = "1.0.0.dev42"
+version = "1.0.0.dev43"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "graphlib" },
@@ -4027,9 +4027,9 @@ dependencies = [
     { name = "oarepo-runtime" },
     { name = "oarepo-ui" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d8/47/e6061bc2e6299b19caad0c7470d90f4b0924b38d2e95c039d0674f1e254c/oarepo_rdm-1.0.0.dev42.tar.gz", hash = "sha256:1405f840c96aefd18e7b61d181b1138ee61729a82c9810b35e5841d6c4859935", size = 41326, upload-time = "2026-02-20T09:47:09.181Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/9a/cf/36575e7318b478f584bd0bb17ccdcccd1f3e9601949f670c7fd792ac9007/oarepo_rdm-1.0.0.dev43.tar.gz", hash = "sha256:e44ef528ab5e345f2b1f4ee7287c05f4bbf6ce7543d266c622c9b25acd37032d", size = 41460, upload-time = "2026-03-06T07:19:50.879Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/52/44/03f08650a4188e74663eeb70962915a762a7a526079a84c75edb6fc00030/oarepo_rdm-1.0.0.dev42-py3-none-any.whl", hash = "sha256:dd1cbb7032666d2dd0a9f1d84736f2aca33574a0cc6011644f3796be827b7b0b", size = 80923, upload-time = "2026-02-20T09:47:07.255Z" },
+    { url = "https://files.pythonhosted.org/packages/2f/9a/463c0a91dc41f6c0a853d0afe50a004e0c937de4ae7dfcd4e2194a880897/oarepo_rdm-1.0.0.dev43-py3-none-any.whl", hash = "sha256:54b8a88795e0a789022d8cfd0ff54110c432369a7aa961d9181845d8ef285f30", size = 81055, upload-time = "2026-03-06T07:19:48.873Z" },
 ]
 
 [[package]]
@@ -4078,7 +4078,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-ui"
-version = "7.0.0.dev3"
+version = "7.0.0.dev7"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "deepmerge" },
@@ -4090,9 +4090,9 @@ dependencies = [
     { name = "oarepo-theme" },
     { name = "python-dotenv" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/58/ff/d36ff0ca75f28642a2c4a7d533c6627d6ab1ec59a97ca2979e12e7935931/oarepo_ui-7.0.0.dev3.tar.gz", hash = "sha256:43dafbcc0fab53dd4ef51826c5f38aa92647b7d2efd9dd9c4663a42701efccf6", size = 193869, upload-time = "2026-02-23T12:26:26.032Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/97/07/b111a6cc85e5e20dd52b071819417e380ae5f4fc902336e4bc640537b8d4/oarepo_ui-7.0.0.dev7.tar.gz", hash = "sha256:187f94b61d923b3e041257b87988c759b3bed2aa08e02dbbed80acec0a42b334", size = 208509, upload-time = "2026-03-06T07:22:39.419Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0c/cf/d78cfd6edb1294eff45b41fa02989e7fdf07902e277c0bb41dbd7a175db8/oarepo_ui-7.0.0.dev3-py3-none-any.whl", hash = "sha256:fde1da501b3deb80b7c18ea5c8d3fb96d1c09aa7529ea7453c33ed73a3b0afe1", size = 319566, upload-time = "2026-02-23T12:26:24.415Z" },
+    { url = "https://files.pythonhosted.org/packages/bf/6a/7f98e9e78ce2be47b028e5f48e34e772a853126258acdffe8109b51ad0d9/oarepo_ui-7.0.0.dev7-py3-none-any.whl", hash = "sha256:58c503e8c570f19a5cd3e3c888e5ed11fe73c78b28c458e6850cebb5816e75cf", size = 336342, upload-time = "2026-03-06T07:22:37.809Z" },
 ]
 
 [[package]]
@@ -4115,7 +4115,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-workflows"
-version = "2.0.0.dev9"
+version = "2.0.0.dev10"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "graphlib" },
@@ -4123,9 +4123,9 @@ dependencies = [
     { name = "oarepo-model" },
     { name = "oarepo-runtime" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/7a/0d/9c54a60b3b3e6e4ab1960b00de04b522787c0559dc8fbc0b83b30fe048ad/oarepo_workflows-2.0.0.dev9.tar.gz", hash = "sha256:7006d3492a3471801cc85e9da44745669bbd3ba4ccdf21b183f0d149a3d1bacf", size = 28798, upload-time = "2026-02-19T10:11:57.822Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f2/a9/ba4a58f4d4ee2fff61692cac0293e382bcd30c5baa9d3dc6d76a0100589f/oarepo_workflows-2.0.0.dev10.tar.gz", hash = "sha256:1dcecea6ac06dde2d1774c289499203493e1cc7a357ba2c4c123efe92228cf76", size = 28826, upload-time = "2026-03-03T09:32:38.556Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/3c/17/6c42738478a213419e2a955da1bf82343a9ea170a759044812eb44ff792a/oarepo_workflows-2.0.0.dev9-py3-none-any.whl", hash = "sha256:c3428c3bd1979cbfc578f946efaaf990baa5facfc85bcc21857d9d02b740fa33", size = 58820, upload-time = "2026-02-19T10:11:56.75Z" },
+    { url = "https://files.pythonhosted.org/packages/17/d7/1046af267830f6802b49d1ef1a49cd093424430192e982021eaa8f82a554/oarepo_workflows-2.0.0.dev10-py3-none-any.whl", hash = "sha256:7400ddddeb90866eaed2e3c729df97c09efa5c33fb28fa19793b1629f2fec608", size = 58873, upload-time = "2026-03-03T09:32:37.331Z" },
 ]
 
 [[package]]
@@ -4181,42 +4181,42 @@ wheels = [
 
 [[package]]
 name = "opentelemetry-api"
-version = "1.39.1"
+version = "1.40.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "importlib-metadata" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/97/b9/3161be15bb8e3ad01be8be5a968a9237c3027c5be504362ff800fca3e442/opentelemetry_api-1.39.1.tar.gz", hash = "sha256:fbde8c80e1b937a2c61f20347e91c0c18a1940cecf012d62e65a7caf08967c9c", size = 65767, upload-time = "2025-12-11T13:32:39.182Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/2c/1d/4049a9e8698361cc1a1aa03a6c59e4fa4c71e0c0f94a30f988a6876a2ae6/opentelemetry_api-1.40.0.tar.gz", hash = "sha256:159be641c0b04d11e9ecd576906462773eb97ae1b657730f0ecf64d32071569f", size = 70851, upload-time = "2026-03-04T14:17:21.555Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/cf/df/d3f1ddf4bb4cb50ed9b1139cc7b1c54c34a1e7ce8fd1b9a37c0d1551a6bd/opentelemetry_api-1.39.1-py3-none-any.whl", hash = "sha256:2edd8463432a7f8443edce90972169b195e7d6a05500cd29e6d13898187c9950", size = 66356, upload-time = "2025-12-11T13:32:17.304Z" },
+    { url = "https://files.pythonhosted.org/packages/5f/bf/93795954016c522008da367da292adceed71cca6ee1717e1d64c83089099/opentelemetry_api-1.40.0-py3-none-any.whl", hash = "sha256:82dd69331ae74b06f6a874704be0cfaa49a1650e1537d4a813b86ecef7d0ecf9", size = 68676, upload-time = "2026-03-04T14:17:01.24Z" },
 ]
 
 [[package]]
 name = "opentelemetry-sdk"
-version = "1.39.1"
+version = "1.40.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "opentelemetry-api" },
     { name = "opentelemetry-semantic-conventions" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/eb/fb/c76080c9ba07e1e8235d24cdcc4d125ef7aa3edf23eb4e497c2e50889adc/opentelemetry_sdk-1.39.1.tar.gz", hash = "sha256:cf4d4563caf7bff906c9f7967e2be22d0d6b349b908be0d90fb21c8e9c995cc6", size = 171460, upload-time = "2025-12-11T13:32:49.369Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/58/fd/3c3125b20ba18ce2155ba9ea74acb0ae5d25f8cd39cfd37455601b7955cc/opentelemetry_sdk-1.40.0.tar.gz", hash = "sha256:18e9f5ec20d859d268c7cb3c5198c8d105d073714db3de50b593b8c1345a48f2", size = 184252, upload-time = "2026-03-04T14:17:31.87Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7c/98/e91cf858f203d86f4eccdf763dcf01cf03f1dae80c3750f7e635bfa206b6/opentelemetry_sdk-1.39.1-py3-none-any.whl", hash = "sha256:4d5482c478513ecb0a5d938dcc61394e647066e0cc2676bee9f3af3f3f45f01c", size = 132565, upload-time = "2025-12-11T13:32:35.069Z" },
+    { url = "https://files.pythonhosted.org/packages/2c/c5/6a852903d8bfac758c6dc6e9a68b015d3c33f2f1be5e9591e0f4b69c7e0a/opentelemetry_sdk-1.40.0-py3-none-any.whl", hash = "sha256:787d2154a71f4b3d81f20524a8ce061b7db667d24e46753f32a7bc48f1c1f3f1", size = 141951, upload-time = "2026-03-04T14:17:17.961Z" },
 ]
 
 [[package]]
 name = "opentelemetry-semantic-conventions"
-version = "0.60b1"
+version = "0.61b0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "opentelemetry-api" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/91/df/553f93ed38bf22f4b999d9be9c185adb558982214f33eae539d3b5cd0858/opentelemetry_semantic_conventions-0.60b1.tar.gz", hash = "sha256:87c228b5a0669b748c76d76df6c364c369c28f1c465e50f661e39737e84bc953", size = 137935, upload-time = "2025-12-11T13:32:50.487Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/6d/c0/4ae7973f3c2cfd2b6e321f1675626f0dab0a97027cc7a297474c9c8f3d04/opentelemetry_semantic_conventions-0.61b0.tar.gz", hash = "sha256:072f65473c5d7c6dc0355b27d6c9d1a679d63b6d4b4b16a9773062cb7e31192a", size = 145755, upload-time = "2026-03-04T14:17:32.664Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7a/5e/5958555e09635d09b75de3c4f8b9cae7335ca545d77392ffe7331534c402/opentelemetry_semantic_conventions-0.60b1-py3-none-any.whl", hash = "sha256:9fa8c8b0c110da289809292b0591220d3a7b53c1526a23021e977d68597893fb", size = 219982, upload-time = "2025-12-11T13:32:36.955Z" },
+    { url = "https://files.pythonhosted.org/packages/b2/37/cc6a55e448deaa9b27377d087da8615a3416d8ad523d5960b78dbeadd02a/opentelemetry_semantic_conventions-0.61b0-py3-none-any.whl", hash = "sha256:fa530a96be229795f8cef353739b618148b0fe2b4b3f005e60e262926c4d38e2", size = 231621, upload-time = "2026-03-04T14:17:19.33Z" },
 ]
 
 [[package]]
