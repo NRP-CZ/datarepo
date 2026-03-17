@@ -495,11 +495,18 @@ dl.details-list {
   .footer-nav {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
-    // height: 5.8125rem;
-    text-align: right;
-    a {
-      &:not(:last-child) {
-        margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .footer-left {
+      text-align: left;
+    }
+    .footer-right {
+      text-align: right;
+      a {
+        &:not(:last-child) {
+          margin-bottom: 0.5rem;
+        }
       }
     }
   }
