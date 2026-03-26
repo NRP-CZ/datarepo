@@ -1,0 +1,9 @@
+@checkboxBackground: @checkboxBackgroundColor;
+@checkboxBorder: 1px solid @checkboxBorderColor;
+@checkboxHoverBackground: @checkboxBackgroundHoverColor;
+
+@toggleFocusColor: @primaryColor;
+@toggleLaneBackground: @primaryColor;
+@toggleOnLaneColor: @toggleCheckboxBackgroundPressedColor;
+@toggleOnFocusLaneColor: @toggleCheckboxBackgroundPressedColor;
+@toggleOnFocusLabelColor: @toggleCheckboxBackgroundPressedColor;

@@ -1,0 +1,15 @@
+/*--------------
+     Toggle
+---------------*/
+
+/* Focus */
+.ui.toggle.checkbox input:focus ~ .box:before,
+.ui.toggle.checkbox input:focus ~ label:before {
+  border: 1px solid @toggleCheckboxBorderHoverColor;
+}
+
+/* Hover */
+.ui.toggle.checkbox .box:hover::before,
+.ui.toggle.checkbox label:hover::before {
+  border: 1px solid @toggleCheckboxBorderHoverColor;
+}

@@ -1,3 +1,8 @@
-@selectionBorder: 1px solid @greys7;
+@selectionBorderColor: @dropdownBorderColor;
 @borderRadius: 0.5rem;
- 
+@borderColor: @dropdownBorderColor;
+@backgroundColor: @dropdownBackgroundColor;
+@selectionHoverBorderColor: @dropdownBorderHoverColor;
+@selectionFocusBorderColor: @dropdownBorderHoverColor;
+@selectedBorderColor: @dropdownBorderPressedColor;
+@selectionActiveHoverBorderColor: @dropdownBorderPressedColor;

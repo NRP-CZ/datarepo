@@ -4,6 +4,11 @@
 @borderRadius: 0.5rem;
 @compactVerticalPadding: 0.25em;
 @compactHorizontalPadding: 0.75em;
-@backgroundColor: @mainBackgroundColor;
+@backgroundColor: @buttonBackgroundSecondaryColor;
 @borderWidth: 1px;
-@borderColor: @greys6;
+@borderColor: @buttonBackgroundSecondaryBorderColor;
+@hoverBackgroundColor: @buttonBackgroundSecondaryHoverColor;
+@downBackgroundColor: @buttonBackgroundSecondaryPressedColor;
+@downColor: @white;
+@activeBackgroundColor: @buttonBackgroundSecondaryPressedColor;
+@textColor: @buttonTextSecondaryColor;
