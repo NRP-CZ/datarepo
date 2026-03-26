@@ -1,15 +1,6 @@
 .ui.button {
-  &.search {
-    background-color: @primaryColor;
-
-    &:hover {
-      background-color: @mainColors9;
-    }
-  }
-
   &.bordered {
     border: @borderWidth solid @borderColor;
-    color: @greys6;
   }
 
   &.labeled.icon > .icon {
@@ -22,5 +13,50 @@
     > .icon:not(:last-child) {
       margin-right: 0.5em !important;
     }
+  }
+
+  &.primary {
+    background-color: @buttonBackgroundPrimaryColor;
+    color: @buttonTextPrimaryColor;
+
+    &:hover {
+      background-color: @buttonBackgroundPrimaryHoverColor;
+    }
+
+    &:active {
+      background-color: @buttonBackgroundPrimaryPressedColor;
+    }
+  }
+
+  &.secondary {
+    background-color: @buttonBackgroundSecondaryColor;
+    color: @buttonTextSecondaryColor;
+    border: @borderWidth solid @buttonBackgroundSecondaryBorderColor;
+
+    &:hover {
+      background-color: @buttonBackgroundSecondaryHoverColor;
+    }
+
+    &:active {
+      background-color: @buttonBackgroundSecondaryPressedColor;
+    }
+  }
+
+  &.tertiary {
+    background-color: @buttonBackgroundTertiaryColor;
+    color: @buttonTextTertiaryColor;
+    border: @borderWidth solid @buttonBackgroundTertiaryBorderColor;
+
+    &:hover {
+      background-color: @buttonBackgroundTertiaryHoverColor;
+    }
+
+    &:active {
+      background-color: @buttonBackgroundTertiaryPressedColor;
+    }
+  }
+
+  &.search.search {
+    .primary();
   }
 }

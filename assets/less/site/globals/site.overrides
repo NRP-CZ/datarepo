@@ -464,19 +464,6 @@ dl.details-list {
           color: @mainBackgroundColor;
         }
       }
-      #quick-create-dropdown-btn {
-        i {
-          background-color: @primaryColor;
-        }
-      }
-    }
-
-    #user-profile-dropdown-btn {
-      background-color: @primaryColor;
-      color: @white !important;
-      &:hover {
-        background-color: @mainColors9;
-      }
     }
   }
 

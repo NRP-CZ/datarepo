@@ -137,7 +137,7 @@
 @mainColors6: #036f78;
 @primaryColor: #025960;
 @mainColors8: #01393d;
-@mainColors9: #012527;
+@mainColors9: #011314;
 
 // Secondary colors (light to dark)
 @secondaryColors1: #fbe0e6;
@@ -182,6 +182,59 @@
 @errors7: #771508;
 @errors8: #4a0c04;
 @errors9: #260602;
+
+// Red colors (warnings; light to dark)
+@reds1: #FACFC9;
+@reds2: #F09F94;
+@reds3: #F56451;
+@reds4: #E34631;
+@reds5: #C92B16;
+
+// Pink colors (light to dark)
+@pinks1: #C92876;
+@pinks2: #9F0D54;
+
+
+/*-------------------
+    Interactive Element Colors
+--------------------*/
+
+@buttonTextPrimaryColor: @white;
+@buttonBackgroundPrimaryColor: @primaryColor;
+@buttonBackgroundPrimaryHoverColor: @pinks1;
+@buttonBackgroundPrimaryPressedColor: @pinks2;
+
+@buttonTextSecondaryColor: @mainColors9;
+@buttonBackgroundSecondaryColor: @mainBackgroundColor;
+@buttonBackgroundSecondaryHoverColor: @greys2;
+@buttonBackgroundSecondaryPressedColor: @greys6;
+@buttonBackgroundSecondaryBorderColor: @greys6;
+
+@buttonBackgroundTertiaryColor: @white;
+@buttonBackgroundTertiaryHoverColor: @greys2;
+@buttonBackgroundTertiaryPressedColor: @greys3;
+@buttonTextTertiaryColor: @mainBackgroundColor;
+@buttonBackgroundTertiaryBorderColor: @greys6;
+
+@checkboxBackgroundColor: @white;
+@checkboxBorderColor: @greys2;
+@checkboxBackgroundHoverColor: @greys1;
+
+@toggleCheckboxBorderHoverColor: @pinks1;
+@toggleCheckboxBackgroundPressedColor: @greys1;
+
+@dropdownBorderColor: @greys3;
+@dropdownBackgroundColor: @white;
+@dropdownBorderHoverColor: @greys4;
+@dropdownBorderPressedColor: @primaryColor;
+
+@warningLabelBackgroundColor: @reds1;
+@warningLabelBorderColor: @reds2;
+@warningLabelTextColor: lighten(@black, 60);
+@warningLabelBackgroundHoverColor: @reds2;
+@warningLabelBorderHoverColor: @reds2;
+@warningLabelBackgroundPressedColor: @reds3;
+@warningLabelBorderPressedColor: @reds3;
 
 /*-------------------
       Links
