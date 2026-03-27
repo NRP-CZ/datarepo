@@ -6,10 +6,11 @@
     Brand Colors
 --------------------*/
 
-@livelyGreen: #008691;
-@pink: #ff5b7f;
+@livelyGreen: @mainColors5;
+@pink: @pinks1;
+@yellow: @alerts5;
 
-@primaryColor: @primaryColor;
+@primaryColor: @mainColors7;
 @primaryTextColor: @white;
 @secondaryColor: @pink;
 @darkGrey: #707075;
@@ -33,7 +34,7 @@
       Site Colors
 --------------------*/
 
-@green: #00b691;
+@green: #3FAF43;
 @red: darken(@pink, 20);
 @signupColor: @green;
 
@@ -70,8 +71,8 @@
 @coverPageBackgroundColor: @livelyGreen;
 
 @errorTextColor: #9f3a38;
-@focusedFormBorderColor: #2185d0;
-@focusedFormMutedBorderColor: #2185d0;
+@focusedFormBorderColor: @secondaryColor;
+@focusedFormMutedBorderColor: @secondaryColor;
 
 @highlightHeaderColor: @lightGrey;
 @highlightBackgroundColor: @highlightHeaderColor;
@@ -135,7 +136,7 @@
 @mainColors4: #28b8c4;
 @mainColors5: #008691;
 @mainColors6: #036f78;
-@primaryColor: #025960;
+@mainColors7: #025960;
 @mainColors8: #01393d;
 @mainColors9: #011314;
 
@@ -190,7 +191,7 @@
 @reds4: #E34631;
 @reds5: #C92B16;
 
-// Pink colors (light to dark)
+// Pink colors (secondary; light to dark)
 @pinks1: #C92876;
 @pinks2: #9F0D54;
 
@@ -242,7 +243,7 @@
 
 @linkColor: @black;
 @linkUnderline: none;
-@linkHoverColor: darken(saturate(@linkColor, 20), 15, relative);
+@linkHoverColor: @secondaryColor;
 @linkHoverUnderline: underline;
 
 /*-------------------

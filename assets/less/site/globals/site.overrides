@@ -431,6 +431,12 @@ dl.details-list {
     .sub-menu {
       a {
         color: @mainColors9 !important;
+        &:hover {
+          color: @secondaryColor !important;
+        }
+        &:active {
+          color: @pinks2 !important;
+        }
       }
     }
     #quick-create-menu,
@@ -446,13 +452,18 @@ dl.details-list {
       }
     }
     .item {
-      a,
-      a:hover {
+      a {
         color: @mainColors9 !important;
         font-style: normal;
         font-weight: 600;
         font-family: "Roboto";
         letter-spacing: 0.15px;
+        &:hover {
+          color: @secondaryColor !important;
+        }
+        &:active {
+          color: @pinks2 !important;
+        }
       }
     }
     .right.menu.item {
