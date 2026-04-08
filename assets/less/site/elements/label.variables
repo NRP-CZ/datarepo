@@ -1,0 +1,8 @@
+// Design variables
+@warningLabelBackgroundColor: @reds1;
+@warningLabelBorderColor: @reds2;
+@warningLabelTextColor: lighten(@black, 60);
+@warningLabelBackgroundHoverColor: @reds2;
+@warningLabelBorderHoverColor: @reds2;
+@warningLabelBackgroundPressedColor: @reds3;
+@warningLabelBorderPressedColor: @reds3;
