@@ -1,3 +1,10 @@
+// Design variables
+@dropdownBorderColor: @greys3;
+@dropdownBackgroundColor: @white;
+@dropdownBorderHoverColor: @greys4;
+@dropdownBorderPressedColor: @primaryColor;
+
+// Semantic UI variables
 @selectionBorderColor: @dropdownBorderColor;
 @borderRadius: 0.5rem;
 @borderColor: @dropdownBorderColor;
