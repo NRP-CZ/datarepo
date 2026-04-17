@@ -9,6 +9,8 @@
 @livelyGreen: @mainColors5;
 @pink: @pinks1;
 @yellow: @alerts5;
+@green: #3FAF43;
+@red: @reds4;
 
 @primaryColor: @mainColors7;
 @primaryTextColor: @white;
@@ -34,8 +36,6 @@
       Site Colors
 --------------------*/
 
-@green: #3FAF43;
-@red: darken(@pink, 20);
 @signupColor: @green;
 
 @accessRightOpen: @green;
