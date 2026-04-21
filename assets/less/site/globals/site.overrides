@@ -7,19 +7,19 @@
 // https://github.com/inveniosoftware/invenio-app-rdm/blob/d21af4eac1f6aca4ddd524cccfb621ae259f8411/invenio_app_rdm/theme/assets/semantic-ui/less/invenio_app_rdm/theme/globals/site.overrides#L4
 
 @font-face {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("~@less/fonts/Roboto-Regular-Latin.woff2") format('woff2');
+  src: url("../fonts/Roboto-Regular-Latin.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  src: url("~@less/fonts/Roboto-Italic-Latin.woff2") format('woff2');
+  src: url("../fonts/Roboto-Italic-Latin.woff2") format("woff2");
 }
 
 /* 1. Use a more-intuitive box-sizing model */
@@ -43,7 +43,6 @@ body {
   display: flex;
   flex-direction: column;
   font-size: @fontSize;
-  font-family: "Roboto";
 }
 
 main {

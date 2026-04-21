@@ -211,7 +211,7 @@
 @font-size-small: 0.9rem;
 @font-size-tiny: 0.8rem;
 @font-size-massive: 2.5rem;
-@fontName: "Lato";
+@fontName: "Roboto";
 
 /*-------------------
      Em Sizes
