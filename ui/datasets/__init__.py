@@ -91,12 +91,6 @@ def init_menu(app):
             order=0,
         )
 
-        current_menu.submenu("main.stats").register(
-            "oarepo_ui.index",
-            text=_("Statistics"),
-            order=3,
-        )
-
 
 def finalize_app(app):
     """Finalize app"""
