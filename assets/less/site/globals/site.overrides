@@ -6,6 +6,22 @@
 // https://www.joshwcomeau.com/css/custom-css-reset/
 // https://github.com/inveniosoftware/invenio-app-rdm/blob/d21af4eac1f6aca4ddd524cccfb621ae259f8411/invenio_app_rdm/theme/assets/semantic-ui/less/invenio_app_rdm/theme/globals/site.overrides#L4
 
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/Roboto-Regular-Latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/Roboto-Italic-Latin.woff2") format("woff2");
+}
+
 /* 1. Use a more-intuitive box-sizing model */
 *,
 *::before,
@@ -441,7 +457,6 @@ dl.details-list {
         color: @mainColors9 !important;
       }
       a.item {
-        font-family: "Lato";
         font-weight: 600;
       }
     }
@@ -451,12 +466,10 @@ dl.details-list {
         color: @mainColors9 !important;
         font-style: normal;
         font-weight: 600;
-        font-family: "Roboto";
         letter-spacing: 0.15px;
       }
     }
     .right.menu.item {
-      font-family: "Lato";
       gap: 0.5rem;
       a.button {
         color: @white !important;
@@ -537,7 +550,6 @@ dl.details-list {
   font-size: 0.85rem;
   font-weight: 500;
   line-height: 1.6;
-  font-family: Roboto;
   letter-spacing: 0.1px;
   font-style: normal;
 }
