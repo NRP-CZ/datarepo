@@ -820,7 +820,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "oarepo", extras = ["s3", "rdm"], specifier = ">=14.0.0b1,<15.0.0" },
+    { name = "oarepo", extras = ["s3", "rdm"], specifier = ">=14.2.0b1,<15.0.0" },
     { name = "oarepo-app", extras = ["development"], specifier = ">=2.0.0,<3.0.0" },
 ]
 
@@ -3605,14 +3605,15 @@ wheels = [
 
 [[package]]
 name = "oarepo-glitchtip"
-version = "1.1.1"
+version = "1.3.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
+    { name = "flask-login" },
     { name = "sentry-sdk", extra = ["flask"] },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f4/90/787bde2bf25ca5858c02c005ca02fd9afdb81e24bf7c82bb5b397f7240f0/oarepo_glitchtip-1.1.1.tar.gz", hash = "sha256:e0bbc52368c6f470e799287142cd224b60818d872b940f80a1b305e84d23e88c", size = 4003, upload-time = "2026-01-13T09:44:06.216Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/74/ba/49adf3e7d6e0e0d904137ad2efefb48b9b709228ffd72e146e90334cd2d7/oarepo_glitchtip-1.3.0.tar.gz", hash = "sha256:f8da1071bc6a10de31d40560a6adf8556beb7c1996fdb28e0720f7114fbeea06", size = 3746, upload-time = "2026-04-30T14:53:59.015Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/77/2e/4408908927b24cbcb8b16dcbbf7619041dca19507eadf6682306b830da45/oarepo_glitchtip-1.1.1-py3-none-any.whl", hash = "sha256:d80def7596ebc64c27d874025f57a1f27c339acee44647a35f2d4cc8edf117cd", size = 5083, upload-time = "2026-01-13T09:44:05.103Z" },
+    { url = "https://files.pythonhosted.org/packages/69/2e/53e68a7169746522f58166e5d4511a8515d746624478c61d94b4551e0953/oarepo_glitchtip-1.3.0-py3-none-any.whl", hash = "sha256:a0eb46beb969ecf78af86ab0fc7fdac492e749efc8529e77dfeca4ee79df73f3", size = 4996, upload-time = "2026-04-30T14:53:58.213Z" },
 ]
 
 [[package]]
