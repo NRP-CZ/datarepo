@@ -352,11 +352,11 @@ wheels = [
 
 [[package]]
 name = "cachetools"
-version = "7.0.6"
+version = "7.1.1"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/76/7b/1755ed2c6bfabd1d98b37ae73152f8dcf94aa40fee119d163c19ed484704/cachetools-7.0.6.tar.gz", hash = "sha256:e5d524d36d65703a87243a26ff08ad84f73352adbeafb1cde81e207b456aaf24", size = 37526, upload-time = "2026-04-20T19:02:23.289Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ff/e2/85f227594656000ff4d8adadae91a21f536d4a84c6c716a86bd6685874be/cachetools-7.1.1.tar.gz", hash = "sha256:27bdf856d68fd3c71c26c01b5edc312124ed427524d1ddb31aa2b7746fe20d4b", size = 40202, upload-time = "2026-05-03T20:00:29.391Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/fe/c4/cf76242a5da1410917107ff14551764aa405a5fd10cd10cf9a5ca8fa77f4/cachetools-7.0.6-py3-none-any.whl", hash = "sha256:4e94956cfdd3086f12042cdd29318f5ced3893014f7d0d059bf3ead3f85b7f8b", size = 13976, upload-time = "2026-04-20T19:02:21.187Z" },
+    { url = "https://files.pythonhosted.org/packages/bf/0f/f897abe4ea0a8c408ae65c8c83bffab4936ad65d6032d4fb4cd35bbdc3ee/cachetools-7.1.1-py3-none-any.whl", hash = "sha256:0335cd7a0952d2b22327441fb0628139e234c565559eeb91a8a4ac7551c5353d", size = 16775, upload-time = "2026-05-03T20:00:27.857Z" },
 ]
 
 [[package]]
@@ -3648,7 +3648,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-oidc-einfra"
-version = "4.0.0"
+version = "4.1.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "boto3" },
@@ -3658,9 +3658,9 @@ dependencies = [
     { name = "tqdm" },
     { name = "urnparse" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/b3/9f/e3a0714403594c7486e7eb221cef52b5f713b6f2337f7ead693049d4ef52/oarepo_oidc_einfra-4.0.0.tar.gz", hash = "sha256:ccfbb9bf72c6f0bf86612b782214c9efdb5c340a650919e47ec9d0aebf0b54b2", size = 40541, upload-time = "2026-04-17T09:34:23.539Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/70/fb/3ac09a449ee045e18cb2175bdd61b48b7843fcf3c8a2f695c467a8cddf03/oarepo_oidc_einfra-4.1.0.tar.gz", hash = "sha256:733a9f337eb52e6ed4d94d020f4e463a1e5a7a5a4e4ca0b04e6a19cc56a987e0", size = 41654, upload-time = "2026-05-04T11:41:29.166Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ca/00/c65413eda06787e09829a8bb3f58b42223600a28e762eb85c36948d7d39a/oarepo_oidc_einfra-4.0.0-py3-none-any.whl", hash = "sha256:205e04f658a74bdc787cd69c11e426eb683bac7b1ca24517aa8ed450997fca0b", size = 54467, upload-time = "2026-04-17T09:34:22.578Z" },
+    { url = "https://files.pythonhosted.org/packages/64/79/27757c40411e2814845a6f0a6096046ed968ee03621ed53fb1711977bca2/oarepo_oidc_einfra-4.1.0-py3-none-any.whl", hash = "sha256:4b5edd11085631d7adc0c870b3d370fac736c6f1ddc62df15dcbdcc25f0cd6d7", size = 56150, upload-time = "2026-05-04T11:41:28.225Z" },
 ]
 
 [[package]]
