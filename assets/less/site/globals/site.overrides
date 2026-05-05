@@ -428,7 +428,7 @@ dl.details-list {
 // there are some ugly things here, but unfortunately, invenio has colored header and so they are usually forcing white text on
 // elements
 .theme.header {
-  height: 5rem;
+  min-height: 5rem;
   color: @black;
   border-bottom: @headerFooterBorder;
   box-shadow: none;
@@ -441,7 +441,7 @@ dl.details-list {
         margin-bottom: 1rem;
       }
     }
-    height: 100%;
+    min-height: 5rem;
     background-color: @white;
     background-image: none;
     .sub-menu {
