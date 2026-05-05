@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-03-17 12:12+0100\n"
+"POT-Creation-Date: 2026-05-05 10:13+0200\n"
 "PO-Revision-Date: 2026-01-13 10:43+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cs\n"
@@ -38,47 +38,23 @@ msgstr ""
 msgid "Individual deposition workflow"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:175
-msgid "APA"
-msgstr "APA"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:176
-msgid "Harvard"
-msgstr "Harvard"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:177
-msgid "MLA"
-msgstr "MLA"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:178
-msgid "Vancouver"
-msgstr "Vancouver"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:179
-msgid "Chicago"
-msgstr "Chicago"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:180
-msgid "IEEE"
-msgstr "IEEE"
-
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:351
+#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:347
 msgid "state:draft"
 msgstr "stav:návrh"
 
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:352
+#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:348
 msgid "state:published"
 msgstr "stav:publikováno"
 
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:353
+#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:349
 msgid "state:submitted"
 msgstr "stav:odesláno"
 
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:354
+#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:350
 msgid "state:retracting"
 msgstr "stav:stahováno"
 
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:355
+#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:351
 msgid "state:deleted"
 msgstr "stav:smazáno"
 
@@ -86,11 +62,15 @@ msgstr "stav:smazáno"
 msgid "Personal data processing information"
 msgstr "Informace o zpracování osobních údajů"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:7
+#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:5
+msgid "Version"
+msgstr "Verze"
+
+#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:8
 msgid "Documentation"
 msgstr "Dokumentace"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:8
+#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:9
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -129,7 +109,7 @@ msgid "Would you like to know more about where your data is being stored?"
 msgstr "Chcete vědět více o tom, kde jsou vaše data uložena?"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:83
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:90
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:63
 msgid "About repository"
 msgstr "O repozitáři"
 
@@ -247,14 +227,31 @@ msgstr "Chcete-li tuto sekci vypnout, přidejte"
 msgid "to your invenio.cfg file."
 msgstr "do souboru invenio.cfg."
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:84
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:57
 msgid "New Dataset"
 msgstr "Nový dataset"
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:96
-msgid "Statistics"
-msgstr "Statistiky"
-
 #~ msgid "Personal data processing"
 #~ msgstr ""
+
+#~ msgid "APA"
+#~ msgstr "APA"
+
+#~ msgid "Harvard"
+#~ msgstr "Harvard"
+
+#~ msgid "MLA"
+#~ msgstr "MLA"
+
+#~ msgid "Vancouver"
+#~ msgstr "Vancouver"
+
+#~ msgid "Chicago"
+#~ msgstr "Chicago"
+
+#~ msgid "IEEE"
+#~ msgstr "IEEE"
+
+#~ msgid "Statistics"
+#~ msgstr "Statistiky"
 

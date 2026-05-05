@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-03-17 12:12+0100\n"
+"POT-Creation-Date: 2026-05-05 10:13+0200\n"
 "PO-Revision-Date: 2026-01-13 10:43+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -38,47 +38,23 @@ msgstr ""
 msgid "Individual deposition workflow"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:175
-msgid "APA"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:176
-msgid "Harvard"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:177
-msgid "MLA"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:178
-msgid "Vancouver"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:179
-msgid "Chicago"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:180
-msgid "IEEE"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:351
+#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:347
 msgid "state:draft"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:352
+#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:348
 msgid "state:published"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:353
+#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:349
 msgid "state:submitted"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:354
+#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:350
 msgid "state:retracting"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:355
+#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:351
 msgid "state:deleted"
 msgstr ""
 
@@ -86,11 +62,15 @@ msgstr ""
 msgid "Personal data processing information"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:7
-msgid "Documentation"
+#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:5
+msgid "Version"
 msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:8
+msgid "Documentation"
+msgstr ""
+
+#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:9
 msgid "Contact"
 msgstr ""
 
@@ -129,7 +109,7 @@ msgid "Would you like to know more about where your data is being stored?"
 msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:83
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:90
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:63
 msgid "About repository"
 msgstr ""
 
@@ -243,17 +223,34 @@ msgstr ""
 msgid "to your invenio.cfg file."
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:84
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:57
 msgid "New Dataset"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:96
-msgid "Statistics"
 msgstr ""
 
 #~ msgid "New Datasets"
 #~ msgstr ""
 
 #~ msgid "Personal data processing"
+#~ msgstr ""
+
+#~ msgid "APA"
+#~ msgstr ""
+
+#~ msgid "Harvard"
+#~ msgstr ""
+
+#~ msgid "MLA"
+#~ msgstr ""
+
+#~ msgid "Vancouver"
+#~ msgstr ""
+
+#~ msgid "Chicago"
+#~ msgstr ""
+
+#~ msgid "IEEE"
+#~ msgstr ""
+
+#~ msgid "Statistics"
 #~ msgstr ""
 
