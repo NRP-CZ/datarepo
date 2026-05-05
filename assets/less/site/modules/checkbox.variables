@@ -1,0 +1,18 @@
+// Design variables
+@checkboxBackgroundColor: @white;
+@checkboxBorderColor: @greys2;
+@checkboxBackgroundHoverColor: @greys1;
+
+@toggleCheckboxBorderHoverColor: @pinks1;
+@toggleCheckboxBackgroundPressedColor: @greys1;
+
+// Semantic UI variables
+@checkboxBackground: @checkboxBackgroundColor;
+@checkboxBorder: 1px solid @checkboxBorderColor;
+@checkboxHoverBackground: @checkboxBackgroundHoverColor;
+
+@toggleFocusColor: @primaryColor;
+@toggleLaneBackground: @primaryColor;
+@toggleOnLaneColor: @toggleCheckboxBackgroundPressedColor;
+@toggleOnFocusLaneColor: @toggleCheckboxBackgroundPressedColor;
+@toggleOnFocusLabelColor: @toggleCheckboxBackgroundPressedColor;

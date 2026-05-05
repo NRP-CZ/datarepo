@@ -1,9 +1,33 @@
+// Design variables
+@buttonTextPrimaryColor: @white;
+@buttonBackgroundPrimaryColor: @primaryColor;
+@buttonBackgroundPrimaryHoverColor: @pinks1;
+@buttonBackgroundPrimaryPressedColor: @pinks2;
+
+@buttonTextSecondaryColor: @mainColors9;
+@buttonBackgroundSecondaryColor: @mainBackgroundColor;
+@buttonBackgroundSecondaryHoverColor: @greys2;
+@buttonBackgroundSecondaryPressedColor: @greys6;
+@buttonBackgroundSecondaryBorderColor: @greys6;
+
+@buttonBackgroundTertiaryColor: @white;
+@buttonBackgroundTertiaryHoverColor: @greys2;
+@buttonBackgroundTertiaryPressedColor: @greys3;
+@buttonTextTertiaryColor: @mainBackgroundColor;
+@buttonBackgroundTertiaryBorderColor: @greys6;
+
+// Semantic UI variables
 @verticalPadding: 0.5em;
 @horizontalPadding: 1em;
 @lineHeight: 1.5em;
 @borderRadius: 0.5rem;
 @compactVerticalPadding: 0.25em;
 @compactHorizontalPadding: 0.75em;
-@backgroundColor: @mainBackgroundColor;
+@backgroundColor: @buttonBackgroundSecondaryColor;
 @borderWidth: 1px;
-@borderColor: @greys6;
+@borderColor: @buttonBackgroundSecondaryBorderColor;
+@hoverBackgroundColor: @buttonBackgroundSecondaryHoverColor;
+@downBackgroundColor: @buttonBackgroundSecondaryPressedColor;
+@downColor: @white;
+@activeBackgroundColor: @buttonBackgroundSecondaryPressedColor;
+@textColor: @buttonTextSecondaryColor;

@@ -447,6 +447,12 @@ dl.details-list {
     .sub-menu {
       a {
         color: @mainColors9 !important;
+        &:hover {
+          color: @secondaryColor !important;
+        }
+        &:active {
+          color: @pinks2 !important;
+        }
       }
     }
     #quick-create-menu,
@@ -461,12 +467,17 @@ dl.details-list {
       }
     }
     .item {
-      a,
-      a:hover {
+      a {
         color: @mainColors9 !important;
         font-style: normal;
         font-weight: 600;
         letter-spacing: 0.15px;
+        &:hover {
+          color: @secondaryColor !important;
+        }
+        &:active {
+          color: @pinks2 !important;
+        }
       }
     }
     .right.menu.item {
@@ -476,19 +487,6 @@ dl.details-list {
         i {
           color: @mainBackgroundColor;
         }
-      }
-      #quick-create-dropdown-btn {
-        i {
-          background-color: @primaryColor;
-        }
-      }
-    }
-
-    #user-profile-dropdown-btn {
-      background-color: @primaryColor;
-      color: @white !important;
-      &:hover {
-        background-color: @mainColors9;
       }
     }
   }
