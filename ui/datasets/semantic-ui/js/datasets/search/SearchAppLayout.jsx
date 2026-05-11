@@ -11,7 +11,7 @@ import {
   TransitionablePortal,
   Header,
 } from "semantic-ui-react";
-import { i18next } from "@translations/invenio_app_rdm/i18next";
+import { i18next } from "@translations/i18next";
 import {
   SearchAppFacets,
   SearchAppResultsPane,
@@ -230,7 +230,6 @@ export const SearchAppLayout = ({ config }) => {
         appName={appName}
         buildUID={buildUID}
         resultsPaneLayout={resultsPaneLayout}
-        resultSortLayout={resultSortLayout}
       />
       <TransitionablePortal
         open={scrollToTopVisible}
