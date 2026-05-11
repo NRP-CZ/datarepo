@@ -6,7 +6,7 @@ import { Label, Icon } from "semantic-ui-react";
 import { withState } from "react-searchkit";
 import { ClearFiltersButton } from "@js/oarepo_ui";
 import { useActiveSearchFilters } from "@js/oarepo_ui/search/hooks";
-import { i18next } from "@translations/invenio_app_rdm/i18next";
+import { i18next } from "@translations/i18next";
 
 const getLabel = (filter, aggregations, additionalFilterLabels) => {
   const aggName = filter[0];
@@ -69,7 +69,7 @@ const ActiveFiltersElementComponent = ({
           return (
             <Label
               className="active-filter-label"
-              key={activeFilter}
+              key={activeFilter.join("-") + index}
               onClick={() => removeActiveFilter(activeFilter)}
               type="button"
               tabIndex="0"

@@ -7,7 +7,7 @@
 
 // Taken from InvenioAppRDM with fixes for viewLink
 
-import { i18next } from "@translations/invenio_app_rdm/i18next";
+import { i18next } from "@translations/i18next";
 import _get from "lodash/get";
 import React, { useState } from "react";
 import Overridable from "react-overridable";
@@ -71,11 +71,7 @@ const ExpandableDescription = ({ description }) => {
         type="button"
         className="expand-toggle"
         aria-expanded={expanded}
-        aria-label={
-          expanded
-            ? i18next.t("Show less")
-            : i18next.t("Show more")
-        }
+        aria-label={expanded ? i18next.t("Show less") : i18next.t("Show more")}
         onClick={toggleExpanded}
       >
         <Icon name={expanded ? "chevron up" : "chevron right"} />
@@ -92,7 +88,7 @@ ExpandableDescription.defaultProps = {
   description: "",
 };
 
-const ResultsListItem = ({ result, key, appName }) => {
+const ResultsListItem = ({ result, appName }) => {
   const creators = _get(result, "ui.creators.creators", []);
   const contributors = _get(result, "ui.contributors.contributors", []);
   const allCreatibutors = [...creators, ...contributors];
@@ -115,9 +111,9 @@ const ResultsListItem = ({ result, key, appName }) => {
     <Overridable
       id={buildUID("RecordsResultsListItem.layout", "", appName)}
       result={result}
-      key={key}
+      key={result.id}
     >
-      <Item key={key ?? result.id} className="search-result-item">
+      <Item key={result.id} className="search-result-item">
         <Item.Content>
           <Item.Header as="h2" className="theme-primary-text rel-mb-1">
             <a href={viewLink}>{title}</a>
@@ -149,20 +145,20 @@ const ResultsListItem = ({ result, key, appName }) => {
             <small>
               {publicationDate && (
                 <span>
-                  {i18next.t("Publikováno")}: {publicationDate}
-                  {version && ` (${i18next.t("verze")}. ${version})`}
+                  {i18next.t("Published")}: {publicationDate}
+                  {version && ` (${i18next.t("Version")}. ${version})`}
                 </span>
               )}
               {publisher && (
                 <span>
                   {" "}
-                  | {i18next.t("Vydavatel")}: {publisher}
+                  | {i18next.t("Publisher")}: {publisher}
                 </span>
               )}
               {languages.length > 0 && (
                 <span>
                   {" "}
-                  | {i18next.t("Jazyk")}:{" "}
+                  | {i18next.t("Language")}:{" "}
                   {languages.map((l) => l.title_l10n).join(", ")}
                 </span>
               )}
@@ -186,12 +182,10 @@ const ResultsListItem = ({ result, key, appName }) => {
 
 ResultsListItem.propTypes = {
   result: PropTypes.object.isRequired,
-  key: PropTypes.string,
   appName: PropTypes.string,
 };
 
 ResultsListItem.defaultProps = {
-  key: null,
   appName: "",
 };
 

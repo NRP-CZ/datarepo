@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Sort, ResultsPerPage } from "react-searchkit";
 import { Grid } from "semantic-ui-react";
 import { SearchConfigurationContext } from "@js/invenio_search_ui/components";
-import { i18next } from "@translations/invenio_app_rdm/i18next";
+import { i18next } from "@translations/i18next";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -19,7 +19,7 @@ const SortLabel = (cmp) => (
 );
 
 export const ResultOptions = ({ currentResultsState = {} }) => {
-  const { total } = currentResultsState.data;
+  const { total } = currentResultsState.data || {};
   const { sortOptions, paginationOptions, sortOrderDisabled } = useContext(
     SearchConfigurationContext,
   );
