@@ -6,3 +6,4 @@ class IndividualDepositionWorkflowPermissions(DefaultWorkflowPermissions):
     can_create = [AuthenticatedUser()]
     can_review = [AuthenticatedUser()]  # for link creation
     can_manage = [AuthenticatedUser()]
+    can_manage_files = [AuthenticatedUser()]

@@ -17,12 +17,12 @@
 @buttonBackgroundTertiaryBorderColor: @greys6;
 
 // Semantic UI variables
-@verticalPadding: 0.5em;
-@horizontalPadding: 1em;
-@lineHeight: 1.5em;
+@verticalPadding: 0.5rem;
+@horizontalPadding: 1rem;
+@lineHeight: 1.5rem;
 @borderRadius: 0.5rem;
-@compactVerticalPadding: 0.25em;
-@compactHorizontalPadding: 0.75em;
+@compactVerticalPadding: 0.25rem;
+@compactHorizontalPadding: 0.75rem;
 @backgroundColor: @buttonBackgroundSecondaryColor;
 @borderWidth: 1px;
 @borderColor: @buttonBackgroundSecondaryBorderColor;
