@@ -1,36 +1,109 @@
+import React from "react";
+import PropTypes from "prop-types";
 import {
   parseSearchAppConfigs,
   createSearchAppsInit,
+  SearchAppFacets,
 } from "@js/oarepo_ui/search";
 import ResultsListItem from "./ResultsListItem";
-import { Grid } from "semantic-ui-react";
-import React from "react";
-import { SearchBar } from "@js/invenio_search_ui/components";
-import { buildUID } from "react-searchkit";
-/** NOTE: This reads configs for any search app present on a page
- *   In HTML/Jinja, a single search app instance is typically represented
-@@ -14,13 +15,13 @@ import {
-/** NOTE: To customize components in a specific search app instance,
- *   you need to obtain its `overridableIdPrefix` from the corresponding config first
- */
-const [{ overridableIdPrefix }] = parseSearchAppConfigs();
+import { parametrize } from "react-overridable";
+import { SearchAppLayout } from "./SearchAppLayout";
+import { ActiveFiltersElement } from "./ActiveFilters";
+import { Dropdown } from "semantic-ui-react";
+import { SearchAppResults } from "./SearchAppResults";
+import { i18next } from "@translations/invenio_app_rdm/i18next";
+import { overrideStore } from "react-overridable";
 
-const SearchBarContainer = () => (
-  <Grid relaxed padded>
-    <Grid.Row>
-      <Grid.Column width={16}>
-        <SearchBar buildUID={buildUID} appName={overridableIdPrefix} />
-      </Grid.Column>
-    </Grid.Row>
-  </Grid>
-);
+const overriddenComponents = overrideStore.getAll();
 
-export const componentOverrides = {
-  /** NOTE: Then you can then replace any existing search ui
-   * component with your own implementation, e.g.:
-   */
-  [`${overridableIdPrefix}.ResultsList.item`]: ResultsListItem,
-  [`${overridableIdPrefix}.SearchApp.searchbarContainer`]: SearchBarContainer,
+const SearchAppFacetsWithProps = parametrize(SearchAppFacets, {
+  allVersionsToggle: true,
+});
+
+const ResultsPerPage = ({
+  currentSize,
+  options,
+  onValueChange,
+  ariaLabel,
+  selectOnNavigation,
+}) => {
+  const _options = options.map((element, index) => {
+    return { key: index, text: element.text, value: element.value };
+  });
+  return (
+    <Dropdown
+      className="results-per-page-selector"
+      selection
+      compact
+      options={_options}
+      value={currentSize}
+      onChange={(e, { value }) => onValueChange(value)}
+      aria-label={ariaLabel}
+      selectOnNavigation={selectOnNavigation}
+    />
+  );
 };
 
-createSearchAppsInit({ componentOverrides });
+ResultsPerPage.propTypes = {
+  currentSize: PropTypes.number.isRequired,
+  options: PropTypes.array.isRequired,
+  onValueChange: PropTypes.func.isRequired,
+  ariaLabel: PropTypes.string,
+  selectOnNavigation: PropTypes.bool,
+};
+
+const Sort = ({
+  options,
+  currentSortBy,
+  currentSortOrder,
+  onValueChange,
+  ariaLabel,
+  selectOnNavigation,
+}) => {
+  const _options = options.map((element, index) => {
+    return {
+      key: index,
+      text: element.text,
+      value: element.value,
+    };
+  });
+  const _computeValue = (sortBy, sortOrder) => {
+    return sortOrder ? `${sortBy}-${sortOrder}` : sortBy;
+  };
+  const selected = _computeValue(currentSortBy, currentSortOrder);
+
+  return (
+    <Dropdown
+      className="sort-by-selector"
+      selection
+      options={_options}
+      value={selected}
+      onChange={(e, { value }) => onValueChange(value)}
+      aria-label={ariaLabel}
+      selectOnNavigation={selectOnNavigation}
+    />
+  );
+};
+
+Sort.propTypes = {
+  options: PropTypes.array.isRequired,
+  currentSortBy: PropTypes.string,
+  currentSortOrder: PropTypes.string,
+  onValueChange: PropTypes.func.isRequired,
+  ariaLabel: PropTypes.string,
+  selectOnNavigation: PropTypes.bool,
+};
+
+const [{ overridableIdPrefix }] = parseSearchAppConfigs();
+
+export const componentOverrides = {
+  [`${overridableIdPrefix}.SearchApp.facets`]: SearchAppFacetsWithProps,
+  [`${overridableIdPrefix}.ResultsList.item`]: ResultsListItem,
+  [`${overridableIdPrefix}.SearchApp.layout`]: SearchAppLayout,
+  [`${overridableIdPrefix}.ActiveFilters.element`]: ActiveFiltersElement,
+  [`${overridableIdPrefix}.ResultsPerPage.element`]: ResultsPerPage,
+  [`${overridableIdPrefix}.Sort.element`]: Sort,
+  [`${overridableIdPrefix}.SearchApp.results`]: SearchAppResults,
+};
+
+createSearchAppsInit({ componentOverrides, ...overriddenComponents });

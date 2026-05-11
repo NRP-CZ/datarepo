@@ -1,0 +1,22 @@
+.ui.items.divided > .item.search-result-item {
+  background-color: @white;
+  margin-bottom: 0.75rem !important;
+  padding: 1.25rem !important;
+  border: 1px solid @greys1;
+  box-shadow: 4px 4px 4px 0 #f6f6f6;
+
+  .header.h2 {
+    a {
+      color: @mainColors9 !important;
+    }
+  }
+  .item.creatibutors {
+    line-height: 1;
+  }
+  .ui.label {
+    color: @greys8;
+    background-color: @white;
+    border: 1px solid @greys2;
+    font-weight: 600px;
+  }
+}
