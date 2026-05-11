@@ -43,7 +43,6 @@ body {
   display: flex;
   flex-direction: column;
   font-size: @fontSize;
-  min-width: 400px;
 }
 
 main {
@@ -579,12 +578,6 @@ dl.details-list {
 
 #header-search-bar .ui.fluid.search {
   width: auto !important;
-}
-
-.result-options .rel-mr-1 {
-  @media all and (max-width: @largestMobileScreen) {
-    display: none;
-  }
 }
 
 .facets-container {

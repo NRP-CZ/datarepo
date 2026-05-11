@@ -17,6 +17,15 @@
     color: @greys8;
     background-color: @white;
     border: 1px solid @greys2;
-    font-weight: 600px;
+    font-weight: 600;
+  }
+  .expand-toggle {
+    cursor: pointer;
+    margin-left: 0.25em;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
   }
 }

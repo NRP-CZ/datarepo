@@ -80,7 +80,7 @@ const ActiveFiltersElementComponent = ({
                 }
               }}
             >
-              {label || i18next.t("Unfilled")}
+              {label || filter[1]}
               <Icon name="delete" aria-hidden="true" />
             </Label>
           );

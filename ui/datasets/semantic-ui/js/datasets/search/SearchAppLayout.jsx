@@ -32,8 +32,6 @@ export const SearchAppResultsGrid = ({
   appName,
   buildUID,
   resultsPaneLayout,
-  hasButtonSidebar,
-  resultSortLayout,
 }) => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
@@ -70,7 +68,7 @@ export const SearchAppResultsGrid = ({
       )}
       <Grid.Column {...resultsPaneLayout}>
         <Grid className="subgrid">
-          <Grid.Row width={16}>
+          <Grid.Row>
             {facetsAvailable && (
               <Grid.Column
                 floated="left"
@@ -86,7 +84,7 @@ export const SearchAppResultsGrid = ({
                   aria-label={i18next.t("Filter results")}
                   className="facets-sidebar-open-button"
                 >
-                  <Icon name="filter"></Icon>
+                  <Icon name="filter" />
                   <ShouldActiveFiltersRender>
                     <ActiveFiltersCountFloatingLabel />
                   </ShouldActiveFiltersRender>
@@ -147,11 +145,9 @@ SearchAppResultsGrid.propTypes = {
   appName: PropTypes.string.isRequired,
   buildUID: PropTypes.func.isRequired,
   resultsPaneLayout: PropTypes.object.isRequired,
-  hasButtonSidebar: PropTypes.bool,
-  resultSortLayout: PropTypes.object.isRequired,
 };
 
-export const SearchAppLayout = ({ config, hasButtonSidebar }) => {
+export const SearchAppLayout = ({ config }) => {
   const { appName, buildUID } = useContext(SearchConfigurationContext);
   const facetsAvailable = !_isEmpty(config.aggs);
   let columnsAmount;
@@ -178,49 +174,25 @@ export const SearchAppLayout = ({ config, hasButtonSidebar }) => {
   };
 
   if (facetsAvailable) {
-    if (hasButtonSidebar) {
-      columnsAmount = 3;
-      resultsPaneLayoutFacets = {
-        mobile: 16,
-        tablet: 16,
-        computer: 10,
-        largeScreen: 10,
-        widescreen: 10,
-        width: undefined,
-      };
-    } else {
-      columnsAmount = 2;
-      resultsPaneLayoutFacets = {
-        mobile: 16,
-        tablet: 16,
-        computer: 12,
-        largeScreen: 12,
-        widescreen: 12,
-        width: undefined,
-      };
-    }
+    columnsAmount = 2;
+    resultsPaneLayoutFacets = {
+      mobile: 16,
+      tablet: 16,
+      computer: 12,
+      largeScreen: 12,
+      widescreen: 12,
+      width: undefined,
+    };
   } else {
-    if (hasButtonSidebar) {
-      columnsAmount = 2;
-      resultsPaneLayoutFacets = {
-        mobile: 16,
-        tablet: 16,
-        computer: 12,
-        largeScreen: 12,
-        widescreen: 12,
-        width: undefined,
-      };
-    } else {
-      columnsAmount = 1;
-      resultsPaneLayoutFacets = {
-        mobile: 16,
-        tablet: 16,
-        computer: 16,
-        largeScreen: 16,
-        widescreen: 16,
-        width: undefined,
-      };
-    }
+    columnsAmount = 1;
+    resultsPaneLayoutFacets = {
+      mobile: 16,
+      tablet: 16,
+      computer: 16,
+      largeScreen: 16,
+      widescreen: 16,
+      width: undefined,
+    };
   }
 
   const resultsSortLayoutFacets = {
@@ -258,7 +230,6 @@ export const SearchAppLayout = ({ config, hasButtonSidebar }) => {
         appName={appName}
         buildUID={buildUID}
         resultsPaneLayout={resultsPaneLayout}
-        hasButtonSidebar={hasButtonSidebar}
         resultSortLayout={resultSortLayout}
       />
       <TransitionablePortal
@@ -287,5 +258,4 @@ SearchAppLayout.propTypes = {
     }),
     aggs: PropTypes.array,
   }),
-  hasButtonSidebar: PropTypes.bool,
 };
