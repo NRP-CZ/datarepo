@@ -59,9 +59,14 @@ def init_menu(app):
             visible_when=can_view_deposit_page,
         )
         current_menu.submenu("main.about_repository").register(
-            "invenio_app_rdm.index",
+            external_url="https://docs.nrp.eosc.cz/en/docs/end_users/catch-all-data-repository/catch-all-repository-introduction",
             text=_("About repository"),
             order=0,
+        )
+        current_menu.submenu("main.documentation").register(
+            external_url="https://docs.nrp.eosc.cz/en/docs/end_users/catch-all-data-repository/catch-all-getting-started",
+            text=_("Documentation"),
+            order=1,
         )
 
 
