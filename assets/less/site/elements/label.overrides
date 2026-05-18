@@ -1,0 +1,8 @@
+.ui.label.active-filter-label {
+  font-size: @small !important;
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+  background-color: @mainBackgroundColor;
+  border-radius: 6px;
+  border: 1px solid @greys6;
+}

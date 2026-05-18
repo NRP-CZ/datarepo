@@ -1,0 +1,9 @@
+.facets-heading {
+  display: none;
+  font-weight: 400 !important;
+  margin-bottom: 0.5rem !important;
+
+  @media only screen and (min-width: @computerBreakpoint) {
+    display: block;
+  }
+}

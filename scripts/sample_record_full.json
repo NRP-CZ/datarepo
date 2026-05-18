@@ -1,9 +1,10 @@
 {
   "$schema": "local://datasets-v1.1.0.json",
   "metadata": {
-    "title": "Kvalita ovzduší ve středních čechách 2024",
+    "title": "Kvalita ovzduší ve středních Čechách 2024 – Komplexní analýza koncentrací znečišťujících látek z automatizovaných měřicích stanic provozovaných ČHMÚ včetně prostorového rozložení a časových trendů",
     "publication_date": "2025-04-27",
     "version": "1.0.23",
+    "publisher": "Český hydrometeorologický ústav ve spolupráci s CESNET z.s.p.o. a Univerzitou Karlovou",
     "resource_type": {
       "id": "c_ddb1"
     },
@@ -29,11 +30,141 @@
             "name": "CESNET z.s.p.o."
           }
         ]
+      },
+      {
+        "role": {
+          "id": "Researcher"
+        },
+        "person_or_org": {
+          "name": "Novák, Jan",
+          "type": "personal",
+          "given_name": "Jan",
+          "family_name": "Novák"
+        },
+        "affiliations": [
+          {
+            "name": "Univerzita Karlova"
+          }
+        ]
+      },
+      {
+        "role": {
+          "id": "Researcher"
+        },
+        "person_or_org": {
+          "name": "Dvořáková, Marie",
+          "type": "personal",
+          "given_name": "Marie",
+          "family_name": "Dvořáková"
+        },
+        "affiliations": [
+          {
+            "name": "ČHMÚ"
+          }
+        ]
+      },
+      {
+        "role": {
+          "id": "Researcher"
+        },
+        "person_or_org": {
+          "name": "Procházka, Tomáš",
+          "type": "personal",
+          "given_name": "Tomáš",
+          "family_name": "Procházka"
+        },
+        "affiliations": [
+          {
+            "name": "CESNET z.s.p.o."
+          }
+        ]
+      }
+    ],
+    "contributors": [
+      {
+        "role": {
+          "id": "DataManager"
+        },
+        "person_or_org": {
+          "name": "Krejčí, Petr",
+          "type": "personal",
+          "given_name": "Petr",
+          "family_name": "Krejčí"
+        },
+        "affiliations": [
+          {
+            "name": "CESNET z.s.p.o."
+          }
+        ]
+      },
+      {
+        "role": {
+          "id": "ProjectLeader"
+        },
+        "person_or_org": {
+          "name": "Svobodová, Eva",
+          "type": "personal",
+          "given_name": "Eva",
+          "family_name": "Svobodová"
+        },
+        "affiliations": [
+          {
+            "name": "Univerzita Karlova"
+          }
+        ]
+      },
+      {
+        "role": {
+          "id": "Other"
+        },
+        "person_or_org": {
+          "name": "Horák, Martin",
+          "type": "personal",
+          "given_name": "Martin",
+          "family_name": "Horák"
+        },
+        "affiliations": [
+          {
+            "name": "ČHMÚ"
+          }
+        ]
+      },
+      {
+        "role": {
+          "id": "DataCollector"
+        },
+        "person_or_org": {
+          "name": "Veselá, Lucie",
+          "type": "personal",
+          "given_name": "Lucie",
+          "family_name": "Veselá"
+        },
+        "affiliations": [
+          {
+            "name": "Masarykova univerzita"
+          }
+        ]
+      },
+      {
+        "role": {
+          "id": "Supervisor"
+        },
+        "person_or_org": {
+          "name": "Černý, Jiří",
+          "type": "personal",
+          "given_name": "Jiří",
+          "family_name": "Černý"
+        },
+        "affiliations": [
+          {
+            "name": "Akademie věd ČR"
+          }
+        ]
       }
     ],
     "additional_titles": [
       {
-        "title": "Air quality measurements in Central Bohemian Region in 2024.",
+        "title": "Air quality measurements in Central Bohemian Region in 2024 – Comprehensive analysis of pollutant concentrations from automated monitoring stations operated by CHMI including spatial distribution and temporal trends",
         "type": {
           "id": "translated-title"
         },
@@ -44,12 +175,21 @@
     ],
     "additional_descriptions": [
       {
-        "description": "Tato datová sada obsahuje měření kvality ovzduší ve středních Čechách v roce 2024.",
+        "description": "Tato datová sada obsahuje měření kvality ovzduší ve středních Čechách v roce 2024. Data byla shromážděna z automatizovaných měřicích stanic provozovaných Českým hydrometeorologickým ústavem (ČHMÚ) a zahrnují koncentrace znečišťujících látek jako PM10, PM2.5, oxid dusičitý (NO₂), oxid siřičitý (SO₂) a přízemní ozón (O₃). Měření probíhala kontinuálně po celý rok 2024 s hodinovým rozlišením. Datová sada je určena pro výzkumné účely v oblasti ochrany ovzduší a environmentální analýzy.",
         "type": {
           "id": "abstract"
         },
         "lang": {
           "id": "CES"
+        }
+      },
+      {
+        "description": "This dataset contains air quality measurements from the Central Bohemian Region in 2024. The data was collected from automated monitoring stations operated by the Czech Hydrometeorological Institute (CHMI) and includes concentrations of pollutants such as PM10, PM2.5, nitrogen dioxide (NO₂), sulfur dioxide (SO₂), and ground-level ozone (O₃). Measurements were taken continuously throughout 2024 with hourly resolution. The dataset is intended for research purposes in the field of air quality protection and environmental analysis.",
+        "type": {
+          "id": "abstract"
+        },
+        "lang": {
+          "id": "ENG"
         }
       }
     ],
@@ -103,6 +243,27 @@
     "subjects": [
       {
         "subject": "kvalita ovzduší"
+      },
+      {
+        "subject": "atmosférické znečištění"
+      },
+      {
+        "subject": "PM10"
+      },
+      {
+        "subject": "PM2.5"
+      },
+      {
+        "subject": "oxid dusičitý"
+      },
+      {
+        "subject": "monitoring životního prostředí"
+      },
+      {
+        "subject": "Středočeský kraj"
+      },
+      {
+        "subject": "imisní data"
       }
     ],
     "funding": [
@@ -161,5 +322,14 @@
         "title": "Metadata datové sady INSPIRE – Kvalita ovzduší – přehledy (data) na měřicích stanicích"
       }
     ]
+  },
+  "access": {
+    "record": "public",
+    "files": "public",
+    "embargo": {
+      "active": false,
+      "reason": null
+    },
+    "status": "metadata-only"
   }
 }
