@@ -80,7 +80,7 @@
     padding-bottom: 0.5rem;
   }
   &.clear-filters-button {
-    border-radius: 6px; 
+    border-radius: 6px;
     border: 1px solid @reds2;
     background-color: @reds1;
   }

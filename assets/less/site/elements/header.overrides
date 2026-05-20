@@ -1,4 +1,4 @@
-.facets-heading {
+.facets-header {
   display: none;
   font-weight: 400 !important;
   margin-bottom: 0.5rem !important;
