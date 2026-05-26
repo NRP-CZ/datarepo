@@ -65,13 +65,13 @@
     bottom: 12rem;
     right: 2rem;
     z-index: 1000;
-    background-color: @mainColors7 !important;
-    color: @white !important;
-    border: none !important;
+    background-color: @mainColors7;
+    color: @white;
+    border: none;
     padding: 0.75rem;
 
     .icon {
-      color: @white !important;
+      color: @white;
     }
   }
 

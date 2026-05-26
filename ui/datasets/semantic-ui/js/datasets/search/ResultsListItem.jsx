@@ -105,8 +105,9 @@ const ResultsListItem = ({ result, appName }) => {
   const accessStatusId = _get(result, "ui.access_status.id", "open");
   const accessStatus = _get(result, "ui.access_status.title_l10n", "Open");
   const accessStatusIcon = _get(result, "ui.access_status.icon", "unlock");
+  const isDraft = _get(result, "is_draft", false);
 
-  const viewLink = result.links.self_html;
+  const viewLink = result?.links?.self_html;
   return (
     <Overridable
       id={buildUID("RecordsResultsListItem.layout", "", appName)}
@@ -115,7 +116,12 @@ const ResultsListItem = ({ result, appName }) => {
     >
       <Item key={result.id} className="search-result-item">
         <Item.Content>
-          <Item.Header as="h2" className="theme-primary-text rel-mb-1">
+          {isDraft && (
+            <Label className="right floated" horizontal>
+              {i18next.t("Draft")}
+            </Label>
+          )}
+          <Item.Header as="h2" className="results-list-item-header rel-mb-1">
             <a href={viewLink}>{title}</a>
           </Item.Header>
 
@@ -146,7 +152,7 @@ const ResultsListItem = ({ result, appName }) => {
               {publicationDate && (
                 <span>
                   {i18next.t("Published")}: {publicationDate}
-                  {version && ` (${i18next.t("Version")}. ${version})`}
+                  {version && ` (${i18next.t("Version")} ${version})`}
                 </span>
               )}
               {publisher && (

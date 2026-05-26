@@ -3,9 +3,9 @@
   margin-bottom: 0.75rem !important;
   padding: 1.25rem !important;
   border: 1px solid @greys1;
-  box-shadow: 4px 4px 4px 0 #f6f6f6;
+  box-shadow: 4px 4px 4px 0 @greys2;
 
-  .header.h2 {
+  .results-list-item-header {
     a {
       color: @mainColors9 !important;
     }

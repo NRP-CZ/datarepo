@@ -1,9 +1,4 @@
 {
-  "Delete All": "Smazat vše",
-  "Results per page:": "Výsledků na stránku:",
-  "Sort:": "Řadit:",
-  "Results: ": "Výsledky: ",
-  "Sort": "Řadit",
   "Show less": "Zobrazit méně",
   "Show more": "Zobrazit více",
   "No title": "Bez názvu",
@@ -12,6 +7,6 @@
   "Publisher": "Vydavatel",
   "Language": "Jazyk",
   "Data Catch-all Repository": "Univerzální datové úložiště",
-  "Filter results": "Filtrovat výsledky",
-  "Search results": "Výsledky vyhledávání"
+  "TIP: Most of the content is in English. You will get more results by using English terms.": "TIP: Většina obsahu je v anglickém jazyce. Více výsledků získáte užitím anglických výrazů. ",
+  "Draft": "Koncept"
 }

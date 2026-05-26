@@ -1,9 +1,4 @@
 {
-  "Delete All": "Delete All",
-  "Results per page:": "Results per page:",
-  "Sort:": "Sort:",
-  "Results: ": "Results: ",
-  "Sort": "Sort",
   "Show less": "Show less",
   "Show more": "Show more",
   "No title": "No title",
@@ -12,6 +7,6 @@
   "Publisher": "Publisher",
   "Language": "Language",
   "Data Catch-all Repository": "Data Catch-all Repository",
-  "Filter results": "Filter results",
-  "Search results": "Search results"
+  "TIP: Most of the content is in English. You will get more results by using English terms.": "TIP: Most of the content is in English. You will get more results by using English terms.",
+  "Draft": "Draft"
 }
