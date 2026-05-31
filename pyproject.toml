@@ -6,7 +6,8 @@ packages = []
 authors = []
 dependencies = [
    "oarepo[s3,rdm]>=14.2.1b10.dev7,<15.0.0",
-   "oarepo-app[development, ccmm-development]>=4.0.0,<5.0.0",
+   "oarepo-app[ccmm-development,development]>=6.0.0,<7.0.0",
+   "oarepo-oidc-einfra",
 ]
 requires-python = ">=3.14,<3.15"
 

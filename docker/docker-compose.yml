@@ -1,5 +1,6 @@
 version: "3.5"
 name: "datarepo"
+
 services:
   cache:
     image: redis:7
@@ -8,7 +9,7 @@ services:
     ports:
       - "${INVENIO_REDIS_HOST}:${INVENIO_REDIS_PORT}:6379"
   db:
-    image: postgres:15-alpine
+    image: postgres:18-alpine
     restart: "unless-stopped"
     environment:
       - "POSTGRES_USER=${INVENIO_DATABASE_USER}"
@@ -27,7 +28,7 @@ services:
       - "${INVENIO_RABBIT_HOST}:${INVENIO_RABBIT_PORT}:5672"
 
   search:
-    image: bitnami/opensearch:2
+    image: opensearchproject/opensearch:3
     restart: "unless-stopped"
     environment:
       # settings only for development. DO NOT use in production!
