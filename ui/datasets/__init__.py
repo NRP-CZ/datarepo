@@ -59,7 +59,7 @@ def init_menu(app):
             visible_when=can_view_deposit_page,
         )
         current_menu.submenu("main.about_repository").register(
-            "oarepo_ui.index",
+            "invenio_app_rdm.index",
             text=_("About repository"),
             order=0,
         )
