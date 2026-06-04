@@ -1,0 +1,141 @@
+slug;id;name;ico;fuzzy;explanation;parent
+aau;ror:03arvv474;Anglo-American University;25940082;0;;
+agritec.agritec_plant;ror:03jz5v392;Agritec Plant Research;26784246;0;;
+agrotest_fyto;ror:026vm4649;Agrotest fyto;25328859;0;;
+amu;ror:05mjwh489;Akademie múzických umění v Praze;61384984;0;;
+amu.divadelni_fakulta;orjk:51210;Divadelní fakulta / Akademie múzických umění v Praze;;1;Akademie múzických umění v Praze / Divadelní fakulta;ror:05mjwh489
+amu.divadelni_fakulta.katedra_alternativniho_a_loutkoveho_divadla;orjk:51210:0001;Katedra alternativního a loutkového divadla / Divadelní fakulta / Akademie múzických umění v Praze;;;;orjk:51210
+amu.divadelni_fakulta.katedra_autorske_tvorby_a_pedagogiky;orjk:51210:0002;Katedra autorské tvorby a pedagogiky / Divadelní fakulta / Akademie múzických umění v Praze;;;;orjk:51210
+am_uni;ror:035xkbk20;Aix-Marseille Université;;0;;
+art_carbon;ico:06423469;Art Carbon s.r.o.;06423469;1;ART CARBON s.r.o.;
+asu_cas;ror:03tp8z347;Astronomický ústav AV ČR;67985815;0;;
+bc_cas;ror:05pq4yn02;Biologické centrum AV ČR;60077344;0;;
+bfu_cas;ror:00angvn73;Biofyzikální ústav AV ČR;68081707;0;;
+bruker_corporation;ror:04r739x86;Bruker Corporation;;0;;
+ceitec;ror:01p7k1986;CEITEC;;0;;
+cesnet;ror:050dkka69;CESNET;63839172;0;;
+cherkasy_uni;ror:009apaj69;Cherkasy National University;;0;;
+cog_cz;ror:01p7k1986;CEITEC;;0;;
+cog_cz.ceitec_mu;ror:009nz6031;CEITEC MU / CEITEC;;0;;ror:01p7k1986
+comtes_fht;ror:00hzjtg80;COMTES FHT;26316919;0;;
+cvgz_cas;ror:01v5hek98;Ústav výzkumu globální změny AV ČR;86652079;0;;
+cvut;ror:03kqpb082;České vysoké učení technické v Praze;68407700;0;;
+cvut.fakulta_informacnich_technologii;orjk:21240;Fakulta informačních technologií / České vysoké učení technické v Praze;;1;České vysoké učení technické v Praze / Fakulta informačních technologií;ror:03kqpb082
+cvut.fakulta_strojni;orjk:21220;Fakulta strojní / České vysoké učení technické v Praze;;;;ror:03kqpb082
+cvut.fakulta_strojni.ustav_mechaniky_biomechaniky_a_mechatroniky;orjk:21220:0001;Ústav mechaniky, biomechaniky a mechatroniky / Fakulta strojní / České vysoké učení technické v Praze;;;;orjk:21220
+czu;ror:0415vcw02;Česká zemědělská univerzita v Praze;60460709;0;;
+dtu;ror:04qtj9h94;Dänemarks Technische Universität;;0;;
+elte;ror:01jsq2704;Eötvös Loránd Tudományegyetem;;0;;
+fnbrno;ror:00qq1fp34;Fakultní nemocnice Brno;65269705;0;;
+fnol;ror:01jxtne23;Fakultní nemocnice Olomouc;98892;0;;
+fu_berlin;ror:046ak2485;Freir Universität Berlin;;0;;
+fzu_cas;ror:02yhj4v17;Fyzikální ústav AV ČR;68378271;0;;
+hartree_centre;ext:1;Hartree Centre;;;;
+helmholtz_zentrum_dresden_rossendorf;ror:01zy2cs03;Helmholtz-Zentrum Dresden-Rossendorf;;0;;
+iapg_cas;ror:0157za327;Ústav živočišné fyziologie a genetiky AV ČR;67985904;0;;
+ibt_cas;ror:00wzqmx94;Biotechnologický ústav AV ČR;86652036;0;;
+ics_cas;ror:0496n6574;Ústav informatiky AV ČR;67985807;0;;
+iitg;ror:0022nd079;Indian Institute of Technology Guwahati;;0;;
+img_cas;ror:045syc608;Ústav molekulární genetiky AV ČR;68378050;0;;
+indira_gandhi_centre_for_atomic_research;ror:05tkzma19;Indira Gandhi Centre for Atomic Research;;0;;
+institute_of_chemical_engineering_sciences;ror:03e5bsk66;Institute of Chemical Engineering Sciences;;0;;
+it_cas;ror:03fvq2a72;Ústav termomechaniky AV ČR;61388998;0;;
+jcu;ror:033n3pw66;Jihočeská univerzita v Českých Budějovicích;60076658;0;;
+jcu.ekonomicka_fakulta;orjk:12510;Ekonomická fakulta / Jihočeská univerzita v Českých Budějovicích;;1;Jihočeská univerzita v Českých Budějovicích / Ekonomická fakulta;ror:033n3pw66
+jcu.fakulta_rybarstvi_a_ochrany_vod;orjk:12520;Fakulta rybářství a ochrany vod / Jihočeská univerzita v Českých Budějovicích;;;;ror:033n3pw66
+jcu.fakulta_rybarstvi_a_ochrany_vod.jihoceske_vyzkumne_centrum_akvakultury_a_biodiverzity_hydrocenoz;ror:050jqn596;Jihočeské výzkumné centrum akvakultury a biodiverzity hydrocenóz / Fakulta rybářství a ochrany vod / Jihočeská univerzita v Českých Budějovicích;;0;;orjk:12520
+jcu.pedagogicka_fakulta;orjk:12410;Pedagogická fakulta / Jihočeská univerzita v Českých Budějovicích;;1;Jihočeská univerzita v Českých Budějovicích / Pedagogická fakulta;ror:033n3pw66
+jcu.pedagogicka_fakulta.katedra_biologie;orjk:12410:0001;Katedra biologie / Pedagogická fakulta / Jihočeská univerzita v Českých Budějovicích;;;;orjk:12410
+jcu.prirodovedecka_fakulta;orjk:12310;Přírodovědecká fakulta / Jihočeská univerzita v Českých Budějovicích;;1;Jihočeská univerzita v Českých Budějovicích / Přírodovědecká fakulta;ror:033n3pw66
+jcu.prirodovedecka_fakulta.ustav_chemie;orjk:12310:0001;Ústav chemie / Přírodovědecká fakulta / Jihočeská univerzita v Českých Budějovicích;;;Jihočeská univerzita v Českých Budějovicích / Ústav fyzikální chemie;orjk:12310
+jcu.teologicka_fakulta;orjk:12260;Teologická fakulta / Jihočeská univerzita v Českých Budějovicích;;;;ror:033n3pw66
+jcu.teologicka_fakulta.katedra_pedagogiky;orjk:12260:0001;Katedra pedagogiky / Teologická fakulta / Jihočeská univerzita v Českých Budějovicích;;;Jihočeská univerzita v Českých Budějovicích / Pedagogická fakulta;orjk:12260
+jcu.zdravotne_socialni_fakulta;orjk:12110;Zdravotně sociální fakulta / Jihočeská univerzita v Českých Budějovicích;;1;Jihočeská univerzita v Českých Budějovicích / Zdravotně sociální fakulta;ror:033n3pw66
+jcu.zdravotne_socialni_fakulta.ustav_osetrovatelstvi_porodni_asistence_a_neodkladne_pece;orjk:12110:0001;Ústav ošetřovatelství, porodní asistence a neodkladné péče / Zdravotně sociální fakulta / Jihočeská univerzita v Českých Budějovicích;;;Jihočeská univerzita v Českých Budějovicích / Zdravotně sociální fakulta;orjk:12110
+jh_inst_cas;ror:02sat5y74;Ústav fyzikální chemie J. Heyrovského AV ČR;61388955;0;;
+knav;ror:028sgmw18;Knihovna AV ČR;67985971;0;;
+likat;ror:029hg0311;Leibniz-Institut für Katalyse e.V.;;0;;
+lodz_technology;ror:00s8fpf52;Politechnika Łódzka;;0;;
+mendelu;ror:058aeep47;Mendelova univerzita v Brně;62156489;0;;
+metu;ror:014weej12;Middle East Technical University;;0;;
+mua_cas;ror:03nvfe914;Masarykův ústav a Archiv AV ČR;67985921;0;;
+muni;ror:02j46qs45;Masarykova univerzita;216224;0;;
+nscc;ico:SK53450361;Národné superpočítačové centrum;;;;
+ntk;ror:028txef36;Národní technická knihovna;61387142;0;;
+nudz;ror:05xj56w78;Národní ústav duševního zdraví;23752;0;;
+oracle;ror:006c77m33;Oracle (United States);;0;;
+osu;ror:00pyqav47;Ostravská univerzita;;;;
+osu.lekarska_fakulta;orjk:17110;Lékařská fakulta / Ostravská univerzita;;;Ostravská univerzita;ror:00pyqav47
+paru_cas;ror:05rhyza23;Parazitologický ústav AV ČR;;0;;
+pnnl;ror:05h992307;Pacific Northwest National Laboratory;;0;;
+qub;ror:00hswnk62;Queen's University Belfast;;0;;
+stu;ror:0561ghm58;Slovenská technická univerzita v Bratislave;;0;;
+syft;nzbn:9429036308996;Syft Technologies;;;;
+technische_universitat_dresden;ror:042aqky30;Technische Universität Dresden;;0;;
+tescan_group;ror:0556an218;TESCAN Group;;0;;
+tul;ror:02jtk7k02;Technická univerzita v Liberci;46747885;0;;
+tul.fakulta_prirodovedne_humanitni_a_pedagogicka;orjk:24510;Fakulta přírodovědně-humanitní a pedagogická / Technická univerzita v Liberci;;1;Technická univerzita v Liberci / Fakulta přírodovědně-humanitní a pedagogická;ror:02jtk7k02
+tul.ustav_pro_nanomaterialy_pokrocile_technologie_a_inovace;orjk:24620;Ústav pro nanomateriály, pokročilé technologie a inovace / Technická univerzita v Liberci;;1;Technická univerzita v Liberci / Ústav pro nanomateriály, pokročilé technologie a inovace;ror:02jtk7k02
+tum;ror:02kkvpp62;Technical University of Munich;;0;;
+uach_cas;ror:01hsjcv06;Ústav anorganické chemie AV ČR;61388980;0;;
+ufe_cas;ror:05wrbcx33;Ústav fotoniky a elektroniky AV ČR;67985882;0;;
+uiach_cas;ror:05g7knd32;Ústav analytické chemie AV ČR;68081715;0;;
+ujep;ror:04vjwcp92;Univerzita Jana Evangelisty Purkyně v Ústí nad Labem;44555601;0;;
+ujep.fakulta_strojniho_inzenyrstvi;orjk:13420;Fakulta strojního inženýrství / Univerzita Jana Evangelisty Purkyně v Ústí nad Labem;;1;Univerzita Jana Evangelisty Purkyně v Ústí nad Labem / Fakulta strojního inženýrství;ror:04vjwcp92
+ujep.pedagogicka_fakulta_2;orjk:13430;Pedagogická fakulta / Univerzita Jana Evangelisty Purkyně v Ústí nad Labem;;1;Univerzita Jana Evangelisty Purkyně v Ústí nad Labem / Pedagogická fakulta;ror:04vjwcp92
+uk;ror:024d6js02;Univerzita Karlova;216208;0;;
+uk.1_lekarska_fakulta;orjk:11110;1. lékařská fakulta / Univerzita Karlova;;1;Univerzita Karlova / 1. lékařská fakulta;ror:024d6js02
+uk.2_lekarska_fakulta;orjk:11130;2. lékařská fakulta / Univerzita Karlova;;;;ror:024d6js02
+uk.2_lekarska_fakulta.klinika_detske_a_dospele_ortopedie_a_traumatologie_fn_motol;orjk:11130:0001;Klinika dětské a dospělé ortopedie a traumatologie (FN Motol) / 2. lékařská fakulta / Univerzita Karlova;;;Univerzita Karlova / (nerozlišená součást);orjk:11130
+uk.fakulta_telesne_vychovy_a_sportu;orjk:11510;Fakulta tělesné výchovy a sportu / Univerzita Karlova;;1;Univerzita Karlova / Fakulta tělesné výchovy a sportu;ror:024d6js02
+uk.matematicko_fyzikalni_fakulta;orjk:11320;Matematicko-fyzikální fakulta / Univerzita Karlova;;1;Univerzita Karlova / Matematicko-fyzikální fakulta;ror:024d6js02
+uk.matematicko_fyzikalni_fakulta.cesky_hydrometeorologicky_ustav;orjk:11320:0001;Český hydrometeorologický ústav / Matematicko-fyzikální fakulta / Univerzita Karlova;;;Univerzita Karlova / Evangelická teologická fakulta;orjk:11320
+uk.matematicko_fyzikalni_fakulta.katedra_fyziky_atmosfery;orjk:11320:0002;Katedra fyziky atmosféry / Matematicko-fyzikální fakulta / Univerzita Karlova;;;Univerzita Karlova / Filozofická fakulta;orjk:11320
+uk.matematicko_fyzikalni_fakulta.katedra_fyziky_kondenzovanych_latek;orjk:11320:0003;Katedra fyziky kondenzovaných látek / Matematicko-fyzikální fakulta / Univerzita Karlova;;;Univerzita Karlova / LMNT;orjk:11320
+uk.matematicko_fyzikalni_fakulta.katedra_fyziky_povrchu_a_plazmatu;orjk:11320:0004;Katedra fyziky povrchů a plazmatu / Matematicko-fyzikální fakulta / Univerzita Karlova;;;Univerzita Karlova / LMNT;orjk:11320
+uk.pedagogicka_fakulta_3;orjk:11410;Pedagogická fakulta / Univerzita Karlova;;;;ror:024d6js02
+uk.pedagogicka_fakulta_3.katedra_dejin_a_didaktiky_dejepisu;orjk:11410:0001;Katedra dějin a didaktiky dějepisu / Pedagogická fakulta / Univerzita Karlova;;;Univerzita Karlova / LINDAT/CLARIN II;orjk:11410
+uk.prirodovedecka_fakulta_3;orjk:11310;Přírodovědecká fakulta / Univerzita Karlova;;1;Univerzita Karlova / Přírodovědecká fakulta;ror:024d6js02
+uk.prirodovedecka_fakulta_3.katedra_botaniky_1;orjk:11310:0001;Katedra botaniky / Přírodovědecká fakulta / Univerzita Karlova;;;Univerzita Karlova / ČNK;orjk:11310
+uk.prirodovedecka_fakulta_3.katedra_fyzikalni_a_makromol_chemie;orjk:11310:0001;Katedra fyzikální a makromol. chemie / Přírodovědecká fakulta / Univerzita Karlova;;;Univerzita Karlova / Matematicko-fyzikální fakulta;orjk:11310
+uk.prirodovedecka_fakulta_3.katedra_kartografie_a_geoinformatiky;orjk:11310:0001;Katedra kartografie a geoinformatiky / Přírodovědecká fakulta / Univerzita Karlova;;;Univerzita Karlova / Evropské informační středisko;orjk:11310
+uk.prirodovedecka_fakulta_3.katedra_socialni_geografie_a_region_rozvoje;orjk:11310:0001;Katedra sociální geografie a region. rozvoje / Přírodovědecká fakulta / Univerzita Karlova;;;Univerzita Karlova / Koleje a menzy;orjk:11310
+umk;ror:0102mm775;Nicolaus Copernicus University;;0;;
+unc_charlotte;ror:04dawnj30;University of North Carolina at Charlotte;;0;;
+uniba;ror:0587ef340;Univerzita Komenského v Bratislave;;0;;
+uni_bayreuth;ror:0234wmv40;University of Bayreuth;;0;;
+uni_bergen;ror:03zga2b32;University of Bergen;;0;;
+uni_graz;ror:01faaaf77;Universität Graz;;0;;
+uni_manchester;ror:027m9bs27;University of Manchester;;0;;
+uni_minnesota;ror:017zqws13;University of Minnesota;;0;;
+uni_munster;ror:00pd74e08;Universität Münster;;0;;
+uni_silesia;ror:0104rcc94;University of Silesia in Katowice;;0;;
+uni_toronto;ror:03dbr7087;University of Toronto;;0;;
+uochb_cas;ror:04nfjn472;Ústav organické chemie a biochemie AV ČR;61388963;0;;
+upce;ror:01chzd453;Univerzita Pardubice;216275;0;;
+upol;ror:04qxnmv42;Univerzita Palackého v Olomouci;61989592;0;;
+upol.lekarska_fakulta_1;orjk:15110;Lékařská fakulta / Univerzita Palackého v Olomouci;;;;ror:04qxnmv42
+upol.lekarska_fakulta_1.ustav_molekularni_a_translacni_mediciny;orjk:15110:0001;Ústav molekulární a translační medicíny / Lékařská fakulta / Univerzita Palackého v Olomouci;;;;orjk:15110
+upol.pedagogicka_fakulta_4;orjk:15410;Pedagogická fakulta / Univerzita Palackého v Olomouci;;;;ror:04qxnmv42
+upol.pedagogicka_fakulta_4.katedra_primarni_a_preprimarni_pedagogiky;orjk:15410:0001;Katedra primární a preprimární pedagogiky / Pedagogická fakulta / Univerzita Palackého v Olomouci;;;;orjk:15410
+usi;ror:03c4atk17;Università della Svizzera italiana;;0;;
+uw;ror:039bjqg32;Uniwersytet Warszawski;;0;;
+vinci;ext:2;Da Vinci Laboratory Solutions UK & Ireland;;;;
+vsb;ror:05x8mcb75;Vysoká škola báňská - Technická univerzita Ostrava;61989100;0;;
+vsb.fakulta_materialove_technologicka;orjk:27360;Fakulta materiálově-technologická / Vysoká škola báňská - Technická univerzita Ostrava;;1;Vysoká škola báňská - Technická univerzita Ostrava / Fakulta materiálově- technologická;ror:05x8mcb75
+vscht;ror:05ggn0a85;Vysoká škola chemicko-technologická v Praze;60461373;0;;
+vscht.fakulta_chemicke_technologie;orjk:22310;Fakulta chemické technologie / Vysoká škola chemicko-technologická v Praze;;;;ror:05ggn0a85
+vscht.fakulta_chemicke_technologie.ustav_kovovych_materialu_a_korozniho_inzenyrstvi;orjk:22310:0001;Ústav kovových materiálů a korozního inženýrství / Fakulta chemické technologie / Vysoká škola chemicko-technologická v Praze;;;;orjk:22310
+vssav;ext:3;Výpočtové středisko Slovenskej akadémie vied;;;;
+vu;ror:008xxew50;Vrije Universiteit Amsterdam;;0;;
+vukoz;ror:04gf11d56;Výzkumný ústav Silva Taroucy pro krajinu a okrasné zahradnictví;27073;0;;
+vutbr;ror:03613d656;Vysoké učení technické v Brně;216305;0;;
+vutbr.ceitec_vysoke_uceni_technicke_v_brne;orjk:90041;CEITEC Vysoké učení technické v Brně / Vysoké učení technické v Brně;;;;ror:03613d656
+vutbr.fakulta_elektrotechniky_a_komunikacnich_technologii;orjk:26220;Fakulta elektrotechniky a komunikačních technologií / Vysoké učení technické v Brně;;;;ror:03613d656
+vutbr.fakulta_elektrotechniky_a_komunikacnich_technologii.ustav_biomedicinskeho_inzenyrstvi;orjk:26220:0001;Ústav biomedicínského inženýrství / Fakulta elektrotechniky a komunikačních technologií / Vysoké učení technické v Brně;;;;orjk:26220
+vutbr.fakulta_strojniho_inzenyrstvi_1;orjk:26210;Fakulta strojního inženýrství / Vysoké učení technické v Brně;;1;Vysoké učení technické v Brně / Fakulta strojního inženýrství;ror:03613d656
+wigner;ror:035dsb084;Wigner Research Centre for Physics;;0;;
+xmu;ror:00mcjh785;Xiamen University;;0;;
+zcu;ror:040t43x18;Západočeská univerzita v Plzni;49777513;0;;
+zcu.fakulta_zdravotnickych_studii_3;orjk:23310;Fakulta zdravotnických studií / Západočeská univerzita v Plzni;;1;Západočeská univerzita v Plzni / Fakulta zdravotnických studií;ror:040t43x18
+zcu.fakulta_zdravotnickych_studii_3.katedra_osetrovatelstvi_a_porodni_asistence;orjk:23310:0001;Katedra ošetřovatelství a porodní asistence / Fakulta zdravotnických studií / Západočeská univerzita v Plzni;;;;orjk:23310
