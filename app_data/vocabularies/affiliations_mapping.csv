@@ -97,9 +97,9 @@ uk.pedagogicka_fakulta_3;orjk:11410;Pedagogická fakulta / Univerzita Karlova;;;
 uk.pedagogicka_fakulta_3.katedra_dejin_a_didaktiky_dejepisu;orjk:11410:0001;Katedra dějin a didaktiky dějepisu / Pedagogická fakulta / Univerzita Karlova;;;Univerzita Karlova / LINDAT/CLARIN II;orjk:11410
 uk.prirodovedecka_fakulta_3;orjk:11310;Přírodovědecká fakulta / Univerzita Karlova;;1;Univerzita Karlova / Přírodovědecká fakulta;ror:024d6js02
 uk.prirodovedecka_fakulta_3.katedra_botaniky_1;orjk:11310:0001;Katedra botaniky / Přírodovědecká fakulta / Univerzita Karlova;;;Univerzita Karlova / ČNK;orjk:11310
-uk.prirodovedecka_fakulta_3.katedra_fyzikalni_a_makromol_chemie;orjk:11310:0001;Katedra fyzikální a makromol. chemie / Přírodovědecká fakulta / Univerzita Karlova;;;Univerzita Karlova / Matematicko-fyzikální fakulta;orjk:11310
-uk.prirodovedecka_fakulta_3.katedra_kartografie_a_geoinformatiky;orjk:11310:0001;Katedra kartografie a geoinformatiky / Přírodovědecká fakulta / Univerzita Karlova;;;Univerzita Karlova / Evropské informační středisko;orjk:11310
-uk.prirodovedecka_fakulta_3.katedra_socialni_geografie_a_region_rozvoje;orjk:11310:0001;Katedra sociální geografie a region. rozvoje / Přírodovědecká fakulta / Univerzita Karlova;;;Univerzita Karlova / Koleje a menzy;orjk:11310
+uk.prirodovedecka_fakulta_3.katedra_fyzikalni_a_makromol_chemie;orjk:11310:0002;Katedra fyzikální a makromol. chemie / Přírodovědecká fakulta / Univerzita Karlova;;;Univerzita Karlova / Matematicko-fyzikální fakulta;orjk:11310
+uk.prirodovedecka_fakulta_3.katedra_kartografie_a_geoinformatiky;orjk:11310:0003;Katedra kartografie a geoinformatiky / Přírodovědecká fakulta / Univerzita Karlova;;;Univerzita Karlova / Evropské informační středisko;orjk:11310
+uk.prirodovedecka_fakulta_3.katedra_socialni_geografie_a_region_rozvoje;orjk:11310:0004;Katedra sociální geografie a region. rozvoje / Přírodovědecká fakulta / Univerzita Karlova;;;Univerzita Karlova / Koleje a menzy;orjk:11310
 umk;ror:0102mm775;Nicolaus Copernicus University;;0;;
 unc_charlotte;ror:04dawnj30;University of North Carolina at Charlotte;;0;;
 uniba;ror:0587ef340;Univerzita Komenského v Bratislave;;0;;
