@@ -9,14 +9,15 @@
 
 import { i18next } from "@translations/i18next";
 import _get from "lodash/get";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Overridable from "react-overridable";
 import { SearchItemCreators } from "@js/invenio_app_rdm/utils";
+import { SearchConfigurationContext } from "@js/invenio_search_ui/components";
+import sanitizeHtml from "sanitize-html";
 import PropTypes from "prop-types";
 import { Item, Label, Icon } from "semantic-ui-react";
 import { buildUID } from "react-searchkit";
 
-const MAX_CREATIBUTORS = 6;
 const MAX_DESCRIPTION_LENGTH = 300;
 
 function getDescription(result) {
@@ -49,24 +50,35 @@ function getDescription(result) {
 
 const ExpandableDescription = ({ description }) => {
   const [expanded, setExpanded] = useState(false);
+  const { allowedHtmlTags } = useContext(SearchConfigurationContext);
 
   if (!description) return null;
 
+  const sanitizeOpts = { allowedTags: allowedHtmlTags };
   const needsTruncation = description.length > MAX_DESCRIPTION_LENGTH;
 
   if (!needsTruncation) {
-    return <Item.Description>{description}</Item.Description>;
+    return (
+      <Item.Description
+        dangerouslySetInnerHTML={{
+          __html: sanitizeHtml(description, sanitizeOpts),
+        }}
+      />
+    );
   }
 
-  const displayText = expanded
-    ? description
-    : description.substring(0, MAX_DESCRIPTION_LENGTH) + "...";
+  const displayHtml = expanded
+    ? sanitizeHtml(description, sanitizeOpts)
+    : sanitizeHtml(
+        description.substring(0, MAX_DESCRIPTION_LENGTH) + "...",
+        sanitizeOpts
+      );
 
   const toggleExpanded = () => setExpanded((prev) => !prev);
 
   return (
     <Item.Description className="rel-mb-1 text size small">
-      {displayText}
+      <span dangerouslySetInnerHTML={{ __html: displayHtml }} />
       <button
         type="button"
         className="expand-toggle"
@@ -92,8 +104,6 @@ const ResultsListItem = ({ result, appName }) => {
   const creators = _get(result, "ui.creators.creators", []);
   const contributors = _get(result, "ui.contributors.contributors", []);
   const allCreatibutors = [...creators, ...contributors];
-  const displayedCreatibutors = allCreatibutors.slice(0, MAX_CREATIBUTORS);
-  const totalCreatibutors = allCreatibutors.length;
   const subjects = _get(result, "metadata.subjects", []);
   const title = _get(result, "metadata.title", i18next.t("No title"));
   const description = getDescription(result);
@@ -126,13 +136,7 @@ const ResultsListItem = ({ result, appName }) => {
           </Item.Header>
 
           <Item className="creatibutors rel-mb-1">
-            <SearchItemCreators
-              creators={displayedCreatibutors}
-              othersLink={viewLink}
-            />
-            {totalCreatibutors > MAX_CREATIBUTORS && (
-              <span className="ml-5">...</span>
-            )}
+            <SearchItemCreators creators={allCreatibutors} othersLink={viewLink} />
           </Item>
 
           {subjects.length > 0 && (

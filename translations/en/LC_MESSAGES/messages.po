@@ -64,7 +64,7 @@ msgstr "Languages"
 
 #: /Users/dusanstojanovic/Projects/datarepo/datasets/just_for_translations.py:5
 msgid "metadata/creators/person_or_org/name.label"
-msgstr "Creator name"
+msgstr "Author"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:4
 msgid "Personal data processing information"

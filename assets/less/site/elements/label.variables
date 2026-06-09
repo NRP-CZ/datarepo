@@ -6,3 +6,4 @@
 @warningLabelBorderHoverColor: @reds2;
 @warningLabelBackgroundPressedColor: @reds3;
 @warningLabelBorderPressedColor: @reds3;
+@borderRadius: 6px;
