@@ -4,3 +4,6 @@ affiliations:
 funders:
   pid-type: fun
   data-file: vocabularies/funders.yaml
+names:
+  pid-type: names
+  data-file: vocabularies/names.yaml
