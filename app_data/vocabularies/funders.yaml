@@ -211,3 +211,19 @@
   name: Liberecký kraj
   title:
     en: Liberecký kraj
+- id: 024d6js02
+  identifiers:
+    - identifier: 024d6js02
+      scheme: ror
+  name: Univerzita Karlova
+  status: active
+  title:
+    cs: Univerzita Karlova
+- id: 033n3pw66
+  identifiers:
+    - identifier: 033n3pw66
+      scheme: ror
+  name: Jihočeská univerzita v Českých Budějovicích
+  status: active
+  title:
+    cs: Jihočeská univerzita v Českých Budějovicích
