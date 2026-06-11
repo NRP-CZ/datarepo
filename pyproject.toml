@@ -28,6 +28,10 @@ ui_datasets = "ui.datasets:create_blueprint"
 [project.entry-points."invenio_base.finalize_app"]
 ui_datasets = "ui.datasets:finalize_app"
 
+[project.entry-points."idutils.custom_schemes"]
+orjk = "common.idutils_schemes:orjk_scheme"
+parent-id = "common.idutils_schemes:parent_id_scheme"
+
 [tool.uv.build-backend]
 module-root = ""
 module-name = [

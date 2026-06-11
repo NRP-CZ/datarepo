@@ -1007,14 +1007,14 @@ wheels = [
 
 [[package]]
 name = "faker"
-version = "40.21.0"
+version = "40.23.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "tzdata", marker = "sys_platform == 'win32'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e8/6f/d7b251fb31de7dce0e482680bf7ca876aa0043f475c04aeefa1459ea80d4/faker-40.21.0.tar.gz", hash = "sha256:2fdee1b650a723a54432db9c6dfe17cfa29d1adc8bd60520444a07698524ba4d", size = 1970295, upload-time = "2026-06-02T17:53:46.27Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f3/d6/fc071e5754815d9058e12ab549cc88e90f8f4ecf4dc33b6b750cdf4b622d/faker-40.23.0.tar.gz", hash = "sha256:f135e563f1f95f19346bb680bc2e43570bc43b7893e566023746f51f32c69dfc", size = 1972975, upload-time = "2026-06-10T20:53:21.611Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/bb/77/6adb5a9dcd028f687f81fc9f789591f9572cb5a46454337122add004e134/faker-40.21.0-py3-none-any.whl", hash = "sha256:cb6601b2ae8e128895dc96814d271eab6b930a2d2d7932c6f9ff26785c24ee18", size = 2008808, upload-time = "2026-06-02T17:53:44.346Z" },
+    { url = "https://files.pythonhosted.org/packages/64/5f/824e6fb3e9d63408151dc9173994fa65bde620a67dde3a59354f5aecd497/faker-40.23.0-py3-none-any.whl", hash = "sha256:775922453e54afa42eaf60eac478fa3a969357f224d09a8022b93e3ad88f18ae", size = 2013046, upload-time = "2026-06-10T20:53:19.226Z" },
 ]
 
 [[package]]
@@ -3730,7 +3730,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-related-resources"
-version = "3.0.0"
+version = "3.1.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
@@ -3744,9 +3744,9 @@ dependencies = [
     { name = "rapidfuzz" },
     { name = "types-python-dateutil" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e4/ac/5c8ba10c74be7ce85c18c291830ca68e3836ed1e66645f9c4281f1fd31d1/oarepo_related_resources-3.0.0.tar.gz", hash = "sha256:7f35f367d166990d085b2c831807bf8fa051ead8eae7f65180ad8d1694ee77f5", size = 24279, upload-time = "2026-06-06T13:31:42.335Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a5/1f/ac9856bc560b5fff6b0229e914cc84ecae1ecb13ff22f109312450d1f3db/oarepo_related_resources-3.1.0.tar.gz", hash = "sha256:84cef8b4ad6b5741f98dde30c27d9cf5d044c27c4456d7e16aa35f8364d5af2b", size = 25047, upload-time = "2026-06-11T07:02:09.02Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/23/8d/36bf2f7af6ac3c773e85bcd25e8bf6d6aa4fd9d122bd66dc4e5a69941d1c/oarepo_related_resources-3.0.0-py3-none-any.whl", hash = "sha256:e0efc7cf7eab2ed1c37d6bf6dfd76be46a8ef747db007c07322240883ede58d7", size = 35796, upload-time = "2026-06-06T13:31:41.219Z" },
+    { url = "https://files.pythonhosted.org/packages/b3/1d/42a60e33b55320ad29ce2f2be497a9292a586ffdf7fc6234a7a9e44caf83/oarepo_related_resources-3.1.0-py3-none-any.whl", hash = "sha256:19f12c7792a6ea9911d7481849aa82d9f54768a6567274a96b50586508fc4999", size = 36766, upload-time = "2026-06-11T07:02:08.112Z" },
 ]
 
 [[package]]
