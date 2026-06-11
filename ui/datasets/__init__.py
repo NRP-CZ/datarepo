@@ -59,7 +59,7 @@ def init_menu(app):
             visible_when=can_view_deposit_page,
         )
         current_menu.submenu("main.about_repository").register(
-            external_url="https://docs.nrp.eosc.cz/en/docs/end_users/catch-all-data-repository/catch-all-repository-introduction",
+            external_url=app.config["ABOUT_REPOSITORY_DOCS_URL"],
             text=_("About repository"),
             order=0,
         )
