@@ -1,205 +1,213 @@
-- id: ror:037nx0e70
+- id: 037nx0e70
   identifiers:
-  - identifier: 037nx0e70
-    scheme: ror
+    - identifier: 037nx0e70
+      scheme: ror
   name: Slovak Research and Development Agency
   title:
     en: Slovak Research and Development Agency
-- id: ror:053avzc18
+- id: 053avzc18
   identifiers:
-  - identifier: 053avzc18
-    scheme: ror
-  - identifier: 10.13039/501100004240
-    scheme: crossref
+    - identifier: 053avzc18
+      scheme: ror
+    - identifier: 10.13039/501100004240
+      scheme: crossref
   name: Akademie věd České republiky
   title:
     en: Akademie věd České republiky
-- id: ror:05m8t8e28
+- id: 05m8t8e28
   identifiers:
-  - identifier: 05m8t8e28
-    scheme: ror
+    - identifier: 05m8t8e28
+      scheme: ror
   name: Agentura pro zdravotnický výzkum České republiky
   title:
     en: Agentura pro zdravotnický výzkum České republiky
-- id: ror:018mejw64
+- id: 018mejw64
   identifiers:
-  - identifier: 018mejw64
-    scheme: ror
-  - identifier: 10.13039/501100001659
-    scheme: crossref
+    - identifier: 018mejw64
+      scheme: ror
+    - identifier: 10.13039/501100001659
+      scheme: crossref
   name: German Research Association
   title:
     en: German Research Association
-- id: ror:00k4n6c32
+- id: 00k4n6c32
   identifiers:
-  - identifier: 00k4n6c32
-    scheme: ror
-  - identifier: 10.13039/501100000780
-    scheme: crossref
+    - identifier: 00k4n6c32
+      scheme: ror
+    - identifier: 10.13039/501100000780
+      scheme: crossref
   name: Evropská komise
   title:
     en: Evropská komise
-- id: ror:02k4b9v70
+- id: 02k4b9v70
   identifiers:
-  - identifier: 02k4b9v70
-    scheme: ror
-  - identifier: 10.13039/501100000806
-    scheme: crossref
+    - identifier: 02k4b9v70
+      scheme: ror
+    - identifier: 10.13039/501100000806
+      scheme: crossref
   name: Evropská agentura pro životní prostředí
   title:
     en: Evropská agentura pro životní prostředí
-- id: ror:0439y7842
+- id: 0439y7842
   identifiers:
-  - identifier: 0439y7842
-    scheme: ror
-  - identifier: 10.13039/501100000266
-    scheme: crossref
+    - identifier: 0439y7842
+      scheme: ror
+    - identifier: 10.13039/501100000266
+      scheme: crossref
   name: Rada pro výzkum v oblasti strojírenství a fyzikálních věd
   title:
     en: Rada pro výzkum v oblasti strojírenství a fyzikálních věd
-- id: ror:013tf3c58
+- id: 013tf3c58
   identifiers:
-  - identifier: 013tf3c58
-    scheme: ror
-  - identifier: 10.13039/501100002428
-    scheme: crossref
+    - identifier: 013tf3c58
+      scheme: ror
+    - identifier: 10.13039/501100002428
+      scheme: crossref
   name: Austrian Science Fund
   title:
     en: Austrian Science Fund
-- id: ror:01pv73b02
+- id: 01pv73b02
   identifiers:
-  - identifier: 01pv73b02
-    scheme: ror
-  - identifier: 10.13039/501100001824
-    scheme: crossref
+    - identifier: 01pv73b02
+      scheme: ror
+    - identifier: 10.13039/501100001824
+      scheme: crossref
   name: Grantová agentura České republiky
   title:
     en: Grantová agentura České republiky
-- id: crossref:10.13039/100007543
+- id: 05ynxx418
   identifiers:
-  - identifier: 10.13039/100007543
-    scheme: crossref
-  name: Grantová agentura Univerzity Karlovy
-  title:
-    en: Grantová agentura Univerzity Karlovy
-- id: ror:05ynxx418
-  identifiers:
-  - identifier: 05ynxx418
-    scheme: ror
+    - identifier: 05ynxx418
+      scheme: ror
   name: Linköping University
   title:
     en: Linköping University
-- id: ror:037n8p820
+- id: 037n8p820
   identifiers:
-  - identifier: 037n8p820
-    scheme: ror
-  - identifier: 10.13039/501100001823
-    scheme: crossref
+    - identifier: 037n8p820
+      scheme: ror
+    - identifier: 10.13039/501100001823
+      scheme: crossref
   name: Ministerstvo školství, mládeže a tělovýchovy
   title:
     en: Ministerstvo školství, mládeže a tělovýchovy
-- id: ror:02j46qs45
+- id: 02j46qs45
   identifiers:
-  - identifier: 02j46qs45
-    scheme: ror
+    - identifier: 02j46qs45
+      scheme: ror
   name: Masarykova univerzita
   title:
     en: Masarykova univerzita
-- id: ror:05w1nn565
+- id: 05w1nn565
   identifiers:
-  - identifier: 05w1nn565
-    scheme: ror
-  - identifier: 10.13039/100009532
-    scheme: crossref
+    - identifier: 05w1nn565
+      scheme: ror
+    - identifier: 10.13039/100009532
+      scheme: crossref
   name: Ministerstvo vnitra
   title:
     en: Ministerstvo vnitra
-- id: ror:00y6khe77
+- id: 00y6khe77
   identifiers:
-  - identifier: 00y6khe77
-    scheme: ror
-  - identifier: 10.13039/501100003243
-    scheme: crossref
+    - identifier: 00y6khe77
+      scheme: ror
+    - identifier: 10.13039/501100003243
+      scheme: crossref
   name: Ministerstvo zdravotnictví
   title:
     en: Ministerstvo zdravotnictví
-- id: ror:049wftm75
+- id: 049wftm75
   identifiers:
-  - identifier: 049wftm75
-    scheme: ror
-  - identifier: 10.13039/501100006533
-    scheme: crossref
+    - identifier: 049wftm75
+      scheme: ror
+    - identifier: 10.13039/501100006533
+      scheme: crossref
   name: Ministerstvo zemědělství
   title:
     en: Ministerstvo zemědělství
-- id: ror:03ha2q922
+- id: 03ha2q922
   identifiers:
-  - identifier: 03ha2q922
-    scheme: ror
-  - identifier: 10.13039/501100004281
-    scheme: crossref
+    - identifier: 03ha2q922
+      scheme: ror
+    - identifier: 10.13039/501100004281
+      scheme: crossref
   name: National Science Centre (Poland)
   title:
     en: National Science Centre (Poland)
-- id: ror:01cwqze88
+- id: 01cwqze88
   identifiers:
-  - identifier: 01cwqze88
-    scheme: ror
-  - identifier: 10.13039/100000002
-    scheme: crossref
+    - identifier: 01cwqze88
+      scheme: ror
+    - identifier: 10.13039/100000002
+      scheme: crossref
   name: National Institutes of Health
   title:
     en: National Institutes of Health
-- id: ror:00yjd3n13
+- id: 00yjd3n13
   identifiers:
-  - identifier: 00yjd3n13
-    scheme: ror
-  - identifier: 10.13039/501100001711
-    scheme: crossref
+    - identifier: 00yjd3n13
+      scheme: ror
+    - identifier: 10.13039/501100001711
+      scheme: crossref
   name: Swiss National Science Foundation
   title:
     en: Swiss National Science Foundation
-- id: ror:02dy2h219
+- id: 02dy2h219
   identifiers:
-  - identifier: 02dy2h219
-    scheme: ror
+    - identifier: 02dy2h219
+      scheme: ror
   name: Státní úřad pro jadernou bezpečnost
   title:
     en: Státní úřad pro jadernou bezpečnost
-- id: ror:04v0fk911
+- id: 04v0fk911
   identifiers:
-  - identifier: 04v0fk911
-    scheme: ror
-  - identifier: 10.13039/100014809
-    scheme: crossref
+    - identifier: 04v0fk911
+      scheme: ror
+    - identifier: 10.13039/100014809
+      scheme: crossref
   name: Technologická agentura České republiky
   title:
     en: Technologická agentura České republiky
-- id: ror:01chzd453
+- id: 01chzd453
   identifiers:
-  - identifier: 01chzd453
-    scheme: ror
+    - identifier: 01chzd453
+      scheme: ror
   name: Univerzita Pardubice
   title:
     en: Univerzita Pardubice
-- id: crossref:10.13039/501100006109
+- id: 02z80ct15
   identifiers:
-  - identifier: 10.13039/501100006109
-    scheme: crossref
-  name: Scientific Grant Agency
+    - identifier: 02z80ct15
+      scheme: ror
+  name: Scientific Grant Agency of the Ministry of Education of the Slovak Republic
   title:
-    en: Scientific Grant Agency
-- id: ror:03zttf063
+    en: Scientific Grant Agency of the Ministry of Education of the Slovak Republic
+- id: 03zttf063
   identifiers:
-  - identifier: 03zttf063
-    scheme: ror
+    - identifier: 03zttf063
+      scheme: ror
   name: Swedish Research Council
   title:
     en: Swedish Research Council
-- id: ror:03613d656
+- id: 03613d656
   identifiers:
-  - identifier: 03613d656
-    scheme: ror
+    - identifier: 03613d656
+      scheme: ror
   name: Vysoké učení technické v Brně
   title:
     en: Vysoké učení technické v Brně
+- id: 050dkka69
+  identifiers:
+    - identifier: 050dkka69
+      scheme: ror
+  name: CESNET
+  status: active
+  title:
+    cs: CESNET
+- id: 0192yc246
+  identifiers:
+    - identifier: 0192yc246
+      scheme: ror
+  name: Liberecký kraj
+  title:
+    en: Liberecký kraj

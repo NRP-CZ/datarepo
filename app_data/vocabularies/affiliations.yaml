@@ -1,4 +1,4 @@
-- id: ror:03arvv474
+- id: 03arvv474
   identifiers:
     - identifier: 03arvv474
       scheme: ror
@@ -6,7 +6,7 @@
   status: active
   title:
     cs: Anglo-American University
-- id: ror:03jz5v392
+- id: 03jz5v392
   identifiers:
     - identifier: 03jz5v392
       scheme: ror
@@ -14,7 +14,7 @@
   status: active
   title:
     cs: Agritec Plant Research
-- id: ror:026vm4649
+- id: 026vm4649
   identifiers:
     - identifier: 026vm4649
       scheme: ror
@@ -22,7 +22,7 @@
   status: active
   title:
     cs: Agrotest fyto
-- id: ror:05mjwh489
+- id: 05mjwh489
   identifiers:
     - identifier: 05mjwh489
       scheme: ror
@@ -34,7 +34,7 @@
   identifiers:
     - identifier: "51210"
       scheme: orjk
-    - identifier: ror:05mjwh489
+    - identifier: 05mjwh489
       scheme: parent-id
   name: Divadelní fakulta / Akademie múzických umění v Praze
   status: active
@@ -64,7 +64,7 @@
     cs:
       Katedra autorské tvorby a pedagogiky / Divadelní fakulta / Akademie múzických
       umění v Praze
-- id: ror:035xkbk20
+- id: 035xkbk20
   identifiers:
     - identifier: 035xkbk20
       scheme: ror
@@ -80,7 +80,7 @@
   status: active
   title:
     cs: Art Carbon s.r.o.
-- id: ror:03tp8z347
+- id: 03tp8z347
   identifiers:
     - identifier: 03tp8z347
       scheme: ror
@@ -88,7 +88,7 @@
   status: active
   title:
     cs: Astronomický ústav AV ČR
-- id: ror:05pq4yn02
+- id: 05pq4yn02
   identifiers:
     - identifier: 05pq4yn02
       scheme: ror
@@ -96,7 +96,7 @@
   status: active
   title:
     cs: Biologické centrum AV ČR
-- id: ror:00angvn73
+- id: 00angvn73
   identifiers:
     - identifier: 00angvn73
       scheme: ror
@@ -104,7 +104,7 @@
   status: active
   title:
     cs: Biofyzikální ústav AV ČR
-- id: ror:04r739x86
+- id: 04r739x86
   identifiers:
     - identifier: 04r739x86
       scheme: ror
@@ -112,7 +112,7 @@
   status: active
   title:
     cs: Bruker Corporation
-- id: ror:01p7k1986
+- id: 01p7k1986
   identifiers:
     - identifier: 01p7k1986
       scheme: ror
@@ -120,7 +120,7 @@
   status: active
   title:
     cs: CEITEC
-- id: ror:050dkka69
+- id: 050dkka69
   identifiers:
     - identifier: 050dkka69
       scheme: ror
@@ -128,7 +128,7 @@
   status: active
   title:
     cs: CESNET
-- id: ror:009apaj69
+- id: 009apaj69
   identifiers:
     - identifier: 009apaj69
       scheme: ror
@@ -136,17 +136,17 @@
   status: active
   title:
     cs: Cherkasy National University
-- id: ror:009nz6031
+- id: 009nz6031
   identifiers:
     - identifier: 009nz6031
       scheme: ror
-    - identifier: ror:01p7k1986
+    - identifier: 01p7k1986
       scheme: parent-id
   name: CEITEC MU / CEITEC
   status: active
   title:
     cs: CEITEC MU / CEITEC
-- id: ror:00hzjtg80
+- id: 00hzjtg80
   identifiers:
     - identifier: 00hzjtg80
       scheme: ror
@@ -154,7 +154,7 @@
   status: active
   title:
     cs: COMTES FHT
-- id: ror:01v5hek98
+- id: 01v5hek98
   identifiers:
     - identifier: 01v5hek98
       scheme: ror
@@ -162,7 +162,7 @@
   status: active
   title:
     cs: Ústav výzkumu globální změny AV ČR
-- id: ror:03kqpb082
+- id: 03kqpb082
   identifiers:
     - identifier: 03kqpb082
       scheme: ror
@@ -174,7 +174,7 @@
   identifiers:
     - identifier: "21240"
       scheme: orjk
-    - identifier: ror:03kqpb082
+    - identifier: 03kqpb082
       scheme: parent-id
   name: Fakulta informačních technologií / České vysoké učení technické v Praze
   status: active
@@ -184,7 +184,7 @@
   identifiers:
     - identifier: "21220"
       scheme: orjk
-    - identifier: ror:03kqpb082
+    - identifier: 03kqpb082
       scheme: parent-id
   name: Fakulta strojní / České vysoké učení technické v Praze
   status: active
@@ -202,7 +202,7 @@
     cs:
       Ústav mechaniky, biomechaniky a mechatroniky / Fakulta strojní / České vysoké
       učení technické v Praze
-- id: ror:0415vcw02
+- id: 0415vcw02
   identifiers:
     - identifier: 0415vcw02
       scheme: ror
@@ -210,7 +210,7 @@
   status: active
   title:
     cs: Česká zemědělská univerzita v Praze
-- id: ror:04qtj9h94
+- id: 04qtj9h94
   identifiers:
     - identifier: 04qtj9h94
       scheme: ror
@@ -218,7 +218,7 @@
   status: active
   title:
     cs: Dänemarks Technische Universität
-- id: ror:01jsq2704
+- id: 01jsq2704
   identifiers:
     - identifier: 01jsq2704
       scheme: ror
@@ -226,7 +226,7 @@
   status: active
   title:
     cs: Eötvös Loránd Tudományegyetem
-- id: ror:00qq1fp34
+- id: 00qq1fp34
   identifiers:
     - identifier: 00qq1fp34
       scheme: ror
@@ -234,7 +234,7 @@
   status: active
   title:
     cs: Fakultní nemocnice Brno
-- id: ror:01jxtne23
+- id: 01jxtne23
   identifiers:
     - identifier: 01jxtne23
       scheme: ror
@@ -242,7 +242,7 @@
   status: active
   title:
     cs: Fakultní nemocnice Olomouc
-- id: ror:046ak2485
+- id: 046ak2485
   identifiers:
     - identifier: 046ak2485
       scheme: ror
@@ -250,7 +250,7 @@
   status: active
   title:
     cs: Freir Universität Berlin
-- id: ror:02yhj4v17
+- id: 02yhj4v17
   identifiers:
     - identifier: 02yhj4v17
       scheme: ror
@@ -266,7 +266,7 @@
   status: active
   title:
     cs: Hartree Centre
-- id: ror:01zy2cs03
+- id: 01zy2cs03
   identifiers:
     - identifier: 01zy2cs03
       scheme: ror
@@ -274,7 +274,7 @@
   status: active
   title:
     cs: Helmholtz-Zentrum Dresden-Rossendorf
-- id: ror:0157za327
+- id: 0157za327
   identifiers:
     - identifier: 0157za327
       scheme: ror
@@ -282,7 +282,7 @@
   status: active
   title:
     cs: Ústav živočišné fyziologie a genetiky AV ČR
-- id: ror:00wzqmx94
+- id: 00wzqmx94
   identifiers:
     - identifier: 00wzqmx94
       scheme: ror
@@ -290,7 +290,7 @@
   status: active
   title:
     cs: Biotechnologický ústav AV ČR
-- id: ror:0496n6574
+- id: 0496n6574
   identifiers:
     - identifier: 0496n6574
       scheme: ror
@@ -298,7 +298,7 @@
   status: active
   title:
     cs: Ústav informatiky AV ČR
-- id: ror:0022nd079
+- id: 0022nd079
   identifiers:
     - identifier: 0022nd079
       scheme: ror
@@ -306,7 +306,7 @@
   status: active
   title:
     cs: Indian Institute of Technology Guwahati
-- id: ror:045syc608
+- id: 045syc608
   identifiers:
     - identifier: 045syc608
       scheme: ror
@@ -314,7 +314,7 @@
   status: active
   title:
     cs: Ústav molekulární genetiky AV ČR
-- id: ror:05tkzma19
+- id: 05tkzma19
   identifiers:
     - identifier: 05tkzma19
       scheme: ror
@@ -322,7 +322,7 @@
   status: active
   title:
     cs: Indira Gandhi Centre for Atomic Research
-- id: ror:03e5bsk66
+- id: 03e5bsk66
   identifiers:
     - identifier: 03e5bsk66
       scheme: ror
@@ -330,7 +330,7 @@
   status: active
   title:
     cs: Institute of Chemical Engineering Sciences
-- id: ror:03fvq2a72
+- id: 03fvq2a72
   identifiers:
     - identifier: 03fvq2a72
       scheme: ror
@@ -338,7 +338,7 @@
   status: active
   title:
     cs: Ústav termomechaniky AV ČR
-- id: ror:033n3pw66
+- id: 033n3pw66
   identifiers:
     - identifier: 033n3pw66
       scheme: ror
@@ -350,7 +350,7 @@
   identifiers:
     - identifier: "12510"
       scheme: orjk
-    - identifier: ror:033n3pw66
+    - identifier: 033n3pw66
       scheme: parent-id
   name: Ekonomická fakulta / Jihočeská univerzita v Českých Budějovicích
   status: active
@@ -360,13 +360,13 @@
   identifiers:
     - identifier: "12520"
       scheme: orjk
-    - identifier: ror:033n3pw66
+    - identifier: 033n3pw66
       scheme: parent-id
   name: Fakulta rybářství a ochrany vod / Jihočeská univerzita v Českých Budějovicích
   status: active
   title:
     cs: Fakulta rybářství a ochrany vod / Jihočeská univerzita v Českých Budějovicích
-- id: ror:050jqn596
+- id: 050jqn596
   identifiers:
     - identifier: 050jqn596
       scheme: ror
@@ -384,7 +384,7 @@
   identifiers:
     - identifier: "12410"
       scheme: orjk
-    - identifier: ror:033n3pw66
+    - identifier: 033n3pw66
       scheme: parent-id
   name: Pedagogická fakulta / Jihočeská univerzita v Českých Budějovicích
   status: active
@@ -402,7 +402,7 @@
   identifiers:
     - identifier: "12310"
       scheme: orjk
-    - identifier: ror:033n3pw66
+    - identifier: 033n3pw66
       scheme: parent-id
   name: Přírodovědecká fakulta / Jihočeská univerzita v Českých Budějovicích
   status: active
@@ -420,7 +420,7 @@
   identifiers:
     - identifier: "12260"
       scheme: orjk
-    - identifier: ror:033n3pw66
+    - identifier: 033n3pw66
       scheme: parent-id
   name: Teologická fakulta / Jihočeská univerzita v Českých Budějovicích
   status: active
@@ -438,7 +438,7 @@
   identifiers:
     - identifier: "12110"
       scheme: orjk
-    - identifier: ror:033n3pw66
+    - identifier: 033n3pw66
       scheme: parent-id
   name: Zdravotně sociální fakulta / Jihočeská univerzita v Českých Budějovicích
   status: active
@@ -456,7 +456,7 @@
     cs:
       Ústav ošetřovatelství, porodní asistence a neodkladné péče / Zdravotně sociální
       fakulta / Jihočeská univerzita v Českých Budějovicích
-- id: ror:02sat5y74
+- id: 02sat5y74
   identifiers:
     - identifier: 02sat5y74
       scheme: ror
@@ -464,7 +464,7 @@
   status: active
   title:
     cs: Ústav fyzikální chemie J. Heyrovského AV ČR
-- id: ror:028sgmw18
+- id: 028sgmw18
   identifiers:
     - identifier: 028sgmw18
       scheme: ror
@@ -472,7 +472,7 @@
   status: active
   title:
     cs: Knihovna AV ČR
-- id: ror:029hg0311
+- id: 029hg0311
   identifiers:
     - identifier: 029hg0311
       scheme: ror
@@ -480,7 +480,7 @@
   status: active
   title:
     cs: Leibniz-Institut für Katalyse e.V.
-- id: ror:00s8fpf52
+- id: 00s8fpf52
   identifiers:
     - identifier: 00s8fpf52
       scheme: ror
@@ -488,7 +488,7 @@
   status: active
   title:
     cs: Politechnika Łódzka
-- id: ror:058aeep47
+- id: 058aeep47
   identifiers:
     - identifier: 058aeep47
       scheme: ror
@@ -496,7 +496,7 @@
   status: active
   title:
     cs: Mendelova univerzita v Brně
-- id: ror:014weej12
+- id: 014weej12
   identifiers:
     - identifier: 014weej12
       scheme: ror
@@ -504,7 +504,7 @@
   status: active
   title:
     cs: Middle East Technical University
-- id: ror:03nvfe914
+- id: 03nvfe914
   identifiers:
     - identifier: 03nvfe914
       scheme: ror
@@ -512,7 +512,7 @@
   status: active
   title:
     cs: Masarykův ústav a Archiv AV ČR
-- id: ror:02j46qs45
+- id: 02j46qs45
   identifiers:
     - identifier: 02j46qs45
       scheme: ror
@@ -528,7 +528,7 @@
   status: active
   title:
     cs: Národné superpočítačové centrum
-- id: ror:028txef36
+- id: 028txef36
   identifiers:
     - identifier: 028txef36
       scheme: ror
@@ -536,7 +536,7 @@
   status: active
   title:
     cs: Národní technická knihovna
-- id: ror:05xj56w78
+- id: 05xj56w78
   identifiers:
     - identifier: 05xj56w78
       scheme: ror
@@ -544,7 +544,7 @@
   status: active
   title:
     cs: Národní ústav duševního zdraví
-- id: ror:006c77m33
+- id: 006c77m33
   identifiers:
     - identifier: 006c77m33
       scheme: ror
@@ -552,7 +552,7 @@
   status: active
   title:
     cs: Oracle (United States)
-- id: ror:00pyqav47
+- id: 00pyqav47
   identifiers:
     - identifier: 00pyqav47
       scheme: ror
@@ -564,13 +564,13 @@
   identifiers:
     - identifier: "17110"
       scheme: orjk
-    - identifier: ror:00pyqav47
+    - identifier: 00pyqav47
       scheme: parent-id
   name: Lékařská fakulta / Ostravská univerzita
   status: active
   title:
     cs: Lékařská fakulta / Ostravská univerzita
-- id: ror:05rhyza23
+- id: 05rhyza23
   identifiers:
     - identifier: 05rhyza23
       scheme: ror
@@ -578,7 +578,7 @@
   status: active
   title:
     cs: Parazitologický ústav AV ČR
-- id: ror:05h992307
+- id: 05h992307
   identifiers:
     - identifier: 05h992307
       scheme: ror
@@ -586,7 +586,7 @@
   status: active
   title:
     cs: Pacific Northwest National Laboratory
-- id: ror:00hswnk62
+- id: 00hswnk62
   identifiers:
     - identifier: 00hswnk62
       scheme: ror
@@ -594,7 +594,7 @@
   status: active
   title:
     cs: Queen's University Belfast
-- id: ror:0561ghm58
+- id: 0561ghm58
   identifiers:
     - identifier: 0561ghm58
       scheme: ror
@@ -610,7 +610,7 @@
   status: active
   title:
     cs: Syft Technologies
-- id: ror:042aqky30
+- id: 042aqky30
   identifiers:
     - identifier: 042aqky30
       scheme: ror
@@ -618,7 +618,7 @@
   status: active
   title:
     cs: Technische Universität Dresden
-- id: ror:0556an218
+- id: 0556an218
   identifiers:
     - identifier: 0556an218
       scheme: ror
@@ -626,7 +626,7 @@
   status: active
   title:
     cs: TESCAN Group
-- id: ror:02jtk7k02
+- id: 02jtk7k02
   identifiers:
     - identifier: 02jtk7k02
       scheme: ror
@@ -638,7 +638,7 @@
   identifiers:
     - identifier: "24510"
       scheme: orjk
-    - identifier: ror:02jtk7k02
+    - identifier: 02jtk7k02
       scheme: parent-id
   name: Fakulta přírodovědně-humanitní a pedagogická / Technická univerzita v Liberci
   status: active
@@ -648,7 +648,7 @@
   identifiers:
     - identifier: "24620"
       scheme: orjk
-    - identifier: ror:02jtk7k02
+    - identifier: 02jtk7k02
       scheme: parent-id
   name:
     Ústav pro nanomateriály, pokročilé technologie a inovace / Technická univerzita
@@ -658,7 +658,7 @@
     cs:
       Ústav pro nanomateriály, pokročilé technologie a inovace / Technická univerzita
       v Liberci
-- id: ror:02kkvpp62
+- id: 02kkvpp62
   identifiers:
     - identifier: 02kkvpp62
       scheme: ror
@@ -666,7 +666,7 @@
   status: active
   title:
     cs: Technical University of Munich
-- id: ror:01hsjcv06
+- id: 01hsjcv06
   identifiers:
     - identifier: 01hsjcv06
       scheme: ror
@@ -674,7 +674,7 @@
   status: active
   title:
     cs: Ústav anorganické chemie AV ČR
-- id: ror:05wrbcx33
+- id: 05wrbcx33
   identifiers:
     - identifier: 05wrbcx33
       scheme: ror
@@ -682,7 +682,7 @@
   status: active
   title:
     cs: Ústav fotoniky a elektroniky AV ČR
-- id: ror:05g7knd32
+- id: 05g7knd32
   identifiers:
     - identifier: 05g7knd32
       scheme: ror
@@ -690,7 +690,7 @@
   status: active
   title:
     cs: Ústav analytické chemie AV ČR
-- id: ror:04vjwcp92
+- id: 04vjwcp92
   identifiers:
     - identifier: 04vjwcp92
       scheme: ror
@@ -702,7 +702,7 @@
   identifiers:
     - identifier: "13420"
       scheme: orjk
-    - identifier: ror:04vjwcp92
+    - identifier: 04vjwcp92
       scheme: parent-id
   name:
     Fakulta strojního inženýrství / Univerzita Jana Evangelisty Purkyně v Ústí
@@ -716,13 +716,13 @@
   identifiers:
     - identifier: "13430"
       scheme: orjk
-    - identifier: ror:04vjwcp92
+    - identifier: 04vjwcp92
       scheme: parent-id
   name: Pedagogická fakulta / Univerzita Jana Evangelisty Purkyně v Ústí nad Labem
   status: active
   title:
     cs: Pedagogická fakulta / Univerzita Jana Evangelisty Purkyně v Ústí nad Labem
-- id: ror:024d6js02
+- id: 024d6js02
   identifiers:
     - identifier: 024d6js02
       scheme: ror
@@ -734,7 +734,7 @@
   identifiers:
     - identifier: "11110"
       scheme: orjk
-    - identifier: ror:024d6js02
+    - identifier: 024d6js02
       scheme: parent-id
   name: 1. lékařská fakulta / Univerzita Karlova
   status: active
@@ -744,7 +744,7 @@
   identifiers:
     - identifier: "11130"
       scheme: orjk
-    - identifier: ror:024d6js02
+    - identifier: 024d6js02
       scheme: parent-id
   name: 2. lékařská fakulta / Univerzita Karlova
   status: active
@@ -766,7 +766,7 @@
   identifiers:
     - identifier: "11510"
       scheme: orjk
-    - identifier: ror:024d6js02
+    - identifier: 024d6js02
       scheme: parent-id
   name: Fakulta tělesné výchovy a sportu / Univerzita Karlova
   status: active
@@ -776,7 +776,7 @@
   identifiers:
     - identifier: "11320"
       scheme: orjk
-    - identifier: ror:024d6js02
+    - identifier: 024d6js02
       scheme: parent-id
   name: Matematicko-fyzikální fakulta / Univerzita Karlova
   status: active
@@ -830,7 +830,7 @@
   identifiers:
     - identifier: "11410"
       scheme: orjk
-    - identifier: ror:024d6js02
+    - identifier: 024d6js02
       scheme: parent-id
   name: Pedagogická fakulta / Univerzita Karlova
   status: active
@@ -848,7 +848,7 @@
   identifiers:
     - identifier: "11310"
       scheme: orjk
-    - identifier: ror:024d6js02
+    - identifier: 024d6js02
       scheme: parent-id
   name: Přírodovědecká fakulta / Univerzita Karlova
   status: active
@@ -898,7 +898,7 @@
     cs:
       Katedra sociální geografie a region. rozvoje / Přírodovědecká fakulta / Univerzita
       Karlova
-- id: ror:0102mm775
+- id: 0102mm775
   identifiers:
     - identifier: 0102mm775
       scheme: ror
@@ -906,7 +906,7 @@
   status: active
   title:
     cs: Nicolaus Copernicus University
-- id: ror:04dawnj30
+- id: 04dawnj30
   identifiers:
     - identifier: 04dawnj30
       scheme: ror
@@ -914,7 +914,7 @@
   status: active
   title:
     cs: University of North Carolina at Charlotte
-- id: ror:0587ef340
+- id: 0587ef340
   identifiers:
     - identifier: 0587ef340
       scheme: ror
@@ -922,7 +922,7 @@
   status: active
   title:
     cs: Univerzita Komenského v Bratislave
-- id: ror:0234wmv40
+- id: 0234wmv40
   identifiers:
     - identifier: 0234wmv40
       scheme: ror
@@ -930,7 +930,7 @@
   status: active
   title:
     cs: University of Bayreuth
-- id: ror:03zga2b32
+- id: 03zga2b32
   identifiers:
     - identifier: 03zga2b32
       scheme: ror
@@ -938,7 +938,7 @@
   status: active
   title:
     cs: University of Bergen
-- id: ror:01faaaf77
+- id: 01faaaf77
   identifiers:
     - identifier: 01faaaf77
       scheme: ror
@@ -946,7 +946,7 @@
   status: active
   title:
     cs: Universität Graz
-- id: ror:027m9bs27
+- id: 027m9bs27
   identifiers:
     - identifier: 027m9bs27
       scheme: ror
@@ -954,7 +954,7 @@
   status: active
   title:
     cs: University of Manchester
-- id: ror:017zqws13
+- id: 017zqws13
   identifiers:
     - identifier: 017zqws13
       scheme: ror
@@ -962,7 +962,7 @@
   status: active
   title:
     cs: University of Minnesota
-- id: ror:00pd74e08
+- id: 00pd74e08
   identifiers:
     - identifier: 00pd74e08
       scheme: ror
@@ -970,7 +970,7 @@
   status: active
   title:
     cs: Universität Münster
-- id: ror:0104rcc94
+- id: 0104rcc94
   identifiers:
     - identifier: 0104rcc94
       scheme: ror
@@ -978,7 +978,7 @@
   status: active
   title:
     cs: University of Silesia in Katowice
-- id: ror:03dbr7087
+- id: 03dbr7087
   identifiers:
     - identifier: 03dbr7087
       scheme: ror
@@ -986,7 +986,7 @@
   status: active
   title:
     cs: University of Toronto
-- id: ror:04nfjn472
+- id: 04nfjn472
   identifiers:
     - identifier: 04nfjn472
       scheme: ror
@@ -994,7 +994,7 @@
   status: active
   title:
     cs: Ústav organické chemie a biochemie AV ČR
-- id: ror:01chzd453
+- id: 01chzd453
   identifiers:
     - identifier: 01chzd453
       scheme: ror
@@ -1002,7 +1002,7 @@
   status: active
   title:
     cs: Univerzita Pardubice
-- id: ror:04qxnmv42
+- id: 04qxnmv42
   identifiers:
     - identifier: 04qxnmv42
       scheme: ror
@@ -1014,7 +1014,7 @@
   identifiers:
     - identifier: "15110"
       scheme: orjk
-    - identifier: ror:04qxnmv42
+    - identifier: 04qxnmv42
       scheme: parent-id
   name: Lékařská fakulta / Univerzita Palackého v Olomouci
   status: active
@@ -1036,7 +1036,7 @@
   identifiers:
     - identifier: "15410"
       scheme: orjk
-    - identifier: ror:04qxnmv42
+    - identifier: 04qxnmv42
       scheme: parent-id
   name: Pedagogická fakulta / Univerzita Palackého v Olomouci
   status: active
@@ -1054,7 +1054,7 @@
     cs:
       Katedra primární a preprimární pedagogiky / Pedagogická fakulta / Univerzita
       Palackého v Olomouci
-- id: ror:03c4atk17
+- id: 03c4atk17
   identifiers:
     - identifier: 03c4atk17
       scheme: ror
@@ -1062,7 +1062,7 @@
   status: active
   title:
     cs: Università della Svizzera italiana
-- id: ror:039bjqg32
+- id: 039bjqg32
   identifiers:
     - identifier: 039bjqg32
       scheme: ror
@@ -1078,7 +1078,7 @@
   status: active
   title:
     cs: Da Vinci Laboratory Solutions UK & Ireland
-- id: ror:05x8mcb75
+- id: 05x8mcb75
   identifiers:
     - identifier: 05x8mcb75
       scheme: ror
@@ -1090,7 +1090,7 @@
   identifiers:
     - identifier: "27360"
       scheme: orjk
-    - identifier: ror:05x8mcb75
+    - identifier: 05x8mcb75
       scheme: parent-id
   name:
     Fakulta materiálově-technologická / Vysoká škola báňská - Technická univerzita
@@ -1100,7 +1100,7 @@
     cs:
       Fakulta materiálově-technologická / Vysoká škola báňská - Technická univerzita
       Ostrava
-- id: ror:05ggn0a85
+- id: 05ggn0a85
   identifiers:
     - identifier: 05ggn0a85
       scheme: ror
@@ -1112,7 +1112,7 @@
   identifiers:
     - identifier: "22310"
       scheme: orjk
-    - identifier: ror:05ggn0a85
+    - identifier: 05ggn0a85
       scheme: parent-id
   name: Fakulta chemické technologie / Vysoká škola chemicko-technologická v Praze
   status: active
@@ -1138,7 +1138,7 @@
   status: active
   title:
     cs: Výpočtové středisko Slovenskej akadémie vied
-- id: ror:008xxew50
+- id: 008xxew50
   identifiers:
     - identifier: 008xxew50
       scheme: ror
@@ -1146,7 +1146,7 @@
   status: active
   title:
     cs: Vrije Universiteit Amsterdam
-- id: ror:04gf11d56
+- id: 04gf11d56
   identifiers:
     - identifier: 04gf11d56
       scheme: ror
@@ -1154,7 +1154,7 @@
   status: active
   title:
     cs: Výzkumný ústav Silva Taroucy pro krajinu a okrasné zahradnictví
-- id: ror:03613d656
+- id: 03613d656
   identifiers:
     - identifier: 03613d656
       scheme: ror
@@ -1166,7 +1166,7 @@
   identifiers:
     - identifier: "90041"
       scheme: orjk
-    - identifier: ror:03613d656
+    - identifier: 03613d656
       scheme: parent-id
   name: CEITEC Vysoké učení technické v Brně / Vysoké učení technické v Brně
   status: active
@@ -1176,7 +1176,7 @@
   identifiers:
     - identifier: "26220"
       scheme: orjk
-    - identifier: ror:03613d656
+    - identifier: 03613d656
       scheme: parent-id
   name:
     Fakulta elektrotechniky a komunikačních technologií / Vysoké učení technické
@@ -1202,13 +1202,13 @@
   identifiers:
     - identifier: "26210"
       scheme: orjk
-    - identifier: ror:03613d656
+    - identifier: 03613d656
       scheme: parent-id
   name: Fakulta strojního inženýrství / Vysoké učení technické v Brně
   status: active
   title:
     cs: Fakulta strojního inženýrství / Vysoké učení technické v Brně
-- id: ror:035dsb084
+- id: 035dsb084
   identifiers:
     - identifier: 035dsb084
       scheme: ror
@@ -1216,7 +1216,7 @@
   status: active
   title:
     cs: Wigner Research Centre for Physics
-- id: ror:00mcjh785
+- id: 00mcjh785
   identifiers:
     - identifier: 00mcjh785
       scheme: ror
@@ -1224,7 +1224,7 @@
   status: active
   title:
     cs: Xiamen University
-- id: ror:040t43x18
+- id: 040t43x18
   identifiers:
     - identifier: 040t43x18
       scheme: ror
@@ -1236,7 +1236,7 @@
   identifiers:
     - identifier: "23310"
       scheme: orjk
-    - identifier: ror:040t43x18
+    - identifier: 040t43x18
       scheme: parent-id
   name: Fakulta zdravotnických studií / Západočeská univerzita v Plzni
   status: active
