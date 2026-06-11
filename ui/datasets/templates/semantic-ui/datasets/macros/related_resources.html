@@ -1,0 +1,116 @@
+{%- set MAX_CREATORS = 5 -%}
+{#TODO: to be moved to ccmm-invenio #}
+
+{%- macro format_creator(creator) -%}
+  {%- set p = creator.person_or_org or {} -%}
+  {%- if p.family_name -%}
+    {{ p.family_name|upper }}{% if p.given_name and p.given_name|trim %}, {{ p.given_name|trim|first|upper }}.{% endif %}
+  {%- elif p.name -%}
+    {{ p.name|upper }}
+  {%- endif -%}
+{%- endmacro -%}
+
+{%- macro format_creators(creators) -%}
+  {%- if creators -%}
+    {%- set ns = namespace(parts=[]) -%}
+    {%- for c in creators[:MAX_CREATORS] -%}
+      {%- set s = format_creator(c)|trim -%}
+      {%- if s -%}
+        {%- set ns.parts = ns.parts + [s] -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if ns.parts -%}
+      {%- if ns.parts|length == 1 -%}
+        {{ ns.parts[0] }}
+      {%- else -%}
+        {{ ns.parts[:-1]|join(", ") }} {{ _("and") }} {{ ns.parts[-1] }}
+      {%- endif -%}
+      {%- if creators|length > MAX_CREATORS %} et al.{% endif -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endmacro -%}
+
+{%- macro doi_source_url(identifiers) -%}
+  {%- set ns = namespace(url="") -%}
+  {%- for id in identifiers or [] -%}
+    {%- if not ns.url and id.scheme == "doi" and id.identifier -%}
+      {%- if id.identifier.startswith("http://") or id.identifier.startswith("https://") -%}
+        {%- set ns.url = id.identifier -%}
+      {%- else -%}
+        {%- set ns.url = "https://doi.org/" ~ id.identifier -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {{ ns.url }}
+{%- endmacro -%}
+
+{%- macro related_resource_citation(r) -%}
+  {%- set creators_str = format_creators(value(r.creators) or [])|trim -%}
+  {%- set raw_year = (value(r.publication_date) or "")[:4] -%}
+  {%- set year = raw_year if raw_year|length == 4 and raw_year.isdigit() else "" -%}
+  {%- set title = value(r.title) or _("Untitled resource") -%}
+  {%- set source_url = value(r.imported_from) or doi_source_url(value(r.identifiers) or [])|trim -%}
+  {%- set safe_href = source_url if source_url and (source_url.startswith("http://") or source_url.startswith("https://")) else "" -%}
+  {%- if creators_str and year -%}
+    {%- set head = creators_str ~ ", " ~ year -%}
+  {%- else -%}
+    {%- set head = creators_str or year -%}
+  {%- endif -%}
+  <span class="related-resource-citation">
+    {%- if head %}<span>{{ head }}. </span>{% endif -%}
+    <span class="related-resource-citation__title">{{ title }}{% if source_url %} [{{ _("online") }}]{% endif %}.</span>
+    {%- set publisher = value(r.publisher) -%}
+    {%- if publisher %} <span>{{ publisher }}.</span>{% endif -%}
+    {%- if source_url %}
+      <span> {{ _("Available at") }}:
+        {%- if safe_href %}
+          <a href="{{ safe_href }}" target="_blank" rel="noopener noreferrer">{{ source_url }}</a>
+        {%- else %}
+          <span>{{ source_url }}</span>
+        {%- endif %}.
+      </span>
+    {%- endif -%}
+  </span>
+{%- endmacro -%}
+
+{%- macro related_resource_item(r) -%}
+  {%- set rt_label = ui_value(r.relation_type.title, format='l10n') -%}
+  <li class="related-resource-item rel-mb-1">
+    <span class="related-resource">
+      {{ related_resource_citation(r) }}
+      {%- if rt_label %}
+        <span class="ui label tiny horizontal ml-5">{{ rt_label }}</span>
+      {%- endif %}
+    </span>
+  </li>
+{%- endmacro -%}
+
+{%- macro related_resources_section(resources, preview_count=3) -%}
+  {%- if resources -%}
+    <section id="related-resources" class="rel-mt-2" aria-label="{{ _('Related resources') }}">
+      <h2 id="related-resources-heading">{{ _("Related resources") }}</h2>
+      <ul class="related-resources-list ui list">
+        {%- for r in resources[:preview_count] -%}
+          {{ related_resource_item(r) }}
+        {%- endfor -%}
+      </ul>
+
+      {%- if resources|length > preview_count -%}
+        {%- set rest_count = resources|length - preview_count -%}
+        <div class="ui accordion related-resources-accordion rel-mt-1">
+          <div class="title">
+            <i class="dropdown icon"></i>
+            {{ _("Show %(count)d more", count=rest_count) }}
+          </div>
+          <div class="content">
+            <ul class="related-resources-list ui list">
+              {%- for r in resources[preview_count:] -%}
+                {{ related_resource_item(r) }}
+              {%- endfor -%}
+            </ul>
+          </div>
+        </div>
+      {%- endif -%}
+    </section>
+  {%- endif -%}
+{%- endmacro -%}

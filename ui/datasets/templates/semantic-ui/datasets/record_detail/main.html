@@ -1,6 +1,16 @@
 {% extends "oarepo_ui/record_detail/main.html" %}
 
+{%- from "datasets/macros/related_resources.html" import related_resources_section with context -%}
+
 {%- set m = d.metadata -%}
+{#TODO: to be moved to ccmm-invenio #}
+
+{%- block record_content -%}
+  {{ super() }}
+  {%- if m.related_resources -%}
+    {{ related_resources_section(as_array(m.related_resources)) }}
+  {%- endif -%}
+{%- endblock record_content -%}
 
 {# Available template blocks (from oarepo_ui/record_detail/main.html):
 
