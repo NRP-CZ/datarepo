@@ -4,10 +4,7 @@ from ccmm_invenio.models import ccmm_production_preset_1_1_0
 from invenio_rdm_records.resources.serializers.ui.schema import UIRecordSchema
 from oarepo_communities.model.presets import communities_preset
 from oarepo_model.api import model
-from oarepo_model.customizations import (
-    AddFacetGroup,
-    PrependMixin,
-)
+from oarepo_model.customizations import AddFacetGroup, PrependMixin
 from oarepo_requests.model.presets.requests import requests_preset
 from oarepo_workflows.model.presets import workflows_preset
 
@@ -26,11 +23,14 @@ datasets_model = model(
         PrependMixin("RecordUISchema", UIRecordSchema),
         AddFacetGroup(
             "default",
-            [
-                "metadata.publisher",
+            facets=[
                 "metadata.resource_type",
+                "metadata.publisher",
+                "metadata.creators.affiliations",
+                "metadata.subjects.subject",
+                "metadata.funding.funder",
                 "metadata.languages",
-                "metadata.creators.person_or_org.name",
+                "metadata.rights",
             ],
         ),
     ],
