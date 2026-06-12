@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-05-05 10:13+0200\n"
+"POT-Creation-Date: 2026-05-12 08:32+0200\n"
 "PO-Revision-Date: 2026-01-13 10:43+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cs\n"
@@ -18,23 +18,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:18
+#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:19
 msgid "Czech"
 msgstr "Čeština"
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:23
+#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:29
 msgid "CESNET Data Repository"
 msgstr "Datový repozitář CESNET"
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:24
-msgid "Catch-All repostitory for Czech scientific data"
+#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:30
+#, fuzzy
+msgid "Catch-all repository for Czech scientific data"
 msgstr "Univerzální repozitář pro česká vědecká data"
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:36
+#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:47
 msgid "Default workflow"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:43
+#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:58
 msgid "Individual deposition workflow"
 msgstr ""
 
@@ -57,6 +58,14 @@ msgstr "stav:stahováno"
 #: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:351
 msgid "state:deleted"
 msgstr "stav:smazáno"
+
+#: /Users/dusanstojanovic/Projects/datarepo/datasets/just_for_translations.py:4
+msgid "metadata/languages.label"
+msgstr "Jazyky"
+
+#: /Users/dusanstojanovic/Projects/datarepo/datasets/just_for_translations.py:5
+msgid "metadata/creators/person_or_org/name.label"
+msgstr "Autor"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:4
 msgid "Personal data processing information"

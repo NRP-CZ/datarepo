@@ -579,3 +579,10 @@ dl.details-list {
 #header-search-bar .ui.fluid.search {
   width: auto !important;
 }
+
+.facets-container {
+  @media only screen and (min-width: @computerBreakpoint) {
+    border-top: 1px solid @greys6;
+    padding-top: 1rem;
+  }
+}

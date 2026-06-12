@@ -41,4 +41,7 @@
 }
 .ui.card.borderless.facet {
   background-color: transparent;
+  h3 {
+    font-size: 1.2rem;
+  }
 }

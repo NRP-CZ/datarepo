@@ -59,4 +59,29 @@
   &.search.search {
     .primary();
   }
+
+  &#scroll-to-top-button {
+    position: fixed;
+    bottom: 12rem;
+    right: 2rem;
+    z-index: 1000;
+    background-color: @mainColors7;
+    color: @white;
+    border: none;
+    padding: 0.75rem;
+
+    .icon {
+      color: @white;
+    }
+  }
+
+  &.facets-sidebar-open-button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  &.clear-filters-button {
+    border-radius: 6px;
+    border: 1px solid @reds2;
+    background-color: @reds1;
+  }
 }
