@@ -59,7 +59,7 @@ def init_menu(app):
             visible_when=can_view_deposit_page,
         )
         current_menu.submenu("main.about_repository").register(
-            external_url=app.config["ABOUT_REPOSITORY_DOCS_URL"],
+            external_url=app.config.get("ABOUT_REPOSITORY_DOCS_URL"),
             text=_("About repository"),
             order=0,
         )
