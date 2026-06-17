@@ -1,0 +1,14 @@
+- slug: llm-settings-community
+  metadata:
+    title: LLM Settings Community
+  access:
+    visibility: restricted
+    members_visibility: restricted
+    member_policy: closed
+    record_policy: closed
+    record_submission_policy: closed
+    review_policy: closed
+  custom_fields:
+    allowed_workflows:
+      - community
+    workflow: community
