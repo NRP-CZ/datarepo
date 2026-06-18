@@ -586,3 +586,9 @@ dl.details-list {
     padding-top: 1rem;
   }
 }
+
+// above we are setting img to be display block and it breaks some images. Consider if this is smth we really need in the template
+// for apps (when being generated).
+.inline-id-icon {
+  display: inline-block;
+}
