@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2026-06-18 08:52+0200\n"
-"PO-Revision-Date: 2026-06-18 08:55+0200\n"
+"PO-Revision-Date: 2026-06-18 10:43+0200\n"
 "Last-Translator: \n"
 "Language-Team: cs <LL@li.org>\n"
 "Language: cs\n"
@@ -35,19 +35,19 @@ msgstr "Univerzální repozitář pro česká vědecká data"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:48
 msgid "Community owner"
-msgstr ""
+msgstr "Vlastník komunity"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:49
 msgid "Can manage community."
-msgstr ""
+msgstr "Může spravovat komunitu."
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:56
 msgid "Curator"
-msgstr ""
+msgstr "Kurátor"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:57
 msgid "Can curate records."
-msgstr ""
+msgstr "Může spravovat záznamy"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:63
 #, fuzzy
@@ -56,19 +56,19 @@ msgstr "stav:odesláno"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:64
 msgid "Can submit records to the community."
-msgstr ""
+msgstr "Může odesílat záznamy do komunity."
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:70
 msgid "Member"
-msgstr ""
+msgstr "Člen"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:71
 msgid "Community member with read permissions."
-msgstr ""
+msgstr "Člen komunity s oprávněním ke čtení."
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:84
 msgid "Default Community Workflow"
-msgstr ""
+msgstr "Výchozí schvalovací proces komunity"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:241
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:247
@@ -79,27 +79,27 @@ msgstr ""
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:267
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:275
 msgid "Concept DOI"
-msgstr ""
+msgstr "Koncepční DOI."
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:292
 msgid "Parent record id"
-msgstr ""
+msgstr "ID nadřazeného záznamu."
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:293
 msgid "Organizational Unit ID"
-msgstr ""
+msgstr "ID organizační jednotky."
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:295
 msgid "External ID (non-standardized)"
-msgstr ""
+msgstr "Externí identifikátor (nestandardizovaný)."
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:299
 msgid "New Zealand Business Number"
-msgstr ""
+msgstr "Novozélandské obchodní číslo"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:303
 msgid "ICO"
-msgstr ""
+msgstr "IČO"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:312
 msgid "Crossref"
@@ -293,11 +293,11 @@ msgstr "Nový dataset"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:26
 msgid "and"
-msgstr ""
+msgstr "a"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:51
 msgid "Untitled resource"
-msgstr ""
+msgstr "Nepojmenovaný zdroj"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:61
 msgid "online"
@@ -305,17 +305,17 @@ msgstr ""
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:65
 msgid "Available at"
-msgstr ""
+msgstr "Dostupné na"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:90
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:91
 msgid "Related resources"
-msgstr ""
+msgstr "Související zdroje"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:103
 #, python-format
 msgid "Show %(count)d more"
-msgstr ""
+msgstr "Zobrazit dalších %(count)d"
 
 #~ msgid "APA"
 #~ msgstr "APA"
