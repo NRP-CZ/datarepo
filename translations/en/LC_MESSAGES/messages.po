@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-05-12 08:32+0200\n"
+"POT-Creation-Date: 2026-06-18 08:52+0200\n"
 "PO-Revision-Date: 2026-01-13 10:43+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,221 +18,296 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:19
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:25
 msgid "Czech"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:29
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:35
 msgid "CESNET Data Repository"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:30
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:36
 msgid "Catch-all repository for Czech scientific data"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:47
-msgid "Default workflow"
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:48
+msgid "Community owner"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:58
-msgid "Individual deposition workflow"
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:49
+msgid "Can manage community."
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:347
-msgid "state:draft"
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:56
+msgid "Curator"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:348
-msgid "state:published"
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:57
+msgid "Can curate records."
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:349
-msgid "state:submitted"
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:63
+msgid "Submitter"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:350
-msgid "state:retracting"
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:64
+msgid "Can submit records to the community."
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/common/workflows/default.py:351
-msgid "state:deleted"
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:70
+msgid "Member"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/datasets/just_for_translations.py:4
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:71
+msgid "Community member with read permissions."
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:84
+msgid "Default Community Workflow"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:241
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:247
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:254
+msgid "DOI"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:267
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:275
+msgid "Concept DOI"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:292
+msgid "Parent record id"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:293
+msgid "Organizational Unit ID"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:295
+msgid "External ID (non-standardized)"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:299
+msgid "New Zealand Business Number"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:303
+msgid "ICO"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:312
+msgid "Crossref"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/datasets/just_for_translations.py:4
 msgid "metadata/languages.label"
 msgstr "Languages"
 
-#: /Users/dusanstojanovic/Projects/datarepo/datasets/just_for_translations.py:5
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/datasets/just_for_translations.py:5
 msgid "metadata/creators/person_or_org/name.label"
 msgstr "Author"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:4
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/datasets/just_for_translations.py:6
+#, fuzzy
+msgid "metadata/subjects/subject.label"
+msgstr "Subjects"
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/footer.html:4
 msgid "Personal data processing information"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:5
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/footer.html:5
 msgid "Version"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:8
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/footer.html:8
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/__init__.py:68
 msgid "Documentation"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:9
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/footer.html:9
 msgid "Contact"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:26
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/frontpage.html:26
 msgid "Multi-discipline data repository"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:39
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/frontpage.html:39
 msgid "Search..."
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:44
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:47
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/frontpage.html:44
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/frontpage.html:47
 msgid "Search"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:59
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/frontpage.html:59
 msgid "Zobrazit všechny datasety"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:70
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:74
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/frontpage.html:70
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/frontpage.html:74
 msgid "Upload dataset"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:71
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/frontpage.html:71
 msgid "Upload your data to our catch-all repository"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:79
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/frontpage.html:79
 msgid "How does a repository work?"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:80
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/frontpage.html:80
 msgid "Would you like to know more about where your data is being stored?"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:83
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:63
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/frontpage.html:83
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/__init__.py:63
 msgid "About repository"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:27
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/header.html:27
 msgid "My dashboard"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:33
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/header.html:33
 msgid "Requests"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:35
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/header.html:35
 msgid "Inbox"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:16
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:16
 msgid "Login"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:19
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:19
 msgid "Log in"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:24
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:24
 msgid "Sign up"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:42
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:42
 msgid "Quick create"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:58
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:58
 msgid "Actions"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:79
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:120
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:79
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:120
 msgid "My account"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:110
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:113
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:144
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:147
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:154
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:157
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:110
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:113
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:144
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:147
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:154
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:157
 msgid "Log out"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:5
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:5
 msgid "You've successfully installed Invenio RDM!"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:7
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:7
 msgid "What is ahead?"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:17
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:17
 msgid "Configure"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:20
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:20
 msgid ""
 "Configure the datamodel, resource types, permissions and much more to "
 "make it suit your needs! For more information on how to do it visit the"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:22
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:22
 msgid "configuration section in the docs"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:34
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:34
 msgid "Customize"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:37
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:37
 msgid ""
 "Customize the layout and adapt the styling to match your institution's. "
 "See how to do so"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:39
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:39
 msgid "here"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:50
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:50
 msgid "Use it!"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:52
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:52
 msgid "Use and explore your InvenioRDM instance."
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:54
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:54
 msgid "Use"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:68
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:68
 msgid "Docs"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:77
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:77
 msgid "Code"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:84
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:84
 msgid "To disable this section, add"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:86
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:86
 msgid "to your invenio.cfg file."
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:57
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/__init__.py:57
 msgid "New Dataset"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:26
+msgid "and"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:51
+msgid "Untitled resource"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:61
+msgid "online"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:65
+msgid "Available at"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:90
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:91
+msgid "Related resources"
+msgstr ""
+
+#: /Users/alzbetapokorna/cesnet/2026/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:103
+#, python-format
+msgid "Show %(count)d more"
 msgstr ""
 
 #~ msgid "New Datasets"
@@ -263,5 +338,26 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Catch-All repostitory for Czech scientific data"
+#~ msgstr ""
+
+#~ msgid "Default workflow"
+#~ msgstr ""
+
+#~ msgid "Individual deposition workflow"
+#~ msgstr ""
+
+#~ msgid "state:draft"
+#~ msgstr ""
+
+#~ msgid "state:published"
+#~ msgstr ""
+
+#~ msgid "state:submitted"
+#~ msgstr ""
+
+#~ msgid "state:retracting"
+#~ msgstr ""
+
+#~ msgid "state:deleted"
 #~ msgstr ""
 
