@@ -29,7 +29,6 @@ msgid "CESNET Data Repository"
 msgstr "Datový repozitář CESNET"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:36
-#, fuzzy
 msgid "Catch-all repository for Czech scientific data"
 msgstr "Univerzální repozitář pro česká vědecká data"
 
@@ -50,9 +49,8 @@ msgid "Can curate records."
 msgstr "Může spravovat záznamy"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:63
-#, fuzzy
 msgid "Submitter"
-msgstr "stav:odesláno"
+msgstr "Vkladatel"
 
 #: /Users/alzbetapokorna/cesnet/2026/datarepo/invenio.cfg:64
 msgid "Can submit records to the community."
