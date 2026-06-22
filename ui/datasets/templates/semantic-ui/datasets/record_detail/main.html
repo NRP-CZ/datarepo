@@ -5,12 +5,12 @@
 {%- set m = d.metadata -%}
 {#TODO: to be moved to ccmm-invenio #}
 
-{%- block record_content -%}
+{%- block record_footer -%}
   {{ super() }}
   {%- if m.related_resources -%}
     {{ related_resources_section(as_array(m.related_resources)) }}
   {%- endif -%}
-{%- endblock record_content -%}
+{%- endblock record_footer -%}
 
 {# Available template blocks (from oarepo_ui/record_detail/main.html):
 
