@@ -58,7 +58,7 @@
   {%- endif -%}
   <span class="related-resource-citation">
     {%- if head %}<span>{{ head }}. </span>{% endif -%}
-    <span class="related-resource-citation__title">{{ title }}{% if source_url %} [{{ _("online") }}]{% endif %}.</span>
+    <span class="related-resource-citation__title">{{ title | sanitize_html | safe }}{% if source_url %} [{{ _("online") }}]{% endif %}.</span>
     {%- set publisher = value(r.publisher) -%}
     {%- if publisher %} <span>{{ publisher }}.</span>{% endif -%}
     {%- if source_url %}
