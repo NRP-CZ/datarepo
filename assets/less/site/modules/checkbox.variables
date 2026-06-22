@@ -15,4 +15,3 @@
 @toggleLaneBackground: @primaryColor;
 @toggleOnLaneColor: @toggleCheckboxBackgroundPressedColor;
 @toggleOnFocusLaneColor: @toggleCheckboxBackgroundPressedColor;
-@toggleOnFocusLabelColor: @toggleCheckboxBackgroundPressedColor;
