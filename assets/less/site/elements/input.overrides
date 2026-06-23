@@ -4,3 +4,12 @@
     display: block;
   }
 }
+
+// FE-558: clearable searchbar renders as a Semantic UI action+icon input.
+// Upstream (oarepo_ui) offsets the clear icon for plain icon inputs only,
+// so on the records search page it overlaps the search action button.
+// Push it left of the action button. Scoped to .action.icon so plain icon
+// inputs and the multiline (textarea) searchbar are unaffected.
+.ui.input.action.icon > i.icon.clear-button {
+  right: 3.2em;
+}
