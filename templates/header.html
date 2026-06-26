@@ -3,6 +3,22 @@
 {%- block navbar_search %}
 {%- endblock navbar_search %}
 
+{%- block brand %}
+  {%- if current_i18n.language == 'cs' %}
+    <a class="logo-link" href="{{ invenio_url_for('invenio_app_rdm.index') }}">
+      <img class="ui image rdm-logo"
+            src="{{ url_for('static', filename='images/logo.svg') }}"
+            alt="{{ _(config.THEME_SITENAME) }} {{ _('home') }}"/>
+    </a>
+  {%- else %}
+    <a class="logo-link" href="{{ invenio_url_for('invenio_app_rdm.index') }}">
+      <img class="ui image rdm-logo"
+            src="{{ url_for('static', filename='images/logo_en.svg') }}"
+            alt="{{ _(config.THEME_SITENAME) }} {{ _('home') }}"/>
+    </a>
+  {%- endif %}
+{%- endblock brand %}
+
 {%- block navbar_right %}
 <div class="right menu item">
    {%- if config.I18N_LANGUAGES %}
@@ -53,13 +69,13 @@ Navigation (from invenio_app_rdm/header.html):
     {%- block brand %}  # Site logo or text
     {%- endblock brand %}
   {%- endblock navbar_header %}
-  
+
   {%- block navbar_search %}  # Search bar (if enabled in config)
   {%- endblock navbar_search %}
-  
+
   {%- block navbar_nav %}  # Main menu items
   {%- endblock navbar_nav %}
-  
+
   {%- block navbar_right %}  # Right side with notifications and login
   {%- endblock navbar_right %}
 {%- endblock navbar %}
