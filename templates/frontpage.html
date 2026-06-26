@@ -86,18 +86,13 @@
     </div>
   </div>
 
-  {# Footer Logos Section #}
+  {# Funding Logos Section #}
   <div class="ui container funding-section centered rel-mt-2">
     <div class="funding-logos flex justify-center align-items-center rel-mb-2">
       <img
-        class="ui image"
-        src="{{ url_for('static', filename='images/EU+MŠMT Barevné.svg') }}"
-        alt="EU MŠMT"
-      />
-      <img
-        class="ui image"
-        src="{{ url_for('static', filename='images/eosc_cz_pos_up.svg') }}"
-        alt="EOSC"
+        class="ui image funding-logo"
+        src="{{ url_for('static', filename='images/eu_msmt_eosc_' ~ current_i18n.language ~ '.svg') }}"
+        alt="{{ _('EU and Ministry of Education, Youth and Sports of the Czech Republic') }}"
       />
     </div>
   </div>

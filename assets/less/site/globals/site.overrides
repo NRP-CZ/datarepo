@@ -500,24 +500,19 @@ dl.details-list {
   }
 }
 
-#page-footer-element {
-  margin-top: 0;
-  border-top: @headerFooterBorder;
-  .footer-nav {
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    .footer-left {
-      text-align: left;
+.footer-top {
+  border-top: 1px solid @lightGrey;
+  background-color: transparent;
+  .app-rdm-footer {
+    .collaborators-logo {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
     }
-    .footer-right {
-      text-align: right;
-      a {
-        &:not(:last-child) {
-          margin-bottom: 0.5rem;
-        }
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
@@ -545,7 +540,7 @@ dl.details-list {
     gap: 2rem;
     flex-wrap: wrap;
     img {
-      max-height: 60px;
+      max-height: 150px;
       width: auto;
     }
   }

@@ -1,14 +1,71 @@
-<footer id="page-footer-element">
-  <div class="footer-nav ui container">
-    <div class="footer-left">
-      <a target="_blank" rel="noopener noreferrer" href="https://www.cesnet.cz/sdruzeni/dokumenty/oou/" class="block">{{ _('Personal data processing information') }}</a>
+{% extends "invenio_app_rdm/footer.html" %}
+
+{# Available template blocks:
+
+Template inheritance chain:
+1. invenio_theme/footer.html (base template):
+   - No blocks defined, provides basic footer structure with Invenio branding and language selector
+
+2. invenio_app_rdm/footer.html (extends invenio_theme/footer.html):
+   {%- block footer_top %}  # Main footer content container
+     {%- block footer_top_left %}  # Left side of footer - About, Get involved, Community sections
+     {%- endblock footer_top_left %}
+
+     {%- block footer_top_right %}  # Right side of footer
+     {%- endblock footer_top_right %}
+   {%- endblock footer_top }
+
+You can override any of these blocks to customize the footer.
+#}
+
+{% set logo_locale = current_i18n.language %}
+{% if logo_locale not in ['cs', 'en'] %}
+  {% set logo_locale = 'en' %}
+{% endif %}
+
+{%- block footer_top %}
+<div class="ui container footer-top ">
+  <div class="ui stackable divided equal height relaxed grid rel-pt-2 rel-pr-2 rel-pl-2 app-rdm-footer">
+    <div class="sixteen wide mobile ten wide tablet six wide computer column ">
+      <h5 class="ui small header">
+        {{ _("CESNET Data Repository") }}
+      </h5>
+      <p class="ui description">
+        <em>
+        {% trans link="https://www.eosc.cz/en/projects/national-repository-platform-for-research-data-nrp" %}
+        A part of the <a href="{{link}}">National Repository Platform for Research Data</a> project (CZ.02.01.01/00/23_014/0008787).
+        {% endtrans %}
+        </em>
+      </p>
+
+      {% if not hide_footer_mandatory_publicity %}
+        <div class="rel-pt-1 rel-pr-1">
+          <a href="https://www.eosc.cz/en/projects/national-repository-platform-for-research-data-nrp" target="_blank" rel="noopener noreferrer">
+            <img class="collaborators-logo"
+                  src="{{ url_for('static', filename='images/eu_msmt_eosc_' ~ logo_locale ~ '.svg') }}"
+                  title="{{ _('EU, MINISTRY OF EDUCATION YOUTH AND SPORTS and NRP project') }}"
+                  alt="{{ _('EU, MINISTRY OF EDUCATION YOUTH AND SPORTS and NRP project') }}">
+          </a>
+        </div>
+      {% endif %}
+    </div>
+    <div class="five wide column">
+      <h5 class="ui small header">{{ _("Resources") }}</h5>
+      <div class="ui link list">
+        <a href="{{ config.ABOUT_REPOSITORY_DOCS_URL }}" target="_blank" rel="noopener noreferrer" class="item">{{ _('Documentation') }}</a>
+        <a href="https://www.eosc.cz/en/projects/national-repository-platform-for-research-data-nrp" target="_blank" rel="noopener noreferrer" class="item">{{ _('NRP project') }}</a>
+        <a href="https://www.cesnet.cz/sdruzeni/dokumenty/oou/" target="_blank" rel="noopener noreferrer" class="item">{{ _('Personal data processing information') }}</a>
+      </div>
+    </div>
+    <div class="sixteen wide mobile five wide computer four wide column">
+      <h5 class="ui small header">
+        {{ _("Contact") }}
+      </h5>
+      <div class="ui link list">
+        <a href="mailto:nrp-repo_datarepo@eosc.cz" target="_blank" rel="noopener noreferrer" class="item">{{ _('User support') }}</a>
+      </div>
       <small>{{ _("Version") }}: {{ config.DEPLOYMENT_VERSION }}</small>
     </div>
-    <div class="footer-right">
-      <a target="_blank" rel="noopener noreferrer" href="{{ config.ABOUT_REPOSITORY_DOCS_URL }}" class="block">{{ _('Documentation') }}</a>
-      <a href="mailto:datarepo@eosc.cz" class="block">{{ _('Contact') }}</a>
-    </div>
   </div>
-</footer>
-
-
+</div>
+{%- endblock footer_top %}
