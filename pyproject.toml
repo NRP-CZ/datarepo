@@ -6,8 +6,11 @@ packages = []
 authors = []
 dependencies = [
    "oarepo[s3,rdm]>=14.2.1rc2,<15.0.0",
-   "oarepo-app[ccmm-development,development,llm-development]>=6.2.0rc5,<7.0.0",
+   "oarepo-app[ccmm-development,development,llm-development]>=6.2.0rc7,<7.0.0",
    "oarepo-oidc-einfra",
+   "oarepo-rdm",
+   "oarepo-requests",
+   "oarepo-ui",
 ]
 requires-python = ">=3.14,<3.15"
 
@@ -48,4 +51,8 @@ requires = [
 build-backend = "uv_build"
 
 [tool.uv.sources]
+oarepo-app = { path = "../oarepo-app", editable = true }
+oarepo-rdm = { path = "../oarepo-rdm", editable = true }
+oarepo-requests = { path = "../oarepo-requests", editable = true }
+oarepo-ui = { path = "../oarepo-ui", editable = true }
 # Example: oarepo-requests = { path = "/Users/m/w/rdm-13/oarepo-requests", editable=true }
