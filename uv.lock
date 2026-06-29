@@ -821,11 +821,11 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "oarepo", extras = ["s3", "rdm"], specifier = ">=14.2.1rc2,<15.0.0" },
-    { name = "oarepo-app", extras = ["ccmm-development", "development", "llm-development"], editable = "../oarepo-app" },
+    { name = "oarepo-app", extras = ["ccmm-development", "development", "llm-development"], specifier = ">=6.2.0rc7,<7.0.0" },
     { name = "oarepo-oidc-einfra" },
-    { name = "oarepo-rdm", editable = "../oarepo-rdm" },
-    { name = "oarepo-requests", editable = "../oarepo-requests" },
-    { name = "oarepo-ui", editable = "../oarepo-ui" },
+    { name = "oarepo-rdm" },
+    { name = "oarepo-requests" },
+    { name = "oarepo-ui" },
 ]
 
 [[package]]
@@ -3573,10 +3573,14 @@ tests = [
 
 [[package]]
 name = "oarepo-app"
-version = "6.2.0rc6"
-source = { editable = "../oarepo-app" }
+version = "6.2.0rc7"
+source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "json5" },
+]
+sdist = { url = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/files/a68f07ee0fe955abe7dff2e4e775942a08813ff8cb84f49cc4036d216ce5c43d/oarepo_app-6.2.0rc7.tar.gz", hash = "sha256:a68f07ee0fe955abe7dff2e4e775942a08813ff8cb84f49cc4036d216ce5c43d" }
+wheels = [
+    { url = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/files/95c3b0213629e3c154e93617e683ecde639543f2d44f66d22b48d7f8da54d3e0/oarepo_app-6.2.0rc7-py3-none-any.whl", hash = "sha256:95c3b0213629e3c154e93617e683ecde639543f2d44f66d22b48d7f8da54d3e0" },
 ]
 
 [package.optional-dependencies]
@@ -3605,55 +3609,6 @@ development = [
 llm-development = [
     { name = "oarepo-checks" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "ccmm-invenio", marker = "extra == 'ccmm'", specifier = "==1.1.18" },
-    { name = "ccmm-invenio", marker = "extra == 'ccmm-development'", specifier = ">=1.1.0,<1.2.0" },
-    { name = "json5" },
-    { name = "marshmallow-i18n-messages", marker = "extra == 'development'", specifier = ">=0.1.0,<1.0.0" },
-    { name = "marshmallow-i18n-messages", marker = "extra == 'production'", specifier = "==0.4.1" },
-    { name = "oarepo", extras = ["rdm", "tests"], marker = "extra == 'oarepo14'", specifier = ">=14.0.0,<15.0.0" },
-    { name = "oarepo", extras = ["s3"], marker = "extra == 'development'", specifier = ">=14.2.1rc2,<15.0.0" },
-    { name = "oarepo", extras = ["s3"], marker = "extra == 'production'", specifier = "==14.2.1rc2+1.rdm.14.0.0rc2" },
-    { name = "oarepo-checks", marker = "extra == 'llm'", specifier = "==2.1.1" },
-    { name = "oarepo-checks", marker = "extra == 'llm-development'", specifier = ">=2.1.1,<3.0.0" },
-    { name = "oarepo-communities", marker = "extra == 'development'", specifier = ">=11.2.0,<12.0.0" },
-    { name = "oarepo-communities", marker = "extra == 'production'", specifier = "==11.2.0" },
-    { name = "oarepo-dashboard", marker = "extra == 'development'", specifier = ">=8.0.0,<9.0.0" },
-    { name = "oarepo-dashboard", marker = "extra == 'production'", specifier = "==8.0.0" },
-    { name = "oarepo-doi", marker = "extra == 'development'", specifier = ">=7.1.0,<8.0.0" },
-    { name = "oarepo-doi", marker = "extra == 'production'", specifier = "==7.1.0" },
-    { name = "oarepo-glitchtip", marker = "extra == 'development'", specifier = ">=1.3.0,<2.0.0" },
-    { name = "oarepo-glitchtip", marker = "extra == 'production'", specifier = "==1.3.0" },
-    { name = "oarepo-invenio-typing-stubs", marker = "extra == 'development'", specifier = ">=0.1.32,<1.0.0" },
-    { name = "oarepo-invenio-typing-stubs", marker = "extra == 'production'", specifier = "==0.1.32" },
-    { name = "oarepo-model", marker = "extra == 'development'", specifier = ">=5.1.0,<6.0.0" },
-    { name = "oarepo-model", marker = "extra == 'production'", specifier = "==5.1.0" },
-    { name = "oarepo-oai-pmh-harvester", marker = "extra == 'oaipmh-harvester'", specifier = "==9.0.0" },
-    { name = "oarepo-oai-pmh-harvester", marker = "extra == 'oaipmh-harvester-development'", specifier = ">=9.0.0,<10.0.0" },
-    { name = "oarepo-oidc-einfra", marker = "extra == 'development'", specifier = ">=7.0.3,<8.0.0" },
-    { name = "oarepo-oidc-einfra", marker = "extra == 'production'", specifier = "==7.0.3" },
-    { name = "oarepo-rdm", marker = "extra == 'development'", specifier = ">=8.1.0,<9.0.0" },
-    { name = "oarepo-rdm", marker = "extra == 'production'", specifier = "==8.1.0" },
-    { name = "oarepo-related-resources", marker = "extra == 'development'", specifier = ">=4.1.0,<5.0.0" },
-    { name = "oarepo-related-resources", marker = "extra == 'production'", specifier = "==4.1.0" },
-    { name = "oarepo-requests", marker = "extra == 'development'", specifier = ">=9.2.0,<10.0.0" },
-    { name = "oarepo-requests", marker = "extra == 'production'", specifier = "==9.2.0" },
-    { name = "oarepo-runtime", marker = "extra == 'development'", specifier = ">=7.1.0,<8.0.0" },
-    { name = "oarepo-runtime", marker = "extra == 'production'", specifier = "==7.1.0" },
-    { name = "oarepo-theme", marker = "extra == 'development'", specifier = ">=6.0.0,<7.0.0" },
-    { name = "oarepo-theme", marker = "extra == 'production'", specifier = "==6.0.0" },
-    { name = "oarepo-ui", marker = "extra == 'development'", specifier = ">=13.2.3,<14.0.0" },
-    { name = "oarepo-ui", marker = "extra == 'production'", specifier = "==13.2.3" },
-    { name = "oarepo-vocabularies", marker = "extra == 'development'", specifier = ">=9.0.0,<10.0.0" },
-    { name = "oarepo-vocabularies", marker = "extra == 'production'", specifier = "==9.0.0" },
-    { name = "oarepo-workflows", marker = "extra == 'development'", specifier = ">=7.1.0,<8.0.0" },
-    { name = "oarepo-workflows", marker = "extra == 'production'", specifier = "==7.1.0" },
-    { name = "pytest", marker = "extra == 'tests'" },
-    { name = "pytest-oarepo", marker = "extra == 'tests'", specifier = ">=6.0.1,<7.0.0" },
-]
-provides-extras = ["ccmm-development", "oaipmh-harvester-development", "llm-development", "development", "oarepo14", "tests", "production", "ccmm", "oaipmh-harvester", "llm"]
 
 [[package]]
 name = "oarepo-checks"
@@ -3786,8 +3741,8 @@ wheels = [
 
 [[package]]
 name = "oarepo-rdm"
-version = "8.3.0"
-source = { editable = "../oarepo-rdm" }
+version = "8.3.1"
+source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "invenio-app-rdm" },
     { name = "invenio-search" },
@@ -3796,23 +3751,10 @@ dependencies = [
     { name = "oarepo-runtime" },
     { name = "oarepo-ui" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "invenio-app-rdm", specifier = ">=14.0.0b0.dev0,<15.0.0" },
-    { name = "invenio-search", specifier = ">=3.0.0,<4.0.0" },
-    { name = "lxml-stubs", marker = "extra == 'dev'" },
-    { name = "oarepo", extras = ["rdm", "tests"], specifier = ">=14.2.1b11.dev1,<15.0.0" },
-    { name = "oarepo", extras = ["rdm", "tests"], marker = "extra == 'oarepo14'", specifier = ">=14.0.0,<15.0.0" },
-    { name = "oarepo-invenio-typing-stubs", marker = "extra == 'dev'", specifier = ">=0.1.0.dev0,<1.0.0" },
-    { name = "oarepo-model", specifier = ">=5.0.0,<6.0.0" },
-    { name = "oarepo-runtime", specifier = ">=7.0.0,<8.0.0" },
-    { name = "oarepo-ui", specifier = ">=13.0.0,<14.0.0" },
-    { name = "pytest-invenio", marker = "extra == 'tests'", specifier = ">=4.0.0,<5.0.0" },
-    { name = "pytest-oarepo", marker = "extra == 'tests'", specifier = ">=6.0.0,<7.0.0" },
-    { name = "types-pyyaml", marker = "extra == 'dev'" },
+sdist = { url = "https://files.pythonhosted.org/packages/a3/24/f3c323c96b0f4c303b094d6e538dbfca2dec4cebd6b78b8cc207e39aa458/oarepo_rdm-8.3.1.tar.gz", hash = "sha256:c27b61e2722d637e02228ece735bce4619974ec588833093ee0145c37af7e624", size = 55648, upload-time = "2026-06-29T04:48:55.795Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/68/f9/60fe55f7412ce8fcae7f916d4b8994dfe8811d1633b72506903916423214/oarepo_rdm-8.3.1-py3-none-any.whl", hash = "sha256:d4ad6c9c5d91ed9e568620c12d99fb4c1fac7329eb33ecd6b52b850a9c485ad4", size = 122050, upload-time = "2026-06-29T04:48:54.605Z" },
 ]
-provides-extras = ["dev", "tests", "oarepo14"]
 
 [[package]]
 name = "oarepo-related-resources"
@@ -3838,7 +3780,7 @@ wheels = [
 [[package]]
 name = "oarepo-requests"
 version = "9.2.1"
-source = { editable = "../oarepo-requests" }
+source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "invenio-app-rdm" },
     { name = "invenio-search" },
@@ -3849,27 +3791,10 @@ dependencies = [
     { name = "oarepo-ui" },
     { name = "oarepo-workflows" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "deepdiff", marker = "extra == 'tests'" },
-    { name = "invenio-app-rdm", specifier = ">=14.0.0b10.dev5,<15.0.0" },
-    { name = "invenio-search", specifier = ">=3.1.2,<4.0.0" },
-    { name = "invenio-search-ui", specifier = ">=4.0.0,<5.0.0" },
-    { name = "oarepo", extras = ["rdm", "tests"], specifier = ">=14.2.1b10.dev7,<15.0.0" },
-    { name = "oarepo", extras = ["rdm", "tests"], marker = "extra == 'oarepo14'", specifier = ">=14.2.1b10.dev7,<15.0.0" },
-    { name = "oarepo-invenio-typing-stubs", marker = "extra == 'dev'" },
-    { name = "oarepo-model", specifier = ">=5.0.0,<6.0.0" },
-    { name = "oarepo-rdm", marker = "extra == 'tests'", specifier = ">=8.0.0,<9.0.0" },
-    { name = "oarepo-runtime", specifier = ">=7.0.0,<8.0.0" },
-    { name = "oarepo-ui", specifier = ">=13.0.0,<14.0.0" },
-    { name = "oarepo-workflows", specifier = ">=7.0.0,<8.0.0" },
-    { name = "pytest-invenio", marker = "extra == 'tests'", specifier = ">=4.0.0,<5.0.0" },
-    { name = "pytest-oarepo", marker = "extra == 'tests'", specifier = ">=6.0.0,<7.0.0" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.11.13" },
-    { name = "types-pyyaml", marker = "extra == 'dev'" },
+sdist = { url = "https://files.pythonhosted.org/packages/00/4a/870120ff259dfbf0ac92a899da4cc6ceecc71808bc6266f6d95b6950f15b/oarepo_requests-9.2.1.tar.gz", hash = "sha256:b3cc85c3abd29af7981f8c2edbbef1471c9a73b3826ec6eeca29e93dba57628f", size = 83122, upload-time = "2026-06-26T11:32:35.025Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/62/2e/27ecb2fdb80a70afadcd93f720b840f20bbac55a069bed2cbbe68710b392/oarepo_requests-9.2.1-py3-none-any.whl", hash = "sha256:6748d3e37c9d4a0a106aed3749f14f61ba5332d0af4df74c6c053a4e6a455a88", size = 142952, upload-time = "2026-06-26T11:32:33.822Z" },
 ]
-provides-extras = ["dev", "tests", "oarepo14"]
 
 [[package]]
 name = "oarepo-runtime"
@@ -3905,8 +3830,8 @@ wheels = [
 
 [[package]]
 name = "oarepo-ui"
-version = "13.3.0"
-source = { editable = "../oarepo-ui" }
+version = "13.4.0"
+source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "deepmerge" },
     { name = "frozendict" },
@@ -3919,31 +3844,10 @@ dependencies = [
     { name = "oarepo-theme" },
     { name = "python-dotenv" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "deepmerge", specifier = ">=2.0" },
-    { name = "frozendict" },
-    { name = "invenio-app", marker = "extra == 'tests'", specifier = ">=3.0.0,<4.0.0" },
-    { name = "invenio-app-rdm", specifier = ">=14.0.0b0,<15.0.0" },
-    { name = "invenio-communities", marker = "extra == 'tests'", specifier = ">=28.0.0,<29.0.0" },
-    { name = "invenio-search", specifier = ">=3.0.0,<4.0.0" },
-    { name = "invenio-search", marker = "extra == 'tests'", specifier = ">=3.0.0,<4.0.0" },
-    { name = "jinja2-simple-tags" },
-    { name = "jinjax", specifier = ">=0.64,<1.0.0" },
-    { name = "oarepo", marker = "extra == 'oarepo14'", specifier = ">=14.0.0,<15.0.0" },
-    { name = "oarepo", extras = ["rdm", "tests"], specifier = ">=14,<15" },
-    { name = "oarepo-invenio-typing-stubs", marker = "extra == 'dev'" },
-    { name = "oarepo-model", marker = "extra == 'tests'", specifier = ">=5.0.0,<6.0.0" },
-    { name = "oarepo-runtime", specifier = ">=7.0.0,<8.0.0" },
-    { name = "oarepo-theme", specifier = ">=6.0.0,<7.0.0" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.1.2" },
-    { name = "pytest", marker = "extra == 'tests'", specifier = ">=7.1.2" },
-    { name = "pytest-invenio", marker = "extra == 'tests'", specifier = ">=4.0.0,<5.0.0" },
-    { name = "pytest-oarepo", marker = "extra == 'tests'", specifier = ">=6.0.0,<7.0.0" },
-    { name = "python-dotenv", specifier = ">=1.1.1" },
+sdist = { url = "https://files.pythonhosted.org/packages/ce/56/77793dfd0959b807aa5ad750001f15c8ce881952d0008a472e1376796a3e/oarepo_ui-13.4.0.tar.gz", hash = "sha256:4df1de55bfbfea4641d7a91c36f846420c8b19251c74f04e11d6e35dea0fca21", size = 220409, upload-time = "2026-06-29T08:18:06.073Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ba/35/e0f6e9a275d9cdb7aba78e34750055475bbfe3d5156da2854d3421ce3898/oarepo_ui-13.4.0-py3-none-any.whl", hash = "sha256:a32eca7d248afef0f70d4ba38f12e4d1af5339918ec2a2eacf8ff7e056ae9755", size = 352008, upload-time = "2026-06-29T08:18:04.824Z" },
 ]
-provides-extras = ["dev", "tests", "oarepo14"]
 
 [[package]]
 name = "oarepo-vocabularies"
