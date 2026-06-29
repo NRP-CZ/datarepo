@@ -51,8 +51,4 @@ requires = [
 build-backend = "uv_build"
 
 [tool.uv.sources]
-oarepo-app = { path = "../oarepo-app", editable = true }
-oarepo-rdm = { path = "../oarepo-rdm", editable = true }
-oarepo-requests = { path = "../oarepo-requests", editable = true }
-oarepo-ui = { path = "../oarepo-ui", editable = true }
 # Example: oarepo-requests = { path = "/Users/m/w/rdm-13/oarepo-requests", editable=true }
