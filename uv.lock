@@ -3723,7 +3723,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-oidc-einfra"
-version = "7.0.3"
+version = "7.1.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "boto3" },
@@ -3734,9 +3734,9 @@ dependencies = [
     { name = "tqdm" },
     { name = "urnparse" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/18/74/2afde8c44972683d98524d4ba08bcc218eacc006f92410d95c45f04b87fa/oarepo_oidc_einfra-7.0.3.tar.gz", hash = "sha256:9caa1aaf49fb41f113c2346c8de3dfdd450ac696dec64aa093190c6310633ec8", size = 42174, upload-time = "2026-06-22T13:33:36.851Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/07/c5/f17fb8eebfd20dd162ca8b7c0072b96306ab697dd7929c919d5adad1bb5e/oarepo_oidc_einfra-7.1.0.tar.gz", hash = "sha256:7f7e54c6ca297636d52c3dc86c05ee889d07c68ffc7fc8ca05adf3e2bc2cdd48", size = 42183, upload-time = "2026-06-30T08:50:21.648Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c9/dd/2c5c4ba84cd3895153496076745b8204b82b9b3940717bbc3bcf5658ecf3/oarepo_oidc_einfra-7.0.3-py3-none-any.whl", hash = "sha256:5bea6c038f5c57242a9455d3e3518299a10f1ea151a06252ac36d6b963d5fb50", size = 56713, upload-time = "2026-06-22T13:33:35.966Z" },
+    { url = "https://files.pythonhosted.org/packages/76/0f/a7abef515364db76dcfc984d8ab77a7300bed94d2669c95b605bb02963ff/oarepo_oidc_einfra-7.1.0-py3-none-any.whl", hash = "sha256:392eda3f349bc6df1472da9842fe8d48443e998b08282705defb631354d9c598", size = 56733, upload-time = "2026-06-30T08:50:20.551Z" },
 ]
 
 [[package]]
