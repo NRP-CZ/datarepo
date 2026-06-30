@@ -1011,14 +1011,14 @@ wheels = [
 
 [[package]]
 name = "faker"
-version = "40.23.0"
+version = "40.25.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "tzdata", marker = "sys_platform == 'win32'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f3/d6/fc071e5754815d9058e12ab549cc88e90f8f4ecf4dc33b6b750cdf4b622d/faker-40.23.0.tar.gz", hash = "sha256:f135e563f1f95f19346bb680bc2e43570bc43b7893e566023746f51f32c69dfc", size = 1972975, upload-time = "2026-06-10T20:53:21.611Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/af/3a/035db870daaa4fb903f3f53073ac9f976e42a511501485450de9e52fbcfe/faker-40.25.0.tar.gz", hash = "sha256:a833fc508464deb0040062a8b47b7ae6326ea3ab3cd5123610498c988c1bac16", size = 1991973, upload-time = "2026-06-30T15:55:28.614Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/64/5f/824e6fb3e9d63408151dc9173994fa65bde620a67dde3a59354f5aecd497/faker-40.23.0-py3-none-any.whl", hash = "sha256:775922453e54afa42eaf60eac478fa3a969357f224d09a8022b93e3ad88f18ae", size = 2013046, upload-time = "2026-06-10T20:53:19.226Z" },
+    { url = "https://files.pythonhosted.org/packages/dd/0a/7701f72bac4e03b812903453e28371841918bf3aaca7b6c2b46147776cad/faker-40.25.0-py3-none-any.whl", hash = "sha256:97d4e5f43c820bb3d097e34e7c2e2ef929ff82a939a9b97b5247dda2283fb25e", size = 2030844, upload-time = "2026-06-30T15:55:26.442Z" },
 ]
 
 [[package]]
@@ -3612,7 +3612,7 @@ llm-development = [
 
 [[package]]
 name = "oarepo-checks"
-version = "2.1.1"
+version = "2.2.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "invenio-checks" },
@@ -3621,9 +3621,9 @@ dependencies = [
     { name = "oarepo-model" },
     { name = "oarepo-requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/5b/15/90476a30d7fd6e8c720255377f20a940161769e81ea3073134eaccaaccbd/oarepo_checks-2.1.1.tar.gz", hash = "sha256:5c4a4ebeca8d7761f6b76ef684133815e0b215c07eac424325ca68b1bb4765b2", size = 22126, upload-time = "2026-06-18T05:44:31.712Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/27/70/5d83659a0f154baafb84c60c551b64cfdf0bc8d273db076c3d61508474a7/oarepo_checks-2.2.0.tar.gz", hash = "sha256:0ad01a245ac1365435e2a8b2c8b24e71dd5c860c1fa4df46632903ad1492fe70", size = 22296, upload-time = "2026-06-30T15:03:12.626Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/34/f0/da7a8c9401231757784f0e914476b3f0d560f751452e1a35f4f78f8f7a05/oarepo_checks-2.1.1-py3-none-any.whl", hash = "sha256:ee3a328f8b97735f7dce9d7454c1ffd8879a48e57eab207ab2292dcae207824d", size = 34737, upload-time = "2026-06-18T05:44:30.841Z" },
+    { url = "https://files.pythonhosted.org/packages/36/7c/0cba48d77c04a2dd80996181a9d2b9aa22e26a583855c1b0b5b550105e84/oarepo_checks-2.2.0-py3-none-any.whl", hash = "sha256:24bb723fcc517baa9cca08bb67ceee9f1741393eb51fdaccadceb8ca506023cd", size = 34965, upload-time = "2026-06-30T15:03:11.765Z" },
 ]
 
 [[package]]
