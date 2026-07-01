@@ -72,7 +72,7 @@
         header=_('Upload dataset'),
         description=_('Upload your data to our catch-all repository'),
         icon='upload',
-        url=url_for('datasets_ui.deposit_create'),
+        url=url_for('datasets_ui.deposit_create') if can_view_deposit_page() else 'https://docs.nrp.eosc.cz/en/docs/end_users/catch-all-data-repository/catch-all-getting-started#registering-as-a-depositor-for-the-repository',
         button_text=_('Upload dataset')
       ) }}
 
