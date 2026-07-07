@@ -1,0 +1,13 @@
+i18n:
+  languages:
+    - en
+    - cs
+  babel_source_paths:
+    - common
+    - ui
+    - models
+    - templates
+  babel_output_translations: translations
+  i18next_source_paths:
+    - ui
+  i18next_output_translations: i18n/semantic-ui/translations

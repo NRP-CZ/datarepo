@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-01 10:15+0200\n"
+"POT-Creation-Date: 2026-07-07 09:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,108 +17,60 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:25
-msgid "Czech"
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:57
+msgid "New Dataset"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:35
+#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:76
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:63
+msgid "Get access"
+msgstr ""
+
+#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:85
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:69
+msgid "About repository"
+msgstr ""
+
+#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:55
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:74
+msgid "Documentation"
+msgstr ""
+
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:26
+msgid "and"
+msgstr ""
+
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:51
+msgid "Untitled resource"
+msgstr ""
+
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:61
+msgid "online"
+msgstr ""
+
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:65
+msgid "Available at"
+msgstr ""
+
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:90
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:91
+msgid "Related resources"
+msgstr ""
+
+#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:103
+#, python-format
+msgid "Show %(count)d more"
+msgstr ""
+
 #: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:31
 msgid "CESNET Data Repository"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:36
-msgid "Catch-all repository for Czech scientific data"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:48
-msgid "Community owner"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:49
-msgid "Can manage community."
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:57
-msgid "Curator"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:58
-msgid "Can curate records."
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:65
-msgid "Submitter"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:66
-msgid "Can submit records to the community."
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:72
-msgid "Member"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:73
-msgid "Community member with read permissions."
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:88
-msgid "Default Community Workflow"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:247
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:253
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:260
-msgid "DOI"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:273
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:281
-msgid "Concept DOI"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:298
-msgid "Parent record id"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:299
-msgid "Organizational Unit ID"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:301
-msgid "External ID (non-standardized)"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:305
-msgid "New Zealand Business Number"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:309
-msgid "ICO"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:318
-msgid "Crossref"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/datasets/just_for_translations.py:4
-msgid "metadata/languages.label"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/datasets/just_for_translations.py:5
-msgid "metadata/creators/person_or_org/name.label"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/datasets/just_for_translations.py:6
-msgid "metadata/subjects/subject.label"
 msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:35
 #, python-format
 msgid ""
 "\n"
-"        A part of the <a href=\"%(link)s\">National Repository Platform "
-"for Research Data</a> project (CZ.02.01.01/00/23_014/0008787).\n"
+"        A part of the <a href=\"%(link)s\">National Repository Platform for Research Data</a> project (CZ.02.01.01/00/23_014/0008787).\n"
 "        "
 msgstr ""
 
@@ -129,11 +81,6 @@ msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:53
 msgid "Resources"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:55
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:74
-msgid "Documentation"
 msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:56
@@ -170,7 +117,7 @@ msgid "Search"
 msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:61
-msgid "Zobrazit všechny datasety"
+msgid "Show all datasets"
 msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:72
@@ -182,22 +129,12 @@ msgstr ""
 msgid "Upload your data to our catch-all repository"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:76
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:63
-msgid "Get access"
-msgstr ""
-
 #: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:81
 msgid "How does a repository work?"
 msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:82
 msgid "Would you like to know more about where your data is being stored?"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:85
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:69
-msgid "About repository"
 msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:97
@@ -299,8 +236,8 @@ msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:20
 msgid ""
-"Configure the datamodel, resource types, permissions and much more to "
-"make it suit your needs! For more information on how to do it visit the"
+"Configure the datamodel, resource types, permissions and much more to make "
+"it suit your needs! For more information on how to do it visit the"
 msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:22
@@ -313,8 +250,8 @@ msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:37
 msgid ""
-"Customize the layout and adapt the styling to match your institution's. "
-"See how to do so"
+"Customize the layout and adapt the styling to match your institution's. See "
+"how to do so"
 msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:39
@@ -349,33 +286,31 @@ msgstr ""
 msgid "to your invenio.cfg file."
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:57
-msgid "New Dataset"
+msgid "Data Catch-all Repository"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:26
-msgid "and"
+msgid ""
+"TIP: Most of the content is in English. You will get more results by using "
+"English terms."
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:51
-msgid "Untitled resource"
+msgid "Show less"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:61
-msgid "online"
+msgid "Show more"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:65
-msgid "Available at"
+msgid "No title"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:90
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:91
-msgid "Related resources"
+msgid "Draft"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:103
-#, python-format
-msgid "Show %(count)d more"
+msgid "Published"
 msgstr ""
 
+msgid "Publisher"
+msgstr ""
+
+msgid "Language"
+msgstr ""
