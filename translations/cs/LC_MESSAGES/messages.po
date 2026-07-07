@@ -10,12 +10,12 @@ msgstr ""
 "POT-Creation-Date: 2026-07-01 10:15+0200\n"
 "PO-Revision-Date: 2026-06-18 10:43+0200\n"
 "Last-Translator: \n"
-"Language: cs\n"
 "Language-Team: cs <LL@li.org>\n"
-"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "Generated-By: Babel 2.18.0\n"
 
 #: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:25
@@ -71,7 +71,7 @@ msgstr "Výchozí schvalovací proces komunity"
 #: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:253
 #: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:260
 msgid "DOI"
-msgstr ""
+msgstr "DOI"
 
 #: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:273
 #: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:281
@@ -100,7 +100,7 @@ msgstr "IČO"
 
 #: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:318
 msgid "Crossref"
-msgstr ""
+msgstr "Crossref"
 
 #: /Users/dusanstojanovic/Projects/datarepo/datasets/just_for_translations.py:4
 msgid "metadata/languages.label"
@@ -118,13 +118,11 @@ msgstr "Klíčová slova"
 #, python-format
 msgid ""
 "\n"
-"        A part of the <a href=\"%(link)s\">National Repository Platform "
-"for Research Data</a> project (CZ.02.01.01/00/23_014/0008787).\n"
+"        A part of the <a href=\"%(link)s\">National Repository Platform for Research Data</a> project (CZ.02.01.01/00/23_014/0008787).\n"
 "        "
 msgstr ""
 "\n"
-"        Součást projektu <a href=\"%(link)s\">Národní repozitářová "
-"platforma pro výzkumná data</a> (CZ.02.01.01/00/23_014/0008787).\n"
+"        Součást projektu <a href=\"%(link)s\">Národní repozitářová platforma pro výzkumná data</a> (CZ.02.01.01/00/23_014/0008787).\n"
 "        "
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:46
@@ -212,19 +210,19 @@ msgstr "EU a Ministerstvo školství, mládeže a tělovýchovy České republik
 #: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:11
 #: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:17
 msgid "home"
-msgstr ""
+msgstr "domů"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:43
 msgid "My dashboard"
-msgstr ""
+msgstr "Můj panel"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:49
 msgid "Requests"
-msgstr ""
+msgstr "Žádosti"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:51
 msgid "Inbox"
-msgstr ""
+msgstr "Doručená pošta"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:16
 msgid "Login"
@@ -263,33 +261,32 @@ msgstr "Odhlásit se"
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
 msgid "Opens in new tab"
-msgstr ""
+msgstr "Otevře se v nové kartě"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
 msgid "Read more"
-msgstr ""
+msgstr "Číst více"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:24
 msgid "Rights"
-msgstr ""
+msgstr "Práva"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:28
 msgid "License"
-msgstr ""
+msgstr "Licence"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:55
-#, fuzzy
 msgid "Close"
-msgstr "Kód"
+msgstr "Zavřít"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:58
 msgid "No further description."
-msgstr ""
+msgstr "Žádný další popis."
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:67
 msgid "Copyright"
-msgstr ""
+msgstr "Autorská práva"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:5
 msgid "You've successfully installed Invenio RDM!"
@@ -305,8 +302,8 @@ msgstr "Nakonfigurujte"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:20
 msgid ""
-"Configure the datamodel, resource types, permissions and much more to "
-"make it suit your needs! For more information on how to do it visit the"
+"Configure the datamodel, resource types, permissions and much more to make "
+"it suit your needs! For more information on how to do it visit the"
 msgstr ""
 "Nakonfigurujte datový model, typy zdrojů, oprávnění a mnohem více, aby "
 "odpovídaly vašim potřebám! Více informací o postupu najdete v"
@@ -321,8 +318,8 @@ msgstr "Přizpůsobte"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:37
 msgid ""
-"Customize the layout and adapt the styling to match your institution's. "
-"See how to do so"
+"Customize the layout and adapt the styling to match your institution's. See "
+"how to do so"
 msgstr ""
 "Přizpůsobte rozložení a upravte styl tak, aby odpovídal vaší instituci. "
 "Podívejte se, jak na to"
@@ -373,7 +370,7 @@ msgstr "Nepojmenovaný zdroj"
 
 #: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:61
 msgid "online"
-msgstr ""
+msgstr "online"
 
 #: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:65
 msgid "Available at"
@@ -388,6 +385,41 @@ msgstr "Související zdroje"
 #, python-format
 msgid "Show %(count)d more"
 msgstr "Zobrazit dalších %(count)d"
+
+msgid "Data Catch-all Repository"
+msgstr "Univerzální datový repozitář"
+
+msgid ""
+"TIP: Most of the content is in English. You will get more results by using "
+"English terms."
+msgstr ""
+"TIP: Většina obsahu je v angličtině. Používáním anglických výrazů získáte "
+"více výsledků."
+
+msgid "Show less"
+msgstr "Zobrazit méně"
+
+msgid "Show more"
+msgstr "Zobrazit více"
+
+msgid "No title"
+msgstr "Bez názvu"
+
+msgid "Draft"
+msgstr "Návrh"
+
+msgid "Published"
+msgstr "Publikováno"
+
+msgid "Publisher"
+msgstr "Vydavatel"
+
+msgid "Language"
+msgstr "Jazyk"
+
+#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:61
+msgid "Show all datasets"
+msgstr "Zobrazit všechny datasety"
 
 #~ msgid "APA"
 #~ msgstr "APA"
@@ -430,4 +462,3 @@ msgstr "Zobrazit dalších %(count)d"
 
 #~ msgid "Inbox"
 #~ msgstr "Doručená pošta"
-
