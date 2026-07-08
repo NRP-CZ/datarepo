@@ -214,7 +214,7 @@ msgstr "domů"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:43
 msgid "My dashboard"
-msgstr "Můj panel"
+msgstr "Můj přehled"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:49
 msgid "Requests"
@@ -222,7 +222,7 @@ msgstr "Žádosti"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:51
 msgid "Inbox"
-msgstr "Doručená pošta"
+msgstr "Doručené"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:16
 msgid "Login"
@@ -266,7 +266,7 @@ msgstr "Otevře se v nové kartě"
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
 msgid "Read more"
-msgstr "Číst více"
+msgstr "Zobrazit více"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:24
 msgid "Rights"
@@ -299,14 +299,6 @@ msgstr "Co vás čeká?"
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:17
 msgid "Configure"
 msgstr "Nakonfigurujte"
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:20
-msgid ""
-"Configure the datamodel, resource types, permissions and much more to make "
-"it suit your needs! For more information on how to do it visit the"
-msgstr ""
-"Nakonfigurujte datový model, typy zdrojů, oprávnění a mnohem více, aby "
-"odpovídaly vašim potřebám! Více informací o postupu najdete v"
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:22
 msgid "configuration section in the docs"
@@ -387,7 +379,7 @@ msgid "Show %(count)d more"
 msgstr "Zobrazit dalších %(count)d"
 
 msgid "Data Catch-all Repository"
-msgstr "Univerzální datový repozitář"
+msgstr "Datový Catch-all Repozitář"
 
 msgid ""
 "TIP: Most of the content is in English. You will get more results by using "

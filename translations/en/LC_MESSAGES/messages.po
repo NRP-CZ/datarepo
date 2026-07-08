@@ -298,12 +298,6 @@ msgstr ""
 msgid "Configure"
 msgstr ""
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:20
-msgid ""
-"Configure the datamodel, resource types, permissions and much more to make "
-"it suit your needs! For more information on how to do it visit the"
-msgstr ""
-
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:22
 msgid "configuration section in the docs"
 msgstr ""
@@ -464,20 +458,6 @@ msgstr ""
 #~ msgid "state:deleted"
 #~ msgstr ""
 
-#~ msgid ""
-#~ "A part of the <a href=\"%(link)s\">EOSC-CZ</a> project "
-#~ "(CZ.02.01.01/00/22_004/0007682)."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "\n"
-#~ "        A part of the <a href=\"%(link)s\">EOSC-CZ</a> project (CZ.02.01.01/00/22_004/0007682).\n"
-#~ "        "
-#~ msgstr ""
-
-#~ msgid "EU, MINISTRY OF EDUCATION YOUTH AND SPORTS and EOSC-CZ project"
-#~ msgstr ""
-
 #~ msgid "My dashboard"
 #~ msgstr ""
 
@@ -485,25 +465,4 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Inbox"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "\n"
-#~ "        A part of the <a href=\"%(link)s\">National Repository Platform</a> project (CZ.02.01.01/00/22_004/0007682).\n"
-#~ "        "
-#~ msgstr ""
-
-#~ msgid ""
-#~ " A part of the\n"
-#~ "                    <a href=\"%(link)s\">National Repository Platform</a> project\n"
-#~ "                    (CZ.02.01.01/00/22_004/0007682). "
-#~ msgstr ""
-
-#~ msgid ""
-#~ "\n"
-#~ "        A part of the <a href=\"%(link)s\">National Repository Platform for Research Data</a> project (CZ.02.01.01/00/22_004/0007682).\n"
-#~ "        "
-#~ msgstr ""
-
-#~ msgid "EOSC-CZ project"
 #~ msgstr ""
