@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-07 09:03+0200\n"
+"POT-Creation-Date: 2026-07-08 13:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -220,70 +220,6 @@ msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:67
 msgid "Copyright"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:5
-msgid "You've successfully installed Invenio RDM!"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:7
-msgid "What is ahead?"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:17
-msgid "Configure"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:20
-msgid ""
-"Configure the datamodel, resource types, permissions and much more to make "
-"it suit your needs! For more information on how to do it visit the"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:22
-msgid "configuration section in the docs"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:34
-msgid "Customize"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:37
-msgid ""
-"Customize the layout and adapt the styling to match your institution's. See "
-"how to do so"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:39
-msgid "here"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:50
-msgid "Use it!"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:52
-msgid "Use and explore your InvenioRDM instance."
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:54
-msgid "Use"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:68
-msgid "Docs"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:77
-msgid "Code"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:84
-msgid "To disable this section, add"
-msgstr ""
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:86
-msgid "to your invenio.cfg file."
 msgstr ""
 
 msgid "Data Catch-all Repository"
