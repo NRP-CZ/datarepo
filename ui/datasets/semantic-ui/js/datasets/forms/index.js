@@ -36,10 +36,7 @@ const CurationPolicySubmitReviewModal = (props) => {
       afterContent={() => (
         <p className="mt-10">
           <Icon name="exclamation circle" />
-          <Trans
-            i18n={i18next}
-            i18nKey="By submitting, you agree to the community's <1>curation policy</1>."
-          >
+          <Trans i18n={i18next}>
             By submitting, you agree to the community's{" "}
             <a
               href={curationPolicyUrl}

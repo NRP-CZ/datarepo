@@ -407,6 +407,9 @@ msgstr ""
 msgid "Show all datasets"
 msgstr ""
 
+msgid "By submitting, you agree to the community's <2>curation policy</2>."
+msgstr ""
+
 #~ msgid "New Datasets"
 #~ msgstr ""
 

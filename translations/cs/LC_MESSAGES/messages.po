@@ -413,6 +413,9 @@ msgstr "Jazyk"
 msgid "Show all datasets"
 msgstr "Zobrazit všechny datasety"
 
+msgid "By submitting, you agree to the community's <2>curation policy</2>."
+msgstr "Odesláním souhlasíte s <2>kurátorskou politikou</2> komunity."
+
 #~ msgid "APA"
 #~ msgstr "APA"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-08 13:43+0200\n"
+"POT-Creation-Date: 2026-07-09 08:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -220,6 +220,9 @@ msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:67
 msgid "Copyright"
+msgstr ""
+
+msgid "By submitting, you agree to the community's <2>curation policy</2>."
 msgstr ""
 
 msgid "Data Catch-all Repository"
