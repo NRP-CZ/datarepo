@@ -21,6 +21,12 @@ import { buildUID } from "react-searchkit";
 const MAX_DESCRIPTION_LENGTH = 300;
 
 function getDescription(result) {
+  // Prefer the global (main) description, stripped of HTML, from the UI serialization.
+  const descriptionStripped = _get(result, "ui.description_stripped", "");
+  if (descriptionStripped) {
+    return descriptionStripped;
+  }
+
   const additionalDescriptions = _get(
     result,
     "metadata.additional_descriptions",
