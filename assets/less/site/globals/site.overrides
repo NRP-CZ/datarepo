@@ -587,3 +587,7 @@ dl.details-list {
 .inline-id-icon {
   display: inline-block;
 }
+
+.invenio-page-body {
+  margin-top: 1rem;
+}
