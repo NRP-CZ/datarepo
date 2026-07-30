@@ -73,3 +73,7 @@ OPENIDC_SECRET=''
 INVENIO_DOI_DATACITE_PREFIX="unknown"
 INVENIO_DOI_DATACITE_PASSWORD="unknown"
 INVENIO_DOI_DATACITE_USERNAME="unknown"
+
+
+# add your ai.e-infra.cz API key if you plan to use AI validation in your repository
+INVENIO_OAREPO_CHECKS_TOKEN=changeme
