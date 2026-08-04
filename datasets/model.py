@@ -76,6 +76,7 @@ datasets_model = model(
                 "metadata.funding.funder",
                 "metadata.languages",
                 "metadata.rights",
+                "metadata.creators.person_or_org.name"
             ],
         ),
         # index tweaks
