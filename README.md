@@ -204,3 +204,5 @@ the page to the flask application.
 
 If you run the command with `--react` option, it will also create
 react endpoint for the page and reference it from the jinjax template.
+
+![Publicity logos](static/images/eu_msmt_eosc_en.svg)
