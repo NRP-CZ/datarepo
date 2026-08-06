@@ -3798,7 +3798,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-requests"
-version = "9.4.1"
+version = "9.4.2"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "invenio-app-rdm" },
@@ -3810,9 +3810,9 @@ dependencies = [
     { name = "oarepo-ui" },
     { name = "oarepo-workflows" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e1/f6/25c4bbaac171d8df7474da391aae362155f88351099752a0ef6f04aaba65/oarepo_requests-9.4.1.tar.gz", hash = "sha256:0273144aa1dab3d3c34b09d8ba668d32fcc5958e4ed13d70670b57bb5bdd9a49", size = 84316, upload-time = "2026-07-30T18:58:39.941Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/44/18/558f7903700f83f8661476aeb58513cac45985b0c8b5437b45c8e9a8288f/oarepo_requests-9.4.2.tar.gz", hash = "sha256:f8a661df9264fe59ac7b437abe3c5dd8f19c45ca75041c21cdc8a9cd5dd2c5d0", size = 85993, upload-time = "2026-08-06T11:31:42.552Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/91/ff/f8b1e7f08e6ff426e3e7066dc7986f1ce8516470047bae03a04b4e5ca377/oarepo_requests-9.4.1-py3-none-any.whl", hash = "sha256:21e51a1ba55474efd2a0392dce20e16200cf28ad61a2691ee992cb3d1889d66e", size = 145472, upload-time = "2026-07-30T18:58:38.88Z" },
+    { url = "https://files.pythonhosted.org/packages/7d/54/db9f32e01867159389825ad0ff3e9c80bf4b889b74e037747d07a0ec59cb/oarepo_requests-9.4.2-py3-none-any.whl", hash = "sha256:1ac392f0cbe0e0a82298bbc1b9864f4fab8fcc856cd398ee7455d51a32a703d6", size = 151503, upload-time = "2026-08-06T11:31:41.129Z" },
 ]
 
 [[package]]
@@ -3870,7 +3870,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-vocabularies"
-version = "9.0.1"
+version = "9.1.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "cachetools" },
@@ -3883,9 +3883,9 @@ dependencies = [
     { name = "orcid" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f8/ae/6126b756d741fdad20ac346e79f73ff30cbcd1a5fce7dee60b99ab6c8f83/oarepo_vocabularies-9.0.1.tar.gz", hash = "sha256:4ac10359fd996bb1590502efbd86d05335f62880d24e8f581a3d4dbed984ac56", size = 87310, upload-time = "2026-06-24T11:31:32.763Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/68/d1/017d87d753be04d877195587a243c605ff021a769dad0f0a69e58b38372e/oarepo_vocabularies-9.1.0.tar.gz", hash = "sha256:072a9bd9ce430f3590632e82788ac41d00d4f93761ff94bfbeb0bddbafe37032", size = 87845, upload-time = "2026-08-04T12:52:59.152Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5e/5d/3a3c5db594cf2e5386a8a0365b884279d48ad2d17665e0011700dccadefa/oarepo_vocabularies-9.0.1-py3-none-any.whl", hash = "sha256:ea9d6ff576cbc0cc50958bde33e751d2ee6ca076288dc3782cbec1016cabf5a0", size = 186508, upload-time = "2026-06-24T11:31:31.525Z" },
+    { url = "https://files.pythonhosted.org/packages/04/2c/534dbd95b4f1969683150ef6df8c8b29a7aaf3c7bd9af6dc8f4709dd5174/oarepo_vocabularies-9.1.0-py3-none-any.whl", hash = "sha256:005ca066818cf7cf5f9768f1697631a42478611c4573d4d882b3479739ec3861", size = 187499, upload-time = "2026-08-04T12:52:57.934Z" },
 ]
 
 [[package]]
