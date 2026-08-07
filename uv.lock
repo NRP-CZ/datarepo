@@ -3654,14 +3654,14 @@ wheels = [
 
 [[package]]
 name = "oarepo-config"
-version = "1.1.1"
+version = "1.1.2"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "oarepo", extra = ["tests"] },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f9/7d/814cad6c5f2f581f53842406c4ff23522cbfa23947b3e79946796c5e2f4f/oarepo_config-1.1.1.tar.gz", hash = "sha256:c76969bf5234ebf725e884ad9691e32190f793e4b3a3e98f5a27360ee69f0b9d", size = 39230, upload-time = "2026-07-28T08:32:24.166Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a2/0f/b8b6e180c8cc53ec183014dbe632e2cc5024fc88a48f0d8352943df13765/oarepo_config-1.1.2.tar.gz", hash = "sha256:9f5be43cddf7fbd30fd9b103f9ea9a36c116fe8911d9c6c3eac20d92c637355a", size = 39270, upload-time = "2026-08-07T11:08:47.861Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8f/bc/91ee3739d62dd4044a9fb964f858e674f9ea19864954902c1500fbee342e/oarepo_config-1.1.1-py3-none-any.whl", hash = "sha256:e55cc1b2468d7bc7339048438f76cf24aa2406a4e7e1383fdf0ea8463d2e661b", size = 53643, upload-time = "2026-07-28T08:32:23.19Z" },
+    { url = "https://files.pythonhosted.org/packages/0b/b8/9432e13869abbc77a1565222b68ccc1137ffaa179674eea8466bbc146ab1/oarepo_config-1.1.2-py3-none-any.whl", hash = "sha256:5691dd8ff04f2236f7074a115965b2cb832c303331b4c1c3c4da0f817cfa5d78", size = 53687, upload-time = "2026-08-07T11:08:46.984Z" },
 ]
 
 [[package]]
