@@ -16,7 +16,7 @@ import {
 const { rootEl, config, ...rest } = parseFormAppConfig();
 const recordSerializer = new CCMMDepositRecordSerializer(
   config.default_locale,
-  config.custom_fields.vocabularies,
+  config.custom_fields.vocabularies
 );
 
 const parametrizeEDTFSingleDatePicker = parametrize(EDTFSingleDatePicker, {
@@ -77,5 +77,5 @@ ReactDOM.render(
     componentOverrides={componentOverrides}
     useWizardForm
   />,
-  rootEl,
+  rootEl
 );

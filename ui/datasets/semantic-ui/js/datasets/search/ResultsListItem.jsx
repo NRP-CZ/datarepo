@@ -30,7 +30,7 @@ function getDescription(result) {
   const additionalDescriptions = _get(
     result,
     "metadata.additional_descriptions",
-    [],
+    []
   );
   if (additionalDescriptions.length === 0) {
     return "";
@@ -40,13 +40,13 @@ function getDescription(result) {
   const selectedLanguage = i18next.language === "cs" ? "CES" : "ENG";
   // Try to find description matching current language
   const matchByLang = additionalDescriptions.find(
-    (d) => d?.lang?.id?.toLowerCase() === selectedLanguage.toLowerCase(),
+    (d) => d?.lang?.id?.toLowerCase() === selectedLanguage.toLowerCase()
   );
   if (matchByLang) return matchByLang.description;
 
   // Fallback to English
   const matchByEng = additionalDescriptions.find(
-    (d) => d?.lang?.id?.toLowerCase() === "eng",
+    (d) => d?.lang?.id?.toLowerCase() === "eng"
   );
   if (matchByEng) return matchByEng.description;
 
@@ -142,7 +142,10 @@ const ResultsListItem = ({ result, appName }) => {
           </Item.Header>
 
           <Item className="creatibutors rel-mb-1">
-            <SearchItemCreators creators={allCreatibutors} othersLink={viewLink} />
+            <SearchItemCreators
+              creators={allCreatibutors}
+              othersLink={viewLink}
+            />
           </Item>
 
           {subjects.length > 0 && (

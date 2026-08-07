@@ -16,7 +16,7 @@ const SearchAppFacetsWithTitle = parametrize(SearchAppFacets, {
 
 const SearchAppLayoutWithTip = parametrize(SearchAppLayout, {
   searchBarTip: i18next.t(
-    "TIP: Most of the content is in English. You will get more results by using English terms.",
+    "TIP: Most of the content is in English. You will get more results by using English terms."
   ),
 });
 
