@@ -386,3 +386,6 @@ vite.config.ts.timestamp-*
 *.mo
 
 .zed
+
+# top-level node_modules
+/node_modules
