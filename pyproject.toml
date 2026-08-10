@@ -7,6 +7,7 @@ authors = []
 dependencies = [
    "oarepo[s3,rdm]>=14.2.1rc2,<15.0.0",
    "oarepo-app[ccmm-development,development,llm-development]>=6.4.0rc3,<7.0.0",
+   "oarepo-kerberos>=0.1.0,<1.0.0",
 ]
 requires-python = ">=3.14,<3.15"
 
