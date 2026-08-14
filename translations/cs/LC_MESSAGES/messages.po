@@ -24,8 +24,8 @@ msgstr "Čeština"
 
 #: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:35
 #: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:31
-msgid "CESNET Data Repository"
-msgstr "Datový repozitář CESNET"
+msgid "Data Catch-all Repository"
+msgstr "Datový Catch-all Repozitář"
 
 #: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:36
 msgid "Catch-all repository for Czech scientific data"

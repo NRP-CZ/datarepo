@@ -1,4 +1,4 @@
-# CESNET Data Repository
+# Data Catch-all Repository
 
 ## Repository layout
 

@@ -63,7 +63,7 @@ msgid "Show %(count)d more"
 msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:31
-msgid "CESNET Data Repository"
+msgid "Data Catch-all Repository"
 msgstr ""
 
 #: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:35
