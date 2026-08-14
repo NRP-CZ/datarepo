@@ -4,7 +4,7 @@ javascript_package_manager = pnpm
 python_package_manager = uv
 
 [cookiecutter]
-project_name = CESNET Data Repository
+project_name = Data Catch-all Repository
 project_shortname = datarepo
 package_name = datarepo
 project_site = datarepo.com
