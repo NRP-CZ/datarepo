@@ -8,7 +8,12 @@ dependencies = [
    "oarepo[s3,rdm]>=14.2.1rc2,<15.0.0",
    "oarepo-app[ccmm-development,development,llm-development]>=6.4.0rc3,<7.0.0",
    "oarepo-kerberos>=0.1.0,<1.0.0",
-   "pygelf>=0.4.0,<1.0.0"
+   "pygelf>=0.4.0,<1.0.0",
+   # overriden installation
+   "oarepo-oidc-einfra",
+   "oarepo-communities",
+   "oarepo-config",
+   "oarepo-requests",
 ]
 requires-python = ">=3.14,<3.15"
 
@@ -16,6 +21,7 @@ requires-python = ">=3.14,<3.15"
 i18n = "i18n.webpack:theme"
 components = "ui.components.webpack:theme"
 ui_datasets = "ui.datasets.webpack:theme"
+ui_pages = "ui.pages.webpack:theme"
 
 [project.entry-points."invenio_i18n.translations"]
 translations = "i18n"
@@ -25,6 +31,7 @@ repository = "common:alembic"
 
 [project.entry-points."invenio_base.blueprints"]
 ui_datasets = "ui.datasets:create_blueprint"
+pages_ui = "ui.pages:create_blueprint"
 
 [project.entry-points."invenio_base.finalize_app"]
 ui_datasets = "ui.datasets:finalize_app"
@@ -48,5 +55,16 @@ requires = [
 ]
 build-backend = "uv_build"
 
+[tool.uv]
+override-dependencies = [
+    "oarepo-config>=2.0.0a1,<3.0.0",
+    "oarepo-communities>=12.0.0a1,<13.0.0",
+    "oarepo-oidc-einfra>=2.0.0a1,<3.0.0",
+]
+
 [tool.uv.sources]
 # Example: oarepo-requests = { path = "/Users/m/w/rdm-13/oarepo-requests", editable=true }
+oarepo-oidc-einfra = { git = "https://github.com/oarepo/oarepo-oidc-einfra", branch = "feat-remove-einfra-integraton" }
+oarepo-communities = { git = "https://github.com/oarepo/oarepo-communities", branch = "remove-our-oidc-related-ui" }
+oarepo-config = { git = "https://github.com/oarepo/oarepo-config", branch = "feat/community-membership-requests" }
+oarepo-requests = { git = "https://github.com/oarepo/oarepo-requests", branch = "feat-remove-einfra-integraton" }

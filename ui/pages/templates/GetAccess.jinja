@@ -1,0 +1,91 @@
+{% extends "page.html" %}
+
+{% block css %}
+  {{ super() }}
+  <style>
+    .get-access-panel {
+      height: 100%;
+    }
+    #standalone_submitter_application {
+      text-align: center;
+      padding-top: 1em;
+    }
+  </style>
+{% endblock css %}
+
+{% block javascript %}
+  {{ super() }}
+  {{ webpack['get_access.js'] }}
+{% endblock javascript %}
+
+{% block page_body %}
+  <div class="ui main container rel-mt-3 rel-mb-3">
+    <h1>{{ _("Getting Permission to Create Records") }}</h1>
+
+    <p>{{ _("To create records, you must obtain write access either:") }}</p>
+    <ul>
+      <li>{{ _("as an individual submitter, referred to as a standalone depositor; or") }}</li>
+      <li>{{ _("through a community role that permits record submission.") }}</li>
+    </ul>
+
+    <p>
+      {{ _("Write access is intended primarily for employees and students of eligible academic and research
+      institutions in the Czech Republic, their international collaborators, and other approved users whose
+      intended use is consistent with the mission of the repository.") }}
+    </p>
+
+    <p>
+      {{ _("During the application process, you may be asked to describe your intended use of the repository
+      and justify your request for access.") }}
+    </p>
+
+    <div class="ui two column stackable equal height grid rel-mt-2">
+      <div class="column">
+        <div class="ui segment get-access-panel">
+          <h2>{{ _("Becoming a Standalone Depositor") }}</h2>
+
+          <p><b>{{ _("To apply:") }}</b></p>
+          <div class="ui ordered list">
+            <div class="item">{{ _("Click on the button below and submit the application form.") }}</div>
+            <div class="item">
+              {{ _("Wait for your application to be reviewed. Applications may require manual evaluation,
+              so approval may not be immediate. You will receive an email notification when the
+              application has been processed.") }}
+            </div>
+            <div class="item">
+              {{ _("After your application is approved, sign in to the Data Catch-all Repository and
+              create your first record.") }}
+            </div>
+          </div>
+
+          <div id="standalone_submitter_application">
+            <!-- a react application is integrated here -->
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="ui segment get-access-panel">
+          <h2>{{ _("Getting Access Through a Community") }}</h2>
+
+          <h3>{{ _("Open membership communities") }}</h3>
+          <p><b>{{ _("To apply:") }}</b></p>
+          <div class="ui ordered list">
+            <li>{{ _("Navigate to the community page") }}</li>
+            <li>{{ _("Click on the \"Request Membership\" button") }}</li>
+            <li>{{ _("Fill in the form, stating the reason for joining") }}</li>
+            <li>{{ _("You will receive an email when the invitation is accepted/denied") }}</li>
+            <li>{{ _("The status of the request is visible on your Dashboard/requests page") }}</li>
+          </div>
+
+          <h3>{{ _("Closed membership communities") }}</h3>
+          <p>{{ _("For these communities, you can not apply online, you need to contact the community manager directly.
+            If you do not already have a contact email address,
+            look at the community about page or contact us on
+            the support email <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>.") }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
