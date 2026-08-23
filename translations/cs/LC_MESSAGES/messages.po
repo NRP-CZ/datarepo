@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-08-17 18:37+0200\n"
+"POT-Creation-Date: 2026-08-23 16:17+0200\n"
 "PO-Revision-Date: 2026-06-18 10:43+0200\n"
 "Last-Translator: \n"
 "Language: cs\n"
@@ -18,112 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:24
-msgid "Czech"
-msgstr "Čeština"
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:34
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/footer.html:31
-msgid "Data Catch-all Repository"
-msgstr "Datový Catch-all Repozitář"
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:35
-msgid "Catch-all repository for Czech scientific data"
-msgstr "Univerzální repozitář pro česká vědecká data"
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:47
-msgid "Community owner"
-msgstr "Vlastník komunity"
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:48
-msgid "Can manage community."
-msgstr "Může spravovat komunitu."
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:56
-msgid "Curator"
-msgstr "Kurátor"
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:57
-msgid "Can curate records."
-msgstr "Může spravovat záznamy"
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:64
-msgid "Submitter"
-msgstr "Vkladatel"
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:65
-msgid "Can submit records to the community."
-msgstr "Může odesílat záznamy do komunity."
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:71
-#, fuzzy
-msgid "Reader"
-msgstr "Zobrazit více"
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:72
-msgid "Community member with read permissions."
-msgstr "Člen komunity s oprávněním ke čtení."
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:87
-msgid "Default Community Workflow"
-msgstr "Výchozí schvalovací proces komunity"
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:228
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:234
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:241
-msgid "DOI"
-msgstr "DOI"
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:254
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:262
-msgid "Concept DOI"
-msgstr "Koncepční DOI."
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:279
-msgid "Parent record id"
-msgstr "ID nadřazeného záznamu."
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:280
-msgid "Organizational Unit ID"
-msgstr "ID organizační jednotky."
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:282
-msgid "External ID (non-standardized)"
-msgstr "Externí identifikátor (nestandardizovaný)."
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:286
-msgid "New Zealand Business Number"
-msgstr "Novozélandské obchodní číslo"
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:290
-msgid "ICO"
-msgstr "IČO"
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:299
-msgid "Crossref"
-msgstr "Crossref"
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:340
-msgid "NMA"
-msgstr ""
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/invenio.cfg:344
-msgid "Frascati"
-msgstr ""
-
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/datasets/just_for_translations.py:4
+#: datasets/just_for_translations.py:4
 msgid "metadata/languages.label"
 msgstr "Jazyky"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/datasets/just_for_translations.py:5
+#: datasets/just_for_translations.py:5
 msgid "metadata/creators/person_or_org/name.label"
 msgstr "Autor"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/datasets/just_for_translations.py:6
+#: datasets/just_for_translations.py:6
 msgid "metadata/subjects/subject.label"
 msgstr "Klíčová slova"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/footer.html:35
+#: templates/footer.html:31
+msgid "Data Catch-all Repository"
+msgstr "Datový Catch-all Repozitář"
+
+#: templates/footer.html:35
 #, python-format
 msgid ""
 "\n"
@@ -136,198 +47,292 @@ msgstr ""
 "platforma pro výzkumná data</a> (CZ.02.01.01/00/23_014/0008787).\n"
 "        "
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/footer.html:46
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/footer.html:47
+#: templates/footer.html:46 templates/footer.html:47
 msgid "EU, MINISTRY OF EDUCATION YOUTH AND SPORTS and NRP project"
 msgstr "EU, MINISTERSTVO ŠKOLSTVÍ, MLÁDEŽE A TĚLOVÝCHOVY a projekt NRP"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/footer.html:53
+#: templates/footer.html:53
 msgid "Resources"
 msgstr "Zdroje"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/footer.html:55
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/ui/datasets/__init__.py:74
+#: templates/footer.html:55 ui/datasets/__init__.py:74
 msgid "Documentation"
 msgstr "Dokumentace"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/footer.html:56
+#: templates/footer.html:56
 msgid "NRP project"
 msgstr "Projekt NRP"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/footer.html:57
+#: templates/footer.html:57
 msgid "Personal data processing information"
 msgstr "Informace o zpracování osobních údajů"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/footer.html:62
+#: templates/footer.html:62
 msgid "Contact"
 msgstr "Kontakt"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/footer.html:65
+#: templates/footer.html:65
 msgid "User support"
 msgstr "Uživatelská podpora"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/footer.html:67
+#: templates/footer.html:67
 msgid "Version"
 msgstr "Verze"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/frontpage.html:28
+#: templates/frontpage.html:28
 msgid "Multi-discipline data repository"
 msgstr "Repozitář multidisciplinárních dat"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/frontpage.html:41
+#: templates/frontpage.html:41
 msgid "Search..."
 msgstr "Hledat..."
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/frontpage.html:46
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/frontpage.html:49
+#: templates/frontpage.html:46 templates/frontpage.html:49
 msgid "Search"
 msgstr "Hledat"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/frontpage.html:61
+#: templates/frontpage.html:61
 msgid "Show all datasets"
 msgstr "Zobrazit všechny datasety"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/frontpage.html:72
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/frontpage.html:76
+#: templates/frontpage.html:72 templates/frontpage.html:76
 msgid "Upload dataset"
 msgstr "Nahrát dataset"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/frontpage.html:73
+#: templates/frontpage.html:73
 msgid "Upload your data to our catch-all repository"
 msgstr "Nahrajte svá data do našeho univerzálního repozitáře"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/frontpage.html:76
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/ui/datasets/__init__.py:63
+#: templates/frontpage.html:76 ui/datasets/__init__.py:63
 msgid "Get access"
 msgstr "Získat přístup"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/frontpage.html:81
+#: templates/frontpage.html:81
 msgid "How does a repository work?"
 msgstr "Jak repozitář funguje?"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/frontpage.html:82
+#: templates/frontpage.html:82
 msgid "Would you like to know more about where your data is being stored?"
 msgstr "Chcete vědět více o tom, kde jsou vaše data uložena?"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/frontpage.html:85
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/ui/datasets/__init__.py:69
+#: templates/frontpage.html:85 ui/datasets/__init__.py:69
 msgid "About repository"
 msgstr "O repozitáři"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/frontpage.html:97
+#: templates/frontpage.html:97
 msgid "EU and Ministry of Education, Youth and Sports of the Czech Republic"
 msgstr "EU a Ministerstvo školství, mládeže a tělovýchovy České republiky"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/header.html:11
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/header.html:17
+#: templates/header.html:11 templates/header.html:17
 msgid "home"
 msgstr "domů"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/header.html:43
+#: templates/header.html:43
 msgid "My dashboard"
 msgstr "Můj přehled"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/header.html:49
+#: templates/header.html:49
 msgid "Requests"
 msgstr "Žádosti"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/header.html:51
+#: templates/header.html:51
 msgid "Inbox"
 msgstr "Doručené"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:16
+#: templates/oarepo/invenio_app_rdm/header_login.html:16
 msgid "Login"
 msgstr "Přihlášení"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:19
+#: templates/oarepo/invenio_app_rdm/header_login.html:19
 msgid "Log in"
 msgstr "Přihlásit se"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:24
+#: templates/oarepo/invenio_app_rdm/header_login.html:24
 msgid "Sign up"
 msgstr "Zaregistrovat se"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:42
+#: templates/oarepo/invenio_app_rdm/header_login.html:42
 msgid "Quick create"
 msgstr "Rychlé vytvoření"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:58
+#: templates/oarepo/invenio_app_rdm/header_login.html:58
 msgid "Actions"
 msgstr "Akce"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:79
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:120
+#: templates/oarepo/invenio_app_rdm/header_login.html:79
+#: templates/oarepo/invenio_app_rdm/header_login.html:120
 msgid "My account"
 msgstr "Můj účet"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:110
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:113
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:144
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:147
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:154
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:157
+#: templates/oarepo/invenio_app_rdm/header_login.html:110
+#: templates/oarepo/invenio_app_rdm/header_login.html:113
+#: templates/oarepo/invenio_app_rdm/header_login.html:144
+#: templates/oarepo/invenio_app_rdm/header_login.html:147
+#: templates/oarepo/invenio_app_rdm/header_login.html:154
+#: templates/oarepo/invenio_app_rdm/header_login.html:157
 msgid "Log out"
 msgstr "Odhlásit se"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
 msgid "Opens in new tab"
 msgstr "Otevře se v nové kartě"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
 msgid "Read more"
 msgstr "Zobrazit více"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:24
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:24
 msgid "Rights"
 msgstr "Práva"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:28
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:28
 msgid "License"
 msgstr "Licence"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:55
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:55
 msgid "Close"
 msgstr "Zavřít"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:58
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:58
 msgid "No further description."
 msgstr "Žádný další popis."
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:67
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:67
 msgid "Copyright"
 msgstr "Autorská práva"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/ui/datasets/__init__.py:57
+#: ui/datasets/__init__.py:57
 msgid "New Dataset"
 msgstr "Nový dataset"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:26
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:26
 msgid "and"
 msgstr "a"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:51
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:51
 msgid "Untitled resource"
 msgstr "Nepojmenovaný zdroj"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:61
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:61
 msgid "online"
 msgstr "online"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:65
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:65
 msgid "Available at"
 msgstr "Dostupné na"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:90
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:91
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:90
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:91
 msgid "Related resources"
 msgstr "Související zdroje"
 
-#: /Users/m/Workspaces/repositories/feat-convert-old-catchall/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:103
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:103
 #, python-format
 msgid "Show %(count)d more"
 msgstr "Zobrazit dalších %(count)d"
+
+#: ui/pages/templates/GetAccess.jinja:23
+msgid "Getting Permission to Create Records"
+msgstr "Získání oprávnění k vytváření záznamů"
+
+#: ui/pages/templates/GetAccess.jinja:25
+msgid "To create records, you must obtain write access either:"
+msgstr "Pro vytváření záznamů musíte získat oprávnění k zápisu, a to buď:"
+
+#: ui/pages/templates/GetAccess.jinja:27
+msgid "as an individual submitter, referred to as a standalone depositor; or"
+msgstr "jako individuální vkladatel, označovaný jako samostatný vkladatel; nebo"
+
+#: ui/pages/templates/GetAccess.jinja:28
+msgid "through a community role that permits record submission."
+msgstr "prostřednictvím role v komunitě, která umožňuje vkládání záznamů."
+
+#: ui/pages/templates/GetAccess.jinja:32
+msgid ""
+"Write access is intended primarily for employees and students of eligible"
+" academic and research\n"
+"      institutions in the Czech Republic, their international "
+"collaborators, and other approved users whose\n"
+"      intended use is consistent with the mission of the repository."
+msgstr "Oprávnění k zápisu je určeno především zaměstnancům a studentům způsobilých akademických a výzkumných institucí v České republice, jejich zahraničním spolupracovníkům a dalším schváleným uživatelům, jejichž záměr využití je v souladu s posláním repozitáře."
+
+#: ui/pages/templates/GetAccess.jinja:38
+msgid ""
+"During the application process, you may be asked to describe your "
+"intended use of the repository\n"
+"      and justify your request for access."
+msgstr "Během procesu žádosti můžete být požádáni o popis zamýšleného využití repozitáře a zdůvodnění vaší žádosti o přístup."
+
+#: ui/pages/templates/GetAccess.jinja:45
+msgid "Becoming a Standalone Depositor"
+msgstr "Jak se stát samostatným vkladatelem"
+
+#: ui/pages/templates/GetAccess.jinja:47 ui/pages/templates/GetAccess.jinja:72
+msgid "To apply:"
+msgstr "Jak požádat:"
+
+#: ui/pages/templates/GetAccess.jinja:49
+msgid "Click on the button below and submit the application form."
+msgstr "Klikněte na tlačítko níže a odešlete přihlašovací formulář."
+
+#: ui/pages/templates/GetAccess.jinja:51
+msgid ""
+"Wait for your application to be reviewed. Applications may require manual"
+" evaluation,\n"
+"              so approval may not be immediate. You will receive an email"
+" notification when the\n"
+"              application has been processed."
+msgstr "Počkejte, až bude vaše žádost posouzena. Žádosti mohou vyžadovat ruční vyhodnocení, proto schválení nemusí proběhnout okamžitě. Jakmile bude žádost zpracována, obdržíte e-mailové oznámení."
+
+#: ui/pages/templates/GetAccess.jinja:56
+msgid ""
+"After your application is approved, sign in to the Data Catch-all "
+"Repository and\n"
+"              create your first record."
+msgstr "Po schválení žádosti se přihlaste do Data Catch-all Repository a vytvořte svůj první záznam."
+
+#: ui/pages/templates/GetAccess.jinja:69
+msgid "Getting Access Through a Community"
+msgstr "Získání přístupu prostřednictvím komunity"
+
+#: ui/pages/templates/GetAccess.jinja:71
+msgid "Open membership communities"
+msgstr "Komunity s otevřeným členstvím"
+
+#: ui/pages/templates/GetAccess.jinja:74
+msgid "Navigate to the community page"
+msgstr "Přejděte na stránku komunity"
+
+#: ui/pages/templates/GetAccess.jinja:75
+msgid "Click on the \"Request Membership\" button"
+msgstr "Klikněte na tlačítko „Požádat o členství“"
+
+#: ui/pages/templates/GetAccess.jinja:76
+msgid "Fill in the form, stating the reason for joining"
+msgstr "Vyplňte formulář a uveďte důvod, proč se chcete připojit"
+
+#: ui/pages/templates/GetAccess.jinja:77
+msgid "You will receive an email when your request is approved or rejected."
+msgstr "Jakmile bude vaše žádost schválena nebo zamítnuta, obdržíte e-mail."
+
+#: ui/pages/templates/GetAccess.jinja:78
+msgid "You can track the status of your request on your Dashboard under Requests."
+msgstr "Stav své žádosti můžete sledovat na své Nástěnce v sekci Žádosti."
+
+#: ui/pages/templates/GetAccess.jinja:81
+msgid "Closed membership communities"
+msgstr "Komunity s uzavřeným členstvím"
+
+#: ui/pages/templates/GetAccess.jinja:82
+msgid ""
+"You cannot apply to these communities online; you need to contact the "
+"community manager directly.\n"
+"            If you do not already have a contact email address,\n"
+"            check the community's About page or contact us at\n"
+"            <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
+msgstr "K těmto komunitám se nelze přihlásit online, musíte kontaktovat přímo správce komunity. Pokud nemáte k dispozici kontaktní e-mailovou adresu, podívejte se na stránku komunity „O nás“ nebo nás kontaktujte na <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
 
 #~ msgid "APA"
 #~ msgstr "APA"
@@ -457,4 +462,64 @@ msgstr "Zobrazit dalších %(count)d"
 
 #~ msgid "By submitting, you agree to the community's <2>curation policy</2>."
 #~ msgstr "Odesláním souhlasíte s <2>kurátorskou politikou</2> komunity."
+
+#~ msgid "Czech"
+#~ msgstr "Čeština"
+
+#~ msgid "Catch-all repository for Czech scientific data"
+#~ msgstr "Univerzální repozitář pro česká vědecká data"
+
+#~ msgid "Community owner"
+#~ msgstr "Vlastník komunity"
+
+#~ msgid "Can manage community."
+#~ msgstr "Může spravovat komunitu."
+
+#~ msgid "Curator"
+#~ msgstr "Kurátor"
+
+#~ msgid "Can curate records."
+#~ msgstr "Může spravovat záznamy"
+
+#~ msgid "Submitter"
+#~ msgstr "Vkladatel"
+
+#~ msgid "Reader"
+#~ msgstr "Zobrazit více"
+
+#~ msgid "Community member with read permissions."
+#~ msgstr "Člen komunity s oprávněním ke čtení."
+
+#~ msgid "Default Community Workflow"
+#~ msgstr "Výchozí schvalovací proces komunity"
+
+#~ msgid "DOI"
+#~ msgstr "DOI"
+
+#~ msgid "Concept DOI"
+#~ msgstr "Koncepční DOI."
+
+#~ msgid "Parent record id"
+#~ msgstr "ID nadřazeného záznamu."
+
+#~ msgid "Organizational Unit ID"
+#~ msgstr "ID organizační jednotky."
+
+#~ msgid "External ID (non-standardized)"
+#~ msgstr "Externí identifikátor (nestandardizovaný)."
+
+#~ msgid "New Zealand Business Number"
+#~ msgstr "Novozélandské obchodní číslo"
+
+#~ msgid "ICO"
+#~ msgstr "IČO"
+
+#~ msgid "Crossref"
+#~ msgstr "Crossref"
+
+#~ msgid "NMA"
+#~ msgstr ""
+
+#~ msgid "Frascati"
+#~ msgstr ""
 
