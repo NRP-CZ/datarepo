@@ -26,7 +26,7 @@ repository = "common:alembic"
 
 [project.entry-points."invenio_base.blueprints"]
 ui_datasets = "ui.datasets:create_blueprint"
-pages_ui = "ui.pages:create_blueprint"
+ui_pages = "ui.pages:create_blueprint"
 
 [project.entry-points."invenio_base.finalize_app"]
 ui_datasets = "ui.datasets:finalize_app"
@@ -49,13 +49,6 @@ requires = [
     "uv_build>=0.8.7,<0.9.0",
 ]
 build-backend = "uv_build"
-
-# [tool.uv]
-# override-dependencies = [
-#     "oarepo-config>=2.0.0a1,<3.0.0",
-#     "oarepo-communities>=12.0.0a1,<13.0.0",
-#     "oarepo-oidc-einfra>=2.0.0a1,<3.0.0",
-# ]
 
 [tool.uv.sources]
 # Example: oarepo-requests = { path = "/Users/m/w/rdm-13/oarepo-requests", editable=true }
