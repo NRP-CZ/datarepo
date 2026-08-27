@@ -1,0 +1,510 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "id": "datst.8x58q-10t28"
+          }
+        },
+        {
+          "bool": {
+            "filter": [
+              {
+                "bool": {
+                  "should": [
+                    {
+                      "terms": {
+                        "parent.access.owned_by.user": [258]
+                      }
+                    },
+                    {
+                      "terms": {
+                        "parent.communities.ids": []
+                      }
+                    },
+                    {
+                      "terms": {
+                        "parent.access.grant_tokens": [
+                          "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.bWFuYWdl",
+                          "dXNlcg==.MjU4.bWFuYWdl",
+                          "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.bWFuYWdl"
+                        ]
+                      }
+                    },
+                    {
+                      "terms": {
+                        "parent.access.grant_tokens": [
+                          "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.ZWRpdA==",
+                          "dXNlcg==.MjU4.ZWRpdA==",
+                          "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.ZWRpdA=="
+                        ]
+                      }
+                    },
+                    {
+                      "terms": {
+                        "parent.access.grant_tokens": [
+                          "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.cHJldmlldw==",
+                          "dXNlcg==.MjU4.cHJldmlldw==",
+                          "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.cHJldmlldw=="
+                        ]
+                      }
+                    }
+                  ],
+                  "must": [
+                    {
+                      "term": {
+                        "has_draft": false
+                      }
+                    },
+                    {
+                      "bool": {
+                        "should": [
+                          {
+                            "bool": {
+                              "must": [
+                                {
+                                  "term": {
+                                    "deletion_status": "P"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "bool": {
+                              "must_not": [
+                                {
+                                  "exists": {
+                                    "field": "deletion_status"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "minimum_should_match": 1
+                      }
+                    }
+                  ],
+                  "minimum_should_match": 1
+                }
+              },
+              {
+                "term": {
+                  "parent.access.owned_by.user": 258
+                }
+              }
+            ],
+            "must": [
+              {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "$schema": "local://datasets-v1.1.0.json"
+                      }
+                    },
+                    {
+                      "bool": {
+                        "filter": [
+                          {
+                            "bool": {
+                              "should": [
+                                {
+                                  "bool": {
+                                    "should": [
+                                      {
+                                        "bool": {
+                                          "should": [
+                                            {
+                                              "terms": {
+                                                "parent.access.owned_by.user": [
+                                                  258
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "terms": {
+                                                "parent.communities.ids": []
+                                              }
+                                            },
+                                            {
+                                              "terms": {
+                                                "parent.access.grant_tokens": [
+                                                  "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.bWFuYWdl",
+                                                  "dXNlcg==.MjU4.bWFuYWdl",
+                                                  "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.bWFuYWdl"
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "terms": {
+                                                "parent.access.grant_tokens": [
+                                                  "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.ZWRpdA==",
+                                                  "dXNlcg==.MjU4.ZWRpdA==",
+                                                  "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.ZWRpdA=="
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "terms": {
+                                                "parent.access.grant_tokens": [
+                                                  "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.cHJldmlldw==",
+                                                  "dXNlcg==.MjU4.cHJldmlldw==",
+                                                  "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.cHJldmlldw=="
+                                                ]
+                                              }
+                                            }
+                                          ],
+                                          "must": [
+                                            {
+                                              "terms": {
+                                                "state": [
+                                                  "draft",
+                                                  "submitted",
+                                                  "approved",
+                                                  "revision_requested"
+                                                ]
+                                              }
+                                            }
+                                          ],
+                                          "minimum_should_match": 1
+                                        }
+                                      },
+                                      {
+                                        "bool": {
+                                          "should": [
+                                            {
+                                              "bool": {
+                                                "should": [
+                                                  {
+                                                    "terms": {
+                                                      "parent.access.owned_by.user": [
+                                                        258
+                                                      ]
+                                                    }
+                                                  },
+                                                  {
+                                                    "terms": {
+                                                      "parent.communities.ids": []
+                                                    }
+                                                  },
+                                                  {
+                                                    "terms": {
+                                                      "parent.access.grant_tokens": [
+                                                        "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.bWFuYWdl",
+                                                        "dXNlcg==.MjU4.bWFuYWdl",
+                                                        "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.bWFuYWdl"
+                                                      ]
+                                                    }
+                                                  },
+                                                  {
+                                                    "terms": {
+                                                      "parent.access.grant_tokens": [
+                                                        "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.ZWRpdA==",
+                                                        "dXNlcg==.MjU4.ZWRpdA==",
+                                                        "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.ZWRpdA=="
+                                                      ]
+                                                    }
+                                                  },
+                                                  {
+                                                    "terms": {
+                                                      "parent.access.grant_tokens": [
+                                                        "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.cHJldmlldw==",
+                                                        "dXNlcg==.MjU4.cHJldmlldw==",
+                                                        "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.cHJldmlldw=="
+                                                      ]
+                                                    }
+                                                  },
+                                                  {
+                                                    "terms": {
+                                                      "parent.access.grant_tokens": [
+                                                        "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.dmlldw==",
+                                                        "dXNlcg==.MjU4.dmlldw==",
+                                                        "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.dmlldw=="
+                                                      ]
+                                                    }
+                                                  },
+                                                  {
+                                                    "terms": {
+                                                      "parent.communities.ids": []
+                                                    }
+                                                  }
+                                                ],
+                                                "must": [
+                                                  {
+                                                    "match": {
+                                                      "access.record": "restricted"
+                                                    }
+                                                  }
+                                                ],
+                                                "minimum_should_match": 1
+                                              }
+                                            },
+                                            {
+                                              "match": {
+                                                "access.record": "public"
+                                              }
+                                            }
+                                          ],
+                                          "must": [
+                                            {
+                                              "terms": {
+                                                "state": ["published"]
+                                              }
+                                            }
+                                          ],
+                                          "minimum_should_match": 1
+                                        }
+                                      }
+                                    ],
+                                    "must": [
+                                      {
+                                        "bool": {
+                                          "should": [
+                                            {
+                                              "bool": {
+                                                "must_not": [
+                                                  {
+                                                    "exists": {
+                                                      "field": "parent.workflow"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "term": {
+                                                "parent.workflow": "individual"
+                                              }
+                                            }
+                                          ],
+                                          "minimum_should_match": 1
+                                        }
+                                      }
+                                    ],
+                                    "minimum_should_match": 1
+                                  }
+                                },
+                                {
+                                  "bool": {
+                                    "should": [
+                                      {
+                                        "bool": {
+                                          "should": [
+                                            {
+                                              "terms": {
+                                                "parent.access.owned_by.user": [
+                                                  258
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "terms": {
+                                                "parent.access.grant_tokens": [
+                                                  "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.bWFuYWdl",
+                                                  "dXNlcg==.MjU4.bWFuYWdl",
+                                                  "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.bWFuYWdl"
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "match_none": {}
+                                            },
+                                            {
+                                              "match_none": {}
+                                            },
+                                            {
+                                              "terms": {
+                                                "parent.access.grant_tokens": [
+                                                  "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.ZWRpdA==",
+                                                  "dXNlcg==.MjU4.ZWRpdA==",
+                                                  "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.ZWRpdA=="
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "terms": {
+                                                "parent.access.grant_tokens": [
+                                                  "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.cHJldmlldw==",
+                                                  "dXNlcg==.MjU4.cHJldmlldw==",
+                                                  "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.cHJldmlldw=="
+                                                ]
+                                              }
+                                            }
+                                          ],
+                                          "must": [
+                                            {
+                                              "terms": {
+                                                "state": [
+                                                  "draft",
+                                                  "submitted",
+                                                  "approved",
+                                                  "revision_requested"
+                                                ]
+                                              }
+                                            }
+                                          ],
+                                          "minimum_should_match": 1
+                                        }
+                                      },
+                                      {
+                                        "bool": {
+                                          "should": [
+                                            {
+                                              "bool": {
+                                                "should": [
+                                                  {
+                                                    "terms": {
+                                                      "parent.access.owned_by.user": [
+                                                        258
+                                                      ]
+                                                    }
+                                                  },
+                                                  {
+                                                    "terms": {
+                                                      "parent.access.grant_tokens": [
+                                                        "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.bWFuYWdl",
+                                                        "dXNlcg==.MjU4.bWFuYWdl",
+                                                        "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.bWFuYWdl"
+                                                      ]
+                                                    }
+                                                  },
+                                                  {
+                                                    "match_none": {}
+                                                  },
+                                                  {
+                                                    "match_none": {}
+                                                  },
+                                                  {
+                                                    "terms": {
+                                                      "parent.access.grant_tokens": [
+                                                        "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.ZWRpdA==",
+                                                        "dXNlcg==.MjU4.ZWRpdA==",
+                                                        "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.ZWRpdA=="
+                                                      ]
+                                                    }
+                                                  },
+                                                  {
+                                                    "terms": {
+                                                      "parent.access.grant_tokens": [
+                                                        "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.cHJldmlldw==",
+                                                        "dXNlcg==.MjU4.cHJldmlldw==",
+                                                        "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.cHJldmlldw=="
+                                                      ]
+                                                    }
+                                                  },
+                                                  {
+                                                    "terms": {
+                                                      "parent.access.grant_tokens": [
+                                                        "c3lzdGVtX3JvbGU=.YXV0aGVudGljYXRlZF91c2Vy.dmlldw==",
+                                                        "dXNlcg==.MjU4.dmlldw==",
+                                                        "c3lzdGVtX3JvbGU=.YW55X3VzZXI=.dmlldw=="
+                                                      ]
+                                                    }
+                                                  },
+                                                  {
+                                                    "match_none": {}
+                                                  },
+                                                  {
+                                                    "match_none": {}
+                                                  }
+                                                ],
+                                                "must": [
+                                                  {
+                                                    "match": {
+                                                      "access.record": "restricted"
+                                                    }
+                                                  }
+                                                ],
+                                                "minimum_should_match": 1
+                                              }
+                                            },
+                                            {
+                                              "match": {
+                                                "access.record": "public"
+                                              }
+                                            }
+                                          ],
+                                          "must": [
+                                            {
+                                              "terms": {
+                                                "state": ["published"]
+                                              }
+                                            }
+                                          ],
+                                          "minimum_should_match": 1
+                                        }
+                                      }
+                                    ],
+                                    "must": [
+                                      {
+                                        "term": {
+                                          "parent.workflow": "community"
+                                        }
+                                      }
+                                    ],
+                                    "minimum_should_match": 1
+                                  }
+                                }
+                              ],
+                              "must": [
+                                {
+                                  "term": {
+                                    "has_draft": false
+                                  }
+                                },
+                                {
+                                  "bool": {
+                                    "should": [
+                                      {
+                                        "bool": {
+                                          "must": [
+                                            {
+                                              "term": {
+                                                "deletion_status": "P"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "bool": {
+                                          "must_not": [
+                                            {
+                                              "exists": {
+                                                "field": "deletion_status"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    "minimum_should_match": 1
+                                  }
+                                }
+                              ],
+                              "minimum_should_match": 1
+                            }
+                          },
+                          {
+                            "term": {
+                              "parent.access.owned_by.user": 258
+                            }
+                          }
+                        ],
+                        "minimum_should_match": "0<1"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "minimum_should_match": "0<1"
+          }
+        }
+      ]
+    }
+  }
+}

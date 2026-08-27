@@ -7,414 +7,332 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-01 10:15+0200\n"
+"POT-Creation-Date: 2026-08-23 16:17+0200\n"
 "PO-Revision-Date: 2026-06-18 10:43+0200\n"
 "Last-Translator: \n"
-"Language-Team: cs <LL@li.org>\n"
 "Language: cs\n"
+"Language-Team: cs <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:25
-msgid "Czech"
-msgstr "Čeština"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:35
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:31
-msgid "Data Catch-all Repository"
-msgstr "Datový Catch-all Repozitář"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:36
-msgid "Catch-all repository for Czech scientific data"
-msgstr "Univerzální repozitář pro česká vědecká data"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:48
-msgid "Community owner"
-msgstr "Vlastník komunity"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:49
-msgid "Can manage community."
-msgstr "Může spravovat komunitu."
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:57
-msgid "Curator"
-msgstr "Kurátor"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:58
-msgid "Can curate records."
-msgstr "Může spravovat záznamy"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:65
-msgid "Submitter"
-msgstr "Vkladatel"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:66
-msgid "Can submit records to the community."
-msgstr "Může odesílat záznamy do komunity."
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:72
-msgid "Member"
-msgstr "Člen"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:73
-msgid "Community member with read permissions."
-msgstr "Člen komunity s oprávněním ke čtení."
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:88
-msgid "Default Community Workflow"
-msgstr "Výchozí schvalovací proces komunity"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:247
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:253
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:260
-msgid "DOI"
-msgstr "DOI"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:273
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:281
-msgid "Concept DOI"
-msgstr "Koncepční DOI."
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:298
-msgid "Parent record id"
-msgstr "ID nadřazeného záznamu."
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:299
-msgid "Organizational Unit ID"
-msgstr "ID organizační jednotky."
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:301
-msgid "External ID (non-standardized)"
-msgstr "Externí identifikátor (nestandardizovaný)."
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:305
-msgid "New Zealand Business Number"
-msgstr "Novozélandské obchodní číslo"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:309
-msgid "ICO"
-msgstr "IČO"
-
-#: /Users/dusanstojanovic/Projects/datarepo/invenio.cfg:318
-msgid "Crossref"
-msgstr "Crossref"
-
-#: /Users/dusanstojanovic/Projects/datarepo/datasets/just_for_translations.py:4
+#: datasets/just_for_translations.py:4
 msgid "metadata/languages.label"
 msgstr "Jazyky"
 
-#: /Users/dusanstojanovic/Projects/datarepo/datasets/just_for_translations.py:5
+#: datasets/just_for_translations.py:5
 msgid "metadata/creators/person_or_org/name.label"
 msgstr "Autor"
 
-#: /Users/dusanstojanovic/Projects/datarepo/datasets/just_for_translations.py:6
+#: datasets/just_for_translations.py:6
 msgid "metadata/subjects/subject.label"
 msgstr "Klíčová slova"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:35
+#: templates/footer.html:31
+msgid "Data Catch-all Repository"
+msgstr "Datový Catch-all Repozitář"
+
+#: templates/footer.html:35
 #, python-format
 msgid ""
 "\n"
-"        A part of the <a href=\"%(link)s\">National Repository Platform for Research Data</a> project (CZ.02.01.01/00/23_014/0008787).\n"
+"        A part of the <a href=\"%(link)s\">National Repository Platform "
+"for Research Data</a> project (CZ.02.01.01/00/23_014/0008787).\n"
 "        "
 msgstr ""
 "\n"
-"        Součást projektu <a href=\"%(link)s\">Národní repozitářová platforma pro výzkumná data</a> (CZ.02.01.01/00/23_014/0008787).\n"
+"        Součást projektu <a href=\"%(link)s\">Národní repozitářová "
+"platforma pro výzkumná data</a> (CZ.02.01.01/00/23_014/0008787).\n"
 "        "
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:46
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:47
+#: templates/footer.html:46 templates/footer.html:47
 msgid "EU, MINISTRY OF EDUCATION YOUTH AND SPORTS and NRP project"
 msgstr "EU, MINISTERSTVO ŠKOLSTVÍ, MLÁDEŽE A TĚLOVÝCHOVY a projekt NRP"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:53
+#: templates/footer.html:53
 msgid "Resources"
 msgstr "Zdroje"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:55
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:74
+#: templates/footer.html:55 ui/datasets/__init__.py:74
 msgid "Documentation"
 msgstr "Dokumentace"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:56
+#: templates/footer.html:56
 msgid "NRP project"
 msgstr "Projekt NRP"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:57
+#: templates/footer.html:57
 msgid "Personal data processing information"
 msgstr "Informace o zpracování osobních údajů"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:62
+#: templates/footer.html:62
 msgid "Contact"
 msgstr "Kontakt"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:65
+#: templates/footer.html:65
 msgid "User support"
 msgstr "Uživatelská podpora"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/footer.html:67
+#: templates/footer.html:67
 msgid "Version"
 msgstr "Verze"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:28
+#: templates/frontpage.html:28
 msgid "Multi-discipline data repository"
 msgstr "Repozitář multidisciplinárních dat"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:41
+#: templates/frontpage.html:41
 msgid "Search..."
 msgstr "Hledat..."
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:46
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:49
+#: templates/frontpage.html:46 templates/frontpage.html:49
 msgid "Search"
 msgstr "Hledat"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:61
-msgid "Zobrazit všechny datasety"
+#: templates/frontpage.html:61
+msgid "Show all datasets"
 msgstr "Zobrazit všechny datasety"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:72
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:76
+#: templates/frontpage.html:72 templates/frontpage.html:76
 msgid "Upload dataset"
 msgstr "Nahrát dataset"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:73
+#: templates/frontpage.html:73
 msgid "Upload your data to our catch-all repository"
 msgstr "Nahrajte svá data do našeho univerzálního repozitáře"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:76
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:63
+#: templates/frontpage.html:76 ui/datasets/__init__.py:63
 msgid "Get access"
 msgstr "Získat přístup"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:81
+#: templates/frontpage.html:81
 msgid "How does a repository work?"
 msgstr "Jak repozitář funguje?"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:82
+#: templates/frontpage.html:82
 msgid "Would you like to know more about where your data is being stored?"
 msgstr "Chcete vědět více o tom, kde jsou vaše data uložena?"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:85
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:69
+#: templates/frontpage.html:85 ui/datasets/__init__.py:69
 msgid "About repository"
 msgstr "O repozitáři"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:97
+#: templates/frontpage.html:97
 msgid "EU and Ministry of Education, Youth and Sports of the Czech Republic"
 msgstr "EU a Ministerstvo školství, mládeže a tělovýchovy České republiky"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:11
-#: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:17
+#: templates/header.html:11 templates/header.html:17
 msgid "home"
 msgstr "domů"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:43
+#: templates/header.html:43
 msgid "My dashboard"
 msgstr "Můj přehled"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:49
+#: templates/header.html:49
 msgid "Requests"
 msgstr "Žádosti"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/header.html:51
+#: templates/header.html:51
 msgid "Inbox"
 msgstr "Doručené"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:16
+#: templates/oarepo/invenio_app_rdm/header_login.html:16
 msgid "Login"
 msgstr "Přihlášení"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:19
+#: templates/oarepo/invenio_app_rdm/header_login.html:19
 msgid "Log in"
 msgstr "Přihlásit se"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:24
+#: templates/oarepo/invenio_app_rdm/header_login.html:24
 msgid "Sign up"
 msgstr "Zaregistrovat se"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:42
+#: templates/oarepo/invenio_app_rdm/header_login.html:42
 msgid "Quick create"
 msgstr "Rychlé vytvoření"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:58
+#: templates/oarepo/invenio_app_rdm/header_login.html:58
 msgid "Actions"
 msgstr "Akce"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:79
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:120
+#: templates/oarepo/invenio_app_rdm/header_login.html:79
+#: templates/oarepo/invenio_app_rdm/header_login.html:120
 msgid "My account"
 msgstr "Můj účet"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:110
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:113
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:144
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:147
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:154
-#: /Users/dusanstojanovic/Projects/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:157
+#: templates/oarepo/invenio_app_rdm/header_login.html:110
+#: templates/oarepo/invenio_app_rdm/header_login.html:113
+#: templates/oarepo/invenio_app_rdm/header_login.html:144
+#: templates/oarepo/invenio_app_rdm/header_login.html:147
+#: templates/oarepo/invenio_app_rdm/header_login.html:154
+#: templates/oarepo/invenio_app_rdm/header_login.html:157
 msgid "Log out"
 msgstr "Odhlásit se"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
 msgid "Opens in new tab"
 msgstr "Otevře se v nové kartě"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
 msgid "Read more"
 msgstr "Zobrazit více"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:24
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:24
 msgid "Rights"
 msgstr "Práva"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:28
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:28
 msgid "License"
 msgstr "Licence"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:55
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:55
 msgid "Close"
 msgstr "Zavřít"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:58
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:58
 msgid "No further description."
 msgstr "Žádný další popis."
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:67
+#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:67
 msgid "Copyright"
 msgstr "Autorská práva"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:5
-msgid "You've successfully installed Invenio RDM!"
-msgstr "Úspěšně jste nainstalovali Invenio RDM!"
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:7
-msgid "What is ahead?"
-msgstr "Co vás čeká?"
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:17
-msgid "Configure"
-msgstr "Nakonfigurujte"
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:22
-msgid "configuration section in the docs"
-msgstr "sekci s konfigurací v dokumentaci"
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:34
-msgid "Customize"
-msgstr "Přizpůsobte"
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:37
-msgid ""
-"Customize the layout and adapt the styling to match your institution's. See "
-"how to do so"
-msgstr ""
-"Přizpůsobte rozložení a upravte styl tak, aby odpovídal vaší instituci. "
-"Podívejte se, jak na to"
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:39
-msgid "here"
-msgstr "zde"
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:50
-msgid "Use it!"
-msgstr "Používejte ho!"
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:52
-msgid "Use and explore your InvenioRDM instance."
-msgstr "Používejte a prozkoumávejte svou instanci InvenioRDM."
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:54
-msgid "Use"
-msgstr "Použít"
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:68
-msgid "Docs"
-msgstr "Dokumentace"
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:77
-msgid "Code"
-msgstr "Kód"
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:84
-msgid "To disable this section, add"
-msgstr "Chcete-li tuto sekci vypnout, přidejte"
-
-#: /Users/dusanstojanovic/Projects/datarepo/templates/semantic-ui/invenio_app_rdm/intro_section.html:86
-msgid "to your invenio.cfg file."
-msgstr "do souboru invenio.cfg."
-
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/__init__.py:57
+#: ui/datasets/__init__.py:57
 msgid "New Dataset"
 msgstr "Nový dataset"
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:26
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:26
 msgid "and"
 msgstr "a"
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:51
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:51
 msgid "Untitled resource"
 msgstr "Nepojmenovaný zdroj"
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:61
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:61
 msgid "online"
 msgstr "online"
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:65
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:65
 msgid "Available at"
 msgstr "Dostupné na"
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:90
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:91
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:90
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:91
 msgid "Related resources"
 msgstr "Související zdroje"
 
-#: /Users/dusanstojanovic/Projects/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:103
+#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:103
 #, python-format
 msgid "Show %(count)d more"
 msgstr "Zobrazit dalších %(count)d"
 
-msgid "Data Catch-all Repository"
-msgstr "Datový Catch-all Repozitář"
+#: ui/pages/templates/GetAccess.jinja:23
+msgid "Getting Permission to Create Records"
+msgstr "Získání oprávnění k vytváření záznamů"
 
+#: ui/pages/templates/GetAccess.jinja:25
+msgid "To create records, you must obtain write access either:"
+msgstr "Pro vytváření záznamů musíte získat oprávnění k zápisu, a to buď:"
+
+#: ui/pages/templates/GetAccess.jinja:27
+msgid "as an individual submitter, referred to as a standalone depositor; or"
+msgstr "jako individuální vkladatel, označovaný jako samostatný vkladatel; nebo"
+
+#: ui/pages/templates/GetAccess.jinja:28
+msgid "through a community role that permits record submission."
+msgstr "prostřednictvím role v komunitě, která umožňuje vkládání záznamů."
+
+#: ui/pages/templates/GetAccess.jinja:32
 msgid ""
-"TIP: Most of the content is in English. You will get more results by using "
-"English terms."
-msgstr ""
-"TIP: Většina obsahu je v angličtině. Používáním anglických výrazů získáte "
-"více výsledků."
+"Write access is intended primarily for employees and students of eligible"
+" academic and research\n"
+"      institutions in the Czech Republic, their international "
+"collaborators, and other approved users whose\n"
+"      intended use is consistent with the mission of the repository."
+msgstr "Oprávnění k zápisu je určeno především zaměstnancům a studentům způsobilých akademických a výzkumných institucí v České republice, jejich zahraničním spolupracovníkům a dalším schváleným uživatelům, jejichž záměr využití je v souladu s posláním repozitáře."
 
-msgid "Show less"
-msgstr "Zobrazit méně"
+#: ui/pages/templates/GetAccess.jinja:38
+msgid ""
+"During the application process, you may be asked to describe your "
+"intended use of the repository\n"
+"      and justify your request for access."
+msgstr "Během procesu žádosti můžete být požádáni o popis zamýšleného využití repozitáře a zdůvodnění vaší žádosti o přístup."
 
-msgid "Show more"
-msgstr "Zobrazit více"
+#: ui/pages/templates/GetAccess.jinja:45
+msgid "Becoming a Standalone Depositor"
+msgstr "Jak se stát samostatným vkladatelem"
 
-msgid "No title"
-msgstr "Bez názvu"
+#: ui/pages/templates/GetAccess.jinja:47 ui/pages/templates/GetAccess.jinja:72
+msgid "To apply:"
+msgstr "Jak požádat:"
 
-msgid "Draft"
-msgstr "Návrh"
+#: ui/pages/templates/GetAccess.jinja:49
+msgid "Click on the button below and submit the application form."
+msgstr "Klikněte na tlačítko níže a odešlete přihlašovací formulář."
 
-msgid "Published"
-msgstr "Publikováno"
+#: ui/pages/templates/GetAccess.jinja:51
+msgid ""
+"Wait for your application to be reviewed. Applications may require manual"
+" evaluation,\n"
+"              so approval may not be immediate. You will receive an email"
+" notification when the\n"
+"              application has been processed."
+msgstr "Počkejte, až bude vaše žádost posouzena. Žádosti mohou vyžadovat ruční vyhodnocení, proto schválení nemusí proběhnout okamžitě. Jakmile bude žádost zpracována, obdržíte e-mailové oznámení."
 
-msgid "Publisher"
-msgstr "Vydavatel"
+#: ui/pages/templates/GetAccess.jinja:56
+msgid ""
+"After your application is approved, sign in to the Data Catch-all "
+"Repository and\n"
+"              create your first record."
+msgstr "Po schválení žádosti se přihlaste do Data Catch-all Repository a vytvořte svůj první záznam."
 
-msgid "Language"
-msgstr "Jazyk"
+#: ui/pages/templates/GetAccess.jinja:69
+msgid "Getting Access Through a Community"
+msgstr "Získání přístupu prostřednictvím komunity"
 
-#: /Users/dusanstojanovic/Projects/datarepo/templates/frontpage.html:61
-msgid "Show all datasets"
-msgstr "Zobrazit všechny datasety"
+#: ui/pages/templates/GetAccess.jinja:71
+msgid "Open membership communities"
+msgstr "Komunity s otevřeným členstvím"
 
-msgid "By submitting, you agree to the community's <2>curation policy</2>."
-msgstr "Odesláním souhlasíte s <2>kurátorskou politikou</2> komunity."
+#: ui/pages/templates/GetAccess.jinja:74
+msgid "Navigate to the community page"
+msgstr "Přejděte na stránku komunity"
+
+#: ui/pages/templates/GetAccess.jinja:75
+msgid "Click on the \"Request Membership\" button"
+msgstr "Klikněte na tlačítko „Požádat o členství“"
+
+#: ui/pages/templates/GetAccess.jinja:76
+msgid "Fill in the form, stating the reason for joining"
+msgstr "Vyplňte formulář a uveďte důvod, proč se chcete připojit"
+
+#: ui/pages/templates/GetAccess.jinja:77
+msgid "You will receive an email when your request is approved or rejected."
+msgstr "Jakmile bude vaše žádost schválena nebo zamítnuta, obdržíte e-mail."
+
+#: ui/pages/templates/GetAccess.jinja:78
+msgid "You can track the status of your request on your Dashboard under Requests."
+msgstr "Stav své žádosti můžete sledovat na své Nástěnce v sekci Žádosti."
+
+#: ui/pages/templates/GetAccess.jinja:81
+msgid "Closed membership communities"
+msgstr "Komunity s uzavřeným členstvím"
+
+#: ui/pages/templates/GetAccess.jinja:82
+msgid ""
+"You cannot apply to these communities online; you need to contact the "
+"community manager directly.\n"
+"            If you do not already have a contact email address,\n"
+"            check the community's About page or contact us at\n"
+"            <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
+msgstr "K těmto komunitám se nelze přihlásit online, musíte kontaktovat přímo správce komunity. Pokud nemáte k dispozici kontaktní e-mailovou adresu, podívejte se na stránku komunity „O nás“ nebo nás kontaktujte na <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
 
 #~ msgid "APA"
 #~ msgstr "APA"
@@ -457,3 +375,151 @@ msgstr "Odesláním souhlasíte s <2>kurátorskou politikou</2> komunity."
 
 #~ msgid "Inbox"
 #~ msgstr "Doručená pošta"
+
+#~ msgid "Member"
+#~ msgstr "Člen"
+
+#~ msgid "Zobrazit všechny datasety"
+#~ msgstr "Zobrazit všechny datasety"
+
+#~ msgid "You've successfully installed Invenio RDM!"
+#~ msgstr "Úspěšně jste nainstalovali Invenio RDM!"
+
+#~ msgid "What is ahead?"
+#~ msgstr "Co vás čeká?"
+
+#~ msgid "Configure"
+#~ msgstr "Nakonfigurujte"
+
+#~ msgid "configuration section in the docs"
+#~ msgstr "sekci s konfigurací v dokumentaci"
+
+#~ msgid "Customize"
+#~ msgstr "Přizpůsobte"
+
+#~ msgid ""
+#~ "Customize the layout and adapt the "
+#~ "styling to match your institution's. See"
+#~ " how to do so"
+#~ msgstr ""
+#~ "Přizpůsobte rozložení a upravte styl "
+#~ "tak, aby odpovídal vaší instituci. "
+#~ "Podívejte se, jak na to"
+
+#~ msgid "here"
+#~ msgstr "zde"
+
+#~ msgid "Use it!"
+#~ msgstr "Používejte ho!"
+
+#~ msgid "Use and explore your InvenioRDM instance."
+#~ msgstr "Používejte a prozkoumávejte svou instanci InvenioRDM."
+
+#~ msgid "Use"
+#~ msgstr "Použít"
+
+#~ msgid "Docs"
+#~ msgstr "Dokumentace"
+
+#~ msgid "Code"
+#~ msgstr "Kód"
+
+#~ msgid "To disable this section, add"
+#~ msgstr "Chcete-li tuto sekci vypnout, přidejte"
+
+#~ msgid "to your invenio.cfg file."
+#~ msgstr "do souboru invenio.cfg."
+
+#~ msgid ""
+#~ "TIP: Most of the content is in "
+#~ "English. You will get more results "
+#~ "by using English terms."
+#~ msgstr ""
+#~ "TIP: Většina obsahu je v angličtině. "
+#~ "Používáním anglických výrazů získáte více "
+#~ "výsledků."
+
+#~ msgid "Show less"
+#~ msgstr "Zobrazit méně"
+
+#~ msgid "Show more"
+#~ msgstr "Zobrazit více"
+
+#~ msgid "No title"
+#~ msgstr "Bez názvu"
+
+#~ msgid "Draft"
+#~ msgstr "Návrh"
+
+#~ msgid "Published"
+#~ msgstr "Publikováno"
+
+#~ msgid "Publisher"
+#~ msgstr "Vydavatel"
+
+#~ msgid "Language"
+#~ msgstr "Jazyk"
+
+#~ msgid "By submitting, you agree to the community's <2>curation policy</2>."
+#~ msgstr "Odesláním souhlasíte s <2>kurátorskou politikou</2> komunity."
+
+#~ msgid "Czech"
+#~ msgstr "Čeština"
+
+#~ msgid "Catch-all repository for Czech scientific data"
+#~ msgstr "Univerzální repozitář pro česká vědecká data"
+
+#~ msgid "Community owner"
+#~ msgstr "Vlastník komunity"
+
+#~ msgid "Can manage community."
+#~ msgstr "Může spravovat komunitu."
+
+#~ msgid "Curator"
+#~ msgstr "Kurátor"
+
+#~ msgid "Can curate records."
+#~ msgstr "Může spravovat záznamy"
+
+#~ msgid "Submitter"
+#~ msgstr "Vkladatel"
+
+#~ msgid "Reader"
+#~ msgstr "Zobrazit více"
+
+#~ msgid "Community member with read permissions."
+#~ msgstr "Člen komunity s oprávněním ke čtení."
+
+#~ msgid "Default Community Workflow"
+#~ msgstr "Výchozí schvalovací proces komunity"
+
+#~ msgid "DOI"
+#~ msgstr "DOI"
+
+#~ msgid "Concept DOI"
+#~ msgstr "Koncepční DOI."
+
+#~ msgid "Parent record id"
+#~ msgstr "ID nadřazeného záznamu."
+
+#~ msgid "Organizational Unit ID"
+#~ msgstr "ID organizační jednotky."
+
+#~ msgid "External ID (non-standardized)"
+#~ msgstr "Externí identifikátor (nestandardizovaný)."
+
+#~ msgid "New Zealand Business Number"
+#~ msgstr "Novozélandské obchodní číslo"
+
+#~ msgid "ICO"
+#~ msgstr "IČO"
+
+#~ msgid "Crossref"
+#~ msgstr "Crossref"
+
+#~ msgid "NMA"
+#~ msgstr ""
+
+#~ msgid "Frascati"
+#~ msgstr ""
+
