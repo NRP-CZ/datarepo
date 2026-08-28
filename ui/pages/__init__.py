@@ -13,7 +13,15 @@ class PagesUIResourceConfig(TemplatePageUIResourceConfig):
 
 
 class PagesUIResource(TemplatePageUIResource):
-    pass
+    def create_url_rules(self) -> list:
+        """Route /get-access to a semantic handler name."""
+        from flask_resources import route
+
+        return [route("GET", "get-access", self.get_access)]
+
+    def get_access(self) -> str:
+        """Render the standalone-submitter onboarding page."""
+        return self.render(page="GetAccess")
 
 
 def create_blueprint(app):
