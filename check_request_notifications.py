@@ -1,18 +1,21 @@
 #
-# This file needs to be run via invenio shell
+# This file needs to be run via invenio shell check_request_notifications.py
 #
 
 import contextlib
+from datetime import UTC, datetime
 from io import BytesIO
 from typing import cast
 
 from flask import current_app, g
+from flask_security.utils import hash_password
 from invenio_access.permissions import system_identity
 from invenio_accounts.proxies import current_datastore
 from invenio_communities.communities.services.service import CommunityService
 from invenio_communities.members import MemberService
 from invenio_communities.members.errors import InvalidMemberError
 from invenio_communities.members.services.request import MembershipRequestRequestType
+from invenio_db import db
 from invenio_notifications.proxies import current_notifications_manager
 from invenio_rdm_records.services.services import RDMRecordService
 from invenio_records_resources.proxies import current_service_registry
@@ -29,30 +32,8 @@ from oarepo_requests.types import (
 )
 from oarepo_runtime.proxies import current_runtime
 
-# You need to have the following prerequisites:
-prerequisites = """
-export INVENIO_CELERY_ALWAYS_EAGER=1
-
-invenio communities create test-community "Test Community"
-invenio users create -a -c --password 123456 tc_curator@demo.org
-invenio users create -a -c --password 123456 tc_owner@demo.org
-invenio users create -a -c --password 123456 tc_reader@demo.org
-invenio users create -a -c --password 123456 tc_submitter@demo.org
-invenio users create -a -c --password 123456 tc_extra_reader@demo.org
-invenio users create -a -c --password 123456 tc_extra_submitter@demo.org
-
-invenio communities members add test-community tc_owner@demo.org owner
-invenio communities members add test-community tc_curator@demo.org curator
-invenio communities members add test-community tc_extra_reader@demo.org reader
-invenio communities members add test-community tc_extra_submitter@demo.org submitter
-"""
-#
-# Then run this script via `invenio shell check_request_notifications.py`
-#
-#
-
 if not current_app.config.get("CELERY_ALWAYS_EAGER"):
-    raise RuntimeError("CELERY_ALWAYS_EAGER is not set")
+    raise RuntimeError("Set export INVENIO_CELERY_ALWAYS_EAGER=1 to run this script")
 
 TC_SLUG = "test-community"
 
@@ -66,6 +47,61 @@ EXTRA_SUBMITTER = "tc_extra_submitter@demo.org"
 community_service = cast("CommunityService", current_service_registry.get("communities"))
 members_service: MemberService = community_service.members
 datasets_service = cast("RDMRecordService", current_service_registry.get("datasets"))
+
+
+def create_user_if_missing(email, *, password="123456"):
+    """Create an active, confirmed user with `email` if it does not exist yet.
+
+    Mirrors `invenio users create -a -c --password <password>` from the
+    prerequisites. The datastore stores the password as-is, so it is hashed here
+    the same way the CLI hashes it.
+    """
+    user = current_datastore.find_user(email=email)
+    if user is not None:
+        return user
+
+    user = current_datastore.create_user(
+        email=email,
+        password=hash_password(password),
+        active=True,
+        confirmed_at=datetime.now(UTC),
+    )
+    # the datastore only stages the user in the session, it does not commit
+    db.session.commit()
+    print(f"OK: created user {email!r}")
+    return user
+
+
+def create_community_if_missing():
+    """Create the test community if it does not exist yet.
+
+    Mirrors `invenio communities create test-community "Test Community"` from the
+    prerequisites. The community is created with the system identity, which leaves
+    it without an owner (the ownership component skips system creations), so
+    `prepare_environment` adds the initial members right afterwards.
+    """
+    try:
+        community_service.record_cls.pid.resolve(TC_SLUG)
+        return
+    except Exception:
+        # any pid resolution failure (missing or deleted community) means it has
+        # to be created
+        pass
+
+    community_service.create(
+        system_identity,
+        {
+            "slug": TC_SLUG,
+            "access": {
+                "visibility": "public",
+                "member_policy": "closed",
+                "record_submission_policy": "open",
+                "review_policy": "closed",
+            },
+            "metadata": {"title": "Test Community"},
+        },
+    )
+    print(f"OK: created community {TC_SLUG!r}")
 
 
 def reindex_users(*, user_emails):
@@ -138,6 +174,42 @@ def add_member(*, community_slug, email, role):
     community = community_service.record_cls.pid.resolve(community_slug)
     data = {"members": [{"type": "user", "id": str(user.id)}], "role": role}
     members_service.add(system_identity, community.id, data)
+
+
+def add_member_if_missing(*, community_slug, email, role):
+    """Add a member with the given role to the community only if they are not one yet.
+
+    Unlike `add_member`, an existing member is left alone (only a drifted role is
+    corrected): the remove-and-re-add cycle would trip ``members_service.delete``
+    refusing to leave the community without an owner when the member is its only
+    owner. Membership is checked in the database rather than in the search index,
+    so freshly added members are seen right away.
+    """
+    user = current_datastore.find_user(email=email)
+    if user is None:
+        return
+
+    community = community_service.record_cls.pid.resolve(community_slug)
+    members = members_service.record_cls.get_members(community.id, members=[{"type": "user", "id": str(user.id)}])
+    member = next((m for m in members if m.model.active), None)
+    if member is not None:
+        if member.model.role == role:
+            print(f"OK: {email!r} is already a {role!r} of community {community_slug!r}")
+            return
+        members_service.update(
+            system_identity,
+            community.id,
+            {"members": [{"type": "user", "id": str(user.id)}], "role": role},
+        )
+        print(f"OK: set {email!r}'s role in community {community_slug!r} to {role!r}")
+        return
+
+    members_service.add(
+        system_identity,
+        community.id,
+        {"members": [{"type": "user", "id": str(user.id)}], "role": role},
+    )
+    print(f"OK: added {email!r} to community {community_slug!r} as {role!r}")
 
 
 def decline_pending_membership_request(*, community_slug, email):
@@ -546,7 +618,21 @@ def check_adding_to_community_via_invitation(*, inviter, invitee, role):
 
 
 def prepare_environment():
-    """Prepare the environment for the tests by reindexing users and allowing membership requests."""
+    """Prepare the environment for the tests.
+
+    Checks the prerequisites listed in the module header and creates whatever is
+    missing - the users, the community and the initial community members - so the
+    script also runs against a fresh instance, then resets the state the tests
+    depend on.
+    """
+    for email in (CURATOR, OWNER, READER, SUBMITTER, EXTRA_READER, EXTRA_SUBMITTER):
+        create_user_if_missing(email)
+    create_community_if_missing()
+    add_member_if_missing(community_slug=TC_SLUG, email=OWNER, role="owner")
+    add_member_if_missing(community_slug=TC_SLUG, email=CURATOR, role="curator")
+    add_member_if_missing(community_slug=TC_SLUG, email=EXTRA_READER, role="reader")
+    add_member_if_missing(community_slug=TC_SLUG, email=EXTRA_SUBMITTER, role="submitter")
+
     reindex_users(user_emails=(CURATOR, OWNER, READER, SUBMITTER, EXTRA_READER, EXTRA_SUBMITTER))
     allow_membership_requests(community_slug=TC_SLUG)
     associate_workflow_with_community(community_slug=TC_SLUG, workflow="community")
