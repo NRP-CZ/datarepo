@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
+# SPDX-License-Identifier: MIT
+
+"""The datasets record model definition."""
+
 from __future__ import annotations
 
 from ccmm_invenio.models import ccmm_production_preset_1_1_0
@@ -33,10 +38,7 @@ COPY_TO_MAPPINGS = [
     # Funder names
 ]
 
-copy_to_mappings = [
-    PatchIndexPropertyMapping(c[0], {"copy_to": f"boost_{c[1]}"})
-    for c in COPY_TO_MAPPINGS
-]
+copy_to_mappings = [PatchIndexPropertyMapping(c[0], {"copy_to": f"boost_{c[1]}"}) for c in COPY_TO_MAPPINGS]
 analyzer_fields = {
     "fields": {
         # using both means that queries that match both ascii and non-ascii
@@ -56,7 +58,7 @@ analyzer_fields = {
 datasets_model = model(
     "datasets",
     version="1.1.0",
-    presets=[
+    presets=[  # ty: ignore[invalid-argument-type]
         ccmm_production_preset_1_1_0,
         workflows_preset,
         requests_preset,
@@ -76,7 +78,7 @@ datasets_model = model(
                 "metadata.funding.funder",
                 "metadata.languages",
                 "metadata.rights",
-                "metadata.creators.person_or_org.name"
+                "metadata.creators.person_or_org.name",
             ],
         ),
         # index tweaks

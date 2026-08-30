@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
+# SPDX-License-Identifier: MIT
+
 """Model for datasets.
 
 This package contains the model definition for datasets.
@@ -10,4 +13,4 @@ from __future__ import annotations
 
 from .model import datasets_model
 
-__all__ = ( "datasets_model", )
+__all__ = ("datasets_model",)

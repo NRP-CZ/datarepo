@@ -71,7 +71,7 @@ OAREPO_CHECKS_LLM_CLIENTS = {
     "chat_einfra": ChatEInfraClient(
         api_token="your-api-token-here",
         api_url="https://chat.ai.e-infra.cz/api/chat/completions",  # optional, this is the default
-        model="deepseek-r1"  # optional, this is the default
+        model="deepseek-r1",  # optional, this is the default
     )
 }
 
@@ -87,6 +87,7 @@ For development and testing without external API calls:
 
 ```python
 from oarepo_checks.llm_client import BaseLLMClient
+
 
 class DummyClient(BaseLLMClient):
     """Dummy LLM client for testing purposes."""
@@ -124,6 +125,7 @@ class DummyClient(BaseLLMClient):
     }
 }"""
 
+
 # Configure the dummy client
 OAREPO_CHECKS_LLM_CLIENTS = {"dummy": DummyClient()}
 
@@ -138,6 +140,7 @@ You can create your own LLM client for other APIs:
 ```python
 from oarepo_checks.llm_client import BaseLLMClient
 import requests
+
 
 class CustomLLMClient(BaseLLMClient):
     """Custom LLM client for your API."""
@@ -165,20 +168,14 @@ class CustomLLMClient(BaseLLMClient):
         }
         """
         headers = {"Authorization": f"Bearer {self.api_key}"}
-        response = requests.post(
-            self.endpoint,
-            json={"prompt": prompt},
-            headers=headers
-        )
+        response = requests.post(self.endpoint, json={"prompt": prompt}, headers=headers)
         response.raise_for_status()
         return response.json()["result"]
 
+
 # Register in configuration
 OAREPO_CHECKS_LLM_CLIENTS = {
-    "custom": CustomLLMClient(
-        api_key="your-api-key",
-        endpoint="https://your-llm-api.com/chat"
-    )
+    "custom": CustomLLMClient(api_key="your-api-key", endpoint="https://your-llm-api.com/chat")
 }
 
 OAREPO_CHECKS_DEFAULT_LLM_CLIENT = "custom"

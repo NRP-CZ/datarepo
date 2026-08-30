@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
+// SPDX-License-Identifier: MIT
+
 import { DepositFormApp, parseFormAppConfig } from "@js/oarepo_ui/forms";
 import React from "react";
 import ReactDOM from "react-dom";
