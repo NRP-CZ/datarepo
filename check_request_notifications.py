@@ -1,36 +1,63 @@
-#
-# This file needs to be run via invenio shell check_request_notifications.py
-#
+# SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
+# SPDX-License-Identifier: MIT
+
+"""Check the notifications sent by the community and record request workflows.
+
+Run through the invenio shell, ie. ``invenio shell check_request_notifications.py``,
+and only when celery runs eagerly (``INVENIO_CELERY_ALWAYS_EAGER=1``), so that the
+notification dispatch happens in-process and can be intercepted instead of sent.
+
+Every step prints an ``OK:`` line; a mismatch with the expected notification
+recipients raises an ``AssertionError``.
+"""
+
+# ruff: noqa: T201
+
+from __future__ import annotations
 
 import contextlib
 from datetime import UTC, datetime
 from io import BytesIO
-from typing import cast
+from typing import TYPE_CHECKING, Any, cast
 
 from flask import current_app, g
 from flask_security.utils import hash_password
 from invenio_access.permissions import system_identity
 from invenio_accounts.proxies import current_datastore
-from invenio_communities.communities.services.service import CommunityService
-from invenio_communities.members import MemberService
 from invenio_communities.members.errors import InvalidMemberError
 from invenio_communities.members.services.request import MembershipRequestRequestType
 from invenio_db import db
 from invenio_notifications.proxies import current_notifications_manager
-from invenio_rdm_records.services.services import RDMRecordService
+from invenio_pidstore.errors import PersistentIdentifierError
 from invenio_records_resources.proxies import current_service_registry
+from invenio_records_resources.services.errors import PermissionDeniedError
 from invenio_requests.customizations import CommentEventType
+from invenio_requests.errors import CannotExecuteActionError
 from invenio_requests.proxies import (
     current_events_service,
     current_request_type_registry,
     current_requests_service,
 )
-from invenio_users_resources.services.users.service import UsersService
 from oarepo_requests.types import (
     PublishChangedMetadataRequestType,
     PublishNewVersionRequestType,
 )
 from oarepo_runtime.proxies import current_runtime
+from oarepo_runtime.typing import record_from_result
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable, Iterator
+    from uuid import UUID
+
+    from flask_principal import Identity
+    from invenio_accounts.models import User
+    from invenio_communities.communities.services.service import CommunityService
+    from invenio_communities.members import MemberService
+    from invenio_notifications.models import Notification, Recipient
+    from invenio_rdm_records.records.api import RDMRecord
+    from invenio_rdm_records.services.services import RDMRecordService
+    from invenio_requests.customizations import RequestType
+    from invenio_users_resources.services.users.service import UsersService
 
 if not current_app.config.get("CELERY_ALWAYS_EAGER"):
     raise RuntimeError("Set export INVENIO_CELERY_ALWAYS_EAGER=1 to run this script")
@@ -49,7 +76,22 @@ members_service: MemberService = community_service.members
 datasets_service = cast("RDMRecordService", current_service_registry.get("datasets"))
 
 
-def create_user_if_missing(email, *, password="123456"):
+def _community_id(*, community_slug: str) -> UUID:
+    """Return the id of the community identified by `community_slug`.
+
+    The id of a resolved record is optional in the invenio type stubs, because a
+    record that was never committed does not have one, but a community resolved
+    from its slug always has it.
+    """
+    community_id = community_service.record_cls.pid.resolve(community_slug).id
+    if community_id is None:
+        raise AssertionError(f"Community {community_slug!r} resolved without an id.")
+    return community_id
+
+
+# the weak default password is intentional, it creates the throwaway demo users
+# that the checks below log in as
+def create_user_if_missing(email: str, *, password: str = "123456") -> User:  # noqa: S107
     """Create an active, confirmed user with `email` if it does not exist yet.
 
     Mirrors `invenio users create -a -c --password <password>` from the
@@ -72,7 +114,7 @@ def create_user_if_missing(email, *, password="123456"):
     return user
 
 
-def create_community_if_missing():
+def create_community_if_missing() -> None:
     """Create the test community if it does not exist yet.
 
     Mirrors `invenio communities create test-community "Test Community"` from the
@@ -80,13 +122,11 @@ def create_community_if_missing():
     it without an owner (the ownership component skips system creations), so
     `prepare_environment` adds the initial members right afterwards.
     """
-    try:
-        community_service.record_cls.pid.resolve(TC_SLUG)
-        return
-    except Exception:
+    with contextlib.suppress(PersistentIdentifierError):
         # any pid resolution failure (missing or deleted community) means it has
         # to be created
-        pass
+        community_service.record_cls.pid.resolve(TC_SLUG)
+        return
 
     community_service.create(
         system_identity,
@@ -104,16 +144,20 @@ def create_community_if_missing():
     print(f"OK: created community {TC_SLUG!r}")
 
 
-def reindex_users(*, user_emails):
+def reindex_users(*, user_emails: Iterable[str]) -> None:
+    """Index the users with the given emails so that they can be found by search.
+
+    The indexer works on the user's ``UserAggregate`` record, which is the very
+    record the users service reads to build its result items.
+    """
     users_service = cast("UsersService", current_service_registry.get("users"))
     for user_email in user_emails:
         user = current_datastore.find_user(email=user_email)
-        user_obj = users_service.read(system_identity, user.id)
-        users_service.indexer.index(user_obj._user)
+        users_service.indexer.index(users_service.record_cls.get_record(user.id))
     users_service.indexer.refresh()
 
 
-def allow_membership_requests(*, community_slug):
+def allow_membership_requests(*, community_slug: str) -> None:
     """Open up the community so that non-members can request to join it."""
     data = community_service.read(system_identity, community_slug).data
     if data["access"]["member_policy"] != "open":
@@ -121,7 +165,7 @@ def allow_membership_requests(*, community_slug):
         community_service.update(system_identity, community_slug, data)
 
 
-def associate_workflow_with_community(*, community_slug, workflow):
+def associate_workflow_with_community(*, community_slug: str, workflow: str) -> None:
     """Associate the `workflow` workflow with the community if it does not have one yet.
 
     The community custom fields `workflow` (the default workflow given to the community's
@@ -145,21 +189,18 @@ def associate_workflow_with_community(*, community_slug, workflow):
         community_service.update(system_identity, community_slug, data)
 
 
-def remove_member(*, community_slug, email):
+def remove_member(*, community_slug: str, email: str) -> None:
     """Remove a member from a community by email if the member exists."""
     user = current_datastore.find_user(email=email)
     if user is None:
         return
 
-    community = community_service.record_cls.pid.resolve(community_slug)
     data = {"members": [{"type": "user", "id": str(user.id)}]}
-    try:
-        members_service.delete(system_identity, community.id, data)
-    except InvalidMemberError:
-        pass
+    with contextlib.suppress(InvalidMemberError):
+        members_service.delete(system_identity, _community_id(community_slug=community_slug), data)
 
 
-def add_member(*, community_slug, email, role):
+def add_member(*, community_slug: str, email: str, role: str) -> None:
     """Add a member to a community with the given role.
 
     The member is removed first (if present) so the operation is idempotent and the
@@ -171,12 +212,11 @@ def add_member(*, community_slug, email, role):
     if user is None:
         return
 
-    community = community_service.record_cls.pid.resolve(community_slug)
     data = {"members": [{"type": "user", "id": str(user.id)}], "role": role}
-    members_service.add(system_identity, community.id, data)
+    members_service.add(system_identity, _community_id(community_slug=community_slug), data)
 
 
-def add_member_if_missing(*, community_slug, email, role):
+def add_member_if_missing(*, community_slug: str, email: str, role: str) -> None:
     """Add a member with the given role to the community only if they are not one yet.
 
     Unlike `add_member`, an existing member is left alone (only a drifted role is
@@ -189,8 +229,8 @@ def add_member_if_missing(*, community_slug, email, role):
     if user is None:
         return
 
-    community = community_service.record_cls.pid.resolve(community_slug)
-    members = members_service.record_cls.get_members(community.id, members=[{"type": "user", "id": str(user.id)}])
+    community_id = _community_id(community_slug=community_slug)
+    members = members_service.record_cls.get_members(community_id, members=[{"type": "user", "id": str(user.id)}])
     member = next((m for m in members if m.model.active), None)
     if member is not None:
         if member.model.role == role:
@@ -198,7 +238,7 @@ def add_member_if_missing(*, community_slug, email, role):
             return
         members_service.update(
             system_identity,
-            community.id,
+            community_id,
             {"members": [{"type": "user", "id": str(user.id)}], "role": role},
         )
         print(f"OK: set {email!r}'s role in community {community_slug!r} to {role!r}")
@@ -206,13 +246,13 @@ def add_member_if_missing(*, community_slug, email, role):
 
     members_service.add(
         system_identity,
-        community.id,
+        community_id,
         {"members": [{"type": "user", "id": str(user.id)}], "role": role},
     )
     print(f"OK: added {email!r} to community {community_slug!r} as {role!r}")
 
 
-def decline_pending_membership_request(*, community_slug, email):
+def decline_pending_membership_request(*, community_slug: str, email: str) -> None:
     """Decline a user's pending membership request for a community, if one exists.
 
     Needed to make repeated runs of this script idempotent, since a user can only have one
@@ -222,17 +262,19 @@ def decline_pending_membership_request(*, community_slug, email):
     if user is None:
         return
 
-    community = community_service.record_cls.pid.resolve(community_slug)
-    for request in members_service.search_membership_requests(system_identity, community.id):
+    community_id = _community_id(community_slug=community_slug)
+    for request in members_service.search_membership_requests(system_identity, community_id):
         member = request["member"]
         if member["type"] == "user" and member["id"] == str(user.id) and request["request"]["is_open"]:
             try:
                 current_requests_service.execute_action(system_identity, request["request"]["id"], "decline")
-            except:
-                pass
+            except (CannotExecuteActionError, PermissionDeniedError) as exc:
+                # the search index can be stale, so the request may have already been
+                # decided by a previous run of this script
+                print(f"WARN: could not decline the membership request of {email!r}: {exc}")
 
 
-def cancel_pending_invitation(*, community_slug, email):
+def cancel_pending_invitation(*, community_slug: str, email: str) -> None:
     """Cancel a user's pending invitation for a community, if one exists.
 
     Needed to make repeated runs of this script idempotent, since a user can only have one
@@ -244,17 +286,19 @@ def cancel_pending_invitation(*, community_slug, email):
     if user is None:
         return
 
-    community = community_service.record_cls.pid.resolve(community_slug)
-    for invitation in members_service.search_invitations(system_identity, community.id):
+    community_id = _community_id(community_slug=community_slug)
+    for invitation in members_service.search_invitations(system_identity, community_id):
         member = invitation["member"]
         if member["type"] == "user" and member["id"] == str(user.id) and invitation["request"]["is_open"]:
             try:
                 current_requests_service.execute_action(system_identity, invitation["request"]["id"], "cancel")
-            except:
-                pass
+            except (CannotExecuteActionError, PermissionDeniedError) as exc:
+                # the search index can be stale, so the invitation may have already been
+                # decided by a previous run of this script
+                print(f"WARN: could not cancel the invitation of {email!r}: {exc}")
 
 
-def open_invitation_request_id(*, community_id, email):
+def open_invitation_request_id(*, community_id: UUID, email: str) -> str:
     """Return the id of the user's open invitation request in a community."""
     user = current_datastore.find_user(email=email)
     for invitation in members_service.search_invitations(system_identity, community_id):
@@ -266,18 +310,20 @@ def open_invitation_request_id(*, community_id, email):
 
 
 @contextlib.contextmanager
-def record_notifications():
+def record_notifications() -> Iterator[list[str]]:
     """Capture emails that would be sent via notifications instead of actually sending them.
 
     Patches the notification manager's dispatch step (the point right before a backend's
     ``send()`` is invoked) for the duration of the context, so no real email is sent.
     """
-    recorded = []
+    recorded: list[str] = []
 
     # has to stay positional, it replaces the manager's own handle_dispatch
-    def recording_handle_dispatch(backend_id, recipient, notification):
+    def recording_handle_dispatch(backend_id: str, recipient: Recipient, notification: Notification) -> None:
         if backend_id == "email":
-            email = current_notifications_manager.backends[backend_id]._resolve_email(recipient)
+            # the email backend resolves the address itself, so use the very helper it
+            # uses to know what address an email would have gone to
+            email = current_notifications_manager.backends[backend_id]._resolve_email(recipient)  # noqa: SLF001
             if notification.type == "comment-request-event.create":
                 print("DEBUG dispatch", email, "request=", notification.context.get("request"))
             if email:
@@ -291,7 +337,12 @@ def record_notifications():
         current_notifications_manager.handle_dispatch = original_handle_dispatch
 
 
-def _assert_notification_recipients(*, action_description, sent_emails, expected_recipients):
+def _assert_notification_recipients(
+    *,
+    action_description: str,
+    sent_emails: Iterable[str],
+    expected_recipients: Iterable[str],
+) -> None:
     expected = set(expected_recipients)
     actual = set(sent_emails)
     if actual != expected:
@@ -302,7 +353,14 @@ def _assert_notification_recipients(*, action_description, sent_emails, expected
     print(f"OK: {action_description} notifications sent to {sorted(actual)}")
 
 
-def create_request_check_emails(*, creator, request_type, request_payload, community_slug, expected_recipients) -> str:
+def create_request_check_emails(
+    *,
+    creator: str,
+    request_type: type[RequestType] | str,
+    request_payload: dict[str, Any],
+    community_slug: str,
+    expected_recipients: Iterable[str],
+) -> str:
     """Create a request as `creator` and check that email notifications go to the expected recipients.
 
     The request is submitted for the community identified by `community_slug`. Membership
@@ -314,12 +372,12 @@ def create_request_check_emails(*, creator, request_type, request_payload, commu
     """
     request_type_id = request_type if isinstance(request_type, str) else request_type.type_id
 
-    community = community_service.record_cls.pid.resolve(community_slug)
+    community_id = _community_id(community_slug=community_slug)
 
     with record_notifications() as sent_emails, current_runtime.login_user(creator):
         identity = g.identity
         if request_type_id == MembershipRequestRequestType.type_id:
-            created_request = members_service.request_membership(identity, community.id, request_payload)
+            created_request = members_service.request_membership(identity, community_id, request_payload)
         else:
             if isinstance(request_type, str):
                 request_type = current_request_type_registry.lookup(request_type, quiet=False)
@@ -327,7 +385,7 @@ def create_request_check_emails(*, creator, request_type, request_payload, commu
                 identity,
                 request_payload,
                 request_type,
-                receiver={"community": str(community.id)},
+                receiver={"community": str(community_id)},
             )
 
     _assert_notification_recipients(
@@ -338,7 +396,14 @@ def create_request_check_emails(*, creator, request_type, request_payload, commu
     return created_request.data["id"]
 
 
-def invite_to_community_check_emails(*, inviter, invitee, role, community_slug, expected_recipients) -> str:
+def invite_to_community_check_emails(
+    *,
+    inviter: str,
+    invitee: str,
+    role: str,
+    community_slug: str,
+    expected_recipients: Iterable[str],
+) -> str:
     """Invite `invitee` to the community as `inviter` and check that email notifications go to the expected recipients.
 
     Invitations go through ``members_service.invite``, the only path that creates the
@@ -348,13 +413,13 @@ def invite_to_community_check_emails(*, inviter, invitee, role, community_slug, 
 
     Returns the id of the created invitation request.
     """
-    community = community_service.record_cls.pid.resolve(community_slug)
+    community_id = _community_id(community_slug=community_slug)
     user = current_datastore.find_user(email=invitee)
 
     with record_notifications() as sent_emails, current_runtime.login_user(inviter):
         members_service.invite(
             g.identity,
-            community.id,
+            community_id,
             {
                 "members": [{"type": "user", "id": str(user.id)}],
                 "role": role,
@@ -367,10 +432,10 @@ def invite_to_community_check_emails(*, inviter, invitee, role, community_slug, 
         sent_emails=sent_emails,
         expected_recipients=expected_recipients,
     )
-    return open_invitation_request_id(community_id=community.id, email=invitee)
+    return open_invitation_request_id(community_id=community_id, email=invitee)
 
 
-def accept_request_check_emails(*, actor, request_id, expected_recipients):
+def accept_request_check_emails(*, actor: str, request_id: str, expected_recipients: Iterable[str]) -> None:
     """Accept a request as `actor` and check that email notifications go to the expected recipients."""
     with record_notifications() as sent_emails, current_runtime.login_user(actor):
         current_requests_service.execute_action(g.identity, request_id, "accept")
@@ -382,7 +447,7 @@ def accept_request_check_emails(*, actor, request_id, expected_recipients):
     )
 
 
-def decline_request_check_emails(*, actor, request_id, expected_recipients):
+def decline_request_check_emails(*, actor: str, request_id: str, expected_recipients: Iterable[str]) -> None:
     """Decline a request as `actor` and check that email notifications go to the expected recipients."""
     with record_notifications() as sent_emails, current_runtime.login_user(actor):
         current_requests_service.execute_action(g.identity, request_id, "decline")
@@ -394,7 +459,9 @@ def decline_request_check_emails(*, actor, request_id, expected_recipients):
     )
 
 
-def add_comment_check_emails(*, email, request_id, comment_text, expected_recipients):
+def add_comment_check_emails(
+    *, email: str, request_id: str, comment_text: str, expected_recipients: Iterable[str]
+) -> None:
     """Add a comment on `request_id` as `email` and check that email notifications go to the expected recipients."""
     with record_notifications() as sent_emails, current_runtime.login_user(email):
         current_events_service.create(
@@ -411,7 +478,7 @@ def add_comment_check_emails(*, email, request_id, comment_text, expected_recipi
     )
 
 
-def set_member_role(*, email, role, setter_email, expected_recipients):
+def set_member_role(*, email: str, role: str, setter_email: str, expected_recipients: Iterable[str]) -> None:
     """Set a community member's role as `setter_email` and check the expected notifications fire.
 
     A membership request is always granted the "reader" role, regardless of what the requester
@@ -420,12 +487,12 @@ def set_member_role(*, email, role, setter_email, expected_recipients):
     trigger any notification, so no recipients are expected.
     """
     user = current_datastore.find_user(email=email)
-    community = community_service.record_cls.pid.resolve(TC_SLUG)
+    community_id = _community_id(community_slug=TC_SLUG)
 
     with record_notifications() as sent_emails, current_runtime.login_user(setter_email):
         members_service.update(
             g.identity,
-            community.id,
+            community_id,
             {"members": [{"type": "user", "id": str(user.id)}], "role": role},
         )
 
@@ -436,7 +503,7 @@ def set_member_role(*, email, role, setter_email, expected_recipients):
     )
 
 
-def check_adding_to_community_via_membership_request(*, requester, role):
+def check_adding_to_community_via_membership_request(*, requester: str, role: str) -> None:
     """Check the notifications sent when `requester` asks to join the community as `role`.
 
     Runs the request through each of its outcomes - declined by the owner, declined by the curator,
@@ -545,7 +612,7 @@ def check_adding_to_community_via_membership_request(*, requester, role):
     set_member_role(email=requester, role=role, setter_email=CURATOR, expected_recipients=[])
 
 
-def check_adding_to_community_via_invitation(*, inviter, invitee, role):
+def check_adding_to_community_via_invitation(*, inviter: str, invitee: str, role: str) -> None:
     """Check the notifications sent when `inviter` invites `invitee` to the community as `role`.
 
     Runs the invitation through both outcomes - accepted and declined by the invited user - checking
@@ -617,7 +684,7 @@ def check_adding_to_community_via_invitation(*, inviter, invitee, role):
     remove_member(community_slug=TC_SLUG, email=invitee)
 
 
-def prepare_environment():
+def prepare_environment() -> None:
     """Prepare the environment for the tests.
 
     Checks the prerequisites listed in the module header and creates whatever is
@@ -644,13 +711,13 @@ def prepare_environment():
     cancel_pending_invitation(community_slug=TC_SLUG, email=SUBMITTER)
 
 
-def test_membership_request():
+def test_membership_request() -> None:
     """Test that membership requests are handled correctly."""
     for requester, role in ((READER, "reader"), (SUBMITTER, "submitter")):
         check_adding_to_community_via_membership_request(requester=requester, role=role)
 
 
-def test_invitation_to_community():
+def test_invitation_to_community() -> None:
     """Test that invitations to the community are handled correctly."""
     for inviter, invitee, role in (
         (OWNER, READER, "reader"),
@@ -661,7 +728,7 @@ def test_invitation_to_community():
         check_adding_to_community_via_invitation(inviter=inviter, invitee=invitee, role=role)
 
 
-def create_record_with_file(identity):
+def create_record_with_file(identity: Identity) -> str:
     """Create a draft record as `identity` and attach a small sample file to it.
 
     Returns the id of the created draft.
@@ -688,7 +755,8 @@ def create_record_with_file(identity):
         },
     }
     response = datasets_service.create(identity, record_data).to_dict()
-    assert response.get("errors") is None
+    if response.get("errors") is not None:
+        raise AssertionError(f"Record creation failed with errors: {response['errors']}")
     rec_id = response["id"]
 
     # upload a small sample file
@@ -698,7 +766,9 @@ def create_record_with_file(identity):
     return rec_id
 
 
-def submit_record_for_review(*, community_slug, submitter_email, expected_recipients) -> tuple:
+def submit_record_for_review(
+    *, community_slug: str, submitter_email: str, expected_recipients: Iterable[str]
+) -> tuple[str, str]:
     """Create a record with a small file as `submitter_email` and submit it for review.
 
     The record is submitted for review by the community identified by `community_slug`, which
@@ -707,7 +777,7 @@ def submit_record_for_review(*, community_slug, submitter_email, expected_recipi
 
     Returns the ids of the created record and of its review request.
     """
-    community = community_service.record_cls.pid.resolve(community_slug)
+    community_id = _community_id(community_slug=community_slug)
 
     with current_runtime.login_user(submitter_email):
         identity = g.identity
@@ -716,11 +786,11 @@ def submit_record_for_review(*, community_slug, submitter_email, expected_recipi
         print(f"OK: submitter {submitter_email!r} created draft record {rec_id}")
 
         with record_notifications() as sent_emails:
-            draft_rec = datasets_service.read_draft(identity, rec_id, expand=True)
+            draft_record = record_from_result(datasets_service.read_draft(identity, rec_id, expand=True))
             review = datasets_service.review.create(
                 identity,
-                {"type": "community-submission", "receiver": {"community": str(community.id)}},
-                draft_rec._record,
+                {"type": "community-submission", "receiver": {"community": str(community_id)}},
+                draft_record,
             )
             print(f"OK: review request {review.id} created for record {rec_id}")
 
@@ -734,7 +804,7 @@ def submit_record_for_review(*, community_slug, submitter_email, expected_recipi
     return rec_id, review.id
 
 
-def test_record_requests() -> list:
+def test_record_requests() -> list[str]:
     """Test the notifications sent when a submitter submits a record to the community.
 
     The submitter is (re)added to the community with the "submitter" role. Record review
@@ -774,7 +844,7 @@ def test_record_requests() -> list:
         )
         decline_request_check_emails(actor=actor, request_id=request_id, expected_recipients=[SUBMITTER])
 
-    approved_record_ids = []
+    approved_record_ids: list[str] = []
     for actor in (CURATOR, OWNER):
         rec_id, request_id = submit_record_for_review(
             community_slug=TC_SLUG,
@@ -787,7 +857,7 @@ def test_record_requests() -> list:
     return approved_record_ids
 
 
-def submit_changed_metadata_request(*, record_id, creator_email, expected_recipients) -> str:
+def submit_changed_metadata_request(*, record_id: str, creator_email: str, expected_recipients: Iterable[str]) -> str:
     """Create and submit a changed-metadata request for `record_id` as `creator_email`.
 
     The request is created on the record's draft without an explicit receiver, so oarepo
@@ -798,7 +868,7 @@ def submit_changed_metadata_request(*, record_id, creator_email, expected_recipi
     Returns the id of the created request.
     """
     with record_notifications() as sent_emails, current_runtime.login_user(creator_email):
-        draft_record = datasets_service.read_draft(g.identity, record_id)._record
+        draft_record = record_from_result(datasets_service.read_draft(g.identity, record_id))
         request = current_requests_service.create(
             g.identity,
             {},
@@ -816,7 +886,7 @@ def submit_changed_metadata_request(*, record_id, creator_email, expected_recipi
     return request.id
 
 
-def change_record_title(*, record_id, editor_email, new_title):
+def change_record_title(*, record_id: str, editor_email: str, new_title: str) -> None:
     """Create a draft of `record_id` as `editor_email` (if it does not exist) and change its title.
 
     Changing draft metadata does not trigger any notification. After an acceptance publishes
@@ -830,7 +900,7 @@ def change_record_title(*, record_id, editor_email, new_title):
         datasets_service.update_draft(g.identity, draft.id, draft_data)
 
 
-def test_change_metadata(approved_record_id):
+def test_change_metadata(approved_record_id: str) -> None:
     """Test the notifications sent when the submitter changes metadata of an approved record.
 
     The submitter (the record's owner) edits the approved record, changes its title and submits
@@ -886,7 +956,7 @@ def test_change_metadata(approved_record_id):
         accept_request_check_emails(actor=actor, request_id=request_id, expected_recipients=[SUBMITTER])
 
 
-def create_new_version_with_file(*, record_id, submitter_email, file_key) -> str:
+def create_new_version_with_file(*, record_id: str, submitter_email: str, file_key: str) -> str:
     """Create a new version of `record_id` as `submitter_email` and upload a new file to it.
 
     A record pid always resolves to the very version it was minted for - publishing
@@ -908,8 +978,10 @@ def create_new_version_with_file(*, record_id, submitter_email, file_key) -> str
 
         # a pid resolves to the version it was minted for, so when it points to an
         # older version (eg. after an acceptance published a newer one), follow the
-        # version chain to the latest published version
-        record = datasets_service.read(identity, record_id)._record
+        # version chain to the latest published version. The cast to RDMRecord is
+        # needed because record_from_result is typed against the base Record, which
+        # does not declare the versions systemfield the datasets records carry
+        record = cast("RDMRecord", record_from_result(datasets_service.read(identity, record_id)))
         if not record.versions.is_latest:
             latest_id = str(record.versions.latest_id)
             print(
@@ -917,7 +989,7 @@ def create_new_version_with_file(*, record_id, submitter_email, file_key) -> str
                 f"following the version chain to the latest version {latest_id}"
             )
             record_id = latest_id
-            record = datasets_service.read(identity, record_id)._record
+            record = cast("RDMRecord", record_from_result(datasets_service.read(identity, record_id)))
         print(
             f"OK: latest version of record {record_id} is v{record.versions.index} "
             f"(is_latest={record.versions.is_latest})"
@@ -943,7 +1015,9 @@ def create_new_version_with_file(*, record_id, submitter_email, file_key) -> str
     return draft_id
 
 
-def submit_new_version_request(*, draft_id, creator_email, version, expected_recipients) -> str:
+def submit_new_version_request(
+    *, draft_id: str, creator_email: str, version: str, expected_recipients: Iterable[str]
+) -> str:
     """Create and submit a publish-new-version request for the draft `draft_id` as `creator_email`.
 
     Like a changed-metadata request, the request is created on the draft without an
@@ -956,7 +1030,7 @@ def submit_new_version_request(*, draft_id, creator_email, version, expected_rec
     Returns the id of the created request.
     """
     with record_notifications() as sent_emails, current_runtime.login_user(creator_email):
-        draft_record = datasets_service.read_draft(g.identity, draft_id)._record
+        draft_record = record_from_result(datasets_service.read_draft(g.identity, draft_id))
         request = current_requests_service.create(
             g.identity,
             {"payload": {"version": version}},
@@ -974,7 +1048,7 @@ def submit_new_version_request(*, draft_id, creator_email, version, expected_rec
     return request.id
 
 
-def test_new_version(approved_record_id):
+def test_new_version(approved_record_id: str) -> None:
     """Test the notifications sent when the submitter publishes a new version of an approved record.
 
     The submitter (the record's owner) reads the latest version of the approved record,
