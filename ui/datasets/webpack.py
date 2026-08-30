@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
+# SPDX-License-Identifier: MIT
+"""Webpack theme bundle for the datasets UI."""
+
+from __future__ import annotations
+
 from invenio_assets.webpack import WebpackThemeBundle
 
 theme = WebpackThemeBundle(
@@ -5,7 +11,7 @@ theme = WebpackThemeBundle(
     ".",
     default="semantic-ui",
     themes={
-        "semantic-ui": dict(
+        "semantic-ui": dict(  # noqa C408 invenio convention
             entry={
                 "datasets_search": "./js/datasets/search/index.js",
                 "datasets_deposit_form": "./js/datasets/forms/index.js",

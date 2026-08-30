@@ -389,3 +389,6 @@ vite.config.ts.timestamp-*
 
 # top-level node_modules
 /node_modules
+
+# created automatically
+ty.toml

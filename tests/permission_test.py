@@ -1,44 +1,43 @@
-"""
-Test for permissions. This test should be run as a part of invenio shell
-"""
+# SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
+# SPDX-License-Identifier: MIT
+
+"""Manual permission checks, run inside `invenio shell`."""
+
+# ruff: noqa: C901, T201
+
+from __future__ import annotations
 
 import contextlib
-import subprocess
-import sys
 from io import BytesIO
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 import click
 from flask import current_app, g
 from flask_principal import identity_loaded
-from invenio_access.cli import allow_action
 from invenio_access.models import ActionRoles
 from invenio_access.permissions import authenticated_user, system_identity
 from invenio_access.utils import get_identity
 from invenio_accounts.models import Role, User
-from invenio_communities.communities import CommunityService
 from invenio_communities.communities.records.api import Community
-from invenio_communities.communities.resources.ui_schema import UICommunitySchema
 from invenio_communities.members.errors import AlreadyMemberError
 from invenio_communities.proxies import current_communities
 from invenio_communities.records.records.models import CommunityMetadata
 from invenio_communities.views.ui import UICommunityJSONSerializer
 from invenio_db import db
-from invenio_rdm_records.services import RDMRecordService
 from invenio_records_resources.proxies import current_service_registry
 from invenio_records_resources.services.errors import PermissionDeniedError
-from invenio_requests.services import RequestsService
 from oarepo_requests.types import PublishDraftRequestType
 from oarepo_runtime.proxies import current_runtime
 from werkzeug.local import LocalProxy
 
+if TYPE_CHECKING:
+    from invenio_communities.communities import CommunityService
+    from invenio_rdm_records.services import RDMRecordService
+    from invenio_requests.services import RequestsService
+
 _datastore = LocalProxy(lambda: current_app.extensions["security"].datastore)
-datasets_service: RDMRecordService = LocalProxy(
-    lambda: current_runtime.models["datasets"].service
-)
-requests_service: RequestsService = LocalProxy(
-    lambda: current_service_registry.get("requests")
-)
+datasets_service: RDMRecordService = LocalProxy(lambda: current_runtime.models["datasets"].service)
+requests_service: RequestsService = LocalProxy(lambda: current_service_registry.get("requests"))
 communities_service: CommunityService = LocalProxy(lambda: current_communities.service)
 
 
@@ -76,9 +75,7 @@ def main():
 
     create_user("test-administration@demo.org", roles=["administration"])
 
-    create_user(
-        "test-direct-publisher@demo.org", roles=["direct-publisher", "submitter"]
-    )
+    create_user("test-direct-publisher@demo.org", roles=["direct-publisher", "submitter"])
 
     add_role_access("administration", "administration-access")
     add_role_access("administration", "administration-moderation")
@@ -102,7 +99,7 @@ def main():
     create_community_user("test-community-d-restricted", "curator")
     create_community_user("test-community-c-restricted", "owner")
     create_community_user("test-community-d-restricted", "owner")
-    test_can_create_record(
+    check_can_create_record(
         allowed_users=[
             "test-direct-publisher@demo.org",
             # admin can create records
@@ -135,7 +132,7 @@ def main():
         ],
     )
 
-    test_can_publish_directly(
+    check_can_publish_directly(
         allowed_users=[
             # direct-publisher role can directly publish records
             "test-direct-publisher@demo.org",
@@ -160,7 +157,7 @@ def main():
             "test-community-d-restricted-owner@demo.org",
         ],
     )
-    test_can_publish_directly(
+    check_can_publish_directly(
         record_owner="test-submitter@demo.org",
         allowed_users=[
             # superuser-access can directly publish records
@@ -171,7 +168,7 @@ def main():
             "test-direct-publisher@demo.org",
         ],
     )
-    test_publish_with_publish_draft_request(
+    check_publish_with_publish_draft_request(
         allowed_users=[
             # superuser-access can publish records via publish-draft request
             "test-admin@demo.org",
@@ -197,7 +194,7 @@ def main():
         ],
     )
 
-    test_publish_to_community_with_review(
+    check_publish_to_community_with_review(
         community_slug="test-community-a-open",
         allowed_users=[
             # "test-community-a-open-curator@demo.org",
@@ -229,9 +226,7 @@ def main():
     )
 
 
-def test_publish_to_community_with_review(
-    *, community_slug, allowed_users, disallowed_users
-):
+def check_publish_to_community_with_review(*, community_slug, allowed_users, disallowed_users):
     failures = []
     all_users = [
         *[(x, True) for x in allowed_users],
@@ -245,24 +240,17 @@ def test_publish_to_community_with_review(
         with with_logged_user(email) as identity:
             rec_id = create_record(identity)
             draft_rec = datasets_service.read_draft(identity, rec_id, expand=True)
-            if "review" not in draft_rec.to_dict()["links"]:
-                if allowed:
-                    click.secho(
-                        f"User {email} does not have review link but should be allowed to publish to community via review (allowed: {allowed})",
-                        fg="red",
-                    )
-                    failures.append(email)
+            if "review" not in draft_rec.to_dict()["links"] and allowed:
+                click.secho(
+                    f"User {email} does not have review link but should be allowed to "
+                    f"publish to community via review (allowed: {allowed})",
+                    fg="red",
+                )
+                failures.append(email)
 
-            communities_list = communities_service.search(
-                identity, params={"size": 100}
-            ).to_dict()["hits"]["hits"]
-            communities_list = [
-                UICommunityJSONSerializer().dump_obj(community)
-                for community in communities_list
-            ]
-            community = next(
-                (c for c in communities_list if c["slug"] == community_slug), None
-            )
+            communities_list = communities_service.search(identity, params={"size": 100}).to_dict()["hits"]["hits"]
+            communities_list = [UICommunityJSONSerializer().dump_obj(community) for community in communities_list]
+            community = next((c for c in communities_list if c["slug"] == community_slug), None)
             if not community:
                 if allowed:
                     click.secho(
@@ -271,32 +259,34 @@ def test_publish_to_community_with_review(
                     )
                     failures.append(email)
                     continue
-                else:
-                    click.secho(
-                        f"Community {community_slug} not found and user is not allowed to publish in it (allowed: {allowed})",
-                        fg="green",
-                    )
-                    continue
+                click.secho(
+                    f"Community {community_slug} not found and user is not allowed to "
+                    f"publish in it (allowed: {allowed})",
+                    fg="green",
+                )
+                continue
             # we have found the community, let's check if the user is allowed to publish in it
             permissions = community["ui"]["permissions"]
             if permissions["can_submit_record"]:
                 if not allowed:
                     click.secho(
-                        f"User {email} is allowed to publish in community {community_slug} but should not be allowed (allowed: {allowed})",
+                        f"User {email} is allowed to publish in community {community_slug} but "
+                        f"should not be allowed (allowed: {allowed})",
                         fg="red",
                     )
                     failures.append(email)
             else:
                 if allowed:
                     click.secho(
-                        f"User {email} is not allowed to publish in community {community_slug} but should be allowed (allowed: {allowed})",
+                        f"User {email} is not allowed to publish in community {community_slug} but "
+                        f"should be allowed (allowed: {allowed})",
                         fg="red",
                     )
                     failures.append(email)
 
             # let's call the review
             try:
-                created_review = datasets_service.review.create(
+                datasets_service.review.create(
                     identity,
                     {
                         "type": "community-submission",
@@ -305,7 +295,7 @@ def test_publish_to_community_with_review(
                     draft_rec._record,
                 )
                 review_created = True
-            except PermissionDeniedError as e:
+            except PermissionDeniedError:
                 review_created = False
             if review_created != allowed:
                 if review_created:
@@ -323,7 +313,7 @@ def test_publish_to_community_with_review(
                 continue
 
 
-def test_publish_with_publish_draft_request(*, allowed_users, disallowed_users):
+def check_publish_with_publish_draft_request(*, allowed_users, disallowed_users):
     failures = []
     all_users = [
         *[(x, True) for x in allowed_users],
@@ -341,13 +331,14 @@ def test_publish_with_publish_draft_request(*, allowed_users, disallowed_users):
             expanded_section = draft_rec.to_dict()["expanded"]
             request_types = expanded_section.get("request_types", [])
             publish_draft = next(
-                iter((x for x in request_types if x["type_id"] == "publish_draft")),
+                iter(x for x in request_types if x["type_id"] == "publish_draft"),
                 None,
             )
             if publish_draft is None:
                 if allowed:
                     click.secho(
-                        f"User {email} cannot publish through publish draft, request type not found (allowed: {allowed})",
+                        f"User {email} cannot publish through publish draft, request type not "
+                        f"found (allowed: {allowed})",
                         fg="red",
                     )
                     failures.append(email)
@@ -357,16 +348,15 @@ def test_publish_with_publish_draft_request(*, allowed_users, disallowed_users):
                         fg="green",
                     )
                 continue
-            else:
-                if not allowed:
-                    click.secho(
-                        f"User {email} can publish through publish draft but should not (allowed: {allowed})",
-                        fg="red",
-                    )
-                    continue
+            if not allowed:
+                click.secho(
+                    f"User {email} can publish through publish draft but should not (allowed: {allowed})",
+                    fg="red",
+                )
+                continue
             # ok, user should be able to publish through publish draft, let's try it
             try:
-                created_request = requests_service.create(
+                requests_service.create(
                     identity,
                     {},
                     PublishDraftRequestType(),
@@ -375,7 +365,7 @@ def test_publish_with_publish_draft_request(*, allowed_users, disallowed_users):
                     topic=draft_rec._record,
                 )
                 status = "allowed"
-            except PermissionDeniedError as e:
+            except PermissionDeniedError:
                 status = "denied"
 
             if status == "allowed":
@@ -404,7 +394,7 @@ def test_publish_with_publish_draft_request(*, allowed_users, disallowed_users):
                     )
 
 
-def test_can_publish_directly(*, record_owner=None, allowed_users, disallowed_users):
+def check_can_publish_directly(*, record_owner=None, allowed_users, disallowed_users):
     failures = []
     all_users = [
         *[(x, True) for x in allowed_users],
@@ -419,15 +409,10 @@ def test_can_publish_directly(*, record_owner=None, allowed_users, disallowed_us
             rec_id = create_record(identity)
 
         with with_logged_user(email) as identity:
-            # rec = datasets_service.read_draft(identity, rec_id)._record
-            # permission_policy = datasets_service.permission_policy
-            # can_publish = permission_policy("publish", record=rec)
-            # if not can_publish.allows(identity):
-            #     raise PermissionDeniedError("publish")
             try:
                 datasets_service.publish(identity, rec_id)
                 status = "allowed"
-            except PermissionDeniedError as e:
+            except PermissionDeniedError:
                 status = "denied"
 
             expected = "allowed" if allowed else "denied"
@@ -440,7 +425,7 @@ def test_can_publish_directly(*, record_owner=None, allowed_users, disallowed_us
     print_failures(failures)
 
 
-def test_can_create_record(allowed_users, disallowed_users):
+def check_can_create_record(allowed_users, disallowed_users):
     permission_policy = datasets_service.permission_policy
     all_users = [
         *[(x, True) for x in allowed_users],
@@ -503,9 +488,7 @@ def create_record(identity):
     rec_id = response["id"]
     # upload a sample file
     datasets_service.draft_files.init_files(identity, rec_id, [{"key": "sample.txt"}])
-    datasets_service.draft_files.set_file_content(
-        identity, rec_id, "sample.txt", BytesIO(b"hello")
-    )
+    datasets_service.draft_files.set_file_content(identity, rec_id, "sample.txt", BytesIO(b"hello"))
     datasets_service.draft_files.commit_file(identity, rec_id, "sample.txt")
     return rec_id
 
@@ -538,8 +521,6 @@ def create_user(email: str, roles: list[str]) -> User:
     user = db.session.query(User).filter_by(email=email).first()
     if user is None:
         user = _datastore.create_user(email=email, active=True)
-    else:
-        user = user
     db.session.add(user)
     db.session.commit()
 
@@ -580,9 +561,7 @@ def create_community_user(community_slug, role):
 
 def add_role_access(role_name, access_name):
     role = Role.query.filter_by(name=role_name).first()
-    existing_action = ActionRoles.query.filter_by(
-        action=access_name, role_id=role.id
-    ).first()
+    existing_action = ActionRoles.query.filter_by(action=access_name, role_id=role.id).first()
     if existing_action is None:
         db.session.add(ActionRoles.allow(access_name, argument=None, role_id=role.id))
     db.session.commit()
