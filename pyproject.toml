@@ -23,6 +23,7 @@ translations = "i18n"
 
 [project.entry-points."invenio_db.alembic"]
 repository = "common:alembic"
+datarepo = "common:alembic"
 
 [project.entry-points."invenio_base.blueprints"]
 ui_datasets = "ui.datasets:create_blueprint"
