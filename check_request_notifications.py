@@ -38,7 +38,7 @@ from invenio_db import db
 from invenio_notifications.proxies import current_notifications_manager
 from invenio_pidstore.errors import PersistentIdentifierError
 from invenio_records_resources.proxies import current_service_registry
-from invenio_records_resources.services.errors import PermissionDeniedError
+from invenio_records_resources.services.errors import PermissionDeniedError, RecordPermissionDeniedError
 from invenio_requests.customizations import CommentEventType
 from invenio_requests.errors import CannotExecuteActionError
 from invenio_requests.proxies import (
@@ -85,14 +85,21 @@ EXTRA_SUBMITTER = "tc_extra_submitter@demo.org"
 INDIVIDUAL_SUBMITTER = "tc_individual_submitter@demo.org"
 ADMINISTRATOR = "tc_administrator@demo.org"
 
+EXTRA_REVIEWER = "tc_extra_reviewer@demo.org"
+
 # the access of the records submitted for review, ie. the ``access`` block of the record, which
 # holds its protection (the access that used to be held by the parent record): a plain public
-# record and a record restricted on both its metadata and its files. The block has to be set
-# whole, the service schema requiring both keys whenever it is set at all; a draft created
-# without it is public, so the public pass states it explicitly to differ from the restricted
-# one by the access alone
+# record, a record restricted on both its metadata and its files, and a record restricted on its
+# files alone. The block has to be set whole, the service schema requiring both keys whenever it
+# is set at all; a draft created without it is public, so the public pass states it explicitly to
+# differ from the restricted one by the access alone
 PUBLIC_ACCESS = {"record": "public", "files": "public"}
 RESTRICTED_ACCESS = {"record": "restricted", "files": "restricted"}
+# the access an access request can be filed on: the request is created on the published record,
+# which the service therefore requires the requester to be able to read, so a record whose
+# metadata are restricted too is not merely closed to them but invisible, and a request asking
+# for what they may read anyway is refused as already granted
+RESTRICTED_FILES_ACCESS = {"record": "public", "files": "restricted"}
 
 community_service = cast("CommunityService", current_service_registry.get("communities"))
 members_service: MemberService = community_service.members
@@ -234,6 +241,19 @@ def create_user_if_missing(email: str, *, password: str = "123456") -> User:  # 
     db.session.commit()
     _ok(f"created user {email!r}")
     return user
+
+
+def make_profile_public(email: str) -> None:
+    """Make the profile of `email` publicly visible, so that other users can find them.
+
+    A user's ``visibility`` preference defaults to ``restricted``, which the users service
+    hides from everyone but the user themselves and user managers. Granting a user access to
+    a record reads that user as the granting user (to validate the subject of the grant), so
+    a curator or a record owner can only grant access to a user whose profile is public.
+    """
+    user = current_datastore.find_user(email=email)
+    user.preferences = {**(user.preferences or {}), "visibility": "public"}
+    db.session.commit()
 
 
 def add_user_to_role(email: str, role: str) -> None:
@@ -588,14 +608,16 @@ def _check_permission_denied(*, email: str, action: str) -> Iterator[None]:
     """Act as `email` and require the action performed by the body to be refused.
 
     The body of the `with` block performs an action `email` must not be entitled to perform.
-    Only a `PermissionDeniedError` passes the check; the action succeeding is a failure just
-    like any other error, so that a permission policy widened by accident cannot go
-    unnoticed. Nothing is notified by a refused action, so no notifications are recorded.
+    Only a refused permission passes the check; the action succeeding is a failure just like
+    any other error, so that a permission policy widened by accident cannot go unnoticed.
+    Which of the two sibling errors a service raises depends on the service, the records one
+    reporting the refused action on the record it could not read, so both are accepted. Nothing
+    is notified by a refused action, so no notifications are recorded.
     """
     with current_runtime.login_user(email):
         try:
             yield
-        except PermissionDeniedError:
+        except (PermissionDeniedError, RecordPermissionDeniedError):
             _ok(f"{email!r} is not allowed to {action}")
             return
     raise AssertionError(f"{email!r} should not have been allowed to {action}.")
@@ -920,8 +942,13 @@ def prepare_environment() -> None:
         EXTRA_SUBMITTER,
         INDIVIDUAL_SUBMITTER,
         ADMINISTRATOR,
+        EXTRA_REVIEWER,
     ):
         create_user_if_missing(email)
+    # the access-grant checks below let a record owner grant the requester access, which
+    # reads the requester as the owner and so refuses the restricted profile a new user has
+    # by default; making it public is what lets the owner resolve them as the grant subject
+    make_profile_public(EXTRA_REVIEWER)
     create_community_if_missing()
     add_member_if_missing(community_slug=TC_SLUG, email=OWNER, role="owner")
     add_member_if_missing(community_slug=TC_SLUG, email=CURATOR, role="curator")
@@ -943,6 +970,7 @@ def prepare_environment() -> None:
             EXTRA_SUBMITTER,
             INDIVIDUAL_SUBMITTER,
             ADMINISTRATOR,
+            EXTRA_REVIEWER,
         )
     )
     allow_membership_requests(community_slug=TC_SLUG)
@@ -1057,6 +1085,102 @@ def submit_record_for_review(
     return rec_id, review.id
 
 
+def test_record_access_grant(
+    rec_id: str, request_id: str, *, owner_email: str, grantee_email: str
+) -> None:
+    """Test granting, and revoking, a stranger's access to a draft that is under review.
+
+    The check runs over the draft `rec_id` while a request on it is still open, so it is about
+    access control on a draft in the review state rather than about the notifications of the
+    review. It is used by every flow that submits a draft for review, be it the first
+    submission of a record, a changed metadata or a new version, inside a community or outside
+    of one.
+
+    The access is managed by `owner_email`, the owner of the record, the one actor entitled to
+    manage it in all of those flows. On a first submission not even the community's curator is,
+    the record being attached to its community only once that review is accepted, so the
+    curator may review such a draft but cannot manage the access to it.
+
+    `grantee_email` is a stranger to both the community and the record. A draft under review
+    is readable only through the preview hierarchy, the public or restricted access of a record
+    applying only to the published record, so the stranger cannot read the draft whatever its
+    access is. A ``preview`` grant does make the draft readable, reading a draft being a
+    ``preview``-level right where a ``view`` one only reaches a published record, and revoking
+    the grant takes that right away again.
+
+    The grant is created with ``notify`` set, which notifies the granted user and nobody else,
+    while removing a grant notifies nobody at all.
+
+    The request under which the draft is reviewed is read along with the draft, and follows the
+    record only if its type asks for the needs of its topic to be resolved. A request type that
+    does, ie. ``community-submission``, hands out the needs of the record's ``preview``
+    permission, so the grant that opens the draft opens the request too; a type that does not,
+    ie. the requests of the oarepo publish workflows, keeps its readers to the creator and the
+    receiver of the request, however open the record behind it may be. Which of the two applies
+    is therefore taken from the type of `request_id` itself rather than assumed.
+    """
+    grantee_id = str(current_datastore.find_user(email=grantee_email).id)
+    read_request = current_requests_service.read(system_identity, request_id)
+    request_follows_record = bool(current_request_type_registry.lookup(read_request.data["type"]).resolve_topic_needs)
+
+    with _check_permission_denied(email=grantee_email, action=f"read the draft {rec_id}"):
+        datasets_service.read_draft(g.identity, rec_id)
+    with _check_permission_denied(email=grantee_email, action=f"read request {request_id}"):
+        current_requests_service.read(g.identity, request_id)
+
+    # a grant's origin is optional but, left out, is stored as None and then audited as such;
+    # the audit log of a grant validates the audited grant against a schema whose origin is
+    # not nullable, so omitting it fails the grant with "Field may not be null." - the same
+    # audited value is also what makes removing the grant below pass its own audit log
+    with _check_notifications(
+        email=owner_email,
+        action_description=f"granting {grantee_email!r} preview access to draft {rec_id}",
+        expected_recipients=[grantee_email],
+    ):
+        datasets_service.access.bulk_create_grants(
+            g.identity,
+            rec_id,
+            {
+                "grants": [
+                    {
+                        "subject": {"id": grantee_id, "type": "user"},
+                        "permission": "preview",
+                        "origin": "user",
+                        "notify": True,
+                    }
+                ]
+            },
+        )
+
+    with current_runtime.login_user(grantee_email):
+        datasets_service.read_draft(g.identity, rec_id)
+    _ok(f"{grantee_email!r} can read draft {rec_id} once granted access")
+
+    if request_follows_record:
+        with current_runtime.login_user(grantee_email):
+            current_requests_service.read(g.identity, request_id)
+        _ok(f"{grantee_email!r} can read request {request_id} too, its type handing out the record's needs")
+    else:
+        with _check_permission_denied(email=grantee_email, action=f"read request {request_id}"):
+            current_requests_service.read(g.identity, request_id)
+        _ok(f"request {request_id} resolves no needs of its topic, so the grant leaves it closed")
+
+    with current_runtime.login_user(owner_email):
+        datasets_service.access.delete_grant_by_subject(
+            g.identity, rec_id, subject_id=grantee_id, subject_type="user"
+        )
+    _ok(f"owner {owner_email!r} revoked the access of {grantee_email!r} to draft {rec_id}")
+
+    with _check_permission_denied(
+        email=grantee_email, action=f"read the draft {rec_id} after the access was revoked"
+    ):
+        datasets_service.read_draft(g.identity, rec_id)
+    with _check_permission_denied(
+        email=grantee_email, action=f"read request {request_id} after the access was revoked"
+    ):
+        current_requests_service.read(g.identity, request_id)
+
+
 def test_record_requests(*, access: dict[str, str]) -> list[str]:
     """Test the notifications sent when a submitter submits a record to the community.
 
@@ -1077,6 +1201,10 @@ def test_record_requests(*, access: dict[str, str]) -> list[str]:
     the previous commenters, never the commenter themselves) and the decision to the
     submitter only.
 
+    The draft of every declined review is, before the request is decided upon, also used for
+    the access grant checks of `test_record_access_grant`, which are about who may read a draft
+    under review rather than about who is notified of what.
+
     Returns the ids of the records whose review requests were accepted.
     """
     add_member(community_slug=TC_SLUG, email=SUBMITTER, role="submitter")
@@ -1090,6 +1218,14 @@ def test_record_requests(*, access: dict[str, str]) -> list[str]:
             expected_recipients=[OWNER, CURATOR],
             access=access,
         )
+        # the review request is still open, so the draft is checked as it stands during a
+        # review, its access being managed by its owner, ie. the submitter, the community's
+        # roles granting review over the draft but not manage until it is accepted
+        test_record_access_grant(rec_id, request_id, owner_email=SUBMITTER, grantee_email=EXTRA_REVIEWER)
+        # try granting access via the owner
+        test_record_access_grant(rec_id, request_id, owner_email=OWNER, grantee_email=EXTRA_REVIEWER)
+        # try granting access via the curator
+        test_record_access_grant(rec_id, request_id, owner_email=CURATOR, grantee_email=EXTRA_REVIEWER)
         add_comment_check_emails(
             email=actor,
             request_id=request_id,
@@ -1117,6 +1253,155 @@ def test_record_requests(*, access: dict[str, str]) -> list[str]:
         approved_record_ids.append(rec_id)
 
     return approved_record_ids
+
+
+def _access_request_payload(*, message: str) -> dict[str, str]:
+    """Return the payload an access request filed by a logged-in user is created from.
+
+    The ``permission`` the requester asks for is a constant of the schema the payload is loaded
+    by: whatever they ask for, a request always asks to ``view`` the record, its files included.
+    The ``email`` a guest has to give is left out, the requester being the logged-in user the
+    request is created by.
+    """
+    return {"permission": "view", "message": message}
+
+
+def _create_access_request_check_emails(
+    *, email: str, rec_id: str, message: str, expected_recipients: Iterable[str]
+) -> str:
+    """Ask as `email` for access to the files of record `rec_id`, checking the notified recipients.
+
+    ``access.create_user_access_request`` creates a ``UserAccessRequest`` on the published record
+    and submits it in one go, the requester being its creator and the owner of the record, ie. the
+    one who published it, its receiver; the message becomes the comment the submission carries.
+    It is the half of ``access.request_access`` that serves a logged-in user, which cannot be used
+    here: ``request_access`` routes the call by the ``email`` of the payload, then hands that very
+    payload to the request it creates, whose schema knows no such field and rejects it.
+
+    The owner of the record is notified twice over, once by the submission of the request and once
+    by the comment the submission carries, both mails going to the same single recipient.
+
+    Returns the id of the created request.
+    """
+    with _check_notifications(
+        email=email,
+        action_description=f"asking for access to the files of record {rec_id}",
+        expected_recipients=expected_recipients,
+    ):
+        created_request = datasets_service.access.create_user_access_request(
+            g.identity, rec_id, _access_request_payload(message=message)
+        )
+
+    return created_request.data["id"]
+
+
+def test_access_request(
+    rec_id: str, *, restricted_rec_id: str, requester_email: str, curator_email: str
+) -> None:
+    """Test asking for access to the files of an approved record public on its metadata.
+
+    Unlike a grant, which the ones who manage a record hand out on their own initiative, an access
+    request is started by the user who wants the access: it is created on the *published* `rec_id`
+    and submitted in one go, with the owner of the record, ie. the submitter who published it, as
+    the receiver who has to decide about it. The requester is the creator of the request, so the
+    request is built to notify the record's owner of its submission, the other participant of a
+    comment, and the requester of the decision taken on it; accepting it hands the requester a
+    ``view`` grant on the record, which reaches its restricted files.
+
+    `rec_id` is restricted on its files alone, which is the only state a request makes sense for:
+    the service requires the requester to be able to read the record they ask about, so a record
+    restricted on its metadata too, as `restricted_rec_id` is, is not merely closed to a stranger
+    but invisible to them, and there is nothing left for them to ask for; the members who curate
+    the community may read the files of any of its records, so a curator is refused the request as
+    already granted.
+
+    A request declined by the owner is closed, which is what lets the requester ask for the very
+    same access again; an open one is refused as a duplicate of itself.
+    """
+    # the metadata of the record are public, so the requester does read them and sees the files
+    # they are not let into, which is what they are going to ask for
+    with current_runtime.login_user(requester_email):
+        datasets_service.read(g.identity, rec_id)
+    _ok(f"{requester_email!r} can read record {rec_id}, its metadata being public")
+    with _check_permission_denied(email=requester_email, action=f"read the files of record {rec_id}"):
+        datasets_service.files.list_files(g.identity, rec_id)
+
+    # a record restricted on its metadata, as the approved records of the checks above are, is not
+    # even visible to the requester, so there is no request for them to file on it
+    with _check_permission_denied(email=requester_email, action=f"read the restricted record {restricted_rec_id}"):
+        datasets_service.read(g.identity, restricted_rec_id)
+    with _check_permission_denied(
+        email=requester_email, action=f"ask for access to the files of record {restricted_rec_id}"
+    ):
+        datasets_service.access.create_user_access_request(
+            g.identity, restricted_rec_id, _access_request_payload(message="May I have the files?")
+        )
+
+    # a curator reads a record of the community and its files through the curator role the
+    # community gives them, so they are the one member who has no use for the access they would
+    # ask for
+    with current_runtime.login_user(curator_email):
+        datasets_service.read(g.identity, rec_id)
+        datasets_service.files.list_files(g.identity, rec_id)
+    _ok(f"{curator_email!r} can read record {rec_id} and its files, so they have none to ask for")
+    with _check_permission_denied(email=curator_email, action=f"ask for access to the files of record {rec_id}"):
+        datasets_service.access.create_user_access_request(
+            g.identity, rec_id, _access_request_payload(message="May I have the files?")
+        )
+
+    _heading("Access request submitted")
+    request_id = _create_access_request_check_emails(
+        email=requester_email,
+        rec_id=rec_id,
+        message="May I have the files of this record?",
+        expected_recipients=[SUBMITTER], # TODO: should curator/owner of the community also get the notification?
+    )
+
+    _heading("Comments on the access request")
+    add_comment_check_emails(
+        email=SUBMITTER,
+        request_id=request_id,
+        comment_text="Let me check with the ones who produced the data.",
+        expected_recipients=[requester_email],
+    )
+    add_comment_check_emails(
+        email=requester_email,
+        request_id=request_id,
+        comment_text="They are needed to replicate the published results.",
+        expected_recipients=[SUBMITTER],
+    )
+
+    _heading("Access request declined")
+    decline_request_check_emails(actor=SUBMITTER, request_id=request_id, expected_recipients=[requester_email])
+    # the declined request granted nothing, so the files stay as closed as they were
+    with _check_permission_denied(email=requester_email, action=f"read the files of record {rec_id}"):
+        datasets_service.files.list_files(g.identity, rec_id)
+
+    _heading("Access request asked for again")
+    # the first request having been closed by the decline, nothing stands in the way of asking
+    # for the same access a second time
+    second_request_id = _create_access_request_check_emails(
+        email=requester_email,
+        rec_id=rec_id,
+        message="May I have the files after all? The ones who produced them have agreed.",
+        expected_recipients=[SUBMITTER],
+    )
+
+    _heading("Access request accepted")
+    accept_request_check_emails(
+        actor=SUBMITTER, request_id=second_request_id, expected_recipients=[requester_email]
+    )
+
+    with current_runtime.login_user(requester_email):
+        datasets_service.read(g.identity, rec_id)
+        datasets_service.files.list_files(g.identity, rec_id)
+    _ok(f"{requester_email!r} can read the files of record {rec_id} once the request is accepted")
+
+    # the acceptance granted the access to the requester, who is not even a member of the
+    # community, and to them alone; a member whose role does not reach the restricted files of a
+    # record is no better off for a request they never filed
+    with _check_permission_denied(email=EXTRA_READER, action=f"read the files of record {rec_id}"):
+        datasets_service.files.list_files(g.identity, rec_id)
 
 
 def submit_changed_metadata_request(*, record_id: str, creator_email: str, expected_recipients: Iterable[str]) -> str:
@@ -1184,6 +1469,9 @@ def test_change_metadata(approved_record_id: str) -> None:
     its metadata and its files, the access being the only thing that differs between the two
     runs: the receiver of the request, and with it every recipient, comes from the roles the
     workflow grants on the request rather than from who may read the record behind it.
+
+    The changed draft of every declined request is, before the request is decided upon, also
+    used for the access grant checks of `test_record_access_grant`.
     """
     # as the record's owner, edit it and change the title
     change_record_title(record_id=approved_record_id, editor_email=SUBMITTER, new_title="Changed title")
@@ -1196,6 +1484,11 @@ def test_change_metadata(approved_record_id: str) -> None:
             record_id=approved_record_id,
             creator_email=SUBMITTER,
             expected_recipients=[OWNER, CURATOR],
+        )
+        # the request is still open, so the changed draft is checked as it stands during a
+        # review, the access to it being managed by the record's owner, ie. the submitter
+        test_record_access_grant(
+            approved_record_id, request_id, owner_email=SUBMITTER, grantee_email=EXTRA_REVIEWER
         )
         add_comment_check_emails(
             email=actor,
@@ -1345,6 +1638,9 @@ def test_new_version(approved_record_id: str) -> None:
     Like `test_change_metadata`, these checks are run once over a public record and once over
     a record restricted on both its metadata and its files, the notifications expected from
     the two being the same for the very same reason.
+
+    The new version draft of every declined request is, before the request is decided upon,
+    also used for the access grant checks of `test_record_access_grant`.
     """
     # as the record's owner, create a new version of it and upload a new file
     draft_id = create_new_version_with_file(
@@ -1360,6 +1656,9 @@ def test_new_version(approved_record_id: str) -> None:
             version=f"2.0.{round_}",
             expected_recipients=[OWNER, CURATOR],
         )
+        # the request is still open, so the new version draft is checked as it stands during
+        # a review, the access to it being managed by the record's owner, ie. the submitter
+        test_record_access_grant(draft_id, request_id, owner_email=SUBMITTER, grantee_email=EXTRA_REVIEWER)
         add_comment_check_emails(
             email=actor,
             request_id=request_id,
@@ -1455,6 +1754,9 @@ def test_record_individual(*, access: dict[str, str]) -> str:
     "revision_requested" state, so the second request is submitted over the very same draft,
     the way a submitter would respond to the review.
 
+    The draft of the declined request is, before the request is decided upon, also used for
+    the access grant checks of `test_record_access_grant`.
+
     Returns the id of the record published by the accepted request, which the changed
     metadata of an individual record are then submitted for review on.
     """
@@ -1491,6 +1793,9 @@ def test_record_individual(*, access: dict[str, str]) -> str:
         # self-review makes the submitter the receiver of their own request
         expected_recipients=[INDIVIDUAL_SUBMITTER],
     )
+    # the request is still open, so the draft is checked as it stands during a review; outside
+    # of any community the record's owner is the only one who may manage its access
+    test_record_access_grant(rec_id, request_id, owner_email=INDIVIDUAL_SUBMITTER, grantee_email=EXTRA_REVIEWER)
     _check_no_access_to_request(request_id=request_id)
     add_comment_check_emails(
         email=INDIVIDUAL_SUBMITTER,
@@ -1548,6 +1853,9 @@ def test_change_metadata_individual(approved_record_id: str) -> None:
     its metadata and its files, the access being the only thing that differs between the two
     runs: the receiver of the request, and with it every recipient, is the submitter alone
     whichever access the record behind the request carries.
+
+    The changed draft of the declined request is, before the request is decided upon, also
+    used for the access grant checks of `test_record_access_grant`.
     """
     change_record_title(
         record_id=approved_record_id,
@@ -1561,6 +1869,11 @@ def test_change_metadata_individual(approved_record_id: str) -> None:
         record_id=approved_record_id,
         creator_email=INDIVIDUAL_SUBMITTER,
         expected_recipients=[INDIVIDUAL_SUBMITTER],
+    )
+    # the request is still open, so the changed draft is checked as it stands during a review;
+    # outside of any community the record's owner is the only one who may manage its access
+    test_record_access_grant(
+        approved_record_id, request_id, owner_email=INDIVIDUAL_SUBMITTER, grantee_email=EXTRA_REVIEWER
     )
     _check_no_access_to_request(request_id=request_id)
     add_comment_check_emails(
@@ -1620,6 +1933,9 @@ def test_new_version_individual(approved_record_id: str) -> None:
 
     Like `test_change_metadata_individual`, these checks are run once over a public record and once
     over a restricted one, the access being the only thing that differs between the two runs.
+
+    The new version draft of the declined request is, before the request is decided upon, also
+    used for the access grant checks of `test_record_access_grant`.
     """
     # as the record's owner, create a new version of it and upload a new file
     draft_id = create_new_version_with_file(
@@ -1636,6 +1952,10 @@ def test_new_version_individual(approved_record_id: str) -> None:
         # self-review makes the submitter the receiver of their own request
         expected_recipients=[INDIVIDUAL_SUBMITTER],
     )
+    # the request is still open, so the new version draft is checked as it stands during a
+    # review; outside of any community the record's owner is the only one who may manage its
+    # access
+    test_record_access_grant(draft_id, request_id, owner_email=INDIVIDUAL_SUBMITTER, grantee_email=EXTRA_REVIEWER)
     _check_no_access_to_request(request_id=request_id)
     add_comment_check_emails(
         email=INDIVIDUAL_SUBMITTER,
@@ -1689,6 +2009,29 @@ _heading("Record review requests of a restricted record", level=2)
 # the very same review requests as above, only over records restricted on both their
 # metadata and their files; the phases below are run once over a record of each kind
 approved_restricted_record_ids = test_record_requests(access=RESTRICTED_ACCESS)
+
+_heading("Access request for the files of an approved record", level=2)
+
+# the approved record keeps the access it was submitted with, so its files stay closed to anybody
+# but the ones the record itself, or its community's roles, let in; an access request is what is
+# left to a user who cannot read them, and the record's owner answers it. It cannot be filed on a
+# record restricted on its metadata too, as the records above are, the requester having to read a
+# record to be allowed to ask about it, so a record public on its metadata and restricted on its
+# files alone is published for this phase
+access_record_id, access_review_id = submit_record_for_review(
+    community_slug=TC_SLUG,
+    submitter_email=SUBMITTER,
+    expected_recipients=[OWNER, CURATOR],
+    access=RESTRICTED_FILES_ACCESS,
+)
+accept_request_check_emails(actor=CURATOR, request_id=access_review_id, expected_recipients=[SUBMITTER])
+
+test_access_request(
+    access_record_id,
+    restricted_rec_id=approved_restricted_record_ids[0],
+    requester_email=EXTRA_REVIEWER,
+    curator_email=CURATOR,
+)
 
 _heading("Changed metadata requests of a public record", level=2)
 test_change_metadata(approved_record_ids[0])
