@@ -7,8 +7,13 @@ Run through the invenio shell, ie. ``invenio shell check_request_notifications.p
 and only when celery runs eagerly (``INVENIO_CELERY_ALWAYS_EAGER=1``), so that the
 notification dispatch happens in-process and can be intercepted instead of sent.
 
-Every step prints an ``OK:`` line; a mismatch with the expected notification
-recipients raises an ``AssertionError``.
+The report is written to stdout as Markdown: every phase opens a heading of its
+own, every step prints an ``OK:`` list item followed by a literal code block per
+every email the notification would have produced, its ``To:`` header naming who
+it went to. ``DEBUG`` lines go to stderr instead, so that stdout can be
+redirected to a Markdown file on its own.
+
+A mismatch with the expected notification recipients raises an ``AssertionError``.
 """
 
 # ruff: noqa: T201
@@ -16,9 +21,12 @@ recipients raises an ``AssertionError``.
 from __future__ import annotations
 
 import contextlib
+import re
+import sys
+import textwrap
 from datetime import UTC, datetime
 from io import BytesIO
-from typing import TYPE_CHECKING, Any, cast
+from typing import TYPE_CHECKING, Any, NamedTuple, cast
 
 from flask import current_app, g
 from flask_security.utils import hash_password
@@ -38,6 +46,7 @@ from invenio_requests.proxies import (
     current_request_type_registry,
     current_requests_service,
 )
+from marshmallow_utils.html import strip_html
 from oarepo_requests.types import (
     PublishChangedMetadataRequestType,
     PublishDraftRequestType,
@@ -54,6 +63,7 @@ if TYPE_CHECKING:
     from invenio_accounts.models import User
     from invenio_communities.communities.services.service import CommunityService
     from invenio_communities.members import MemberService
+    from invenio_notifications.backends.email import EmailNotificationBackend
     from invenio_notifications.models import Notification, Recipient
     from invenio_rdm_records.records.api import RDMRecord
     from invenio_rdm_records.services.services import RDMRecordService
@@ -78,6 +88,86 @@ ADMINISTRATOR = "tc_administrator@demo.org"
 community_service = cast("CommunityService", current_service_registry.get("communities"))
 members_service: MemberService = community_service.members
 datasets_service = cast("RDMRecordService", current_service_registry.get("datasets"))
+
+# the width the literal blocks of the report are wrapped to, leaving room for the
+# indentation of the list item they sit in, so that they never overflow the report
+_BLOCK_WIDTH = 72
+
+# the indentation of everything belonging to a step's list item
+_INDENT = "  "
+
+
+class _Mail(NamedTuple):
+    """One email a notification would have produced.
+
+    `text` is the email as it would have been sent, its `To:` and `Subject:` headers
+    and its plain text body included, `error` why it could not be rendered instead,
+    one of the two always being set.
+    """
+
+    address: str
+    text: str | None
+    error: str | None
+
+
+def _heading(title: str, *, level: int = 3) -> None:
+    """Open a phase of the report with a Markdown heading of the given level."""
+    print(f"\n{'#' * level} {title}\n")
+
+
+def _ok(text: str) -> None:
+    """Report a step whose notifications went to the expected recipients."""
+    print(f"- OK: {text}")
+
+
+def _warn(text: str) -> None:
+    """Report a step that was skipped because of the state the instance is in."""
+    print(f"- WARN: {text}")
+
+
+def _wrapped(text: str, *, width: int = _BLOCK_WIDTH) -> list[str]:
+    """Hard-wrap `text` to `width` so that it cannot overflow the rendered block.
+
+    A fenced code block is reproduced verbatim, with the reader scrolling sideways
+    instead of the text reflowing, so the wrapping has to happen here. A word longer
+    than the width is broken rather than left to overflow.
+    """
+    return textwrap.wrap(text, width=width, break_long_words=True, break_on_hyphens=False)
+
+
+def _block(text: str) -> None:
+    """Print `text` as a literal Markdown block indented under the current step.
+
+    The block is fenced, so that Markdown keeps its content literal instead of eg.
+    turning an email address into a link. The fence is made one backtick longer than
+    the longest run of backticks in `text`, so that content carrying one cannot close
+    the block early, and its lines are wrapped to `_BLOCK_WIDTH`, because a code block
+    is not reflowed by the renderer.
+    """
+    longest = max((len(run) for run in re.findall(r"`+", text)), default=0)
+    fence = "`" * max(3, longest + 1)
+
+    print(f"\n{_INDENT}{fence}text")
+    for line in text.splitlines():
+        for part in _wrapped(line) or [""]:
+            print(f"{_INDENT}{part}" if part else "")
+    # no blank line after the block: whatever comes next, a heading, the next block or
+    # the next step, already separates itself with one
+    print(f"{_INDENT}{fence}")
+
+
+def _mail(mail: _Mail) -> None:
+    """Print one captured email as a literal Markdown block under the current step."""
+    if mail.text is None:
+        _block(f"To: {mail.address}\n(not rendered: {mail.error})")
+        return
+
+    _block(mail.text)
+
+
+def _debug(*args: object) -> None:
+    """Write a debug line to stderr, keeping it out of the Markdown report on stdout."""
+    print("DEBUG", *args, file=sys.stderr)
 
 
 def _community_id(*, community_slug: str) -> UUID:
@@ -114,7 +204,7 @@ def create_user_if_missing(email: str, *, password: str = "123456") -> User:  # 
     )
     # the datastore only stages the user in the session, it does not commit
     db.session.commit()
-    print(f"OK: created user {email!r}")
+    _ok(f"created user {email!r}")
     return user
 
 
@@ -133,14 +223,14 @@ def add_user_to_role(email: str, role: str) -> None:
     """
     user = current_datastore.find_user(email=email)
     if user is None:
-        print(f"WARN: cannot grant role {role!r} to non-existent user {email!r}")
+        _warn(f"cannot grant role {role!r} to non-existent user {email!r}")
         return
 
     role_obj = current_datastore.find_role(role) or current_datastore.create_role(name=role)
     if current_datastore.add_role_to_user(user, role_obj):
-        print(f"OK: added role {role!r} to user {email!r}")
+        _ok(f"added role {role!r} to user {email!r}")
     else:
-        print(f"OK: user {email!r} already has role {role!r}")
+        _ok(f"user {email!r} already has role {role!r}")
     db.session.commit()
 
 
@@ -190,7 +280,7 @@ def create_community_if_missing() -> None:
             "metadata": {"title": "Test Community"},
         },
     )
-    print(f"OK: created community {TC_SLUG!r}")
+    _ok(f"created community {TC_SLUG!r}")
 
 
 def reindex_users(*, user_emails: Iterable[str]) -> None:
@@ -283,14 +373,14 @@ def add_member_if_missing(*, community_slug: str, email: str, role: str) -> None
     member = next((m for m in members if m.model.active), None)
     if member is not None:
         if member.model.role == role:
-            print(f"OK: {email!r} is already a {role!r} of community {community_slug!r}")
+            _ok(f"{email!r} is already a {role!r} of community {community_slug!r}")
             return
         members_service.update(
             system_identity,
             community_id,
             {"members": [{"type": "user", "id": str(user.id)}], "role": role},
         )
-        print(f"OK: set {email!r}'s role in community {community_slug!r} to {role!r}")
+        _ok(f"set {email!r}'s role in community {community_slug!r} to {role!r}")
         return
 
     members_service.add(
@@ -298,7 +388,7 @@ def add_member_if_missing(*, community_slug: str, email: str, role: str) -> None
         community_id,
         {"members": [{"type": "user", "id": str(user.id)}], "role": role},
     )
-    print(f"OK: added {email!r} to community {community_slug!r} as {role!r}")
+    _ok(f"added {email!r} to community {community_slug!r} as {role!r}")
 
 
 def decline_pending_membership_request(*, community_slug: str, email: str) -> None:
@@ -320,7 +410,7 @@ def decline_pending_membership_request(*, community_slug: str, email: str) -> No
             except (CannotExecuteActionError, PermissionDeniedError) as exc:
                 # the search index can be stale, so the request may have already been
                 # decided by a previous run of this script
-                print(f"WARN: could not decline the membership request of {email!r}: {exc}")
+                _warn(f"could not decline the membership request of {email!r}: {exc}")
 
 
 def cancel_pending_invitation(*, community_slug: str, email: str) -> None:
@@ -344,7 +434,7 @@ def cancel_pending_invitation(*, community_slug: str, email: str) -> None:
             except (CannotExecuteActionError, PermissionDeniedError) as exc:
                 # the search index can be stale, so the invitation may have already been
                 # decided by a previous run of this script
-                print(f"WARN: could not cancel the invitation of {email!r}: {exc}")
+                _warn(f"could not cancel the invitation of {email!r}: {exc}")
 
 
 def open_invitation_request_id(*, community_id: UUID, email: str) -> str:
@@ -358,25 +448,61 @@ def open_invitation_request_id(*, community_id: UUID, email: str) -> str:
     raise AssertionError(f"No open invitation for {email!r} in community {community_id}.")
 
 
+def _render_mail(
+    *,
+    backend: EmailNotificationBackend,
+    notification: Notification,
+    recipient: Recipient,
+    address: str,
+) -> _Mail:
+    """Return the email `notification` would have produced for `recipient`.
+
+    The mail is rendered the very way ``EmailNotificationBackend.send`` builds the
+    message it hands to invenio-mail, its ``To:`` and ``Subject:`` headers and its
+    plain text body included, so that the report shows the text the recipient would
+    have read. It has to be rendered here, while the notification is dispatched,
+    because the templates are resolved against the context of the action that
+    produced the notification.
+
+    A mail that cannot be rendered, eg. because the notification type has no email
+    template, is reported on the mail itself rather than raised, so that a missing
+    template does not look like a recipient mismatch.
+    """
+    try:
+        content = backend.render_template(notification, recipient)
+        body = strip_html(content["plain_body"]).strip()
+        text = f"To: {address}\nSubject: {content['subject'].strip()}\n\n{body}"
+    except Exception as exc:  # noqa: BLE001  - a broken mail must not fail the recipient check
+        return _Mail(address=address, text=None, error=f"{type(exc).__name__}: {exc}")
+
+    return _Mail(address=address, text=text, error=None)
+
+
 @contextlib.contextmanager
-def record_notifications() -> Iterator[list[str]]:
-    """Capture emails that would be sent via notifications instead of actually sending them.
+def record_notifications() -> Iterator[list[_Mail]]:
+    """Capture the emails that would be sent via notifications instead of sending them.
 
     Patches the notification manager's dispatch step (the point right before a backend's
-    ``send()`` is invoked) for the duration of the context, so no real email is sent.
+    ``send()`` is invoked) for the duration of the context, so no real email is sent. The
+    captured emails carry the text they would have had, see `_render_mail`.
     """
-    recorded: list[str] = []
+    recorded: list[_Mail] = []
 
     # has to stay positional, it replaces the manager's own handle_dispatch
     def recording_handle_dispatch(backend_id: str, recipient: Recipient, notification: Notification) -> None:
-        if backend_id == "email":
-            # the email backend resolves the address itself, so use the very helper it
-            # uses to know what address an email would have gone to
-            email = current_notifications_manager.backends[backend_id]._resolve_email(recipient)  # noqa: SLF001
-            if notification.type == "comment-request-event.create":
-                print("DEBUG dispatch", email, "request=", notification.context.get("request"))
-            if email:
-                recorded.append(email)
+        if backend_id != "email":
+            return
+
+        backend = current_notifications_manager.backends[backend_id]
+        # the email backend resolves the address itself, so use the very helper it
+        # uses to know what address an email would have gone to
+        email = backend._resolve_email(recipient)  # noqa: SLF001
+        if not email:
+            return
+
+        if notification.type == "comment-request-event.create":
+            _debug("dispatch", email, "request=", notification.context.get("request"))
+        recorded.append(_render_mail(backend=backend, notification=notification, recipient=recipient, address=email))
 
     original_handle_dispatch = current_notifications_manager.handle_dispatch
     current_notifications_manager.handle_dispatch = recording_handle_dispatch
@@ -389,17 +515,20 @@ def record_notifications() -> Iterator[list[str]]:
 def _assert_notification_recipients(
     *,
     action_description: str,
-    sent_emails: Iterable[str],
+    sent_mails: Iterable[_Mail],
     expected_recipients: Iterable[str],
 ) -> None:
     expected = set(expected_recipients)
-    actual = set(sent_emails)
+    mails = sorted(sent_mails, key=lambda mail: mail.address)
+    actual = {mail.address for mail in mails}
     if actual != expected:
         raise AssertionError(
             f"Notification recipients mismatch for {action_description}: "
             f"missing={sorted(expected - actual)}, unexpected={sorted(actual - expected)}"
         )
-    print(f"OK: {action_description} notifications sent to {sorted(actual)}")
+    _ok(f"{action_description} notifications sent to {len(actual)} recipient(s)")
+    for mail in mails:
+        _mail(mail)
 
 
 def create_request_check_emails(
@@ -423,7 +552,7 @@ def create_request_check_emails(
 
     community_id = _community_id(community_slug=community_slug)
 
-    with record_notifications() as sent_emails, current_runtime.login_user(creator):
+    with record_notifications() as sent_mails, current_runtime.login_user(creator):
         identity = g.identity
         if request_type_id == MembershipRequestRequestType.type_id:
             created_request = members_service.request_membership(identity, community_id, request_payload)
@@ -439,7 +568,7 @@ def create_request_check_emails(
 
     _assert_notification_recipients(
         action_description=f"creating request type {request_type_id!r}",
-        sent_emails=sent_emails,
+        sent_mails=sent_mails,
         expected_recipients=expected_recipients,
     )
     return created_request.data["id"]
@@ -465,7 +594,7 @@ def invite_to_community_check_emails(
     community_id = _community_id(community_slug=community_slug)
     user = current_datastore.find_user(email=invitee)
 
-    with record_notifications() as sent_emails, current_runtime.login_user(inviter):
+    with record_notifications() as sent_mails, current_runtime.login_user(inviter):
         members_service.invite(
             g.identity,
             community_id,
@@ -478,7 +607,7 @@ def invite_to_community_check_emails(
 
     _assert_notification_recipients(
         action_description=f"inviting {invitee!r} as {role!r} to community {community_slug!r}",
-        sent_emails=sent_emails,
+        sent_mails=sent_mails,
         expected_recipients=expected_recipients,
     )
     return open_invitation_request_id(community_id=community_id, email=invitee)
@@ -486,24 +615,24 @@ def invite_to_community_check_emails(
 
 def accept_request_check_emails(*, actor: str, request_id: str, expected_recipients: Iterable[str]) -> None:
     """Accept a request as `actor` and check that email notifications go to the expected recipients."""
-    with record_notifications() as sent_emails, current_runtime.login_user(actor):
+    with record_notifications() as sent_mails, current_runtime.login_user(actor):
         current_requests_service.execute_action(g.identity, request_id, "accept")
 
     _assert_notification_recipients(
         action_description=f"accepting request {request_id}",
-        sent_emails=sent_emails,
+        sent_mails=sent_mails,
         expected_recipients=expected_recipients,
     )
 
 
 def decline_request_check_emails(*, actor: str, request_id: str, expected_recipients: Iterable[str]) -> None:
     """Decline a request as `actor` and check that email notifications go to the expected recipients."""
-    with record_notifications() as sent_emails, current_runtime.login_user(actor):
+    with record_notifications() as sent_mails, current_runtime.login_user(actor):
         current_requests_service.execute_action(g.identity, request_id, "decline")
 
     _assert_notification_recipients(
         action_description=f"declining request {request_id}",
-        sent_emails=sent_emails,
+        sent_mails=sent_mails,
         expected_recipients=expected_recipients,
     )
 
@@ -512,7 +641,7 @@ def add_comment_check_emails(
     *, email: str, request_id: str, comment_text: str, expected_recipients: Iterable[str]
 ) -> None:
     """Add a comment on `request_id` as `email` and check that email notifications go to the expected recipients."""
-    with record_notifications() as sent_emails, current_runtime.login_user(email):
+    with record_notifications() as sent_mails, current_runtime.login_user(email):
         current_events_service.create(
             g.identity,
             request_id,
@@ -522,7 +651,7 @@ def add_comment_check_emails(
 
     _assert_notification_recipients(
         action_description=f"commenting on request {request_id}",
-        sent_emails=sent_emails,
+        sent_mails=sent_mails,
         expected_recipients=expected_recipients,
     )
 
@@ -538,7 +667,7 @@ def set_member_role(*, email: str, role: str, setter_email: str, expected_recipi
     user = current_datastore.find_user(email=email)
     community_id = _community_id(community_slug=TC_SLUG)
 
-    with record_notifications() as sent_emails, current_runtime.login_user(setter_email):
+    with record_notifications() as sent_mails, current_runtime.login_user(setter_email):
         members_service.update(
             g.identity,
             community_id,
@@ -547,7 +676,7 @@ def set_member_role(*, email: str, role: str, setter_email: str, expected_recipi
 
     _assert_notification_recipients(
         action_description=f"setting {email}'s role to {role!r}",
-        sent_emails=sent_emails,
+        sent_mails=sent_mails,
         expected_recipients=expected_recipients,
     )
 
@@ -571,6 +700,8 @@ def check_adding_to_community_via_membership_request(*, requester: str, role: st
 
     The decision itself is notified to the requester only.
     """
+    _heading(f"Membership request of {requester} as {role}")
+
     message = {"message": f"I would like to join as a {role}."}
 
     request_id = create_request_check_emails(
@@ -679,6 +810,8 @@ def check_adding_to_community_via_invitation(*, inviter: str, invitee: str, role
     curator. The invited user is not among them, not even after accepting, when they join with a role
     without rights on the request.
     """
+    _heading(f"Invitation of {invitee} as {role} by {inviter}")
+
     other_manager = CURATOR if inviter == OWNER else OWNER
 
     # the invitee must not be a member and must have no request or invitation pending
@@ -855,22 +988,22 @@ def submit_record_for_review(
         identity = g.identity
 
         rec_id = create_record_with_file(identity)
-        print(f"OK: submitter {submitter_email!r} created draft record {rec_id}")
+        _ok(f"submitter {submitter_email!r} created draft record {rec_id}")
 
-        with record_notifications() as sent_emails:
+        with record_notifications() as sent_mails:
             draft_record = record_from_result(datasets_service.read_draft(identity, rec_id, expand=True))
             review = datasets_service.review.create(
                 identity,
                 {"type": "community-submission", "receiver": {"community": str(community_id)}},
                 draft_record,
             )
-            print(f"OK: review request {review.id} created for record {rec_id}")
+            _ok(f"review request {review.id} created for record {rec_id}")
 
             datasets_service.review.submit(identity, rec_id)
 
     _assert_notification_recipients(
         action_description=f"submitting record {rec_id} for review by community {community_slug!r}",
-        sent_emails=sent_emails,
+        sent_mails=sent_mails,
         expected_recipients=expected_recipients,
     )
     return rec_id, review.id
@@ -897,6 +1030,7 @@ def test_record_requests() -> list[str]:
 
     # a declined or accepted request is closed, so every pass needs its own submission
     for actor, other in ((CURATOR, OWNER), (OWNER, CURATOR)):
+        _heading(f"Review request declined by {actor}")
         rec_id, request_id = submit_record_for_review(
             community_slug=TC_SLUG,
             submitter_email=SUBMITTER,
@@ -918,6 +1052,7 @@ def test_record_requests() -> list[str]:
 
     approved_record_ids: list[str] = []
     for actor in (CURATOR, OWNER):
+        _heading(f"Review request accepted by {actor}")
         rec_id, request_id = submit_record_for_review(
             community_slug=TC_SLUG,
             submitter_email=SUBMITTER,
@@ -939,7 +1074,7 @@ def submit_changed_metadata_request(*, record_id: str, creator_email: str, expec
 
     Returns the id of the created request.
     """
-    with record_notifications() as sent_emails, current_runtime.login_user(creator_email):
+    with record_notifications() as sent_mails, current_runtime.login_user(creator_email):
         draft_record = record_from_result(datasets_service.read_draft(g.identity, record_id))
         request = current_requests_service.create(
             g.identity,
@@ -952,7 +1087,7 @@ def submit_changed_metadata_request(*, record_id: str, creator_email: str, expec
 
     _assert_notification_recipients(
         action_description=f"submitting changed metadata of record {record_id} for review",
-        sent_emails=sent_emails,
+        sent_mails=sent_mails,
         expected_recipients=expected_recipients,
     )
     return request.id
@@ -990,10 +1125,11 @@ def test_change_metadata(approved_record_id: str) -> None:
     """
     # as the record's owner, edit it and change the title
     change_record_title(record_id=approved_record_id, editor_email=SUBMITTER, new_title="Changed title")
-    print(f"OK: submitter {SUBMITTER!r} changed the title of record {approved_record_id}")
+    _ok(f"submitter {SUBMITTER!r} changed the title of record {approved_record_id}")
 
     # every decline closes its request but keeps the draft for the next one
     for actor, other in ((CURATOR, OWNER), (OWNER, CURATOR)):
+        _heading(f"Changed metadata declined by {actor}")
         request_id = submit_changed_metadata_request(
             record_id=approved_record_id,
             creator_email=SUBMITTER,
@@ -1015,6 +1151,7 @@ def test_change_metadata(approved_record_id: str) -> None:
 
     # an acceptance publishes the changed metadata, so each one needs its own changed draft
     for round_, actor in enumerate((CURATOR, OWNER), start=2):
+        _heading(f"Changed metadata accepted by {actor}")
         change_record_title(
             record_id=approved_record_id,
             editor_email=SUBMITTER,
@@ -1056,20 +1193,17 @@ def create_new_version_with_file(*, record_id: str, submitter_email: str, file_k
         record = cast("RDMRecord", record_from_result(datasets_service.read(identity, record_id)))
         if not record.versions.is_latest:
             latest_id = str(record.versions.latest_id)
-            print(
-                f"OK: record pid {record_id} points to v{record.versions.index}, "
+            _ok(
+                f"record pid {record_id} points to v{record.versions.index}, "
                 f"following the version chain to the latest version {latest_id}"
             )
             record_id = latest_id
             record = cast("RDMRecord", record_from_result(datasets_service.read(identity, record_id)))
-        print(
-            f"OK: latest version of record {record_id} is v{record.versions.index} "
-            f"(is_latest={record.versions.is_latest})"
-        )
+        _ok(f"latest version of record {record_id} is v{record.versions.index} (is_latest={record.versions.is_latest})")
 
         draft = datasets_service.new_version(identity, record_id)
         draft_id = draft.id
-        print(f"OK: submitter {submitter_email!r} created new version draft {draft_id} of record {record_id}")
+        _ok(f"submitter {submitter_email!r} created new version draft {draft_id} of record {record_id}")
 
         # the new version draft starts with files disabled, so enable them before
         # uploading (the whole draft data has to be sent back, an update carrying
@@ -1083,7 +1217,7 @@ def create_new_version_with_file(*, record_id: str, submitter_email: str, file_k
             identity, draft_id, file_key, BytesIO(f"content of {file_key}".encode())
         )
         datasets_service.draft_files.commit_file(identity, draft_id, file_key)
-        print(f"OK: uploaded file {file_key!r} to new version draft {draft_id}")
+        _ok(f"uploaded file {file_key!r} to new version draft {draft_id}")
     return draft_id
 
 
@@ -1101,7 +1235,7 @@ def submit_new_version_request(
 
     Returns the id of the created request.
     """
-    with record_notifications() as sent_emails, current_runtime.login_user(creator_email):
+    with record_notifications() as sent_mails, current_runtime.login_user(creator_email):
         draft_record = record_from_result(datasets_service.read_draft(g.identity, draft_id))
         request = current_requests_service.create(
             g.identity,
@@ -1114,7 +1248,7 @@ def submit_new_version_request(
 
     _assert_notification_recipients(
         action_description=f"submitting new version {version!r} of draft {draft_id} for review",
-        sent_emails=sent_emails,
+        sent_mails=sent_mails,
         expected_recipients=expected_recipients,
     )
     return request.id
@@ -1151,6 +1285,7 @@ def test_new_version(approved_record_id: str) -> None:
 
     # every decline closes its request but keeps the new version draft for the next one
     for round_, (actor, other) in enumerate(((CURATOR, OWNER), (OWNER, CURATOR)), start=1):
+        _heading(f"New version declined by {actor}")
         request_id = submit_new_version_request(
             draft_id=draft_id,
             creator_email=SUBMITTER,
@@ -1174,6 +1309,7 @@ def test_new_version(approved_record_id: str) -> None:
     # an acceptance publishes the new version (minting a new record pid for it), so
     # each one needs its own new version draft built on the latest published version
     for round_, actor in enumerate((CURATOR, OWNER), start=3):
+        _heading(f"New version accepted by {actor}")
         draft_id = create_new_version_with_file(
             record_id=approved_record_id,
             submitter_email=SUBMITTER,
@@ -1203,7 +1339,7 @@ def submit_publish_draft_request(*, draft_id: str, creator_email: str, expected_
 
     Returns the id of the created request.
     """
-    with record_notifications() as sent_emails, current_runtime.login_user(creator_email):
+    with record_notifications() as sent_mails, current_runtime.login_user(creator_email):
         draft_record = record_from_result(datasets_service.read_draft(g.identity, draft_id))
         request = current_requests_service.create(
             g.identity,
@@ -1216,7 +1352,7 @@ def submit_publish_draft_request(*, draft_id: str, creator_email: str, expected_
 
     _assert_notification_recipients(
         action_description=f"submitting draft {draft_id} for individual review",
-        sent_emails=sent_emails,
+        sent_mails=sent_mails,
         expected_recipients=expected_recipients,
     )
     return request.id
@@ -1254,8 +1390,9 @@ def test_record_individual() -> None:
 
     with current_runtime.login_user(INDIVIDUAL_SUBMITTER):
         rec_id = create_record_with_file(g.identity)
-    print(f"OK: submitter {INDIVIDUAL_SUBMITTER!r} created individual draft record {rec_id}")
+    _ok(f"submitter {INDIVIDUAL_SUBMITTER!r} created individual draft record {rec_id}")
 
+    _heading(f"Publish draft request declined by {ADMINISTRATOR}")
     request_id = submit_publish_draft_request(
         draft_id=rec_id,
         creator_email=INDIVIDUAL_SUBMITTER,
@@ -1281,6 +1418,7 @@ def test_record_individual() -> None:
 
     # the declined request left the draft in "revision_requested", so the submitter can
     # answer the review by submitting the same draft again
+    _heading(f"Publish draft request accepted by {ADMINISTRATOR}")
     request_id = submit_publish_draft_request(
         draft_id=rec_id,
         creator_email=INDIVIDUAL_SUBMITTER,
@@ -1294,9 +1432,22 @@ def test_record_individual() -> None:
 
 
 # running ...
+print("# Request notification checks")
+
+_heading("Prepare the environment", level=2)
 prepare_environment()
+
+_heading("Membership requests", level=2)
 test_membership_request()
+
+_heading("Invitations to the community", level=2)
 test_invitation_to_community()
+
+_heading("Record review requests", level=2)
 approved_record_ids = test_record_requests()
+
+_heading("Changed metadata requests", level=2)
 test_change_metadata(approved_record_ids[0])
+
+_heading("Publish draft requests outside a community", level=2)
 test_record_individual()
