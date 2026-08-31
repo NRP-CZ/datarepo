@@ -85,6 +85,15 @@ EXTRA_SUBMITTER = "tc_extra_submitter@demo.org"
 INDIVIDUAL_SUBMITTER = "tc_individual_submitter@demo.org"
 ADMINISTRATOR = "tc_administrator@demo.org"
 
+# the access of the records submitted for review, ie. the ``access`` block of the record, which
+# holds its protection (the access that used to be held by the parent record): a plain public
+# record and a record restricted on both its metadata and its files. The block has to be set
+# whole, the service schema requiring both keys whenever it is set at all; a draft created
+# without it is public, so the public pass states it explicitly to differ from the restricted
+# one by the access alone
+PUBLIC_ACCESS = {"record": "public", "files": "public"}
+RESTRICTED_ACCESS = {"record": "restricted", "files": "restricted"}
+
 community_service = cast("CommunityService", current_service_registry.get("communities"))
 members_service: MemberService = community_service.members
 datasets_service = cast("RDMRecordService", current_service_registry.get("datasets"))
@@ -963,12 +972,15 @@ def test_invitation_to_community() -> None:
         check_adding_to_community_via_invitation(inviter=inviter, invitee=invitee, role=role)
 
 
-def create_record_with_file(identity: Identity) -> str:
+def create_record_with_file(identity: Identity, *, access: dict[str, str] | None = None) -> str:
     """Create a draft record as `identity` and attach a small sample file to it.
+
+    The `access` block, when given, becomes the access of the record, ie. its protection;
+    omitted, the draft keeps the public default.
 
     Returns the id of the created draft.
     """
-    record_data = {
+    record_data: dict[str, Any] = {
         "files": {"enabled": True},
         "metadata": {
             "title": "Test Record",
@@ -989,6 +1001,8 @@ def create_record_with_file(identity: Identity) -> str:
             "publisher": "CESNET",
         },
     }
+    if access is not None:
+        record_data["access"] = dict(access)
     response = datasets_service.create(identity, record_data).to_dict()
     if response.get("errors") is not None:
         raise AssertionError(f"Record creation failed with errors: {response['errors']}")
@@ -1002,13 +1016,14 @@ def create_record_with_file(identity: Identity) -> str:
 
 
 def submit_record_for_review(
-    *, community_slug: str, submitter_email: str, expected_recipients: Iterable[str]
+    *, community_slug: str, submitter_email: str, expected_recipients: Iterable[str], access: dict[str, str]
 ) -> tuple[str, str]:
     """Create a record with a small file as `submitter_email` and submit it for review.
 
     The record is submitted for review by the community identified by `community_slug`, which
-    publishes it and moves the review request from draft to submit state. Submission is
-    notified to the members that can act on the request, ie. the community's owner and curator.
+    publishes it and moves the review request from draft to submit state. The `access` becomes
+    the access of the record, ie. its protection, and is carried by the published record. Submission
+    is notified to the members that can act on the request, ie. the community's owner and curator.
 
     Returns the ids of the created record and of its review request.
     """
@@ -1017,8 +1032,11 @@ def submit_record_for_review(
     with current_runtime.login_user(submitter_email):
         identity = g.identity
 
-        rec_id = create_record_with_file(identity)
-        _ok(f"submitter {submitter_email!r} created draft record {rec_id}")
+        rec_id = create_record_with_file(identity, access=access)
+        _ok(
+            f"submitter {submitter_email!r} created draft record {rec_id} with "
+            f"{access['record']!r} record and {access['files']!r} files"
+        )
 
         with record_notifications() as sent_mails:
             draft_record = record_from_result(datasets_service.read_draft(identity, rec_id, expand=True))
@@ -1039,7 +1057,7 @@ def submit_record_for_review(
     return rec_id, review.id
 
 
-def test_record_requests() -> list[str]:
+def test_record_requests(*, access: dict[str, str]) -> list[str]:
     """Test the notifications sent when a submitter submits a record to the community.
 
     The submitter is (re)added to the community with the "submitter" role. Record review
@@ -1047,6 +1065,11 @@ def test_record_requests() -> list[str]:
     accepted by the curator and by the owner - checking the recipients of every notification
     sent on the way. Each request gets its own record submission, since a request is closed
     by the decision that ends it.
+
+    The `access` of the submitted records is the only thing that differs between the runs of
+    these checks, the notifications being addressed the same way over a public record as over
+    a restricted one: who is notified is decided by the roles the workflow grants on the
+    request, not by who may read the record behind it.
 
     A record review request has the submitter as its creator and the community as its
     receiver, so - like a membership request - its submission is notified to the members that
@@ -1065,6 +1088,7 @@ def test_record_requests() -> list[str]:
             community_slug=TC_SLUG,
             submitter_email=SUBMITTER,
             expected_recipients=[OWNER, CURATOR],
+            access=access,
         )
         add_comment_check_emails(
             email=actor,
@@ -1087,6 +1111,7 @@ def test_record_requests() -> list[str]:
             community_slug=TC_SLUG,
             submitter_email=SUBMITTER,
             expected_recipients=[OWNER, CURATOR],
+            access=access,
         )
         accept_request_check_emails(actor=actor, request_id=request_id, expected_recipients=[SUBMITTER])
         approved_record_ids.append(rec_id)
@@ -1154,6 +1179,11 @@ def test_change_metadata(approved_record_id: str) -> None:
     recipients of every notification sent on the way. A declined request is closed but leaves
     the draft intact so the next request can be created on it, while an accepted one publishes
     the draft, so every acceptance needs a freshly changed draft.
+
+    These checks are run once over a public record and once over a record restricted on both
+    its metadata and its files, the access being the only thing that differs between the two
+    runs: the receiver of the request, and with it every recipient, comes from the roles the
+    workflow grants on the request rather than from who may read the record behind it.
     """
     # as the record's owner, edit it and change the title
     change_record_title(record_id=approved_record_id, editor_email=SUBMITTER, new_title="Changed title")
@@ -1309,7 +1339,12 @@ def test_new_version(approved_record_id: str) -> None:
     The version string in the request payload must be unique across the rounds: a
     declined submit leaves it on the draft and an accepted one on the published record,
     and a request reusing an already taken version string is rejected with
-    ``VersionAlreadyExists``.
+    ``VersionAlreadyExists``. That uniqueness is scoped to the versions of the record, so the
+    run over the restricted record goes through the very same strings as the public one.
+
+    Like `test_change_metadata`, these checks are run once over a public record and once over
+    a record restricted on both its metadata and its files, the notifications expected from
+    the two being the same for the very same reason.
     """
     # as the record's owner, create a new version of it and upload a new file
     draft_id = create_new_version_with_file(
@@ -1389,13 +1424,18 @@ def submit_publish_draft_request(*, draft_id: str, creator_email: str, expected_
     return request.id
 
 
-def test_record_individual() -> str:
+def test_record_individual(*, access: dict[str, str]) -> str:
     """Test the notifications sent when a submitter publishes a record outside a community.
 
     The submitter, who holds the global "submitter" role the individual workflow requires
     to create a draft, creates a draft record outside of any community - so the individual
     workflow governs it rather than the community one - uploads a single file to it and
     submits it for review through a ``publish_draft`` request.
+
+    The `access` of the submitted record is the only thing that differs between the runs of
+    these checks, the notifications being addressed the same way over a public record as over
+    a restricted one: who is notified is decided by the roles the individual workflow grants
+    on the request, not by who may read the record behind it.
 
     The individual workflow is configured (see ``invenio.cfg``) without any reviewer role and
     with self-review enabled, so its only reviewer is the owner of the draft who holds the
@@ -1419,8 +1459,11 @@ def test_record_individual() -> str:
     metadata of an individual record are then submitted for review on.
     """
     with current_runtime.login_user(INDIVIDUAL_SUBMITTER):
-        rec_id = create_record_with_file(g.identity)
-    _ok(f"submitter {INDIVIDUAL_SUBMITTER!r} created individual draft record {rec_id}")
+        rec_id = create_record_with_file(g.identity, access=access)
+    _ok(
+        f"submitter {INDIVIDUAL_SUBMITTER!r} created individual draft record {rec_id} with "
+        f"{access['record']!r} record and {access['files']!r} files"
+    )
 
     _heading(f"Individual draft record {rec_id} with no review request yet")
 
@@ -1500,6 +1543,11 @@ def test_change_metadata_individual(approved_record_id: str) -> None:
     Like in `test_change_metadata`, the changed metadata are run through both outcomes -
     a decline closes the request but leaves the draft for the next one, while an acceptance
     publishes the draft, so the acceptance needs a freshly changed draft.
+
+    These checks are run once over a public record and once over a record restricted on both
+    its metadata and its files, the access being the only thing that differs between the two
+    runs: the receiver of the request, and with it every recipient, is the submitter alone
+    whichever access the record behind the request carries.
     """
     change_record_title(
         record_id=approved_record_id,
@@ -1567,7 +1615,11 @@ def test_new_version_individual(approved_record_id: str) -> None:
     discarding it, so the acceptance is submitted over the very same draft, the way a submitter would
     answer the review. The version string of the second request has to differ from the first one that
     the declined request left on the draft, a request reusing a version already taken being rejected
-    with ``VersionAlreadyExists``.
+    with ``VersionAlreadyExists``. That uniqueness is scoped to the versions of the record, so the run
+    over the restricted record goes through the very same strings as the public one.
+
+    Like `test_change_metadata_individual`, these checks are run once over a public record and once
+    over a restricted one, the access being the only thing that differs between the two runs.
     """
     # as the record's owner, create a new version of it and upload a new file
     draft_id = create_new_version_with_file(
@@ -1630,20 +1682,42 @@ test_membership_request()
 _heading("Invitations to the community", level=2)
 test_invitation_to_community()
 
-_heading("Record review requests", level=2)
-approved_record_ids = test_record_requests()
+_heading("Record review requests of a public record", level=2)
+approved_record_ids = test_record_requests(access=PUBLIC_ACCESS)
 
-_heading("Changed metadata requests", level=2)
+_heading("Record review requests of a restricted record", level=2)
+# the very same review requests as above, only over records restricted on both their
+# metadata and their files; the phases below are run once over a record of each kind
+approved_restricted_record_ids = test_record_requests(access=RESTRICTED_ACCESS)
+
+_heading("Changed metadata requests of a public record", level=2)
 test_change_metadata(approved_record_ids[0])
 
-_heading("New version requests", level=2)
+_heading("Changed metadata requests of a restricted record", level=2)
+test_change_metadata(approved_restricted_record_ids[0])
+
+_heading("New version requests of a public record", level=2)
 test_new_version(approved_record_ids[0])
 
-_heading("Publish draft requests outside a community", level=2)
-individual_record_id = test_record_individual()
+_heading("New version requests of a restricted record", level=2)
+test_new_version(approved_restricted_record_ids[0])
 
-_heading("Changed metadata of a record outside a community", level=2)
+_heading("Publish draft requests of a public record outside a community", level=2)
+individual_record_id = test_record_individual(access=PUBLIC_ACCESS)
+
+_heading("Publish draft requests of a restricted record outside a community", level=2)
+# the very same publish draft requests as above, only over a record restricted on both its
+# metadata and its files; the phases below are run once over a record of each kind
+individual_restricted_record_id = test_record_individual(access=RESTRICTED_ACCESS)
+
+_heading("Changed metadata requests of a public record outside a community", level=2)
 test_change_metadata_individual(individual_record_id)
 
-_heading("New version of a record outside a community", level=2)
+_heading("Changed metadata requests of a restricted record outside a community", level=2)
+test_change_metadata_individual(individual_restricted_record_id)
+
+_heading("New version requests of a public record outside a community", level=2)
 test_new_version_individual(individual_record_id)
+
+_heading("New version requests of a restricted record outside a community", level=2)
+test_new_version_individual(individual_restricted_record_id)
