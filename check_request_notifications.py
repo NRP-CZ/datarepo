@@ -87,6 +87,18 @@ ADMINISTRATOR = "tc_administrator@demo.org"
 
 EXTRA_REVIEWER = "tc_extra_reviewer@demo.org"
 
+ALL_USERS = (
+    CURATOR,
+    OWNER,
+    READER,
+    SUBMITTER,
+    EXTRA_READER,
+    EXTRA_SUBMITTER,
+    INDIVIDUAL_SUBMITTER,
+    ADMINISTRATOR,
+    EXTRA_REVIEWER,
+)
+
 # the access of the records submitted for review, ie. the ``access`` block of the record, which
 # holds its protection (the access that used to be held by the parent record): a plain public
 # record, a record restricted on both its metadata and its files, and a record restricted on its
@@ -218,6 +230,21 @@ def _member_data(user: User, *, role: str | None = None, message: str | None = N
     return data
 
 
+def _local_part(email: str) -> str:
+    """Return the local part of `email`, ie. everything before the ``@``."""
+    return email.split("@", 1)[0]
+
+
+def _username(email: str) -> str:
+    """Return a username derived from `email`'s local part, stripped of any special character.
+
+    The accounts username regex would accept the local part as-is (it allows ``-`` and ``_``),
+    but the username is meant to read as a plain handle, so anything other than a letter or a
+    digit is dropped instead.
+    """
+    return re.sub(r"[^a-zA-Z0-9]", "", _local_part(email))
+
+
 # the weak default password is intentional, it creates the throwaway demo users
 # that the checks below log in as
 def create_user_if_missing(email: str, *, password: str = "123456") -> User:  # noqa: S107
@@ -225,14 +252,24 @@ def create_user_if_missing(email: str, *, password: str = "123456") -> User:  # 
 
     Mirrors `invenio users create -a -c --password <password>` from the
     prerequisites. The datastore stores the password as-is, so it is hashed here
-    the same way the CLI hashes it.
+    the same way the CLI hashes it. The user's full name is the local part of `email`
+    and their username is that same local part with any special character removed,
+    see `_username`; both are (re)applied on a user that already exists too, so a user
+    created by an earlier run of this script before those were introduced still ends
+    up with them.
     """
     user = current_datastore.find_user(email=email)
     if user is not None:
+        user.username = _username(email)
+        user.user_profile = {**(user.user_profile or {}), "full_name": _local_part(email)}
+        db.session.add(user)
+        db.session.commit()
         return user
 
     user = current_datastore.create_user(
         email=email,
+        username=_username(email),
+        user_profile={"full_name": _local_part(email)},
         password=hash_password(password),
         active=True,
         confirmed_at=datetime.now(UTC),
@@ -933,22 +970,14 @@ def prepare_environment() -> None:
     script also runs against a fresh instance, then resets the state the tests
     depend on.
     """
-    for email in (
-        CURATOR,
-        OWNER,
-        READER,
-        SUBMITTER,
-        EXTRA_READER,
-        EXTRA_SUBMITTER,
-        INDIVIDUAL_SUBMITTER,
-        ADMINISTRATOR,
-        EXTRA_REVIEWER,
-    ):
+    for email in ALL_USERS:
         create_user_if_missing(email)
     # the access-grant checks below let a record owner grant the requester access, which
     # reads the requester as the owner and so refuses the restricted profile a new user has
-    # by default; making it public is what lets the owner resolve them as the grant subject
-    make_profile_public(EXTRA_REVIEWER)
+    # by default; making every profile public is what lets the owner (or curator) resolve
+    # any of these users as the grant subject
+    for email in ALL_USERS:
+        make_profile_public(email)
     create_community_if_missing()
     add_member_if_missing(community_slug=TC_SLUG, email=OWNER, role="owner")
     add_member_if_missing(community_slug=TC_SLUG, email=CURATOR, role="curator")
@@ -960,19 +989,7 @@ def prepare_environment() -> None:
     # workflow assert that this role grants nothing on somebody else's record
     add_user_to_role(email=ADMINISTRATOR, role="administrator")
 
-    reindex_users(
-        user_emails=(
-            CURATOR,
-            OWNER,
-            READER,
-            SUBMITTER,
-            EXTRA_READER,
-            EXTRA_SUBMITTER,
-            INDIVIDUAL_SUBMITTER,
-            ADMINISTRATOR,
-            EXTRA_REVIEWER,
-        )
-    )
+    reindex_users(user_emails=ALL_USERS)
     allow_membership_requests(community_slug=TC_SLUG)
     associate_workflow_with_community(community_slug=TC_SLUG, workflow="community")
     remove_member(community_slug=TC_SLUG, email=READER)

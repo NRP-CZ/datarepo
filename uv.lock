@@ -3748,7 +3748,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-config"
-version = "2.1.1"
+version = "2.1.2"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "invenio-administration" },
@@ -3768,9 +3768,9 @@ dependencies = [
     { name = "invenio-vocabularies" },
     { name = "oarepo", extra = ["tests"] },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c8/a2/96f7c2d2fcea5b627d56ac7a31d45c5ef2b7ae8f32c2a1ec73298a851cb6/oarepo_config-2.1.1.tar.gz", hash = "sha256:dce31b8c0bed9fac5f4b2101ba0998e302f8ff45707aa3ecee54d2dabfcc2352", size = 43083, upload-time = "2026-08-30T11:44:05.907Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/29/13/0a7cc23ad5bfd9356712c50bb0537040786f2b890ed6f4135ddac0c0fd9f/oarepo_config-2.1.2.tar.gz", hash = "sha256:5905e8b4daece0ff717da34d910f596f3671d5631d017057e8b0ee32f4f79084", size = 43218, upload-time = "2026-08-31T10:02:30.187Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/97/f8/de7022cb438602e49454413daec019f88c7cae72c3942d5751ea46aba9a6/oarepo_config-2.1.1-py3-none-any.whl", hash = "sha256:720468b12f06d1b238c247655e217422e3fa58b0335ed5069d73f2916ebc116e", size = 58353, upload-time = "2026-08-30T11:44:05.014Z" },
+    { url = "https://files.pythonhosted.org/packages/32/c4/9495c3d69bb846a0d43df5f3c517c1e426e683217c06e042bed5c11569ac/oarepo_config-2.1.2-py3-none-any.whl", hash = "sha256:186e862c001ccb551e3d3caea5859f6c267cd33d3310695b35b21d11343570ad", size = 58518, upload-time = "2026-08-31T10:02:28.825Z" },
 ]
 
 [[package]]
