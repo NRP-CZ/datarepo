@@ -56,7 +56,7 @@ from oarepo_runtime.proxies import current_runtime
 from oarepo_runtime.typing import record_from_result
 
 if TYPE_CHECKING:
-    from collections.abc import Iterable, Iterator
+    from collections.abc import Callable, Iterable, Iterator
     from uuid import UUID
 
     from flask_principal import Identity
@@ -183,6 +183,25 @@ def _community_id(*, community_slug: str) -> UUID:
     return community_id
 
 
+def _user_member(user: User) -> dict[str, str]:
+    """Return the member entry for the user `user` that the members services take."""
+    return {"type": "user", "id": str(user.id)}
+
+
+def _member_data(user: User, *, role: str | None = None, message: str | None = None) -> dict[str, Any]:
+    """Return the payload the members service takes to address the single user `user`.
+
+    The members are always addressed as a list of member entries, see `_user_member`;
+    `role` and `message` are carried only when given, as not every call takes them.
+    """
+    data: dict[str, Any] = {"members": [_user_member(user)]}
+    if role is not None:
+        data["role"] = role
+    if message is not None:
+        data["message"] = message
+    return data
+
+
 # the weak default password is intentional, it creates the throwaway demo users
 # that the checks below log in as
 def create_user_if_missing(email: str, *, password: str = "123456") -> User:  # noqa: S107
@@ -232,25 +251,6 @@ def add_user_to_role(email: str, role: str) -> None:
     else:
         _ok(f"user {email!r} already has role {role!r}")
     db.session.commit()
-
-
-def role_member_emails(role: str) -> list[str]:
-    """Return the emails of all users that hold the global role `role`.
-
-    A request the individual workflow routes to a role has the role as (part of) its
-    receiver, and a group receiver is expanded to its members only when the notification is
-    built, so the part of the recipients that the role contributes is exactly its members.
-    As there can be any number of them, the expected recipients have to be taken from the
-    role instead of being hardcoded.
-
-    The members are looked up in the users search index (the group expansion goes
-    through the users service), so they have to be indexed by `reindex_users`.
-    """
-    role_obj = current_datastore.find_role(role)
-    if role_obj is None:
-        raise AssertionError(f"Role {role!r} does not exist.")
-    # the "users" backref of a role is a dynamic relation, ie. a query to be executed
-    return [user.email for user in role_obj.users.all()]
 
 
 def create_community_if_missing() -> None:
@@ -334,9 +334,8 @@ def remove_member(*, community_slug: str, email: str) -> None:
     if user is None:
         return
 
-    data = {"members": [{"type": "user", "id": str(user.id)}]}
     with contextlib.suppress(InvalidMemberError):
-        members_service.delete(system_identity, _community_id(community_slug=community_slug), data)
+        members_service.delete(system_identity, _community_id(community_slug=community_slug), _member_data(user))
 
 
 def add_member(*, community_slug: str, email: str, role: str) -> None:
@@ -351,8 +350,7 @@ def add_member(*, community_slug: str, email: str, role: str) -> None:
     if user is None:
         return
 
-    data = {"members": [{"type": "user", "id": str(user.id)}], "role": role}
-    members_service.add(system_identity, _community_id(community_slug=community_slug), data)
+    members_service.add(system_identity, _community_id(community_slug=community_slug), _member_data(user, role=role))
 
 
 def add_member_if_missing(*, community_slug: str, email: str, role: str) -> None:
@@ -369,26 +367,63 @@ def add_member_if_missing(*, community_slug: str, email: str, role: str) -> None
         return
 
     community_id = _community_id(community_slug=community_slug)
-    members = members_service.record_cls.get_members(community_id, members=[{"type": "user", "id": str(user.id)}])
+    members = members_service.record_cls.get_members(community_id, members=[_user_member(user)])
     member = next((m for m in members if m.model.active), None)
     if member is not None:
         if member.model.role == role:
             _ok(f"{email!r} is already a {role!r} of community {community_slug!r}")
             return
-        members_service.update(
-            system_identity,
-            community_id,
-            {"members": [{"type": "user", "id": str(user.id)}], "role": role},
-        )
+        members_service.update(system_identity, community_id, _member_data(user, role=role))
         _ok(f"set {email!r}'s role in community {community_slug!r} to {role!r}")
         return
 
-    members_service.add(
-        system_identity,
-        community_id,
-        {"members": [{"type": "user", "id": str(user.id)}], "role": role},
-    )
+    members_service.add(system_identity, community_id, _member_data(user, role=role))
     _ok(f"added {email!r} to community {community_slug!r} as {role!r}")
+
+
+def _open_request_id(entry: dict[str, Any], *, user_id: str) -> str | None:
+    """Return the id of the request `entry` describes, if it is open and concerns `user_id`.
+
+    `entry` is one hit of `members_service.search_membership_requests` or
+    `members_service.search_invitations`, ie. a view pairing a request with the member it
+    concerns; any other member or an already decided request yields `None`.
+    """
+    member = entry["member"]
+    request = entry["request"]
+    if member["type"] == "user" and member["id"] == user_id and request["is_open"]:
+        return request["id"]
+    return None
+
+
+def _close_open_member_request(
+    *,
+    community_slug: str,
+    email: str,
+    search: Callable[[Identity, UUID], Iterable[dict[str, Any]]],
+    action: str,
+    noun: str,
+) -> None:
+    """Run `action` on the open request of `email` in the community, if it has one.
+
+    `search` finds the pending requests of the kind, ie. either
+    ``members_service.search_membership_requests`` or ``members_service.search_invitations``.
+    A request that cannot be executed is only warned about, never raised: the searches read
+    the search index, which can lag behind a request already decided by a previous run of
+    this script. `noun` names what is being closed in that warning.
+    """
+    user = current_datastore.find_user(email=email)
+    if user is None:
+        return
+
+    community_id = _community_id(community_slug=community_slug)
+    for entry in search(system_identity, community_id):
+        request_id = _open_request_id(entry, user_id=str(user.id))
+        if request_id is None:
+            continue
+        try:
+            current_requests_service.execute_action(system_identity, request_id, action)
+        except (CannotExecuteActionError, PermissionDeniedError) as exc:
+            _warn(f"could not {action} the {noun} of {email!r}: {exc}")
 
 
 def decline_pending_membership_request(*, community_slug: str, email: str) -> None:
@@ -397,20 +432,13 @@ def decline_pending_membership_request(*, community_slug: str, email: str) -> No
     Needed to make repeated runs of this script idempotent, since a user can only have one
     membership request per community at a time.
     """
-    user = current_datastore.find_user(email=email)
-    if user is None:
-        return
-
-    community_id = _community_id(community_slug=community_slug)
-    for request in members_service.search_membership_requests(system_identity, community_id):
-        member = request["member"]
-        if member["type"] == "user" and member["id"] == str(user.id) and request["request"]["is_open"]:
-            try:
-                current_requests_service.execute_action(system_identity, request["request"]["id"], "decline")
-            except (CannotExecuteActionError, PermissionDeniedError) as exc:
-                # the search index can be stale, so the request may have already been
-                # decided by a previous run of this script
-                _warn(f"could not decline the membership request of {email!r}: {exc}")
+    _close_open_member_request(
+        community_slug=community_slug,
+        email=email,
+        search=members_service.search_membership_requests,
+        action="decline",
+        noun="membership request",
+    )
 
 
 def cancel_pending_invitation(*, community_slug: str, email: str) -> None:
@@ -421,29 +449,22 @@ def cancel_pending_invitation(*, community_slug: str, email: str) -> None:
     same way as an open membership request, any further membership of that user in the community,
     because both are backed by the same inactive member entry.
     """
-    user = current_datastore.find_user(email=email)
-    if user is None:
-        return
-
-    community_id = _community_id(community_slug=community_slug)
-    for invitation in members_service.search_invitations(system_identity, community_id):
-        member = invitation["member"]
-        if member["type"] == "user" and member["id"] == str(user.id) and invitation["request"]["is_open"]:
-            try:
-                current_requests_service.execute_action(system_identity, invitation["request"]["id"], "cancel")
-            except (CannotExecuteActionError, PermissionDeniedError) as exc:
-                # the search index can be stale, so the invitation may have already been
-                # decided by a previous run of this script
-                _warn(f"could not cancel the invitation of {email!r}: {exc}")
+    _close_open_member_request(
+        community_slug=community_slug,
+        email=email,
+        search=members_service.search_invitations,
+        action="cancel",
+        noun="invitation",
+    )
 
 
 def open_invitation_request_id(*, community_id: UUID, email: str) -> str:
     """Return the id of the user's open invitation request in a community."""
     user = current_datastore.find_user(email=email)
     for invitation in members_service.search_invitations(system_identity, community_id):
-        member = invitation["member"]
-        if member["type"] == "user" and member["id"] == str(user.id) and invitation["request"]["is_open"]:
-            return invitation["request"]["id"]
+        request_id = _open_request_id(invitation, user_id=str(user.id))
+        if request_id is not None:
+            return request_id
 
     raise AssertionError(f"No open invitation for {email!r} in community {community_id}.")
 
@@ -531,6 +552,67 @@ def _assert_notification_recipients(
         _mail(mail)
 
 
+@contextlib.contextmanager
+def _check_notifications(
+    *,
+    email: str,
+    action_description: str,
+    expected_recipients: Iterable[str],
+) -> Iterator[None]:
+    """Act as `email`, capturing the emails the action sends, then check who they went to.
+
+    The body of the `with` block performs the action whose notifications are checked; the
+    captured mails are asserted against `expected_recipients` once the body has run and the
+    notification dispatch has been restored, see `record_notifications`.
+    """
+    with record_notifications() as sent_mails, current_runtime.login_user(email):
+        yield
+    _assert_notification_recipients(
+        action_description=action_description,
+        sent_mails=sent_mails,
+        expected_recipients=expected_recipients,
+    )
+
+
+@contextlib.contextmanager
+def _check_permission_denied(*, email: str, action: str) -> Iterator[None]:
+    """Act as `email` and require the action performed by the body to be refused.
+
+    The body of the `with` block performs an action `email` must not be entitled to perform.
+    Only a `PermissionDeniedError` passes the check; the action succeeding is a failure just
+    like any other error, so that a permission policy widened by accident cannot go
+    unnoticed. Nothing is notified by a refused action, so no notifications are recorded.
+    """
+    with current_runtime.login_user(email):
+        try:
+            yield
+        except PermissionDeniedError:
+            _ok(f"{email!r} is not allowed to {action}")
+            return
+    raise AssertionError(f"{email!r} should not have been allowed to {action}.")
+
+
+def _check_no_access_to_request(*, request_id: str) -> None:
+    """Check that an administrator is refused every action on `request_id`.
+
+    Commenting on a request requires reading it, which is reserved to the creator and the
+    receiver of the request, and deciding it is reserved to its receivers. An administrator
+    is neither of those on a request of the individual workflow, which has no reviewer roles
+    configured, so all three actions have to be refused.
+    """
+    with _check_permission_denied(email=ADMINISTRATOR, action=f"comment on request {request_id}"):
+        current_events_service.create(
+            g.identity,
+            request_id,
+            {"payload": {"content": "Let me take a look at it."}},
+            CommentEventType,
+        )
+    with _check_permission_denied(email=ADMINISTRATOR, action=f"decline request {request_id}"):
+        current_requests_service.execute_action(g.identity, request_id, "decline")
+    with _check_permission_denied(email=ADMINISTRATOR, action=f"accept request {request_id}"):
+        current_requests_service.execute_action(g.identity, request_id, "accept")
+
+
 def create_request_check_emails(
     *,
     creator: str,
@@ -552,7 +634,11 @@ def create_request_check_emails(
 
     community_id = _community_id(community_slug=community_slug)
 
-    with record_notifications() as sent_mails, current_runtime.login_user(creator):
+    with _check_notifications(
+        email=creator,
+        action_description=f"creating request type {request_type_id!r}",
+        expected_recipients=expected_recipients,
+    ):
         identity = g.identity
         if request_type_id == MembershipRequestRequestType.type_id:
             created_request = members_service.request_membership(identity, community_id, request_payload)
@@ -566,11 +652,6 @@ def create_request_check_emails(
                 receiver={"community": str(community_id)},
             )
 
-    _assert_notification_recipients(
-        action_description=f"creating request type {request_type_id!r}",
-        sent_mails=sent_mails,
-        expected_recipients=expected_recipients,
-    )
     return created_request.data["id"]
 
 
@@ -594,66 +675,55 @@ def invite_to_community_check_emails(
     community_id = _community_id(community_slug=community_slug)
     user = current_datastore.find_user(email=invitee)
 
-    with record_notifications() as sent_mails, current_runtime.login_user(inviter):
+    with _check_notifications(
+        email=inviter,
+        action_description=f"inviting {invitee!r} as {role!r} to community {community_slug!r}",
+        expected_recipients=expected_recipients,
+    ):
         members_service.invite(
             g.identity,
             community_id,
-            {
-                "members": [{"type": "user", "id": str(user.id)}],
-                "role": role,
-                "message": f"Please join the community as a {role}.",
-            },
+            _member_data(user, role=role, message=f"Please join the community as a {role}."),
         )
 
-    _assert_notification_recipients(
-        action_description=f"inviting {invitee!r} as {role!r} to community {community_slug!r}",
-        sent_mails=sent_mails,
-        expected_recipients=expected_recipients,
-    )
     return open_invitation_request_id(community_id=community_id, email=invitee)
 
 
 def accept_request_check_emails(*, actor: str, request_id: str, expected_recipients: Iterable[str]) -> None:
     """Accept a request as `actor` and check that email notifications go to the expected recipients."""
-    with record_notifications() as sent_mails, current_runtime.login_user(actor):
-        current_requests_service.execute_action(g.identity, request_id, "accept")
-
-    _assert_notification_recipients(
+    with _check_notifications(
+        email=actor,
         action_description=f"accepting request {request_id}",
-        sent_mails=sent_mails,
         expected_recipients=expected_recipients,
-    )
+    ):
+        current_requests_service.execute_action(g.identity, request_id, "accept")
 
 
 def decline_request_check_emails(*, actor: str, request_id: str, expected_recipients: Iterable[str]) -> None:
     """Decline a request as `actor` and check that email notifications go to the expected recipients."""
-    with record_notifications() as sent_mails, current_runtime.login_user(actor):
-        current_requests_service.execute_action(g.identity, request_id, "decline")
-
-    _assert_notification_recipients(
+    with _check_notifications(
+        email=actor,
         action_description=f"declining request {request_id}",
-        sent_mails=sent_mails,
         expected_recipients=expected_recipients,
-    )
+    ):
+        current_requests_service.execute_action(g.identity, request_id, "decline")
 
 
 def add_comment_check_emails(
     *, email: str, request_id: str, comment_text: str, expected_recipients: Iterable[str]
 ) -> None:
     """Add a comment on `request_id` as `email` and check that email notifications go to the expected recipients."""
-    with record_notifications() as sent_mails, current_runtime.login_user(email):
+    with _check_notifications(
+        email=email,
+        action_description=f"commenting on request {request_id}",
+        expected_recipients=expected_recipients,
+    ):
         current_events_service.create(
             g.identity,
             request_id,
             {"payload": {"content": comment_text}},
             CommentEventType,
         )
-
-    _assert_notification_recipients(
-        action_description=f"commenting on request {request_id}",
-        sent_mails=sent_mails,
-        expected_recipients=expected_recipients,
-    )
 
 
 def set_member_role(*, email: str, role: str, setter_email: str, expected_recipients: Iterable[str]) -> None:
@@ -667,18 +737,44 @@ def set_member_role(*, email: str, role: str, setter_email: str, expected_recipi
     user = current_datastore.find_user(email=email)
     community_id = _community_id(community_slug=TC_SLUG)
 
-    with record_notifications() as sent_mails, current_runtime.login_user(setter_email):
-        members_service.update(
-            g.identity,
-            community_id,
-            {"members": [{"type": "user", "id": str(user.id)}], "role": role},
-        )
-
-    _assert_notification_recipients(
+    with _check_notifications(
+        email=setter_email,
         action_description=f"setting {email}'s role to {role!r}",
-        sent_mails=sent_mails,
         expected_recipients=expected_recipients,
+    ):
+        members_service.update(g.identity, community_id, _member_data(user, role=role))
+
+
+def _membership_request_with_comments(*, requester: str, message: dict[str, str], reviewer: str) -> str:
+    """Open a membership request as `requester` and let it be answered in the test community.
+
+    `reviewer`, one of the members that can act on the request, acknowledges it and the
+    `requester` thanks them; every one of the three notifications is checked against the
+    recipients it must have reached. Returns the id of the created request, which is left
+    open for the caller to decide.
+    """
+    other_reviewer = CURATOR if reviewer == OWNER else OWNER
+
+    request_id = create_request_check_emails(
+        creator=requester,
+        request_type=MembershipRequestRequestType,
+        request_payload=message,
+        community_slug=TC_SLUG,
+        expected_recipients=[CURATOR, OWNER],
     )
+    add_comment_check_emails(
+        email=reviewer,
+        request_id=request_id,
+        comment_text="Thanks for your request, we'll review it soon.",
+        expected_recipients=[requester, other_reviewer],
+    )
+    add_comment_check_emails(
+        email=requester,
+        request_id=request_id,
+        comment_text="Thank you!",
+        expected_recipients=[OWNER, CURATOR],
+    )
+    return request_id
 
 
 def check_adding_to_community_via_membership_request(*, requester: str, role: str) -> None:
@@ -704,92 +800,52 @@ def check_adding_to_community_via_membership_request(*, requester: str, role: st
 
     message = {"message": f"I would like to join as a {role}."}
 
-    request_id = create_request_check_emails(
-        creator=requester,
-        request_type=MembershipRequestRequestType,
-        request_payload=message,
-        community_slug=TC_SLUG,
-        expected_recipients=[CURATOR, OWNER],
-    )
-    add_comment_check_emails(
-        email=OWNER,
-        request_id=request_id,
-        comment_text="Thanks for your request, we'll review it soon.",
-        expected_recipients=[requester, CURATOR],
-    )
-    add_comment_check_emails(
-        email=requester,
-        request_id=request_id,
-        comment_text="Thank you!",
-        expected_recipients=[OWNER, CURATOR],
-    )
+    request_id = _membership_request_with_comments(requester=requester, message=message, reviewer=OWNER)
     decline_request_check_emails(actor=OWNER, request_id=request_id, expected_recipients=[requester])
 
-    request_id = create_request_check_emails(
-        creator=requester,
-        request_type=MembershipRequestRequestType,
-        request_payload=message,
-        community_slug=TC_SLUG,
-        expected_recipients=[CURATOR, OWNER],
-    )
-    add_comment_check_emails(
-        email=CURATOR,
-        request_id=request_id,
-        comment_text="Thanks for your request, we'll review it soon.",
-        expected_recipients=[requester, OWNER],
-    )
-    add_comment_check_emails(
-        email=requester,
-        request_id=request_id,
-        comment_text="Thank you!",
-        expected_recipients=[CURATOR, OWNER],
-    )
+    request_id = _membership_request_with_comments(requester=requester, message=message, reviewer=CURATOR)
     decline_request_check_emails(actor=CURATOR, request_id=request_id, expected_recipients=[requester])
 
-    request_id = create_request_check_emails(
-        creator=requester,
-        request_type=MembershipRequestRequestType,
-        request_payload=message,
-        community_slug=TC_SLUG,
-        expected_recipients=[CURATOR, OWNER],
-    )
-    add_comment_check_emails(
-        email=OWNER,
-        request_id=request_id,
-        comment_text="Thanks for your request, we'll review it soon.",
-        expected_recipients=[requester, CURATOR],
-    )
-    add_comment_check_emails(
-        email=requester,
-        request_id=request_id,
-        comment_text="Thank you!",
-        expected_recipients=[OWNER, CURATOR],
-    )
+    request_id = _membership_request_with_comments(requester=requester, message=message, reviewer=OWNER)
     accept_request_check_emails(actor=OWNER, request_id=request_id, expected_recipients=[requester])
     set_member_role(email=requester, role=role, setter_email=OWNER, expected_recipients=[])
     remove_member(community_slug=TC_SLUG, email=requester)
 
-    request_id = create_request_check_emails(
-        creator=requester,
-        request_type=MembershipRequestRequestType,
-        request_payload=message,
-        community_slug=TC_SLUG,
-        expected_recipients=[CURATOR, OWNER],
-    )
-    add_comment_check_emails(
-        email=CURATOR,
-        request_id=request_id,
-        comment_text="Thanks for your request, we'll review it soon.",
-        expected_recipients=[requester, OWNER],
-    )
-    add_comment_check_emails(
-        email=requester,
-        request_id=request_id,
-        comment_text="Thank you!",
-        expected_recipients=[CURATOR, OWNER],
-    )
+    request_id = _membership_request_with_comments(requester=requester, message=message, reviewer=CURATOR)
     accept_request_check_emails(actor=CURATOR, request_id=request_id, expected_recipients=[requester])
     set_member_role(email=requester, role=role, setter_email=CURATOR, expected_recipients=[])
+
+
+def _invitation_with_comments(*, inviter: str, invitee: str, role: str, invitee_reply: str) -> str:
+    """Invite `invitee` to the test community as `inviter` and let both parties comment.
+
+    `inviter` welcomes the `invitee` and the invitee answers with `invitee_reply`; every one
+    of the three notifications is checked against the recipients it must have reached.
+    Returns the id of the created invitation request, which is left open for the invitee to
+    decide.
+    """
+    other_manager = CURATOR if inviter == OWNER else OWNER
+
+    request_id = invite_to_community_check_emails(
+        inviter=inviter,
+        invitee=invitee,
+        role=role,
+        community_slug=TC_SLUG,
+        expected_recipients=[invitee],
+    )
+    add_comment_check_emails(
+        email=inviter,
+        request_id=request_id,
+        comment_text="We'd be glad to have you in the community.",
+        expected_recipients=[invitee, other_manager],
+    )
+    add_comment_check_emails(
+        email=invitee,
+        request_id=request_id,
+        comment_text=invitee_reply,
+        expected_recipients=[OWNER, CURATOR],
+    )
+    return request_id
 
 
 def check_adding_to_community_via_invitation(*, inviter: str, invitee: str, role: str) -> None:
@@ -812,53 +868,25 @@ def check_adding_to_community_via_invitation(*, inviter: str, invitee: str, role
     """
     _heading(f"Invitation of {invitee} as {role} by {inviter}")
 
-    other_manager = CURATOR if inviter == OWNER else OWNER
-
     # the invitee must not be a member and must have no request or invitation pending
     cancel_pending_invitation(community_slug=TC_SLUG, email=invitee)
     decline_pending_membership_request(community_slug=TC_SLUG, email=invitee)
     remove_member(community_slug=TC_SLUG, email=invitee)
 
-    request_id = invite_to_community_check_emails(
+    request_id = _invitation_with_comments(
         inviter=inviter,
         invitee=invitee,
         role=role,
-        community_slug=TC_SLUG,
-        expected_recipients=[invitee],
-    )
-    add_comment_check_emails(
-        email=inviter,
-        request_id=request_id,
-        comment_text="We'd be glad to have you in the community.",
-        expected_recipients=[invitee, other_manager],
-    )
-    add_comment_check_emails(
-        email=invitee,
-        request_id=request_id,
-        comment_text="Thanks, I'll think about it.",
-        expected_recipients=[OWNER, CURATOR],
+        invitee_reply="Thanks, I'll think about it.",
     )
     accept_request_check_emails(actor=invitee, request_id=request_id, expected_recipients=[OWNER, CURATOR])
     remove_member(community_slug=TC_SLUG, email=invitee)
 
-    request_id = invite_to_community_check_emails(
+    request_id = _invitation_with_comments(
         inviter=inviter,
         invitee=invitee,
         role=role,
-        community_slug=TC_SLUG,
-        expected_recipients=[invitee],
-    )
-    add_comment_check_emails(
-        email=inviter,
-        request_id=request_id,
-        comment_text="We'd be glad to have you in the community.",
-        expected_recipients=[invitee, other_manager],
-    )
-    add_comment_check_emails(
-        email=invitee,
-        request_id=request_id,
-        comment_text="Thanks, I'll rather not.",
-        expected_recipients=[OWNER, CURATOR],
+        invitee_reply="Thanks, I'll rather not.",
     )
     decline_request_check_emails(actor=invitee, request_id=request_id, expected_recipients=[OWNER, CURATOR])
 
@@ -892,6 +920,8 @@ def prepare_environment() -> None:
     add_member_if_missing(community_slug=TC_SLUG, email=EXTRA_SUBMITTER, role="submitter")
 
     add_user_to_role(email=INDIVIDUAL_SUBMITTER, role="submitter")
+    # the individual workflow has no reviewer roles configured, so the checks of that
+    # workflow assert that this role grants nothing on somebody else's record
     add_user_to_role(email=ADMINISTRATOR, role="administrator")
 
     reindex_users(
@@ -1068,13 +1098,20 @@ def submit_changed_metadata_request(*, record_id: str, creator_email: str, expec
     """Create and submit a changed-metadata request for `record_id` as `creator_email`.
 
     The request is created on the record's draft without an explicit receiver, so oarepo
-    requests picks the default receiver from the record's workflow - the community curator
-    roles configured on the community workflow, ie. the curator and the owner here.
+    requests picks the default receiver from the record's workflow: on the community
+    workflow the curator roles configured on the community, ie. the curator and the owner,
+    and on the individual workflow its only reviewer, ie. the owner of the record. Either
+    way the receiver is resolved only when the notification is built.
+
     Submitting the request locks the draft and notifies that receiver.
 
     Returns the id of the created request.
     """
-    with record_notifications() as sent_mails, current_runtime.login_user(creator_email):
+    with _check_notifications(
+        email=creator_email,
+        action_description=f"submitting changed metadata of record {record_id} for review",
+        expected_recipients=expected_recipients,
+    ):
         draft_record = record_from_result(datasets_service.read_draft(g.identity, record_id))
         request = current_requests_service.create(
             g.identity,
@@ -1085,11 +1122,6 @@ def submit_changed_metadata_request(*, record_id: str, creator_email: str, expec
         )
         current_requests_service.execute_action(g.identity, request.id, "submit")
 
-    _assert_notification_recipients(
-        action_description=f"submitting changed metadata of record {record_id} for review",
-        sent_mails=sent_mails,
-        expected_recipients=expected_recipients,
-    )
     return request.id
 
 
@@ -1169,13 +1201,17 @@ def create_new_version_with_file(*, record_id: str, submitter_email: str, file_k
     """Create a new version of `record_id` as `submitter_email` and upload a new file to it.
 
     A record pid always resolves to the very version it was minted for - publishing
-    a new version mints a new pid from the new version draft - so once a newer
-    version has been published, the given `record_id` points to an older version.
-    The version chain is therefore followed via ``versions.latest_id`` to the latest
-    published version, which is used as the base of the new version. Unlike a
-    metadata-change draft, a new version draft starts with files disabled (its files
-    are not copied from the previous version), so files are enabled on the draft
-    before the new file is uploaded.
+    a new version mints a new pid from the new version draft and leaves the pid of the
+    published version where it is - so once a newer version has been published, the
+    given `record_id` points to an older version. The version chain to the latest
+    published version is not followed here, ``new_version`` resolves it on its own and
+    builds the draft from the latest published version of the record's parent. It could
+    not be followed through ``versions.latest_id`` anyway, as that holds the *id* of the
+    latest record and not its pid value, so reading it as a pid fails with
+    ``PIDDoesNotExistError`` (``read_latest`` is the service method that follows the
+    chain). Unlike a metadata-change draft, a new version draft starts with files
+    disabled (its files are not copied from the previous version), so files are enabled
+    on the draft before the new file is uploaded.
 
     If a draft of the next version already exists (left behind by a previously
     declined request), it is reused and the file is only added to it.
@@ -1185,21 +1221,18 @@ def create_new_version_with_file(*, record_id: str, submitter_email: str, file_k
     with current_runtime.login_user(submitter_email):
         identity = g.identity
 
-        # a pid resolves to the version it was minted for, so when it points to an
-        # older version (eg. after an acceptance published a newer one), follow the
-        # version chain to the latest published version. The cast to RDMRecord is
-        # needed because record_from_result is typed against the base Record, which
-        # does not declare the versions systemfield the datasets records carry
+        # the pid can point to an older version (eg. after an acceptance published a
+        # newer one), which matters only for what is reported below - the new version is
+        # built on the latest published version of the parent either way. The cast to
+        # RDMRecord is needed because record_from_result is typed against the base
+        # Record, which does not declare the versions systemfield the datasets records
+        # carry
         record = cast("RDMRecord", record_from_result(datasets_service.read(identity, record_id)))
-        if not record.versions.is_latest:
-            latest_id = str(record.versions.latest_id)
-            _ok(
-                f"record pid {record_id} points to v{record.versions.index}, "
-                f"following the version chain to the latest version {latest_id}"
-            )
-            record_id = latest_id
-            record = cast("RDMRecord", record_from_result(datasets_service.read(identity, record_id)))
-        _ok(f"latest version of record {record_id} is v{record.versions.index} (is_latest={record.versions.is_latest})")
+        _ok(
+            f"record pid {record_id} points to v{record.versions.index}, the latest "
+            f"published version of its parent is v{record.versions.latest_index} "
+            f"(is_latest={record.versions.is_latest})"
+        )
 
         draft = datasets_service.new_version(identity, record_id)
         draft_id = draft.id
@@ -1228,14 +1261,19 @@ def submit_new_version_request(
 
     Like a changed-metadata request, the request is created on the draft without an
     explicit receiver, so oarepo requests picks the default receiver from the record's
-    workflow - the community curator roles configured on the community workflow, ie.
-    the curator and the owner here. The `version` from the payload is stored on the
-    draft at submission and published with the record once the request is accepted.
-    Submitting the request notifies that receiver.
+    workflow: on the community workflow the curator roles configured on the community,
+    ie. the curator and the owner, and on the individual workflow its only reviewer, ie.
+    the owner of the record. The `version` from the payload is stored on the draft at
+    submission and published with the record once the request is accepted. Submitting the
+    request notifies that receiver.
 
     Returns the id of the created request.
     """
-    with record_notifications() as sent_mails, current_runtime.login_user(creator_email):
+    with _check_notifications(
+        email=creator_email,
+        action_description=f"submitting new version {version!r} of draft {draft_id} for review",
+        expected_recipients=expected_recipients,
+    ):
         draft_record = record_from_result(datasets_service.read_draft(g.identity, draft_id))
         request = current_requests_service.create(
             g.identity,
@@ -1246,11 +1284,6 @@ def submit_new_version_request(
         )
         current_requests_service.execute_action(g.identity, request.id, "submit")
 
-    _assert_notification_recipients(
-        action_description=f"submitting new version {version!r} of draft {draft_id} for review",
-        sent_mails=sent_mails,
-        expected_recipients=expected_recipients,
-    )
     return request.id
 
 
@@ -1329,17 +1362,20 @@ def submit_publish_draft_request(*, draft_id: str, creator_email: str, expected_
 
     The draft was created outside of any community, so the individual workflow applies and
     the request is created without an explicit receiver, which oarepo requests picks from
-    the draft's workflow - the reviewers of the individual workflow. Because the workflow
-    runs with self-review enabled, its reviewers are the members of the "administrator"
-    role plus the owner of the draft, ie. the submitter, so the receiver is a multiple
-    entity holding the role and that user. Neither is expanded on creation, the multiple
-    entity breaks into its entities and the group into its members only when the
-    notification is built. Submitting the request notifies that receiver, so the submitter
-    is among the recipients too.
+    the draft's workflow. That workflow is configured (see ``invenio.cfg``) without any
+    reviewer role and with self-review enabled, so its only reviewer is the owner of the
+    draft who also holds the "submitter" role the workflow requires to create a draft, ie.
+    the creator of the request. Neither is expanded on creation, the entity being resolved
+    only when the notification is built. Submitting the request notifies that receiver, ie.
+    the creator themselves.
 
     Returns the id of the created request.
     """
-    with record_notifications() as sent_mails, current_runtime.login_user(creator_email):
+    with _check_notifications(
+        email=creator_email,
+        action_description=f"submitting draft {draft_id} for individual review",
+        expected_recipients=expected_recipients,
+    ):
         draft_record = record_from_result(datasets_service.read_draft(g.identity, draft_id))
         request = current_requests_service.create(
             g.identity,
@@ -1350,82 +1386,233 @@ def submit_publish_draft_request(*, draft_id: str, creator_email: str, expected_
         )
         current_requests_service.execute_action(g.identity, request.id, "submit")
 
-    _assert_notification_recipients(
-        action_description=f"submitting draft {draft_id} for individual review",
-        sent_mails=sent_mails,
-        expected_recipients=expected_recipients,
-    )
     return request.id
 
 
-def test_record_individual() -> None:
+def test_record_individual() -> str:
     """Test the notifications sent when a submitter publishes a record outside a community.
 
     The submitter, who holds the global "submitter" role the individual workflow requires
     to create a draft, creates a draft record outside of any community - so the individual
     workflow governs it rather than the community one - uploads a single file to it and
-    submits it for review through a ``publish_draft`` request. Like the other record
-    requests the request is created without a receiver, which the individual workflow picks
-    as its reviewers. Its self-review is enabled, so the reviewers are every member of the
-    "administrator" role plus the owner of the draft, and the submission is notified to all
-    of them, the submitter included; a comment goes to the other participants (the submitter
-    and the remaining administrators, never the commenter) and the decision to the submitter
-    only.
+    submits it for review through a ``publish_draft`` request.
+
+    The individual workflow is configured (see ``invenio.cfg``) without any reviewer role and
+    with self-review enabled, so its only reviewer is the owner of the draft who holds the
+    "submitter" role, ie. the submitter themselves. Nobody else has any rights on the record
+    or on its request, the members of the global "administrator" role included, which makes
+    the individual workflow the mirror image of the community one: the review is not routed
+    to anybody but the submitter, who therefore also decides their own request.
+
+    The actions on the record are therefore checked from both sides, refused when performed
+    as an administrator and allowed, with the expected notifications, when performed as the
+    submitter. The submission is notified to the submitter as the receiver of the request, a
+    comment of theirs to nobody (they are its only participant and a comment never reaches its
+    author) and the decision back to them as the creator of the request.
 
     The request is run through both outcomes - declined, then accepted on a freshly
-    submitted request - checking the recipients of every notification sent on the way. A
-    declined publish-draft request only moves the draft to the "revision_requested" state,
-    so the second request is submitted over the very same draft, the way a submitter would
-    respond to the review.
-    """
-    administrators = set(role_member_emails("administrator"))
-    # the administrator acting on the request never receives their own comment, the rest of
-    # the role's members does
-    other_administrators = administrators - {ADMINISTRATOR}
-    # the individual workflow has self-review enabled, which makes the draft's owner (the
-    # submitter, who holds the "submitter" role the workflow requires to create a draft) a
-    # recipient of their own request next to the administrators, so the submission is
-    # notified to the submitter as well
-    reviewers = administrators | {INDIVIDUAL_SUBMITTER}
+    submitted request. A declined publish-draft request only moves the draft to the
+    "revision_requested" state, so the second request is submitted over the very same draft,
+    the way a submitter would respond to the review.
 
+    Returns the id of the record published by the accepted request, which the changed
+    metadata of an individual record are then submitted for review on.
+    """
     with current_runtime.login_user(INDIVIDUAL_SUBMITTER):
         rec_id = create_record_with_file(g.identity)
     _ok(f"submitter {INDIVIDUAL_SUBMITTER!r} created individual draft record {rec_id}")
 
-    _heading(f"Publish draft request declined by {ADMINISTRATOR}")
+    _heading(f"Individual draft record {rec_id} with no review request yet")
+
+    # the administrator is neither the owner of the draft nor a reviewer of the individual
+    # workflow, which has no reviewer roles configured, so they have no rights on it
+    with _check_permission_denied(email=ADMINISTRATOR, action=f"read the individual draft {rec_id}"):
+        datasets_service.read_draft(g.identity, rec_id)
+
+    # the draft is read here with the system identity, so that the refusal below is about
+    # creating the request and not about reading the draft the request is created on
+    draft_record = record_from_result(datasets_service.read_draft(system_identity, rec_id))
+    with _check_permission_denied(email=ADMINISTRATOR, action=f"submit the individual draft {rec_id} for review"):
+        current_requests_service.create(
+            g.identity,
+            {},
+            PublishDraftRequestType.type_id,
+            receiver=None,
+            topic=draft_record,
+        )
+
+    _heading(f"Publish draft request declined by {INDIVIDUAL_SUBMITTER}")
     request_id = submit_publish_draft_request(
         draft_id=rec_id,
         creator_email=INDIVIDUAL_SUBMITTER,
-        expected_recipients=reviewers,
+        # self-review makes the submitter the receiver of their own request
+        expected_recipients=[INDIVIDUAL_SUBMITTER],
     )
-    add_comment_check_emails(
-        email=ADMINISTRATOR,
-        request_id=request_id,
-        comment_text="Thanks for your submission, we'll review it soon.",
-        expected_recipients={INDIVIDUAL_SUBMITTER, *other_administrators},
-    )
+    _check_no_access_to_request(request_id=request_id)
     add_comment_check_emails(
         email=INDIVIDUAL_SUBMITTER,
         request_id=request_id,
-        comment_text="Thank you!",
-        expected_recipients=administrators,
+        comment_text="This is ready to be published.",
+        # the submitter is the only participant on the request and a comment never reaches
+        # its author, so there is nobody left to notify
+        expected_recipients=[],
     )
     decline_request_check_emails(
-        actor=ADMINISTRATOR,
+        actor=INDIVIDUAL_SUBMITTER,
         request_id=request_id,
+        # the decision is notified to the creator of the request, ie. to the submitter, even
+        # though they are the one who decided
         expected_recipients=[INDIVIDUAL_SUBMITTER],
     )
 
     # the declined request left the draft in "revision_requested", so the submitter can
     # answer the review by submitting the same draft again
-    _heading(f"Publish draft request accepted by {ADMINISTRATOR}")
+    _heading(f"Publish draft request accepted by {INDIVIDUAL_SUBMITTER}")
     request_id = submit_publish_draft_request(
         draft_id=rec_id,
         creator_email=INDIVIDUAL_SUBMITTER,
-        expected_recipients=reviewers,
+        expected_recipients=[INDIVIDUAL_SUBMITTER],
     )
+    _check_no_access_to_request(request_id=request_id)
     accept_request_check_emails(
-        actor=ADMINISTRATOR,
+        actor=INDIVIDUAL_SUBMITTER,
+        request_id=request_id,
+        expected_recipients=[INDIVIDUAL_SUBMITTER],
+    )
+    return rec_id
+
+
+def test_change_metadata_individual(approved_record_id: str) -> None:
+    """Test the notifications sent when the submitter changes metadata of an individual record.
+
+    The mirror image of `test_change_metadata` outside of any community: the submitter, as
+    the owner of the record published by `test_record_individual`, edits it, changes its
+    title and submits the changed metadata for review on a ``publish_changed_metadata``
+    request created without a receiver, which the individual workflow picks as its only
+    reviewer, ie. the submitter themselves.
+
+    The individual workflow configures the changed-metadata request the very same way as the
+    publish-draft one, so the administrator is refused every action on it too and the
+    notifications go to the same addressees: the submission to the submitter as the receiver
+    of the request, a comment of theirs to nobody and the decision back to them as its
+    creator.
+
+    Like in `test_change_metadata`, the changed metadata are run through both outcomes -
+    a decline closes the request but leaves the draft for the next one, while an acceptance
+    publishes the draft, so the acceptance needs a freshly changed draft.
+    """
+    change_record_title(
+        record_id=approved_record_id,
+        editor_email=INDIVIDUAL_SUBMITTER,
+        new_title="Changed individual title",
+    )
+    _ok(f"submitter {INDIVIDUAL_SUBMITTER!r} changed the title of individual record {approved_record_id}")
+
+    _heading(f"Individual changed metadata declined by {INDIVIDUAL_SUBMITTER}")
+    request_id = submit_changed_metadata_request(
+        record_id=approved_record_id,
+        creator_email=INDIVIDUAL_SUBMITTER,
+        expected_recipients=[INDIVIDUAL_SUBMITTER],
+    )
+    _check_no_access_to_request(request_id=request_id)
+    add_comment_check_emails(
+        email=INDIVIDUAL_SUBMITTER,
+        request_id=request_id,
+        comment_text="These changes are ready to be published.",
+        expected_recipients=[],
+    )
+    decline_request_check_emails(
+        actor=INDIVIDUAL_SUBMITTER,
+        request_id=request_id,
+        expected_recipients=[INDIVIDUAL_SUBMITTER],
+    )
+
+    # the acceptance publishes the changed metadata, so it needs its own changed draft
+    _heading(f"Individual changed metadata accepted by {INDIVIDUAL_SUBMITTER}")
+    change_record_title(
+        record_id=approved_record_id,
+        editor_email=INDIVIDUAL_SUBMITTER,
+        new_title="Changed individual title, again",
+    )
+    request_id = submit_changed_metadata_request(
+        record_id=approved_record_id,
+        creator_email=INDIVIDUAL_SUBMITTER,
+        expected_recipients=[INDIVIDUAL_SUBMITTER],
+    )
+    _check_no_access_to_request(request_id=request_id)
+    accept_request_check_emails(
+        actor=INDIVIDUAL_SUBMITTER,
+        request_id=request_id,
+        expected_recipients=[INDIVIDUAL_SUBMITTER],
+    )
+
+
+def test_new_version_individual(approved_record_id: str) -> None:
+    """Test the notifications sent when the submitter publishes a new version of an individual record.
+
+    The mirror image of `test_new_version` outside of any community: the submitter, as the owner of
+    the record published by `test_record_individual`, creates a new version of it, uploads a new file
+    to the new version draft and submits it for review on a ``publish_new_version`` request created
+    without a receiver, which the individual workflow picks as its only reviewer, ie. the submitter
+    themselves.
+
+    The individual workflow configures the new-version request the very same way as the publish-draft
+    and changed-metadata ones, so the administrator is refused every action on it too and the
+    notifications go to the same addressees: the submission to the submitter as the receiver of the
+    request, a comment of theirs to nobody and the decision back to them as its creator. As the
+    submitter is the only actor on the request, each of its outcomes is checked once only, unlike the
+    two curators' rounds of the community record.
+
+    The declined request leaves the new version draft in the "revision_requested" state rather than
+    discarding it, so the acceptance is submitted over the very same draft, the way a submitter would
+    answer the review. The version string of the second request has to differ from the first one that
+    the declined request left on the draft, a request reusing a version already taken being rejected
+    with ``VersionAlreadyExists``.
+    """
+    # as the record's owner, create a new version of it and upload a new file
+    draft_id = create_new_version_with_file(
+        record_id=approved_record_id,
+        submitter_email=INDIVIDUAL_SUBMITTER,
+        file_key="sample-individual-new.txt",
+    )
+
+    _heading(f"Individual new version declined by {INDIVIDUAL_SUBMITTER}")
+    request_id = submit_new_version_request(
+        draft_id=draft_id,
+        creator_email=INDIVIDUAL_SUBMITTER,
+        version="2.0.1",
+        # self-review makes the submitter the receiver of their own request
+        expected_recipients=[INDIVIDUAL_SUBMITTER],
+    )
+    _check_no_access_to_request(request_id=request_id)
+    add_comment_check_emails(
+        email=INDIVIDUAL_SUBMITTER,
+        request_id=request_id,
+        comment_text="This new version is ready to be published.",
+        # the submitter is the only participant on the request and a comment never reaches
+        # its author, so there is nobody left to notify
+        expected_recipients=[],
+    )
+    decline_request_check_emails(
+        actor=INDIVIDUAL_SUBMITTER,
+        request_id=request_id,
+        # the decision is notified to the creator of the request, ie. to the submitter, even
+        # though they are the one who decided
+        expected_recipients=[INDIVIDUAL_SUBMITTER],
+    )
+
+    # the declined request left the new version draft in "revision_requested", so the submitter
+    # answers the review by submitting the same draft for review again
+    _heading(f"Individual new version accepted by {INDIVIDUAL_SUBMITTER}")
+    request_id = submit_new_version_request(
+        draft_id=draft_id,
+        creator_email=INDIVIDUAL_SUBMITTER,
+        version="2.0.2",
+        expected_recipients=[INDIVIDUAL_SUBMITTER],
+    )
+    _check_no_access_to_request(request_id=request_id)
+    accept_request_check_emails(
+        actor=INDIVIDUAL_SUBMITTER,
         request_id=request_id,
         expected_recipients=[INDIVIDUAL_SUBMITTER],
     )
@@ -1449,5 +1636,14 @@ approved_record_ids = test_record_requests()
 _heading("Changed metadata requests", level=2)
 test_change_metadata(approved_record_ids[0])
 
+_heading("New version requests", level=2)
+test_new_version(approved_record_ids[0])
+
 _heading("Publish draft requests outside a community", level=2)
-test_record_individual()
+individual_record_id = test_record_individual()
+
+_heading("Changed metadata of a record outside a community", level=2)
+test_change_metadata_individual(individual_record_id)
+
+_heading("New version of a record outside a community", level=2)
+test_new_version_individual(individual_record_id)
