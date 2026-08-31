@@ -40,6 +40,7 @@ from invenio_requests.proxies import (
 )
 from oarepo_requests.types import (
     PublishChangedMetadataRequestType,
+    PublishDraftRequestType,
     PublishNewVersionRequestType,
 )
 from oarepo_runtime.proxies import current_runtime
@@ -70,6 +71,9 @@ READER = "tc_reader@demo.org"
 SUBMITTER = "tc_submitter@demo.org"
 EXTRA_READER = "tc_extra_reader@demo.org"
 EXTRA_SUBMITTER = "tc_extra_submitter@demo.org"
+
+INDIVIDUAL_SUBMITTER = "tc_individual_submitter@demo.org"
+ADMINISTRATOR = "tc_administrator@demo.org"
 
 community_service = cast("CommunityService", current_service_registry.get("communities"))
 members_service: MemberService = community_service.members
@@ -112,6 +116,51 @@ def create_user_if_missing(email: str, *, password: str = "123456") -> User:  # 
     db.session.commit()
     print(f"OK: created user {email!r}")
     return user
+
+
+def add_user_to_role(email: str, role: str) -> None:
+    """Grant the global role `role` to the user `email`, creating the role if missing.
+
+    The role has to exist before it is handed to the datastore: ``add_role_to_user``
+    resolves a role passed by name with ``find_role`` and, when there is no such role,
+    appends ``None`` to the user's roles, which only surfaces much later, on an
+    unrelated commit, as ``FlushError: Can't flush None value found in collection``.
+
+    The datastore only stages changes in the session, so the transaction is committed
+    here. Granting a role does not register the user as changed in the datastore's
+    change history, so the automatic post-commit reindex misses them: call this before
+    `reindex_users`, which indexes the user's roles.
+    """
+    user = current_datastore.find_user(email=email)
+    if user is None:
+        print(f"WARN: cannot grant role {role!r} to non-existent user {email!r}")
+        return
+
+    role_obj = current_datastore.find_role(role) or current_datastore.create_role(name=role)
+    if current_datastore.add_role_to_user(user, role_obj):
+        print(f"OK: added role {role!r} to user {email!r}")
+    else:
+        print(f"OK: user {email!r} already has role {role!r}")
+    db.session.commit()
+
+
+def role_member_emails(role: str) -> list[str]:
+    """Return the emails of all users that hold the global role `role`.
+
+    A request the individual workflow routes to a role has the role as (part of) its
+    receiver, and a group receiver is expanded to its members only when the notification is
+    built, so the part of the recipients that the role contributes is exactly its members.
+    As there can be any number of them, the expected recipients have to be taken from the
+    role instead of being hardcoded.
+
+    The members are looked up in the users search index (the group expansion goes
+    through the users service), so they have to be indexed by `reindex_users`.
+    """
+    role_obj = current_datastore.find_role(role)
+    if role_obj is None:
+        raise AssertionError(f"Role {role!r} does not exist.")
+    # the "users" backref of a role is a dynamic relation, ie. a query to be executed
+    return [user.email for user in role_obj.users.all()]
 
 
 def create_community_if_missing() -> None:
@@ -692,7 +741,16 @@ def prepare_environment() -> None:
     script also runs against a fresh instance, then resets the state the tests
     depend on.
     """
-    for email in (CURATOR, OWNER, READER, SUBMITTER, EXTRA_READER, EXTRA_SUBMITTER):
+    for email in (
+        CURATOR,
+        OWNER,
+        READER,
+        SUBMITTER,
+        EXTRA_READER,
+        EXTRA_SUBMITTER,
+        INDIVIDUAL_SUBMITTER,
+        ADMINISTRATOR,
+    ):
         create_user_if_missing(email)
     create_community_if_missing()
     add_member_if_missing(community_slug=TC_SLUG, email=OWNER, role="owner")
@@ -700,7 +758,21 @@ def prepare_environment() -> None:
     add_member_if_missing(community_slug=TC_SLUG, email=EXTRA_READER, role="reader")
     add_member_if_missing(community_slug=TC_SLUG, email=EXTRA_SUBMITTER, role="submitter")
 
-    reindex_users(user_emails=(CURATOR, OWNER, READER, SUBMITTER, EXTRA_READER, EXTRA_SUBMITTER))
+    add_user_to_role(email=INDIVIDUAL_SUBMITTER, role="submitter")
+    add_user_to_role(email=ADMINISTRATOR, role="administrator")
+
+    reindex_users(
+        user_emails=(
+            CURATOR,
+            OWNER,
+            READER,
+            SUBMITTER,
+            EXTRA_READER,
+            EXTRA_SUBMITTER,
+            INDIVIDUAL_SUBMITTER,
+            ADMINISTRATOR,
+        )
+    )
     allow_membership_requests(community_slug=TC_SLUG)
     associate_workflow_with_community(community_slug=TC_SLUG, workflow="community")
     remove_member(community_slug=TC_SLUG, email=READER)
@@ -1116,9 +1188,115 @@ def test_new_version(approved_record_id: str) -> None:
         accept_request_check_emails(actor=actor, request_id=request_id, expected_recipients=[SUBMITTER])
 
 
+def submit_publish_draft_request(*, draft_id: str, creator_email: str, expected_recipients: Iterable[str]) -> str:
+    """Create and submit a publish-draft request for the draft `draft_id` as `creator_email`.
+
+    The draft was created outside of any community, so the individual workflow applies and
+    the request is created without an explicit receiver, which oarepo requests picks from
+    the draft's workflow - the reviewers of the individual workflow. Because the workflow
+    runs with self-review enabled, its reviewers are the members of the "administrator"
+    role plus the owner of the draft, ie. the submitter, so the receiver is a multiple
+    entity holding the role and that user. Neither is expanded on creation, the multiple
+    entity breaks into its entities and the group into its members only when the
+    notification is built. Submitting the request notifies that receiver, so the submitter
+    is among the recipients too.
+
+    Returns the id of the created request.
+    """
+    with record_notifications() as sent_emails, current_runtime.login_user(creator_email):
+        draft_record = record_from_result(datasets_service.read_draft(g.identity, draft_id))
+        request = current_requests_service.create(
+            g.identity,
+            {},
+            PublishDraftRequestType.type_id,
+            receiver=None,
+            topic=draft_record,
+        )
+        current_requests_service.execute_action(g.identity, request.id, "submit")
+
+    _assert_notification_recipients(
+        action_description=f"submitting draft {draft_id} for individual review",
+        sent_emails=sent_emails,
+        expected_recipients=expected_recipients,
+    )
+    return request.id
+
+
+def test_record_individual() -> None:
+    """Test the notifications sent when a submitter publishes a record outside a community.
+
+    The submitter, who holds the global "submitter" role the individual workflow requires
+    to create a draft, creates a draft record outside of any community - so the individual
+    workflow governs it rather than the community one - uploads a single file to it and
+    submits it for review through a ``publish_draft`` request. Like the other record
+    requests the request is created without a receiver, which the individual workflow picks
+    as its reviewers. Its self-review is enabled, so the reviewers are every member of the
+    "administrator" role plus the owner of the draft, and the submission is notified to all
+    of them, the submitter included; a comment goes to the other participants (the submitter
+    and the remaining administrators, never the commenter) and the decision to the submitter
+    only.
+
+    The request is run through both outcomes - declined, then accepted on a freshly
+    submitted request - checking the recipients of every notification sent on the way. A
+    declined publish-draft request only moves the draft to the "revision_requested" state,
+    so the second request is submitted over the very same draft, the way a submitter would
+    respond to the review.
+    """
+    administrators = set(role_member_emails("administrator"))
+    # the administrator acting on the request never receives their own comment, the rest of
+    # the role's members does
+    other_administrators = administrators - {ADMINISTRATOR}
+    # the individual workflow has self-review enabled, which makes the draft's owner (the
+    # submitter, who holds the "submitter" role the workflow requires to create a draft) a
+    # recipient of their own request next to the administrators, so the submission is
+    # notified to the submitter as well
+    reviewers = administrators | {INDIVIDUAL_SUBMITTER}
+
+    with current_runtime.login_user(INDIVIDUAL_SUBMITTER):
+        rec_id = create_record_with_file(g.identity)
+    print(f"OK: submitter {INDIVIDUAL_SUBMITTER!r} created individual draft record {rec_id}")
+
+    request_id = submit_publish_draft_request(
+        draft_id=rec_id,
+        creator_email=INDIVIDUAL_SUBMITTER,
+        expected_recipients=reviewers,
+    )
+    add_comment_check_emails(
+        email=ADMINISTRATOR,
+        request_id=request_id,
+        comment_text="Thanks for your submission, we'll review it soon.",
+        expected_recipients={INDIVIDUAL_SUBMITTER, *other_administrators},
+    )
+    add_comment_check_emails(
+        email=INDIVIDUAL_SUBMITTER,
+        request_id=request_id,
+        comment_text="Thank you!",
+        expected_recipients=administrators,
+    )
+    decline_request_check_emails(
+        actor=ADMINISTRATOR,
+        request_id=request_id,
+        expected_recipients=[INDIVIDUAL_SUBMITTER],
+    )
+
+    # the declined request left the draft in "revision_requested", so the submitter can
+    # answer the review by submitting the same draft again
+    request_id = submit_publish_draft_request(
+        draft_id=rec_id,
+        creator_email=INDIVIDUAL_SUBMITTER,
+        expected_recipients=reviewers,
+    )
+    accept_request_check_emails(
+        actor=ADMINISTRATOR,
+        request_id=request_id,
+        expected_recipients=[INDIVIDUAL_SUBMITTER],
+    )
+
+
 # running ...
 prepare_environment()
 test_membership_request()
 test_invitation_to_community()
 approved_record_ids = test_record_requests()
 test_change_metadata(approved_record_ids[0])
+test_record_individual()
