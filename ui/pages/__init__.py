@@ -6,6 +6,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from flask_security import login_required
 from oarepo_ui.resources import TemplatePageUIResource, TemplatePageUIResourceConfig
 
 if TYPE_CHECKING:
@@ -34,6 +35,7 @@ class PagesUIResource(TemplatePageUIResource):
 
         return [route("GET", "get-access", self.get_access)]
 
+    @login_required
     def get_access(self) -> str:
         """Render the standalone-submitter onboarding page."""
         return self.render(page="GetAccess")
