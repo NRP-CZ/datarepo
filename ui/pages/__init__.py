@@ -28,6 +28,16 @@ class PagesUIResourceConfig(TemplatePageUIResourceConfig):
 class PagesUIResource(TemplatePageUIResource):
     """A resource for rendering jinja template pages with a specific configuration."""
 
+    def create_url_rules(self) -> list:
+        """Route /get-access to a semantic handler name."""
+        from flask_resources import route
+
+        return [route("GET", "get-access", self.get_access)]
+
+    def get_access(self) -> str:
+        """Render the standalone-submitter onboarding page."""
+        return self.render(page="GetAccess")
+
 
 def create_blueprint(_app: Flask) -> Blueprint:
     """Register blueprint for this resource."""

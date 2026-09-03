@@ -71,7 +71,7 @@ def init_menu(app: Flask) -> None:
             visible_when=can_view_deposit_page,
         )
         current_menu.submenu("plus.create_datasets_docs").register(
-            external_url="https://docs.nrp.eosc.cz/en/docs/end_users/catch-all-data-repository/catch-all-getting-started#registering-as-a-depositor-for-the-repository",
+            "pages_ui.get_access",
             text=_("Get access"),
             order=1,
             visible_when=lambda: not can_view_deposit_page(),
