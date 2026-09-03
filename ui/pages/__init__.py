@@ -6,8 +6,11 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from flask import redirect, url_for
 from flask_security import login_required
 from oarepo_ui.resources import TemplatePageUIResource, TemplatePageUIResourceConfig
+from oarepo_ui.utils import can_view_deposit_page
+from werkzeug import Response
 
 if TYPE_CHECKING:
     from collections.abc import Mapping
@@ -36,8 +39,14 @@ class PagesUIResource(TemplatePageUIResource):
         return [route("GET", "get-access", self.get_access)]
 
     @login_required
-    def get_access(self) -> str:
-        """Render the standalone-submitter onboarding page."""
+    def get_access(self) -> str | Response:
+        """Render the standalone-submitter onboarding page.
+
+        Users who already have deposition permission are redirected
+        straight to the deposit page.
+        """
+        if can_view_deposit_page():
+            return redirect(url_for("datasets_ui.deposit_create"))
         return self.render(page="GetAccess")
 
 
