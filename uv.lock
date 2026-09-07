@@ -841,6 +841,7 @@ dependencies = [
     { name = "oarepo" },
     { name = "oarepo-app", extra = ["ccmm-development", "development", "llm-development"] },
     { name = "oarepo-kerberos" },
+    { name = "oarepo-previewer" },
     { name = "pygelf" },
 ]
 
@@ -849,6 +850,7 @@ requires-dist = [
     { name = "oarepo", extras = ["s3", "rdm"], specifier = ">=14.2.1rc2,<15.0.0" },
     { name = "oarepo-app", extras = ["ccmm-development", "development", "llm-development"], specifier = ">=7.0.0rc1,<8.0.0" },
     { name = "oarepo-kerberos", specifier = ">=0.1.0,<1.0.0" },
+    { name = "oarepo-previewer", specifier = ">=1.0.0,<2.0.0" },
     { name = "pygelf", specifier = ">=0.4.0,<1.0.0" },
 ]
 
@@ -3879,6 +3881,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/17/74/004af61b6ec76b5b3061e5642837bbd7b24140bb244bb570f4763485a288/oarepo_oidc_einfra-8.0.0.tar.gz", hash = "sha256:a86ecd64abc1f2c033ff66e03a8bf3747a82151115afdcdad721a183e3cbed75", size = 25035, upload-time = "2026-08-23T08:38:33.453Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/7d/33/99b08d1de0878d54c8bfeb6696aaef5fa4954fc4d00a9d4b06e18473c0a6/oarepo_oidc_einfra-8.0.0-py3-none-any.whl", hash = "sha256:8ce2caca89762e2ff974b222bb2bf3cad65fb4d9fbbec73e529f5c8fb80b36e4", size = 33636, upload-time = "2026-08-23T08:38:32.537Z" },
+]
+
+[[package]]
+name = "oarepo-previewer"
+version = "1.0.0"
+source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
+dependencies = [
+    { name = "invenio-previewer" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/59/55/4e05d0b1ec24fb47a28c454bae9bbee318b3c36bda3a57b13826edc42876/oarepo_previewer-1.0.0.tar.gz", hash = "sha256:6f4c1143b532256bdf6554e938678787211862cd50f4823e16197d965ce10702", size = 12603, upload-time = "2026-09-07T12:59:06.769Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/98/7c/06ace3241b44e82da733272bcea177ca4c6e95435afa93c69981d5d2074c/oarepo_previewer-1.0.0-py3-none-any.whl", hash = "sha256:f5a4192d36088cae9c880769ba5acee86e114b2e66e85b1d8cfde79d948df4e6", size = 19313, upload-time = "2026-09-07T12:59:05.59Z" },
 ]
 
 [[package]]
