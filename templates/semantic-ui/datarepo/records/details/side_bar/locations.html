@@ -1,0 +1,33 @@
+{#
+  Copyright (C) 2026 CESNET z.s.p.o.
+
+  oarepo-previewer is free software; you can redistribute it and/or
+  modify it under the terms of the MIT License; see LICENSE file for more
+  details.
+#}
+
+<!-- Inspired by invenio-app-rdm/invenio_app_rdm/records_ui/templates/semantic-ui/invenio_app_rdm/records/details/side_bar/locations.html. -->
+
+{% set locations = record_ui["ui"].get('locations') %}
+
+{%- if locations %}
+<div class="sidebar-container">
+    <h2 class="ui medium top attached header mt-0">{{ _('Geographic locations')}}</h2>
+    <div id="record-locations" class="ui segment bottom attached rdm-sidebar">
+
+        {# Mocked placeholder for map. #}
+        <div id="record-locations-map"
+            style="height: 200px; background-color: #e0e0e0; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+            <span style="color: #666; font-weight: bold;">Map placeholder</span>
+        </div>
+
+        {# Mocked placeholder for location list. #}
+        <div id="record-locations-list">
+            <ul class="ui list">
+                <li>Placeholder location 1</li>
+                <li>Placeholder location 2</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{%- endif %}
