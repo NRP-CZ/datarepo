@@ -2711,15 +2711,15 @@ wheels = [
 
 [[package]]
 name = "jinjax"
-version = "0.65"
+version = "0.66"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "jinja2" },
     { name = "markupsafe" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/26/45/7f99cc83066139d9e047055919cd748191207513fa1dcfd2e0a3bbfc872d/jinjax-0.65.tar.gz", hash = "sha256:2fb5b141a3f38db01e268fb768f3a404355ff9934ae885efcfb764d576fd7cd2", size = 32144, upload-time = "2026-06-16T22:16:11.489Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/70/4b/59f421a78145fb7fe997f259cd86adc6b84605b994503260684de17d5353/jinjax-0.66.tar.gz", hash = "sha256:1ccc86d630ec897293f5135d79b882aff31b3f2483c73428eb17f372799de9e3", size = 33512, upload-time = "2026-09-08T21:17:42.802Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/68/35/0c153358e59cc1ee0afe3b497c83222ec45633589f32ada4241f87d189ae/jinjax-0.65-py3-none-any.whl", hash = "sha256:0cebd07dc4c6899b43447512cf23d4439f28ca005aa7ffb0cca0cb12376f9e28", size = 20609, upload-time = "2026-06-16T22:16:10.44Z" },
+    { url = "https://files.pythonhosted.org/packages/07/6e/2b72b56f54f5a02a7994f8f98f12c6799d785e73c3fc66402ae693378eb4/jinjax-0.66-py3-none-any.whl", hash = "sha256:fc301a169d8e8451446dd8045ac11ca65ebd358ba6569d4287cb06499002ed09", size = 21017, upload-time = "2026-09-08T21:17:41.849Z" },
 ]
 
 [[package]]
@@ -3993,7 +3993,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-vocabularies"
-version = "10.1.0"
+version = "10.2.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "cachetools" },
@@ -4006,9 +4006,9 @@ dependencies = [
     { name = "orcid" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/fb/35/6f2e4804065c865f238be972d6dee4a00f67a86402955c752b4c31be46ea/oarepo_vocabularies-10.1.0.tar.gz", hash = "sha256:a38a84839a2c38a12ed5b2957b009f9df2c3e068697b38ba3656fcab6ee270b3", size = 74988, upload-time = "2026-08-31T08:19:57.134Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/8d/83/5f73ba637c21413d2c9fa51d8396de515d3cbaee78d0f6c5eccd08eb69e6/oarepo_vocabularies-10.2.0.tar.gz", hash = "sha256:e6446bed1eecd25e960b89a5056aad11f0fdc27d3dac1b7abce3209a1e3a76b2", size = 75477, upload-time = "2026-09-08T12:42:20.26Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/98/73/bf0dc2adfd1598439afc568f281d4d41b311c6a6e24e6a66e5b459798e88/oarepo_vocabularies-10.1.0-py3-none-any.whl", hash = "sha256:4b84824863fc479b21ab56a162d82f98a0ca40c2bdf10be9786d21732af5ed29", size = 158404, upload-time = "2026-08-31T08:19:55.647Z" },
+    { url = "https://files.pythonhosted.org/packages/ba/04/78734c6e3faf93d1ff2b651dc87361b576fd494ebc48042645296f88c804/oarepo_vocabularies-10.2.0-py3-none-any.whl", hash = "sha256:951cad906b58da3ac489a833d051d171c6528d6bea20474e4c71372e48389826", size = 158858, upload-time = "2026-09-08T12:42:18.838Z" },
 ]
 
 [[package]]
