@@ -81,11 +81,6 @@ def init_menu(app: Flask) -> None:
             text=_("About repository"),
             order=0,
         )
-        current_menu.submenu("main.documentation").register(
-            external_url="https://docs.nrp.eosc.cz/en/docs/end_users/catch-all-data-repository/catch-all-getting-started",
-            text=_("Documentation"),
-            order=1,
-        )
 
 
 def finalize_app(app: Flask) -> None:
