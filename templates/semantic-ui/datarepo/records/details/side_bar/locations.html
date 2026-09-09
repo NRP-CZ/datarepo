@@ -6,28 +6,66 @@
   details.
 #}
 
-<!-- Inspired by invenio-app-rdm/invenio_app_rdm/records_ui/templates/semantic-ui/invenio_app_rdm/records/details/side_bar/locations.html. -->
-
 {% set locations = record_ui["ui"].get('locations') %}
 
-{%- if locations %}
+{# Mocking the exact output the new CCMM UI serializer will provide. #}
+{%- set mocked_locations = [
+{
+"place": "CERN (GeoJSON Point)",
+"description": "Invenio birth place.",
+"geometry": {
+"type": "Point",
+"coordinates": [6.05, 46.23333]
+}
+},
+{
+"place": "Středočeský kraj (GeoJSON Polygon from GML)",
+"geometry": {
+"type": "Polygon",
+"coordinates": [[[13.39, 49.50], [15.58, 49.50], [15.58, 50.61], [13.39, 50.61], [13.39, 49.50]]]
+}
+},
+{
+"place": "Prague Center (WKT String Point)",
+"geometry": "POINT(14.42 50.08)"
+},
+{
+"place": "Highway D1 (WKT String Linestring)",
+"geometry": "LINESTRING(14.49 50.02, 14.65 49.91, 14.75 49.85)"
+}
+] %}
+
+{%- if mocked_locations %} {# TODO: after serialization is finished, replace mocked_locations by locations #}
 <div class="sidebar-container">
-    <h2 class="ui medium top attached header mt-0">{{ _('Geographic locations')}}</h2>
+    <h2 class="ui medium top attached header mt-0">{{ _('Geographic locations') }}</h2>
     <div id="record-locations" class="ui segment bottom attached rdm-sidebar">
-
-        {# Mocked placeholder for map. #}
-        <div id="record-locations-map"
-            style="height: 200px; background-color: #e0e0e0; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-            <span style="color: #666; font-weight: bold;">Map placeholder</span>
+        <div id="record-locations-map" data-locations='{{ mocked_locations | tojson | forceescape }}'
+            style="height: 260px; max-height: 40vw; width: 100%; margin-bottom: 1em;">
         </div>
-
-        {# Mocked placeholder for location list. #}
         <div id="record-locations-list">
             <ul class="ui list">
-                <li>Placeholder location 1</li>
-                <li>Placeholder location 2</li>
+                {% for location in mocked_locations %} {# TODO: after serialization is finished, replace
+                mocked_locations by locations #}
+                <li>
+                    {{ location.place }}
+                    {%- if location.geometry and location.geometry.type and location.geometry.type == "Point" %}
+                    (<a href="https://google.com/maps/place/{{ location.geometry.coordinates[1] }},{{ location.geometry.coordinates[0] }}"
+                        style="color: #2f6fa7;" target="_blank" rel="noopener noreferrer">{{
+                        location.geometry.coordinates[1] }}, {{ location.geometry.coordinates[0] }}
+                        <i class="external alternate icon"></i></a>)
+                    {%- endif %}
+                </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
 </div>
 {%- endif %}
+
+{% block javascript %}
+{{ webpack['locations.js'] }}
+{% endblock javascript %}
+
+{%- block css %}
+{{ webpack['locations.css'] }}
+{%- endblock %}
