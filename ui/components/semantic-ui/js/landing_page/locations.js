@@ -3,7 +3,7 @@ import "leaflet/dist/leaflet.css";
 import sanitizeHtml from "sanitize-html";
 
 // TODO: use library as https://terraformer-js.github.io/wkt-parser/
-function parseWKT2oGeoJSON(wktString) {
+function parseWKT2GeoJSON(wktString) {
   throw new Error("WTK parser is not implemented yet!");
 }
 
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
       geometry = location.geometry;
     } else if (typeof location.geometry === "string") {
       try {
-        geometry = parseWKT2oGeoJSON(location.geometry);
+        geometry = parseWKT2GeoJSON(location.geometry);
       } catch (error) {
         console.error(error);
       }
