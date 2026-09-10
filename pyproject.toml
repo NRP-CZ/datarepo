@@ -5,8 +5,8 @@ description = "Catch-All repostitory for Czech scientific data"
 packages = []
 authors = []
 dependencies = [
-   "oarepo[s3,rdm]>=14.2.1rc2,<15.0.0",
-   "oarepo-app[ccmm-development,development,llm-development]>=7.0.0,<8.0.0",
+   "oarepo[s3,rdm]>=14.2.1,<15.0.0",
+   "oarepo-app[ccmm-development,development,llm-development]>=7.0.3,<8.0.0",
    "oarepo-kerberos>=0.1.0,<1.0.0",
    "pygelf>=0.4.0,<1.0.0",
 ]
