@@ -6,7 +6,7 @@ packages = []
 authors = []
 dependencies = [
    "oarepo[s3,rdm]>=14.2.1rc2,<15.0.0",
-   "oarepo-app[ccmm-development,development,llm-development]>=7.0.0rc1,<8.0.0",
+   "oarepo-app[ccmm-development,development,llm-development]>=7.0.0,<8.0.0",
    "oarepo-kerberos>=0.1.0,<1.0.0",
    "pygelf>=0.4.0,<1.0.0",
 ]
@@ -23,6 +23,7 @@ translations = "i18n"
 
 [project.entry-points."invenio_db.alembic"]
 repository = "common:alembic"
+datarepo = "common:alembic"
 
 [project.entry-points."invenio_base.blueprints"]
 ui_datasets = "ui.datasets:create_blueprint"
