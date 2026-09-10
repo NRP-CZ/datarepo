@@ -333,16 +333,16 @@ wheels = [
 
 [[package]]
 name = "build"
-version = "1.6.0"
+version = "1.6.1"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "colorama", marker = "os_name == 'nt'" },
     { name = "packaging" },
     { name = "pyproject-hooks" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/4d/b7/1db48a9ce2984842c8c886432ec8a2719613322e868a966ba82a28862f25/build-1.6.0.tar.gz", hash = "sha256:bd2c8afc603e7a2e0ce70e2ea85f0a6d02043bafbd307f5bada0f98669eca5af", size = 113825, upload-time = "2026-08-27T21:01:16.458Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/bd/67/4898a44ea4f3f8e213b0954ec0aa0a16971d62a6212d6ea3931e97115b99/build-1.6.1.tar.gz", hash = "sha256:51cc11666391ab6f092070437ac747002ff46f3e4113a3622177ee6b488bfc53", size = 113427, upload-time = "2026-09-10T07:56:00.417Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ab/e5/aa1e81b21aea0ce0ba435311837a37d4cb936e7461f9fecac08580073ba9/build-1.6.0-py3-none-any.whl", hash = "sha256:f7aaf1ebbb79178a02ba248bb524f2176b256017e17e8e4bd4289c7b38cc2bad", size = 31187, upload-time = "2026-08-27T21:01:14.957Z" },
+    { url = "https://files.pythonhosted.org/packages/ad/9b/9fb3585dabcd73a1b2a6267f63f62649347c9e6d072c9fde365b105abb2c/build-1.6.1-py3-none-any.whl", hash = "sha256:ecd351a4be9d35a9eaaba244a7687143c9c7d4aea6ac964e7e7ddab20cbcf4e7", size = 31179, upload-time = "2026-09-10T07:55:59.148Z" },
 ]
 
 [[package]]
@@ -846,8 +846,8 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "oarepo", extras = ["s3", "rdm"], specifier = ">=14.2.1rc2,<15.0.0" },
-    { name = "oarepo-app", extras = ["ccmm-development", "development", "llm-development"], specifier = ">=7.0.0,<8.0.0" },
+    { name = "oarepo", extras = ["s3", "rdm"], specifier = ">=14.2.1,<15.0.0" },
+    { name = "oarepo-app", extras = ["ccmm-development", "development", "llm-development"], specifier = ">=7.0.3,<8.0.0" },
     { name = "oarepo-kerberos", specifier = ">=0.1.0,<1.0.0" },
     { name = "pygelf", specifier = ">=0.4.0,<1.0.0" },
 ]
@@ -3722,14 +3722,14 @@ tests = [
 
 [[package]]
 name = "oarepo-app"
-version = "7.0.1"
+version = "7.0.3"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "json5" },
 ]
-sdist = { url = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/files/4313c868cd8593e8fafae43f3b840e185d6268f8e6caee0c0673589fdfd336ab/oarepo_app-7.0.1.tar.gz", hash = "sha256:4313c868cd8593e8fafae43f3b840e185d6268f8e6caee0c0673589fdfd336ab" }
+sdist = { url = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/files/74c0cb956a0ddd4a764cbc8ddfa6bb696d9d0e166ef8493ce6fb7111ecbe0ebb/oarepo_app-7.0.3.tar.gz", hash = "sha256:74c0cb956a0ddd4a764cbc8ddfa6bb696d9d0e166ef8493ce6fb7111ecbe0ebb" }
 wheels = [
-    { url = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/files/a9d5d5d99e6784d58e343d45f6fac207256a48b7322764a42f9babcd2303f664/oarepo_app-7.0.1-py3-none-any.whl", hash = "sha256:a9d5d5d99e6784d58e343d45f6fac207256a48b7322764a42f9babcd2303f664" },
+    { url = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/files/f75290b229c45a0ff3779ba3f1403a6f85a1888aedceca2d51bf0bf8ba70a55d/oarepo_app-7.0.3-py3-none-any.whl", hash = "sha256:f75290b229c45a0ff3779ba3f1403a6f85a1888aedceca2d51bf0bf8ba70a55d" },
 ]
 
 [package.optional-dependencies]
@@ -3895,7 +3895,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-model"
-version = "5.4.0"
+version = "5.4.1"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "deepmerge" },
@@ -3909,9 +3909,9 @@ dependencies = [
     { name = "shapely" },
     { name = "wrapt" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/94/dd/17a46a3d76849a4c60f415a9c7b945de6709d8ec67634fa3ca83947631da/oarepo_model-5.4.0.tar.gz", hash = "sha256:53c7783e5173ae5fd13fd4bc19f7d2b45f7d4560769f462685659d9a63a1df6c", size = 441150, upload-time = "2026-09-09T08:22:43.354Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ed/40/f4be5a0f57a04a4b87e4679462cf4635570d9dc696950ad8310f74bb32d0/oarepo_model-5.4.1.tar.gz", hash = "sha256:c1dda3b9d236ec375a35f759a3e4c51f9bc586f6948604437e094093bda59780", size = 441881, upload-time = "2026-09-10T07:15:32.097Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/10/04/33be04ce2a07a0be9a2a4119c287fc0a81055e079e11ec5135671748c0b1/oarepo_model-5.4.0-py3-none-any.whl", hash = "sha256:e7f15647d6ae96b727b6821a5ecc78d83c207e7c3ef731829c6bd1d746c7b297", size = 290764, upload-time = "2026-09-09T08:22:41.829Z" },
+    { url = "https://files.pythonhosted.org/packages/73/75/9faafdcb9881a5fe7eeb2c0e5000e10c705cbbcb7b8e6a8876441ea3ef12/oarepo_model-5.4.1-py3-none-any.whl", hash = "sha256:fe2e2223c4ec86d6395ca958bc603a822c6cf42cbd2ddac58f7e947fd208cc05", size = 291543, upload-time = "2026-09-10T07:15:30.496Z" },
 ]
 
 [[package]]
@@ -4045,7 +4045,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-vocabularies"
-version = "10.2.0"
+version = "10.2.1"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "cachetools" },
@@ -4058,9 +4058,9 @@ dependencies = [
     { name = "orcid" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/8d/83/5f73ba637c21413d2c9fa51d8396de515d3cbaee78d0f6c5eccd08eb69e6/oarepo_vocabularies-10.2.0.tar.gz", hash = "sha256:e6446bed1eecd25e960b89a5056aad11f0fdc27d3dac1b7abce3209a1e3a76b2", size = 75477, upload-time = "2026-09-08T12:42:20.26Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/71/cd/f3b399a21724af62c3df3d3405c653e40582e63b8d5701957fa11f2f7626/oarepo_vocabularies-10.2.1.tar.gz", hash = "sha256:3f7b779e87a593f92d9ce5221a9536ee0b1d6b84589fb8494b0171321133d3d3", size = 75510, upload-time = "2026-09-10T10:12:40.782Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ba/04/78734c6e3faf93d1ff2b651dc87361b576fd494ebc48042645296f88c804/oarepo_vocabularies-10.2.0-py3-none-any.whl", hash = "sha256:951cad906b58da3ac489a833d051d171c6528d6bea20474e4c71372e48389826", size = 158858, upload-time = "2026-09-08T12:42:18.838Z" },
+    { url = "https://files.pythonhosted.org/packages/78/85/79fc21d434c740f0f747ba8f0565b5dbbf697e634a09452289643e882d01/oarepo_vocabularies-10.2.1-py3-none-any.whl", hash = "sha256:16137540d973fd05ae78d176ccbbe55d7ce76be22dad20da80e43cdce694f158", size = 158877, upload-time = "2026-09-10T10:12:39.482Z" },
 ]
 
 [[package]]
