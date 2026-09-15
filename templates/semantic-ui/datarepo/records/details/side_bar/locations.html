@@ -58,6 +58,7 @@
 {%- endif %}
 
 {% block javascript %}
+{{ webpack['locations_geometry.js'] }}
 {{ webpack['locations_map.js'] }}
 {{ webpack['locations_point.js'] }}
 {% endblock javascript %}

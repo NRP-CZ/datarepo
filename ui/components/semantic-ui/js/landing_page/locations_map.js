@@ -1,11 +1,7 @@
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import sanitizeHtml from "sanitize-html";
-import { wktToGeoJSON } from "@terraformer/wkt";
-
-function parseWKT2GeoJSON(wktString) {
-  return wktToGeoJSON(wktString);
-}
+import { getGeometryAsGeoJSONObject } from "./locations_geometry";
 
 function buildPopUp(location) {
   let popupHtml = `<div text-align: center;>`;
@@ -87,16 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    let geometry = undefined;
-    if (typeof location.geometry === "object") {
-      geometry = location.geometry;
-    } else if (typeof location.geometry === "string") {
-      try {
-        geometry = parseWKT2GeoJSON(location.geometry);
-      } catch (error) {
-        console.error(error);
-      }
-    }
+    const geometry = getGeometryAsGeoJSONObject(location);
 
     if (!geometry) {
       console.warn(

@@ -1,8 +1,4 @@
-import { wktToGeoJSON } from "@terraformer/wkt";
-
-function parseWKT2GeoJSON(wktString) {
-  return wktToGeoJSON(wktString);
-}
+import { getGeometryAsGeoJSONObject } from "./locations_geometry";
 
 document.addEventListener("DOMContentLoaded", function () {
   const containers = document.querySelectorAll(
@@ -21,16 +17,14 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    let geometry = undefined;
-    if (typeof location.geometry === "object" && location.geometry !== null) {
-      geometry = location.geometry;
-    } else if (typeof location.geometry === "string") {
-      try {
-        geometry = parseWKT2GeoJSON(location.geometry);
-      } catch (error) {
-        console.error("Failed to parse WKT:", error);
-      }
+    if (!location.geometry) {
+      console.warn(
+        `Skipping location because it does not contain any geometry!`,
+      );
+      return;
     }
+
+    const geometry = getGeometryAsGeoJSONObject(location);
 
     if (
       !geometry ||
@@ -38,6 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
       !Array.isArray(geometry.coordinates) ||
       geometry.coordinates.length !== 2
     ) {
+      console.warn(
+        `Skipping location because it does not contain expected point's longitude and latitude!`,
+      );
       return;
     }
 
