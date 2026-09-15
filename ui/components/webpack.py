@@ -15,7 +15,8 @@ theme = WebpackThemeBundle(
         "semantic-ui": {
             "entry": {
                 "components": "./js/custom-components.js",
-                "locations": "./js/landing_page/locations.js",
+                "locations_map": "./js/landing_page/locations_map.js",
+                "locations_point": "./js/landing_page/locations_point.js",
             },
             "dependencies": {
                 "leaflet": "^1.9.4",
