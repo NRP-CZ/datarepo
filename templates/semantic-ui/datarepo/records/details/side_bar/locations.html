@@ -48,12 +48,7 @@
                 mocked_locations by locations #}
                 <li>
                     {{ location.place }}
-                    {%- if location.geometry and location.geometry.type and location.geometry.type == "Point" %}
-                    (<a href="https://google.com/maps/place/{{ location.geometry.coordinates[1] }},{{ location.geometry.coordinates[0] }}"
-                        style="color: #2f6fa7;" target="_blank" rel="noopener noreferrer">{{
-                        location.geometry.coordinates[1] }}, {{ location.geometry.coordinates[0] }}
-                        <i class="external alternate icon"></i></a>)
-                    {%- endif %}
+                    <span class="record-locations-point-reference" data-location='{{ location | tojson | forceescape }}'></span>
                 </li>
                 {% endfor %}
             </ul>
@@ -63,9 +58,10 @@
 {%- endif %}
 
 {% block javascript %}
-{{ webpack['locations.js'] }}
+{{ webpack['locations_map.js'] }}
+{{ webpack['locations_point.js'] }}
 {% endblock javascript %}
 
 {%- block css %}
-{{ webpack['locations.css'] }}
+{{ webpack['locations_map.css'] }}
 {%- endblock %}

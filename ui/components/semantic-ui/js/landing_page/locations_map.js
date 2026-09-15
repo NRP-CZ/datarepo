@@ -1,7 +1,7 @@
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import sanitizeHtml from "sanitize-html";
-import { wktToGeoJSON } from "@terraformer/wkt"
+import { wktToGeoJSON } from "@terraformer/wkt";
 
 function parseWKT2GeoJSON(wktString) {
   return wktToGeoJSON(wktString);
@@ -64,7 +64,14 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  const locations = JSON.parse(locationsAsString);
+  let locations;
+  try {
+    locations = JSON.parse(locationsAsString);
+  } catch (err) {
+    console.error("Failed to parse locations JSON:", err);
+    return;
+  }
+
   if (locations.length === 0) {
     showGlobalMapPopUp(map, "No locations were found!");
     return;
@@ -92,7 +99,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (!geometry) {
-      console.warn(`Skipping location because it contains unknown type of geometry!`);
+      console.warn(
+        `Skipping location because it contains unknown type of geometry!`,
+      );
       return;
     }
 
