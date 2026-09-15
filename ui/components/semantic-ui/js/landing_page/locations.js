@@ -1,10 +1,10 @@
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import sanitizeHtml from "sanitize-html";
+import { wktToGeoJSON } from "@terraformer/wkt"
 
-// TODO: use library as https://terraformer-js.github.io/wkt-parser/
 function parseWKT2GeoJSON(wktString) {
-  throw new Error("WTK parser is not implemented yet!");
+  return wktToGeoJSON(wktString);
 }
 
 function buildPopUp(location) {
