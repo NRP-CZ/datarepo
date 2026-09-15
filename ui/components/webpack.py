@@ -17,7 +17,11 @@ theme = WebpackThemeBundle(
                 "components": "./js/custom-components.js",
                 "locations": "./js/landing_page/locations.js",
             },
-            "dependencies": {"leaflet": "^1.9.4", "sanitize-html": "2.13.0"},
+            "dependencies": {
+                "leaflet": "^1.9.4",
+                "sanitize-html": "2.13.0",
+                "@terraformer/wkt": "^2.2.2",
+            },
             "devDependencies": {},
             "aliases": {},
         }
