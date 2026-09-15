@@ -73,25 +73,41 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
+  const filteredLocations = locations
+    .map((location) => {
+      if (!location.geometry) {
+        console.warn(
+          `Skipping location because it does not contain any geometry!`,
+        );
+        return null;
+      }
+
+      const geometry = getGeometryAsGeoJSONObject(location);
+
+      if (!geometry) {
+        console.warn(
+          `Skipping location because it contains unknown type of geometry!`,
+        );
+        return null;
+      }
+
+      return { location, geometry };
+    })
+    .filter(Boolean)
+    .sort((a, b) => {
+      const aIsPoint = a.geometry.type === "Point";
+      const bIsPoint = b.geometry.type === "Point";
+
+      // Sort locations so 'Point' based location's layers are rendered as the last ones.
+      if (aIsPoint && !bIsPoint) return 1;
+      if (!aIsPoint && bIsPoint) return -1;
+
+      return 0;
+    });
+
   const featureGroup = L.featureGroup().addTo(map);
 
-  locations.forEach((location) => {
-    if (!location.geometry) {
-      console.warn(
-        `Skipping location because it does not contain any geometry!`,
-      );
-      return;
-    }
-
-    const geometry = getGeometryAsGeoJSONObject(location);
-
-    if (!geometry) {
-      console.warn(
-        `Skipping location because it contains unknown type of geometry!`,
-      );
-      return;
-    }
-
+  filteredLocations.forEach(({ location, geometry }) => {
     const layer = L.geoJSON(geometry, {
       style: {
         color: "#3399ff",
