@@ -9,7 +9,7 @@ import { i18next } from "@translations/i18next";
 const domContainer = document.getElementById("standalone_submitter_application");
 if (domContainer) {
   ReactDOM.render(
-    <GetAccessButton groupId="submitters" groupName={i18next.t("Submitters")} />,
+    <GetAccessButton groupId="submitter" groupName={i18next.t("Submitters")} />,
     domContainer
   );
 }
