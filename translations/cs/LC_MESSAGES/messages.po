@@ -334,6 +334,20 @@ msgid ""
 "            <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
 msgstr "K těmto komunitám se nelze přihlásit online, musíte kontaktovat přímo správce komunity. Pokud nemáte k dispozici kontaktní e-mailovou adresu, podívejte se na stránku komunity „O nás“ nebo nás kontaktujte na <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
 
+#: datarepo/templates/semantic-ui/datarepo/records/details/side_bar/locations.html:75
+msgid "Geographic locations"
+msgstr "Zeměpisné polohy"
+
+msgid "Place"
+msgstr "Místo"
+
+msgid "No valid locations were found!"
+msgstr "Nebyly nalezeny žádné validní lokace!"
+
+msgid "No locations were found!"
+msgstr "Nebyly nalezeny platné lokace!"
+
+
 #~ msgid "APA"
 #~ msgstr "APA"
 

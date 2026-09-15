@@ -329,6 +329,18 @@ msgid ""
 "            If you do not already have a contact email address,\n"
 "            check the community's About page or contact us at\n"
 "            <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
+
+#: datarepo/templates/semantic-ui/datarepo/records/details/side_bar/locations.html:75
+msgid "Geographic locations"
+msgstr ""
+
+msgid "Place"
+msgstr ""
+
+msgid "No valid locations were found!"
+msgstr ""
+
+msgid "No locations were found!"
 msgstr ""
 
 #~ msgid "New Datasets"

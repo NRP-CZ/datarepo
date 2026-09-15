@@ -1,6 +1,7 @@
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import sanitizeHtml from "sanitize-html";
+import { i18next } from "@translations/i18next";
 import { getGeometryAsGeoJSONObject } from "./locations_geometry";
 
 function buildPopUp(location) {
@@ -9,7 +10,7 @@ function buildPopUp(location) {
   if (location.place) {
     popupHtml += `
       <div>
-        <h6 class="ui horizontal fitted divider header">Place</h6>
+        <h6 class="ui horizontal fitted divider header">${i18next.t("Place")}</h6>
         ${sanitizeHtml(location.place)}
       </div>`;
   }
@@ -56,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const locationsAsString = mapContainer.getAttribute("data-locations");
   if (!locationsAsString) {
-    showGlobalMapPopUp(map, "No valid locations were found!");
+    showGlobalMapPopUp(map, i18next.t("No valid locations were found!"));
     return;
   }
 
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (locations.length === 0) {
-    showGlobalMapPopUp(map, "No locations were found!");
+    showGlobalMapPopUp(map, i18next.t("No locations were found!"));
     return;
   }
 
