@@ -16,7 +16,7 @@ invenio rdm-records custom-fields init
 invenio communities custom-fields init
 invenio queues declare
 
-invenio roles create submitters
+invenio roles create submitter
 
 # re-index the records
 invenio rdm rebuild-all-indices
