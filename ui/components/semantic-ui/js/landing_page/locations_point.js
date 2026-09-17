@@ -26,9 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const geometry = getGeometryAsGeoJSONObject(location);
 
+    if (!geometry || geometry.type !== "Point") {
+      console.warn(`Skipping location because it is not Point!`);
+      return;
+    }
+
     if (
-      !geometry ||
-      geometry.type !== "Point" ||
       !Array.isArray(geometry.coordinates) ||
       geometry.coordinates.length !== 2
     ) {
