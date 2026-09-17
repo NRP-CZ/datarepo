@@ -6,7 +6,7 @@
   details.
 #}
 
-{%- set locations = record_ui["ui"].get('locations').get('features')%}
+{%- set locations = record_ui["ui"].get('locations', {}).get('features') %}
 
 {%- if locations %}
 <div class="sidebar-container">
