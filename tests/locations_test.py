@@ -15,8 +15,8 @@ import re
 from pathlib import Path
 
 import pytest
-from markupsafe import Markup
 from jinja2 import ChoiceLoader, DictLoader, Environment, FileSystemLoader
+from markupsafe import Markup
 
 REPO_ROOT = Path(__file__).parent.parent
 TEMPLATE_DIR = REPO_ROOT / "templates" / "semantic-ui"
@@ -50,7 +50,7 @@ def render():
     """Render the sidebar template for a given list of UI-serialized locations."""
 
     def _render(locations):
-        env = Environment(  # noqa: S701 - autoescape mirrors Flask, set below
+        env = Environment(
             loader=ChoiceLoader([FileSystemLoader(TEMPLATE_DIR), DictLoader({})]),
             autoescape=True,
         )
@@ -132,9 +132,7 @@ def test_block_is_omitted_when_there_is_no_coverage(render, locations):
 
 def test_template_is_registered_in_the_sidebar():
     config = (REPO_ROOT / "invenio.cfg").read_text(encoding="utf-8")
-    sidebar = re.search(
-        r"APP_RDM_DETAIL_SIDE_BAR_TEMPLATES\s*=\s*\[(.*?)\]", config, re.DOTALL
-    )
+    sidebar = re.search(r"APP_RDM_DETAIL_SIDE_BAR_TEMPLATES\s*=\s*\[(.*?)\]", config, re.DOTALL)
     assert sidebar, "APP_RDM_DETAIL_SIDE_BAR_TEMPLATES not found in invenio.cfg"
 
     entries = [
