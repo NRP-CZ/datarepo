@@ -4,6 +4,17 @@ import sanitizeHtml from "sanitize-html";
 import { i18next } from "@translations/i18next";
 import { getGeometryAsGeoJSONObject } from "./locations_geometry";
 
+function buildFormattedValue(key, value) {
+  let formattedValue = String(value);
+  if (key === "identifiers" && Array.isArray(value)) {
+    formattedValue = value
+      .map((item) => item.identifier)
+      .filter(Boolean)
+      .join(", ");
+  }
+  return formattedValue;
+}
+
 function buildPopUp(location) {
   let popupHtml = `<div text-align: center;>`;
 
@@ -18,10 +29,11 @@ function buildPopUp(location) {
   for (const [key, value] of Object.entries(location)) {
     if (key !== "geometry" && key !== "place" && key !== "type" && value) {
       const formattedKey = key.charAt(0).toUpperCase() + key.slice(1);
+      const formattedValue = buildFormattedValue(key, value);
       popupHtml += `
         <div style="margin-top: 1em;">
           <h6 class="ui horizontal fitted divider header">${sanitizeHtml(formattedKey)}</h6>
-          <span>${sanitizeHtml(String(value))}</span>
+          <span>${sanitizeHtml(formattedValue)}</span>
         </div>`;
     }
   }
