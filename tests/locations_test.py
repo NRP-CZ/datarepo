@@ -121,7 +121,7 @@ def render():
         env.globals["_"] = lambda message: message
         webpack = _Webpack()
         html = env.get_template(TEMPLATE).render(
-            record_ui={"ui": {"locations": locations} if locations is not None else {}},
+            record_ui={"ui": {"locations": {"features": locations}} if locations is not None else {}},
             webpack=webpack,
         )
         return html, webpack
