@@ -22,14 +22,78 @@ REPO_ROOT = Path(__file__).parent.parent
 TEMPLATE_DIR = REPO_ROOT / "templates" / "semantic-ui"
 TEMPLATE = "datarepo/records/details/side_bar/locations.html"
 
-POINT = {
+GEOJSON_POINT = {
     "place": "Prostějov Center",
     "description": "Standard 2D GeoJSON Point.",
+    "population": 43.387,
     "geometry": {"type": "Point", "coordinates": [17.1118, 49.4718]},
+}
+GEOJSON_POLYGON = {
+    "place": "Olomouc Region (GeoJSON Polygon)",
+    "description": "Simplified bounding area using GeoJSON Polygon.",
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [16.80, 49.30],
+                [17.80, 49.30],
+                [17.80, 50.30],
+                [16.80, 50.30],
+                [16.80, 49.30],
+            ]
+        ],
+    },
+}
+GEOJSON_MULTIPOINT = {
+    "place": "CESNET Nodes (GeoJSON MultiPoint)",
+    "description": "Testing GeoJSON MultiPoint for Prague, Brno, and Ostrava.",
+    "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [[14.39, 50.10], [16.60, 49.20], [18.16, 49.83]],
+    },
+}
+GEOJSON_GEOMETRY_COLLECTION = {
+    "place": "Campus Layout (GeoJSON GeometryCollection)",
+    "description": "Testing GeometryCollection containing both a Point and a Polygon.",
+    "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+            {"type": "Point", "coordinates": [14.416, 50.089]},
+            {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [14.415, 50.088],
+                        [14.417, 50.088],
+                        [14.417, 50.090],
+                        [14.415, 50.090],
+                        [14.415, 50.088],
+                    ]
+                ],
+            },
+        ],
+    },
+}
+WKT_POINT = {
+    "place": "Prague Astronomical Clock (WKT Point)",
+    "description": "Standard WKT Point.",
+    "geometry": "POINT(14.4207 50.0870)",
+}
+WKT_LINESTRING = {
+    "place": "Vltava River Segment (WKT LineString)",
+    "description": "Testing WKT LineString parser.",
+    "geometry": "LINESTRING(14.413 50.075, 14.414 50.080, 14.415 50.085)",
 }
 WKT_POLYGON = {
     "place": "Olomouc Region",
-    "geometry": "POLYGON ((16.8 49.3, 17.8 49.3, 17.8 50.3, 16.8 50.3, 16.8 49.3))",
+    "geometry": "POLYGON((16.8 49.3, 17.8 49.3, 17.8 50.3, 16.8 50.3, 16.8 49.3))",
+}
+WKT_MULTIPOLYGON = {
+    "place": "Twin Lakes (WKT MultiPolygon)",
+    "description": "Testing WKT MultiPolygon representing two separate bounding areas.",
+    "total-area": 123456789,
+    "geometry": "MULTIPOLYGON(((14.0 49.0, 14.1 49.0, 14.1 49.1, 14.0 49.1, 14.0 49.0)), \
+        ((14.2 49.2, 14.3 49.2, 14.3 49.3, 14.2 49.3, 14.2 49.2)))",
 }
 
 
@@ -76,7 +140,7 @@ def _data_locations(html: str) -> list[dict]:
 
 def test_mount_point_and_anchor_ids_are_stable(render):
     """Existing anchors must not drift when replacing the upstream template."""
-    html, _ = render([POINT])
+    html, _ = render([GEOJSON_POINT])
 
     assert 'id="record-locations"' in html
     assert 'id="record-locations-map"' in html
@@ -84,28 +148,54 @@ def test_mount_point_and_anchor_ids_are_stable(render):
 
 
 def test_map_receives_every_location_as_json(render):
-    html, _ = render([POINT, WKT_POLYGON])
+    locations = [
+        GEOJSON_POINT,
+        GEOJSON_POLYGON,
+        GEOJSON_MULTIPOINT,
+        GEOJSON_GEOMETRY_COLLECTION,
+        WKT_POINT,
+        WKT_POLYGON,
+        WKT_LINESTRING,
+        WKT_MULTIPOLYGON,
+    ]
+    html, _ = render(locations)
 
     payload = _data_locations(html)
     assert [location["place"] for location in payload] == [
         "Prostějov Center",
+        "Olomouc Region (GeoJSON Polygon)",
+        "CESNET Nodes (GeoJSON MultiPoint)",
+        "Campus Layout (GeoJSON GeometryCollection)",
+        "Prague Astronomical Clock (WKT Point)",
         "Olomouc Region",
+        "Vltava River Segment (WKT LineString)",
+        "Twin Lakes (WKT MultiPolygon)",
     ]
     # WKT stays a raw string, GeoJSON stays an object - the client handles both.
-    assert isinstance(payload[0]["geometry"], dict)
-    assert isinstance(payload[1]["geometry"], str)
+    assert all(isinstance(location["geometry"], dict) for location in payload[:4])
+    assert all(isinstance(location["geometry"], str) for location in payload[4:])
 
 
 def test_text_fallback_lists_each_place(render):
-    html, _ = render([POINT, WKT_POLYGON])
+    locations = [
+        GEOJSON_POINT,
+        GEOJSON_POLYGON,
+        GEOJSON_MULTIPOINT,
+        GEOJSON_GEOMETRY_COLLECTION,
+        WKT_POINT,
+        WKT_POLYGON,
+        WKT_LINESTRING,
+        WKT_MULTIPOLYGON,
+    ]
+    html, _ = render(locations)
 
-    assert html.count('class="record-locations-point-reference"') == 2
-    assert "Prostějov Center" in html
-    assert "Olomouc Region" in html
+    assert html.count('class="record-locations-point-reference"') == len(locations)
+    for location in locations:
+        assert location["place"] in html
 
 
 def test_bundles_are_requested(render):
-    _, webpack = render([POINT])
+    _, webpack = render([GEOJSON_POINT])
 
     assert set(webpack.requested) == {
         "locations_geometry.js",
@@ -116,7 +206,7 @@ def test_bundles_are_requested(render):
 
 
 def test_metadata_is_escaped(render):
-    html, _ = render([{**POINT, "place": "<script>alert(1)</script>"}])
+    html, _ = render([{**GEOJSON_POINT, "place": "<script>alert(1)</script>"}])
 
     assert "<script>alert(1)</script>" not in html
     assert _data_locations(html)[0]["place"] == "<script>alert(1)</script>"
