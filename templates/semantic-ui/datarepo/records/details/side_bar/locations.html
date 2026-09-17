@@ -1,0 +1,40 @@
+{#
+  Copyright (C) 2026 CESNET z.s.p.o.
+
+  oarepo-previewer is free software; you can redistribute it and/or
+  modify it under the terms of the MIT License; see LICENSE file for more
+  details.
+#}
+
+{%- set locations = record_ui["ui"].get('locations', {}).get('features') %}
+
+{%- if locations %}
+<div class="sidebar-container">
+    <h2 class="ui medium top attached header mt-0">{{ _('Geographic locations') }}</h2>
+    <div id="record-locations" class="ui segment bottom attached rdm-sidebar">
+        <div id="record-locations-map" data-locations='{{ locations | tojson | forceescape }}'
+            style="height: 260px; max-height: 40vw; width: 100%; margin-bottom: 1em;">
+        </div>
+        <div id="record-locations-list">
+            <ul class="ui list">
+                {% for location in locations %}
+                <li>
+                    {{ location.place }}
+                    <span class="record-locations-point-reference" data-location='{{ location | tojson | forceescape }}'></span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% block javascript %}
+{{ webpack['locations_geometry.js'] }}
+{{ webpack['locations_map.js'] }}
+{{ webpack['locations_point.js'] }}
+{% endblock javascript %}
+
+{%- block css %}
+{{ webpack['locations_map.css'] }}
+{%- endblock %}
+{%- endif %}
