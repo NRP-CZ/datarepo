@@ -1,30 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { List } from "semantic-ui-react";
-import AutoScrollList from "./AutoScrollList";
+// import AutoScrollList from "./AutoScrollList";
 import LocationListItem from "./LocationListItem";
 
-// map.flyToBounds(targetLayer.getBounds(), { maxZoom: 15, duration: 1.5 });
-
-//     // 2. Open the popup
-//     // We wait for the flyTo animation to finish using 'moveend',
-//     // otherwise the popup might open at the old screen coordinates and glitch.
-//     map.once('moveend', () => {
-//       targetLayer.openPopup();
-//     });
-
-function findActiveIndex(id, locationEntries) {
-  const index = locationEntries.findIndex((entry) => {
-    return entry.id === id;
-  });
-
-  return index === -1 ? 0 : index;
-}
+// function findActiveIndex(id, locationEntries) {
+//   if (!id) return undefined;
+//   const index = locationEntries.findIndex((entry) => entry.id === id);
+//   return index === -1 ? undefined : index;
+// }
 
 export function LocationsList(props) {
   return (
     <List as="ul">
-      <AutoScrollList
+      {/* <AutoScrollList
         list={props.locationEntries}
         activeIndex={findActiveIndex(
           props.activeLocationId,
@@ -35,10 +24,21 @@ export function LocationsList(props) {
             <LocationListItem
               active={locationEntry.id === props.activeLocationId}
               locationEntry={locationEntry}
+              onClick={props.onListItemClick}
             ></LocationListItem>
           );
         }}
-      ></AutoScrollList>
+      ></AutoScrollList> */}
+      {props.locationEntries.map((locationEntry) => {
+        return (
+          <LocationListItem
+            key={locationEntry.id}
+            active={locationEntry.id === props.activeLocationId}
+            locationEntry={locationEntry}
+            onClick={props.onListItemClick}
+          ></LocationListItem>
+        );
+      })}
     </List>
   );
 }
@@ -53,6 +53,7 @@ LocationsList.propTypes = {
   ),
   layersManager: PropTypes.object.isRequired,
   activeLocationId: PropTypes.string,
+  onListItemClick: PropTypes.func,
 };
 
 export default LocationsList;

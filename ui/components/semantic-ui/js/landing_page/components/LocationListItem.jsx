@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export function LocationListItem(props) {
-  const { location, geometry } = props.locationEntry || {};
+  const { id, location, geometry } = props.locationEntry || {};
 
   if (!location || !location.place || !geometry) {
     console.warn(`Skipping invalid location!`);
@@ -18,7 +18,12 @@ export function LocationListItem(props) {
   }
 
   return (
-    <li>
+    <li 
+      onClick={() => {
+        if (props.onClick) props.onClick(id);
+      }}
+      style={{ cursor: "pointer" }}
+    >
       {props.active ? <b>{location.place}</b> : location.place}
       {isPoint && (
         <a
@@ -26,6 +31,7 @@ export function LocationListItem(props) {
           style={{ color: "#2f6fa7", marginLeft: "8px" }}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
         >
           {lat}, {lon} <i className="external alternate icon"></i>
         </a>
@@ -41,6 +47,7 @@ LocationListItem.propTypes = {
     geometry: PropTypes.object.isRequired,
   }),
   active: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export default LocationListItem;

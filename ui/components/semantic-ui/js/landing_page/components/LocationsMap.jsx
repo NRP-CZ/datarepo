@@ -110,7 +110,7 @@ function LocationsMap(props) {
 
       layer.on("popupclose", () => {
         if (props.onPopupClose) {
-          props.onPopupClose();
+          props.onPopupClose(id);
         }
       });
 
@@ -130,21 +130,21 @@ function LocationsMap(props) {
     };
   }, [props.locationEntries]);
 
-//   useEffect(() => {
-//     const map = mapInstanceRef.current;
+  useEffect(() => {
+    const map = mapInstanceRef.current;
 
-//     if (!map || !props.activeLocationId) return;
+    if (!map || !props.flyToId) return;
 
-//     const targetLayer = props.layersManager[props.activeLocationId];
+    const targetLayer = props.layersManager[props.flyToId];
 
-//     if (targetLayer && !targetLayer.isPopupOpen()) {
-//       map.flyToBounds(targetLayer.getBounds(), { maxZoom: 15, duration: 1.0 });
+    if (targetLayer) {
+      map.flyToBounds(targetLayer.getBounds(), { maxZoom: 10, duration: 1.0 });
 
-//       map.once("moveend", () => {
-//         targetLayer.openPopup();
-//       });
-//     }
-//   }, [props.activeLocationId, props.layersManager]);
+      map.once("moveend", () => {
+        targetLayer.openPopup();
+      });
+    }
+  }, [props.flyToId, props.layersManager]);
 
   return (
     <div
@@ -168,6 +168,7 @@ LocationsMap.propTypes = {
     }),
   ),
   layersManager: PropTypes.object.isRequired,
+  flyToId: PropTypes.string,
   onLocationsClick: PropTypes.func,
   onPopupClose: PropTypes.func,
 };
