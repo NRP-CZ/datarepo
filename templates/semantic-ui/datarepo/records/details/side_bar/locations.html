@@ -8,33 +8,161 @@
 
 {%- set locations = record_ui["ui"].get('locations', {}).get('features') %}
 
+{# Mocking the exact output the new CCMM UI serializer will provide. #}
+{%- set mocked_locations = [
+  {
+    "place": "Prostějov Center (GeoJSON Point)",
+    "description": "Standard 2D GeoJSON Point.",
+    "population": 43.387,
+    "geometry": {
+      "type": "Point",
+      "coordinates": [17.1118, 49.4718]
+    }
+  },
+  {
+    "place": "Prague",
+    "description": "Czech capital.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [14.4378, 50.0755]
+    }
+  },
+  {
+    "place": "Brno",
+    "description": "Czech capital of Moravia.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [16.6117, 49.1951]
+    }
+  },
+  {
+    "place": "Ostrava",
+    "description": "City in Moravian-Silesian region.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [18.2692, 49.8209]
+    }
+  },
+  {
+    "place": "Plzeň",
+    "description": "City in West Bohemia.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.3776, 49.7384]
+    }
+  },
+  {
+    "place": "Olomouc",
+    "description": "Historic city in Central Moravia.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [17.2542, 49.5938]
+    }
+  },
+  {
+    "place": "Liberec",
+    "description": "City in North Bohemia.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [15.0568, 50.7671]
+    }
+  },
+  {
+    "place": "České Budějovice",
+    "description": "City in South Bohemia.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [14.4743, 48.9735]
+    }
+  },
+  {
+    "place": "Hradec Králové",
+    "description": "City in East Bohemia.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [15.8324, 50.2092]
+    }
+  },
+  {
+    "place": "Pardubice",
+    "description": "City in East Bohemia.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [15.7726, 50.0343]
+    }
+  },
+  {
+    "place": "Ústí nad Labem",
+    "description": "City in North Bohemia.",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [14.0328, 50.6611]
+    }
+  },
+  {
+    "place": "Olomouc Region (GeoJSON Polygon)",
+    "description": "Simplified bounding area using GeoJSON Polygon.",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [[[16.80, 49.30], [17.80, 49.30], [17.80, 50.30], [16.80, 50.30], [16.80, 49.30]]]
+    }
+  },
+  {
+    "place": "CESNET Nodes (GeoJSON MultiPoint)",
+    "description": "Testing GeoJSON MultiPoint for Prague, Brno, and Ostrava.",
+    "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [[14.39, 50.10], [16.60, 49.20], [18.16, 49.83]]
+    }
+  },
+  {
+    "place": "Campus Layout (GeoJSON GeometryCollection)",
+    "description": "Testing GeometryCollection containing both a Point and a Polygon.",
+    "geometry": {
+      "type": "GeometryCollection",
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [14.416, 50.089]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [[[14.415, 50.088], [14.417, 50.088], [14.417, 50.090], [14.415, 50.090], [14.415, 50.088]]]
+        }
+      ]
+    }
+  },
+  {
+    "place": "Prague Astronomical Clock (WKT Point)",
+    "description": "Standard WKT Point.",
+    "geometry": "POINT(14.4207 50.0870)"
+  },
+  {
+    "place": "Vltava River Segment (WKT LineString)",
+    "description": "Testing WKT LineString parser.",
+    "geometry": "LINESTRING(14.413 50.075, 14.414 50.080, 14.415 50.085)"
+  },
+  {
+    "place": "Twin Lakes (WKT MultiPolygon)",
+    "description": "Testing WKT MultiPolygon representing two separate bounding areas.",
+    "total-area": 123456789,
+    "geometry": "MULTIPOLYGON(((14.0 49.0, 14.1 49.0, 14.1 49.1, 14.0 49.1, 14.0 49.0)), ((14.2 49.2, 14.3 49.2, 14.3 49.3, 14.2 49.3, 14.2 49.2)))"
+  }
+] %}
+
 {%- if locations %}
 <div class="sidebar-container">
     <h2 class="ui medium top attached header mt-0">{{ _('Geographic locations') }}</h2>
-    <div id="record-locations" class="ui segment bottom attached rdm-sidebar">
-        <div id="record-locations-map" data-locations='{{ locations | tojson | forceescape }}'
-            style="height: 260px; max-height: 40vw; width: 100%; margin-bottom: 1em;">
-        </div>
-        <div id="record-locations-list">
-            <ul class="ui list">
-                {% for location in locations %}
-                <li>
-                    {{ location.place }}
-                    <span class="record-locations-point-reference" data-location='{{ location | tojson | forceescape }}'></span>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
+    <div id="record-locations" data-locations='{{ mocked_locations | tojson | forceescape }}' class="ui segment bottom attached rdm-sidebar">
     </div>
 </div>
 
 {% block javascript %}
 {{ webpack['locations_geometry.js'] }}
-{{ webpack['locations_map.js'] }}
-{{ webpack['locations_point.js'] }}
+{{ webpack['locations.js'] }}
 {% endblock javascript %}
 
 {%- block css %}
-{{ webpack['locations_map.css'] }}
+{{ webpack['locations.css'] }}
 {%- endblock %}
 {%- endif %}
