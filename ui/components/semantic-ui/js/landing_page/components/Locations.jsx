@@ -43,8 +43,8 @@ function Locations(props) {
   }, [locationEntries]);
 
   const layersManagerRef = useRef({});
-
   const [activeLocationId, setActiveLocationId] = useState(null);
+  const [flyToId, setFlyToId] = useState(null);
 
   if (locationEntries === null) {
     return (
@@ -60,15 +60,28 @@ function Locations(props) {
       <LocationsMap
         locationEntries={sortedLocationEntries}
         layersManager={layersManagerRef.current}
+        flyToId={flyToId}
         onLocationsClick={(locationData) => {
           setActiveLocationId(locationData.id);
+          setFlyToId(null);
         }}
-        onPopupClose={() => setActiveLocationId(null)}
+        onPopupClose={(closedId) => {
+          setActiveLocationId((currentActiveId) =>
+            currentActiveId === closedId ? null : currentActiveId,
+          );
+          setFlyToId((currentFlyId) =>
+            currentFlyId === closedId ? null : currentFlyId,
+          );
+        }}
       />
       <LocationsList
         locationEntries={locationEntries}
         layersManager={layersManagerRef.current}
         activeLocationId={activeLocationId}
+        onListItemClick={(id) => {
+          setActiveLocationId(id);
+          setFlyToId(id);
+        }}
       />
     </>
   );
