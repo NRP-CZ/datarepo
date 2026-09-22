@@ -9,8 +9,9 @@ export function LocationListItem(props) {
     return null;
   }
 
-  const isPoint = geometry.type === "Point" && Array.isArray(geometry.coordinates);
-  
+  const isPoint =
+    geometry.type === "Point" && Array.isArray(geometry.coordinates);
+
   let lat, lon;
   if (isPoint) {
     [lon, lat] = geometry.coordinates;
@@ -18,7 +19,7 @@ export function LocationListItem(props) {
 
   return (
     <li>
-      {location.place}
+      {props.active ? <b>{location.place}</b> : location.place}
       {isPoint && (
         <a
           href={`https://google.com/maps/place/${lat},${lon}`}
@@ -34,7 +35,12 @@ export function LocationListItem(props) {
 }
 
 LocationListItem.propTypes = {
-  locationEntry: PropTypes.object,
+  locationEntry: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    location: PropTypes.object.isRequired,
+    geometry: PropTypes.object.isRequired,
+  }),
+  active: PropTypes.bool,
 };
 
 export default LocationListItem;

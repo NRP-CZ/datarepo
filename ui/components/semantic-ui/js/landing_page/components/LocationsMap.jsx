@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import PropTypes from "prop-types";
+import PropTypes, { object } from "prop-types";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { i18next } from "@translations/i18next";
@@ -85,7 +85,7 @@ function LocationsMap(props) {
 
     const featureGroup = L.featureGroup().addTo(map);
 
-    props.locationEntries.forEach(({ location, geometry }) => {
+    props.locationEntries.forEach(({ id, location, geometry }) => {
       const layer = L.geoJSON(geometry, {
         style: { color: "#3399ff", weight: 2, opacity: 0.8 },
         pointToLayer: (_feature, latlng) => {
@@ -101,7 +101,21 @@ function LocationsMap(props) {
       });
 
       layer.bindPopup(buildPopUp(location));
+
+      layer.on("click", (_) => {
+        if (props.onLocationsClick) {
+          props.onLocationsClick({ id, location, geometry });
+        }
+      });
+
+      layer.on("popupclose", () => {
+        if (props.onPopupClose) {
+          props.onPopupClose();
+        }
+      });
+
       featureGroup.addLayer(layer);
+      props.layersManager[id] = layer;
     });
 
     if (featureGroup.getLayers().length > 0) {
@@ -115,6 +129,22 @@ function LocationsMap(props) {
       mapInstanceRef.current = null;
     };
   }, [props.locationEntries]);
+
+//   useEffect(() => {
+//     const map = mapInstanceRef.current;
+
+//     if (!map || !props.activeLocationId) return;
+
+//     const targetLayer = props.layersManager[props.activeLocationId];
+
+//     if (targetLayer && !targetLayer.isPopupOpen()) {
+//       map.flyToBounds(targetLayer.getBounds(), { maxZoom: 15, duration: 1.0 });
+
+//       map.once("moveend", () => {
+//         targetLayer.openPopup();
+//       });
+//     }
+//   }, [props.activeLocationId, props.layersManager]);
 
   return (
     <div
@@ -130,7 +160,16 @@ function LocationsMap(props) {
 }
 
 LocationsMap.propTypes = {
-  locationEntries: PropTypes.array,
+  locationEntries: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      location: PropTypes.object.isRequired,
+      geometry: PropTypes.object.isRequired,
+    }),
+  ),
+  layersManager: PropTypes.object.isRequired,
+  onLocationsClick: PropTypes.func,
+  onPopupClose: PropTypes.func,
 };
 
 export default LocationsMap;
