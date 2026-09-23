@@ -33,7 +33,7 @@ function AutoScrollList(props) {
       {props.list.map((element, index) => {
         return (
           <div
-            key={`scroll-item-${index}`}
+            key={props.getKey(element, index)}
             style={{ width: "100%" }}
             ref={(el) => {
               elementRefs.current[index] = el;
@@ -52,6 +52,8 @@ AutoScrollList.propTypes = {
   list: PropTypes.array.isRequired,
   /** Index of the item to scroll into view. */
   activeIndex: PropTypes.number,
+  /** Called for each item to get the key. */
+  getKey: PropTypes.func.isRequired,
   /** Called for each item to produce its rendered content. */
   renderItem: PropTypes.func.isRequired,
 };

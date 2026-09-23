@@ -1,45 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { List } from "semantic-ui-react";
-// import AutoScrollList from "./AutoScrollList";
+import AutoScrollList from "./AutoScrollList";
 import LocationListItem from "./LocationListItem";
 
-// function findActiveIndex(id, locationEntries) {
-//   if (!id) return undefined;
-//   const index = locationEntries.findIndex((entry) => entry.id === id);
-//   return index === -1 ? undefined : index;
-// }
+function findActiveIndex(id, locationEntries) {
+  if (!id) return undefined;
+  const index = locationEntries.findIndex((entry) => entry.id === id);
+  return index === -1 ? undefined : index;
+}
 
 export function LocationsList(props) {
   return (
-    <List as="ul">
-      {/* <AutoScrollList
-        list={props.locationEntries}
-        activeIndex={findActiveIndex(
-          props.activeLocationId,
-          props.locationEntries,
-        )}
-        renderItem={(locationEntry, _) => {
-          return (
-            <LocationListItem
-              active={locationEntry.id === props.activeLocationId}
-              locationEntry={locationEntry}
-              onClick={props.onListItemClick}
-            ></LocationListItem>
-          );
-        }}
-      ></AutoScrollList> */}
-      {props.locationEntries.map((locationEntry) => {
-        return (
-          <LocationListItem
-            key={locationEntry.id}
-            active={locationEntry.id === props.activeLocationId}
-            locationEntry={locationEntry}
-            onClick={props.onListItemClick}
-          ></LocationListItem>
-        );
-      })}
-    </List>
+    <div style={{ maxHeight: "250px", overflowY: "auto" }}>
+      <List bulleted relaxed>
+        <AutoScrollList
+          list={props.locationEntries}
+          activeIndex={findActiveIndex(
+            props.activeLocationId,
+            props.locationEntries,
+          )}
+          getKey={(locationEntry, _) => {
+            return locationEntry.id;
+          }}
+          renderItem={(locationEntry, _) => {
+            return (
+              <LocationListItem
+                active={locationEntry.id === props.activeLocationId}
+                locationEntry={locationEntry}
+                onClick={props.onListItemClick}
+              ></LocationListItem>
+            );
+          }}
+        ></AutoScrollList>
+      </List>
+    </div>
   );
 }
 
