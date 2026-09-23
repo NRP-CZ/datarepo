@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { ListItem } from "semantic-ui-react";
 
 export function LocationListItem(props) {
   const { id, location, geometry } = props.locationEntry || {};
@@ -18,7 +19,7 @@ export function LocationListItem(props) {
   }
 
   return (
-    <li 
+    <ListItem
       onClick={() => {
         if (props.onClick) props.onClick(id);
       }}
@@ -36,7 +37,7 @@ export function LocationListItem(props) {
           {lat}, {lon} <i className="external alternate icon"></i>
         </a>
       )}
-    </li>
+    </ListItem>
   );
 }
 
