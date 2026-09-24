@@ -15,6 +15,7 @@ import {
   CCMMDepositRecordSerializer,
   CCMMSections,
 } from "@js/ccmm_invenio/forms";
+import { CCMMGeolocations } from "./CCMMGeolocations";
 
 const { rootEl, config, ...rest } = parseFormAppConfig();
 const recordSerializer = new CCMMDepositRecordSerializer(
@@ -75,7 +76,7 @@ ReactDOM.render(
   <DepositFormApp
     config={config}
     {...rest}
-    sections={CCMMSections}
+    sections={[...CCMMSections, CCMMGeolocations]}
     recordSerializer={recordSerializer}
     componentOverrides={componentOverrides}
     useWizardForm
