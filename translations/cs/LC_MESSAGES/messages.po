@@ -347,6 +347,9 @@ msgstr "Popis"
 msgid "Identifiers"
 msgstr "Identifikátory"
 
+msgid "Copied the latitude and longitude"
+msgstr "Do schránky byla zkopírována zeměpisná šířka a délka"
+
 msgid "No valid locations were found!"
 msgstr "Nebyly nalezeny žádné validní lokace!"
 

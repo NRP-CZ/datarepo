@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ListItem } from "semantic-ui-react";
+import { i18next } from "@translations/i18next";
+import { ListItem, Icon } from "semantic-ui-react";
 
 export function LocationListItem(props) {
   const { id, location, geometry } = props.locationEntry || {};
@@ -19,23 +20,40 @@ export function LocationListItem(props) {
   }
 
   return (
-    <ListItem
-      onClick={() => {
-        if (props.onClick) props.onClick(id);
-      }}
-      style={{ cursor: "pointer" }}
-    >
-      {props.active ? <b>{location.place}</b> : location.place}
+    <ListItem>
+      <span
+        onClick={() => {
+          if (props.onClick) props.onClick(id);
+        }}
+        style={{ cursor: "pointer" }}
+      >
+        {props.active ? <b>{location.place}</b> : location.place}
+      </span>
       {isPoint && (
-        <a
-          href={`https://google.com/maps/place/${lat},${lon}`}
-          style={{ color: "#2f6fa7", marginLeft: "8px" }}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-        >
-          {lat}, {lon} <i className="external alternate icon"></i>
-        </a>
+        <span style={{ marginLeft: "4px" }}>
+          <a
+            href={`https://google.com/maps/place/${lat},${lon}`}
+            style={{ color: "#2f6fa7" }}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {lat}, {lon} <i className="external alternate icon"></i>
+          </a>
+          <Icon
+            name="copy"
+            color="yellow"
+            style={{ cursor: "copy" }}
+            onClick={() => {
+              navigator.clipboard.writeText(`${lat}, ${lon}`);
+              alert(
+                i18next.t("Copied the latitude and longitude") +
+                  ": " +
+                  `${lat}, ${lon}` + ".",
+              );
+            }}
+          />
+        </span>
       )}
     </ListItem>
   );

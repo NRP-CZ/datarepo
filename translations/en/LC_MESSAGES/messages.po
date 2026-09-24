@@ -343,6 +343,9 @@ msgstr ""
 msgid "Identifiers"
 msgstr ""
 
+msgid "Copied the latitude and longitude"
+msgstr ""
+
 msgid "No valid locations were found!"
 msgstr ""
 
