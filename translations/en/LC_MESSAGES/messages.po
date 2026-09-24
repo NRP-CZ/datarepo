@@ -337,6 +337,12 @@ msgstr ""
 msgid "Place"
 msgstr ""
 
+msgid "Description"
+msgstr ""
+
+msgid "Identifiers"
+msgstr ""
+
 msgid "No valid locations were found!"
 msgstr ""
 

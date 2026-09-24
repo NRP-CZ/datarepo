@@ -341,6 +341,12 @@ msgstr "Zeměpisné polohy"
 msgid "Place"
 msgstr "Místo"
 
+msgid "Description"
+msgstr "Popis"
+
+msgid "Identifiers"
+msgstr "Identifikátory"
+
 msgid "No valid locations were found!"
 msgstr "Nebyly nalezeny žádné validní lokace!"
 

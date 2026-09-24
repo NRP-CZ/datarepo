@@ -5,15 +5,36 @@ import "leaflet/dist/leaflet.css";
 import { i18next } from "@translations/i18next";
 import sanitizeHtml from "sanitize-html";
 
-function buildFormattedValue(key, value) {
+function buildFormattedValue(value) {
   let formattedValue = String(value);
-  if (key === "identifiers" && Array.isArray(value)) {
+
+  if (Array.isArray(value)) {
     formattedValue = value
-      .map((item) => item.identifier)
+      .map((item) => item)
       .filter(Boolean)
       .join(", ");
   }
+
+  if (typeof value === "object") {
+    formattedValue = Object.values(value)
+      .map((val) => buildFormattedValue(val))
+      .filter(Boolean)
+      .join(", ");
+  }
+
   return formattedValue;
+}
+
+function buildFomattedKey(key) {
+  let formattedKey = key.charAt(0).toUpperCase() + key.slice(1);
+
+  if (formattedKey === "Identifiers") {
+    formattedKey = i18next.t("Identifiers");
+  } else if (formattedKey === "Description") {
+    formattedKey = i18next.t("Description");
+  }
+
+  return formattedKey;
 }
 
 function buildPopUp(location) {
@@ -29,8 +50,8 @@ function buildPopUp(location) {
 
   for (const [key, value] of Object.entries(location)) {
     if (key !== "geometry" && key !== "place" && key !== "type" && value) {
-      const formattedKey = key.charAt(0).toUpperCase() + key.slice(1);
-      const formattedValue = buildFormattedValue(key, value);
+      const formattedKey = buildFomattedKey(key);
+      const formattedValue = buildFormattedValue(value);
       popupHtml += `
         <div style="margin-top: 1em;">
           <h6 class="ui horizontal fitted divider header">${sanitizeHtml(formattedKey)}</h6>
