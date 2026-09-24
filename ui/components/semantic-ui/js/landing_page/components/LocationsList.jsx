@@ -49,7 +49,6 @@ LocationsList.propTypes = {
       geometry: PropTypes.object.isRequired,
     }),
   ),
-  layersManager: PropTypes.object.isRequired,
   activeLocationId: PropTypes.string,
   onListItemClick: PropTypes.func,
 };
