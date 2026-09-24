@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import { List } from "semantic-ui-react";
 import AutoScrollList from "./AutoScrollList";
 import LocationListItem from "./LocationListItem";
+import withSemanticUIForwardDOMRef from "./withSemanticUIForwardDOMRef";
+
+const WrappedLocationListItem = withSemanticUIForwardDOMRef(LocationListItem);
 
 function findActiveIndex(id, locationEntries) {
   if (!id) return undefined;
@@ -25,11 +28,11 @@ export function LocationsList(props) {
           }}
           renderItem={(locationEntry, _) => {
             return (
-              <LocationListItem
+              <WrappedLocationListItem
                 active={locationEntry.id === props.activeLocationId}
                 locationEntry={locationEntry}
                 onClick={props.onListItemClick}
-              ></LocationListItem>
+              ></WrappedLocationListItem>
             );
           }}
         ></AutoScrollList>
