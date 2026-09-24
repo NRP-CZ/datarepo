@@ -15,8 +15,14 @@ theme = WebpackThemeBundle(
         "semantic-ui": {
             "entry": {
                 "components": "./js/custom-components.js",
+                "locations": "./js/landing_page/index.js",
+                "locations_geometry": "./js/landing_page/locations_geometry.js",
             },
-            "dependencies": {},
+            "dependencies": {
+                "leaflet": "^1.9.4",
+                "sanitize-html": "2.13.0",
+                "@terraformer/wkt": "^2.2.2",
+            },
             "devDependencies": {},
             "aliases": {},
         }
