@@ -16,7 +16,7 @@ function findActiveIndex(id, locationEntries) {
 export function LocationsList(props) {
   return (
     <div style={{ maxHeight: "250px", overflowY: "auto" }}>
-      <List relaxed>
+      <List bulleted relaxed>
         <AutoScrollList
           list={props.locationEntries}
           activeIndex={findActiveIndex(
