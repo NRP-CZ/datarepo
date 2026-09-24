@@ -1,11 +1,29 @@
 import React, { useRef, useEffect } from "react";
-import PropTypes, { object } from "prop-types";
+import PropTypes from "prop-types";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { i18next } from "@translations/i18next";
 import sanitizeHtml from "sanitize-html";
 
-function buildFormattedValue(value) {
+function handleIdentifiersValue(value) {
+  if (!Array.isArray(value)) {
+    return "";
+  }
+
+  return value
+    .map((entry) => {
+      return entry.identifier;
+    })
+    .filter(Boolean)
+    .join(", ");
+}
+
+function buildFormattedValue(key, value) {
+  // Special cases.
+  if (key === "identifiers") {
+    return handleIdentifiersValue(value);
+  }
+
   let formattedValue = String(value);
 
   if (Array.isArray(value)) {
@@ -17,7 +35,7 @@ function buildFormattedValue(value) {
 
   if (typeof value === "object") {
     formattedValue = Object.values(value)
-      .map((val) => buildFormattedValue(val))
+      .map((val) => buildFormattedValue(undefined, val))
       .filter(Boolean)
       .join(", ");
   }
@@ -51,7 +69,7 @@ function buildPopUp(location) {
   for (const [key, value] of Object.entries(location)) {
     if (key !== "geometry" && key !== "place" && key !== "type" && value) {
       const formattedKey = buildFomattedKey(key);
-      const formattedValue = buildFormattedValue(value);
+      const formattedValue = buildFormattedValue(key, value);
       popupHtml += `
         <div style="margin-top: 1em;">
           <h6 class="ui horizontal fitted divider header">${sanitizeHtml(formattedKey)}</h6>
