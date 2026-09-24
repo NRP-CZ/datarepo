@@ -76,7 +76,6 @@ function Locations(props) {
       />
       <LocationsList
         locationEntries={locationEntries}
-        layersManager={layersManagerRef.current}
         activeLocationId={activeLocationId}
         onListItemClick={(id) => {
           setActiveLocationId(id);
