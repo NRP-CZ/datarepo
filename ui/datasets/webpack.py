@@ -16,7 +16,10 @@ theme = WebpackThemeBundle(
                 "datasets_search": "./js/datasets/search/index.js",
                 "datasets_deposit_form": "./js/datasets/forms/index.js",
             },
-            dependencies={},
+            dependencies={
+                "@terraformer/wkt": "^2.2.2",
+                "@geoman-io/leaflet-geoman-free": "^2.20.1",
+            },
             # TODO: pinned less dependency, because in version 4.6 of less, they are using exclusively ES modules
             # and less loader is using require
             devDependencies={"less": "4.5.1"},
