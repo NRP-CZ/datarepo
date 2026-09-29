@@ -1,10 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {
   TextField,
   TextAreaField,
   FieldLabel,
-  GroupField,
 } from "react-invenio-forms";
 import { useFormikContext, getIn } from "formik";
 import {
@@ -23,6 +22,7 @@ import { IdentifiersField } from "@js/invenio_rdm_records";
 import { NominatimSearchBar } from "./NominatimSearchBar";
 import { GeoJSsonEditor } from "./GeoJsonEditor";
 import { LongitudeAndLatitudeGroupField } from "./LongitudeAndLatitudeGroupField";
+import { useNominatim } from "../hooks/useNominatim";
 
 export function GeolocationInputFieldDetail({
   basePath,
@@ -30,7 +30,7 @@ export function GeolocationInputFieldDetail({
   vocabularies,
 }) {
   const { values, setFieldValue } = useFormikContext();
-
+  const { reverseLocation, isLoading: isReverseLoading } = useNominatim();
   const [searchValue, setSearchValue] = useState("");
 
   const currentGeometry = getIn(values, `${basePath}.geometry`, null);
@@ -46,12 +46,26 @@ export function GeolocationInputFieldDetail({
     return false;
   });
 
+  const performReverseSearch = async (lat, lon) => {
+    if (lat && lon && !isNaN(lat) && !isNaN(lon)) {
+      const result = await reverseLocation(lat, lon);
+      if (result && result.display_name) {
+        const placeName = result.name ? result.name : result.display_name;
+        setFieldValue(`${basePath}.place`, placeName);
+        setSearchValue(result.display_name);
+      }
+    }
+  };
+
   const panes = [
     {
       menuItem: "GeoJSON",
       render: () => (
         <TabPane attached={false} style={{ border: "none", boxShadow: "none" }}>
-          <GeoJSsonEditor basePath={basePath}></GeoJSsonEditor>
+          <GeoJSsonEditor
+            basePath={basePath}
+            onReverseSearch={performReverseSearch}
+          />
         </TabPane>
       ),
     },
@@ -95,13 +109,12 @@ export function GeolocationInputFieldDetail({
         <NominatimSearchBar basePath={basePath} searchValue={searchValue} />
       </Form.Field>
 
-      {isLocationPoint && (
+     {isLocationPoint && (
         <LongitudeAndLatitudeGroupField
           basePath={basePath}
-          onCoordinatesBlur={(result) => {
-            setSearchValue(result.display_name);
-          }}
-        ></LongitudeAndLatitudeGroupField>
+          isLoading={isReverseLoading}
+          onReverseSearch={performReverseSearch}
+        />
       )}
 
       <Accordion>
