@@ -1,7 +1,7 @@
 import React from "react";
-import { i18next } from "@translations/ccmm_invenio";
 import Overridable from "react-overridable";
 import { buildUID } from "react-searchkit";
+import { i18next } from "@translations/ccmm_invenio";
 import { GeolocationsInputField } from "./components/GeolocationsInputField";
 
 export const CCMMGeolocations = {
@@ -11,6 +11,7 @@ export const CCMMGeolocations = {
   component: (tabConfig) => {
     const { record, formConfig } = tabConfig;
     const { overridableIdPrefix } = formConfig;
+    const { vocabularies } = formConfig.config;
 
     return (
       <Overridable
@@ -22,6 +23,7 @@ export const CCMMGeolocations = {
           label={i18next.t("Geolocations")}
           icon="map marker alternate"
           relatedResourceUI={record.ui?.locations}
+          vocabularies={vocabularies}
         />
       </Overridable>
     );
