@@ -45,12 +45,12 @@ export function NominatimSearchBar(props) {
     [],
   );
 
-  const handleSearchChange = (e, { value }) => {
+  const handleSearchChange = (_, { value }) => {
     setSearchValue(value);
     searchNominatim(value);
   };
 
-  const handleResultSelect = (e, { result }) => {
+  const handleResultSelect = (_, { result }) => {
     setSearchValue(result.title);
     setFieldValue(`${props.basePath}.place`, result.name);
     setFieldValue(`${props.basePath}.geometry`, {
