@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import {
   TextField,
@@ -6,6 +6,7 @@ import {
   FieldLabel,
   GroupField,
 } from "react-invenio-forms";
+import { useFormikContext, getIn } from "formik";
 import {
   Button,
   Icon,
@@ -16,10 +17,12 @@ import {
   Tab,
   TabPane,
   Form,
+  Label,
 } from "semantic-ui-react";
 import { i18next } from "@translations/ccmm_invenio";
 import { IdentifiersField } from "@js/invenio_rdm_records";
 import { NominatimSearchBar } from "./NominatimSearchBar";
+import { useNominatim } from "../hooks/useNominatim";
 
 function renderGeometryTextAreaEditor(type, geoJsonValue, onChange) {
   if (type === "wkt") {
@@ -31,8 +34,6 @@ function renderGeometryTextAreaEditor(type, geoJsonValue, onChange) {
           value={geoJsonValue} // TODO: convert
           placeholder={i18next.t("Enter WKT string...")}
         />
-        {/* TODO: If any grammar error, render error message here. */}
-        {/* <Label pointing prompt content={""} /> */}
       </Form.Field>
     );
   } else {
@@ -44,8 +45,6 @@ function renderGeometryTextAreaEditor(type, geoJsonValue, onChange) {
           value={geoJsonValue}
           placeholder={i18next.t("Enter GeoJSON string...")}
         />
-        {/* TODO: If any grammar error, render error message here. */}
-        {/* <Label pointing prompt content={""} /> */}
       </Form.Field>
     );
   }
@@ -56,7 +55,52 @@ export function GeolocationInputFieldDetail({
   handleRemove,
   vocabularies,
 }) {
-  const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
+  const { values, setFieldValue } = useFormikContext();
+  const { reverseLocation, isLoading } = useNominatim();
+  const [searchValue, setSearchValue] = useState("");
+
+  const currentGeometryType = getIn(values, `${basePath}.geometry.type`, null);
+  const isLocationPoint = currentGeometryType
+    ? currentGeometryType === "Point"
+    : true;
+
+  const lastSearchedCoords = useRef({
+    lat: getIn(values, `${basePath}.geometry.coordinates.1`),
+    lon: getIn(values, `${basePath}.geometry.coordinates.0`),
+  });
+
+  const [isAdvancedOpen, setIsAdvancedOpen] = useState(() => {
+    if (currentGeometryType && !isLocationPoint) {
+      return true;
+    }
+    return false;
+  });
+
+  const handleCoordinatesBlur = async () => {
+    const lat = getIn(values, `${basePath}.geometry.coordinates.1`);
+    const lon = getIn(values, `${basePath}.geometry.coordinates.0`);
+
+    if (
+      lat === lastSearchedCoords.current.lat &&
+      lon === lastSearchedCoords.current.lon
+    ) {
+      return;
+    }
+
+    if (lat && lon && !isNaN(lat) && !isNaN(lon)) {
+      const result = await reverseLocation(lat, lon);
+      
+      lastSearchedCoords.current = { lat, lon };
+
+      if (result && result.display_name) {
+        setFieldValue(
+          `${basePath}.place`,
+          result.name ? result.name : result.display_name
+        );
+        setSearchValue(result.display_name);
+      }
+    }
+  };
 
   const panes = [
     {
@@ -77,14 +121,12 @@ export function GeolocationInputFieldDetail({
     },
   ];
 
-  const isLocationPoint = true;
-
   return (
     <div className="geolocation-detail">
       <TextField
         fieldPath={`${basePath}.place`}
         label={i18next.t("Name")}
-        placeholder={i18next.t("e.g. Prague, Czechia")}
+        placeholder={i18next.t("Use map, search bar or advanced editor...")}
       />
 
       <TextAreaField
@@ -106,20 +148,24 @@ export function GeolocationInputFieldDetail({
           htmlFor={`${basePath}.search`}
           label={i18next.t("Location")}
         />
-        <NominatimSearchBar basePath={basePath} />
+        <NominatimSearchBar basePath={basePath} searchValue={searchValue} />
       </Form.Field>
 
       {isLocationPoint && (
         <GroupField widths="equal">
           <TextField
-            fieldPath={`${basePath}.place`}
+            fieldPath={`${basePath}.geometry.coordinates.1`}
             placeholder="Latitude"
             label="Latitude"
+            onBlur={handleCoordinatesBlur}
+            loading={isLoading}
           />
           <TextField
-            fieldPath={`${basePath}.country`}
+            fieldPath={`${basePath}.geometry.coordinates.0`}
             placeholder="Longitude"
             label="Longitude"
+            onBlur={handleCoordinatesBlur}
+            loading={isLoading}
           />
         </GroupField>
       )}
