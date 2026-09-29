@@ -17,38 +17,12 @@ import {
   Tab,
   TabPane,
   Form,
-  Label,
 } from "semantic-ui-react";
 import { i18next } from "@translations/ccmm_invenio";
 import { IdentifiersField } from "@js/invenio_rdm_records";
 import { NominatimSearchBar } from "./NominatimSearchBar";
-import { useNominatim } from "../hooks/useNominatim";
-
-function renderGeometryTextAreaEditor(type, geoJsonValue, onChange) {
-  if (type === "wkt") {
-    return (
-      <Form.Field className="invenio-text-area-field">
-        <Form.TextArea
-          onChange={onChange} // TODO: convert
-          onBlur={onChange} // TODO: convert
-          value={geoJsonValue} // TODO: convert
-          placeholder={i18next.t("Enter WKT string...")}
-        />
-      </Form.Field>
-    );
-  } else {
-    return (
-      <Form.Field className="invenio-text-area-field">
-        <Form.TextArea
-          onChange={onChange}
-          onBlur={onChange}
-          value={geoJsonValue}
-          placeholder={i18next.t("Enter GeoJSON string...")}
-        />
-      </Form.Field>
-    );
-  }
-}
+import { GeoJSsonEditor } from "./GeoJsonEditor";
+import { LongitudeAndLatitudeGroupField } from "./LongitudeAndLatitudeGroupField";
 
 export function GeolocationInputFieldDetail({
   basePath,
@@ -56,18 +30,14 @@ export function GeolocationInputFieldDetail({
   vocabularies,
 }) {
   const { values, setFieldValue } = useFormikContext();
-  const { reverseLocation, isLoading } = useNominatim();
+
   const [searchValue, setSearchValue] = useState("");
 
+  const currentGeometry = getIn(values, `${basePath}.geometry`, null);
   const currentGeometryType = getIn(values, `${basePath}.geometry.type`, null);
   const isLocationPoint = currentGeometryType
     ? currentGeometryType === "Point"
     : true;
-
-  const lastSearchedCoords = useRef({
-    lat: getIn(values, `${basePath}.geometry.coordinates.1`),
-    lon: getIn(values, `${basePath}.geometry.coordinates.0`),
-  });
 
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(() => {
     if (currentGeometryType && !isLocationPoint) {
@@ -76,38 +46,12 @@ export function GeolocationInputFieldDetail({
     return false;
   });
 
-  const handleCoordinatesBlur = async () => {
-    const lat = getIn(values, `${basePath}.geometry.coordinates.1`);
-    const lon = getIn(values, `${basePath}.geometry.coordinates.0`);
-
-    if (
-      lat === lastSearchedCoords.current.lat &&
-      lon === lastSearchedCoords.current.lon
-    ) {
-      return;
-    }
-
-    if (lat && lon && !isNaN(lat) && !isNaN(lon)) {
-      const result = await reverseLocation(lat, lon);
-      
-      lastSearchedCoords.current = { lat, lon };
-
-      if (result && result.display_name) {
-        setFieldValue(
-          `${basePath}.place`,
-          result.name ? result.name : result.display_name
-        );
-        setSearchValue(result.display_name);
-      }
-    }
-  };
-
   const panes = [
     {
       menuItem: "GeoJSON",
       render: () => (
         <TabPane attached={false} style={{ border: "none", boxShadow: "none" }}>
-          {renderGeometryTextAreaEditor("geojson")}
+          <GeoJSsonEditor basePath={basePath}></GeoJSsonEditor>
         </TabPane>
       ),
     },
@@ -115,7 +59,7 @@ export function GeolocationInputFieldDetail({
       menuItem: "WKT",
       render: () => (
         <TabPane attached={false} style={{ border: "none", boxShadow: "none" }}>
-          {renderGeometryTextAreaEditor("wkt")}
+          <></>
         </TabPane>
       ),
     },
@@ -152,22 +96,12 @@ export function GeolocationInputFieldDetail({
       </Form.Field>
 
       {isLocationPoint && (
-        <GroupField widths="equal">
-          <TextField
-            fieldPath={`${basePath}.geometry.coordinates.1`}
-            placeholder="Latitude"
-            label="Latitude"
-            onBlur={handleCoordinatesBlur}
-            loading={isLoading}
-          />
-          <TextField
-            fieldPath={`${basePath}.geometry.coordinates.0`}
-            placeholder="Longitude"
-            label="Longitude"
-            onBlur={handleCoordinatesBlur}
-            loading={isLoading}
-          />
-        </GroupField>
+        <LongitudeAndLatitudeGroupField
+          basePath={basePath}
+          onCoordinatesBlur={(result) => {
+            setSearchValue(result.display_name);
+          }}
+        ></LongitudeAndLatitudeGroupField>
       )}
 
       <Accordion>
