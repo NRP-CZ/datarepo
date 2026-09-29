@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { useFormikContext, getIn } from "formik";
 import { Form, Label } from "semantic-ui-react";
 import { i18next } from "@translations/ccmm_invenio";
-import PropTypes from "prop-types";
 
 export function GeoJSsonEditor(props) {
   const { values, setFieldValue } = useFormikContext();
@@ -44,7 +43,6 @@ export function GeoJSsonEditor(props) {
 
       setFieldValue(geometryPath, parsedObj);
       setError(null);
-      setTextValue(JSON.stringify(parsedObj, null, 2));
 
       if (parsedObj.type === "Point" && parsedObj.coordinates?.length >= 2) {
         const lon = parsedObj.coordinates[0];

@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import {
-  TextField,
-  TextAreaField,
-  FieldLabel,
-} from "react-invenio-forms";
+import { TextField, TextAreaField, FieldLabel } from "react-invenio-forms";
 import { useFormikContext, getIn } from "formik";
 import {
   Button,
@@ -23,6 +19,7 @@ import { NominatimSearchBar } from "./NominatimSearchBar";
 import { GeoJSsonEditor } from "./GeoJsonEditor";
 import { LongitudeAndLatitudeGroupField } from "./LongitudeAndLatitudeGroupField";
 import { useNominatim } from "../hooks/useNominatim";
+import { WktEditor } from "./WktEditor";
 
 export function GeolocationInputFieldDetail({
   basePath,
@@ -33,7 +30,6 @@ export function GeolocationInputFieldDetail({
   const { reverseLocation, isLoading: isReverseLoading } = useNominatim();
   const [searchValue, setSearchValue] = useState("");
 
-  const currentGeometry = getIn(values, `${basePath}.geometry`, null);
   const currentGeometryType = getIn(values, `${basePath}.geometry.type`, null);
   const isLocationPoint = currentGeometryType
     ? currentGeometryType === "Point"
@@ -73,7 +69,10 @@ export function GeolocationInputFieldDetail({
       menuItem: "WKT",
       render: () => (
         <TabPane attached={false} style={{ border: "none", boxShadow: "none" }}>
-          <></>
+          <WktEditor
+            basePath={basePath}
+            onReverseSearch={performReverseSearch}
+          ></WktEditor>
         </TabPane>
       ),
     },
@@ -109,7 +108,7 @@ export function GeolocationInputFieldDetail({
         <NominatimSearchBar basePath={basePath} searchValue={searchValue} />
       </Form.Field>
 
-     {isLocationPoint && (
+      {isLocationPoint && (
         <LongitudeAndLatitudeGroupField
           basePath={basePath}
           isLoading={isReverseLoading}
