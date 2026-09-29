@@ -122,6 +122,7 @@ export function GeolocationsInputField(props) {
                 secondary: true,
                 pointing: true,
                 style: {
+                  paddingBottom: "10px",
                   display: "flex",
                   flexWrap: "nowrap",
                   overflowX: "auto",
