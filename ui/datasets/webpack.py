@@ -17,6 +17,7 @@ theme = WebpackThemeBundle(
                 "datasets_deposit_form": "./js/datasets/forms/index.js",
             },
             dependencies={
+                "leaflet": "^1.9.4",
                 "@terraformer/wkt": "^2.2.2",
                 "@geoman-io/leaflet-geoman-free": "^2.20.1",
             },

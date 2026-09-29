@@ -13,6 +13,7 @@ import {
   Icon,
 } from "semantic-ui-react";
 import { GeolocationInputFieldDetail } from "./GeolocationInputFieldDetail";
+import {GeolocationInteractiveMap} from "./GeolocationInteractiveMap"
 
 function GeolocationInputFieldBody(props) {
   return (
@@ -132,13 +133,7 @@ export function GeolocationsInputField(props) {
             />
           </GridColumn>
           <GridColumn>
-            <div
-              style={{
-                border: "blue solid 1px",
-                height: "100%",
-                minHeight: "500px",
-              }}
-            ></div>
+            <GeolocationInteractiveMap></GeolocationInteractiveMap>
           </GridColumn>
         </GridRow>
       </Grid>
