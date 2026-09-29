@@ -94,6 +94,7 @@ export function GeolocationsInputField(props) {
           key={`${props.fieldPath}.${index}`}
           basePath={`${props.fieldPath}.${index}`}
           handleRemove={() => handleRemoveLocation(index)}
+          vocabularies={props.vocabularies}
         />
       </TabPane>
     ),
@@ -148,4 +149,5 @@ GeolocationsInputField.propTypes = {
   fieldPath: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
+  vocabularies: PropTypes.object,
 };
