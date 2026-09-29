@@ -45,6 +45,14 @@ export function GeoJSsonEditor(props) {
       setFieldValue(geometryPath, parsedObj);
       setError(null);
       setTextValue(JSON.stringify(parsedObj, null, 2));
+
+      if (parsedObj.type === "Point" && parsedObj.coordinates?.length >= 2) {
+        const lon = parsedObj.coordinates[0];
+        const lat = parsedObj.coordinates[1];
+        if (props.onReverseSearch) {
+          props.onReverseSearch(lat, lon);
+        }
+      }
     } catch (err) {
       setError(
         i18next.t(`Invalid JSON!`) +
@@ -75,4 +83,5 @@ export function GeoJSsonEditor(props) {
 
 GeoJSsonEditor.propTypes = {
   basePath: PropTypes.string.isRequired,
+  onReverseSearch: PropTypes.func,
 };
