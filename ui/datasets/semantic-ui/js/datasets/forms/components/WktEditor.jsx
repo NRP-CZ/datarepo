@@ -73,7 +73,7 @@ export function WktEditor(props) {
         onBlur={handleBlur}
         value={textValue}
         placeholder={i18next.t(
-          'Enter the location manually using WKT format. E.g.:\n\nPOINT(0 0)\n}',
+          'Enter the location manually using WKT format. E.g.:\n\nPOINT(0 0)\n',
         )}
         rows={7}
       />
