@@ -21,6 +21,8 @@ theme = WebpackThemeBundle(
             dependencies={
                 "leaflet": "^1.9.4",
                 "sanitize-html": "2.13.0",
+                "@terraformer/wkt": "^2.2.2",
+                "@geoman-io/leaflet-geoman-free": "^2.20.1",
             },
             # TODO: pinned less dependency, because in version 4.6 of less, they are using exclusively ES modules
             # and less loader is using require
