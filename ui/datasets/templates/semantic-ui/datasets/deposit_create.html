@@ -19,3 +19,8 @@ SPDX-License-Identifier: MIT
    - deposit_create/form.html - Custom form container layout
    - deposit_create/javascript.html - Custom JavaScript includes (optional)
 #}
+
+{%- block css %}
+  {{ super() }}
+  {{ webpack['datasets_deposit_form.css'] }}
+{%- endblock css %}
