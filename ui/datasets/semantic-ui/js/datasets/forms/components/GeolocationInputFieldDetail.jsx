@@ -18,40 +18,26 @@ import { IdentifiersField } from "@js/invenio_rdm_records";
 import { NominatimSearchBar } from "./NominatimSearchBar";
 import { GeoJSsonEditor } from "./GeoJsonEditor";
 import { LongitudeAndLatitudeGroupField } from "./LongitudeAndLatitudeGroupField";
-import { useNominatim } from "../hooks/useNominatim";
 import { WktEditor } from "./WktEditor";
 
 export function GeolocationInputFieldDetail({
   basePath,
   handleRemove,
   vocabularies,
+  searchValue,
+  onSearchValueChange,
+  performReverseSearch,
+  isReverseLoading,
 }) {
-  const { values, setFieldValue } = useFormikContext();
-  const { reverseLocation, isLoading: isReverseLoading } = useNominatim();
-  const [searchValue, setSearchValue] = useState("");
+  const { values } = useFormikContext();
 
   const currentGeometryType = getIn(values, `${basePath}.geometry.type`, null);
   const isLocationPoint = currentGeometryType
     ? currentGeometryType === "Point"
     : true;
 
-  const [isAdvancedOpen, setIsAdvancedOpen] = useState(() => {
-    if (currentGeometryType && !isLocationPoint) {
-      return true;
-    }
-    return false;
-  });
-
-  const performReverseSearch = async (lat, lon) => {
-    if (lat && lon && !isNaN(lat) && !isNaN(lon)) {
-      const result = await reverseLocation(lat, lon);
-      if (result && result.display_name) {
-        const placeName = result.name ? result.name : result.display_name;
-        setFieldValue(`${basePath}.place`, placeName);
-        setSearchValue(result.display_name);
-      }
-    }
-  };
+  const [isManuallyOpened, setIsManuallyOpened] = useState(false);
+  const isAdvancedOpen = !isLocationPoint || isManuallyOpened;
 
   const panes = [
     {
@@ -87,6 +73,7 @@ export function GeolocationInputFieldDetail({
       />
 
       <TextAreaField
+        optimized
         fieldPath={`${basePath}.description`}
         label={i18next.t("Description")}
         placeholder={i18next.t("Additional details about this location...")}
@@ -105,7 +92,7 @@ export function GeolocationInputFieldDetail({
           htmlFor={`${basePath}.search`}
           label={i18next.t("Location")}
         />
-        <NominatimSearchBar basePath={basePath} searchValue={searchValue} />
+        <NominatimSearchBar basePath={basePath} searchValue={searchValue} onSearchValueChange={onSearchValueChange}/>
       </Form.Field>
 
       {isLocationPoint && (
@@ -121,7 +108,7 @@ export function GeolocationInputFieldDetail({
           style={{ fontSize: "0.875em", fontWeight: "bold" }}
           active={isAdvancedOpen}
           onClick={() => {
-            setIsAdvancedOpen((prev) => !prev);
+            setIsManuallyOpened((prev) => !prev);
           }}
         >
           <Icon name="dropdown" />
@@ -152,4 +139,8 @@ GeolocationInputFieldDetail.propTypes = {
   basePath: PropTypes.string.isRequired,
   handleRemove: PropTypes.func.isRequired,
   vocabularies: PropTypes.object,
+  searchValue: PropTypes.string,
+  onSearchValueChange: PropTypes. func,
+  performReverseSearch: PropTypes.func,
+  isReverseLoading: PropTypes.bool,
 };
