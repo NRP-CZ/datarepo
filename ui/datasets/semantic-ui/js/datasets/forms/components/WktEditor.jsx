@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { useFormikContext, getIn } from "formik";
 import { Form, Label } from "semantic-ui-react";
 import { i18next } from "@translations/ccmm_invenio";
-import PropTypes from "prop-types";
 import { wktToGeoJSON, geojsonToWKT } from "@terraformer/wkt"
 
 export function WktEditor(props) {
@@ -16,8 +15,12 @@ export function WktEditor(props) {
 
   useEffect(() => {
     if (geometry && typeof geometry === "object") {
-      const wktString = geojsonToWKT(geometry);
-      setTextValue(wktString);
+      try {
+      setTextValue(geojsonToWKT(geometry));
+    } catch (e) {
+      console.error(`There seems to be application error as received geometry planned to be parsed into WKT is invalid! Details: <${e}>.`);
+      setError(i18next.t("Geometry is invalid!"));
+    }
     } else {
       setTextValue("");
     }

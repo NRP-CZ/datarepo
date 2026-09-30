@@ -14,7 +14,14 @@ export function GeoJSsonEditor(props) {
 
   useEffect(() => {
     if (geometry && typeof geometry === "object") {
-      setTextValue(JSON.stringify(geometry, null, 2));
+      try {
+        setTextValue(JSON.stringify(geometry, null, 2));
+      } catch (e) {
+        console.error(
+          `There seems to be application error as received geometry is invalid! Details: <${e}>.`,
+        );
+        setError(i18next.t("Geometry is invalid!"));
+      }
     } else {
       setTextValue("");
     }
