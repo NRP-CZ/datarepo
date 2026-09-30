@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import PropTypes from "prop-types";
 import { i18next } from "@translations/ccmm_invenio";
 import { FieldLabel } from "react-invenio-forms";
@@ -13,7 +13,8 @@ import {
   Icon,
 } from "semantic-ui-react";
 import { GeolocationInputFieldDetail } from "./GeolocationInputFieldDetail";
-import {GeolocationInteractiveMap} from "./GeolocationInteractiveMap"
+import { GeolocationInteractiveMap } from "./GeolocationInteractiveMap";
+import { useNominatim } from "../hooks/useNominatim";
 
 function GeolocationInputFieldBody(props) {
   return (
@@ -40,36 +41,75 @@ GeolocationInputFieldBody.propTypes = {
 };
 
 export function GeolocationsInputField(props) {
-  const { values, setFieldValue } = useFormikContext();
-  const currentLocations = getIn(values, props.fieldPath, []);
+  const { fieldPath } = props;
+  const { reverseLocation, isLoading: isReverseLoading } = useNominatim();
+
+  const [searchValue, setSearchValue] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleAddLocation = () => {
-    const newLocationObject = {};
-    setFieldValue(props.fieldPath, [...currentLocations, newLocationObject]);
+  const { values, setFieldValue } = useFormikContext();
+  const currentLocations = getIn(values, fieldPath, []);
+  const activeGeometry = currentLocations[activeIndex]?.geometry ?? null;
+
+  const performReverseSearch = useCallback(
+    async (lat, lon) => {
+      if (lat && lon && !isNaN(lat) && !isNaN(lon)) {
+        const result = await reverseLocation(lat, lon);
+        if (result && result.display_name) {
+          const placeName = result.name ? result.name : result.display_name;
+          setFieldValue(`${fieldPath}.${activeIndex}.place`, placeName);
+          setSearchValue(result.display_name);
+        }
+      }
+    },
+    [reverseLocation, setFieldValue, setSearchValue, fieldPath, activeIndex],
+  );
+
+  const handleAddLocation = useCallback(() => {
+    setFieldValue(fieldPath, [...currentLocations, {}]);
     setActiveIndex(currentLocations.length);
-  };
+  }, [currentLocations, setFieldValue, fieldPath]);
 
-  const handleRemoveLocation = (indexToRemove) => {
-    const updatedLocations = currentLocations.filter(
-      (_, index) => index !== indexToRemove,
-    );
-    setFieldValue(props.fieldPath, updatedLocations);
-    setActiveIndex(0);
-  };
+  const handleRemoveLocation = useCallback(
+    (indexToRemove) => {
+      const updatedLocations = currentLocations.filter(
+        (_, index) => index !== indexToRemove,
+      );
+      setFieldValue(fieldPath, updatedLocations);
+      setActiveIndex(0);
+    },
+    [currentLocations, setFieldValue, fieldPath],
+  );
 
-  const handleTabChange = (_, { activeIndex: clickedIndex }) => {
-    if (clickedIndex === currentLocations.length) {
-      handleAddLocation();
-    } else {
-      setActiveIndex(clickedIndex);
-    }
-  };
+  const handleTabChange = useCallback(
+    (_, { activeIndex: clickedIndex }) => {
+      if (clickedIndex === currentLocations.length) {
+        handleAddLocation();
+      } else {
+        setActiveIndex(clickedIndex);
+      }
+      setSearchValue("");
+    },
+    [currentLocations, handleAddLocation],
+  );
+
+  const onGeometryChangeHandler = useCallback(
+    (geometry) => {
+      setFieldValue(`${fieldPath}.${activeIndex}.geometry`, geometry);
+      if (geometry?.type === "Point") {
+        const [lon, lat] = geometry.coordinates;
+        performReverseSearch(lat, lon);
+      } else {
+        setSearchValue("");
+      }
+    },
+    [fieldPath, activeIndex, setFieldValue, performReverseSearch],
+  );
 
   if (currentLocations.length === 0) {
     return (
       <GeolocationInputFieldBody
-        fieldPath={props.fieldPath}
+        fieldPath={fieldPath}
         label={props.label}
         icon={props.icon}
       >
@@ -92,10 +132,14 @@ export function GeolocationsInputField(props) {
     render: () => (
       <TabPane>
         <GeolocationInputFieldDetail
-          key={`${props.fieldPath}.${index}`}
-          basePath={`${props.fieldPath}.${index}`}
+          key={`${fieldPath}.${index}`}
+          basePath={`${fieldPath}.${index}`}
           handleRemove={() => handleRemoveLocation(index)}
           vocabularies={props.vocabularies}
+          searchValue={searchValue}
+          onSearchValueChange={setSearchValue}
+          performReverseSearch={performReverseSearch}
+          isReverseLoading={isReverseLoading}
         />
       </TabPane>
     ),
@@ -108,7 +152,7 @@ export function GeolocationsInputField(props) {
 
   return (
     <GeolocationInputFieldBody
-      fieldPath={props.fieldPath}
+      fieldPath={fieldPath}
       label={props.label}
       icon={props.icon}
     >
@@ -133,7 +177,11 @@ export function GeolocationsInputField(props) {
             />
           </GridColumn>
           <GridColumn>
-            <GeolocationInteractiveMap></GeolocationInteractiveMap>
+            <GeolocationInteractiveMap
+              initialMapSettings={{ center: [50, 14], zoom: 4 }}
+              geometry={activeGeometry}
+              onGeometryChange={onGeometryChangeHandler}
+            />
           </GridColumn>
         </GridRow>
       </Grid>

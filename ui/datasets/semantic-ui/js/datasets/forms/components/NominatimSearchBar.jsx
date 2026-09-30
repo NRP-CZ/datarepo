@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { i18next } from "@translations/ccmm_invenio";
 import { Search, Label } from "semantic-ui-react";
@@ -6,15 +6,11 @@ import { useFormikContext } from "formik";
 import debounce from "lodash/debounce";
 import { useNominatim } from "../hooks/useNominatim";
 
-export function NominatimSearchBar(props) {
+export function NominatimSearchBar({ basePath, searchValue, onSearchValueChange }) {
   const { setFieldValue } = useFormikContext();
+
   const { searchLocation, isLoading, error } = useNominatim();
   const [results, setResults] = useState([]);
-  const [searchValue, setSearchValue] = useState(props.searchValue ?? "");
-
-  useEffect(() => {
-    setSearchValue(props.searchValue ?? "");
-  }, [props.searchValue]);
 
   const searchNominatim = useCallback(
     debounce(async (query) => {
@@ -45,19 +41,19 @@ export function NominatimSearchBar(props) {
     [],
   );
 
-  const handleSearchChange = (_, { value }) => {
-    setSearchValue(value);
+  const handleSearchChange = useCallback((_, { value }) => {
+    onSearchValueChange(value);
     searchNominatim(value);
-  };
+  }, [onSearchValueChange, searchNominatim]);
 
-  const handleResultSelect = (_, { result }) => {
-    setSearchValue(result.title);
-    setFieldValue(`${props.basePath}.place`, result.name);
-    setFieldValue(`${props.basePath}.geometry`, {
+  const handleResultSelect = useCallback((_, { result }) => {
+    onSearchValueChange(result.title);
+    setFieldValue(`${basePath}.place`, result.name);
+    setFieldValue(`${basePath}.geometry`, {
       type: "Point",
       coordinates: [parseFloat(result.lon), parseFloat(result.lat)],
     });
-  };
+  }, [onSearchValueChange, setFieldValue, setFieldValue]);
 
   return (
     <>
@@ -66,7 +62,7 @@ export function NominatimSearchBar(props) {
         onResultSelect={handleResultSelect}
         onSearchChange={handleSearchChange}
         results={results}
-        value={searchValue}
+        value={searchValue ?? ""}
         placeholder={i18next.t("Search for a location...")}
       />
       {error && <Label pointing prompt content={error} />}
@@ -77,4 +73,5 @@ export function NominatimSearchBar(props) {
 NominatimSearchBar.propTypes = {
   basePath: PropTypes.string.isRequired,
   searchValue: PropTypes.string,
+  onSearchValueChange: PropTypes.func,
 };
