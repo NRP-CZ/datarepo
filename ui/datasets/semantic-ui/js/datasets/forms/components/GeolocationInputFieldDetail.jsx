@@ -73,7 +73,6 @@ export function GeolocationInputFieldDetail({
       />
 
       <TextAreaField
-        optimized
         fieldPath={`${basePath}.description`}
         label={i18next.t("Description")}
         placeholder={i18next.t("Additional details about this location...")}
