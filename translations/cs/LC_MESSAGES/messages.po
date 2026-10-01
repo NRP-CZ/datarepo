@@ -354,7 +354,7 @@ msgid "No valid locations were found!"
 msgstr "Nebyly nalezeny žádné validní lokace!"
 
 msgid "No locations were found!"
-msgstr "Nebyly nalezeny platné lokace!"
+msgstr "Nebyly nalezeny žádné lokace!"
 
 
 #~ msgid "APA"
