@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useFormikContext, getIn } from "formik";
-import { Form, Label } from "semantic-ui-react";
+import { TextAreaField } from "react-invenio-forms";
 import { i18next } from "@translations/ccmm_invenio";
-import { wktToGeoJSON, geojsonToWKT } from "@terraformer/wkt"
+import { wktToGeoJSON, geojsonToWKT } from "@terraformer/wkt";
 
-export function WktEditor(props) {
+export function WktEditor({ basePath, onReverseSearch }) {
   const { values, setFieldValue } = useFormikContext();
-  const geometryPath = `${props.basePath}.geometry`;
+
+  const geometryPath = `${basePath}.geometry`;
   const geometry = getIn(values, geometryPath, null);
 
   const [textValue, setTextValue] = useState("");
@@ -16,11 +17,13 @@ export function WktEditor(props) {
   useEffect(() => {
     if (geometry && typeof geometry === "object") {
       try {
-      setTextValue(geojsonToWKT(geometry));
-    } catch (e) {
-      console.error(`There seems to be application error as received geometry planned to be parsed into WKT is invalid! Details: <${e}>.`);
-      setError(i18next.t("Geometry is invalid!"));
-    }
+        setTextValue(geojsonToWKT(geometry));
+      } catch (e) {
+        console.error(
+          `There seems to be application error as received geometry planned to be parsed into WKT is invalid! Details: <${e}>.`,
+        );
+        setError(i18next.t("Invalid JSON!"));
+      }
     } else {
       setTextValue("");
     }
@@ -53,8 +56,8 @@ export function WktEditor(props) {
       if (geoJson.type === "Point" && geoJson.coordinates?.length >= 2) {
         const lon = geoJson.coordinates[0];
         const lat = geoJson.coordinates[1];
-        if (props.onReverseSearch) {
-          props.onReverseSearch(lat, lon);
+        if (onReverseSearch) {
+          onReverseSearch(lat, lon);
         }
       }
     } catch (err) {
@@ -70,18 +73,16 @@ export function WktEditor(props) {
   };
 
   return (
-    <Form.Field className="invenio-text-area-field" error={!!error}>
-      <Form.TextArea
-        onChange={handleChange}
-        onBlur={handleBlur}
-        value={textValue}
-        placeholder={i18next.t(
-          'Enter the location manually using WKT format. E.g.:\n\nPOINT(0 0)\n',
-        )}
-        rows={7}
-      />
-      {error && <Label pointing prompt color="red" content={error} />}
-    </Form.Field>
+    <TextAreaField
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={textValue}
+      placeholder={i18next.t(
+        "Enter the location manually using WKT format. E.g.:\n\nPOINT(0 0)\n",
+      )}
+      rows={7}
+      error={error}
+    />
   );
 }
 
