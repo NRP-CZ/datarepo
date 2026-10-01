@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { i18next } from "@translations/ccmm_invenio";
+import { i18next } from "@translations/i18next";
 import axios from "axios";
 
 export function useNominatim() {

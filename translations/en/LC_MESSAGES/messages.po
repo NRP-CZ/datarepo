@@ -330,11 +330,37 @@ msgid ""
 "            check the community's About page or contact us at\n"
 "            <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
 
-#: datarepo/templates/semantic-ui/datarepo/records/details/side_bar/locations.html:75
 msgid "Geographic locations"
 msgstr ""
 
 msgid "Place"
+msgstr ""
+
+msgid "Geolocations"
+msgstr ""
+
+msgid "Invalid JSON!"
+msgstr ""
+
+msgid "Missing 'type' property (e.g., 'Point', 'Polygon')"
+msgstr ""
+
+msgid "Details"
+msgstr ""
+
+msgid ""
+"Enter the location manually using GeoJSON format. E.g.:\n"
+"\n"
+"{\n"
+"  \"type\": \"Point\",\n"
+"  \"coordinates\": [0, 0]\n"
+"}"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Use map, search bar or advanced editor..."
 msgstr ""
 
 msgid "Description"
@@ -350,6 +376,53 @@ msgid "No valid locations were found!"
 msgstr ""
 
 msgid "No locations were found!"
+msgstr ""
+
+msgid "Additional details about this location..."
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Advanced"
+msgstr ""
+
+msgid "Remove location"
+msgstr ""
+
+msgid ""
+"Add geolocations for your record. You can use the interactive map or search "
+"for the place."
+msgstr ""
+
+msgid "Add location"
+msgstr ""
+
+msgid "Latitude"
+msgstr ""
+
+msgid "Longitude"
+msgstr ""
+
+msgid "Search for a location..."
+msgstr ""
+
+msgid "No location found."
+msgstr ""
+
+msgid "Invalid WKT!"
+msgstr ""
+
+msgid ""
+"Enter the location manually using WKT format. E.g.:\n"
+"\n"
+"POINT(0 0)\n"
+msgstr ""
+
+msgid "Location search failed!"
+msgstr ""
+
+msgid "Reverse geocoding failed!"
 msgstr ""
 
 #~ msgid "New Datasets"
