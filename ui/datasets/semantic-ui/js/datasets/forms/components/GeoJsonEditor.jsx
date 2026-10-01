@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useFormikContext, getIn } from "formik";
 import { TextAreaField } from "react-invenio-forms";
-import { i18next } from "@translations/ccmm_invenio";
+import { i18next } from "@translations/i18next";
 
 export function GeoJSsonEditor({ basePath, onReverseSearch }) {
   const { values, setFieldValue } = useFormikContext();
