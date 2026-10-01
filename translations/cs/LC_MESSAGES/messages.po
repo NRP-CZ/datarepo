@@ -332,6 +332,95 @@ msgid ""
 "            If you do not already have a contact email address,\n"
 "            check the community's About page or contact us at\n"
 "            <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
+msgid "Geolocations"
+msgstr "Zeměpisné polohy"
+
+msgid "Invalid JSON!"
+msgstr "Nevalidní JSON!"
+
+msgid "Missing 'type' property (e.g., 'Point', 'Polygon')"
+msgstr "Chybí vlastnost „type“ (např. „Point“, „Polygon“)"
+
+msgid "Details"
+msgstr "Podrobnosti"
+
+msgid ""
+"Enter the location manually using GeoJSON format. E.g.:\n"
+"\n"
+"{\n"
+"  \"type\": \"Point\",\n"
+"  \"coordinates\": [0, 0]\n"
+"}"
+msgstr ""
+"Zadejte lokaci ve formátu GeoJSON. Například:\n"
+"\n"
+"{\n"
+"  \"type\": \"Point\",\n"
+"  \"coordinates\": [0, 0]\n"
+"}"
+
+msgid "Name"
+msgstr "Jméno"
+
+msgid "Use map, search bar or advanced editor..."
+msgstr "Použijte mapu, vyhledávací pole nebo pokročilý editor..."
+
+msgid "Description"
+msgstr "Popis"
+
+msgid "Additional details about this location..."
+msgstr "Další podrobnosti o tomto místě..."
+
+msgid "Identifiers"
+msgstr "Identifikátory"
+
+msgid "Location"
+msgstr "Poloha"
+
+msgid "Advanced"
+msgstr "Pokročilé"
+
+msgid "Remove location"
+msgstr "Smažte polohu"
+
+msgid ""
+"Add geolocations for your record. You can use the interactive map or search "
+"for the place."
+msgstr "Přidejte k záznamu zeměpisnou polohu. Můžete využít interaktivní mapu nebo místo vyhledat."
+
+msgid "Add location"
+msgstr "Přidejte polohu"
+
+msgid "Latitude"
+msgstr "Zeměpisná šířka"
+
+msgid "Longitude"
+msgstr "Zeměpisná výška"
+
+msgid "Search for a location..."
+msgstr "Vyhledat místo..."
+
+msgid "No location found."
+msgstr "Žádné místo nebylo nalezeno."
+
+msgid "Invalid WKT!"
+msgstr "Nevalidní WKT"
+
+msgid ""
+"Enter the location manually using WKT format. E.g.:\n"
+"\n"
+"POINT(0 0)\n"
+msgstr ""
+"Zadejte lokaci ve formátu WKT. Například:\n"
+"\n"
+"POINT(0 0)\n"
+
+msgid "Location search failed!"
+msgstr "Vyhledávání polohy selhalo!"
+
+msgid "Reverse geocoding failed!"
+msgstr "Reverzní geokódování selhalo!"
+
 msgstr "K těmto komunitám se nelze přihlásit online, musíte kontaktovat přímo správce komunity. Pokud nemáte k dispozici kontaktní e-mailovou adresu, podívejte se na stránku komunity „O nás“ nebo nás kontaktujte na <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
 
 #~ msgid "APA"

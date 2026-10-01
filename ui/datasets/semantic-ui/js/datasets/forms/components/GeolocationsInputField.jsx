@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import PropTypes from "prop-types";
-import { i18next } from "@translations/ccmm_invenio";
+import { i18next } from "@translations/i18next";
 import { FieldLabel } from "react-invenio-forms";
 import { useFormikContext, getIn } from "formik";
 import {

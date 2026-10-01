@@ -1,7 +1,7 @@
 import React from "react";
 import Overridable from "react-overridable";
 import { buildUID } from "react-searchkit";
-import { i18next } from "@translations/ccmm_invenio";
+import { i18next } from "@translations/i18next";
 import { GeolocationsInputField } from "./components/GeolocationsInputField";
 
 export const CCMMGeolocations = {
