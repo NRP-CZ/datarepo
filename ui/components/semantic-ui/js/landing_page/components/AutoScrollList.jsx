@@ -11,11 +11,11 @@ import { useEffect, useRef } from "react";
  * DOM element like <div>). AutoScrollList attaches a ref to it directly;
  * it does not wrap items in any extra DOM node.
  *
- * @param {Array} props.list items to render
+ * @param {Array} props.items items to render
  * @param {number} props.activeIndex index of the item to scroll into view
  * @param {function(*, number): React.ReactElement} props.renderItem
  */
-function AutoScrollList({ list, activeIndex, getKey, renderItem }) {
+function AutoScrollList({ items, activeIndex, getKey, renderItem }) {
   const elementRefs = useRef([]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function AutoScrollList({ list, activeIndex, getKey, renderItem }) {
 
   return (
     <>
-      {list.map((element, index) => {
+      {items.map((element, index) => {
         const item = renderItem(element, index);
 
         return React.cloneElement(item, {
@@ -48,7 +48,7 @@ function AutoScrollList({ list, activeIndex, getKey, renderItem }) {
 }
 
 AutoScrollList.propTypes = {
-  list: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired,
   activeIndex: PropTypes.number,
   getKey: PropTypes.func.isRequired,
   renderItem: PropTypes.func.isRequired,

@@ -22,7 +22,7 @@ export function LocationsList({
     <div style={{ maxHeight: "250px", overflowY: "auto" }}>
       <List bulleted relaxed>
         <AutoScrollList
-          list={locationEntries}
+          items={locationEntries}
           activeIndex={findActiveIndex(
             activeLocationId,
             locationEntries,
