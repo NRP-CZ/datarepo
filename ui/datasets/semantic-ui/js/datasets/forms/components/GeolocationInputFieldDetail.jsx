@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { TextField, TextAreaField, FieldLabel } from "react-invenio-forms";
+import { TextAreaField, FieldLabel } from "react-invenio-forms";
+import { TextField } from "@js/oarepo_ui/forms";
 import { useFormikContext, getIn } from "formik";
 import {
   Button,
@@ -65,7 +66,7 @@ export function GeolocationInputFieldDetail({
   ];
 
   return (
-    <div className="geolocation-detail">
+    <div>
       <TextField
         fieldPath={`${basePath}.place`}
         label={i18next.t("Name")}
@@ -91,7 +92,11 @@ export function GeolocationInputFieldDetail({
           htmlFor={`${basePath}.search`}
           label={i18next.t("Location")}
         />
-        <NominatimSearchBar basePath={basePath} searchValue={searchValue} onSearchValueChange={onSearchValueChange}/>
+        <NominatimSearchBar
+          basePath={basePath}
+          searchValue={searchValue}
+          onSearchValueChange={onSearchValueChange}
+        />
       </Form.Field>
 
       {isLocationPoint && (
@@ -111,7 +116,7 @@ export function GeolocationInputFieldDetail({
           }}
         >
           <Icon name="dropdown" />
-          Advanced
+          {i18next.t("Advanced")}
         </AccordionTitle>
         <AccordionContent active={isAdvancedOpen}>
           <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
@@ -127,7 +132,7 @@ export function GeolocationInputFieldDetail({
         labelPosition="left"
         onClick={handleRemove}
       >
-        <Icon name="trash alternate" />
+        <Icon name="trash alternate outline" />
         {i18next.t("Remove location")}
       </Button>
     </div>
@@ -139,7 +144,7 @@ GeolocationInputFieldDetail.propTypes = {
   handleRemove: PropTypes.func.isRequired,
   vocabularies: PropTypes.object,
   searchValue: PropTypes.string,
-  onSearchValueChange: PropTypes. func,
+  onSearchValueChange: PropTypes.func,
   performReverseSearch: PropTypes.func,
   isReverseLoading: PropTypes.bool,
 };
