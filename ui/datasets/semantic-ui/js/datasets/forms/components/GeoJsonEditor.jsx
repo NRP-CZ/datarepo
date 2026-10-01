@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useFormikContext, getIn } from "formik";
-import { Form, Label } from "semantic-ui-react";
+import { TextAreaField } from "react-invenio-forms";
 import { i18next } from "@translations/ccmm_invenio";
 
-export function GeoJSsonEditor(props) {
+export function GeoJSsonEditor({ basePath, onReverseSearch }) {
   const { values, setFieldValue } = useFormikContext();
-  const geometryPath = `${props.basePath}.geometry`;
+
+  const geometryPath = `${basePath}.geometry`;
   const geometry = getIn(values, geometryPath, null);
 
   const [textValue, setTextValue] = useState("");
@@ -20,7 +21,7 @@ export function GeoJSsonEditor(props) {
         console.error(
           `There seems to be application error as received geometry is invalid! Details: <${e}>.`,
         );
-        setError(i18next.t("Geometry is invalid!"));
+        setError(i18next.t("Invalid JSON!"));
       }
     } else {
       setTextValue("");
@@ -54,8 +55,8 @@ export function GeoJSsonEditor(props) {
       if (parsedObj.type === "Point" && parsedObj.coordinates?.length >= 2) {
         const lon = parsedObj.coordinates[0];
         const lat = parsedObj.coordinates[1];
-        if (props.onReverseSearch) {
-          props.onReverseSearch(lat, lon);
+        if (onReverseSearch) {
+          onReverseSearch(lat, lon);
         }
       }
     } catch (err) {
@@ -71,8 +72,7 @@ export function GeoJSsonEditor(props) {
   };
 
   return (
-    <Form.Field className="invenio-text-area-field" error={!!error}>
-      <Form.TextArea
+      <TextAreaField
         onChange={handleChange}
         onBlur={handleBlur}
         value={textValue}
@@ -80,9 +80,8 @@ export function GeoJSsonEditor(props) {
           'Enter the location manually using GeoJSON format. E.g.:\n\n{\n  "type": "Point",\n  "coordinates": [0, 0]\n}',
         )}
         rows={7}
+        error={error}
       />
-      {error && <Label pointing prompt color="red" content={error} />}
-    </Form.Field>
   );
 }
 

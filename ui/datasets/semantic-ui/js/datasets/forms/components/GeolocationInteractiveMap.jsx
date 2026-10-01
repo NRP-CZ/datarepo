@@ -8,7 +8,7 @@ import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
-// Strips away Leaflet's path-guessing function so it stops trying to find the images on its own.
+// Strips away Leaflet's path-guessing function.
 delete L.Icon.Default.prototype._getIconUrl;
 // Injects the safe, Webpack-approved URLs directly into Leaflet's global default icon configuration.
 L.Icon.Default.mergeOptions({
@@ -21,11 +21,12 @@ L.Icon.Default.mergeOptions({
  * Splits any GeoJSON geometry into simple Point / LineString / Polygon parts.
  * (Multi* and GeometryCollection are flattened, recursively.)
  */
-function toSimpleGeometries(geometry) {
+function splitsToSimpleGeometries(geometry) {
   if (!geometry) return [];
+
   switch (geometry.type) {
     case "GeometryCollection":
-      return (geometry.geometries ?? []).flatMap(toSimpleGeometries);
+      return (geometry.geometries ?? []).flatMap(splitsToSimpleGeometries);
     case "MultiPoint":
     case "MultiLineString":
     case "MultiPolygon": {
@@ -52,15 +53,15 @@ function toSimpleGeometries(geometry) {
  *  - several different types -> GeometryCollection of the above
  */
 function mergeGeometries(geometries) {
-  const simple = geometries.flatMap(toSimpleGeometries);
+  const simple = geometries.flatMap(splitsToSimpleGeometries);
   if (!simple.length) return null;
 
-  const byType = {};
+  const geometriesByType = {};
   for (const { type, coordinates } of simple) {
-    (byType[type] ||= []).push(coordinates);
+    (geometriesByType[type] ||= []).push(coordinates);
   }
 
-  const parts = Object.entries(byType).map(([type, coords]) =>
+  const parts = Object.entries(geometriesByType).map(([type, coords]) =>
     coords.length === 1
       ? { type, coordinates: coords[0] }
       : { type: `Multi${type}`, coordinates: coords },
@@ -76,23 +77,27 @@ export function GeolocationInteractiveMap({
   geometry,
   onGeometryChange,
 }) {
+  // Standart references for <div> wrapper (used for ResizeObserver), map container and instance.
   const wrapperRef = useRef(null);
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
 
+  // Holds the function capable of updating map geometries when the parent's geometry prop changes.
   const syncRef = useRef(null);
+  // Last emitted geometry from the interactive map.
   const lastEmittedRef = useRef("null");
 
+  // Tracks the freshest version of onGeometryChange without triggering a re-render or re-running the map initialization
   const onChangeRef = useRef(onGeometryChange);
   useEffect(() => {
     onChangeRef.current = onGeometryChange;
   }, [onGeometryChange]);
 
+  // Initialization of map.
   useEffect(() => {
     if (mapInstanceRef.current) return;
 
     const map = L.map(mapContainerRef.current, initialMapSettings);
-
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -116,6 +121,10 @@ export function GeolocationInteractiveMap({
     const group = L.featureGroup().addTo(map);
     lastEmittedRef.current = "null";
 
+    /**
+     * Grabs geometries from all layers and merge them.
+     * Follows by storing merged geometry in `lastEmittedRef` reference and firing up the `onChange` listener.
+     */
     const emit = () => {
       const geoms = [];
       group.eachLayer((layer) => {
@@ -127,6 +136,10 @@ export function GeolocationInteractiveMap({
       onChangeRef.current?.(merged);
     };
 
+    /**
+     * Adds layer into the feature group and adds listeners on layer's edit and drag events.
+     * @param layer layer
+     */
     const track = (layer) => {
       group.addLayer(layer);
       layer.on("pm:edit", emit);
@@ -134,10 +147,16 @@ export function GeolocationInteractiveMap({
       layer.on("pm:markerdragend", emit);
     };
 
-    syncRef.current = (geom) => {
+    /**
+     * Accepts a GeoJSON geometry passed in from the parent component
+     * and physically translates it into interactive shapes on the Leaflet map
+     * @param geometries geometries
+     * @returns true if drawing was successfull, otherwise false
+     */
+    syncRef.current = (geometries) => {
       let layers;
       try {
-        layers = toSimpleGeometries(geom)
+        layers = splitsToSimpleGeometries(geometries)
           .map((g) => L.geoJSON(g).getLayers()[0])
           .filter(Boolean);
       } catch {
@@ -188,10 +207,12 @@ export function GeolocationInteractiveMap({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Watches the geometry passed in from the parent and decides whether the Leaflet map needs to be redrawn.
   const geometryKey = JSON.stringify(geometry ?? null);
   useEffect(() => {
     if (geometryKey === lastEmittedRef.current) return;
     if (!syncRef.current) return;
+    // Draw geometries on the map.
     if (syncRef.current(JSON.parse(geometryKey))) {
       lastEmittedRef.current = geometryKey;
     }

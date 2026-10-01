@@ -8,7 +8,6 @@ import { useNominatim } from "../hooks/useNominatim";
 
 export function NominatimSearchBar({ basePath, searchValue, onSearchValueChange }) {
   const { setFieldValue } = useFormikContext();
-
   const { searchLocation, isLoading, error } = useNominatim();
   const [results, setResults] = useState([]);
 
@@ -53,7 +52,7 @@ export function NominatimSearchBar({ basePath, searchValue, onSearchValueChange 
       type: "Point",
       coordinates: [parseFloat(result.lon), parseFloat(result.lat)],
     });
-  }, [onSearchValueChange, setFieldValue, setFieldValue]);
+  }, [onSearchValueChange, setFieldValue]);
 
   return (
     <>
@@ -64,6 +63,7 @@ export function NominatimSearchBar({ basePath, searchValue, onSearchValueChange 
         results={results}
         value={searchValue ?? ""}
         placeholder={i18next.t("Search for a location...")}
+        noResultsMessage={i18next.t("No location found.")}
       />
       {error && <Label pointing prompt content={error} />}
     </>
