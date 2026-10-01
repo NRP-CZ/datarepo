@@ -15,29 +15,29 @@ import { useEffect, useRef } from "react";
  * @param {number} props.activeIndex index of the item to scroll into view
  * @param {function(*, number): React.ReactElement} props.renderItem
  */
-function AutoScrollList(props) {
+function AutoScrollList({ list, activeIndex, getKey, renderItem }) {
   const elementRefs = useRef([]);
 
   useEffect(() => {
     if (
-      props.activeIndex !== undefined &&
-      props.activeIndex >= 0 &&
-      elementRefs.current[props.activeIndex]
+      activeIndex !== undefined &&
+      activeIndex >= 0 &&
+      elementRefs.current[activeIndex]
     ) {
-      elementRefs.current[props.activeIndex]?.scrollIntoView({
+      elementRefs.current[activeIndex]?.scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
     }
-  }, [props.activeIndex]);
+  }, [activeIndex]);
 
   return (
     <>
-      {props.list.map((element, index) => {
-        const item = props.renderItem(element, index);
+      {list.map((element, index) => {
+        const item = renderItem(element, index);
 
         return React.cloneElement(item, {
-          key: props.getKey(element, index),
+          key: getKey(element, index),
           ref: (el) => {
             elementRefs.current[index] = el;
           },

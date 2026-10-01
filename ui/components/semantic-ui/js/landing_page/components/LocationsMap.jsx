@@ -93,7 +93,13 @@ function showGlobalMapPopUp(map, message) {
     .openOn(map);
 }
 
-function LocationsMap(props) {
+function LocationsMap({
+  locationEntries,
+  layersManager,
+  flyToId,
+  onLocationsClick,
+  onPopupClose,
+}) {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
 
@@ -112,19 +118,19 @@ function LocationsMap(props) {
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(map);
 
-    if (!props.locationEntries) {
+    if (!locationEntries) {
       showGlobalMapPopUp(map, i18next.t("No valid locations were found!"));
       return;
     }
 
-    if (props.locationEntries.length === 0) {
+    if (locationEntries.length === 0) {
       showGlobalMapPopUp(map, i18next.t("No locations were found!"));
       return;
     }
 
     const featureGroup = L.featureGroup().addTo(map);
 
-    props.locationEntries.forEach(({ id, location, geometry }) => {
+    locationEntries.forEach(({ id, location, geometry }) => {
       const layer = L.geoJSON(geometry, {
         style: { color: "#3399ff", weight: 2, opacity: 0.8 },
         pointToLayer: (_feature, latlng) => {
@@ -142,19 +148,19 @@ function LocationsMap(props) {
       layer.bindPopup(buildPopUp(location));
 
       layer.on("click", (_) => {
-        if (props.onLocationsClick) {
-          props.onLocationsClick({ id, location, geometry });
+        if (onLocationsClick) {
+          onLocationsClick({ id, location, geometry });
         }
       });
 
       layer.on("popupclose", () => {
-        if (props.onPopupClose) {
-          props.onPopupClose(id);
+        if (onPopupClose) {
+          onPopupClose(id);
         }
       });
 
       featureGroup.addLayer(layer);
-      props.layersManager[id] = layer;
+      layersManager[id] = layer;
     });
 
     if (featureGroup.getLayers().length > 0) {
@@ -167,14 +173,14 @@ function LocationsMap(props) {
       map.remove();
       mapInstanceRef.current = null;
     };
-  }, [props.locationEntries]);
+  }, [locationEntries]);
 
   useEffect(() => {
     const map = mapInstanceRef.current;
 
-    if (!map || !props.flyToId) return;
+    if (!map || !flyToId) return;
 
-    const targetLayer = props.layersManager[props.flyToId];
+    const targetLayer = layersManager[flyToId];
 
     if (targetLayer) {
       map.flyToBounds(targetLayer.getBounds(), { maxZoom: 10, duration: 1.0 });
@@ -183,7 +189,7 @@ function LocationsMap(props) {
         targetLayer.openPopup();
       });
     }
-  }, [props.flyToId, props.layersManager]);
+  }, [flyToId, layersManager]);
 
   return (
     <div

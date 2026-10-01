@@ -13,15 +13,19 @@ function findActiveIndex(id, locationEntries) {
   return index === -1 ? undefined : index;
 }
 
-export function LocationsList(props) {
+export function LocationsList({
+  locationEntries,
+  activeLocationId,
+  onListItemClick,
+}) {
   return (
     <div style={{ maxHeight: "250px", overflowY: "auto" }}>
       <List bulleted relaxed>
         <AutoScrollList
-          list={props.locationEntries}
+          list={locationEntries}
           activeIndex={findActiveIndex(
-            props.activeLocationId,
-            props.locationEntries,
+            activeLocationId,
+            locationEntries,
           )}
           getKey={(locationEntry, _) => {
             return locationEntry.id;
@@ -29,9 +33,9 @@ export function LocationsList(props) {
           renderItem={(locationEntry, _) => {
             return (
               <WrappedLocationListItem
-                active={locationEntry.id === props.activeLocationId}
+                active={locationEntry.id === activeLocationId}
                 locationEntry={locationEntry}
-                onClick={props.onListItemClick}
+                onClick={onListItemClick}
               ></WrappedLocationListItem>
             );
           }}

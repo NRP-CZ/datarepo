@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { i18next } from "@translations/i18next";
 import { ListItem, Icon } from "semantic-ui-react";
 
-export function LocationListItem(props) {
-  const { id, location, geometry } = props.locationEntry || {};
+export function LocationListItem({ locationEntry, active, onClick }) {
+  const { id, location, geometry } = locationEntry || {};
 
   if (!location || !location.place || !geometry) {
     console.warn(`Skipping invalid location!`);
@@ -23,11 +23,11 @@ export function LocationListItem(props) {
     <ListItem>
       <span
         onClick={() => {
-          if (props.onClick) props.onClick(id);
+          if (onClick) onClick(id);
         }}
         style={{ cursor: "pointer" }}
       >
-        {props.active ? <b>{location.place}</b> : location.place}
+        {active ? <b>{location.place}</b> : location.place}
       </span>
       {isPoint && (
         <span style={{ marginLeft: "4px" }}>

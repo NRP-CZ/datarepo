@@ -6,9 +6,9 @@ import LocationsList from "./LocationsList";
 import LocationsMap from "./LocationsMap";
 import ErrorMessage from "./ErrorMessage";
 
-function Locations(props) {
+function Locations({ locations }) {
   const locationEntries = useMemo(() => {
-    const locationsAsString = props.locations;
+    const locationsAsString = locations;
     if (!locationsAsString) return null;
 
     let parsedLocations;
@@ -30,7 +30,7 @@ function Locations(props) {
         return { id: crypto.randomUUID(), location, geometry };
       })
       .filter(Boolean);
-  }, [props.locations]);
+  }, [locations]);
 
   const sortedLocationEntries = useMemo(() => {
     return [...locationEntries].sort((a, b) => {

@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Container, Grid, GridColumn, Message } from "semantic-ui-react";
 
-function ErrorMessage(props) {
+function ErrorMessage({ message }) {
   return (
     <Container>
       <Grid padded>
         <GridColumn>
           <Message negative>
-            <p>{props.message}</p>
+            <p>{message}</p>
           </Message>
         </GridColumn>
       </Grid>
