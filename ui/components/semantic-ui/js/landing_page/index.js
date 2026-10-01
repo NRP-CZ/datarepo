@@ -5,10 +5,12 @@ import Locations from "./components/Locations";
 const recordLocationsContainer = document.getElementById("record-locations");
 
 if (recordLocationsContainer) {
+  const locations = JSON.parse(
+    recordLocationsContainer.getAttribute("data-locations"),
+  );
+
   ReactDOM.render(
-    <Locations
-      locations={recordLocationsContainer.getAttribute("data-locations")}
-    />,
+    <Locations locations={locations} />,
     recordLocationsContainer,
   );
 }

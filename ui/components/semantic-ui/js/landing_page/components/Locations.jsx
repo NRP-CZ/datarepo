@@ -8,20 +8,10 @@ import ErrorMessage from "./ErrorMessage";
 
 function Locations({ locations }) {
   const locationEntries = useMemo(() => {
-    const locationsAsString = locations;
-    if (!locationsAsString) return null;
+    if (!locations) return null;
+    if (locations.length === 0) return [];
 
-    let parsedLocations;
-    try {
-      parsedLocations = JSON.parse(locationsAsString);
-    } catch (err) {
-      console.error("Failed to parse locations JSON:", err);
-      return null;
-    }
-
-    if (parsedLocations.length === 0) return [];
-
-    return parsedLocations
+    return locations
       .map((location) => {
         if (!location.geometry) return null;
         const geometry = getGeometryAsGeoJSONObject(location);
@@ -87,7 +77,7 @@ function Locations({ locations }) {
 }
 
 Locations.propTypes = {
-  locations: PropTypes.string,
+  locations: PropTypes.array.isRequired,
 };
 
 export default Locations;
