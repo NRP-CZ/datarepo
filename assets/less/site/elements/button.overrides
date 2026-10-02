@@ -33,12 +33,24 @@
     color: @buttonTextSecondaryColor;
     border: @borderWidth solid @buttonBackgroundSecondaryBorderColor;
 
+    .icon {
+      color: @buttonTextSecondaryColor;
+    }
+
     &:hover {
       background-color: @buttonBackgroundSecondaryHoverColor;
+      color: @buttonTextSecondaryColor;
+      text-shadow: none;
+
+      .icon {
+        color: @buttonTextSecondaryColor;
+      }
     }
 
     &:active {
       background-color: @buttonBackgroundSecondaryPressedColor;
+      color: @buttonTextSecondaryColor;
+      text-shadow: none;
     }
   }
 
