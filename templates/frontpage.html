@@ -68,13 +68,23 @@
     <div class="ui cards frontpage-cards centered">
 
       {# Card 1: Upload Dataset #}
-      {{ render_card(
-        header=_('Upload dataset'),
-        description=_('Upload your data to our catch-all repository'),
-        icon='upload',
-        url=url_for('datasets_ui.deposit_create') if can_view_deposit_page() else url_for('pages_ui.get_access'),
-        button_text=_('Upload dataset') if can_view_deposit_page() else _('Get access')
-      ) }}
+      {% if can_view_deposit_page() %}
+        {{ render_card(
+          header=_('Upload dataset'),
+          description=_('Upload your data to our catch-all repository'),
+          icon='upload',
+          url=url_for('datasets_ui.deposit_create'),
+          button_text=_('Upload dataset')
+        ) }}
+      {% else %}
+        {{ render_card(
+          header=_('Want to deposit your data?'),
+          description=_('Depositing requires a permission. Here is how to request it.'),
+          icon='upload',
+          url=url_for('pages_ui.get_access'),
+          button_text=_('Get access')
+        ) }}
+      {% endif %}
 
       {# Card 2: How it works #}
       {{ render_card(
