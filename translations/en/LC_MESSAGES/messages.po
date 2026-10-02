@@ -10,12 +10,12 @@ msgstr ""
 "POT-Creation-Date: 2026-08-23 16:17+0200\n"
 "PO-Revision-Date: 2026-01-13 10:43+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: en\n"
 "Language-Team: en <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.18.0\n"
 
 #: datasets/just_for_translations.py:4
@@ -39,8 +39,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"        A part of the <a href=\"%(link)s\">National Repository Platform "
-"for Research Data</a> project (CZ.02.01.01/00/23_014/0008787).\n"
+"        A part of the <a href=\"%(link)s\">National Repository Platform for Research Data</a> project (CZ.02.01.01/00/23_014/0008787).\n"
 "        "
 msgstr ""
 
@@ -248,17 +247,14 @@ msgstr ""
 
 #: ui/pages/templates/GetAccess.jinja:32
 msgid ""
-"Write access is intended primarily for employees and students of eligible"
-" academic and research\n"
-"      institutions in the Czech Republic, their international "
-"collaborators, and other approved users whose\n"
+"Write access is intended primarily for employees and students of eligible academic and research\n"
+"      institutions in the Czech Republic, their international collaborators, and other approved users whose\n"
 "      intended use is consistent with the mission of the repository."
 msgstr ""
 
 #: ui/pages/templates/GetAccess.jinja:38
 msgid ""
-"During the application process, you may be asked to describe your "
-"intended use of the repository\n"
+"During the application process, you may be asked to describe your intended use of the repository\n"
 "      and justify your request for access."
 msgstr ""
 
@@ -276,17 +272,14 @@ msgstr ""
 
 #: ui/pages/templates/GetAccess.jinja:51
 msgid ""
-"Wait for your application to be reviewed. Applications may require manual"
-" evaluation,\n"
-"              so approval may not be immediate. You will receive an email"
-" notification when the\n"
+"Wait for your application to be reviewed. Applications may require manual evaluation,\n"
+"              so approval may not be immediate. You will receive an email notification when the\n"
 "              application has been processed."
 msgstr ""
 
 #: ui/pages/templates/GetAccess.jinja:56
 msgid ""
-"After your application is approved, sign in to the Data Catch-all "
-"Repository and\n"
+"After your application is approved, sign in to the Data Catch-all Repository and\n"
 "              create your first record."
 msgstr ""
 
@@ -315,7 +308,8 @@ msgid "You will receive an email when your request is approved or rejected."
 msgstr ""
 
 #: ui/pages/templates/GetAccess.jinja:78
-msgid "You can track the status of your request on your Dashboard under Requests."
+msgid ""
+"You can track the status of your request on your Dashboard under Requests."
 msgstr ""
 
 #: ui/pages/templates/GetAccess.jinja:81
@@ -323,13 +317,6 @@ msgid "Closed membership communities"
 msgstr ""
 
 #: ui/pages/templates/GetAccess.jinja:82
-msgid ""
-"You cannot apply to these communities online; you need to contact the "
-"community manager directly.\n"
-"            If you do not already have a contact email address,\n"
-"            check the community's About page or contact us at\n"
-"            <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
-
 #: datarepo/templates/semantic-ui/datarepo/records/details/side_bar/locations.html:75
 msgid "Geographic locations"
 msgstr ""
@@ -350,6 +337,162 @@ msgid "No valid locations were found!"
 msgstr ""
 
 msgid "No locations were found!"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:26
+msgid "Getting Permission to Deposit Datasets"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:29
+msgid ""
+"Your account does not have write access yet, so you cannot deposit datasets.\n"
+"      Deposition is open primarily to employees and students of eligible academic and research\n"
+"      institutions in the Czech Republic, their international collaborators, and other approved\n"
+"      users whose intended use is consistent with the mission of the repository."
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:34
+msgid "You can obtain write access in one of two ways:"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:39
+msgid "As an individual depositor"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:43
+msgid "How it works:"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:46
+msgid ""
+"Submit the application form. You may be asked to describe your intended\n"
+"              use of the repository."
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:50
+msgid ""
+"Wait for review. Applications are evaluated manually, so approval may not\n"
+"              be immediate — you will receive an email once your application has been processed."
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:54
+msgid "Once approved, you can deposit your first dataset."
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:62
+msgid "Through a community"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:68
+msgid "Find a community"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:71
+msgid "Click the \"Request Membership\" button on the community page"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:73
+msgid ""
+"You will receive an email once your membership is approved; you can track "
+"the request on your Dashboard under Requests."
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:78
+msgid ""
+"These communities do not accept online applications — contact the community\n"
+"            manager directly. You can find a contact on the community's About page, or write to\n"
+"            us at <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
+msgstr ""
+
+msgid "Submitters"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:29
+msgid ""
+"Your account does not have deposit permission yet, so you cannot upload datasets.\n"
+"      Deposition is open primarily to employees and students of eligible academic and research\n"
+"      institutions in the Czech Republic, their international collaborators, and other approved\n"
+"      users whose intended use is consistent with the mission of the repository."
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:34
+msgid "You can obtain deposit permission in one of two ways:"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:39
+msgid "Loading application form…"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:77
+msgid ""
+"These communities do not accept online applications — contact the community\n"
+"            manager directly. You can find a contact on the community's About page, or write to\n"
+"            us at"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:31
+msgid ""
+"You can obtain deposit permission in one of two ways. The recommended way is"
+" to deposit through a community:"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:37
+msgid "Recommended"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:65
+msgid ""
+"If no suitable community exists for your data, you can deposit directly\n"
+"            as an individual depositor."
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:38
+msgid ""
+"Depositing through a community is the recommended way — your data gets a curator\n"
+"            and a home next to related datasets."
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:48
+msgid "Find a community and open its page"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:59
+msgid "Browse communities"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:54
+msgid "Once you are on the community page:"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:56
+msgid "Click the \"Request Membership\" button"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:65
+msgid ""
+"These communities do not accept online applications — contact the community\n"
+"              manager directly. You can find a contact on the community's About page, or write to\n"
+"              us at"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:61
+msgid ""
+"These communities do not accept online applications — contact the community\n"
+"            manager directly. You can find a contact on the community's About page, or write to\n"
+"            us at:"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:58
+msgid ""
+"You will receive an email once your membership is approved; you can track "
+"the request"
+msgstr ""
+
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:59
+msgid "on your Dashboard under Requests"
+msgstr ""
+
+msgid "Search guide"
 msgstr ""
 
 #~ msgid "New Datasets"
@@ -434,9 +577,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "Customize the layout and adapt the "
-#~ "styling to match your institution's. See"
-#~ " how to do so"
+#~ "Customize the layout and adapt the styling to match your institution's. See "
+#~ "how to do so"
 #~ msgstr ""
 
 #~ msgid "here"
@@ -464,9 +606,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
-#~ "TIP: Most of the content is in "
-#~ "English. You will get more results "
-#~ "by using English terms."
+#~ "TIP: Most of the content is in English. You will get more results by using "
+#~ "English terms."
 #~ msgstr ""
 
 #~ msgid "Show less"
@@ -555,4 +696,3 @@ msgstr ""
 
 #~ msgid "Frascati"
 #~ msgstr ""
-
