@@ -3,6 +3,72 @@
 {%- block navbar_search %}
 {%- endblock navbar_search %}
 
+{# Same as the parent navbar_nav block, but links registered with an
+   external_url get the same treatment as external links elsewhere on the
+   site (see macros/card.html): icon, new tab and accessible announcement
+   (matches upstream invenio-app-rdm, e.g. records/macros/detail). #}
+{%- block navbar_nav %}
+  {%- set external_link_attrs = 'target="_blank" rel="noopener noreferrer"' %}
+  {%- for item in current_menu.submenu('main').children|sort(attribute='order') if item.visible recursive %}
+    {%- if item.children %}
+      <div class="item">
+        <div class="dropdown {{ ' active' if item.active else '' }}">
+          <a role="button"
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            href="{{ item.url }}"
+            {%- if item._external_url %}
+              {{ external_link_attrs }}
+              aria-label="{{ item.text|striptags }} - {{ _('Open external link') }}"
+            {%- endif %}
+          >
+            {{ item.text|safe }}
+            {%- if item._external_url %}
+              <i class="small fitted external alternate icon" aria-hidden="true"></i>
+            {%- endif %}
+            <b class="caret"></b>
+          </a>
+          <ul role="menu" class="dropdown-menu">
+            {{ loop(item.children|sort(attribute='order')) }}
+          </ul>
+        </div>
+      </div>
+    {%- else %}
+      <div class="{{ 'item active' if item.active else 'item' }}">
+        <a href="{{ item.url }}"
+          {%- if item._external_url %}
+            {{ external_link_attrs }}
+            aria-label="{{ item.text|striptags }} - {{ _('Open external link') }}"
+          {%- endif %}
+        >
+          {{ item.text|safe }}
+          {%- if item._external_url %}
+            <i class="small fitted external alternate icon" aria-hidden="true"></i>
+          {%- endif %}
+        </a>
+      </div>
+    {%- endif %}
+  {%- endfor %}
+
+  {% for item in current_menu.submenu('actions').children|sort(attribute='order') if item.visible recursive %}
+    <div class="{{ 'item active' if item.active else 'item' }}">
+      <a href="{{ item.url }}"
+        {%- if item._external_url %}
+          {{ external_link_attrs }}
+          aria-label="{{ item.text|striptags }} - {{ _('Open external link') }}"
+        {%- endif %}
+      >
+        {{ item.text|safe }}
+        {%- if item._external_url %}
+          <i class="small fitted external alternate icon" aria-hidden="true"></i>
+        {%- endif %}
+      </a>
+    </div>
+  {% endfor %}
+{%- endblock navbar_nav %}
+
 {%- block brand %}
   {%- if current_i18n.language == 'cs' %}
     <a class="logo-link" href="{{ invenio_url_for('invenio_app_rdm.index') }}">

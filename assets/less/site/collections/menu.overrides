@@ -2,4 +2,11 @@
   &.vertical {
     width: 100%;
   }
+
+  .item .external.alternate.icon {
+    vertical-align: top;
+    margin-top: 0.15em;
+    position: relative;
+    top: 0;
+  }
 }

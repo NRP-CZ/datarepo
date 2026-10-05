@@ -215,3 +215,7 @@ msgstr ""
 
 msgid "Submitters"
 msgstr ""
+
+#: templates/macros/card.html
+msgid "Open external link"
+msgstr ""
