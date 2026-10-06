@@ -95,11 +95,13 @@ function showGlobalMapPopUp(map, message) {
 
 function LocationsMap({
   locationEntries,
-  layersManager,
   flyToId,
   onLocationsClick,
   onPopupClose,
 }) {
+  // Maps location Ids to their Leaflet layers.
+  const layersManagerRef = useRef({});
+
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
 
@@ -112,6 +114,7 @@ function LocationsMap({
 
     const map = L.map(mapContainerRef.current).setView([0, 0], 0);
     mapInstanceRef.current = map;
+    layersManagerRef.current = {};
 
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
@@ -168,7 +171,7 @@ function LocationsMap({
       });
 
       featureGroup.addLayer(layer);
-      layersManager[id] = layer;
+      layersManagerRef.current[id] = layer;
     });
 
     if (featureGroup.getLayers().length > 0) {
@@ -184,13 +187,13 @@ function LocationsMap({
     };
   }, [locationEntries]);
 
+  // Reacts to the change of `flyToId` prop, meaning parent needs the map to zoom-in to specific location.
   useEffect(() => {
     const map = mapInstanceRef.current;
 
     if (!map || !flyToId) return;
 
-    const targetLayer = layersManager[flyToId];
-
+    const targetLayer = layersManagerRef.current[flyToId];
     if (targetLayer) {
       map.flyToBounds(targetLayer.getBounds(), { maxZoom: 10, duration: 1.0 });
 
@@ -198,7 +201,7 @@ function LocationsMap({
         targetLayer.openPopup();
       });
     }
-  }, [flyToId, layersManager]);
+  }, [flyToId]);
 
   return <div ref={mapContainerRef} className="locations-map"></div>;
 }
@@ -211,7 +214,6 @@ LocationsMap.propTypes = {
       geometry: PropTypes.object.isRequired,
     }),
   ),
-  layersManager: PropTypes.object.isRequired,
   flyToId: PropTypes.string,
   onLocationsClick: PropTypes.func,
   onPopupClose: PropTypes.func,

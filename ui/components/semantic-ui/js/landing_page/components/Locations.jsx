@@ -34,7 +34,6 @@ function Locations({ locations }) {
     }
   }, [locationEntries]);
 
-  const layersManagerRef = useRef({});
   const [activeLocationId, setActiveLocationId] = useState(null);
   const [flyToId, setFlyToId] = useState(null);
 
@@ -55,7 +54,6 @@ function Locations({ locations }) {
     <>
       <LocationsMap
         locationEntries={sortedLocationEntries}
-        layersManager={layersManagerRef.current}
         flyToId={flyToId}
         onLocationsClick={(locationData) => {
           setActiveLocationId(locationData.id);
