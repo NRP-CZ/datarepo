@@ -3,6 +3,47 @@ import PropTypes from "prop-types";
 import { i18next } from "@translations/i18next";
 import { Icon } from "semantic-ui-react";
 
+const LAT_BOUNDS = { min: -90, max: 90 };
+const LON_BOUNDS = { min: -180, max: 180 };
+
+/**
+ * Returns the coordinate if it is a plain finite number within bounds,
+ * otherwise undefined.
+ */
+function validateCoordinate(value, bounds) {
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    return undefined;
+  }
+  if (value < bounds.min || value > bounds.max) {
+    return undefined;
+  }
+  return value;
+}
+
+/**
+ * Extracts and validates a [lat, lon] pair from a GeoJSON Point geometry.
+ */
+function getValidPointCoordinates(geometry) {
+  if (
+    !geometry ||
+    geometry.type !== "Point" ||
+    !Array.isArray(geometry.coordinates) ||
+    geometry.coordinates.length !== 2
+  ) {
+    return undefined;
+  }
+
+  const [lon, lat] = geometry.coordinates;
+  const validLat = validateCoordinate(lat, LAT_BOUNDS);
+  const validLon = validateCoordinate(lon, LON_BOUNDS);
+
+  if (validLat === undefined || validLon === undefined) {
+    return undefined;
+  }
+
+  return { lat: validLat, lon: validLon };
+}
+
 export function LocationListItemContent({ locationEntry, active, onClick }) {
   const { id, location, geometry } = locationEntry || {};
 
@@ -11,13 +52,7 @@ export function LocationListItemContent({ locationEntry, active, onClick }) {
     return null;
   }
 
-  const isPoint =
-    geometry.type === "Point" && Array.isArray(geometry.coordinates);
-
-  let lat, lon;
-  if (isPoint) {
-    [lon, lat] = geometry.coordinates;
-  }
+  const point = getValidPointCoordinates(geometry);
 
   return (
     <>
@@ -29,27 +64,26 @@ export function LocationListItemContent({ locationEntry, active, onClick }) {
       >
         {active ? <b>{location.place}</b> : location.place}
       </span>
-      {isPoint && (
-        <span style={{ marginLeft: "4px" }}>
+      {point && (
+        <span className="ml-5">
           <a
-            href={`https://google.com/maps/place/${lat},${lon}`}
-            style={{ color: "#2f6fa7" }}
+            href={`https://google.com/maps/place/${point.lat},${point.lon}`}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
           >
-            {lat}, {lon} <i className="external alternate icon"></i>
+            {point.lat}, {point.lon} <i className="external alternate icon"></i>
           </a>
           <Icon
             name="copy"
             color="yellow"
             style={{ cursor: "copy" }}
             onClick={() => {
-              navigator.clipboard.writeText(`${lat}, ${lon}`);
+              navigator.clipboard.writeText(`${point.lat}, ${point.lon}`);
               alert(
                 i18next.t("Copied the latitude and longitude") +
                   ": " +
-                  `${lat}, ${lon}` +
+                  `${point.lat}, ${point.lon}` +
                   ".",
               );
             }}
