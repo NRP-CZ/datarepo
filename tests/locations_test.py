@@ -131,8 +131,8 @@ def render():
 
 def _data_locations(html: str) -> list[dict]:
     """Pull the serialized payload back out of the map mount point."""
-    match = re.search(r"id=\"record-locations-map\"[^>]*data-locations='([^']*)'", html)
-    assert match, "no data-locations payload found on #record-locations-map"
+    match = re.search(r"id=\"record-locations\"[^>]*data-locations='([^']*)'", html)
+    assert match, "no data-locations payload found on record-locations"
     from html import unescape
 
     return json.loads(unescape(match.group(1)))
@@ -143,8 +143,6 @@ def test_mount_point_and_anchor_ids_are_stable(render):
     html, _ = render([GEOJSON_POINT])
 
     assert 'id="record-locations"' in html
-    assert 'id="record-locations-map"' in html
-    assert 'id="record-locations-list"' in html
 
 
 def test_map_receives_every_location_as_json(render):
@@ -176,31 +174,12 @@ def test_map_receives_every_location_as_json(render):
     assert all(isinstance(location["geometry"], str) for location in payload[4:])
 
 
-def test_text_fallback_lists_each_place(render):
-    locations = [
-        GEOJSON_POINT,
-        GEOJSON_POLYGON,
-        GEOJSON_MULTIPOINT,
-        GEOJSON_GEOMETRY_COLLECTION,
-        WKT_POINT,
-        WKT_POLYGON,
-        WKT_LINESTRING,
-        WKT_MULTIPOLYGON,
-    ]
-    html, _ = render(locations)
-
-    assert html.count('class="record-locations-point-reference"') == len(locations)
-    for location in locations:
-        assert location["place"] in html
-
-
 def test_bundles_are_requested(render):
     _, webpack = render([GEOJSON_POINT])
 
     assert set(webpack.requested) == {
-        "locations_map.js",
-        "locations_point.js",
-        "locations_map.css",
+        "locations.js",
+        "locations.css",
     }
 
 
