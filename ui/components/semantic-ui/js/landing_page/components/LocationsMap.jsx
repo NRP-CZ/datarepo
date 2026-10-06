@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import L from "leaflet";
-import "leaflet/dist/leaflet.css";
 import { i18next } from "@translations/i18next";
 import sanitizeHtml from "sanitize-html";
+import "../../../less/components/locations-map.less";
 
 function handleIdentifiersValue(value) {
   if (!Array.isArray(value)) {
@@ -118,6 +118,14 @@ function LocationsMap({
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(map);
 
+    const resizeObserver = new ResizeObserver(() => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.invalidateSize();
+      }
+    });
+
+    resizeObserver.observe(mapContainerRef.current);
+
     if (!locationEntries) {
       showGlobalMapPopUp(map, i18next.t("No valid locations were found!"));
       return;
@@ -170,6 +178,7 @@ function LocationsMap({
     }
 
     return () => {
+      resizeObserver.disconnect();
       map.remove();
       mapInstanceRef.current = null;
     };
@@ -191,17 +200,7 @@ function LocationsMap({
     }
   }, [flyToId, layersManager]);
 
-  return (
-    <div
-      ref={mapContainerRef}
-      style={{
-        height: "260px",
-        maxHeight: "40vw",
-        width: "100%",
-        marginBottom: "1em",
-      }}
-    ></div>
-  );
+  return <div ref={mapContainerRef} className="locations-map"></div>;
 }
 
 LocationsMap.propTypes = {

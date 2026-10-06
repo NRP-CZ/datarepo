@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { List } from "semantic-ui-react";
+import "../../../less/components/auto-scroll-list.less";
 
 /**
  * Renders a scrollable list of items and scrolls to the item with `scrollToId` Id.
@@ -24,7 +25,7 @@ function AutoScrollList({ items, scrollToId, renderItem }) {
   }, [scrollToId]);
 
   return (
-    <div ref={containerRef} style={{ maxHeight: "250px", overflowY: "auto" }}>
+    <div ref={containerRef} className="auto-scroll-list">
       <List bulleted relaxed>
         {items.map((item) => (
           <List.Item
