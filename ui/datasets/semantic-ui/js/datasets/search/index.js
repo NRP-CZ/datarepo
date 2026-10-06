@@ -7,6 +7,8 @@ import {
   SearchAppFacets,
   SearchAppLayout,
 } from "@js/oarepo_ui/search";
+import React from "react";
+import { Icon } from "semantic-ui-react";
 import ResultsListItem from "./ResultsListItem";
 import { parametrize } from "react-overridable";
 import { i18next } from "@translations/i18next";
@@ -17,10 +19,26 @@ const SearchAppFacetsWithTitle = parametrize(SearchAppFacets, {
   title: i18next.t("Data Catch-all Repository"),
 });
 
+const searchBarTipContent = (
+  <>
+    {i18next.t(
+      "TIP: Most of the content is in English. You will get more results by using English terms."
+    )}{" "}
+    <a
+      className="search-guide-link"
+      href="/help/search"
+      target="_blank"
+      rel="noopener noreferrer"
+      title={i18next.t("Search guide")}
+    >
+      <Icon name="question circle outline" />
+      {i18next.t("Search guide")}
+    </a>
+  </>
+);
+
 const SearchAppLayoutWithTip = parametrize(SearchAppLayout, {
-  searchBarTip: i18next.t(
-    "TIP: Most of the content is in English. You will get more results by using English terms."
-  ),
+  searchBarTip: searchBarTipContent,
 });
 
 export const componentOverrides = {
