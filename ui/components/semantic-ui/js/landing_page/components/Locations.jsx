@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
 import { i18next } from "@translations/i18next";
 import LocationsList from "./LocationsList";
@@ -36,6 +36,29 @@ function Locations({ locations }) {
 
   const [activeLocationId, setActiveLocationId] = useState(null);
 
+  const onLocationClick = useCallback(
+    (locationData) => {
+      setActiveLocationId(locationData.id);
+    },
+    [setActiveLocationId],
+  );
+
+  const onPopupClose = useCallback(
+    (closedId) => {
+      setActiveLocationId((currentActiveId) =>
+        currentActiveId === closedId ? null : currentActiveId,
+      );
+    },
+    [setActiveLocationId],
+  );
+
+  const onItemClick = useCallback(
+    (id) => {
+      setActiveLocationId(id);
+    },
+    [setActiveLocationId],
+  );
+
   if (locationEntries === null) {
     return (
       <ErrorElement
@@ -54,21 +77,13 @@ function Locations({ locations }) {
       <LocationsMap
         locationEntries={sortedLocationEntries}
         flyToId={activeLocationId}
-        onLocationsClick={(locationData) => {
-          setActiveLocationId(locationData.id);
-        }}
-        onPopupClose={(closedId) => {
-          setActiveLocationId((currentActiveId) =>
-            currentActiveId === closedId ? null : currentActiveId,
-          );
-        }}
+        onLocationClick={onLocationClick}
+        onPopupClose={onPopupClose}
       />
       <LocationsList
         locationEntries={locationEntries}
         activeLocationId={activeLocationId}
-        onListItemClick={(id) => {
-          setActiveLocationId(id);
-        }}
+        onItemClick={onItemClick}
       />
     </>
   );

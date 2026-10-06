@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import L from "leaflet";
 import { i18next } from "@translations/i18next";
 import sanitizeHtml from "sanitize-html";
+import _capitalize from "lodash/capitalize";
 import "../../../less/components/locations-map.less";
 
-function handleIdentifiersValue(value) {
+function formatIdentifiers(value) {
   if (!Array.isArray(value)) {
     return "";
   }
@@ -21,17 +22,10 @@ function handleIdentifiersValue(value) {
 function buildFormattedValue(key, value) {
   // Special cases.
   if (key === "identifiers") {
-    return handleIdentifiersValue(value);
+    return formatIdentifiers(value);
   }
 
   let formattedValue = String(value);
-
-  if (Array.isArray(value)) {
-    formattedValue = value
-      .map((item) => item)
-      .filter(Boolean)
-      .join(", ");
-  }
 
   if (typeof value === "object") {
     formattedValue = Object.values(value)
@@ -43,17 +37,10 @@ function buildFormattedValue(key, value) {
   return formattedValue;
 }
 
-function buildFomattedKey(key) {
-  let formattedKey = key.charAt(0).toUpperCase() + key.slice(1);
-
-  if (formattedKey === "Identifiers") {
-    formattedKey = i18next.t("Identifiers");
-  } else if (formattedKey === "Description") {
-    formattedKey = i18next.t("Description");
-  }
-
-  return formattedKey;
-}
+const sanitizeOpts = {
+  allowedTags: [],
+  allowedAttributes: {},
+};
 
 function buildPopUp(location) {
   let popupHtml = `<div text-align: center;>`;
@@ -62,18 +49,18 @@ function buildPopUp(location) {
     popupHtml += `
       <div>
         <h6 class="ui horizontal fitted divider header">${i18next.t("Place")}</h6>
-        ${sanitizeHtml(location.place)}
+        ${sanitizeHtml(location.place, sanitizeOpts)}
       </div>`;
   }
 
   for (const [key, value] of Object.entries(location)) {
-    if (key !== "geometry" && key !== "place" && key !== "type" && value) {
-      const formattedKey = buildFomattedKey(key);
+    if (!["geometry", "place", "type"].includes(key) && value) {
+      const formattedKey = i18next.t(_capitalize(key));
       const formattedValue = buildFormattedValue(key, value);
       popupHtml += `
-        <div style="margin-top: 1em;">
-          <h6 class="ui horizontal fitted divider header">${sanitizeHtml(formattedKey)}</h6>
-          <span>${sanitizeHtml(formattedValue)}</span>
+        <div class="rel-mt-1">
+          <h6 class="ui horizontal fitted divider header">${sanitizeHtml(formattedKey, sanitizeOpts)}</h6>
+          <span>${sanitizeHtml(formattedValue, sanitizeOpts)}</span>
         </div>`;
     }
   }
@@ -82,21 +69,10 @@ function buildPopUp(location) {
   return popupHtml;
 }
 
-function showGlobalMapPopUp(map, message) {
-  map.setView([0, 0], 1);
-  L.popup({
-    closeButton: true,
-    autoClose: false,
-  })
-    .setLatLng(map.getCenter())
-    .setContent(`<b>${message}</b>`)
-    .openOn(map);
-}
-
 function LocationsMap({
   locationEntries,
   flyToId,
-  onLocationsClick,
+  onLocationClick,
   onPopupClose,
 }) {
   // Maps location Ids to their Leaflet layers.
@@ -129,16 +105,6 @@ function LocationsMap({
 
     resizeObserver.observe(mapContainerRef.current);
 
-    if (!locationEntries) {
-      showGlobalMapPopUp(map, i18next.t("No valid locations were found!"));
-      return;
-    }
-
-    if (locationEntries.length === 0) {
-      showGlobalMapPopUp(map, i18next.t("No locations were found!"));
-      return;
-    }
-
     const featureGroup = L.featureGroup().addTo(map);
 
     locationEntries.forEach(({ id, location, geometry }) => {
@@ -159,8 +125,8 @@ function LocationsMap({
       layer.bindPopup(buildPopUp(location));
 
       layer.on("click", (_) => {
-        if (onLocationsClick) {
-          onLocationsClick({ id, location, geometry });
+        if (onLocationClick) {
+          onLocationClick({ id, location, geometry });
         }
       });
 
@@ -185,7 +151,7 @@ function LocationsMap({
       map.remove();
       mapInstanceRef.current = null;
     };
-  }, [locationEntries]);
+  }, [locationEntries, onLocationClick, onPopupClose]);
 
   // Reacts to the change of `flyToId` prop, meaning parent needs the map to zoom-in to specific location.
   useEffect(() => {
@@ -212,10 +178,10 @@ LocationsMap.propTypes = {
       id: PropTypes.string.isRequired,
       location: PropTypes.object.isRequired,
       geometry: PropTypes.object.isRequired,
-    }),
+    }).isRequired,
   ),
   flyToId: PropTypes.string,
-  onLocationsClick: PropTypes.func,
+  onLocationClick: PropTypes.func,
   onPopupClose: PropTypes.func,
 };
 

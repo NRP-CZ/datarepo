@@ -6,7 +6,7 @@ import LocationListItemContent from "./LocationListItemContent";
 export function LocationsList({
   locationEntries,
   activeLocationId,
-  onListItemClick,
+  onItemClick,
 }) {
   return (
     <AutoScrollList
@@ -16,7 +16,7 @@ export function LocationsList({
         <LocationListItemContent
           locationEntry={locationEntry}
           active={locationEntry.id === activeLocationId}
-          onClick={onListItemClick}
+          onClick={onItemClick}
         />
       )}
     ></AutoScrollList>
@@ -32,7 +32,7 @@ LocationsList.propTypes = {
     }),
   ),
   activeLocationId: PropTypes.string,
-  onListItemClick: PropTypes.func,
+  onItemClick: PropTypes.func,
 };
 
 export default LocationsList;
