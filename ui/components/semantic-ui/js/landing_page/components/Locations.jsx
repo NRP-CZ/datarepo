@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { i18next } from "@translations/i18next";
 import LocationsList from "./LocationsList";
 import LocationsMap from "./LocationsMap";
-import ErrorMessage from "./ErrorMessage";
+import { ErrorElement } from "@js/oarepo_ui/search";
 
 function Locations({ locations }) {
   const locationEntries = useMemo(() => {
@@ -38,11 +38,15 @@ function Locations({ locations }) {
 
   if (locationEntries === null) {
     return (
-      <ErrorMessage message={i18next.t("No valid locations were found!")} />
+      <ErrorElement
+        error={new Error(i18next.t("No valid locations were found!"))}
+      />
     );
   }
   if (locationEntries.length === 0) {
-    return <ErrorMessage message={i18next.t("No locations were found!")} />;
+    return (
+      <ErrorElement error={new Error(i18next.t("No locations were found!"))} />
+    );
   }
 
   return (
