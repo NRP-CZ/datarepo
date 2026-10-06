@@ -35,7 +35,6 @@ function Locations({ locations }) {
   }, [locationEntries]);
 
   const [activeLocationId, setActiveLocationId] = useState(null);
-  const [flyToId, setFlyToId] = useState(null);
 
   if (locationEntries === null) {
     return (
@@ -54,17 +53,13 @@ function Locations({ locations }) {
     <>
       <LocationsMap
         locationEntries={sortedLocationEntries}
-        flyToId={flyToId}
+        flyToId={activeLocationId}
         onLocationsClick={(locationData) => {
           setActiveLocationId(locationData.id);
-          setFlyToId(null);
         }}
         onPopupClose={(closedId) => {
           setActiveLocationId((currentActiveId) =>
             currentActiveId === closedId ? null : currentActiveId,
-          );
-          setFlyToId((currentFlyId) =>
-            currentFlyId === closedId ? null : currentFlyId,
           );
         }}
       />
@@ -73,7 +68,6 @@ function Locations({ locations }) {
         activeLocationId={activeLocationId}
         onListItemClick={(id) => {
           setActiveLocationId(id);
-          setFlyToId(id);
         }}
       />
     </>
