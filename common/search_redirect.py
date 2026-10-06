@@ -1,14 +1,16 @@
 # SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
 # SPDX-License-Identifier: MIT
 
-"""Legacy /search view: forward to the datasets search app.
+"""Forward the global /search route to the datasets search app.
 
-OARepo registers a model-specific search UI under ``/datasets``. InvenioRDM
-also exposes a generic ``/search`` endpoint backed by ``invenio_search_ui``
-that uses the legacy RDM search app without facets / tips matching this
-repository. We replace that view with a permanent redirect so all existing
-links (bookmarks, hardcoded ``/search?q=...`` URLs in ``invenio_app_rdm``
-JavaScript, external docs) keep working but land on the datasets UI.
+InvenioRDM exposes a global ``/search`` route (backed by ``invenio_search_ui``)
+that searches across all registered record metadata models. OARepo datasets
+provides its own model-specific search UI under ``/datasets`` with facets,
+tips, and a Search guide link consistent with the rest of this repository.
+
+We replace the global view with a redirect so existing links (bookmarks,
+hardcoded ``/search?q=...`` URLs in ``invenio_app_rdm`` JavaScript, external
+docs) keep working but land on the datasets UI.
 """
 
 from __future__ import annotations
