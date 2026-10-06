@@ -7,7 +7,7 @@ import { ErrorElement } from "@js/oarepo_ui/search";
 
 function Locations({ locations }) {
   const locationEntries = useMemo(() => {
-    if (!locations) return null;
+    if (locations == null) return null;
     if (locations.length === 0) return [];
 
     return locations
@@ -23,13 +23,15 @@ function Locations({ locations }) {
   }, [locations]);
 
   const sortedLocationEntries = useMemo(() => {
-    return [...locationEntries].sort((a, b) => {
-      const aIsPoint = a.geometry.type === "Point";
-      const bIsPoint = b.geometry.type === "Point";
-      if (aIsPoint && !bIsPoint) return 1;
-      if (!aIsPoint && bIsPoint) return -1;
-      return 0;
-    });
+    if (locationEntries) {
+      return [...locationEntries].sort((a, b) => {
+        const aIsPoint = a.geometry.type === "Point";
+        const bIsPoint = b.geometry.type === "Point";
+        if (aIsPoint && !bIsPoint) return 1;
+        if (!aIsPoint && bIsPoint) return -1;
+        return 0;
+      });
+    }
   }, [locationEntries]);
 
   const layersManagerRef = useRef({});
