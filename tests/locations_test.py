@@ -198,7 +198,6 @@ def test_bundles_are_requested(render):
     _, webpack = render([GEOJSON_POINT])
 
     assert set(webpack.requested) == {
-        "locations_geometry.js",
         "locations_map.js",
         "locations_point.js",
         "locations_map.css",

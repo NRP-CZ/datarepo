@@ -1,7 +1,6 @@
 import React, { useState, useRef, useMemo } from "react";
 import PropTypes from "prop-types";
 import { i18next } from "@translations/i18next";
-import { getGeometryAsGeoJSONObject } from "../locations_geometry";
 import LocationsList from "./LocationsList";
 import LocationsMap from "./LocationsMap";
 import ErrorMessage from "./ErrorMessage";
@@ -13,10 +12,11 @@ function Locations({ locations }) {
 
     return locations
       .map((location) => {
-        if (!location.geometry) return null;
-        const geometry = getGeometryAsGeoJSONObject(location);
-        if (!geometry) return null;
+        if (!location.geometry || typeof location.geometry !== "object") {
+          return null;
+        }
 
+        const geometry = location.geometry;
         return { id: crypto.randomUUID(), location, geometry };
       })
       .filter(Boolean);
