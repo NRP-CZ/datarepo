@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { i18next } from "@translations/i18next";
-import { Icon } from "semantic-ui-react";
+import { ClipboardCopyButton } from "@js/oarepo_ui/components/ClipboardCopyButton";
+import "../../../less/components/location-list-item-content-actions.less"
 
 const LAT_BOUNDS = { min: -90, max: 90 };
 const LON_BOUNDS = { min: -180, max: 180 };
@@ -65,7 +65,7 @@ export function LocationListItemContent({ locationEntry, active, onClick }) {
         {active ? <b>{location.place}</b> : location.place}
       </span>
       {point && (
-        <span className="ml-5">
+        <span className="ml-5 location-list-item-content-actions">
           <a
             href={`https://google.com/maps/place/${point.lat},${point.lon}`}
             target="_blank"
@@ -74,20 +74,7 @@ export function LocationListItemContent({ locationEntry, active, onClick }) {
           >
             {point.lat}, {point.lon} <i className="external alternate icon"></i>
           </a>
-          <Icon
-            name="copy"
-            color="yellow"
-            style={{ cursor: "copy" }}
-            onClick={() => {
-              navigator.clipboard.writeText(`${point.lat}, ${point.lon}`);
-              alert(
-                i18next.t("Copied the latitude and longitude") +
-                  ": " +
-                  `${point.lat}, ${point.lon}` +
-                  ".",
-              );
-            }}
-          />
+          <ClipboardCopyButton copyText={`${point.lat}, ${point.lon}`} />
         </span>
       )}
     </>
