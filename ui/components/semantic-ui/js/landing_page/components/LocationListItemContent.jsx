@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { i18next } from "@translations/i18next";
-import { ListItem, Icon } from "semantic-ui-react";
+import { Icon } from "semantic-ui-react";
 
-export function LocationListItem({ locationEntry, active, onClick }) {
+export function LocationListItemContent({ locationEntry, active, onClick }) {
   const { id, location, geometry } = locationEntry || {};
 
   if (!location || !location.place || !geometry) {
@@ -20,7 +20,7 @@ export function LocationListItem({ locationEntry, active, onClick }) {
   }
 
   return (
-    <ListItem>
+    <>
       <span
         onClick={() => {
           if (onClick) onClick(id);
@@ -49,17 +49,18 @@ export function LocationListItem({ locationEntry, active, onClick }) {
               alert(
                 i18next.t("Copied the latitude and longitude") +
                   ": " +
-                  `${lat}, ${lon}` + ".",
+                  `${lat}, ${lon}` +
+                  ".",
               );
             }}
           />
         </span>
       )}
-    </ListItem>
+    </>
   );
 }
 
-LocationListItem.propTypes = {
+LocationListItemContent.propTypes = {
   locationEntry: PropTypes.shape({
     id: PropTypes.string.isRequired,
     location: PropTypes.object.isRequired,
@@ -69,4 +70,4 @@ LocationListItem.propTypes = {
   onClick: PropTypes.func,
 };
 
-export default LocationListItem;
+export default LocationListItemContent;

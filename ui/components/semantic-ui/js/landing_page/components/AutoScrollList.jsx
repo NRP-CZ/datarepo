@@ -1,56 +1,47 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { useEffect, useRef } from "react";
+import { List } from "semantic-ui-react";
 
 /**
- * Renders a list of items and automatically scrolls the item at `activeIndex`
- * into the center of the viewport whenever the active index changes.
- *
- * `renderItem` must return a single element whose component forwards its
- * ref to the underlying DOM node (e.g. via React.forwardRef, or a plain
- * DOM element like <div>). AutoScrollList attaches a ref to it directly;
- * it does not wrap items in any extra DOM node.
- *
- * @param {Array} props.items items to render
- * @param {number} props.activeIndex index of the item to scroll into view
- * @param {function(*, number): React.ReactElement} props.renderItem
+ * Renders a scrollable list of items and scrolls to the item with `scrollToId` Id.
+ * Therefore, `items` objects are expected to have `id`.
  */
-function AutoScrollList({ items, activeIndex, getKey, renderItem }) {
-  const elementRefs = useRef([]);
+function AutoScrollList({ items, scrollToId, renderItem }) {
+  const containerRef = useRef(null);
 
   useEffect(() => {
-    if (
-      activeIndex !== undefined &&
-      activeIndex >= 0 &&
-      elementRefs.current[activeIndex]
-    ) {
-      elementRefs.current[activeIndex]?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
+    if (!scrollToId || !containerRef.current) {
+      return;
     }
-  }, [activeIndex]);
+
+    const item = containerRef.current.querySelector(
+      `[data-scroll-id="${CSS.escape(String(scrollToId))}"]`,
+    );
+
+    if (item) {
+      item.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }, [scrollToId]);
 
   return (
-    <>
-      {items.map((element, index) => {
-        const item = renderItem(element, index);
-
-        return React.cloneElement(item, {
-          key: getKey(element, index),
-          ref: (el) => {
-            elementRefs.current[index] = el;
-          },
-        });
-      })}
-    </>
+    <div ref={containerRef} style={{ maxHeight: "250px", overflowY: "auto" }}>
+      <List bulleted relaxed>
+        {items.map((item) => (
+          <List.Item
+            key={String(item.id)}
+            data-scroll-id={String(item.id)}
+          >
+            {renderItem(item)}
+          </List.Item>
+        ))}
+      </List>
+    </div>
   );
 }
 
 AutoScrollList.propTypes = {
   items: PropTypes.array.isRequired,
-  activeIndex: PropTypes.number,
-  getKey: PropTypes.func.isRequired,
+  scrollToId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   renderItem: PropTypes.func.isRequired,
 };
 
