@@ -32,6 +32,14 @@
 * {
   margin: 0;
 }
+html {
+  /* Smoother in-page scrolling */
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
 html,
 body {
   /* 3. Add accessible line-height */
@@ -47,12 +55,17 @@ body {
 
 main {
   flex-grow: 1;
-  background-image: url("~@less/site/images/background-image.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
   background-color: @mainBackgroundColor;
-  background-position: center;
-  background-attachment: fixed;
+
+  // Keep the decorative background graphic on the frontpage only.
+  // background-attachment: fixed was removed — it caused the
+  // background to visibly move while scrolling (esp. in Safari).
+  &:has(.frontpage-content) {
+    background-image: url("~@less/site/images/background-image.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
 }
 
 /* 5. Improve media defaults */
