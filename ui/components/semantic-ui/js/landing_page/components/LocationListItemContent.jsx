@@ -1,23 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ClipboardCopyButton } from "@js/oarepo_ui/components/ClipboardCopyButton";
-import "../../../less/components/location-list-item-content-actions.less"
+import "../../../less/components/location-list-item-content-actions.less";
 
 const LAT_BOUNDS = { min: -90, max: 90 };
 const LON_BOUNDS = { min: -180, max: 180 };
 
 /**
- * Returns the coordinate if it is a plain finite number within bounds,
- * otherwise undefined.
+ * Returns true if `value` is a plain finite number within `bounds`, otherwise false.
  */
 function validateCoordinate(value, bounds) {
   if (typeof value !== "number" || !Number.isFinite(value)) {
-    return undefined;
+    return false;
   }
   if (value < bounds.min || value > bounds.max) {
-    return undefined;
+    return false;
   }
-  return value;
+  return true;
 }
 
 /**
@@ -34,21 +33,22 @@ function getValidPointCoordinates(geometry) {
   }
 
   const [lon, lat] = geometry.coordinates;
-  const validLat = validateCoordinate(lat, LAT_BOUNDS);
-  const validLon = validateCoordinate(lon, LON_BOUNDS);
-
-  if (validLat === undefined || validLon === undefined) {
+  if (
+    !(
+      validateCoordinate(lat, LAT_BOUNDS) && validateCoordinate(lon, LON_BOUNDS)
+    )
+  ) {
     return undefined;
   }
 
-  return { lat: validLat, lon: validLon };
+  return { lat, lon };
 }
 
 export function LocationListItemContent({ locationEntry, active, onClick }) {
   const { id, location, geometry } = locationEntry || {};
 
   if (!location || !location.place || !geometry) {
-    console.warn(`Skipping invalid location!`);
+    console.warn(`Skipping invalid location: `, location);
     return null;
   }
 
