@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ClipboardCopyButton } from "@js/oarepo_ui/components/ClipboardCopyButton";
-import "../../../less/components/location-list-item-content-actions.less";
 
 const LAT_BOUNDS = { min: -90, max: 90 };
 const LON_BOUNDS = { min: -180, max: 180 };

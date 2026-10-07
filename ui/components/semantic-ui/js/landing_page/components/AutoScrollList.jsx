@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { List } from "semantic-ui-react";
-import "../../../less/components/auto-scroll-list.less";
 
 /**
  * Renders a scrollable list of items and scrolls to the item with `scrollToId`.

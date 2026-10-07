@@ -4,7 +4,6 @@ import L from "leaflet";
 import { i18next } from "@translations/i18next";
 import sanitizeHtml from "sanitize-html";
 import _capitalize from "lodash/capitalize";
-import "../../../less/components/locations-map.less";
 
 function formatIdentifiers(value) {
   if (!Array.isArray(value)) {
