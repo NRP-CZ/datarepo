@@ -13,3 +13,16 @@
 .ui.toggle.checkbox label:hover::before {
   border: 1px solid @toggleCheckboxBorderHoverColor;
 }
+
+/* Give the handle a border in every state so it stays visible against
+   the lane and the card background (Zenodo-style toggle). */
+.ui.toggle.checkbox .box::after,
+.ui.toggle.checkbox label::after {
+  border: 1px solid @greys3;
+}
+
+/* Hover on the handle */
+.ui.toggle.checkbox .box:hover::after,
+.ui.toggle.checkbox label:hover::after {
+  border-color: @toggleCheckboxBorderHoverColor;
+}
