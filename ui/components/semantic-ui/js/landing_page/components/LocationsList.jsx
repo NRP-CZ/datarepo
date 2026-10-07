@@ -29,7 +29,7 @@ LocationsList.propTypes = {
       id: PropTypes.string.isRequired,
       location: PropTypes.object.isRequired,
       geometry: PropTypes.object.isRequired,
-    }),
+    }).isRequired,
   ),
   activeLocationId: PropTypes.string,
   onItemClick: PropTypes.func,

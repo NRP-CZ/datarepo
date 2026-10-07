@@ -1,37 +1,17 @@
 import React, { useState, useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
-import { i18next } from "@translations/i18next";
 import LocationsList from "./LocationsList";
 import LocationsMap from "./LocationsMap";
-import { ErrorElement } from "@js/oarepo_ui/search";
 
-function Locations({ locations }) {
-  const locationEntries = useMemo(() => {
-    if (locations == null) return null;
-    if (locations.length === 0) return [];
-
-    return locations
-      .map((location) => {
-        if (!location.geometry || typeof location.geometry !== "object") {
-          return null;
-        }
-
-        const geometry = location.geometry;
-        return { id: crypto.randomUUID(), location, geometry };
-      })
-      .filter(Boolean);
-  }, [locations]);
-
+function Locations({ locationEntries }) {
   const sortedLocationEntries = useMemo(() => {
-    if (locationEntries) {
-      return [...locationEntries].sort((a, b) => {
-        const aIsPoint = a.geometry.type === "Point";
-        const bIsPoint = b.geometry.type === "Point";
-        if (aIsPoint && !bIsPoint) return 1;
-        if (!aIsPoint && bIsPoint) return -1;
-        return 0;
-      });
-    }
+    return [...locationEntries].sort((a, b) => {
+      const aIsPoint = a.geometry.type === "Point";
+      const bIsPoint = b.geometry.type === "Point";
+      if (aIsPoint && !bIsPoint) return 1;
+      if (!aIsPoint && bIsPoint) return -1;
+      return 0;
+    });
   }, [locationEntries]);
 
   const [activeLocationId, setActiveLocationId] = useState(null);
@@ -59,19 +39,6 @@ function Locations({ locations }) {
     [setActiveLocationId],
   );
 
-  if (locationEntries === null) {
-    return (
-      <ErrorElement
-        error={new Error(i18next.t("No valid locations were found!"))}
-      />
-    );
-  }
-  if (locationEntries.length === 0) {
-    return (
-      <ErrorElement error={new Error(i18next.t("No locations were found!"))} />
-    );
-  }
-
   return (
     <>
       <LocationsMap
@@ -90,7 +57,13 @@ function Locations({ locations }) {
 }
 
 Locations.propTypes = {
-  locations: PropTypes.array.isRequired,
+  locationEntries: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      location: PropTypes.object.isRequired,
+      geometry: PropTypes.object.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default Locations;
