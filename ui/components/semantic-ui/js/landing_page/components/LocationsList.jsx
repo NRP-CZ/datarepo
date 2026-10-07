@@ -8,19 +8,18 @@ export function LocationsList({
   activeLocationId,
   onItemClick,
 }) {
-  return (
-    <AutoScrollList
-      items={locationEntries}
-      scrollToId={activeLocationId}
-      renderItem={(locationEntry) => (
-        <LocationListItemContent
-          locationEntry={locationEntry}
-          active={locationEntry.id === activeLocationId}
-          onClick={onItemClick}
-        />
-      )}
-    ></AutoScrollList>
-  );
+  const items = locationEntries.map((locationEntry) => ({
+    id: locationEntry.id,
+    component: (
+      <LocationListItemContent
+        locationEntry={locationEntry}
+        active={locationEntry.id === activeLocationId}
+        onClick={onItemClick}
+      />
+    ),
+  }));
+
+  return <AutoScrollList items={items} scrollToId={activeLocationId} />;
 }
 
 LocationsList.propTypes = {
@@ -29,8 +28,8 @@ LocationsList.propTypes = {
       id: PropTypes.string.isRequired,
       location: PropTypes.object.isRequired,
       geometry: PropTypes.object.isRequired,
-    }).isRequired,
-  ),
+    }),
+  ).isRequired,
   activeLocationId: PropTypes.string,
   onItemClick: PropTypes.func,
 };
