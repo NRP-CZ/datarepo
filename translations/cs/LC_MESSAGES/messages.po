@@ -445,6 +445,11 @@ msgstr "Nebyly nalezeny žádné validní lokace!"
 msgid "No locations were found!"
 msgstr "Nebyly nalezeny žádné lokace!"
 
+msgid "Must be a valid number between -90 and 90."
+msgstr "Musí se jednat o platné číslo v rozmezí -90 až 90."
+
+msgid "Must be a valid number between -180 and 180."
+msgstr "Musí se jednat o platné číslo v rozmezí -180 až 180."
 
 #~ msgid "APA"
 #~ msgstr "APA"

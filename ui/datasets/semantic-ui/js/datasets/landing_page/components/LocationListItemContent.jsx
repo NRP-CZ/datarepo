@@ -1,22 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ClipboardCopyButton } from "@js/oarepo_ui/components/ClipboardCopyButton";
-
-const LAT_BOUNDS = { min: -90, max: 90 };
-const LON_BOUNDS = { min: -180, max: 180 };
-
-/**
- * Returns true if `value` is a plain finite number within `bounds`, otherwise false.
- */
-function validateCoordinate(value, bounds) {
-  if (typeof value !== "number" || !Number.isFinite(value)) {
-    return false;
-  }
-  if (value < bounds.min || value > bounds.max) {
-    return false;
-  }
-  return true;
-}
+import {
+  validateCoordinate,
+  LAT_BOUNDS,
+  LON_BOUNDS,
+} from "@js/datasets/locationHelpers/coordinateValidator";
 
 /**
  * Extracts and validates a [lat, lon] pair from a GeoJSON Point geometry.
