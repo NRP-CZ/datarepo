@@ -542,6 +542,14 @@ msgstr "Nebyly nalezeny žádné validní lokace!"
 msgid "No locations were found!"
 msgstr "Nebyly nalezeny žádné lokace!"
 
+#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:101
+msgid ""
+"Once approved, sign out and sign in again so the new permission\n"
+"              is picked up — then you can deposit your first dataset."
+msgstr ""
+"Po schválení se odhlaste a znovu přihlaste, aby se nové oprávnění\n"
+"načetlo — poté můžete uložit svůj první dataset."
+
 #~ msgid "APA"
 #~ msgstr "APA"
 
