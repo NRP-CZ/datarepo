@@ -41,6 +41,7 @@
     "leaflet": "^1.9.4",
     "lodash": "^4.17.15",
     "luxon": "^1.23.0",
+    "molstar": "^5.11.0",
     "papaparse": "^5.4.1",
     "path": "^0.12.7",
     "pdfjs-dist": "^5.0",
