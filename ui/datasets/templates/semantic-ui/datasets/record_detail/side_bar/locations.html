@@ -1,0 +1,17 @@
+{%- set locations = record_ui["ui"].get('locations', {}).get('features') %}
+
+{%- if locations %}
+<div class="sidebar-container">
+    <h2 class="ui medium top attached header mt-0">{{ _('Geographic locations') }}</h2>
+    <div id="record-locations" data-locations='{{ locations | tojson | forceescape }}' class="ui segment bottom attached rdm-sidebar">
+    </div>
+</div>
+
+{% block javascript %}
+{{ webpack['locations-js.js'] }}
+{% endblock javascript %}
+
+{%- block css %}
+{{ webpack['locations-css.css'] }}
+{%- endblock %}
+{%- endif %}

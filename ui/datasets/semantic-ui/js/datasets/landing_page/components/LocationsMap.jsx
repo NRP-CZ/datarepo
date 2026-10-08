@@ -1,0 +1,187 @@
+import React, { useRef, useEffect } from "react";
+import PropTypes from "prop-types";
+import L from "leaflet";
+import { i18next } from "@translations/i18next";
+import sanitizeHtml from "sanitize-html";
+import _capitalize from "lodash/capitalize";
+
+function formatIdentifiers(value) {
+  if (!Array.isArray(value)) {
+    return "";
+  }
+
+  return value
+    .map((entry) => {
+      return entry.identifier;
+    })
+    .filter(Boolean)
+    .join(", ");
+}
+
+function buildFormattedValue(key, value) {
+  // Special cases.
+  if (key === "identifiers") {
+    return formatIdentifiers(value);
+  }
+
+  let formattedValue = String(value);
+
+  if (typeof value === "object") {
+    formattedValue = Object.values(value)
+      .map((val) => buildFormattedValue(undefined, val))
+      .filter(Boolean)
+      .join(", ");
+  }
+
+  return formattedValue;
+}
+
+const sanitizeOpts = {
+  allowedTags: [],
+  allowedAttributes: {},
+};
+
+function buildPopUp(location) {
+  let popupHtml = `<div text-align: center;>`;
+
+  if (location.place) {
+    popupHtml += `
+      <div>
+        <h6 class="ui horizontal fitted divider header">${i18next.t("Place")}</h6>
+        ${sanitizeHtml(location.place, sanitizeOpts)}
+      </div>`;
+  }
+
+  for (const [key, value] of Object.entries(location)) {
+    if (!["geometry", "place", "type"].includes(key) && value) {
+      const formattedKey = i18next.t(_capitalize(key));
+      const formattedValue = buildFormattedValue(key, value);
+      popupHtml += `
+        <div class="rel-mt-1">
+          <h6 class="ui horizontal fitted divider header">${sanitizeHtml(formattedKey, sanitizeOpts)}</h6>
+          <span>${sanitizeHtml(formattedValue, sanitizeOpts)}</span>
+        </div>`;
+    }
+  }
+  popupHtml += `</div>`;
+
+  return popupHtml;
+}
+
+function LocationsMap({
+  locationEntries,
+  flyToId,
+  onLocationClick,
+  onPopupClose,
+}) {
+  // Maps location Ids to their Leaflet layers.
+  const layersManagerRef = useRef({});
+
+  const mapContainerRef = useRef(null);
+  const mapInstanceRef = useRef(null);
+
+  useEffect(() => {
+    if (!mapContainerRef.current) return;
+
+    if (mapInstanceRef.current) {
+      mapInstanceRef.current.remove();
+    }
+
+    const map = L.map(mapContainerRef.current).setView([0, 0], 0);
+    mapInstanceRef.current = map;
+    layersManagerRef.current = {};
+
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
+
+    const resizeObserver = new ResizeObserver(() => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.invalidateSize();
+      }
+    });
+
+    resizeObserver.observe(mapContainerRef.current);
+
+    const featureGroup = L.featureGroup().addTo(map);
+
+    locationEntries.forEach(({ id, location, geometry }) => {
+      const layer = L.geoJSON(geometry, {
+        style: { color: "#3399ff", weight: 2, opacity: 0.8 },
+        pointToLayer: (_feature, latlng) => {
+          return L.circleMarker(latlng, {
+            radius: 6,
+            fillColor: "#3399ff",
+            color: "#3399ff",
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 0.8,
+          });
+        },
+      });
+
+      layer.bindPopup(buildPopUp(location));
+
+      layer.on("click", (_) => {
+        if (onLocationClick) {
+          onLocationClick({ id, location, geometry });
+        }
+      });
+
+      layer.on("popupclose", () => {
+        if (onPopupClose) {
+          onPopupClose(id);
+        }
+      });
+
+      featureGroup.addLayer(layer);
+      layersManagerRef.current[id] = layer;
+    });
+
+    if (featureGroup.getLayers().length > 0) {
+      map.fitBounds(featureGroup.getBounds(), { padding: [10, 10] });
+    } else {
+      map.setView([0, 0], 13);
+    }
+
+    return () => {
+      resizeObserver.disconnect();
+      map.remove();
+      mapInstanceRef.current = null;
+    };
+  }, [locationEntries, onLocationClick, onPopupClose]);
+
+  // Reacts to the change of `flyToId` prop, meaning parent needs the map to zoom-in to specific location.
+  useEffect(() => {
+    const map = mapInstanceRef.current;
+
+    if (!map || !flyToId) return;
+
+    const targetLayer = layersManagerRef.current[flyToId];
+    if (targetLayer) {
+      map.flyToBounds(targetLayer.getBounds(), { maxZoom: 10, duration: 1.0 });
+
+      map.once("moveend", () => {
+        targetLayer.openPopup();
+      });
+    }
+  }, [flyToId]);
+
+  return <div ref={mapContainerRef} className="locations-map"></div>;
+}
+
+LocationsMap.propTypes = {
+  locationEntries: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      location: PropTypes.object.isRequired,
+      geometry: PropTypes.object.isRequired,
+    }).isRequired,
+  ),
+  flyToId: PropTypes.string,
+  onLocationClick: PropTypes.func,
+  onPopupClose: PropTypes.func,
+};
+
+export default LocationsMap;
