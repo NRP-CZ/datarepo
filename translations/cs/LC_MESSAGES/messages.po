@@ -34,6 +34,9 @@ msgstr "Klíčová slova"
 msgid "Data Catch-all Repository"
 msgstr "Datový Catch-all Repozitář"
 
+msgid "Search guide"
+msgstr "Průvodce vyhledáváním"
+
 #: templates/footer.html:35
 #, python-format
 msgid ""

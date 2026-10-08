@@ -1,0 +1,260 @@
+{#
+  SPDX-FileCopyrightText: 2021 CERN.
+  SPDX-FileCopyrightText: 2021 Northwestern University.
+  SPDX-License-Identifier: MIT
+#}
+{%- set title = _("Průvodce vyhledáváním") %}
+{%- extends config.BASE_TEMPLATE %}
+
+{%- block page_body %}
+<div class="ui container mt-25">
+  <h1>Průvodce vyhledáváním</h1>
+  <p>
+    Tento průvodce vysvětluje, jak psát pokročilé vyhledávací dotazy pomocí
+    jednoduchých a srozumitelných příkladů.
+  </p>
+  <h3>Jednoduché vyhledávání (jeden nebo několik výrazů)</h3>
+  <p>
+    <strong>Příklad:</strong>
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='open science') }}"
+    ><code>open science</code></a
+    >
+  </p>
+  <p>
+    Výsledky budou odpovídat záznamům s <em>výrazy</em> <code>open</code>
+    <em>nebo</em> <code>science</code> v <em>libovolném poli</em>. Pozn.: je
+    použito tzv. stemování, takže např. <code>science</code> bude odpovídat i
+    <code>sciences</code>. Výsledky vyhledávání jsou seřazeny podle algoritmu,
+    který bere v úvahu vaše vyhledávací výrazy.
+  </p>
+  <p>
+    Můžete vyžadovat <em>přítomnost</em> obou výrazů pomocí operátoru
+    <code>+</code> nebo <code>AND</code>:
+  </p>
+  <p>
+    <strong>Příklady:</strong>
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='+open +science') }}"
+    ><code>+open +science</code></a
+    >
+    nebo
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='open AND science') }}"
+    ><code>open AND science</code></a
+    >
+  </p>
+  <p>
+    Můžete vyžadovat <em>nepřítomnost</em> jednoho nebo více výrazů pomocí
+    operátoru <code>-</code> nebo <code>NOT</code>:
+  </p>
+  <p>
+    <strong>Příklady:</strong>
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='-open +science') }}"
+    ><code>-open +science</code></a
+    >
+    nebo
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='NOT open AND science') }}"
+    ><code>NOT open AND science</code></a
+    >
+  </p>
+  <h3>Vyhledávání fráze</h3>
+  <p>
+    <strong>Příklad:</strong>
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='"open science"') }}"
+    ><code>"open science"</code></a
+    >
+  </p>
+  <p>
+    Výsledky budou odpovídat záznamům s <em>frází</em>
+    <code>open science</code> v <em>libovolném poli</em>.
+  </p>
+  <h3>Vyhledávání v poli</h3>
+  <p>
+    <strong>Příklad:</strong>
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='metadata.title:open') }}"
+    ><code>metadata.title:open</code></a
+    >
+  </p>
+  <p>
+    Výsledky budou odpovídat záznamům s <em>výrazem</em> <code>open</code> v
+    <em>poli</em> <code>metadata.title</code>. Pokud chcete v názvu vyhledávat
+    více výrazů, musíte je <strong>seskupit</strong> pomocí závorek:
+  </p>
+  <p>
+    <strong>Příklad:</strong>
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='metadata.title:(open science)') }}"
+    ><code>metadata.title:(open science)</code></a
+    >
+  </p>
+  <p>
+    Viz <a href="https://inveniordm.docs.cern.ch/reference/metadata/#metadata"
+  >dokumentace InvenioRDM</a
+    > pro úplný seznam polí, ve kterých můžete vyhledávat.
+  </p>
+  <h3>Kombinované vyhledávání (jednoduché, fráze, pole)</h3>
+  <p>
+    <strong>Příklad:</strong>
+    <a
+      href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='+metadata.title:"open science" -metadata.title:policy') }}"
+    ><code>+metadata.title:"open science" -metadata.title:policy</code></a
+    >
+    nebo např.
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='metadata.title:(-open +science)') }}"
+    ><code>metadata.title:(-open +science)</code></a
+    >
+  </p>
+  <p>
+    Jednoduché vyhledávání, vyhledávání frází a vyhledávání v polích můžete
+    kombinovat a vytvářet tak pokročilé vyhledávací dotazy.
+  </p>
+  <h3>Vyhledávání rozsahu</h3>
+  <p>
+    <strong>Příklad:</strong>
+    <a
+      href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='metadata.publication_date:[2017 TO 2018]') }}"
+    ><code>metadata.publication_date:[2017 TO 2018]</code></a
+    >
+    (pozn.: <code>TO</code> musí být psáno velkými písmeny).
+  </p>
+  <p>
+    Výsledky budou odpovídat jakémukoli záznamu s datem publikace mezi
+    2017-01-01 a 2018-01-01 (oba dny včetně).
+  </p>
+  <p>Pozn.: dílčí data jsou rozšířena na úplná data, např.:</p>
+  <ul>
+    <li>2017 je rozšířeno na 2017-01-01</li>
+    <li>2017-06 je rozšířeno na 2017-06-01</li>
+  </ul>
+  <p>
+    Použijte hranaté závorky (<code>[]</code>) pro <em>včetně</em> rozsahů a
+    složené závorky (<code>{}</code>) pro <em>exkluzivní</em> rozsahy, např.:
+  </p>
+  <ul>
+    <li>
+      <code>[2017 TO 2018}</code> je ekvivalentní
+      <code>[2017-01-01 TO 2017-12-31]</code> díky expanzi dat a exkluzivního
+      horního limitu.
+    </li>
+  </ul>
+  <p>Příklady dalších rozsahů:</p>
+  <ul>
+    <li>
+      <code>metadata.publication_date:{* TO 2017-01-01}</code>: Všechny dny před 2017.
+    </li>
+    <li>
+      <code>metadata.publication_date:[2017-01-01 TO *]</code>: Všechny dny od 2017.
+    </li>
+  </ul>
+  <h3>Řazení</h3>
+  <p>
+    Ve výchozím nastavení jsou všechny výsledky řazeny podle interního
+    rankingového algoritmu, který bodově hodnotí shodu s vaším dotazem. Jak v
+    uživatelském rozhraní, tak v REST API lze výsledky řadit podle:
+  </p>
+  <ul>
+    <li>Nejnovější</li>
+    <li>Nejlepší shoda</li>
+    <li>Nejstarší</li>
+    <li>Nejzobrazovanější</li>
+    <li>Nejstahovanější</li>
+  </ul>
+  <h3>Regulární výrazy</h3>
+  <p>
+    Regulární výrazy jsou výkonný jazyk pro pattern matching, který umožňuje
+    vyhledávání specifických vzorů v poli. Například pokud bychom chtěli najít
+    všechny záznamy s DOI prefixem 10.5281, můžeme použít regulární výraz:
+  </p>
+  <p>
+    <strong>Příklad:</strong>
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='pids.doi.identifier:/10\\.5281.*/') }}">
+      <code>pids.doi.identifier:/10\.5281.*/</code>
+    </a>
+  </p>
+  <p>
+    Pozor, regulární výraz se musí shodovat s <em>celou</em> hodnotou pole.
+    Viz
+    <a
+      href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#regexp-syntax"
+    >syntax regulárních výrazů</a
+    >
+    pro další podrobnosti.
+  </p>
+  <h3>Chybějící hodnoty</h3>
+  <p>
+    Je možné vyhledávat záznamy, které buď nemají hodnotu, nebo mají hodnotu v
+    určitém poli pomocí polí <code>_exists_</code> a
+    <code>NOT _exists_</code>.
+  </p>
+  <p>
+    <strong>Příklad:</strong>
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='NOT _exists_:metadata.additional_titles') }}">
+      <code>NOT _exists_:metadata.additional_titles</code>
+    </a>
+    (všechny záznamy bez metadata.additional_titles)
+  </p>
+  <p>
+    <strong>Příklad:</strong>
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='_exists_:metadata.creators') }}"
+    ><code>_exists_:metadata.creators</code></a
+    >
+    (všechny záznamy s metadata.creators)
+  </p>
+  <h3>Pokročilé koncepty</h3>
+  <h4>Boosting</h4>
+  <p>
+    Můžete použít operátor boost <code>^</code>, když je jeden výraz relevantnější
+    než jiný. Například můžete vyhledávat všechny záznamy s frází
+    <em>open science</em> v <em>názvu</em> nebo <em>popisu</em>, ale
+    ignorovat záznamy s frází v poli <em>názvu</em>:
+  </p>
+  <p>
+    <strong>Příklad:</strong>
+    <a
+      href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='metadata.title:"open science"^5 metadata.description:"open science"') }}"
+    ><code>metadata.title:"open science"^5 metadata.description:"open science"</code></a
+    >
+  </p>
+  <h4>Fuzzy vyhledávání</h4>
+  <p>
+    Můžete vyhledávat výrazy podobné, ale ne přesně stejné jako váš vyhledávací
+    výraz pomocí fuzzy operátoru <code>~</code>.
+  </p>
+  <p>
+    <strong>Příklad:</strong>
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='oepn~') }}"><code>oepn~</code></a>
+  </p>
+  <p>
+    Výsledky budou odpovídat záznamům s výrazy podobnými <code>oepn</code>,
+    což by např. také odpovídalo <code>open</code>.
+  </p>
+  <h4>Vyhledávání blízkosti</h4>
+  <p>
+    Vyhledávání fráze jako <code>"open science"</code> očekává ve výchozím
+    nastavení všechny výrazy v přesně stejném pořadí, a proto by např. neshodilo
+    záznam obsahující frázi <em>"open access and science"</em>. Vyhledávání
+    blízkosti umožňuje, aby výrazy nemusely být v přesném pořadí a mohly
+    zahrnovat další výrazy mezi nimi. Stupeň flexibility je určen celým číslem
+    poté:
+  </p>
+  <p>
+    <strong>Příklad:</strong>
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='"open science"~5') }}"
+    ><code>"open science"~5</code></a
+    >
+  </p>
+  <h4>Divoké znaky</h4>
+  <p>
+    Můžete použít divoké znaky ve vyhledávacích výrazech k nahrazení jednoho
+    znaku (operátor <code>?</code>) nebo nuly nebo více znaků (operátor
+    <code>*</code>).
+  </p>
+  <p>
+    <strong>Příklad:</strong>
+    <a href="{{ invenio_url_for('invenio_search_ui.search', page='1', size='20', q='ope? scien*') }}"
+    ><code>ope? scien*</code></a
+    >
+  </p>
+  <p>
+    Vyhledávání divokých znaků může být pomalé a je obvykle lepší se mu vyhnout,
+    pokud je to možné.
+  </p>
+</div>
+{%- endblock page_body %}
