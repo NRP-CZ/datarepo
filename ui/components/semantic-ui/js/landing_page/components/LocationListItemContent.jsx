@@ -44,7 +44,7 @@ function getValidPointCoordinates(geometry) {
 }
 
 export function LocationListItemContent({ locationEntry, active, onClick }) {
-  const { id, location, geometry } = locationEntry || {};
+  const { location, geometry } = locationEntry || {};
 
   if (!location || !location.place || !geometry) {
     console.warn(`Skipping invalid location: `, location);
@@ -55,12 +55,7 @@ export function LocationListItemContent({ locationEntry, active, onClick }) {
 
   return (
     <>
-      <span
-        onClick={() => {
-          if (onClick) onClick(id);
-        }}
-        style={{ cursor: "pointer" }}
-      >
+      <span onClick={onClick} style={{ cursor: "pointer" }}>
         {active ? <b>{location.place}</b> : location.place}
       </span>
       {point && (

@@ -32,13 +32,6 @@ function Locations({ locationEntries }) {
     [setActiveLocationId],
   );
 
-  const onItemClick = useCallback(
-    (id) => {
-      setActiveLocationId(id);
-    },
-    [setActiveLocationId],
-  );
-
   return (
     <>
       <LocationsMap
@@ -50,7 +43,7 @@ function Locations({ locationEntries }) {
       <LocationsList
         locationEntries={locationEntries}
         activeLocationId={activeLocationId}
-        onItemClick={onItemClick}
+        onItemClick={onLocationClick}
       />
     </>
   );

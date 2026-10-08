@@ -14,7 +14,9 @@ export function LocationsList({
       <LocationListItemContent
         locationEntry={locationEntry}
         active={locationEntry.id === activeLocationId}
-        onClick={onItemClick}
+        onClick={() => {
+          onItemClick(locationEntry);
+        }}
       />
     ),
   }));
