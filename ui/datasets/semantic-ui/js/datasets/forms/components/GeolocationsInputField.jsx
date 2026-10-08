@@ -8,7 +8,7 @@ import {
   GridColumn,
   Grid,
   TabPane,
-  Tab,
+  Menu,
   Button,
   Icon,
 } from "semantic-ui-react";
@@ -53,9 +53,15 @@ export function GeolocationsInputField({
   const { values, setFieldValue } = useFormikContext();
   const currentLocations = getIn(values, `${fieldPath}.features`, []);
 
-  const updateLocationGeometry = useCallback((geometry) => {
-    setFieldValue(`${fieldPath}.features.${activeTabIndex}.geometry`, geometry);
-  }, [fieldPath, activeTabIndex, setFieldValue]);
+  const updateLocationGeometry = useCallback(
+    (geometry) => {
+      setFieldValue(
+        `${fieldPath}.features.${activeTabIndex}.geometry`,
+        geometry,
+      );
+    },
+    [fieldPath, activeTabIndex, setFieldValue],
+  );
 
   const activeGeometry = currentLocations[activeTabIndex]?.geometry ?? null;
 
@@ -145,52 +151,67 @@ export function GeolocationsInputField({
     );
   }
 
-  const panes = currentLocations.map((location, index) => ({
-    menuItem: location.place || `${i18next.t("Location")} ${index + 1}`,
-    render: () => (
-      <TabPane>
-        <GeolocationInputFieldDetail
-          key={`${fieldPath}.features.${index}`}
-          fieldPath={fieldPath}
-          basePath={`${fieldPath}.features.${index}`}
-          activeTabIndex={activeTabIndex}
-          handleRemove={() => handleRemoveLocation(index)}
-          vocabularies={vocabularies}
-          searchValue={searchValue}
-          onSearchValueChange={setSearchValue}
-          performReverseSearch={performReverseSearch}
-          isReverseLoading={isReverseLoading}
-        />
-      </TabPane>
-    ),
-  }));
-
-  panes.push({
-    menuItem: "+",
-    render: () => <TabPane />,
-  });
-
   return (
     <GeolocationInputFieldBody fieldPath={fieldPath} label={label} icon={icon}>
+      <Menu
+        secondary
+        pointing
+        style={{
+          paddingBottom: "10px",
+          display: "flex",
+          flexWrap: "nowrap",
+          overflowX: "auto",
+          overflowY: "hidden",
+        }}
+      >
+        {currentLocations.map((location, index) => (
+          <Menu.Item
+            key={index}
+            active={activeTabIndex === index}
+            onClick={(e) => handleTabChange(e, { activeIndex: index })}
+          >
+            <span
+              style={{
+                maxWidth: "170px",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {location.place || `${i18next.t("Location")} ${index + 1}`}
+            </span>
+          </Menu.Item>
+        ))}
+        <Menu.Item
+          key="add"
+          active={activeTabIndex === currentLocations.length}
+          onClick={(e) =>
+            handleTabChange(e, { activeIndex: currentLocations.length })
+          }
+        >
+          +
+        </Menu.Item>
+      </Menu>
+
       <Grid columns="two" divided>
         <GridRow>
           <GridColumn>
-            <Tab
-              panes={panes}
-              activeIndex={activeTabIndex}
-              onTabChange={handleTabChange}
-              menu={{
-                secondary: true,
-                pointing: true,
-                style: {
-                  paddingBottom: "10px",
-                  display: "flex",
-                  flexWrap: "nowrap",
-                  overflowX: "auto",
-                  overflowY: "hidden",
-                },
-              }}
-            />
+            {currentLocations[activeTabIndex] && (
+              <TabPane>
+                <GeolocationInputFieldDetail
+                  key={`${fieldPath}.features.${activeTabIndex}`}
+                  fieldPath={fieldPath}
+                  basePath={`${fieldPath}.features.${activeTabIndex}`}
+                  activeTabIndex={activeTabIndex}
+                  handleRemove={() => handleRemoveLocation(activeTabIndex)}
+                  vocabularies={vocabularies}
+                  searchValue={searchValue}
+                  onSearchValueChange={setSearchValue}
+                  performReverseSearch={performReverseSearch}
+                  isReverseLoading={isReverseLoading}
+                />
+              </TabPane>
+            )}
           </GridColumn>
           <GridColumn>
             <GeolocationInteractiveMap
