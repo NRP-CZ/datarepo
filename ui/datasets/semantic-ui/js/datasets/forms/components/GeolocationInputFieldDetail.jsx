@@ -37,8 +37,9 @@ export function GeolocationInputFieldDetail({
     ? currentGeometryType === "Point"
     : true;
 
-  const [isManuallyOpened, setIsManuallyOpened] = useState(false);
-  const isAdvancedOpen = !isLocationPoint || isManuallyOpened;
+  // Value `null` signals the initial state, and therefore, the value of `isAdvancedOpen` is derived only from the fact if geometry type is Point or not.
+  const [isManuallyOpened, setIsManuallyOpened] = useState(null);
+  const isAdvancedOpen = isManuallyOpened ?? !isLocationPoint;
 
   const panes = [
     {
@@ -112,7 +113,7 @@ export function GeolocationInputFieldDetail({
           style={{ fontSize: "0.875em", fontWeight: "bold" }}
           active={isAdvancedOpen}
           onClick={() => {
-            setIsManuallyOpened((prev) => !prev);
+            setIsManuallyOpened(!isAdvancedOpen);
           }}
         >
           <Icon name="dropdown" />
