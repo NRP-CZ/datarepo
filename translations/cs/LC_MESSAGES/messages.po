@@ -404,7 +404,7 @@ msgid "No location found."
 msgstr "Žádné místo nebylo nalezeno."
 
 msgid "Invalid WKT!"
-msgstr "Nevalidní WKT"
+msgstr "Nevalidní WKT!"
 
 msgid ""
 "Enter the location manually using WKT format. E.g.:\n"
