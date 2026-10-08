@@ -15,8 +15,9 @@ theme = WebpackThemeBundle(
             entry={
                 "datasets_search": "./js/datasets/search/index.js",
                 "datasets_deposit_form": "./js/datasets/forms/index.js",
-                "locations-js": "./js/datasets/landing_page/locations.js",
-                "locations-css": "./less/datasets/landing_page/locations.less",
+                "locations_deposit_css": "./less/datasets/forms/locations_deposit.less",
+                "locations_js": "./js/datasets/landing_page/locations.js",
+                "locations_css": "./less/datasets/landing_page/locations.less",
             },
             dependencies={
                 "leaflet": "^1.9.4",
