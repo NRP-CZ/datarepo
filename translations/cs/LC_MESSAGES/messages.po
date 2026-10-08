@@ -592,7 +592,7 @@ msgid "No location found."
 msgstr "Žádné místo nebylo nalezeno."
 
 msgid "Invalid WKT!"
-msgstr "Nevalidní WKT"
+msgstr "Nevalidní WKT!"
 
 msgid ""
 "Enter the location manually using WKT format. E.g.:\n"
@@ -626,7 +626,7 @@ msgid "Copied the latitude and longitude"
 msgstr "Do schránky byla zkopírována zeměpisná šířka a délka"
 
 msgid "No valid locations were found!"
-msgstr "Nebyly nalezeny žádné validní lokace!"
+msgstr "Nebyly nalezeny žádné platné lokace!"
 
 msgid "No locations were found!"
 msgstr "Nebyly nalezeny žádné lokace!"
