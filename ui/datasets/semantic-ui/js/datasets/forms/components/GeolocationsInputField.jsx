@@ -15,6 +15,7 @@ import {
 import { GeolocationInputFieldDetail } from "./GeolocationInputFieldDetail";
 import { GeolocationInteractiveMap } from "./GeolocationInteractiveMap";
 import debounce from "lodash/debounce";
+import { useUpdateLocationName } from "../hooks/useUpdateLocationName";
 import { useNominatim } from "../hooks/useNominatim";
 
 function GeolocationInputFieldBody({ fieldPath, label, icon, children }) {
@@ -44,6 +45,7 @@ export function GeolocationsInputField({
   vocabularies,
 }) {
   const { reverseLocation, isLoading: isReverseLoading } = useNominatim();
+  const { updateLocationName } = useUpdateLocationName();
 
   const [searchValue, setSearchValue] = useState("");
   const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -51,9 +53,9 @@ export function GeolocationsInputField({
   const { values, setFieldValue } = useFormikContext();
   const currentLocations = getIn(values, `${fieldPath}.features`, []);
 
-  const updateLocation = (key, value) => {
-    setFieldValue(`${fieldPath}.features.${activeTabIndex}.${key}`, value);
-  };
+  const updateLocationGeometry = useCallback((geometry) => {
+    setFieldValue(`${fieldPath}.features.${activeTabIndex}.geometry`, geometry);
+  }, [fieldPath, activeTabIndex, setFieldValue]);
 
   const activeGeometry = currentLocations[activeTabIndex]?.geometry ?? null;
 
@@ -63,7 +65,7 @@ export function GeolocationsInputField({
         const result = await reverseLocation(lat, lon);
         if (result && result.display_name) {
           const placeName = result.name ? result.name : result.display_name;
-          updateLocation("place", placeName);
+          updateLocationName(fieldPath, activeTabIndex, placeName);
           setSearchValue(result.display_name);
         }
       }
@@ -105,7 +107,7 @@ export function GeolocationsInputField({
 
   const onGeometryChangeHandler = useCallback(
     (geometry) => {
-      updateLocation("geometry", geometry);
+      updateLocationGeometry(geometry);
       if (geometry?.type === "Point") {
         const [lon, lat] = geometry.coordinates;
         performReverseSearch(lat, lon);
@@ -149,7 +151,9 @@ export function GeolocationsInputField({
       <TabPane>
         <GeolocationInputFieldDetail
           key={`${fieldPath}.features.${index}`}
+          fieldPath={fieldPath}
           basePath={`${fieldPath}.features.${index}`}
+          activeTabIndex={activeTabIndex}
           handleRemove={() => handleRemoveLocation(index)}
           vocabularies={vocabularies}
           searchValue={searchValue}
