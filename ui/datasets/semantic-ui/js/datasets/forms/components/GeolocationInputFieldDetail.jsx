@@ -130,7 +130,10 @@ export function GeolocationInputFieldDetail({
             setIsManuallyOpened(!isAdvancedOpen);
           }}
         >
-          <Icon name="dropdown" />
+          <Icon
+            name={isAdvancedOpen ? "caret down" : "caret right"}
+            style={{ transform: "none" }}
+          />
           {i18next.t("Advanced")}
         </AccordionTitle>
         <AccordionContent active={isAdvancedOpen}>
