@@ -49,7 +49,12 @@ export function GeolocationsInputField({
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
   const { values, setFieldValue } = useFormikContext();
-  const currentLocations = getIn(values, fieldPath, []);
+  const currentLocations = getIn(values, `${fieldPath}.features`, []);
+
+  const updateLocation = (key, value) => {
+    setFieldValue(`${fieldPath}.features.${activeTabIndex}.${key}`, value);
+  };
+
   const activeGeometry = currentLocations[activeTabIndex]?.geometry ?? null;
 
   const performReverseSearch = useCallback(
@@ -58,7 +63,7 @@ export function GeolocationsInputField({
         const result = await reverseLocation(lat, lon);
         if (result && result.display_name) {
           const placeName = result.name ? result.name : result.display_name;
-          setFieldValue(`${fieldPath}.${activeTabIndex}.place`, placeName);
+          updateLocation("place", placeName);
           setSearchValue(result.display_name);
         }
       }
@@ -67,7 +72,7 @@ export function GeolocationsInputField({
   );
 
   const handleAddLocation = useCallback(() => {
-    setFieldValue(fieldPath, [...currentLocations, {}]);
+    setFieldValue(fieldPath, { features: [...currentLocations, {}] });
     setActiveTabIndex(currentLocations.length);
   }, [currentLocations, setFieldValue, fieldPath]);
 
@@ -76,7 +81,11 @@ export function GeolocationsInputField({
       const updatedLocations = currentLocations.filter(
         (_, index) => index !== indexToRemove,
       );
-      setFieldValue(fieldPath, updatedLocations);
+      if (updatedLocations.length == 0) {
+        setFieldValue(fieldPath, null);
+      } else {
+        setFieldValue(fieldPath, { features: updatedLocations });
+      }
       setActiveTabIndex(0);
     },
     [currentLocations, setFieldValue, fieldPath],
@@ -96,7 +105,7 @@ export function GeolocationsInputField({
 
   const onGeometryChangeHandler = useCallback(
     (geometry) => {
-      setFieldValue(`${fieldPath}.${activeTabIndex}.geometry`, geometry);
+      updateLocation("geometry", geometry);
       if (geometry?.type === "Point") {
         const [lon, lat] = geometry.coordinates;
         performReverseSearch(lat, lon);
@@ -139,8 +148,8 @@ export function GeolocationsInputField({
     render: () => (
       <TabPane>
         <GeolocationInputFieldDetail
-          key={`${fieldPath}.${index}`}
-          basePath={`${fieldPath}.${index}`}
+          key={`${fieldPath}.features.${index}`}
+          basePath={`${fieldPath}.features.${index}`}
           handleRemove={() => handleRemoveLocation(index)}
           vocabularies={vocabularies}
           searchValue={searchValue}
