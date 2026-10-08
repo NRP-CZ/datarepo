@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { TextAreaField, FieldLabel } from "react-invenio-forms";
 import { TextField } from "@js/oarepo_ui/forms";
@@ -20,9 +20,12 @@ import { NominatimSearchBar } from "./NominatimSearchBar";
 import { GeoJSsonEditor } from "./GeoJsonEditor";
 import { LongitudeAndLatitudeGroupField } from "./LongitudeAndLatitudeGroupField";
 import { WktEditor } from "./WktEditor";
+import { useUpdateLocationName } from "../hooks/useUpdateLocationName";
 
 export function GeolocationInputFieldDetail({
+  fieldPath,
   basePath,
+  activeTabIndex,
   handleRemove,
   vocabularies,
   searchValue,
@@ -31,6 +34,7 @@ export function GeolocationInputFieldDetail({
   isReverseLoading,
 }) {
   const { values } = useFormikContext();
+  const { updateLocationName } = useUpdateLocationName();
 
   const currentGeometryType = getIn(values, `${basePath}.geometry.type`, null);
   const isLocationPoint = currentGeometryType
@@ -40,6 +44,13 @@ export function GeolocationInputFieldDetail({
   // Value `null` signals the initial state, and therefore, the value of `isAdvancedOpen` is derived only from the fact if geometry type is Point or not.
   const [isManuallyOpened, setIsManuallyOpened] = useState(null);
   const isAdvancedOpen = isManuallyOpened ?? !isLocationPoint;
+
+  const handleNameBlur = useCallback((e) => {
+    const typedName = e.target.value;
+    if (typedName) {
+      updateLocationName(fieldPath, activeTabIndex, typedName);
+    }
+  }, []);
 
   const panes = [
     {
@@ -72,6 +83,7 @@ export function GeolocationInputFieldDetail({
         fieldPath={`${basePath}.place`}
         label={i18next.t("Name")}
         placeholder={i18next.t("Use map, search bar or advanced editor...")}
+        onBlur={handleNameBlur}
       />
 
       <TextAreaField
@@ -94,7 +106,9 @@ export function GeolocationInputFieldDetail({
           label={i18next.t("Location")}
         />
         <NominatimSearchBar
+          fieldPath={fieldPath}
           basePath={basePath}
+          activetabIndex={activeTabIndex}
           searchValue={searchValue}
           onSearchValueChange={onSearchValueChange}
         />
@@ -141,7 +155,9 @@ export function GeolocationInputFieldDetail({
 }
 
 GeolocationInputFieldDetail.propTypes = {
+  fieldPath: PropTypes.string.isRequired,
   basePath: PropTypes.string.isRequired,
+  activeTabIndex: PropTypes.number.isRequired,
   handleRemove: PropTypes.func.isRequired,
   vocabularies: PropTypes.object,
   searchValue: PropTypes.string,
