@@ -16,10 +16,7 @@ theme = WebpackThemeBundle(
             "entry": {
                 "components": "./js/custom-components.js",
             },
-            "dependencies": {
-                "leaflet": "^1.9.4",
-                "sanitize-html": "2.13.0",
-            },
+            "dependencies": {},
             "devDependencies": {},
             "aliases": {},
         }
