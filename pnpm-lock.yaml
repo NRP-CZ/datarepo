@@ -20,6 +20,9 @@ importers:
       '@ckeditor/ckeditor5-react':
         specifier: ^2.1.0
         version: 2.1.0(react@16.14.0)
+      '@geoman-io/leaflet-geoman-free':
+        specifier: ^2.20.1
+        version: 2.20.2(leaflet@1.9.4)
       '@microlink/react-json-view':
         specifier: ^1.21.3
         version: 1.31.34(@types/react@19.3.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
@@ -32,6 +35,9 @@ importers:
       '@tanstack/react-query':
         specifier: ^4
         version: 4.44.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@terraformer/wkt':
+        specifier: ^2.2.2
+        version: 2.2.2
       '@tinymce/tinymce-react':
         specifier: ^4.3.0
         version: 4.3.2(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
@@ -1254,6 +1260,12 @@ packages:
     resolution: {integrity: sha512-eYm8vijH/hpzr/6/1CJ/V/Eb1xQFW2nnUKArb3z+yUWv7HTwj6M7SP957oMjfZjAHU6qpoNc2wQvIxBLWYa/Jg==}
     engines: {node: '>=6'}
 
+  '@geoman-io/leaflet-geoman-free@2.20.2':
+    resolution: {integrity: sha512-KQpSe0VKyuVCudq/08rMjJW1vvIwFldTwBny2wZ7ABcyyUAP7/eoFo967hCu9yRqAAHb4QOxC6gY5dGqttY68g==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      leaflet: ^1.2.0
+
   '@humanwhocodes/config-array@0.13.0':
     resolution: {integrity: sha512-DZLEEqFWQFiyK6h5YIeynKx7JlvCYWL0cImfSRXZ9l4Sg2efkFGTuFf6vzXjK1cq6IYkU+Eg/JizXw+TD2vRNw==}
     engines: {node: '>=10.10.0'}
@@ -1821,6 +1833,9 @@ packages:
         optional: true
       react-native:
         optional: true
+
+  '@terraformer/wkt@2.2.2':
+    resolution: {integrity: sha512-BR7eAEip+LeveDPFRf+z/pi3zAm1TCp08V9XzxhRIUaFTnnk7k/PfHYjhCQliVYAuEwbHmBg3rYSjbm9cfl90Q==}
 
   '@tinymce/tinymce-react@4.3.2':
     resolution: {integrity: sha512-wJHZhPf2Mk3yTtdVC/uIGh+kvDgKuTw/qV13uzdChTNo68JI1l7jYMrSQOpyimDyn5LHAw0E1zFByrm1WHAVeA==}
@@ -7457,6 +7472,16 @@ snapshots:
 
   '@fortawesome/fontawesome-free@5.15.4': {}
 
+  '@geoman-io/leaflet-geoman-free@2.20.2(leaflet@1.9.4)':
+    dependencies:
+      '@turf/boolean-contains': 7.4.0
+      '@turf/kinks': 7.4.0
+      '@turf/line-intersect': 7.4.0
+      '@turf/line-split': 7.4.0
+      leaflet: 1.9.4
+      lodash: 4.18.1
+      polyclip-ts: 0.16.8
+
   '@humanwhocodes/config-array@0.13.0':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
@@ -7996,6 +8021,8 @@ snapshots:
       use-sync-external-store: 1.7.0(react@16.14.0)
     optionalDependencies:
       react-dom: 16.14.0(react@16.14.0)
+
+  '@terraformer/wkt@2.2.2': {}
 
   '@tinymce/tinymce-react@4.3.2(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
