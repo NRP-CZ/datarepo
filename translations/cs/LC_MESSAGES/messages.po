@@ -631,6 +631,12 @@ msgstr "Nebyly nalezeny žádné platné lokace!"
 msgid "No locations were found!"
 msgstr "Nebyly nalezeny žádné lokace!"
 
+msgid "Must be a valid number between -90 and 90."
+msgstr "Musí se jednat o platné číslo v rozmezí -90 až 90."
+
+msgid "Must be a valid number between -180 and 180."
+msgstr "Musí se jednat o platné číslo v rozmezí -180 až 180."
+
 #: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:101
 msgid ""
 "Once approved, sign out and sign in again so the new permission\n"
