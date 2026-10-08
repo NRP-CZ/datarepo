@@ -11,8 +11,8 @@
 @checkboxBorder: 1px solid @checkboxBorderColor;
 @checkboxHoverBackground: @checkboxBackgroundHoverColor;
 
-@toggleFocusColor: @greys2;
-@toggleHoverColor: @greys3;
+@toggleFocusColor: @pink;
+@toggleHoverColor: @pink;
 @toggleLaneBackground: @greys2;
 @toggleOnLaneColor: @primaryColor;
 @toggleOnFocusLaneColor: @mainColors6;
