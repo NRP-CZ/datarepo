@@ -5,3 +5,11 @@
   background-color: @mainBackgroundColor;
   border: 1px solid @greys6;
 }
+
+// SUI has no stock "primary" label color — provide one keyed to the theme.
+.ui.primary.label,
+a.ui.primary.label {
+  background-color: @primaryColor;
+  border-color: @primaryColor;
+  color: @white;
+}

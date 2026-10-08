@@ -10,10 +10,6 @@ SPDX-License-Identifier: MIT
     .get-access-panel {
       height: 100%;
     }
-    #standalone_submitter_application {
-      text-align: center;
-      padding-top: 1em;
-    }
   </style>
 {% endblock css %}
 
@@ -24,70 +20,88 @@ SPDX-License-Identifier: MIT
 
 {% block page_body %}
   <div class="ui main container rel-mt-3 rel-mb-3">
-    <h1>{{ _("Getting Permission to Create Records") }}</h1>
-
-    <p>{{ _("To create records, you must obtain write access either:") }}</p>
-    <ul>
-      <li>{{ _("as an individual submitter, referred to as a standalone depositor; or") }}</li>
-      <li>{{ _("through a community role that permits record submission.") }}</li>
-    </ul>
+    <h1>{{ _("Getting Permission to Deposit Datasets") }}</h1>
 
     <p>
-      {{ _("Write access is intended primarily for employees and students of eligible academic and research
-      institutions in the Czech Republic, their international collaborators, and other approved users whose
-      intended use is consistent with the mission of the repository.") }}
+      {{ _("Your account does not have deposit permission yet, so you cannot upload datasets.
+      Deposition is open primarily to employees and students of eligible academic and research
+      institutions in the Czech Republic, their international collaborators, and other approved
+      users whose intended use is consistent with the mission of the repository.") }}
     </p>
-
-    <p>
-      {{ _("During the application process, you may be asked to describe your intended use of the repository
-      and justify your request for access.") }}
-    </p>
+    <p>{{ _("You can obtain deposit permission in one of two ways:") }}</p>
 
     <div class="ui two column stackable equal height grid rel-mt-2">
       <div class="column">
-        <div class="ui segment get-access-panel">
-          <h2>{{ _("Becoming a Standalone Depositor") }}</h2>
+        <div class="ui raised segment get-access-panel">
+          <h2 class="ui header">
+            {{ _("Through a community") }}
+            <span class="ui small primary label">{{ _("Recommended") }}</span>
+          </h2>
+          <p>
+            {{ _("Depositing through a community is the recommended way — your data gets a curator
+            and a home next to related datasets.") }}
+          </p>
 
-          <p><b>{{ _("To apply:") }}</b></p>
-          <div class="ui ordered list">
-            <div class="item">{{ _("Click on the button below and submit the application form.") }}</div>
-            <div class="item">
-              {{ _("Wait for your application to be reviewed. Applications may require manual evaluation,
-              so approval may not be immediate. You will receive an email notification when the
-              application has been processed.") }}
-            </div>
-            <div class="item">
-              {{ _("After your application is approved, sign in to the Data Catch-all Repository and
-              create your first record.") }}
-            </div>
-          </div>
+          <h3 class="ui dividing header">{{ _("Open membership communities") }}</h3>
 
-          <div id="standalone_submitter_application">
-            <!-- a react application is integrated here -->
-          </div>
+          <a class="ui primary fluid right labeled icon button rel-mb-2"
+             href="{{ url_for('invenio_communities.communities_search') }}">
+            {{ _("Find a community") }}
+            <i class="search icon"></i>
+          </a>
+
+          <h4 class="ui header">{{ _("Once you are on the community page:") }}</h4>
+          <ol class="ui list">
+            <li>{{ _("Click the \"Request Membership\" button") }}</li>
+            <li>{{ _("Fill in the form, stating the reason for joining") }}</li>
+            <li>
+              {{ _("You will receive an email once your membership is approved; you can track the request") }}
+              <a href="{{ url_for('invenio_app_rdm_users.requests') }}">{{ _("on your Dashboard under Requests") }}</a>.
+            </li>
+          </ol>
+
+          <div class="ui hidden divider"></div>
+
+          <h3 class="ui dividing header">{{ _("Closed membership communities") }}</h3>
+          <p>
+            {{ _("These communities do not accept online applications — contact the community
+            manager directly. You can find a contact on the community's About page, or write to
+            us at:") }}
+          </p>
+          <a class="ui basic compact labeled icon button" href="mailto:datarepo@eosc.cz">
+            <i class="envelope outline icon"></i>
+            datarepo@eosc.cz
+          </a>
         </div>
       </div>
 
       <div class="column">
-        <div class="ui segment get-access-panel">
-          <h2>{{ _("Getting Access Through a Community") }}</h2>
+        <div class="ui secondary segment get-access-panel rel-p-1">
+          <h2 class="ui header">{{ _("As an individual depositor") }}</h2>
+          <p>
+            {{ _("If no suitable community exists for your data, you can deposit directly
+            as an individual depositor.") }}
+          </p>
 
-          <h3>{{ _("Open membership communities") }}</h3>
-          <p><b>{{ _("To apply:") }}</b></p>
-          <div class="ui ordered list">
-            <div class="item">{{ _("Navigate to the community page") }}</div>
-            <div class="item">{{ _("Click on the \"Request Membership\" button") }}</div>
-            <div class="item">{{ _("Fill in the form, stating the reason for joining") }}</div>
-            <div class="item">{{ _("You will receive an email when your request is approved or rejected.") }}</div>
-            <div class="item">{{ _("You can track the status of your request on your Dashboard under Requests.") }}</div>
+          <div id="standalone_submitter_application" aria-busy="true">
+            <button class="ui secondary disabled button">{{ _("Loading application form…") }}</button>
           </div>
 
-          <h3>{{ _("Closed membership communities") }}</h3>
-          <p>{{ _("You cannot apply to these communities online; you need to contact the community manager directly.
-            If you do not already have a contact email address,
-            check the community's About page or contact us at
-            <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>.") }}
-          </p>
+          <p class="rel-mt-2"><b>{{ _("How it works:") }}</b></p>
+          <ol class="ui list">
+            <li>
+              {{ _("Submit the application form. You may be asked to describe your intended
+              use of the repository.") }}
+            </li>
+            <li>
+              {{ _("Wait for review. Applications are evaluated manually, so approval may not
+              be immediate — you will receive an email once your application has been processed.") }}
+            </li>
+            <li>
+              {{ _("Once approved, sign out and sign in again so the new permission
+              is picked up — then you can deposit your first dataset.") }}
+            </li>
+          </ol>
         </div>
       </div>
     </div>
