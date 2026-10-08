@@ -60,6 +60,7 @@ export function LocationListItemContent({ locationEntry, active, onClick }) {
       </span>
       {point && (
         <span className="ml-5 location-list-item-content-actions">
+          (
           <a
             href={`https://google.com/maps/place/${point.lat},${point.lon}`}
             target="_blank"
@@ -68,7 +69,10 @@ export function LocationListItemContent({ locationEntry, active, onClick }) {
           >
             {point.lat}, {point.lon} <i className="external alternate icon"></i>
           </a>
-          <ClipboardCopyButton copyText={`${point.lat}, ${point.lon}`} />
+          )
+          <span className="ml-5">
+            <ClipboardCopyButton copyText={`${point.lat}, ${point.lon}`} />
+          </span>
         </span>
       )}
     </>
