@@ -8,7 +8,6 @@
    site (see macros/card.html): icon, new tab and accessible announcement
    (matches upstream invenio-app-rdm, e.g. records/macros/detail). #}
 {%- block navbar_nav %}
-  {%- set external_link_attrs = 'target="_blank" rel="noopener noreferrer"' %}
   {%- for item in current_menu.submenu('main').children|sort(attribute='order') if item.visible recursive %}
     {%- if item.children %}
       <div class="item">
@@ -20,7 +19,7 @@
             aria-expanded="false"
             href="{{ item.url }}"
             {%- if item._external_url %}
-              {{ external_link_attrs }}
+              target="_blank" rel="noopener noreferrer"
               aria-label="{{ item.text|striptags }} - {{ _('Open external link') }}"
             {%- endif %}
           >
@@ -39,7 +38,7 @@
       <div class="{{ 'item active' if item.active else 'item' }}">
         <a href="{{ item.url }}"
           {%- if item._external_url %}
-            {{ external_link_attrs }}
+            target="_blank" rel="noopener noreferrer"
             aria-label="{{ item.text|striptags }} - {{ _('Open external link') }}"
           {%- endif %}
         >
@@ -56,7 +55,7 @@
     <div class="{{ 'item active' if item.active else 'item' }}">
       <a href="{{ item.url }}"
         {%- if item._external_url %}
-          {{ external_link_attrs }}
+          target="_blank" rel="noopener noreferrer"
           aria-label="{{ item.text|striptags }} - {{ _('Open external link') }}"
         {%- endif %}
       >

@@ -4,9 +4,6 @@
   }
 
   .item .external.alternate.icon {
-    vertical-align: top;
-    margin-top: 0.15em;
-    position: relative;
-    top: 0;
+    vertical-align: 0.125em; // sits on the text baseline, top at cap height
   }
 }
