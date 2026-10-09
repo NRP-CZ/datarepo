@@ -341,6 +341,12 @@ msgstr "Nevalidní JSON!"
 msgid "Missing 'type' property (e.g., 'Point', 'Polygon')"
 msgstr "Chybí vlastnost „type“ (např. „Point“, „Polygon“)"
 
+msgid "Unsupported geometry type"
+msgstr "Nepodporovaný typ geometrie"
+
+msgid "We currently support only 'Point', 'MultiPoint' and 'Polygon'."
+msgstr "V současné době podporujeme pouze typy „Point“, „MultiPoint“ a „Polygon“."
+
 msgid "Details"
 msgstr "Podrobnosti"
 

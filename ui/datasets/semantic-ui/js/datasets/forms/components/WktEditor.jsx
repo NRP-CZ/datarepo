@@ -4,6 +4,7 @@ import { useFormikContext, getIn } from "formik";
 import { TextAreaField } from "react-invenio-forms";
 import { i18next } from "@translations/i18next";
 import { wktToGeoJSON, geojsonToWKT } from "@terraformer/wkt";
+import { SUPPORTED_GEOMETRY_TYPES } from "@js/datasets/locationHelpers/supportedGeometryTypes";
 
 export function WktEditor({ basePath, onReverseSearch }) {
   const { values, setFieldValue } = useFormikContext();
@@ -47,6 +48,18 @@ export function WktEditor({ basePath, onReverseSearch }) {
       if (!geoJson.type) {
         throw new Error(
           i18next.t("Missing 'type' property (e.g., 'Point', 'Polygon')"),
+        );
+      }
+
+      if (!SUPPORTED_GEOMETRY_TYPES.includes(geoJson.type)) {
+        throw new Error(
+          i18next.t("Unsupported geometry type") +
+            " '" +
+            geoJson.type +
+            "'." +
+            i18next.t(
+              "We currently support only 'Point', 'MultiPoint' and 'Polygon'.",
+            ),
         );
       }
 

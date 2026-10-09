@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useFormikContext, getIn } from "formik";
 import { TextAreaField } from "react-invenio-forms";
 import { i18next } from "@translations/i18next";
+import { SUPPORTED_GEOMETRY_TYPES } from "@js/datasets/locationHelpers/supportedGeometryTypes";
 
 export function GeoJsonEditor({ basePath, onReverseSearch }) {
   const { values, setFieldValue } = useFormikContext();
@@ -46,6 +47,18 @@ export function GeoJsonEditor({ basePath, onReverseSearch }) {
       if (!parsedObj.type) {
         throw new Error(
           i18next.t("Missing 'type' property (e.g., 'Point', 'Polygon')"),
+        );
+      }
+
+      if (!SUPPORTED_GEOMETRY_TYPES.includes(parsedObj.type)) {
+        throw new Error(
+          i18next.t("Unsupported geometry type") +
+            " '" +
+            parsedObj.type +
+            "'." +
+            i18next.t(
+              "We currently support only 'Point', 'MultiPoint' and 'Polygon'.",
+            ),
         );
       }
 

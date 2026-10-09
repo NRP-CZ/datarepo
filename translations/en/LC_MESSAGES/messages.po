@@ -345,6 +345,12 @@ msgstr ""
 msgid "Missing 'type' property (e.g., 'Point', 'Polygon')"
 msgstr ""
 
+msgid "Unsupported geometry type"
+msgstr ""
+
+msgid "We currently support only 'Point', 'MultiPoint' and 'Polygon'."
+msgstr ""
+
 msgid "Details"
 msgstr ""
 
