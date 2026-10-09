@@ -27,7 +27,7 @@ export function GeolocationInputFieldDetail({
   basePath,
   activeTabIndex,
   handleRemove,
-  vocabularies,
+  identifiersScheme,
   searchValue,
   onSearchValueChange,
   performReverseSearch,
@@ -126,7 +126,7 @@ export function GeolocationInputFieldDetail({
         fieldPath={`${basePath}.identifiers`}
         label={i18next.t("Identifiers")}
         labelIcon={""}
-        schemeOptions={vocabularies?.identifiers?.scheme}
+        schemeOptions={identifiersScheme}
         showEmptyValue
       />
 
@@ -192,7 +192,7 @@ GeolocationInputFieldDetail.propTypes = {
   basePath: PropTypes.string.isRequired,
   activeTabIndex: PropTypes.number.isRequired,
   handleRemove: PropTypes.func.isRequired,
-  vocabularies: PropTypes.object,
+  identifiersScheme: PropTypes.object,
   searchValue: PropTypes.string,
   onSearchValueChange: PropTypes.func,
   performReverseSearch: PropTypes.func,
