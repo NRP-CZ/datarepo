@@ -33,8 +33,12 @@ export function GeolocationInputFieldDetail({
   performReverseSearch,
   isReverseLoading,
 }) {
-  const { values } = useFormikContext();
+  const { values, setFieldValue } = useFormikContext();
   const { updateLocationName } = useUpdateLocationName();
+
+  const [description, setDescription] = useState(
+    getIn(values, `${basePath}.description`, null),
+  );
 
   const currentGeometryType = getIn(values, `${basePath}.geometry.type`, null);
   const isLocationPoint = currentGeometryType
@@ -45,12 +49,35 @@ export function GeolocationInputFieldDetail({
   const [isManuallyOpened, setIsManuallyOpened] = useState(null);
   const isAdvancedOpen = isManuallyOpened ?? !isLocationPoint;
 
-  const handleNameBlur = useCallback((e) => {
-    const typedName = e.target.value;
-    if (typedName) {
-      updateLocationName(fieldPath, activeTabIndex, typedName);
-    }
-  }, []);
+  const handleNameBlur = useCallback(
+    (e) => {
+      const typedName = e.target.value;
+      if (typedName) {
+        updateLocationName(fieldPath, activeTabIndex, typedName);
+      }
+    },
+    [updateLocationName],
+  );
+
+  const handleDescriptionChange = useCallback(
+    (e) => {
+      const typedDescription = e.target.value;
+      if (typedDescription) {
+        setDescription(typedDescription);
+      }
+    },
+    [setDescription],
+  );
+
+  const handleDescriptionBlur = useCallback(
+    (e) => {
+      const typedDescription = e.target.value;
+      if (typedDescription) {
+        setFieldValue(`${basePath}.description`, typedDescription);
+      }
+    },
+    [setFieldValue],
+  );
 
   const panes = [
     {
@@ -87,9 +114,12 @@ export function GeolocationInputFieldDetail({
       />
 
       <TextAreaField
-        fieldPath={`${basePath}.description`}
         label={i18next.t("Description")}
         placeholder={i18next.t("Additional details about this location...")}
+        onChange={handleDescriptionChange}
+        onBlur={handleDescriptionBlur}
+        value={description ?? ""}
+        rows={5}
       />
 
       <IdentifiersField
