@@ -27,7 +27,7 @@ function GeolocationInputFieldBody({ fieldPath, label, icon, children }) {
           "Add geolocations for your record. You can use the interactive map or search for the place.",
         )}
       </label>
-      <div style={{ paddingTop: "16px" }}>{children}</div>
+      <div className="rel-pt-1">{children}</div>
     </div>
   );
 }
