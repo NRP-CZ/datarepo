@@ -111,5 +111,18 @@
 
 </div>
 
+{# TEMPORARY HACK (UI team to fix properly): this block replaces oarepo_ui's
+   main_column_content, so the #records-list div normally rendered by
+   oarepo_records_list() never exists on this page. But oarepo_ui/frontpage.html's
+   javascript block still unconditionally loads invenio_app_rdm's frontpage JS,
+   which does document.getElementById("records-list").dataset.title with no
+   null check and crashes. Keep a hidden placeholder div around so that JS has
+   something to mount into instead of throwing. #}
+<div
+  id="records-list"
+  data-fetch-url="/api/records?sort=newest&size=10"
+  data-title="{{ _('Recent uploads') }}"
+  style="display: none;"
+></div>
 
 {% endblock grid_section %}

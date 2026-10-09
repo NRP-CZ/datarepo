@@ -10,6 +10,7 @@ dependencies = [
    "oarepo-kerberos>=0.1.0,<1.0.0",
    "oarepo-previewer>=1.0.0,<2.0.0",
    "pygelf>=0.4.0,<1.0.0",
+   "flask-debugtoolbar",
 ]
 requires-python = ">=3.14,<3.15"
 
@@ -54,3 +55,14 @@ build-backend = "uv_build"
 
 [tool.uv.sources]
 # Example: oarepo-requests = { path = "/Users/m/w/rdm-13/oarepo-requests", editable=true }
+
+[tool.uv]
+override-dependencies = [
+    "ccmm-invenio>=2.0.0",
+    "oarepo-model>=6.1.0",
+    "oarepo-rdm>=9.0.0",
+]
+
+[[tool.uv.index]]
+name = "cesnet"
+url = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple"

@@ -5,29 +5,29 @@
     "version": "1.0.23",
     "publication_date": "2025",
     "resource_type": {
-      "id": "c_ddb1"
+      "id": "dataset"
     },
     "languages": [
-      {"id": "CES"},
-      {"id": "ENG"}
+      {"id": "ces"},
+      {"id": "eng"}
     ],
     "additional_titles": [
       {
         "title": "Air quality measurements in Central Bohemian Region in 2024.",
-        "type": {"id": "TranslatedTitle"},
-        "lang": {"id": "ENG"}
+        "type": {"id": "translated-title"},
+        "lang": {"id": "eng"}
       }
     ],
     "additional_descriptions": [
       {
         "description": "Tato datová sada obsahuje měření kvality ovzduší ve středních Čechách v roce 2024.",
         "type": {"id": "abstract"},
-        "lang": {"id": "CES"}
+        "lang": {"id": "ces"}
       }
     ],
     "creators": [
       {
-        "role": {"id": "Other"},
+        "role": {"id": "other"},
         "person_or_org": {
           "name": "Novák, Jan",
           "type": "personal",
@@ -50,18 +50,18 @@
     "dates": [
       {
         "date": "2025-04-27",
-        "type": {"id": "Collected"},
+        "type": {"id": "collected"},
         "description": "Date collected"
       },
       {
         "date": "2024",
-        "type": {"id": "Collected"},
+        "type": {"id": "collected"},
         "description": "Collection period"
       }
     ],
     "rights": [
       {
-        "id": "4-BY"
+        "id": "cc-by-4.0"
       }
     ],
     "locations": {
@@ -108,22 +108,22 @@
     "related_resources": [
       {
         "title": "Směrnice Evropského parlamentu a Rady 2008/50/ES ze dne 21. května 2008 o kvalitě vnějšího ovzduší a čistším ovzduší pro Evropu",
-        "relation_type": {"id": "IsReferencedBy"},
+        "relation_type": {"id": "isreferencedby"},
         "resource_type": {"id": "c_18cf"}
       },
       {
         "title": "ENVI LVS1 Sampler pro odběr prašného aerosolu",
-        "relation_type": {"id": "IsCollectedBy"},
-        "resource_type": {"id": "8KJG-QS0Y"}
+        "relation_type": {"id": "iscollectedby"},
+        "resource_type": {"id": "dataset"}
       },
       {
         "title": "Kvalita ovzduší – aktuální hodinové údaje",
-        "relation_type": {"id": "IsDerivedFrom"},
-        "resource_type": {"id": "FF4C-28RK"}
+        "relation_type": {"id": "isderivedfrom"},
+        "resource_type": {"id": "dataset"}
       },
       {
         "title": "Metadata datové sady INSPIRE – Kvalita ovzduší – přehledy (data) na měřicích stanicích",
-        "relation_type": {"id": "HasMetadata"}
+        "relation_type": {"id": "hasmetadata"}
       }
     ],
     "funding": [
