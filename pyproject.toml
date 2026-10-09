@@ -58,7 +58,7 @@ build-backend = "uv_build"
 
 [tool.uv]
 override-dependencies = [
-    "ccmm-invenio>=2.0.0",
+    "ccmm-invenio>=2.0.1",
     "oarepo-model>=6.1.0",
     "oarepo-rdm>=9.0.0",
 ]
