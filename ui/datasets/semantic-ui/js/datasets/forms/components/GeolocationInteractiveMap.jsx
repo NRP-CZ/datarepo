@@ -104,7 +104,7 @@ export function GeolocationInteractiveMap({
     map.pm.addControls({
       position: "topright",
       drawMarker: true,
-      drawPolyline: true,
+      drawPolyline: false, // Backend does not support polylines at the moment.
       drawPolygon: true,
       drawRectangle: true,
       drawCircle: false,
@@ -120,6 +120,39 @@ export function GeolocationInteractiveMap({
     lastEmittedRef.current = "null";
 
     /**
+     * Function which updates toolbar based on the current geometry.
+     * Backend currently supports only 'Point', 'MultiPoint' and 'Polygon'.
+     * Therefore, when user select 'Point', we allow him to add only more 'Point's.
+     * When user selects a 'Polygon', only one 'Polygon' is allowed to be inputed.
+     */
+    const updateToolbar = (currentGeom) => {
+      let canDrawMarker = true;
+      let canDrawPolygon = true;
+      let canDrawRectangle = true;
+
+      if (currentGeom) {
+        if (currentGeom.type === "Point" || currentGeom.type === "MultiPoint") {
+          canDrawPolygon = false;
+          canDrawRectangle = false;
+        } else if (currentGeom.type === "Polygon") {
+          canDrawMarker = false;
+          canDrawPolygon = false;
+          canDrawRectangle = false;
+        } else {
+          canDrawMarker = false;
+          canDrawPolygon = false;
+          canDrawRectangle = false;
+        }
+      }
+
+      map.pm.addControls({
+        drawMarker: canDrawMarker,
+        drawPolygon: canDrawPolygon,
+        drawRectangle: canDrawRectangle,
+      });
+    };
+
+    /**
      * Grabs geometries from all layers and merge them.
      * Follows by storing merged geometry in `lastEmittedRef` reference and firing up the `onChange` listener.
      */
@@ -131,6 +164,8 @@ export function GeolocationInteractiveMap({
       });
       const merged = mergeGeometries(geoms);
       lastEmittedRef.current = JSON.stringify(merged);
+
+      updateToolbar(merged);
       onChangeRef.current?.(merged);
     };
 
@@ -163,6 +198,8 @@ export function GeolocationInteractiveMap({
 
       group.clearLayers();
       layers.forEach(track);
+
+      updateToolbar(geometries);
 
       if (layers.length) {
         const bounds = group.getBounds();
