@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { i18next } from "@translations/i18next";
 import { TextField, GroupField } from "react-invenio-forms";
@@ -18,8 +18,19 @@ export function LongitudeAndLatitudeGroupField({
 
   const focusedCoords = useRef({ lon: null, lat: null });
 
+  const geometry = getIn(values, `${basePath}.geometry`);
   const currentLon = getIn(values, `${basePath}.geometry.coordinates.0`);
   const currentLat = getIn(values, `${basePath}.geometry.coordinates.1`);
+
+  const [resetKey, setResetKey] = useState(0);
+
+  // Updates the reset only key when the map sets geometry to exactly `null`.
+  const isGeometryNull = geometry === null;
+  useEffect(() => {
+    if (isGeometryNull) {
+      setResetKey((prev) => prev + 1);
+    }
+  }, [isGeometryNull]);
 
   const hasLat = currentLat !== "" && currentLat != null;
   const hasLon = currentLon !== "" && currentLon != null;
@@ -51,13 +62,13 @@ export function LongitudeAndLatitudeGroupField({
         coordinates: [parsedLon, parsedLat],
       });
       if (onReverseSearch) {
-        await onReverseSearch(parsedLat, parsedLon);
+        await onReverseSearch(parsedLat, parsedLon); // Reverse search only on blur, not for single change.
       }
     }
   };
 
   return (
-    <GroupField widths="equal">
+    <GroupField widths="equal" key={resetKey}>
       <TextField
         fieldPath={`${basePath}.geometry.coordinates.1`}
         placeholder={i18next.t("Latitude")}

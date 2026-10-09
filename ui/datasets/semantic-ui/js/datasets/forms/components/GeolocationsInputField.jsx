@@ -114,7 +114,10 @@ export function GeolocationsInputField({
   const onGeometryChangeHandler = useCallback(
     (geometry) => {
       updateLocationGeometry(geometry);
-      if (geometry?.type === "Point") {
+      if (!geometry) {
+        updateLocationName(fieldPath, activeTabIndex, "");
+        setSearchValue("");
+      } else if (geometry?.type === "Point") {
         const [lon, lat] = geometry.coordinates;
         performReverseSearch(lat, lon);
       } else {
