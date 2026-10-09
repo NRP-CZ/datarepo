@@ -6,13 +6,12 @@
    shift layout or move the label text */
 .ui.toggle.checkbox input:focus ~ .box:before,
 .ui.toggle.checkbox input:focus ~ label:before {
-  box-shadow: 0 0 0 1px @toggleCheckboxBorderHoverColor;
+  box-shadow: 0 0 0 2px @toggleCheckboxBorderHoverColor;
 }
 
 /* Hover on the handle */
-.ui.toggle.checkbox .box:hover::after,
-.ui.toggle.checkbox label:hover::after {
-  border-color: @toggleCheckboxBorderHoverColor;
+.ui.toggle.checkbox input[disabled] ~ label:hover::before {
+  background-color: @toggleLaneBackground;
 }
 
 /* On-off toggle label: white text on the light grey off-lane
@@ -21,10 +20,9 @@
   color: @greys6;
 }
 
-/* Hover/focus turns the off-lane pink, where dark grey text
-   is unreadable — switch the label to white */
-.ui.toggle.checkbox.on-off label:hover::before,
-.ui.toggle.checkbox.on-off input:focus ~ label::before {
+/* Hover turns the off-lane pink (unless focused or disabled), where
+   dark grey text is unreadable — switch the label to white */
+.ui.toggle.checkbox.on-off input:not(:focus):not([disabled]) ~ label:hover::before {
   color: @white;
 }
 
