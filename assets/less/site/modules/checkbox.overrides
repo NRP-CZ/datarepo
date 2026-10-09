@@ -2,14 +2,31 @@
      Toggle
 ---------------*/
 
-/* Focus */
+/* Focus ring on the toggle lane — box-shadow so it doesn't
+   shift layout or move the label text */
 .ui.toggle.checkbox input:focus ~ .box:before,
 .ui.toggle.checkbox input:focus ~ label:before {
-  border: 1px solid @toggleCheckboxBorderHoverColor;
+  box-shadow: 0 0 0 2px @toggleCheckboxBorderHoverColor;
 }
 
-/* Hover */
-.ui.toggle.checkbox .box:hover::before,
-.ui.toggle.checkbox label:hover::before {
-  border: 1px solid @toggleCheckboxBorderHoverColor;
+/* Hover on the handle */
+.ui.toggle.checkbox input[disabled] ~ label:hover::before {
+  background-color: @toggleLaneBackground;
+}
+
+/* On-off toggle label: white text on the light grey off-lane
+   fails contrast, use a dark grey instead */
+.ui.toggle.checkbox.on-off label::before {
+  color: @greys6;
+}
+
+/* Hover turns the off-lane pink (unless focused or disabled), where
+   dark grey text is unreadable — switch the label to white */
+.ui.toggle.checkbox.on-off input:not(:focus):not([disabled]) ~ label:hover::before {
+  color: @white;
+}
+
+/* On state sits on the dark primary-color lane — keep the label white */
+.ui.toggle.checkbox.on-off input:checked ~ label::before {
+  color: @white;
 }
