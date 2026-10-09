@@ -42,7 +42,7 @@ export function GeolocationsInputField({
   fieldPath,
   label,
   icon,
-  vocabularies,
+  identifiersScheme,
 }) {
   const { reverseLocation, isLoading: isReverseLoading } = useNominatim();
   const { updateLocationName } = useUpdateLocationName();
@@ -204,7 +204,7 @@ export function GeolocationsInputField({
                   basePath={`${fieldPath}.features.${activeTabIndex}`}
                   activeTabIndex={activeTabIndex}
                   handleRemove={() => handleRemoveLocation(activeTabIndex)}
-                  vocabularies={vocabularies}
+                  identifiersScheme={identifiersScheme}
                   searchValue={searchValue}
                   onSearchValueChange={setSearchValue}
                   performReverseSearch={performReverseSearch}
@@ -230,5 +230,5 @@ GeolocationsInputField.propTypes = {
   fieldPath: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
-  vocabularies: PropTypes.object,
+  identifiersScheme: PropTypes.object,
 };

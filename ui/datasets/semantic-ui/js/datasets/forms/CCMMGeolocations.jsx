@@ -11,7 +11,11 @@ export const CCMMGeolocations = {
   component: (tabConfig) => {
     const { record, formConfig } = tabConfig;
     const { overridableIdPrefix } = formConfig;
-    const { vocabularies } = formConfig.config;
+    const {
+      vocabularies: {
+        identifiers: { scheme },
+      },
+    } = formConfig.config;
 
     return (
       <Overridable
@@ -23,7 +27,7 @@ export const CCMMGeolocations = {
           label={i18next.t("Geolocations")}
           icon="map marker alternate"
           relatedResourceUI={record.ui?.locations}
-          vocabularies={vocabularies}
+          identifiersScheme={scheme}
         />
       </Overridable>
     );
