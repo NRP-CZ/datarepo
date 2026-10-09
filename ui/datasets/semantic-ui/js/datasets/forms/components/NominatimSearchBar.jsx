@@ -54,7 +54,6 @@ export function NominatimSearchBar({
             key: item.place_id || `${item.lat}-${item.lon}`,
             lat: item.lat,
             lon: item.lon,
-            bbox: item.boundingBox,
             name: uniqueName,
           };
         });
