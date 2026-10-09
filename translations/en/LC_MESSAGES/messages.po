@@ -702,3 +702,7 @@ msgstr ""
 
 #~ msgid "Frascati"
 #~ msgstr ""
+
+#: templates/macros/card.html
+msgid "Open external link"
+msgstr ""

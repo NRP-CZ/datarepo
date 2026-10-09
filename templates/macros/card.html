@@ -1,5 +1,5 @@
 {# Macro for rendering a card with icon, header, description, and button #}
-{% macro render_card(header, description, icon, url, button_text) %}
+{% macro render_card(header, description, icon, url, button_text, external=False) %}
 <div class="ui card shadowless">
   <div class="content">
     <h3 class="header">{{ header }}</h3>
@@ -12,9 +12,13 @@
     <a
       class="ui button right labeled icon bordered"
       href="{{ url }}"
+      {% if external %}
+        target="_blank" rel="noopener noreferrer"
+        aria-label="{{ button_text }} - {{ _('Open external link') }}"
+      {% endif %}
     >
       {{ button_text }}
-      <i class="angle right icon"></i>
+      <i class="{% if external %}external alternate{% else %}angle right{% endif %} icon"></i>
     </a>
   </div>
 </div>
