@@ -26,7 +26,6 @@ export const CCMMGeolocations = {
           fieldPath="metadata.locations"
           label={i18next.t("Geolocations")}
           icon="map marker alternate"
-          relatedResourceUI={record.ui?.locations}
           identifiersScheme={scheme}
         />
       </Overridable>
