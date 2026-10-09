@@ -1,0 +1,2 @@
+minimumReleaseAge: 10080       # 1 day (1440 minutes)
+minimumReleaseAgeStrict: true  # Fails the build if no valid version is old enough
