@@ -17,7 +17,7 @@ import {
 import { i18next } from "@translations/i18next";
 import { IdentifiersField } from "@js/invenio_rdm_records";
 import { NominatimSearchBar } from "./NominatimSearchBar";
-import { GeoJSsonEditor } from "./GeoJsonEditor";
+import { GeoJsonEditor } from "./GeoJsonEditor";
 import { LongitudeAndLatitudeGroupField } from "./LongitudeAndLatitudeGroupField";
 import { WktEditor } from "./WktEditor";
 import { useUpdateLocationName } from "../hooks/useUpdateLocationName";
@@ -84,7 +84,7 @@ export function GeolocationInputFieldDetail({
       menuItem: "GeoJSON",
       render: () => (
         <TabPane attached={false} style={{ border: "none", boxShadow: "none" }}>
-          <GeoJSsonEditor
+          <GeoJsonEditor
             basePath={basePath}
             onReverseSearch={performReverseSearch}
           />

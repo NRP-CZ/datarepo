@@ -4,7 +4,7 @@ import { useFormikContext, getIn } from "formik";
 import { TextAreaField } from "react-invenio-forms";
 import { i18next } from "@translations/i18next";
 
-export function GeoJSsonEditor({ basePath, onReverseSearch }) {
+export function GeoJsonEditor({ basePath, onReverseSearch }) {
   const { values, setFieldValue } = useFormikContext();
 
   const geometryPath = `${basePath}.geometry`;
@@ -72,20 +72,20 @@ export function GeoJSsonEditor({ basePath, onReverseSearch }) {
   };
 
   return (
-      <TextAreaField
-        onChange={handleChange}
-        onBlur={handleBlur}
-        value={textValue}
-        placeholder={i18next.t(
-          'Enter the location manually using GeoJSON format. E.g.:\n\n{\n  "type": "Point",\n  "coordinates": [0, 0]\n}',
-        )}
-        rows={7}
-        error={error}
-      />
+    <TextAreaField
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={textValue}
+      placeholder={i18next.t(
+        'Enter the location manually using GeoJSON format. E.g.:\n\n{\n  "type": "Point",\n  "coordinates": [0, 0]\n}',
+      )}
+      rows={7}
+      error={error}
+    />
   );
 }
 
-GeoJSsonEditor.propTypes = {
+GeoJsonEditor.propTypes = {
   basePath: PropTypes.string.isRequired,
   onReverseSearch: PropTypes.func,
 };
