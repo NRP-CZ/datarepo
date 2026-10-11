@@ -439,7 +439,7 @@ wheels = [
 
 [[package]]
 name = "ccmm-invenio"
-version = "2.0.2"
+version = "2.0.3"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "idutils" },
@@ -455,9 +455,9 @@ dependencies = [
     { name = "shapely" },
     { name = "xmlschema" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/51/0a/6b7d413fd87902c704b56fdf75567c807fe3122e393877c18752818da174/ccmm_invenio-2.0.2.tar.gz", hash = "sha256:b4eecf75dd976cb279a38f130c70d6e8d10e12494795a9fe7f8bea426aeb7ff7", size = 918437, upload-time = "2026-10-11T16:02:57.024Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ee/d7/92f23ef4aaf5a555a6dd9f3eded1c8f509d6b5dac96cc048a697a3a275cc/ccmm_invenio-2.0.3.tar.gz", hash = "sha256:d16475f4ec49abc8f1548ae24cabdf0a5c17aaa84f7acaf5e61e36f0a097bc10", size = 919268, upload-time = "2026-10-11T18:38:45.129Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/81/3d/8608637f5da361cfde090b0f9d230dfc4bd2c996744d7c01b128109b5e70/ccmm_invenio-2.0.2-py3-none-any.whl", hash = "sha256:2be3e031f384986f0cc13f3cf183e8a6d5af17e90c9882827fb3653f54f85fa1", size = 1034680, upload-time = "2026-10-11T16:02:55.153Z" },
+    { url = "https://files.pythonhosted.org/packages/1f/a1/3e8c5ff988fef6edbe87cbd7429cf9ce1b66e86a2ebca0e290d3237495a3/ccmm_invenio-2.0.3-py3-none-any.whl", hash = "sha256:18cc6b92c787b5c0e21d0359ef2566eb1b1b0118a197718c430b8d3394c180dd", size = 1035670, upload-time = "2026-10-11T18:38:43.336Z" },
 ]
 
 [[package]]
