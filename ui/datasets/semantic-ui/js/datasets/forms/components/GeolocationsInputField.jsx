@@ -110,6 +110,7 @@ export function GeolocationsInputField({
 
   const handleRemoveLocation = useCallback(
     (indexToRemove) => {
+      const originalLength = currentLocations.length;
       const updatedLocations = currentLocations.filter(
         (_, index) => index !== indexToRemove,
       );
@@ -118,7 +119,12 @@ export function GeolocationsInputField({
       } else {
         setFieldValue(fieldPath, { features: updatedLocations });
       }
-      setActiveTabIndex(0);
+
+      if (originalLength > updatedLocations.length && indexToRemove - 1 >= 0) {
+        setActiveTabIndex(indexToRemove - 1);
+      } else {
+        setActiveTabIndex(0);
+      }
     },
     [currentLocations, setFieldValue, fieldPath],
   );
