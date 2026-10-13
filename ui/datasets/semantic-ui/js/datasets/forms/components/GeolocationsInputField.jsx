@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { i18next } from "@translations/i18next";
 import { FieldLabel } from "react-invenio-forms";
@@ -50,6 +50,12 @@ export function GeolocationsInputField({
   const [searchValue, setSearchValue] = useState("");
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
+  const activeTabIndexRef = useRef(activeTabIndex);
+
+  useEffect(() => {
+    activeTabIndexRef.current = activeTabIndex;
+  }, [activeTabIndex]);
+
   const { values, setFieldValue } = useFormikContext();
   const currentLocations = getIn(values, `${fieldPath}.features`, []);
 
@@ -71,13 +77,20 @@ export function GeolocationsInputField({
         const result = await reverseLocation(lat, lon);
         if (result && result.display_name) {
           const placeName = result.name ? result.name : result.display_name;
-          updateLocationName(fieldPath, activeTabIndex, placeName);
+          updateLocationName(fieldPath, activeTabIndexRef.current, placeName);
           setSearchValue(result.display_name);
         }
       }
     }, 600),
-    [reverseLocation, setFieldValue, setSearchValue, fieldPath, activeTabIndex],
+    [reverseLocation, setFieldValue, setSearchValue, fieldPath],
   );
+
+  // Throw away any pending invocation of the debounced reverse search function.
+  useEffect(() => {
+    return () => {
+      performReverseSearch.cancel();
+    };
+  }, [performReverseSearch]);
 
   const handleAddLocation = useCallback(() => {
     setFieldValue(fieldPath, { features: [...currentLocations, {}] });

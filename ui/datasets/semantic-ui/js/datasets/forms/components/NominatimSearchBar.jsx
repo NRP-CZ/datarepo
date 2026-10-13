@@ -1,4 +1,10 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+  useRef,
+} from "react";
 import PropTypes from "prop-types";
 import { i18next } from "@translations/i18next";
 import { Search, Label } from "semantic-ui-react";
@@ -20,15 +26,30 @@ export function NominatimSearchBar({
 
   const [results, setResults] = useState([]);
 
+  // Create a reference to track if this specific tab's search bar is still on the screen.
+  const isMounted = useRef(true);
+
+  // Mark `isMounted` flag as false on unmount.
+  useEffect(() => {
+    isMounted.current = true;
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
+
   const searchNominatim = useMemo(
     () =>
       debounce(async (query, currentFieldPath, currentTabIndex) => {
         if (!query || query.length < 2) {
-          setResults([]);
+          if (isMounted.current) {
+            setResults([]);
+          }
           return;
         }
 
         const data = await searchLocation(query);
+
+        if (!isMounted.current) return;
 
         if (!data) {
           setResults([]);
@@ -58,10 +79,19 @@ export function NominatimSearchBar({
           };
         });
 
-        setResults(formattedResults);
+        if (isMounted.current) {
+          setResults(formattedResults);
+        }
       }, 600),
     [searchLocation, getUniqueLocationName],
   );
+
+  // Throw away any pending invocation of the debounced search function.
+  useEffect(() => {
+    return () => {
+      searchNominatim.cancel();
+    };
+  }, [searchNominatim]);
 
   const handleSearchChange = useCallback(
     (_, { value }) => {
