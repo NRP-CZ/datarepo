@@ -138,7 +138,7 @@ export function GeolocationInputFieldDetail({
         <NominatimSearchBar
           fieldPath={fieldPath}
           basePath={basePath}
-          activetabIndex={activeTabIndex}
+          activeTabIndex={activeTabIndex}
           searchValue={searchValue}
           onSearchValueChange={onSearchValueChange}
         />
@@ -192,7 +192,7 @@ GeolocationInputFieldDetail.propTypes = {
   basePath: PropTypes.string.isRequired,
   activeTabIndex: PropTypes.number.isRequired,
   handleRemove: PropTypes.func.isRequired,
-  identifiersScheme: PropTypes.object,
+  identifiersScheme: PropTypes.array,
   searchValue: PropTypes.string,
   onSearchValueChange: PropTypes.func,
   performReverseSearch: PropTypes.func,

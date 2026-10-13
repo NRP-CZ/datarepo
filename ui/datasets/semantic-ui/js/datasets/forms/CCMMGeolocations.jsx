@@ -9,7 +9,7 @@ export const CCMMGeolocations = {
   label: i18next.t("Geolocations"),
 
   component: (tabConfig) => {
-    const { record, formConfig } = tabConfig;
+    const { formConfig } = tabConfig;
     const { overridableIdPrefix } = formConfig;
     const {
       vocabularies: {

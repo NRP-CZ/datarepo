@@ -243,5 +243,5 @@ GeolocationsInputField.propTypes = {
   fieldPath: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
-  identifiersScheme: PropTypes.object,
+  identifiersScheme: PropTypes.array,
 };
