@@ -36,8 +36,11 @@ function renderLocations() {
       .map((location) => {
         if (
           !location ||
+          !location.place ||
           !location.geometry ||
-          typeof location.geometry !== "object"
+          typeof location.geometry !== "object" ||
+          !location.geometry.type ||
+          !location.geometry.coordinates
         ) {
           return null;
         }
