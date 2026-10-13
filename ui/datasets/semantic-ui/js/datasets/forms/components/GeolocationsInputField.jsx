@@ -45,7 +45,7 @@ export function GeolocationsInputField({
   identifiersScheme,
 }) {
   const { reverseLocation, isLoading: isReverseLoading } = useNominatim();
-  const { updateLocationName } = useUpdateLocationName();
+  const { updateLocationName, getUniqueLocationName } = useUpdateLocationName();
 
   const [searchValue, setSearchValue] = useState("");
   const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -93,9 +93,20 @@ export function GeolocationsInputField({
   }, [performReverseSearch]);
 
   const handleAddLocation = useCallback(() => {
-    setFieldValue(fieldPath, { features: [...currentLocations, {}] });
+    setFieldValue(fieldPath, {
+      features: [
+        ...currentLocations,
+        {
+          place: getUniqueLocationName(
+            fieldPath,
+            currentLocations.length,
+            `${i18next.t("Location")}`,
+          ),
+        },
+      ],
+    });
     setActiveTabIndex(currentLocations.length);
-  }, [currentLocations, setFieldValue, fieldPath]);
+  }, [currentLocations, setFieldValue, fieldPath, getUniqueLocationName]);
 
   const handleRemoveLocation = useCallback(
     (indexToRemove) => {

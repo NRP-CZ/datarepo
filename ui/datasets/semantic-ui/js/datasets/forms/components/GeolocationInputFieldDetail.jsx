@@ -111,6 +111,7 @@ export function GeolocationInputFieldDetail({
         label={i18next.t("Name")}
         placeholder={i18next.t("Use map, search bar or advanced editor...")}
         onBlur={handleNameBlur}
+        required
         />
 
       <TextAreaField
