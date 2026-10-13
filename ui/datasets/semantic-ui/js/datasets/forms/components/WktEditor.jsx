@@ -4,7 +4,7 @@ import { useFormikContext, getIn } from "formik";
 import { TextAreaField } from "react-invenio-forms";
 import { i18next } from "@translations/i18next";
 import { wktToGeoJSON, geojsonToWKT } from "@terraformer/wkt";
-import { SUPPORTED_GEOMETRY_TYPES } from "@js/datasets/locationHelpers/supportedGeometryTypes";
+import { SUPPORTED_GEOMETRY_TYPES } from "@js/datasets/locationHelpers/constants";
 
 export function WktEditor({ basePath, onReverseSearch }) {
   const { values, setFieldValue } = useFormikContext();

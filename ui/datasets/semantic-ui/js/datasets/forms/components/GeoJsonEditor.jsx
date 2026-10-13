@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useFormikContext, getIn } from "formik";
 import { TextAreaField } from "react-invenio-forms";
 import { i18next } from "@translations/i18next";
-import { SUPPORTED_GEOMETRY_TYPES } from "@js/datasets/locationHelpers/supportedGeometryTypes";
+import { SUPPORTED_GEOMETRY_TYPES } from "@js/datasets/locationHelpers/constants";
 
 export function GeoJsonEditor({ basePath, onReverseSearch }) {
   const { values, setFieldValue } = useFormikContext();

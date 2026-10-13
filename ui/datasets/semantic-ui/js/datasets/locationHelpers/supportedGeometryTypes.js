@@ -1,1 +1,0 @@
-export const SUPPORTED_GEOMETRY_TYPES = ["Point", "MultiPoint", "Polygon"];

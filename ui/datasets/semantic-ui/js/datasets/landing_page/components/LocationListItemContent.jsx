@@ -1,11 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ClipboardCopyButton } from "@js/oarepo_ui/components/ClipboardCopyButton";
-import {
-  validateCoordinate,
-  LAT_BOUNDS,
-  LON_BOUNDS,
-} from "@js/datasets/locationHelpers/coordinateValidator";
+import { validateCoordinate } from "@js/datasets/locationHelpers/coordinateValidator";
+import { LAT_BOUNDS, LON_BOUNDS } from "@js/datasets/locationHelpers/constants";
 
 /**
  * Extracts and validates a [lat, lon] pair from a GeoJSON Point geometry.

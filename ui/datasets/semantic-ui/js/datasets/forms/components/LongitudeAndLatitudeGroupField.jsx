@@ -3,11 +3,8 @@ import PropTypes from "prop-types";
 import { i18next } from "@translations/i18next";
 import { TextField, GroupField } from "react-invenio-forms";
 import { useFormikContext, getIn } from "formik";
-import {
-  validateCoordinate,
-  LAT_BOUNDS,
-  LON_BOUNDS,
-} from "@js/datasets/locationHelpers/coordinateValidator";
+import { validateCoordinate } from "@js/datasets/locationHelpers/coordinateValidator";
+import { LAT_BOUNDS, LON_BOUNDS } from "@js/datasets/locationHelpers/constants";
 
 export function LongitudeAndLatitudeGroupField({
   basePath,
