@@ -111,7 +111,7 @@ export function GeolocationInputFieldDetail({
         label={i18next.t("Name")}
         placeholder={i18next.t("Use map, search bar or advanced editor...")}
         onBlur={handleNameBlur}
-      />
+        />
 
       <TextAreaField
         label={i18next.t("Description")}
@@ -127,7 +127,7 @@ export function GeolocationInputFieldDetail({
         label={i18next.t("Identifiers")}
         labelIcon={""}
         schemeOptions={identifiersScheme}
-        showEmptyValue
+        showEmptyValue={false}
       />
 
       <Form.Field>
