@@ -4,8 +4,6 @@
 import { DepositFormApp, parseFormAppConfig } from "@js/oarepo_ui/forms";
 import React from "react";
 import ReactDOM from "react-dom";
-import { EDTFSingleDatePicker } from "@js/oarepo_ui/forms";
-import { parametrize } from "react-overridable";
 import { SubmitReviewModal } from "@js/invenio_rdm_records";
 import { Icon } from "semantic-ui-react";
 import PropTypes from "prop-types";
@@ -22,10 +20,6 @@ const recordSerializer = new CCMMDepositRecordSerializer(
   config.default_locale,
   config.custom_fields.vocabularies
 );
-
-const parametrizeEDTFSingleDatePicker = parametrize(EDTFSingleDatePicker, {
-  customInputProps: { width: 16 },
-});
 
 // Unwrap the Overridable to avoid the override-lookup loop when we render it below.
 const RawSubmitReviewModal = SubmitReviewModal.originalComponent;
@@ -66,8 +60,6 @@ CurationPolicySubmitReviewModal.propTypes = {
 };
 
 export const componentOverrides = {
-  "InvenioRdmRecords.DepositForm.DatesField.DateField":
-    parametrizeEDTFSingleDatePicker,
   "InvenioRdmRecords.SubmitReviewModal.container":
     CurationPolicySubmitReviewModal,
 };
