@@ -520,6 +520,101 @@ msgstr "Po schválení členství obdržíte e-mail; stav žádosti můžete sle
 msgid "on your Dashboard under Requests"
 msgstr "ve svém Přehledu v sekci Žádosti"
 
+msgid "Geolocations"
+msgstr "Zeměpisné polohy"
+
+msgid "Invalid JSON!"
+msgstr "Nevalidní JSON!"
+
+msgid "Missing 'type' property (e.g., 'Point', 'Polygon')"
+msgstr "Chybí vlastnost „type“ (např. „Point“, „Polygon“)"
+
+msgid "Unsupported geometry type"
+msgstr "Nepodporovaný typ geometrie"
+
+msgid "We currently support only 'Point', 'MultiPoint' and 'Polygon'."
+msgstr "V současné době podporujeme pouze typy „Point“, „MultiPoint“ a „Polygon“."
+
+msgid "Details"
+msgstr "Podrobnosti"
+
+msgid ""
+"Enter the location manually using GeoJSON format. E.g.:\n"
+"\n"
+"{\n"
+"  \"type\": \"Point\",\n"
+"  \"coordinates\": [0, 0]\n"
+"}"
+msgstr ""
+"Zadejte lokaci ve formátu GeoJSON. Například:\n"
+"\n"
+"{\n"
+"  \"type\": \"Point\",\n"
+"  \"coordinates\": [0, 0]\n"
+"}"
+
+msgid "Name"
+msgstr "Jméno"
+
+msgid "Use map, search bar or advanced editor..."
+msgstr "Použijte mapu, vyhledávací pole nebo pokročilý editor..."
+
+msgid "Description"
+msgstr "Popis"
+
+msgid "Additional details about this location..."
+msgstr "Další podrobnosti o tomto místě..."
+
+msgid "Identifiers"
+msgstr "Identifikátory"
+
+msgid "Location"
+msgstr "Poloha"
+
+msgid "Advanced"
+msgstr "Pokročilé"
+
+msgid "Remove location"
+msgstr "Smažte polohu"
+
+msgid ""
+"Add geolocations for your record. You can use the interactive map or search "
+"for the place."
+msgstr "Přidejte k záznamu zeměpisnou polohu. Můžete využít interaktivní mapu nebo místo vyhledat."
+
+msgid "Add location"
+msgstr "Přidejte polohu"
+
+msgid "Latitude"
+msgstr "Zeměpisná šířka"
+
+msgid "Longitude"
+msgstr "Zeměpisná výška"
+
+msgid "Search for a location..."
+msgstr "Vyhledat místo..."
+
+msgid "No location found."
+msgstr "Žádné místo nebylo nalezeno."
+
+msgid "Invalid WKT!"
+msgstr "Nevalidní WKT!"
+
+msgid ""
+"Enter the location manually using WKT format. E.g.:\n"
+"\n"
+"POINT(0 0)\n"
+msgstr ""
+"Zadejte lokaci ve formátu WKT. Například:\n"
+"\n"
+"POINT(0 0)\n"
+
+msgid "Location search failed!"
+msgstr "Vyhledávání polohy selhalo!"
+
+msgid "Reverse geocoding failed!"
+msgstr "Reverzní geokódování selhalo!"
+
 #: datarepo/templates/semantic-ui/datarepo/records/details/side_bar/locations.html:75
 msgid "Geographic locations"
 msgstr "Zeměpisné polohy"
@@ -537,10 +632,16 @@ msgid "Copied the latitude and longitude"
 msgstr "Do schránky byla zkopírována zeměpisná šířka a délka"
 
 msgid "No valid locations were found!"
-msgstr "Nebyly nalezeny žádné validní lokace!"
+msgstr "Nebyly nalezeny žádné platné lokace!"
 
 msgid "No locations were found!"
 msgstr "Nebyly nalezeny žádné lokace!"
+
+msgid "Must be a valid number between -90 and 90."
+msgstr "Musí se jednat o platné číslo v rozmezí -90 až 90."
+
+msgid "Must be a valid number between -180 and 180."
+msgstr "Musí se jednat o platné číslo v rozmezí -180 až 180."
 
 #: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:101
 msgid ""
