@@ -74,7 +74,7 @@ datasets_model = model(
                 "metadata.resource_type",
                 "metadata.publisher",
                 "metadata.creators.affiliations",
-                "metadata.subjects.subject",
+                "metadata.subjects",
                 "metadata.funding.funder",
                 "metadata.languages",
                 "metadata.rights",
