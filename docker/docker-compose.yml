@@ -50,7 +50,7 @@ services:
       - "${INVENIO_OPENSEARCH_HOST}:${INVENIO_OPENSEARCH_PORT}:9200"
       - "${INVENIO_OPENSEARCH_HOST}:${INVENIO_OPENSEARCH_CLUSTER_PORT}:9600"
   s3:
-    image: minio/minio:latest
+    image: cgr.dev/chainguard/minio:latest
     restart: "unless-stopped"
     environment:
       MINIO_ROOT_USER: ${INVENIO_S3_ACCESS_KEY}
@@ -64,3 +64,10 @@ services:
     ports:
       - "${INVENIO_S3_HOST}:${INVENIO_S3_PORT}:9000"
       - "${INVENIO_S3_HOST}:${INVENIO_S3_PORT1}:9001"
+  clamav:
+    image: clamav/clamav:latest
+    container_name: clamav-server
+    platform: linux/amd64   # Forces Docker to emulate an x86_64 system
+    ports:
+      - "3310:3310"
+    restart: unless-stopped

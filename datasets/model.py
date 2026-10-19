@@ -19,6 +19,7 @@ from oarepo_model.customizations import (
 )
 from oarepo_requests.model.presets.requests import requests_preset
 from oarepo_workflows.model.presets import workflows_preset
+from common.antivirus_ext import AntivirusFileProcessorsMixin
 
 COPY_TO_MAPPINGS = [
     # boost_10 - Primary identifiers (highest weight)
@@ -67,6 +68,10 @@ datasets_model = model(
     types=[],
     metadata_type="CCMMDataset",
     customizations=[
+        PrependMixin("FileServiceConfig", AntivirusFileProcessorsMixin),
+        PrependMixin("DraftFileServiceConfig", AntivirusFileProcessorsMixin),
+
+
         PrependMixin("RecordUISchema", UIRecordSchema),
         AddFacetGroup(
             "default",
