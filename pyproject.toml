@@ -10,6 +10,7 @@ dependencies = [
    "oarepo-kerberos>=0.1.0,<1.0.0",
    "oarepo-previewer>=1.0.0,<2.0.0",
    "oarepo-formats>=1.0.0,<2.0.0",
+   "oarepo-ark>=1.0.0,<2.0.0",
    "pygelf>=0.4.0,<1.0.0",
    "flask-debugtoolbar",
 ]

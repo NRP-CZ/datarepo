@@ -654,7 +654,7 @@ def _check_permission_denied(*, email: str, action: str) -> Iterator[None]:
     with current_runtime.login_user(email):
         try:
             yield
-        except (PermissionDeniedError, RecordPermissionDeniedError):
+        except PermissionDeniedError, RecordPermissionDeniedError:
             _ok(f"{email!r} is not allowed to {action}")
             return
     raise AssertionError(f"{email!r} should not have been allowed to {action}.")
@@ -1102,9 +1102,7 @@ def submit_record_for_review(
     return rec_id, review.id
 
 
-def test_record_access_grant(
-    rec_id: str, request_id: str, *, owner_email: str, grantee_email: str
-) -> None:
+def test_record_access_grant(rec_id: str, request_id: str, *, owner_email: str, grantee_email: str) -> None:
     """Test granting, and revoking, a stranger's access to a draft that is under review.
 
     The check runs over the draft `rec_id` while a request on it is still open, so it is about
@@ -1183,14 +1181,10 @@ def test_record_access_grant(
         _ok(f"request {request_id} resolves no needs of its topic, so the grant leaves it closed")
 
     with current_runtime.login_user(owner_email):
-        datasets_service.access.delete_grant_by_subject(
-            g.identity, rec_id, subject_id=grantee_id, subject_type="user"
-        )
+        datasets_service.access.delete_grant_by_subject(g.identity, rec_id, subject_id=grantee_id, subject_type="user")
     _ok(f"owner {owner_email!r} revoked the access of {grantee_email!r} to draft {rec_id}")
 
-    with _check_permission_denied(
-        email=grantee_email, action=f"read the draft {rec_id} after the access was revoked"
-    ):
+    with _check_permission_denied(email=grantee_email, action=f"read the draft {rec_id} after the access was revoked"):
         datasets_service.read_draft(g.identity, rec_id)
     with _check_permission_denied(
         email=grantee_email, action=f"read request {request_id} after the access was revoked"
@@ -1312,9 +1306,7 @@ def _create_access_request_check_emails(
     return created_request.data["id"]
 
 
-def test_access_request(
-    rec_id: str, *, restricted_rec_id: str, requester_email: str, curator_email: str
-) -> None:
+def test_access_request(rec_id: str, *, restricted_rec_id: str, requester_email: str, curator_email: str) -> None:
     """Test asking for access to the files of an approved record public on its metadata.
 
     Unlike a grant, which the ones who manage a record hand out on their own initiative, an access
@@ -1371,7 +1363,7 @@ def test_access_request(
         email=requester_email,
         rec_id=rec_id,
         message="May I have the files of this record?",
-        expected_recipients=[SUBMITTER], # TODO: should curator/owner of the community also get the notification?
+        expected_recipients=[SUBMITTER],  # TODO: should curator/owner of the community also get the notification?
     )
 
     _heading("Comments on the access request")
@@ -1405,9 +1397,7 @@ def test_access_request(
     )
 
     _heading("Access request accepted")
-    accept_request_check_emails(
-        actor=SUBMITTER, request_id=second_request_id, expected_recipients=[requester_email]
-    )
+    accept_request_check_emails(actor=SUBMITTER, request_id=second_request_id, expected_recipients=[requester_email])
 
     with current_runtime.login_user(requester_email):
         datasets_service.read(g.identity, rec_id)
@@ -1504,9 +1494,7 @@ def test_change_metadata(approved_record_id: str) -> None:
         )
         # the request is still open, so the changed draft is checked as it stands during a
         # review, the access to it being managed by the record's owner, ie. the submitter
-        test_record_access_grant(
-            approved_record_id, request_id, owner_email=SUBMITTER, grantee_email=EXTRA_REVIEWER
-        )
+        test_record_access_grant(approved_record_id, request_id, owner_email=SUBMITTER, grantee_email=EXTRA_REVIEWER)
         add_comment_check_emails(
             email=actor,
             request_id=request_id,

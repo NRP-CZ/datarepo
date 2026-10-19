@@ -10,12 +10,12 @@ from flask import redirect, url_for
 from flask_security import login_required
 from oarepo_ui.resources import TemplatePageUIResource, TemplatePageUIResourceConfig
 from oarepo_ui.utils import can_view_deposit_page
-from werkzeug import Response
 
 if TYPE_CHECKING:
     from collections.abc import Mapping
 
     from flask import Blueprint, Flask
+    from werkzeug import Response
 
 
 class PagesUIResourceConfig(TemplatePageUIResourceConfig):

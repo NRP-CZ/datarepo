@@ -4875,8 +4875,8 @@ packages:
   minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
-  minimizer-webpack-plugin@5.13.1:
-    resolution: {integrity: sha512-1mhAfvachWYYOm8tpmany5NLuvP+F2wxZWBSX8DC0uFS2wJpM9q3rWgN9wBooAH9d5V12wX0BjyJe4fMjHMarQ==}
+  minimizer-webpack-plugin@5.14.0:
+    resolution: {integrity: sha512-PnvQXCJxhgH2ZVVO7Lj0sM6q8L1XGxnUvd8wVQIRwi8khMCLq5wg0Ngxe44bcuZL2FSN81RdVE7YHEVzTKsQDQ==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       '@minify-html/node': '*'
@@ -6407,8 +6407,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  swagger-ui-dist@5.34.0:
-    resolution: {integrity: sha512-H6tAIjr3XqE31PbkZl0OFya1ziRLDfTwh3J6OHdumPtPCLfjTnyLeagl/55kFNZcTOz9a9QI9WP0FXldwiGJag==}
+  swagger-ui-dist@5.34.1:
+    resolution: {integrity: sha512-VSr8fXfI93obYaQicLJbLUKGRxDojj/SfRJDDLCioGTUBj4BK/Nj4eE9jCeCAnJxVLi7iS+08PbiZLyrQKBkJQ==}
 
   swc-loader@0.2.7:
     resolution: {integrity: sha512-nwYWw3Fh9ame3Rtm7StS9SBLpHRRnYcK7bnpF3UKZmesAK0gw2/ADvlURFAINmPvKtDLzp+GBiP9yLoEjg6S9w==}
@@ -12418,9 +12418,8 @@ snapshots:
 
   minimist@1.2.8: {}
 
-  minimizer-webpack-plugin@5.13.1(@swc/core@1.16.20(@swc/helpers@0.5.23))(postcss@8.5.32)(webpack@5.112.2(@swc/core@1.16.20(@swc/helpers@0.5.23))(postcss@8.5.32)):
+  minimizer-webpack-plugin@5.14.0(@swc/core@1.16.20(@swc/helpers@0.5.23))(postcss@8.5.32)(webpack@5.112.2(@swc/core@1.16.20(@swc/helpers@0.5.23))(postcss@8.5.32)):
     dependencies:
-      '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
       schema-utils: 4.8.1(webpack@5.112.2(@swc/core@1.16.20(@swc/helpers@0.5.23))(postcss@8.5.32))
       terser: 5.51.2
@@ -12470,7 +12469,7 @@ snapshots:
       react-markdown: 10.1.0(@types/react@19.3.0)(react@16.14.0)(supports-color@8.1.1)
       remark-gfm: 4.0.1(supports-color@8.1.1)
       rxjs: 7.8.2
-      swagger-ui-dist: 5.34.0
+      swagger-ui-dist: 5.34.1
       tslib: 2.8.1
     optionalDependencies:
       jpeg-js: 0.4.4
@@ -14136,7 +14135,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  swagger-ui-dist@5.34.0:
+  swagger-ui-dist@5.34.1:
     dependencies:
       '@scarf/scarf': 1.4.0
 
@@ -14596,7 +14595,7 @@ snapshots:
       events: 3.3.0
       graceful-fs: 4.2.11
       mime-db: 1.54.0
-      minimizer-webpack-plugin: 5.13.1(@swc/core@1.16.20(@swc/helpers@0.5.23))(postcss@8.5.32)(webpack@5.112.2(@swc/core@1.16.20(@swc/helpers@0.5.23))(postcss@8.5.32))
+      minimizer-webpack-plugin: 5.14.0(@swc/core@1.16.20(@swc/helpers@0.5.23))(postcss@8.5.32)(webpack@5.112.2(@swc/core@1.16.20(@swc/helpers@0.5.23))(postcss@8.5.32))
       schema-utils: 4.8.1(webpack@5.112.2(@swc/core@1.16.20(@swc/helpers@0.5.23))(postcss@8.5.32))
       tapable: 2.3.3
       watchpack: 2.6.3
