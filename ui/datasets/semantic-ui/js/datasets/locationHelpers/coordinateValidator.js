@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
+// SPDX-License-Identifier: MIT
+
 /**
  * @param value value of cordinate
  * @param bounds object with `min` and `max` properties representing maximal available range for the `value`

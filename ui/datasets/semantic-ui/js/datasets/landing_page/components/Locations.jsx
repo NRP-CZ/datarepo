@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
+// SPDX-License-Identifier: MIT
+
 import React, { useState, useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
 import LocationsList from "./LocationsList";

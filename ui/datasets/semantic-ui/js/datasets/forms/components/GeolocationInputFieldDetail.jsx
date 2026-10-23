@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
+// SPDX-License-Identifier: MIT
+
 import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { TextAreaField, FieldLabel } from "react-invenio-forms";

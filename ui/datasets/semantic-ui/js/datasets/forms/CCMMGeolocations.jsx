@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
+// SPDX-License-Identifier: MIT
+
 import React from "react";
 import Overridable from "react-overridable";
 import { buildUID } from "react-searchkit";

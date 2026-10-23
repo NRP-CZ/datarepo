@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
+// SPDX-License-Identifier: MIT
+
 import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import L from "leaflet";

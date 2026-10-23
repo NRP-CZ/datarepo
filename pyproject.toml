@@ -11,7 +11,9 @@ dependencies = [
    "oarepo-previewer>=1.0.0,<2.0.0",
    "pygelf>=0.4.0,<1.0.0",
    "flask-debugtoolbar",
-    "clamd==1.0.2"
+    "clamd==1.0.2",
+    "oarepo-model",
+    "oarepo-antivirus"
 ]
 requires-python = ">=3.14,<3.15"
 
@@ -55,7 +57,8 @@ requires = [
 build-backend = "uv_build"
 
 [tool.uv.sources]
-# Example: oarepo-requests = { path = "/Users/m/w/rdm-13/oarepo-requests", editable=true }
+oarepo-model = { path = "/Users/dr/Desktop/cesnet/code/oarepo/oarepo-model", editable=true }
+oarepo-antivirus = { path = "/Users/dr/Desktop/cesnet/code/oarepo/oarepo-antivirus", editable=true }
 
 [tool.uv]
 override-dependencies = [

@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
+// SPDX-License-Identifier: MIT
+
 import React, { useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { i18next } from "@translations/i18next";

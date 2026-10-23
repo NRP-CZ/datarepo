@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 CESNET z.s.p.o.
+// SPDX-License-Identifier: MIT
+
 import { useState, useCallback, useRef } from "react";
 import { i18next } from "@translations/i18next";
 import axios from "axios";
