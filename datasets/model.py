@@ -6,9 +6,6 @@
 from __future__ import annotations
 
 from ccmm_invenio.models import ccmm_production_preset_1_1_0
-from invenio_i18n import lazy_gettext as _
-from invenio_rdm_records.resources.config import csl_url_args_retriever
-from invenio_rdm_records.resources.serializers import StringCitationSerializer
 from invenio_rdm_records.resources.serializers.ui.schema import UIRecordSchema
 from oarepo_communities.model.presets import communities_preset
 from oarepo_model.api import model
