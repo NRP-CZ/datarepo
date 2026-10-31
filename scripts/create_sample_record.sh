@@ -4,11 +4,14 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TEMPLATE_JSON="$SCRIPT_DIR/sample_record_full.json"
 
+if true ; then
 ./run.sh invenio users create --password testtest test@test.com || echo "User test@test.com already exists; continuing."
 ./run.sh invenio users activate test@test.com
 ./run.sh invenio roles create admin || echo "Role 'admin' already exists; continuing."
 ./run.sh invenio access allow superuser-access role admin || echo "Access rule for 'admin' may already exist; continuing."
 ./run.sh invenio roles add test@test.com admin || echo "User test@test.com may already have role 'admin'; continuing."
+fi
+
 token=$(./run.sh invenio tokens create -n demo-data -u test@test.com)
 echo "API token created for demo-data user (test@test.com)."
 
@@ -27,7 +30,7 @@ create_dataset() {
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $token" \
       -d "$metadata_json" \
-      https://127.0.0.1:5000/api/datasets) 
+      https://127.0.0.1:5000/api/datasets)
 
     echo "Create response:"
     echo "$response" | jq .
@@ -66,4 +69,3 @@ echo "Creating record 2..."
 create_dataset
 echo "Creating record 3..."
 create_dataset
-
