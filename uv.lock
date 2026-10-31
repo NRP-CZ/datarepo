@@ -4030,7 +4030,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-formats"
-version = "1.0.0"
+version = "1.0.1"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "oarepo-model" },
@@ -4038,9 +4038,9 @@ dependencies = [
     { name = "saxonche" },
     { name = "zipstream-ng" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/83/4b/016a53327f04ff112d8453c3d1361d90ce18dcf729d917657ee35f785b1e/oarepo_formats-1.0.0.tar.gz", hash = "sha256:a5f91ce377aaffdbf4c6870f61eaed4e1f93fa75cec759b7bdf1ffeeef351414", size = 116518, upload-time = "2026-10-30T20:14:08.934Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/7c/b9/b2edc9644ed652f30fd6b0f8da96a0c065087058f108eca263ab9d5e7f81/oarepo_formats-1.0.1.tar.gz", hash = "sha256:bf33e8444e04aae5bddb65784db6639b4b50ed4369ef94f4c5d95ad558d917f8", size = 116760, upload-time = "2026-10-31T19:01:53.228Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4f/50/186bc3b16540f992ad79df3187eeef43166dc5e619dca450fd9a8df70379/oarepo_formats-1.0.0-py3-none-any.whl", hash = "sha256:b760bfdfe7bf35a76b9940784215829cce39c5e751bcbd83c8506161ab1984e9", size = 146981, upload-time = "2026-10-30T20:14:07.545Z" },
+    { url = "https://files.pythonhosted.org/packages/43/6f/16fb72168efea24cbbbabfab0da407a7f5e6bd3e316ec6d118f627eb2934/oarepo_formats-1.0.1-py3-none-any.whl", hash = "sha256:938b779c436bd2e925492d7be13aa417b2c615a029e93e87cc128cced26afffe", size = 147247, upload-time = "2026-10-31T19:01:51.911Z" },
 ]
 
 [[package]]
