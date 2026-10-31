@@ -6,12 +6,12 @@
     "version": "1.0.23",
     "publisher": "Český hydrometeorologický ústav ve spolupráci s CESNET z.s.p.o. a Univerzitou Karlovou",
     "resource_type": {
-      "id": "c_ddb1"
+      "id": "dataset"
     },
     "creators": [
       {
         "role": {
-          "id": "Researcher"
+          "id": "researcher"
         },
         "person_or_org": {
           "name": "Šimek, Miroslav",
@@ -33,7 +33,7 @@
       },
       {
         "role": {
-          "id": "Researcher"
+          "id": "researcher"
         },
         "person_or_org": {
           "name": "Novák, Jan",
@@ -49,7 +49,7 @@
       },
       {
         "role": {
-          "id": "Researcher"
+          "id": "researcher"
         },
         "person_or_org": {
           "name": "Dvořáková, Marie",
@@ -65,7 +65,7 @@
       },
       {
         "role": {
-          "id": "Researcher"
+          "id": "researcher"
         },
         "person_or_org": {
           "name": "Procházka, Tomáš",
@@ -83,7 +83,7 @@
     "contributors": [
       {
         "role": {
-          "id": "DataManager"
+          "id": "other"
         },
         "person_or_org": {
           "name": "Krejčí, Petr",
@@ -99,7 +99,7 @@
       },
       {
         "role": {
-          "id": "ProjectLeader"
+          "id": "other"
         },
         "person_or_org": {
           "name": "Svobodová, Eva",
@@ -115,7 +115,7 @@
       },
       {
         "role": {
-          "id": "Other"
+          "id": "other"
         },
         "person_or_org": {
           "name": "Horák, Martin",
@@ -131,7 +131,7 @@
       },
       {
         "role": {
-          "id": "DataCollector"
+          "id": "other"
         },
         "person_or_org": {
           "name": "Veselá, Lucie",
@@ -147,7 +147,7 @@
       },
       {
         "role": {
-          "id": "Supervisor"
+          "id": "other"
         },
         "person_or_org": {
           "name": "Černý, Jiří",
@@ -169,7 +169,7 @@
           "id": "translated-title"
         },
         "lang": {
-          "id": "ENG"
+          "id": "eng"
         }
       }
     ],
@@ -180,7 +180,7 @@
           "id": "abstract"
         },
         "lang": {
-          "id": "CES"
+          "id": "ces"
         }
       },
       {
@@ -189,29 +189,29 @@
           "id": "abstract"
         },
         "lang": {
-          "id": "ENG"
+          "id": "eng"
         }
       }
     ],
     "languages": [
       {
-        "id": "CES"
+        "id": "ces"
       },
       {
-        "id": "ENG"
+        "id": "eng"
       }
     ],
     "dates": [
       {
         "date": "2025-04-27",
         "type": {
-          "id": "Created"
+          "id": "created"
         }
       },
       {
         "date": "2024-01-01",
         "type": {
-          "id": "Collected"
+          "id": "collected"
         }
       }
     ],
@@ -281,43 +281,43 @@
     ],
     "rights": [
       {
-        "id": "CC-4.0"
+        "id": "cc-by-4.0"
       }
     ],
     "related_resources": [
       {
         "relation_type": {
-          "id": "IsReferencedBy"
+          "id": "isreferencedby"
         },
         "resource_type": {
-          "id": "c_ddb1"
+          "id": "dataset"
         },
         "title": "Směrnice Evropského parlamentu a Rady 2008/50/ES ze dne 21. května 2008 o kvalitě vnějšího ovzduší a čistším ovzduší pro Evropu"
       },
       {
         "relation_type": {
-          "id": "IsReferencedBy"
+          "id": "isreferencedby"
         },
         "resource_type": {
-          "id": "c_ddb1"
+          "id": "dataset"
         },
         "title": "ENVI LVS1 Sampler pro odběr prašného aerosolu"
       },
       {
         "relation_type": {
-          "id": "IsDerivedFrom"
+          "id": "isderivedfrom"
         },
         "resource_type": {
-          "id": "c_ddb1"
+          "id": "dataset"
         },
         "title": "Kvalita ovzduší – aktuální hodinové údaje"
       },
       {
         "relation_type": {
-          "id": "HasMetadata"
+          "id": "hasmetadata"
         },
         "resource_type": {
-          "id": "c_ddb1"
+          "id": "dataset"
         },
         "title": "Metadata datové sady INSPIRE – Kvalita ovzduší – přehledy (data) na měřicích stanicích"
       }
