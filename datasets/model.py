@@ -6,11 +6,15 @@
 from __future__ import annotations
 
 from ccmm_invenio.models import ccmm_production_preset_1_1_0
+from invenio_i18n import lazy_gettext as _
+from invenio_rdm_records.resources.config import csl_url_args_retriever
+from invenio_rdm_records.resources.serializers import StringCitationSerializer
 from invenio_rdm_records.resources.serializers.ui.schema import UIRecordSchema
 from oarepo_communities.model.presets import communities_preset
 from oarepo_model.api import model
 from oarepo_model.customizations import (
     AddFacetGroup,
+    AddMetadataExport,
     PatchIndexMapping,
     PatchIndexPropertyMapping,
     PatchIndexSettings,
@@ -19,6 +23,10 @@ from oarepo_model.customizations import (
 )
 from oarepo_requests.model.presets.requests import requests_preset
 from oarepo_workflows.model.presets import workflows_preset
+
+from oarepo_formats.readme import AddReadmeExport
+from oarepo_formats.rocrate import AddROCrateBagItExport, AddROCrateExport, AddROCrateZipExport
+from oarepo_formats.xslt import AddXSLTExport
 
 COPY_TO_MAPPINGS = [
     # boost_10 - Primary identifiers (highest weight)
@@ -124,6 +132,17 @@ datasets_model = model(
             "boost_5._ascii_search",
             "boost_1._ascii_search",
         ),
+        AddXSLTExport(
+            code="ccmm-xml-2",
+            name="CCMM 2.0 XML",
+            mimetype="application/x-ccmm-2+xml",
+            stylesheet="https://raw.githubusercontent.com/techlib/CCMM-utils/refs/heads/nma-2.0.0/version-transformation/ccmm-1.1.0-to-2.0.0.xslt",
+            base_export="ccmm-xml",  # an export the model already has
+        ),
+        AddROCrateExport(),
+        AddROCrateZipExport(),
+        AddROCrateBagItExport(),
+        AddReadmeExport(),
     ],
     configuration={"ui_blueprint_name": "datasets_ui"},
 )

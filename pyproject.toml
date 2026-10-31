@@ -9,6 +9,7 @@ dependencies = [
    "oarepo-app[ccmm-development,development,llm-development]>=7.0.3,<8.0.0",
    "oarepo-kerberos>=0.1.0,<1.0.0",
    "oarepo-previewer>=1.0.0,<2.0.0",
+   "oarepo-formats>=1.0.0,<2.0.0",
    "pygelf>=0.4.0,<1.0.0",
    "flask-debugtoolbar",
 ]
