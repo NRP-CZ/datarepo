@@ -6,12 +6,15 @@
 from __future__ import annotations
 
 from ccmm_invenio.models import ccmm_production_preset_1_1_0
+from invenio_i18n import lazy_gettext as _
 from invenio_rdm_records.resources.serializers.ui.schema import UIRecordSchema
 from oarepo_communities.model.presets import communities_preset
+from oarepo_formats.readme import AddReadmeExport
+from oarepo_formats.rocrate import AddROCrateBagItExport, AddROCrateExport, AddROCrateZipExport
+from oarepo_formats.xslt import AddXSLTExport
 from oarepo_model.api import model
 from oarepo_model.customizations import (
     AddFacetGroup,
-    AddMetadataExport,
     PatchIndexMapping,
     PatchIndexPropertyMapping,
     PatchIndexSettings,
@@ -20,10 +23,6 @@ from oarepo_model.customizations import (
 )
 from oarepo_requests.model.presets.requests import requests_preset
 from oarepo_workflows.model.presets import workflows_preset
-
-from oarepo_formats.readme import AddReadmeExport
-from oarepo_formats.rocrate import AddROCrateBagItExport, AddROCrateExport, AddROCrateZipExport
-from oarepo_formats.xslt import AddXSLTExport
 
 COPY_TO_MAPPINGS = [
     # boost_10 - Primary identifiers (highest weight)
@@ -131,10 +130,14 @@ datasets_model = model(
         ),
         AddXSLTExport(
             code="ccmm-xml-2",
-            name="CCMM 2.0 XML",
+            name=_("CCMM 2.0 XML"),
             mimetype="application/x-ccmm-2+xml",
             stylesheet="https://raw.githubusercontent.com/techlib/CCMM-utils/refs/heads/nma-2.0.0/version-transformation/ccmm-1.1.0-to-2.0.0.xslt",
             base_export="ccmm-xml",  # an export the model already has
+            oai_metadata_prefix="ccmm-2",
+            # the schema the stylesheet puts into xsi:schemaLocation
+            oai_schema="https://model.ccmm.cz/research-data/2.0.0/dataset/schema.xsd",
+            oai_namespace="https://schema.ccmm.cz/research-data/2.0",
         ),
         AddROCrateExport(),
         AddROCrateZipExport(),
