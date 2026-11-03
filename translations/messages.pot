@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-08 14:41+0200\n"
+"POT-Creation-Date: 2026-11-03 15:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,53 +17,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/datasets/__init__.py:69
-msgid "New Dataset"
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:69
+msgid "New dataset"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/datasets/__init__.py:75
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:85
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:75
 msgid "Get access"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/datasets/__init__.py:81
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:95
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:81
 msgid "About repository"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:30
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:30
 msgid "and"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:55
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:55
 msgid "Untitled resource"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:65
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:65
 msgid "online"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:69
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:69
 msgid "Available at"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:94
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:95
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:94
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:95
 msgid "Related resources"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:107
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:107
 #, python-format
 msgid "Show %(count)d more"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/datasets/templates/semantic-ui/datasets/record_detail/side_bar/locations.html:5
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/record_detail/side_bar/locations.html:5
 msgid "Geographic locations"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:23
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:23
 msgid "Getting Permission to Deposit Datasets"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:26
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:26
 msgid ""
 "Your account does not have deposit permission yet, so you cannot upload datasets.\n"
 "      Deposition is open primarily to employees and students of eligible academic and research\n"
@@ -71,71 +73,284 @@ msgid ""
 "      users whose intended use is consistent with the mission of the repository."
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:31
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:31
 msgid "You can obtain deposit permission in one of two ways:"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:37
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:37
 msgid "Through a community"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:38
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:38
 msgid "Recommended"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:41
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:41
 msgid ""
 "Depositing through a community is the recommended way — your data gets a curator\n"
 "            and a home next to related datasets."
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:45
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:45
 msgid "Open membership communities"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:49
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:49
 msgid "Find a community"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:53
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:53
 msgid "Once you are on the community page:"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:55
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:55
 msgid "Click the \"Request Membership\" button"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:56
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:56
 msgid "Fill in the form, stating the reason for joining"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:58
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:58
 msgid ""
 "You will receive an email once your membership is approved; you can track "
 "the request"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:59
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:59
 msgid "on your Dashboard under Requests"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:65
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:65
 msgid "Closed membership communities"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:67
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:67
 msgid ""
 "These communities do not accept online applications — contact the community\n"
 "            manager directly. You can find a contact on the community's About page, or write to\n"
 "            us at:"
 msgstr ""
 
-msgid
-"You cannot apply to these communities online; you need to contact the "
-"community manager directly.\n"
-"            If you do not already have a contact email address,\n"
-"            check the community's About page or contact us at\n"
-"            <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:80
+msgid "As an individual depositor"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:82
+msgid ""
+"If no suitable community exists for your data, you can deposit directly\n"
+"            as an individual depositor."
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:87
+msgid "Loading application form…"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:90
+msgid "How it works:"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:93
+msgid ""
+"Submit the application form. You may be asked to describe your intended\n"
+"              use of the repository."
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:97
+msgid ""
+"Wait for review. Applications are evaluated manually, so approval may not\n"
+"              be immediate — you will receive an email once your application has been processed."
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:101
+msgid ""
+"Once approved, sign out and sign in again so the new permission\n"
+"              is picked up — then you can deposit your first dataset."
+msgstr ""
+
+msgid "Data Catch-all Repository"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:35
+#, python-format
+msgid ""
+"\n"
+"        A part of the <a href=\"%(link)s\">National Repository Platform for Research Data</a> project (CZ.02.01.01/00/23_014/0008787).\n"
+"        "
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:46
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:47
+msgid "EU, MINISTRY OF EDUCATION YOUTH AND SPORTS and NRP project"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:53
+msgid "Resources"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:55
+msgid "Documentation"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:56
+msgid "NRP project"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:57
+msgid "Personal data processing information"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:62
+msgid "Contact"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:65
+msgid "User support"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:28
+msgid "Multi-discipline data repository"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:41
+msgid "Search..."
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:46
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:49
+msgid "Search"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:61
+msgid "Show all datasets"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:73
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:77
+msgid "Upload dataset"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:74
+msgid "Upload your data to our catch-all repository"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:81
+msgid "Want to deposit your data?"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:82
+msgid "Depositing requires a permission. Here is how to request it."
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:91
+msgid "How does a repository work?"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:92
+msgid "Would you like to know more about where your data is being stored?"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:108
+msgid "EU and Ministry of Education, Youth and Sports of the Czech Republic"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:125
+msgid "Recent uploads"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:23
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:42
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:59
+#: /Users/terezieprchalova/Desktop/datarepo/templates/macros/card.html:17
+msgid "Open external link"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:76
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:82
+msgid "home"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:108
+msgid "My dashboard"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:114
+msgid "Requests"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:116
+msgid "Inbox"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:16
+msgid "Login"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:19
+msgid "Log in"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:24
+msgid "Sign up"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:42
+msgid "Quick create"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:58
+msgid "Actions"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:79
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:120
+msgid "My account"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:110
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:113
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:144
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:147
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:154
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:157
+msgid "Log out"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
+msgid "Opens in new tab"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
+msgid "Read more"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:24
+msgid "Rights"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:28
+msgid "License"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:55
+msgid "Close"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:58
+msgid "No further description."
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:67
+msgid "Copyright"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/invenio_app_rdm/help/search.cs.html:6
+msgid "Průvodce vyhledáváním"
 msgstr ""
 
 msgid "Geolocations"
@@ -200,7 +415,13 @@ msgstr ""
 msgid "Latitude"
 msgstr ""
 
+msgid "Must be a valid number between -90 and 90."
+msgstr ""
+
 msgid "Longitude"
+msgstr ""
+
+msgid "Must be a valid number between -180 and 180."
 msgstr ""
 
 msgid "Search for a location..."
@@ -224,42 +445,6 @@ msgstr ""
 msgid "Reverse geocoding failed!"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:80
-msgid "As an individual depositor"
-msgstr ""
-
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:82
-msgid ""
-"If no suitable community exists for your data, you can deposit directly\n"
-"            as an individual depositor."
-msgstr ""
-
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:87
-msgid "Loading application form…"
-msgstr ""
-
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:90
-msgid "How it works:"
-msgstr ""
-
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:93
-msgid ""
-"Submit the application form. You may be asked to describe your intended\n"
-"              use of the repository."
-msgstr ""
-
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:97
-msgid ""
-"Wait for review. Applications are evaluated manually, so approval may not\n"
-"              be immediate — you will receive an email once your application has been processed."
-msgstr ""
-
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:101
-msgid ""
-"Once approved, sign out and sign in again so the new permission\n"
-"              is picked up — then you can deposit your first dataset."
-msgstr ""
-
 msgid "By submitting, you agree to the community's <2>curation policy</2>."
 msgstr ""
 
@@ -270,9 +455,6 @@ msgid "No valid locations were found!"
 msgstr ""
 
 msgid "No locations were found!"
-msgstr ""
-
-msgid "Data Catch-all Repository"
 msgstr ""
 
 msgid ""
@@ -298,9 +480,6 @@ msgstr ""
 msgid "Published"
 msgstr ""
 
-msgid "Version"
-msgstr ""
-
 msgid "Publisher"
 msgstr ""
 
@@ -308,8 +487,4 @@ msgid "Language"
 msgstr ""
 
 msgid "Submitters"
-msgstr ""
-
-#: templates/macros/card.html
-msgid "Open external link"
 msgstr ""

@@ -30,14 +30,13 @@ msgstr "Autor"
 msgid "metadata/subjects/subject.label"
 msgstr "Klíčová slova"
 
-#: templates/footer.html:31
 msgid "Data Catch-all Repository"
 msgstr "Datový Catch-all Repozitář"
 
 msgid "Search guide"
 msgstr "Průvodce vyhledáváním"
 
-#: templates/footer.html:35
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:35
 #, python-format
 msgid ""
 "\n"
@@ -48,197 +47,198 @@ msgstr ""
 "        Součást projektu <a href=\"%(link)s\">Národní repozitářová platforma pro výzkumná data</a> (CZ.02.01.01/00/23_014/0008787).\n"
 "        "
 
-#: templates/footer.html:46 templates/footer.html:47
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:46
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:47
 msgid "EU, MINISTRY OF EDUCATION YOUTH AND SPORTS and NRP project"
 msgstr "EU, MINISTERSTVO ŠKOLSTVÍ, MLÁDEŽE A TĚLOVÝCHOVY a projekt NRP"
 
-#: templates/footer.html:53
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:53
 msgid "Resources"
 msgstr "Zdroje"
 
-#: templates/footer.html:55 ui/datasets/__init__.py:74
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:55
 msgid "Documentation"
 msgstr "Dokumentace"
 
-#: templates/footer.html:56
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:56
 msgid "NRP project"
 msgstr "Projekt NRP"
 
-#: templates/footer.html:57
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:57
 msgid "Personal data processing information"
 msgstr "Informace o zpracování osobních údajů"
 
-#: templates/footer.html:62
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:62
 msgid "Contact"
 msgstr "Kontakt"
 
-#: templates/footer.html:65
+#: /Users/terezieprchalova/Desktop/datarepo/templates/footer.html:65
 msgid "User support"
 msgstr "Uživatelská podpora"
 
-#: templates/footer.html:67
 msgid "Version"
 msgstr "Verze"
 
-#: templates/frontpage.html:28
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:28
 msgid "Multi-discipline data repository"
 msgstr "Repozitář multidisciplinárních dat"
 
-#: templates/frontpage.html:41
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:41
 msgid "Search..."
 msgstr "Hledat..."
 
-#: templates/frontpage.html:46 templates/frontpage.html:49
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:46
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:49
 msgid "Search"
 msgstr "Hledat"
 
-#: templates/frontpage.html:61
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:61
 msgid "Show all datasets"
 msgstr "Zobrazit všechny datasety"
 
-#: templates/frontpage.html:72 templates/frontpage.html:76
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:73
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:77
 msgid "Upload dataset"
 msgstr "Nahrát dataset"
 
-#: templates/frontpage.html:73
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:74
 msgid "Upload your data to our catch-all repository"
 msgstr "Nahrajte svá data do našeho univerzálního repozitáře"
 
-#: templates/frontpage.html:76 ui/datasets/__init__.py:63
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:85
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:75
 msgid "Get access"
 msgstr "Získat přístup"
 
-#: templates/frontpage.html:81
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:81
 msgid "Want to deposit your data?"
 msgstr "Chcete uložit svá data?"
 
-#: templates/frontpage.html:82
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:82
 msgid "Depositing requires a permission. Here is how to request it."
 msgstr ""
 "K ukládání datasetů je potřeba oprávnění. Podívejte se, jak o něj požádat."
 
-#: templates/frontpage.html:81
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:91
 msgid "How does a repository work?"
 msgstr "Jak repozitář funguje?"
 
-#: templates/frontpage.html:82
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:92
 msgid "Would you like to know more about where your data is being stored?"
 msgstr "Chcete vědět více o tom, kde jsou vaše data uložena?"
 
-#: templates/frontpage.html:85 ui/datasets/__init__.py:69
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:95
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:81
 msgid "About repository"
 msgstr "O repozitáři"
 
-#: templates/frontpage.html:97
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:108
 msgid "EU and Ministry of Education, Youth and Sports of the Czech Republic"
 msgstr "EU a Ministerstvo školství, mládeže a tělovýchovy České republiky"
 
-#: templates/header.html:11 templates/header.html:17
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:76
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:82
 msgid "home"
 msgstr "domů"
 
-#: templates/header.html:43
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:108
 msgid "My dashboard"
 msgstr "Můj přehled"
 
-#: templates/header.html:49
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:114
 msgid "Requests"
 msgstr "Žádosti"
 
-#: templates/header.html:51
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:116
 msgid "Inbox"
 msgstr "Doručené"
 
-#: templates/oarepo/invenio_app_rdm/header_login.html:16
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:16
 msgid "Login"
 msgstr "Přihlášení"
 
-#: templates/oarepo/invenio_app_rdm/header_login.html:19
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:19
 msgid "Log in"
 msgstr "Přihlásit se"
 
-#: templates/oarepo/invenio_app_rdm/header_login.html:24
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:24
 msgid "Sign up"
 msgstr "Zaregistrovat se"
 
-#: templates/oarepo/invenio_app_rdm/header_login.html:42
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:42
 msgid "Quick create"
 msgstr "Rychlé vytvoření"
 
-#: templates/oarepo/invenio_app_rdm/header_login.html:58
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:58
 msgid "Actions"
 msgstr "Akce"
 
-#: templates/oarepo/invenio_app_rdm/header_login.html:79
-#: templates/oarepo/invenio_app_rdm/header_login.html:120
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:79
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:120
 msgid "My account"
 msgstr "Můj účet"
 
-#: templates/oarepo/invenio_app_rdm/header_login.html:110
-#: templates/oarepo/invenio_app_rdm/header_login.html:113
-#: templates/oarepo/invenio_app_rdm/header_login.html:144
-#: templates/oarepo/invenio_app_rdm/header_login.html:147
-#: templates/oarepo/invenio_app_rdm/header_login.html:154
-#: templates/oarepo/invenio_app_rdm/header_login.html:157
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:110
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:113
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:144
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:147
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:154
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:157
 msgid "Log out"
 msgstr "Odhlásit se"
 
-#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
-#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
 msgid "Opens in new tab"
 msgstr "Otevře se v nové kartě"
 
-#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
-#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:13
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:16
 msgid "Read more"
 msgstr "Zobrazit více"
 
-#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:24
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:24
 msgid "Rights"
 msgstr "Práva"
 
-#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:28
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:28
 msgid "License"
 msgstr "Licence"
 
-#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:55
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:55
 msgid "Close"
 msgstr "Zavřít"
 
-#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:58
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:58
 msgid "No further description."
 msgstr "Žádný další popis."
 
-#: templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:67
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/datarepo/records/details/side_bar/licenses.html:67
 msgid "Copyright"
 msgstr "Autorská práva"
 
-#: ui/datasets/__init__.py:57
-msgid "New Dataset"
-msgstr "Nový dataset"
-
-#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:26
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:30
 msgid "and"
 msgstr "a"
 
-#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:51
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:55
 msgid "Untitled resource"
 msgstr "Nepojmenovaný zdroj"
 
-#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:61
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:65
 msgid "online"
 msgstr "online"
 
-#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:65
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:69
 msgid "Available at"
 msgstr "Dostupné na"
 
-#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:90
-#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:91
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:94
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:95
 msgid "Related resources"
 msgstr "Související zdroje"
 
-#: ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:103
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/macros/related_resources.html:107
 #, python-format
 msgid "Show %(count)d more"
 msgstr "Zobrazit dalších %(count)d"
@@ -313,7 +313,7 @@ msgstr ""
 msgid "Getting Access Through a Community"
 msgstr "Získání přístupu prostřednictvím komunity"
 
-#: ui/pages/templates/GetAccess.jinja:71
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:45
 msgid "Open membership communities"
 msgstr "Komunity s otevřeným členstvím"
 
@@ -325,7 +325,7 @@ msgstr "Přejděte na stránku komunity"
 msgid "Click on the \"Request Membership\" button"
 msgstr "Klikněte na tlačítko „Požádat o členství“"
 
-#: ui/pages/templates/GetAccess.jinja:76
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:56
 msgid "Fill in the form, stating the reason for joining"
 msgstr "Vyplňte formulář a uveďte důvod, proč se chcete připojit"
 
@@ -338,7 +338,7 @@ msgid ""
 "You can track the status of your request on your Dashboard under Requests."
 msgstr "Stav své žádosti můžete sledovat ve svém Přehledu v sekci Žádosti."
 
-#: ui/pages/templates/GetAccess.jinja:81
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:65
 msgid "Closed membership communities"
 msgstr "Komunity s uzavřeným členstvím"
 
@@ -357,11 +357,11 @@ msgstr ""
 msgid "Submitters"
 msgstr ""
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:26
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:23
 msgid "Getting Permission to Deposit Datasets"
 msgstr "Jak získat oprávnění k ukládání datasetů"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:29
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:26
 msgid ""
 "Your account does not have deposit permission yet, so you cannot upload datasets.\n"
 "      Deposition is open primarily to employees and students of eligible academic and research\n"
@@ -378,15 +378,15 @@ msgstr ""
 msgid "You can obtain deposit permission in one of two ways:"
 msgstr "Oprávnění k ukládání datasetů můžete získat jedním ze dvou způsobů:"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:39
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:80
 msgid "As an individual depositor"
 msgstr "Jako samostatný vkladatel"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:43
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:90
 msgid "How it works:"
 msgstr "Jak to funguje:"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:46
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:93
 msgid ""
 "Submit the application form. You may be asked to describe your intended\n"
 "              use of the repository."
@@ -394,7 +394,7 @@ msgstr ""
 "Odešlete přihlašovací formulář. Můžete být požádáni o popis zamýšleného "
 "využití repozitáře."
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:50
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:97
 msgid ""
 "Wait for review. Applications are evaluated manually, so approval may not\n"
 "              be immediate — you will receive an email once your application has been processed."
@@ -406,11 +406,11 @@ msgstr ""
 msgid "Once approved, you can deposit your first dataset."
 msgstr "Po schválení můžete uložit svůj první dataset."
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:62
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:37
 msgid "Through a community"
 msgstr "Prostřednictvím komunity"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:68
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:49
 msgid "Find a community"
 msgstr "Najděte komunitu"
 
@@ -436,7 +436,7 @@ msgstr ""
 "komunity. Kontakt najdete na stránce komunity „O nás“, případně nám napište "
 "na <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:39
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:87
 msgid "Loading application form…"
 msgstr "Načítá se přihlašovací formulář…"
 
@@ -450,15 +450,15 @@ msgstr ""
 "komunity. Kontakt najdete na stránce komunity „O nás“, případně nám napište "
 "na"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:31
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:31
 msgid "You can obtain deposit permission in one of two ways:"
 msgstr "Oprávnění k ukládání datasetů můžete získat jedním ze dvou způsobů:"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:37
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:38
 msgid "Recommended"
 msgstr "Doporučeno"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:65
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:82
 msgid ""
 "If no suitable community exists for your data, you can deposit directly\n"
 "            as an individual depositor."
@@ -466,7 +466,7 @@ msgstr ""
 "Pokud pro vaše data neexistuje vhodná komunita, můžete je uložit přímo jako "
 "samostatný vkladatel."
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:38
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:41
 msgid ""
 "Depositing through a community is the recommended way — your data gets a curator\n"
 "            and a home next to related datasets."
@@ -482,11 +482,11 @@ msgstr "Najděte komunitu a otevřete její stránku"
 msgid "Browse communities"
 msgstr "Procházet komunity"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:54
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:53
 msgid "Once you are on the community page:"
 msgstr "Jakmile budete na stránce komunity:"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:56
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:55
 msgid "Click the \"Request Membership\" button"
 msgstr "Klikněte na tlačítko „Požádat o členství“"
 
@@ -500,7 +500,7 @@ msgstr ""
 "komunity. Kontakt najdete na stránce komunity „O nás“, případně nám napište "
 "na"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:61
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:67
 msgid ""
 "These communities do not accept online applications — contact the community\n"
 "            manager directly. You can find a contact on the community's About page, or write to\n"
@@ -510,13 +510,13 @@ msgstr ""
 "komunity. Kontakt najdete na stránce komunity „O nás“, případně nám napište "
 "na:"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:58
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:58
 msgid ""
 "You will receive an email once your membership is approved; you can track "
 "the request"
 msgstr "Po schválení členství obdržíte e-mail; stav žádosti můžete sledovat"
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:59
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:59
 msgid "on your Dashboard under Requests"
 msgstr "ve svém Přehledu v sekci Žádosti"
 
@@ -533,7 +533,8 @@ msgid "Unsupported geometry type"
 msgstr "Nepodporovaný typ geometrie"
 
 msgid "We currently support only 'Point', 'MultiPoint' and 'Polygon'."
-msgstr "V současné době podporujeme pouze typy „Point“, „MultiPoint“ a „Polygon“."
+msgstr ""
+"V současné době podporujeme pouze typy „Point“, „MultiPoint“ a „Polygon“."
 
 msgid "Details"
 msgstr "Podrobnosti"
@@ -580,7 +581,9 @@ msgstr "Smažte polohu"
 msgid ""
 "Add geolocations for your record. You can use the interactive map or search "
 "for the place."
-msgstr "Přidejte k záznamu zeměpisnou polohu. Můžete využít interaktivní mapu nebo místo vyhledat."
+msgstr ""
+"Přidejte k záznamu zeměpisnou polohu. Můžete využít interaktivní mapu nebo "
+"místo vyhledat."
 
 msgid "Add location"
 msgstr "Přidejte polohu"
@@ -615,7 +618,7 @@ msgstr "Vyhledávání polohy selhalo!"
 msgid "Reverse geocoding failed!"
 msgstr "Reverzní geokódování selhalo!"
 
-#: datarepo/templates/semantic-ui/datarepo/records/details/side_bar/locations.html:75
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/record_detail/side_bar/locations.html:5
 msgid "Geographic locations"
 msgstr "Zeměpisné polohy"
 
@@ -643,13 +646,63 @@ msgstr "Musí se jednat o platné číslo v rozmezí -90 až 90."
 msgid "Must be a valid number between -180 and 180."
 msgstr "Musí se jednat o platné číslo v rozmezí -180 až 180."
 
-#: /Users/miroslavbauer/Code/github.com/NRP-CZ/datarepo/ui/pages/templates/GetAccess.jinja:101
+#: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:101
 msgid ""
 "Once approved, sign out and sign in again so the new permission\n"
 "              is picked up — then you can deposit your first dataset."
 msgstr ""
 "Po schválení se odhlaste a znovu přihlaste, aby se nové oprávnění\n"
 "načetlo — poté můžete uložit svůj první dataset."
+
+msgid ""
+"TIP: Most of the content is in English. You will get more results by using "
+"English terms."
+msgstr ""
+"TIP: Většina obsahu je v angličtině. Používáním anglických výrazů získáte "
+"více výsledků."
+
+msgid "Show less"
+msgstr "Zobrazit méně"
+
+msgid "Show more"
+msgstr "Zobrazit více"
+
+msgid "No title"
+msgstr "Bez názvu"
+
+msgid "Draft"
+msgstr "Návrh"
+
+msgid "Published"
+msgstr "Publikováno"
+
+msgid "Publisher"
+msgstr "Vydavatel"
+
+msgid "Language"
+msgstr "Jazyk"
+
+msgid "By submitting, you agree to the community's <2>curation policy</2>."
+msgstr "Odesláním souhlasíte s <2>kurátorskou politikou</2> komunity."
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:23
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:42
+#: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:59
+#: /Users/terezieprchalova/Desktop/datarepo/templates/macros/card.html:17
+msgid "Open external link"
+msgstr "Otevřít externí odkaz"
+
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:69
+msgid "New dataset"
+msgstr "Nový dataset"
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:125
+msgid "Recent uploads"
+msgstr ""
+
+#: /Users/terezieprchalova/Desktop/datarepo/templates/semantic-ui/invenio_app_rdm/help/search.cs.html:6
+msgid "Průvodce vyhledáváním"
+msgstr ""
 
 #~ msgid "APA"
 #~ msgstr "APA"
@@ -745,37 +798,6 @@ msgstr ""
 #~ msgid "to your invenio.cfg file."
 #~ msgstr "do souboru invenio.cfg."
 
-#~ msgid ""
-#~ "TIP: Most of the content is in English. You will get more results by using "
-#~ "English terms."
-#~ msgstr ""
-#~ "TIP: Většina obsahu je v angličtině. Používáním anglických výrazů získáte "
-#~ "více výsledků."
-
-#~ msgid "Show less"
-#~ msgstr "Zobrazit méně"
-
-#~ msgid "Show more"
-#~ msgstr "Zobrazit více"
-
-#~ msgid "No title"
-#~ msgstr "Bez názvu"
-
-#~ msgid "Draft"
-#~ msgstr "Návrh"
-
-#~ msgid "Published"
-#~ msgstr "Publikováno"
-
-#~ msgid "Publisher"
-#~ msgstr "Vydavatel"
-
-#~ msgid "Language"
-#~ msgstr "Jazyk"
-
-#~ msgid "By submitting, you agree to the community's <2>curation policy</2>."
-#~ msgstr "Odesláním souhlasíte s <2>kurátorskou politikou</2> komunity."
-
 #~ msgid "Czech"
 #~ msgstr "Čeština"
 
@@ -835,7 +857,3 @@ msgstr ""
 
 #~ msgid "Frascati"
 #~ msgstr ""
-
-#: templates/macros/card.html
-msgid "Open external link"
-msgstr "Otevřít externí odkaz"
