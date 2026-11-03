@@ -66,7 +66,7 @@ def init_menu(app: Flask) -> None:
     with app.app_context():
         current_menu.submenu("plus.create_datasets").register(
             f"{ui_resource_config.blueprint_name}.deposit_create",
-            _("New Dataset"),
+            _("New dataset"),
             order=1,
             visible_when=can_view_deposit_page,
         )
