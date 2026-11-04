@@ -1,3 +1,10 @@
-.ui.selection.dropdown {
-  min-width: 0 !important;
+.ui.dropdown {
+  
+  &.selection {
+    min-width: 0 !important;
+  }
+
+  &.citation-dropdown {
+    width: 100%;
+  }
 }
