@@ -495,13 +495,33 @@ dl.details-list {
     }
     .right.menu.item {
       gap: 0.5rem;
-      a.button {
+
+      .header-divider {
+        flex: 0 0 1px;
+        align-self: center;
+        height: 1.75rem;
+        margin: 0 0.25rem;
+        background-color: @mainColors9;
+      }
+
+      a.primary.button {
         color: @white !important;
         i {
           color: @mainBackgroundColor;
         }
       }
-    }
+      .ui.secondary.button {
+        font-weight: bold;
+        &:hover {
+          color: @secondaryColor !important;
+        }
+        &:active,
+        &:focus,
+        &.active {
+          background-color: transparent !important;
+          color: @mainColors9 !important;
+        }
+      }    }
   }
 
   .item.logo {
@@ -582,6 +602,13 @@ dl.details-list {
 
 #invenio-nav.ui.menu #user-profile-dropdown {
   width: auto !important;
+
+  #user-profile-dropdown-btn {
+    max-width: 10.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 #header-search-bar .ui.fluid.search {

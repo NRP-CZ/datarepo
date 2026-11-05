@@ -93,6 +93,7 @@ msgstr ""
 
 #: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:73
 #: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:77
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:69
 msgid "Upload dataset"
 msgstr ""
 
@@ -101,7 +102,7 @@ msgid "Upload your data to our catch-all repository"
 msgstr ""
 
 #: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:85
-#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:75
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:76
 msgid "Get access"
 msgstr ""
 
@@ -114,7 +115,7 @@ msgid "Would you like to know more about where your data is being stored?"
 msgstr ""
 
 #: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:95
-#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:81
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:83
 msgid "About repository"
 msgstr ""
 
@@ -139,15 +140,15 @@ msgstr ""
 msgid "Inbox"
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:16
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:17
 msgid "Login"
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:19
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:20
 msgid "Log in"
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:24
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:25
 msgid "Sign up"
 msgstr ""
 
@@ -155,21 +156,21 @@ msgstr ""
 msgid "Quick create"
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:58
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:53
 msgid "Actions"
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:79
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:120
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:74
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:116
 msgid "My account"
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:110
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:113
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:144
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:147
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:154
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:157
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:106
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:109
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:140
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:143
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:150
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:153
 msgid "Log out"
 msgstr ""
 
@@ -628,10 +629,6 @@ msgstr ""
 #: /Users/terezieprchalova/Desktop/datarepo/templates/header.html:59
 #: /Users/terezieprchalova/Desktop/datarepo/templates/macros/card.html:17
 msgid "Open external link"
-msgstr ""
-
-#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:69
-msgid "New dataset"
 msgstr ""
 
 #: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:81

@@ -66,13 +66,15 @@ def init_menu(app: Flask) -> None:
     with app.app_context():
         current_menu.submenu("plus.create_datasets").register(
             f"{ui_resource_config.blueprint_name}.deposit_create",
-            _("New dataset"),
+            _("Upload dataset"),
+            icon="upload",
             order=1,
             visible_when=can_view_deposit_page,
         )
         current_menu.submenu("plus.create_datasets_docs").register(
             "pages_ui.get_access",
             text=_("Get access"),
+            icon="lock",
             order=1,
             visible_when=lambda: not can_view_deposit_page(),
         )

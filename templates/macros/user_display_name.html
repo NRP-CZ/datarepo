@@ -1,0 +1,10 @@
+{%- macro user_display_name(user) -%}
+    {%- set profile = user.user_profile or {} -%}
+    {%- if profile.get('full_name') -%}
+        {{ profile.get('full_name') }}
+    {%- elif user.username -%}
+        {{user.username}}
+    {%- elif user.email -%}
+        {{ user.email }}
+    {%- endif -%}
+{%- endmacro -%}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-03 15:18+0100\n"
+"POT-Creation-Date: 2026-11-05 14:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,17 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:73
+#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:77
 #: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:69
-msgid "New dataset"
+msgid "Upload dataset"
 msgstr ""
 
 #: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:85
-#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:75
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:76
 msgid "Get access"
 msgstr ""
 
 #: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:95
-#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:81
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:83
 msgid "About repository"
 msgstr ""
 
@@ -228,11 +230,6 @@ msgstr ""
 msgid "Show all datasets"
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:73
-#: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:77
-msgid "Upload dataset"
-msgstr ""
-
 #: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:74
 msgid "Upload your data to our catch-all repository"
 msgstr ""
@@ -285,37 +282,33 @@ msgstr ""
 msgid "Inbox"
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:16
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:17
 msgid "Login"
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:19
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:20
 msgid "Log in"
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:24
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:25
 msgid "Sign up"
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:42
-msgid "Quick create"
-msgstr ""
-
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:58
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:53
 msgid "Actions"
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:79
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:120
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:74
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:116
 msgid "My account"
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:110
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:113
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:144
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:147
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:154
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:157
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:106
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:109
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:140
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:143
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:150
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:153
 msgid "Log out"
 msgstr ""
 

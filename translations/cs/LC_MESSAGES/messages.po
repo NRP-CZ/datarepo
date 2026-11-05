@@ -98,6 +98,7 @@ msgstr "Zobrazit všechny datasety"
 
 #: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:73
 #: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:77
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:69
 msgid "Upload dataset"
 msgstr "Nahrát dataset"
 
@@ -106,7 +107,7 @@ msgid "Upload your data to our catch-all repository"
 msgstr "Nahrajte svá data do našeho univerzálního repozitáře"
 
 #: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:85
-#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:75
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:76
 msgid "Get access"
 msgstr "Získat přístup"
 
@@ -128,7 +129,7 @@ msgid "Would you like to know more about where your data is being stored?"
 msgstr "Chcete vědět více o tom, kde jsou vaše data uložena?"
 
 #: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:95
-#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:81
+#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:83
 msgid "About repository"
 msgstr "O repozitáři"
 
@@ -153,15 +154,15 @@ msgstr "Žádosti"
 msgid "Inbox"
 msgstr "Doručené"
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:16
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:17
 msgid "Login"
 msgstr "Přihlášení"
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:19
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:20
 msgid "Log in"
 msgstr "Přihlásit se"
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:24
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:25
 msgid "Sign up"
 msgstr "Zaregistrovat se"
 
@@ -169,21 +170,21 @@ msgstr "Zaregistrovat se"
 msgid "Quick create"
 msgstr "Rychlé vytvoření"
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:58
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:53
 msgid "Actions"
 msgstr "Akce"
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:79
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:120
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:74
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:116
 msgid "My account"
 msgstr "Můj účet"
 
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:110
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:113
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:144
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:147
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:154
-#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:157
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:106
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:109
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:140
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:143
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:150
+#: /Users/terezieprchalova/Desktop/datarepo/templates/oarepo/invenio_app_rdm/header_login.html:153
 msgid "Log out"
 msgstr "Odhlásit se"
 
@@ -691,10 +692,6 @@ msgstr "Odesláním souhlasíte s <2>kurátorskou politikou</2> komunity."
 #: /Users/terezieprchalova/Desktop/datarepo/templates/macros/card.html:17
 msgid "Open external link"
 msgstr "Otevřít externí odkaz"
-
-#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/__init__.py:69
-msgid "New dataset"
-msgstr "Nový dataset"
 
 #: /Users/terezieprchalova/Desktop/datarepo/templates/frontpage.html:125
 msgid "Recent uploads"
