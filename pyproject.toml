@@ -59,10 +59,15 @@ build-backend = "uv_build"
 # Example: oarepo-requests = { path = "/Users/m/w/rdm-13/oarepo-requests", editable=true }
 
 [tool.uv]
+# oarepo-app 7.x caps these below the versions the repository needs (its ccmm-development and
+# development extras: ccmm-invenio<1.2, oarepo-model<6, oarepo-rdm<9, oarepo-related-resources<6)
 override-dependencies = [
-    "ccmm-invenio>=2.0.1",
-    "oarepo-model>=6.1.0",
-    "oarepo-rdm>=9.0.0",
+    # 2.4.0: the datacite-json import (used by the RO-Crate import) and RELATED_RESOURCES_DATACITE_MAPPER
+    "ccmm-invenio>=2.4.0,<3.0.0",
+    "oarepo-model>=6.1.0,<7.0.0",
+    "oarepo-rdm>=9.1.1,<10.0.0",
+    # 6.0.0: the DataCite mapping moved to ccmm-invenio
+    "oarepo-related-resources>=6.0.0,<7.0.0",
 ]
 
 [[tool.uv.index]]

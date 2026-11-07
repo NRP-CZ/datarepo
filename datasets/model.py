@@ -10,7 +10,12 @@ from invenio_i18n import lazy_gettext as _
 from invenio_rdm_records.resources.serializers.ui.schema import UIRecordSchema
 from oarepo_communities.model.presets import communities_preset
 from oarepo_formats.readme import AddReadmeExport
-from oarepo_formats.rocrate import AddROCrateBagItExport, AddROCrateExport, AddROCrateZipExport
+from oarepo_formats.rocrate import (
+    AddROCrateBagItExport,
+    AddROCrateExport,
+    AddROCrateImport,
+    AddROCrateZipExport,
+)
 from oarepo_formats.xslt import AddXSLTExport
 from oarepo_model.api import model
 from oarepo_model.customizations import (
@@ -142,6 +147,7 @@ datasets_model = model(
         AddROCrateExport(),
         AddROCrateZipExport(),
         AddROCrateBagItExport(),
+        AddROCrateImport(),
         AddReadmeExport(),
     ],
     configuration={"ui_blueprint_name": "datasets_ui"},

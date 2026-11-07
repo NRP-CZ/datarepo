@@ -1,0 +1,335 @@
+{
+  "$schema": "local://datasets-v1.1.0.json",
+  "metadata": {
+    "title": "Kvalita ovzduší ve středních Čechách 2024 – Komplexní analýza koncentrací znečišťujících látek z automatizovaných měřicích stanic provozovaných ČHMÚ včetně prostorového rozložení a časových trendů",
+    "publication_date": "2025-04-27",
+    "version": "1.0.23",
+    "publisher": "Český hydrometeorologický ústav ve spolupráci s CESNET z.s.p.o. a Univerzitou Karlovou",
+    "resource_type": {
+      "id": "dataset"
+    },
+    "creators": [
+      {
+        "role": {
+          "id": "researcher"
+        },
+        "person_or_org": {
+          "name": "Šimek, Miroslav",
+          "type": "personal",
+          "given_name": "Miroslav",
+          "family_name": "Šimek",
+          "identifiers": [
+            {
+              "identifier": "0000-0003-0852-6632",
+              "scheme": "orcid"
+            }
+          ]
+        },
+        "affiliations": [
+          {
+            "name": "CESNET z.s.p.o."
+          }
+        ]
+      },
+      {
+        "role": {
+          "id": "researcher"
+        },
+        "person_or_org": {
+          "name": "Novák, Jan",
+          "type": "personal",
+          "given_name": "Jan",
+          "family_name": "Novák"
+        },
+        "affiliations": [
+          {
+            "name": "Univerzita Karlova"
+          }
+        ]
+      },
+      {
+        "role": {
+          "id": "researcher"
+        },
+        "person_or_org": {
+          "name": "Dvořáková, Marie",
+          "type": "personal",
+          "given_name": "Marie",
+          "family_name": "Dvořáková"
+        },
+        "affiliations": [
+          {
+            "name": "ČHMÚ"
+          }
+        ]
+      },
+      {
+        "role": {
+          "id": "researcher"
+        },
+        "person_or_org": {
+          "name": "Procházka, Tomáš",
+          "type": "personal",
+          "given_name": "Tomáš",
+          "family_name": "Procházka"
+        },
+        "affiliations": [
+          {
+            "name": "CESNET z.s.p.o."
+          }
+        ]
+      }
+    ],
+    "contributors": [
+      {
+        "role": {
+          "id": "other"
+        },
+        "person_or_org": {
+          "name": "Krejčí, Petr",
+          "type": "personal",
+          "given_name": "Petr",
+          "family_name": "Krejčí"
+        },
+        "affiliations": [
+          {
+            "name": "CESNET z.s.p.o."
+          }
+        ]
+      },
+      {
+        "role": {
+          "id": "other"
+        },
+        "person_or_org": {
+          "name": "Svobodová, Eva",
+          "type": "personal",
+          "given_name": "Eva",
+          "family_name": "Svobodová"
+        },
+        "affiliations": [
+          {
+            "name": "Univerzita Karlova"
+          }
+        ]
+      },
+      {
+        "role": {
+          "id": "other"
+        },
+        "person_or_org": {
+          "name": "Horák, Martin",
+          "type": "personal",
+          "given_name": "Martin",
+          "family_name": "Horák"
+        },
+        "affiliations": [
+          {
+            "name": "ČHMÚ"
+          }
+        ]
+      },
+      {
+        "role": {
+          "id": "other"
+        },
+        "person_or_org": {
+          "name": "Veselá, Lucie",
+          "type": "personal",
+          "given_name": "Lucie",
+          "family_name": "Veselá"
+        },
+        "affiliations": [
+          {
+            "name": "Masarykova univerzita"
+          }
+        ]
+      },
+      {
+        "role": {
+          "id": "other"
+        },
+        "person_or_org": {
+          "name": "Černý, Jiří",
+          "type": "personal",
+          "given_name": "Jiří",
+          "family_name": "Černý"
+        },
+        "affiliations": [
+          {
+            "name": "Akademie věd ČR"
+          }
+        ]
+      }
+    ],
+    "additional_titles": [
+      {
+        "title": "Air quality measurements in Central Bohemian Region in 2024 – Comprehensive analysis of pollutant concentrations from automated monitoring stations operated by CHMI including spatial distribution and temporal trends",
+        "type": {
+          "id": "translated-title"
+        },
+        "lang": {
+          "id": "eng"
+        }
+      }
+    ],
+    "additional_descriptions": [
+      {
+        "description": "Tato datová sada obsahuje měření kvality ovzduší ve středních Čechách v roce 2024. Data byla shromážděna z automatizovaných měřicích stanic provozovaných Českým hydrometeorologickým ústavem (ČHMÚ) a zahrnují koncentrace znečišťujících látek jako PM10, PM2.5, oxid dusičitý (NO₂), oxid siřičitý (SO₂) a přízemní ozón (O₃). Měření probíhala kontinuálně po celý rok 2024 s hodinovým rozlišením. Datová sada je určena pro výzkumné účely v oblasti ochrany ovzduší a environmentální analýzy.",
+        "type": {
+          "id": "abstract"
+        },
+        "lang": {
+          "id": "ces"
+        }
+      },
+      {
+        "description": "This dataset contains air quality measurements from the Central Bohemian Region in 2024. The data was collected from automated monitoring stations operated by the Czech Hydrometeorological Institute (CHMI) and includes concentrations of pollutants such as PM10, PM2.5, nitrogen dioxide (NO₂), sulfur dioxide (SO₂), and ground-level ozone (O₃). Measurements were taken continuously throughout 2024 with hourly resolution. The dataset is intended for research purposes in the field of air quality protection and environmental analysis.",
+        "type": {
+          "id": "abstract"
+        },
+        "lang": {
+          "id": "eng"
+        }
+      }
+    ],
+    "languages": [
+      {
+        "id": "ces"
+      },
+      {
+        "id": "eng"
+      }
+    ],
+    "dates": [
+      {
+        "date": "2025-04-27",
+        "type": {
+          "id": "created"
+        }
+      },
+      {
+        "date": "2024-01-01",
+        "type": {
+          "id": "collected"
+        }
+      }
+    ],
+    "locations": {
+      "features": [
+        {
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [13.394972457505816, 49.50127042751268],
+                [15.585575400519133, 49.50127042751268],
+                [15.585575400519133, 50.61421606255462],
+                [13.394972457505816, 50.61421606255462],
+                [13.394972457505816, 49.50127042751268]
+              ]
+            ]
+          },
+          "place": "Středočeský kraj",
+          "identifiers": [
+            {
+              "identifier": "https://vdp.cuzk.gov.cz/vdp/ruian/vusc/27",
+              "scheme": "url"
+            }
+          ]
+        }
+      ]
+    },
+    "subjects": [
+      {
+        "subject": "kvalita ovzduší"
+      },
+      {
+        "subject": "atmosférické znečištění"
+      },
+      {
+        "subject": "PM10"
+      },
+      {
+        "subject": "PM2.5"
+      },
+      {
+        "subject": "oxid dusičitý"
+      },
+      {
+        "subject": "monitoring životního prostředí"
+      },
+      {
+        "subject": "Středočeský kraj"
+      },
+      {
+        "subject": "imisní data"
+      }
+    ],
+    "funding": [
+      {
+        "funder": {
+          "name": "Grantová agentura České republiky"
+        },
+        "award": {
+          "title": {
+            "cs": "Program for air pollution research"
+          },
+          "number": "https://doi.org/award-identifier"
+        }
+      }
+    ],
+    "rights": [
+      {
+        "id": "cc-by-4.0"
+      }
+    ],
+    "related_resources": [
+      {
+        "relation_type": {
+          "id": "isreferencedby"
+        },
+        "resource_type": {
+          "id": "dataset"
+        },
+        "title": "Směrnice Evropského parlamentu a Rady 2008/50/ES ze dne 21. května 2008 o kvalitě vnějšího ovzduší a čistším ovzduší pro Evropu"
+      },
+      {
+        "relation_type": {
+          "id": "isreferencedby"
+        },
+        "resource_type": {
+          "id": "dataset"
+        },
+        "title": "ENVI LVS1 Sampler pro odběr prašného aerosolu"
+      },
+      {
+        "relation_type": {
+          "id": "isderivedfrom"
+        },
+        "resource_type": {
+          "id": "dataset"
+        },
+        "title": "Kvalita ovzduší – aktuální hodinové údaje"
+      },
+      {
+        "relation_type": {
+          "id": "hasmetadata"
+        },
+        "resource_type": {
+          "id": "dataset"
+        },
+        "title": "Metadata datové sady INSPIRE – Kvalita ovzduší – přehledy (data) na měřicích stanicích"
+      }
+    ]
+  },
+  "access": {
+    "record": "public",
+    "files": "public",
+    "embargo": {
+      "active": false,
+      "reason": null
+    },
+    "status": "metadata-only"
+  }
+}

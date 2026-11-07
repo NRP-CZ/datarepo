@@ -7,9 +7,10 @@ prerelease-mode = "allow"
 
 [manifest]
 overrides = [
-    { name = "ccmm-invenio", specifier = ">=2.0.1" },
-    { name = "oarepo-model", specifier = ">=6.1.0" },
-    { name = "oarepo-rdm", specifier = ">=9.0.0" },
+    { name = "ccmm-invenio", specifier = ">=2.4.0,<3.0.0" },
+    { name = "oarepo-model", specifier = ">=6.1.0,<7.0.0" },
+    { name = "oarepo-rdm", specifier = ">=9.1.1,<10.0.0" },
+    { name = "oarepo-related-resources", specifier = ">=6.0.0,<7.0.0" },
 ]
 
 [[package]]
@@ -440,7 +441,7 @@ wheels = [
 
 [[package]]
 name = "ccmm-invenio"
-version = "2.2.1"
+version = "2.4.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "idutils" },
@@ -450,15 +451,16 @@ dependencies = [
     { name = "oarepo-model" },
     { name = "oarepo-rdm" },
     { name = "oarepo-related-resources" },
+    { name = "oarepo-runtime" },
     { name = "pycountry" },
     { name = "pygml" },
     { name = "pyproj" },
     { name = "shapely" },
     { name = "xmlschema" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/b2/0a/b9ea79cf6cae6f7f7a6c2619de60daead02266a1cda76e5170752e99d7aa/ccmm_invenio-2.2.1.tar.gz", hash = "sha256:fd7f79da6a6143465503e72f1d509b4d88b45b9d881386be346de630339abffc", size = 1001700, upload-time = "2026-10-23T10:58:14.246Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/09/dd/1333e01ea3e1b446e931eeebb009f5d05e50f37333d0efa516d81af1ca76/ccmm_invenio-2.4.0.tar.gz", hash = "sha256:bd183ef4bd654e4e424ae2a23bd159a32f561786f5c69e06759f0a95306f59d8", size = 1016452, upload-time = "2026-11-07T19:53:08.39Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ee/09/f8ab91af27ee3665a57a89b26f6f05397ff002809024c34bfb1e847526c5/ccmm_invenio-2.2.1-py3-none-any.whl", hash = "sha256:fe232f82d6ba49a10867643623b064fe5f087e09336b855c7f8da940cdcad3c6", size = 1172178, upload-time = "2026-10-23T10:58:12.644Z" },
+    { url = "https://files.pythonhosted.org/packages/33/82/d4c0462ded237d9d4a53f0ac10adce988b0e716c247ac5da6d16a627c21f/ccmm_invenio-2.4.0-py3-none-any.whl", hash = "sha256:4352e2a8ba5c2381374839b69e9bf10e6e2e75a149b8779cec9d4f8fb74ac2e9", size = 1189457, upload-time = "2026-11-07T19:53:06.705Z" },
 ]
 
 [[package]]
@@ -4153,7 +4155,7 @@ wheels = [
 
 [[package]]
 name = "oarepo-related-resources"
-version = "5.1.1"
+version = "6.0.0"
 source = { registry = "https://gitlab.cesnet.cz/api/v4/projects/1408/packages/pypi/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
@@ -4167,9 +4169,9 @@ dependencies = [
     { name = "rapidfuzz" },
     { name = "types-python-dateutil" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/27/97/f5235ef933fec36b67eea05c430d12e881b9af997386d8714dc0682bc813/oarepo_related_resources-5.1.1.tar.gz", hash = "sha256:1fbbbd397a3726fc1c331f2980dba8d8557cad52d04e539b0ee480c6d33c653c", size = 28344, upload-time = "2026-10-12T13:50:43.915Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/40/2f/92c0a08d805a9026ccc3879b84f4f5cc8712e6e5c63dc8186008e0674951/oarepo_related_resources-6.0.0.tar.gz", hash = "sha256:c1f766ec436facef50f93699d3487b3e3dff179d6e092a7191ab693f0900e35a", size = 24381, upload-time = "2026-11-07T18:50:09.201Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a4/0a/6694b2a48d1d1e188ba45bb4298e1714f5638dcb1cf37db1e6b04bcac145/oarepo_related_resources-5.1.1-py3-none-any.whl", hash = "sha256:6c838f14f9b87b237abd8001f3a05c502b3d6bb5300316e2a936ef3826a6aa6d", size = 41883, upload-time = "2026-10-12T13:50:43.069Z" },
+    { url = "https://files.pythonhosted.org/packages/21/ed/10465b413929d0f98366beb780f55c58df556b6cd43de3c90923fca9799d/oarepo_related_resources-6.0.0-py3-none-any.whl", hash = "sha256:85c4098c0f00c644ce66986094cb382ad8e41e3e7278685277cb66abfa65cf49", size = 37748, upload-time = "2026-11-07T18:50:08.108Z" },
 ]
 
 [[package]]
