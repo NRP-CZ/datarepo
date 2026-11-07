@@ -1,0 +1,295 @@
+{
+  "@context": "https://w3id.org/ro/crate/1.3/context",
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.3"
+      },
+      "about": {
+        "@id": "https://127.0.0.1:5000/datasets/records/dgtcy-xbg36"
+      }
+    },
+    {
+      "@id": "https://127.0.0.1:5000/datasets/records/dgtcy-xbg36",
+      "@type": "Dataset",
+      "identifier": [
+        {
+          "@id": "#propertyvalue-566199f220d4"
+        },
+        {
+          "@id": "#propertyvalue-282baed7f6d2"
+        },
+        {
+          "@id": "#propertyvalue-4c21adf28a00"
+        }
+      ],
+      "name": "[RO-Crate import: detached crate, metadata only] Kvalita ovzduší ve středních Čechách 2024 – Komplexní analýza koncentrací znečišťujících látek z automatizovaných měřicích stanic provozovaných ČHMÚ včetně prostorového rozložení a časových trendů",
+      "alternateName": [
+        "Air quality measurements in Central Bohemian Region in 2024 – Comprehensive analysis of pollutant concentrations from automated monitoring stations operated by CHMI including spatial distribution and temporal trends"
+      ],
+      "description": "Tato datová sada obsahuje měření kvality ovzduší ve středních Čechách v roce 2024. Data byla shromážděna z automatizovaných měřicích stanic provozovaných Českým hydrometeorologickým ústavem (ČHMÚ) a zahrnují koncentrace znečišťujících látek jako PM10, PM2.5, oxid dusičitý (NO₂), oxid siřičitý (SO₂) a přízemní ozón (O₃). Měření probíhala kontinuálně po celý rok 2024 s hodinovým rozlišením. Datová sada je určena pro výzkumné účely v oblasti ochrany ovzduší a environmentální analýzy.",
+      "author": [
+        {
+          "@id": "https://orcid.org/0000-0003-0852-6632"
+        },
+        {
+          "@id": "#person-5a5653e078ec"
+        },
+        {
+          "@id": "#person-153e1dd43b0f"
+        },
+        {
+          "@id": "#person-f9b8b3dce15e"
+        }
+      ],
+      "contributor": [
+        {
+          "@id": "#person-6bb5a3fbf69d"
+        },
+        {
+          "@id": "#person-f37590e07185"
+        },
+        {
+          "@id": "#person-9c7618557c1d"
+        },
+        {
+          "@id": "#person-f3b500203a4a"
+        },
+        {
+          "@id": "#person-7e268b5945b2"
+        }
+      ],
+      "publisher": {
+        "@id": "#organization-43bba6643875"
+      },
+      "datePublished": "2025-04-27",
+      "dateCreated": "2025-04-27",
+      "dateModified": "2026-11-07",
+      "license": [
+        {
+          "@id": "https://creativecommons.org/licenses/by/4.0/"
+        }
+      ],
+      "keywords": [
+        "kvalita ovzduší",
+        "atmosférické znečištění",
+        "PM10",
+        "PM2.5",
+        "oxid dusičitý",
+        "monitoring životního prostředí",
+        "Středočeský kraj",
+        "imisní data"
+      ],
+      "inLanguage": "ces",
+      "version": "1.0.23",
+      "funder": [
+        {
+          "@id": "#organization-165de55e1692"
+        }
+      ],
+      "funding": [
+        {
+          "@id": "#grant-c3b3055eae68"
+        }
+      ],
+      "spatialCoverage": [
+        {
+          "@id": "#place-ceb69377a27d"
+        }
+      ]
+    },
+    {
+      "@type": "PropertyValue",
+      "propertyID": "URL",
+      "value": "https://127.0.0.1:5000/datasets/records/dgtcy-xbg36",
+      "url": "https://127.0.0.1:5000/datasets/records/dgtcy-xbg36",
+      "@id": "#propertyvalue-566199f220d4"
+    },
+    {
+      "@type": "PropertyValue",
+      "propertyID": "ARK",
+      "value": "ark:99999/d1dgtcyxbg36f",
+      "@id": "#propertyvalue-282baed7f6d2"
+    },
+    {
+      "@type": "PropertyValue",
+      "propertyID": "oai",
+      "value": "oai:127.0.0.1:dgtcy-xbg36",
+      "@id": "#propertyvalue-4c21adf28a00"
+    },
+    {
+      "@type": "Organization",
+      "name": "CESNET z.s.p.o.",
+      "@id": "#organization-c0008b61f62a"
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-0852-6632",
+      "@type": "Person",
+      "name": "Šimek, Miroslav",
+      "givenName": "Miroslav",
+      "familyName": "Šimek",
+      "affiliation": [
+        {
+          "@id": "#organization-c0008b61f62a"
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "name": "Univerzita Karlova",
+      "@id": "#organization-2b46a0d6bbe9"
+    },
+    {
+      "@type": "Person",
+      "name": "Novák, Jan",
+      "givenName": "Jan",
+      "familyName": "Novák",
+      "affiliation": [
+        {
+          "@id": "#organization-2b46a0d6bbe9"
+        }
+      ],
+      "@id": "#person-5a5653e078ec"
+    },
+    {
+      "@type": "Organization",
+      "name": "ČHMÚ",
+      "@id": "#organization-b64d32e153ae"
+    },
+    {
+      "@type": "Person",
+      "name": "Dvořáková, Marie",
+      "givenName": "Marie",
+      "familyName": "Dvořáková",
+      "affiliation": [
+        {
+          "@id": "#organization-b64d32e153ae"
+        }
+      ],
+      "@id": "#person-153e1dd43b0f"
+    },
+    {
+      "@type": "Person",
+      "name": "Procházka, Tomáš",
+      "givenName": "Tomáš",
+      "familyName": "Procházka",
+      "affiliation": [
+        {
+          "@id": "#organization-c0008b61f62a"
+        }
+      ],
+      "@id": "#person-f9b8b3dce15e"
+    },
+    {
+      "@type": "Person",
+      "name": "Krejčí, Petr",
+      "givenName": "Petr",
+      "familyName": "Krejčí",
+      "affiliation": [
+        {
+          "@id": "#organization-c0008b61f62a"
+        }
+      ],
+      "@id": "#person-6bb5a3fbf69d"
+    },
+    {
+      "@type": "Person",
+      "name": "Svobodová, Eva",
+      "givenName": "Eva",
+      "familyName": "Svobodová",
+      "affiliation": [
+        {
+          "@id": "#organization-2b46a0d6bbe9"
+        }
+      ],
+      "@id": "#person-f37590e07185"
+    },
+    {
+      "@type": "Person",
+      "name": "Horák, Martin",
+      "givenName": "Martin",
+      "familyName": "Horák",
+      "affiliation": [
+        {
+          "@id": "#organization-b64d32e153ae"
+        }
+      ],
+      "@id": "#person-9c7618557c1d"
+    },
+    {
+      "@type": "Organization",
+      "name": "Masarykova univerzita",
+      "@id": "#organization-86b39cdd73b6"
+    },
+    {
+      "@type": "Person",
+      "name": "Veselá, Lucie",
+      "givenName": "Lucie",
+      "familyName": "Veselá",
+      "affiliation": [
+        {
+          "@id": "#organization-86b39cdd73b6"
+        }
+      ],
+      "@id": "#person-f3b500203a4a"
+    },
+    {
+      "@type": "Organization",
+      "name": "Akademie věd ČR",
+      "@id": "#organization-b6f5ceb11d37"
+    },
+    {
+      "@type": "Person",
+      "name": "Černý, Jiří",
+      "givenName": "Jiří",
+      "familyName": "Černý",
+      "affiliation": [
+        {
+          "@id": "#organization-b6f5ceb11d37"
+        }
+      ],
+      "@id": "#person-7e268b5945b2"
+    },
+    {
+      "@type": "Organization",
+      "name": "Český hydrometeorologický ústav ve spolupráci s CESNET z.s.p.o. a Univerzitou Karlovou",
+      "@id": "#organization-43bba6643875"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://creativecommons.org/licenses/by/4.0/",
+      "name": "Creative Commons Attribution 4.0 International",
+      "identifier": "cc-by-4.0"
+    },
+    {
+      "@type": "Organization",
+      "name": "Grantová agentura České republiky",
+      "@id": "#organization-165de55e1692"
+    },
+    {
+      "@type": "Grant",
+      "identifier": "https://doi.org/award-identifier",
+      "funder": {
+        "@id": "#organization-165de55e1692"
+      },
+      "@id": "#grant-c3b3055eae68"
+    },
+    {
+      "@type": "Geometry",
+      "asWKT": "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> POLYGON ((13.394972457505816 49.50127042751268, 15.585575400519133 49.50127042751268, 15.585575400519133 50.61421606255462, 13.394972457505816 50.61421606255462, 13.394972457505816 49.50127042751268))",
+      "@id": "#geometry-569db229bddf"
+    },
+    {
+      "@type": "Place",
+      "name": "Středočeský kraj",
+      "geo": [
+        {
+          "@id": "#geometry-569db229bddf"
+        }
+      ],
+      "@id": "#place-ceb69377a27d"
+    }
+  ]
+}
