@@ -13,12 +13,11 @@ import {
   CCMMDepositRecordSerializer,
   CCMMSections,
 } from "@js/ccmm_invenio/forms";
-import { CCMMGeolocations } from "./CCMMGeolocations";
 
 const { rootEl, config, ...rest } = parseFormAppConfig();
 const recordSerializer = new CCMMDepositRecordSerializer(
   config.default_locale,
-  config.custom_fields.vocabularies
+  config.custom_fields.vocabularies,
 );
 
 // Unwrap the Overridable to avoid the override-lookup loop when we render it below.
@@ -68,10 +67,10 @@ ReactDOM.render(
   <DepositFormApp
     config={config}
     {...rest}
-    sections={[...CCMMSections, CCMMGeolocations]}
+    sections={[...CCMMSections]}
     recordSerializer={recordSerializer}
     componentOverrides={componentOverrides}
     useWizardForm
   />,
-  rootEl
+  rootEl,
 );

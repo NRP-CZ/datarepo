@@ -1,8 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ClipboardCopyButton } from "@js/oarepo_ui/components/ClipboardCopyButton";
-import { validateCoordinate } from "@js/datasets/locationHelpers/coordinateValidator";
-import { LAT_BOUNDS, LON_BOUNDS } from "@js/datasets/locationHelpers/constants";
+
+// TODO: link this to the ccmm_invenio helpers in the future
+
+/**
+ * Maximal available range for latitude values.
+ */
+const MY_LAT_BOUNDS = { min: -90, max: 90 };
+
+/**
+ * Maximal available range for longiitude values.
+ */
+const MY_LON_BOUNDS = { min: -180, max: 180 };
+
+function MY_validateCoordinate(value, bounds) {
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    return false;
+  }
+  if (value < bounds.min || value > bounds.max) {
+    return false;
+  }
+  return true;
+}
 
 /**
  * Extracts and validates a [lat, lon] pair from a GeoJSON Point geometry.
@@ -20,7 +40,8 @@ function getValidPointCoordinates(geometry) {
   const [lon, lat] = geometry.coordinates;
   if (
     !(
-      validateCoordinate(lat, LAT_BOUNDS) && validateCoordinate(lon, LON_BOUNDS)
+      MY_validateCoordinate(lat, MY_LAT_BOUNDS) &&
+      MY_validateCoordinate(lon, MY_LON_BOUNDS)
     )
   ) {
     return undefined;
