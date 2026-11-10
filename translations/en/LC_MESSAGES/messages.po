@@ -325,61 +325,6 @@ msgid ""
 "            <a href=\"mailto:datarepo@eosc.cz\">datarepo@eosc.cz</a>."
 msgstr ""
 
-#: /Users/terezieprchalova/Desktop/datarepo/ui/datasets/templates/semantic-ui/datasets/record_detail/side_bar/locations.html:5
-msgid "Geographic locations"
-msgstr ""
-
-msgid "Place"
-msgstr ""
-
-msgid "Geolocations"
-msgstr ""
-
-msgid "Invalid JSON!"
-msgstr ""
-
-msgid "Missing 'type' property (e.g., 'Point', 'Polygon')"
-msgstr ""
-
-msgid "Unsupported geometry type"
-msgstr ""
-
-msgid "We currently support only 'Point', 'MultiPoint' and 'Polygon'."
-msgstr ""
-
-msgid "Details"
-msgstr ""
-
-msgid ""
-"Enter the location manually using GeoJSON format. E.g.:\n"
-"\n"
-"{\n"
-"  \"type\": \"Point\",\n"
-"  \"coordinates\": [0, 0]\n"
-"}"
-msgstr ""
-
-msgid "Name"
-msgstr ""
-
-msgid "Use map, search bar or advanced editor..."
-msgstr ""
-
-msgid "Description"
-msgstr ""
-
-msgid "Identifiers"
-msgstr ""
-
-msgid "Copied the latitude and longitude"
-msgstr ""
-
-msgid "No valid locations were found!"
-msgstr ""
-
-msgid "No locations were found!"
-msgstr ""
-
 #: /Users/terezieprchalova/Desktop/datarepo/ui/pages/templates/GetAccess.jinja:23
 msgid "Getting Permission to Deposit Datasets"
 msgstr ""
