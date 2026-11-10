@@ -15,13 +15,8 @@ theme = WebpackThemeBundle(
             entry={
                 "datasets_search": "./js/datasets/search/index.js",
                 "datasets_deposit_form": "./js/datasets/forms/index.js",
-                "locations_js": "./js/datasets/landing_page/locations.js",
-                "locations_css": "./less/datasets/landing_page/locations.less",
             },
-            dependencies={
-                "leaflet": "^1.9.4",
-                "sanitize-html": "2.13.0",
-            },
+            dependencies={},
             # TODO: pinned less dependency, because in version 4.6 of less, they are using exclusively ES modules
             # and less loader is using require
             devDependencies={"less": "4.5.1"},
