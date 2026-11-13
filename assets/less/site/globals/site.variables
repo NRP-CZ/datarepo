@@ -224,6 +224,7 @@
 @font-size-tiny: 0.8rem;
 @font-size-massive: 2.5rem;
 @fontName: "Roboto";
+@h5: 0.8rem;
 
 /*-------------------
      Em Sizes
