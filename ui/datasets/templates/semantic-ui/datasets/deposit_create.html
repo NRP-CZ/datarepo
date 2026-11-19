@@ -17,10 +17,6 @@ SPDX-License-Identifier: MIT
 
    To customize, create/edit these partials (they extend oarepo_ui defaults):
    - deposit_create/form.html - Custom form container layout
+   - datasets/deposit_create/css.html - Custom CSS includes (optional)
    - deposit_create/javascript.html - Custom JavaScript includes (optional)
 #}
-
-{%- block css %}
-  {{ super() }}
-  {{ webpack['ccmm_invenio_forms_locations_css.css'] }}
-{%- endblock css %}
